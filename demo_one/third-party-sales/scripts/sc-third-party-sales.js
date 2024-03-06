@@ -12,17 +12,18 @@ class InputTabs {
     );
     firstTab.click();
     firstInputOption.checked = true;
+  
     // if (firstTab) {
-    //   // if (this.deviceWidth >= 1024) {
+    //   if (this.deviceWidth >= 1024) {
     //     firstTab.click();
-    //   // }
+    //   }
     // }
     // if (firstInputOption) {
-    //   // if (this.deviceWidth >= 1024) {
+    //   if (this.deviceWidth >= 1024) {
     //     firstInputOption.checked = true;
-    //   // } else {
+    //   } else {
     //     firstInputOption.checked = false;
-    //   // }
+    //   }
     // }
   }
 
@@ -72,6 +73,7 @@ class radioTab {
       elements.forEach((element) => {
         element.addEventListener("change", function () {
           const targetId = element.querySelector("input").dataset.target;
+          console.log(targetId)
           const specificElement = document.getElementById(targetId);
 
           specificElement.scrollIntoView({ behavior: "smooth" });
