@@ -10,18 +10,20 @@ class InputTabs {
     const firstInputOption = document.querySelector(
       ".sc-input-tab__panels-input"
     );
-    if (firstTab) {
-      if (this.deviceWidth >= 1024) {
-        firstTab.click();
-      }
-    }
-    if (firstInputOption) {
-      if (this.deviceWidth >= 1024) {
-        firstInputOption.checked = true;
-      } else {
-        firstInputOption.checked = false;
-      }
-    }
+    firstTab.click();
+    firstInputOption.checked = true;
+    // if (firstTab) {
+    //   // if (this.deviceWidth >= 1024) {
+    //     firstTab.click();
+    //   // }
+    // }
+    // if (firstInputOption) {
+    //   // if (this.deviceWidth >= 1024) {
+    //     firstInputOption.checked = true;
+    //   // } else {
+    //     firstInputOption.checked = false;
+    //   // }
+    // }
   }
 
   /**
