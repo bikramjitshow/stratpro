@@ -1,0 +1,21 @@
+// Vars
+@import './vars/colors';
+@import './vars/dimensions';
+@import './vars/layout';
+@import './vars/typography';
+@import 'breakpoint/breakpoint';
+
+// Utils
+@import 'utils/utils';
+
+
+// third-party-sales
+@import './sc-third-party-sales';
+
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+

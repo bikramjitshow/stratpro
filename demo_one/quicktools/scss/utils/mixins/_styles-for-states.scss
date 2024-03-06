@@ -1,0 +1,77 @@
+///////////////////////////////////////////
+//
+// Applies a mapped style for a breakpoint
+//
+// @param: $styles
+// A map storing one or more style maps
+// example:
+// $styles : (
+//   "--h-xsmall" : (font-size: 21px, font-weight: 300, letter-spacing: .6px, line-height: 21px)
+// )
+//
+// @param $breakpoints
+// a list storing all breakpoints
+// example: --h-xsmall
+//
+// usage: Define a styles map nad set the that should apply the styles for available breakpoints/states
+//
+///////////////////////////////////////////
+
+@mixin styles-for-states($styles, $breakpoints: false) {
+  $first: isMobile($breakpoints);
+  //traverse styles
+  @each $keyStyle, $style in $styles {
+    //if there's $breakpoints added
+    @if ($breakpoints) {
+      @if ($first) {
+        @include sc-text($style);
+        @content;
+        $first: false;
+      } @else {
+        //as a list
+        @if type-of($breakpoints) == list {
+          // traverse breakpoints
+          @each $breakpoint in $breakpoints {
+            //if exists style for breakpoint add it
+            @if $breakpoint == $keyStyle {
+              @include add-style-for-state($style, $keyStyle) {
+                @content;
+              }
+            }
+          }
+          // or only one as a string
+        }
+        @elseif type-of($breakpoints) == string {
+          @include add-style-for-state($style, $breakpoints) {
+            @content;
+          }
+        }
+      }
+      // There's not breakpoints, add all breakpoints
+    } @else {
+      @include add-style-for-state($style, $keyStyle) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin add-style-for-state($style, $state) {
+  @include breakpoint($state) {
+    @include sc-text($style);
+    @content;
+  }
+}
+
+//gets the first item from a map and evals if it's mobile
+@function isMobile($breakpoints) {
+  @if ($breakpoints) {
+    @if type-of($breakpoints) == list {
+      $breakpoint: nth($breakpoints, 1);
+    }
+    @elseif type-of($breakpoints) == string {
+      $breakpoint: $breakpoints;
+    }
+  }
+  @return ($breakpoint == $bp--h-mobile) OR ($breakpoint == $bp--h-xsmall) OR ($breakpoint == $bp--h-small);
+}

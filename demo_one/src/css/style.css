@@ -1,0 +1,410 @@
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * WebKit font-smoothing
+ * ------------------------------------------------
+ *
+ * References:
+ *
+ * 1. http://maxvoltar.com/sandbox/fontsmoothing/
+ * 2. http://maxvoltar.com/archive/-webkit-font-smoothing
+ * 3. https://gist.github.com/adamstac/5048881
+ *
+ * Values: none, antialiased (default), subpixel-antialiased
+ */
+/**
+ *  Background images with retina support
+ */
+/**
+ * Animates properties for sticky nav elements when page is scrolled
+ * @param: $property . The property that should be animated
+ *
+ */
+/**
+ * Creates a text filled by gradient between two colors
+ *
+ * TODO: Find a crossbrowser solution, this doesn't works on Firefox
+ *
+ * @param  {[type]} $from-color: #6cc9fe       [description]
+ * @param  {[type]} $to-color:   #38d54a       [description]
+ * @param  {[type]} $direction:  120deg        [description]
+ *
+ * @return {[type]}              [description]
+ */
+/**
+ * Triangle decorator
+ */
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * Sets height ratio for standard SC Component.
+ *
+ * @params
+ * $avoid-small-resolutions: Avoids the mixin behaviour for resolutions smaller than medium.
+ *                           It's used in components such as the footer which doesn't have a height
+ *                           behaviour on small resolutions, instead it depends on it's own content's height.
+ *
+ */
+/**
+ *  Hides for all states, assign to the breakpoints passed as first param,
+ *  the display type passed as the second param.
+ *  @param $breakpoint-to-show the breakpoints you want to show
+ *  @param $display the display type to be assigned to breakpoints,defaults to
+ *  (display:block)
+ */
+/**
+ * Sets font-size and font-weight.
+ *
+ * Font-weights smaller than 300 are only allowed when font-size
+ * is higher than 36px.
+ *
+ * Font-sizes bigger than 20px should activate aliased smoothing,
+ * then increase font-weight to 300
+ *
+ * If we're on IE, and font-size
+ * is less or equal than 17px and font-weight is less than 400,
+ * then font-weight is increased to improve readibility.
+ *
+ * @params
+ * $font-size: font size
+ * $font-weight: font weight
+ * $antialiased: boolean to active aliased smoothing
+ * $supers: collection of parent classes to apply the mixin, they have to be separated by comas
+ *
+ *
+ * Example 1:
+ *
+ *.component---header---title {
+ *   @include safe-font-size(15px, 300, false, '.is-upload-step', '.bp-small', '.bp-medium');
+ * }
+ *
+ * The $supers refers to the parent classes, so in this case, the mixin apply when the parent class is .is-upload-step,
+ * bp-small or bp-medium
+ *
+ *
+ * Example 2:
+ *
+ * .component---info.type---header {
+ *    .component---info---title {
+ *      @include safe-font-size(52px, 300, false, '.layout-2cols');
+ *    }
+ * }
+ *
+ * The font size here is 52px, bigger than 20px, so the aliased smoothing should activate.
+ * The $supers is only one, so the mixin only apply to the '.layout-2cols .component---info.type---header .component---info---title'
+ *
+ */
+.sc-quick-tools-wrap {
+  padding: 2em 0;
+  background-color: #f7f7f7;
+}
+
+.sc-quick-tools-title {
+  position: relative;
+  margin-bottom: 1.2em;
+}
+.sc-quick-tools-title__heading {
+  font-size: 2em;
+  padding-bottom: 1em;
+}
+.sc-quick-tools-title::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 6em;
+  height: 0.6em;
+  bottom: 0;
+  left: 0;
+  background-color: #0c77b9;
+}
+.sc-quick-tools-title::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 2em;
+  height: 0.6em;
+  bottom: 0;
+  left: 0;
+  background-color: #69bf29;
+}
+
+.sc-quick-tools {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+}
+@media (max-width: 680.98px) {
+  .sc-quick-tools {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+.sc-quick-tools__item {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 16px;
+}
+.sc-quick-tools__item::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1px;
+  height: 70%;
+  top: 50%;
+  right: 0;
+  border-left: 1px solid #eee;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.sc-quick-tools__item:last-child::after {
+  display: none;
+}
+@media (max-width: 680.98px) {
+  .sc-quick-tools__item {
+    width: 50%;
+  }
+  .sc-quick-tools__item:nth-child(even)::after {
+    display: none;
+  }
+  .sc-quick-tools__item:last-child::after {
+    display: inline-block;
+  }
+}
+.sc-quick-tools__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sc-quick-tools__link:hover .sc-quick-tools__content {
+  color: #008738;
+}
+.sc-quick-tools__content {
+  color: #0c77b9;
+  margin-top: 8px;
+  font-size: 1em;
+  text-align: center;
+}
+
+.sc-segment-right-blue-box-wrap {
+  padding: 2em 0;
+  background-color: #f7f7f7;
+}
+
+.sc-segment-right-blue-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+@media (max-width: 1023.9px) {
+  .sc-segment-right-blue-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.sc-segment__heading {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 1.6em;
+}
+.sc-segment__heading--white {
+  color: #fff;
+}
+.sc-segment__item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 3em;
+  width: 100%;
+}
+.sc-segment__item--bg-blue {
+  background-color: #0c77b9;
+}
+.sc-segment__item:first-child::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1px;
+  height: 90%;
+  top: 50%;
+  right: 0;
+  border-left: 1px solid #eee;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.sc-segment__greybx {
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 24px;
+}
+.sc-segment__icotext {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.sc-segment__text {
+  font-size: 1em;
+  line-height: 1.2em;
+  color: #555550;
+}
+.sc-segment__text--title {
+  font-size: 1.3em;
+  width: 70%;
+  margin-left: 0.5em;
+}
+.sc-segment__text--blk-bold {
+  font-weight: 600;
+  color: #000;
+}
+.sc-segment__text--relink-text {
+  color: #0c77b9;
+  text-transform: capitalize;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-left: 0.2em;
+}
+.sc-segment__relink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2em;
+}
+.sc-segment__relink--btn {
+  border: 1px solid #fff;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 3em;
+  width: 6em;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0;
+}
+.sc-segment__relink--btn--relink-text {
+  color: #fff;
+}
+.sc-segment__relink--rounded {
+  border-radius: 3em;
+}
+
+.sc-segment-slider-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sc-segment-slider__content {
+  font-size: 1em;
+  color: #fff;
+}
+
+.splide__slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.splide__slide.is-visible {
+  opacity: 0.3;
+}
+.splide__slide.is-active {
+  font-size: 1.3em;
+  font-weight: 600;
+  opacity: 1;
+}
+.splide__slide.is-next, .splide__slide.is-prev {
+  font-size: 1.2em;
+  opacity: 0.7;
+}
+
+html {
+  scroll-behavior: smooth;
+}/*# sourceMappingURL=style.css.map */

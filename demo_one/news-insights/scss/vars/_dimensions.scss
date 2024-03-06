@@ -1,0 +1,82 @@
+// Viewport dimensions
+$viewport-min-width: 320px;
+
+// Horizontal breakpoints
+$breakpoint-h-xxsmall: 400px;
+$breakpoint-h-xsmall: 680px;
+$breakpoint-h-small: 1023px;
+$breakpoint-h-medium: 1100px;
+$breakpoint-h-large: 1350px;
+
+// Vertical breakpoints
+$breakpoint-v-small: 680px;
+$breakpoint-v-medium: 900px;
+
+// General grid paddings
+$grid-h-padding-xsmall: 20px;
+$grid-h-padding-small: 20px;
+$grid-h-padding-medium: 32px;
+$grid-h-padding-large: 32px;
+$grid-h-padding-xlarge: 40px;
+
+// VERTICAL PADDING SUP FOR MODULES (default)
+$grid-v-padding-xsmall: 40px;
+$grid-v-padding-small: 50px;
+$grid-v-padding-medium: 60px;
+$grid-v-padding-large: 60px;
+$grid-v-padding-xlarge: 60px;
+
+// VERTICAL PADDING INF FOR MODULES (default)
+$grid-v-padding-inf-xsmall: 40px;
+$grid-v-padding-inf-small: 50px;
+$grid-v-padding-inf-medium: 60px;
+$grid-v-padding-inf-large: 60px;
+$grid-v-padding-inf-xlarge: 60px;
+
+// GRID GUTTERS FOR SLIDERS
+$grid-h-gutter-small: 12px;
+$grid-h-gutter-medium: 16px;
+$grid-h-gutter-large: 20px;
+//TODO: NOT SURE if necessary
+
+// CARDS INNER DIMS
+$card-v-padding-medium: 28px;
+$card-h-padding-xsmall: 20px;
+$card-h-padding-small: 20px;
+$card-h-padding-medium: 24px;
+$card-h-padding-large: 24px;
+$card-h-padding-xlarge: 40px;
+
+// ELASTIC PROPERTY
+$elastic-desktop-width-inf: 1366px;
+$elastic-desktop-width-sup: 1600px;
+
+$content-max-width: 1340px;
+
+// MEGANAV
+
+// -- COLLAPSED HEIGHT, for sticky header
+$meganav-collapsed-height-mobile: 48px;
+$meganav-collapsed-height-desktop: 60px;
+
+// -- HEIGHTS
+$meganav-height-h-mobile: 79px;
+$meganav-height-h-desktop: 56px;
+$meganav-height-v-small: 56px;
+
+// -- OTHER VARS
+$meganav-max-width: 1500px - $grid-h-padding-large * 2;
+$meganav-logo-width-desktop: 108px;
+$meganav-logo-height-desktop: 39px;
+$meganav-logo-width-mobile: 114px;
+$meganav-logo-height-mobile: 41px;
+$meganav-padding-right: 22px;
+
+// General grid paddings for limited width layers
+$grid-h-max-width-xsmall: 345px;
+$grid-h-max-width-small: 600px;
+$grid-h-max-width-medium-large: 710px;
+$grid-h-max-width-xlarge: 782px;
+
+$grid-liquid-h-max-width-large: 966px;
+$grid-liquid-h-max-width-xlarge: 1200px;

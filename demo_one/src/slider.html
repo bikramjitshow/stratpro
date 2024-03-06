@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Loop Slider</title>
+<style>
+    .slider-container {
+        width: 300px;
+        overflow: hidden;
+        position: relative;
+    }
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    .card {
+        flex: 0 0 100px;
+        height: 150px;
+        margin-right: 10px;
+        background-color: #ccc;
+    }
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slider">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <div class="card">Card 5</div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var slider = $('.slider');
+        var cards = $('.card');
+
+        var cardWidth = cards.first().outerWidth(true);
+        var totalWidth = cardWidth * cards.length;
+
+        slider.width(totalWidth);
+
+        function moveRight() {
+            slider.animate({marginLeft: -cardWidth}, 500, function(){
+                $(this).append($(this).find('.card').first());
+                $(this).css('margin-left', 0);
+            });
+        }
+
+        function moveLeft() {
+            slider.prepend(slider.find('.card').last());
+            slider.css('margin-left', -cardWidth);
+            slider.animate({marginLeft: 0}, 500);
+        }
+
+        var interval = setInterval(moveRight, 2000);
+
+        $('.slider-container').hover(function(){
+            clearInterval(interval);
+        }, function(){
+            interval = setInterval(moveRight, 2000);
+        });
+
+        $('.btn-left').click(function(){
+            moveLeft();
+        });
+
+        $('.btn-right').click(function(){
+            moveRight();
+        });
+    });
+</script>
+</body>
+</html>

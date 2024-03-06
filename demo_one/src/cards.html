@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="cathay">
+      <h1 class="cathay__sec--heading">Find the Cathay Mastercard for you</h1>
+      <p class="cathay__sec--desc">
+        As the only bank that lets you earn miles through its services, we
+        have partnered with Cathay to bring you the Standard Chartered Cathay
+        Mastercard. With three tiers that recognise different banking
+        relationships with us, each with its own travel, lifestyle and banking
+        privileges – new heights await you in every stage.
+      </p>
+
+      <!-- for small screen -->
+
+      <div class="cards cards__header--mb">
+        <div class="card__header card__header-active cards__header-masterbg" data-index="1" dataindex="1">
+          <p>Cathay Mastercard</p>
+        </div>
+        <div class="card__header card__header-disabled cards__header-bankbg" data-index="2" dataindex="2">
+          <p>
+            Cathay Mastercard
+            <br />
+            <span>Priority Banking</span>
+          </p>
+        </div>
+        <div class="card__header card__header-disabled cards__header-pvtbg" data-index="3" dataindex="3">
+          <p>
+            Cathay Mastercard
+            <br />
+            <span>Priority Private</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="slider__wrap">
+        <div class="cards" id="MySliderId">
+          <!-- Card 1 -->
+          <div class="cards__wrap">
+            <div class="card card__disabled" dataindex="1">
+              <div class="card__header card__header-masterbg">
+                <p>Standard Chartered Cathay Mastercard</p>
+              </div>
+              <img class="card__img" src="./assets/images/card_master.png" alt="Card" />
+              <div class="card__content">
+                <p class="card__content--desc">
+                  Simply want a travel and lifestyle Miles earning card?
+                </p>
+                <ul class="card__content--lists">
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/AirplaneTakeoff-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Up to <b>80,000</b> welcome miles</h4>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/PlusCircle-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Up to <b>220,000</b> more miles</h4>
+                      <p>for Priority Banking customers</p>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/ProhibitInset.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>First-year annual fee waiver</h4>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <button class="card__btn" type="button">APPLY NOW</button>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="cards__wrap">
+            <div class="card card__active" dataindex="2">
+              <div class="card__header card__header-bankbg">
+                <p>Standard Chartered Cathay Mastercard - Priority Banking</p>
+              </div>
+              <img class="card__img" src="./assets/images/card_banking.png" alt="Card" />
+              <div class="card__content">
+                <p class="card__content--desc">
+                  Want to enjoy more with more premium travel, lifestyle and
+                  banking privileges beyond Miles?
+                </p>
+                <ul class="card__content--lists">
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/AirplaneTakeoff-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Up to <b>80,000</b> welcome miles</h4>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/PlusCircle-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Up to <b>220,000</b> more miles</h4>
+                      <p>for Priority Banking customers</p>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/ShoppingBag-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Earn up to HKD2 = 1 Asia Mile</h4>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/Coffee-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>
+                        <b>Four</b> sharable Cathay Pacific Business class
+                        lounge passes every 12 months
+                      </h4>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/Expert-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>
+                        Priority check-in at Premium Economy Class counters and
+                        priority boarding services
+                      </h4>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <button class="card__btn" type="button">APPLY NOW</button>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="cards__wrap">
+            <div class="card card__disabled" dataindex="3">
+              <div class="card__header card__header-pvtbg">
+                <p>Standard Chartered Cathay Mastercard - Priority Private</p>
+              </div>
+              <img class="card__img" src="./assets/images/card_private.png" alt="Card" />
+              <div class="card__content">
+                <p class="card__content--desc">
+                  Want to enjoy prestige travel and lifestyle privileges with
+                  your loved ones with Private Banking level banking services?
+                </p>
+                <ul class="card__content--lists">
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/AirplaneTakeoff-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Up to <b>80,000</b> welcome miles</h4>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/PlusCircle-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Up to <b>220,000</b> more miles</h4>
+                      <p>for Priority Banking customers</p>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/ShoppingBag-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>Earn up to HKD2 = 1 Asia Mile</h4>
+                      <a href="#">Learn more</a>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/Coffee-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>
+                        <b>Ten</b> sharable Cathay Pacific business class lounge
+                        passes every 12 months
+                      </h4>
+                    </div>
+                  </li>
+                  <li class="card__content--lists-item">
+                    <i class="card__content--lists-item-icon">
+                      <img src="./assets/icons/Expert-24px.svg" alt="icon" />
+                    </i>
+                    <div class="card__content--lists-item-cont">
+                      <h4>
+                        Priority check-in at Business Class counters and
+                        priority boarding services
+                      </h4>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <button class="card__btn" type="button">APPLY NOW</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./scripts/script.js"></script>
+ 
+</body>
+
+</html>

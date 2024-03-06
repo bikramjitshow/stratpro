@@ -1,0 +1,131 @@
+.sc-segment-right-blue-box-wrap {
+  padding: 2em 0;
+  background-color: $color-grey-light-14;
+}
+.sc-segment-right-blue-box {
+  display: flex;
+  background-color: $color-white;
+  border-radius: 6px;
+  overflow: hidden;
+  @media (max-width: 1023.9px) {
+    flex-direction: column;
+  }
+}
+
+.sc-segment {
+  &__heading {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1.6em;
+    &--white {
+      color: $color-white;
+    }
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+    width: 100%;
+    // border: 1px solid;
+    &--bg-blue {
+      background-color: $color-blue;
+    }
+    &:first-child {
+      &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 1px;
+        height: 90%;
+        top: 50%;
+        right: 0;
+        border-left: 1px solid $color-grey-light-2;
+        transform: translate(0, -50%);
+      }
+    }
+  }
+  &__greybx {
+    background-color: $color-grey-light-2;
+    border-radius: 6px;
+    padding: 24px;
+  }
+  &__icotext {
+    display: flex;
+    align-items: center;
+  }
+  &__text {
+    font-size: 1em;
+    line-height: 1.2em;
+    color: $color-grey-light-1;
+    &--title {
+      font-size: 1.3em;
+      width: 70%;
+      margin-left: 0.5em;
+    }
+    &--blk-bold {
+      font-weight: 600;
+      color: $color-black;
+    }
+    &--relink-text {
+      color: $color-blue;
+      text-transform: capitalize;
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-left: 0.2em;
+    }
+  }
+  &__relink {
+    display: flex;
+    align-items: center;
+    margin-top: 2em;
+    &--btn {
+      border: 1px solid $color-white;
+      justify-content: center;
+      height: 3em;
+      width: 6em;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 0;
+      &--relink-text {
+        color: #fff;
+      }
+    }
+    &--rounded {
+      border-radius: 3em;
+    }
+  }
+}
+
+// sc-segment-slider-wrap
+.sc-segment-slider-wrap{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.sc-segment-slider {
+  &__content {
+    font-size: 1em;
+    color: $color-white;
+  }
+}
+.splide {
+  &__slide {
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    &.is-visible {
+      opacity: 0.3;
+    }
+    &.is-active {
+      font-size: 1.3em;
+      font-weight: 600;
+      opacity: 1;
+    }
+    &.is-next, &.is-prev {
+      font-size: 1.2em;
+      opacity: 0.7;
+    }
+  }
+}

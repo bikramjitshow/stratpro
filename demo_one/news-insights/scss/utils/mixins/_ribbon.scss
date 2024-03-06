@@ -1,0 +1,30 @@
+@mixin ribbon(){
+  .ribbon {
+    background: red; //ribbon color
+    height: 55px; // ribbon height
+    width: 35px; // ribbon width
+    border-top: 1px solid red;
+  }
+
+  .ribbon:after,
+  .ribbon:before {
+    content: '';
+    position: absolute;
+    border-top: 15px solid red; // angle degree, reduce to reduce degree of angles
+    height: 0; // no height, no content, just border
+    width: 0;
+    top: 100%;
+  }
+
+  .ribbon:after {
+    // right angle
+    border-left: 35px solid transparent;
+    right: 0;
+  }
+
+  .ribbon:before {
+    // left angle
+    border-right: 35px solid transparent;
+    left: 0;
+  }
+}

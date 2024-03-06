@@ -1,0 +1,170 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Slider with Buttons</title>
+<style>
+    .slider-container {
+        width: 300px;
+        overflow: hidden;
+        position: relative;
+        margin: 20px auto;
+    }
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    .card {
+        flex: 0 0 100px;
+        height: 150px;
+        margin-right: 10px;
+        background-color: #ccc;
+    }
+    .btn-container {
+        text-align: center;
+    }
+    .btn {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slider">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+    </div>
+</div>
+
+<div class="btn-container">
+    <div class="btn" data-index="1">Button 1</div>
+    <div class="btn" data-index="2">Button 2</div>
+    <div class="btn" data-index="3">Button 3</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var slider = $('.slider');
+        var cards = $('.card');
+        var btns = $('.btn');
+
+        var cardWidth = cards.first().outerWidth(true);
+        var totalWidth = cardWidth * cards.length;
+
+        slider.width(totalWidth);
+
+        function moveToCenter(index) {
+            var currentIndex = $('.card').index($('.card:eq(' + (index - 1) + ')'));
+            var distanceToMove = (currentIndex - 1) * cardWidth;
+            slider.stop().animate({marginLeft: -distanceToMove}, 500);
+        }
+
+        btns.click(function(){
+            var index = $(this).data('index');
+            moveToCenter(index);
+        });
+    });
+</script>
+</body>
+</html> -->
+
+
+<!-- transalte -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Slider with Buttons</title>
+  <style>
+    .slider-container {
+      width: 300px;
+      overflow: hidden;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .card {
+      flex: 0 0 100px;
+      height: 150px;
+      margin-right: 10px;
+      background-color: #ccc;
+      transition: transform 0.5s ease;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 5px 10px;
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="card">Card 1</div>
+      <div class="card">Card 2</div>
+      <div class="card">Card 3</div>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <div class="btn" data-index="1">Button 1</div>
+    <div class="btn" data-index="2">Button 2</div>
+    <div class="btn" data-index="3">Button 3</div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var slider = $('.slider');
+      var cards = $('.card');
+      var btns = $('.btn');
+
+      var cardWidth = cards.first().outerWidth(true);
+      var totalWidth = cardWidth * cards.length;
+
+      slider.width(totalWidth);
+
+      function moveToCenter(index) {
+        // var currentIndex = $('.card').index($('.card:eq(' + (index - 1) + ')'));
+        // var distanceToMove = (currentIndex - 1) * cardWidth;
+        // var translateValue = -distanceToMove + 'px';
+        // slider.css('transform', 'translateX(' + translateValue + ')');
+
+        var distanceToMove = (index - 1) * cardWidth;
+        var translateValue = -distanceToMove + 'px';
+        slider.css('transform', 'translateX(' + translateValue + ')');
+      }
+
+      btns.click(function () {
+        var index = $(this).data('index');
+        moveToCenter(index);
+      });
+    });
+  </script>
+</body>
+
+</html>

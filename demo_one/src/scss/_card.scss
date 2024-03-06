@@ -1,0 +1,209 @@
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 60px;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  @media screen and (max-width: 767px) {
+    position: relative;
+    overflow: hidden;
+    justify-content: flex-start;
+  }
+
+  &__wrap {
+    @media screen and (max-width: 767px) {
+      flex: 0 0 80%;
+    }
+  }
+
+  //card
+  .card {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: $color-white;
+    overflow: hidden;
+    max-width: 286px;
+    transition: all 0.3s ease-in-out;
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+      flex: 0 0 80%;
+    }
+    &__disabled {
+      position: relative;
+      transform: scale(0.9);
+      // display: none;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: $color-white;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      @media screen and (max-width: 767px) {
+        transform: none;
+        &::after {
+          display: none;
+        }
+      }
+    }
+    &__active {
+      display: block;
+    }
+    &__img {
+      width: 100%;
+    }
+    &__header {
+      padding: 30px 30px;
+      &-bankbg {
+        background-color: $card-bg-banking;
+      }
+      &-masterbg {
+        background: $card-bg-master;
+      }
+      &-pvtbg {
+        background: $card-bg-private;
+      }
+      p {
+        color: $color-white;
+        text-transform: capitalize;
+        line-height: 18px;
+        text-align: center;
+      }
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+    &__content {
+      padding: 20px;
+      &--desc {
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        margin: 0 auto 30px auto;
+      }
+      &--lists {
+        font-size: 12px;
+        &::before {
+          content: "";
+          width: 36px;
+          height: 2px;
+          background-color: $color-secondary;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 30px;
+        }
+        &-item {
+          display: flex;
+          margin-bottom: 20px;
+          &-icon {
+            width: 24px;
+            height: 24px;
+            overflow: hidden;
+          }
+          &-cont {
+            width: calc(100% - 24px);
+            padding-left: 10px;
+            h4 {
+              margin-bottom: 5px;
+              b {
+                font-weight: 600;
+              }
+            }
+            p {
+              font-size: 10px;
+              margin-bottom: 5px;
+            }
+            a {
+              font-size: 10px;
+              color: $color-secondary;
+              text-transform: capitalize;
+              border-bottom: 1px solid;
+              border-style: dotted;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //for mobile card header
+  &__header--mb {
+    @media screen and (max-width: 767px) {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 1px;
+      // margin: 0 -10%;
+      padding-bottom: 20px;
+      .card__header {
+        @include align-item-content-center;
+        min-width: 124px;
+        width: 100%;
+        padding: 0;
+        height: 70px;
+        background: $color-off-white;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        p {
+          font-size: 10px;
+          line-height: 14px;
+          color: $color-grey;
+          span {
+            font-size: 12px;
+            line-height: 16px;
+          }
+        }
+        &::after {
+          content: "";
+          width: 20px;
+          height: 20px;
+          bottom: 10px;
+          position: absolute;
+          transform: rotate(45deg);
+          opacity: 0;
+        }
+        &-active {
+          &.cards__header-masterbg {
+            background: $card-bg-master;
+            &::after {
+              opacity: 1;
+              background: $card-bg-master;
+            }
+          }
+          &.cards__header-bankbg {
+            background-color: $card-bg-banking;
+            &::after {
+              opacity: 1;
+              background: $card-bg-banking;
+            }
+          }
+          &.cards__header-pvtbg {
+            background: $card-bg-private;
+            &::after {
+              opacity: 1;
+              background: #313b40;
+            }
+          }
+          p {
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.slider__wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0px auto;
+}

@@ -1,0 +1,96 @@
+.scaccordion {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  overflow: auto;
+  // media
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+
+  // accordion item
+  .scaccordionitem {
+    @include dir-col-content-end;
+    position: relative;
+    width: 8em;
+    height: 30em;
+    margin: 0.5em 0 0.5em 0.5em;
+    overflow: hidden;
+    @include bg-img-cover-center;
+    transition: all 1s ease;
+    cursor: pointer;
+    // media
+    @media screen and (max-width: 767px) {
+      width: 4em;
+    }
+
+    &::after {
+      @include full-cover-pseudo-element;
+      background-color: $trans-bg-white;
+    }
+
+    // accordion item header
+    &__header {
+      line-height: 2em;
+      margin-bottom: 0.3em;
+      font-size: 1em;
+      font-weight: bold;
+      text-indent: 1em;
+      color: $color-white;
+      transition: all 1s ease;
+      @media screen and (max-width: 767px) {
+        transform: rotate(90deg);
+      }
+    }
+
+    // accordion item cont
+    &__cont {
+      visibility: hidden;
+      margin-bottom: 1em;
+      text-wrap: nowrap;
+      color: $color-white;
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+    // accordion item relink
+    &__relink {
+      visibility: hidden;
+      color: $color-white;
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-transform: capitalize;
+      text-underline-offset: 0.3em;
+    }
+
+    // target accordion item
+    &.active {
+      width: calc(100% - (9em * 2));
+      padding: 1em;
+      color: $color-white;
+
+      // media
+      @media screen and (max-width: 767px) {
+        width: calc(100% - (5em * 2));
+      }
+
+      &::after {
+        background-color: transparent;
+      }
+      .scaccordionitem__header {
+        background: transparent;
+        font-size: 1.3em;
+        text-indent: 0;
+        @media screen and (max-width: 767px) {
+          transform: rotate(0deg);
+        }
+      }
+      .scaccordionitem__cont,
+      .scaccordionitem__relink {
+        visibility: visible;
+        display: block;
+        text-wrap: wrap;
+      }
+    }
+  }
+}

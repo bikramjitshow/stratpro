@@ -1,0 +1,20 @@
+// Vars
+@import './vars/colors';
+@import './vars/dimensions';
+@import 'breakpoint/breakpoint';
+
+// Utils
+@import 'utils/utils';
+
+// Quick tools
+@import './quicktools';
+
+// _segrgtbluebox
+@import './segrgtbluebox';
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+

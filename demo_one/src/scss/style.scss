@@ -1,0 +1,48 @@
+@import "./reset";
+@import "./variables";
+@import "./mixins";
+@import "./button";
+@import "./card";
+@import "./cardAcc";
+@import "./cardAcc2";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: $default-font;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  background-color: #f7fbff;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+b {
+  font-weight: 600;
+}
+
+//cathay
+.container{
+  max-width: 90%;
+  margin: 0 auto;
+}
+.cathay {
+  max-width: 855px;
+  margin: 0 auto;
+  background-image: url("../assets/images/bg.svg");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 20%;
+  background-size: cover;
+}
+
+//slider
+.noUi-base, .noUi-connects {
+  position: absolute;
+}
+.noUi-connect {
+  background: transparent;
+}

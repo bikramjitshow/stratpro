@@ -1,0 +1,222 @@
+// news and insights
+.sc-news-section {
+  padding: 32px 0;
+}
+.sc-news {
+  position: relative;
+  display: flex;
+  margin: 0 -16px;
+
+  &__left {
+    width: 50%;
+    padding: 0 16px;
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    padding: 0 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    &--hor {
+      display: flex;
+      flex-direction: row;
+      background-color: $color-grey-light-5;
+      padding: 24px;
+      margin-bottom: 24px;
+      border-radius: 6px;
+    }
+  }
+  &__right-img {
+    width: 200px;
+    // height: 150px;
+    object-fit: cover;
+  }
+  &__left-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  &__content-wrap {
+    padding: 0 32px;
+    .sc-tag-wrap {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+  }
+  &__content,
+  &__content-title {
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8;
+
+    &--clamp-1 {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    &--clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  &__content-title {
+    font-weight: 600;
+    margin-top: 16px;
+  }
+  &__date {
+    color: $color-grey-dark-7;
+    margin-top: 32px;
+    font-size: 12px;
+  }
+
+  // redirect link
+  &__relink {
+    display: flex;
+    align-items: center;
+    margin-top: 28px;
+    justify-content: flex-end;
+
+    &--relink-text {
+      color: $color-blue;
+      text-transform: capitalize;
+      font-size: 16px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+    &::before {
+      content: "";
+      background-image: url("../assets/icons/right-arrow.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 24px;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+//Title with bar
+.sc-news-title {
+  position: relative;
+  margin-bottom: 40px;
+  &__heading {
+    font-size: 32px;
+    padding-bottom: 24px;
+  }
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 8px;
+    bottom: 0;
+    left: -24px;
+    background-color: $color-blue;
+    transform: translate(24px, 0);
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 24px;
+    height: 8px;
+    bottom: 0;
+    left: 0;
+    background-color: $green-green-light-5;
+  }
+}
+
+//tag
+.sc-tag-wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  width: fit-content;
+  .sc-tag {
+    font-size: 8px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: none;
+    padding: 4px 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    &--blue {
+      background-color: $color-blue;
+    }
+    &--darkblue {
+      background-color: $color-blue-dark-2;
+    }
+  }
+}
+
+// @include breakpoint($bp--h-mobile) {
+@media screen and (max-width: 1023.9px) {
+  .sc-news {
+    flex-direction: column;
+    margin: 0 -8px;
+  
+    &__left {
+      width: 100%;
+      padding: 0 8px;
+    }
+    &__right {
+      width: 100%;
+      padding: 0 8px;
+      margin-top: 40px;
+    }
+  
+    &__item {
+      &--hor {
+        padding: 12px;
+        margin-bottom: 16px;
+      }
+    }
+    &__right-img {
+      width: 140px;
+    }
+    &__content-wrap {
+      padding: 0 16px;
+      .sc-tag-wrap {
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+    }
+    &__content,
+    &__content-title {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    &__content-title {
+      margin-top: 12px;
+    }
+    &__date {
+      margin-top: 24px;
+      font-size: 12px;
+    }
+  
+    &__relink {
+      margin-top: 24px;
+  
+      &--relink-text {
+        font-size: 12px;
+        margin-left: 6px;
+      }
+      &::before {
+        background-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
