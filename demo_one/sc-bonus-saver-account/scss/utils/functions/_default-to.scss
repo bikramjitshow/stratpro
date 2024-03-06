@@ -1,0 +1,28 @@
+// A function for filling in a map variable with default values
+// http://stackoverflow.com/a/33536471
+@function default-to($map-variable, $default-map) {
+  //if it's a map, treat each setting in the map seperately
+  @if (type-of($default-map) == 'map') {
+    $final-params: $map-variable;
+
+    // We iterate over each property of the default-map
+    @each $key, $value in $default-map {
+      // If the variable map does not have the associative key
+      @if (not map-has-key($map-variable, $key)) {
+        // add it to final-params
+        $final-params: map-merge(
+          $final-params,
+          (
+            $key: $value
+          )
+        );
+      }
+    }
+
+    @return $final-params;
+
+    //Throw an error message if not a map
+  } @else {
+    @error 'The defaultTo function only works for Sass maps';
+  }
+}

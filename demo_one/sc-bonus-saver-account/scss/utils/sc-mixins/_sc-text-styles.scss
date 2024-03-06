@@ -1,0 +1,801 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// DEFINE A mixin mapping all styles for a breakpoint, apply it to the desired
+// breakpoints passed as a list
+//
+//  $styles: (
+//    $bp--h-xsmall : (font-size: 21px, font-weight: 300, letter-spacing: .6px),
+//  );
+//
+// Call the mixin for the desired styles to be applied on breakpoints
+// passing no breakpoints to the funtion applies the styles for all breakpoints
+//
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// function that returns the map with original breakpoints, simple map declaration
+// is not permited due to sass variable hoisting
+//
+@function sth1() {
+  @return (
+    $bp--h-xsmall: (
+      font-size: 21px,
+      line-height: 24px
+    ),
+    $bp--h-small: (
+      font-size: 24px,
+      line-height: 28px
+    ),
+    $bp--h-medium: (
+      font-size: 26px,
+      line-height: 32px
+    ),
+    $bp--h-large: (
+      font-size: 30px,
+      line-height: 36px
+    )
+  );
+}
+
+// TODO remove before final release
+@mixin text-debug($color: '#990000') {
+  @at-root .text-debug & {
+    color: #{$color} !important;
+  }
+}
+
+@mixin style-headline-1($breakpoints: false) {
+  @include styles-for-states(sth1(), $breakpoints) {
+    @content;
+    // TODO remove before final release
+    @include text-debug();
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+//
+// function that returns the map with original breakpoints, simple map declaration
+// is not permited due to sass variable hoisting
+//
+@function sth2() {
+  @return (
+    $bp--h-xsmall: (
+      font-size: 15px,
+      line-height: 20px
+    ),
+    $bp--h-small: (
+      font-size: 15px,
+      line-height: 20px
+    ),
+    $bp--h-medium: (
+      font-size: 15px,
+      line-height: 20px
+    ),
+    $bp--h-large: (
+      font-size: 16px,
+      line-height: 24px
+    )
+  );
+}
+
+@mixin style-headline-2($breakpoints: false) {
+  @include styles-for-states(sth2(), $breakpoints) {
+    @content;
+  }
+}
+
+//
+// function that returns the map with original breakpoints, simple map declaration
+// is not permited due to sass variable hoisting
+//
+@function sth3() {
+  @return (
+    $bp--h-xsmall: (
+      font-size: 9px,
+      line-height: 12px
+    ),
+    $bp--h-small: (
+      font-size: 9px,
+      line-height: 12px
+    ),
+    $bp--h-medium: (
+      font-size: 9px,
+      line-height: 12px
+    ),
+    $bp--h-large: (
+      font-size: 10px,
+      line-height: 12px
+    )
+  );
+}
+
+@mixin style-headline-3($breakpoints: false) {
+  @include styles-for-states(sth3(), $breakpoints) {
+    @content;
+  }
+}
+
+//
+// function that returns the map with original breakpoints, simple map declaration
+// is not permited due to sass variable hoisting
+//
+@function sbt() {
+  @return (
+    $bp--h-xsmall: (
+      font-size: 12px,
+      line-height: 18px
+    ),
+    $bp--h-small: (
+      font-size: 12px,
+      line-height: 18px
+    ),
+    $bp--h-medium: (
+      font-size: 12px,
+      line-height: 18px
+    ),
+    $bp--h-large: (
+      font-size: 12px,
+      line-height: 20px
+    )
+  );
+}
+
+@mixin style-body($breakpoints: false) {
+  @include styles-for-states(sbt(), $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-segments .title
+// m-latest-promotions .title
+// m-important-news .title
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-main-title($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-size: 25px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 32px
+    ),
+    $bp--h-small: (
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 26px
+    ),
+    $bp--h-medium: (
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 30px
+    ),
+    $bp--h-large: (
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 30px
+    )
+  );
+
+  @include styles-for-states(map-extend(sth1(), $styles, true), $breakpoints) {
+    @content;
+  }
+}
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-terms-conditions .item
+// m-important-news .title
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-regular-15px($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 14px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: 22px,
+      max-lines: 2
+    ),
+    $bp--h-medium: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 24px,
+      max-lines: 2
+    ),
+    $bp--h-desktop: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 24px,
+      max-lines: 2
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-important-news .content
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-content-card($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-size: 13px,
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 19px
+    ),
+    $bp--h-small: (
+      font-size: 13px,
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 19px
+    ),
+    $bp--h-medium: (
+      font-size: 14px,
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 20px
+    ),
+    $bp--h-large: (
+      font-size: 14px,
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 20px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-important-news .content .note
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-content-small($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 11px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 11px
+    ),
+    $bp--h-desktop: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0.6px,
+      line-height: 13px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// .m-latest-promotions .content .title
+//.m-eligibility-documents .content .list .item .item-title
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-content-title-small($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 24px,
+      max-lines: 2
+    ),
+    $bp--h-desktop: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 24px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-latest-promotions .content .description
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-content-description-small($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      max-lines: 3
+    ),
+    $bp--h-small: (
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      max-lines: 3
+    ),
+    $bp--h-medium: (
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      max-lines: 3
+    ),
+    $bp--h-large: (
+      font-weight: 300,
+      letter-spacing: 0.8px,
+      max-lines: 3
+    )
+  );
+
+  @include styles-for-states(map-extend(sbt(), $styles, true), $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav-contents .item .section .section-label
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-content-section-label($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0px,
+      line-height: 18px
+    ),
+    $bp--h-desktop: (
+      font-size: 20px,
+      font-weight: 300,
+      letter-spacing: 0px,
+      line-height: 27px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav-contents .item .section .list-item
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-content-section-item($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: 18px
+    ),
+    $bp--h-desktop: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 32px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav-contents .item .column-list .list-item
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-content-column-list($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: 18px
+    ),
+    $bp--h-desktop: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 32px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav-contents .item .type-filter
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-content-type-filter($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: 18px
+    ),
+    $bp--h-desktop: (
+      font-size: 12px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 22px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-news-feed .text
+// button-icon
+// m-banner content .message
+// m-discover-solutions .content .title
+// m-news-feed .header .title .text
+// m-stories .header .message
+// m-stories .item .category
+// m-storeis .icon-label
+// categorized-list-mobile .section-label
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-title-caps-small($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-weight: 400,
+      letter-spacing: 0.6px,
+      line-height: 100%,
+      max-lines: 1
+    ),
+    $bp--h-small: (
+      font-weight: 400,
+      letter-spacing: 0.6px,
+      line-height: 100%,
+      max-lines: 1
+    ),
+    $bp--h-medium: (
+      font-weight: 400,
+      letter-spacing: 0.6px,
+      line-height: 12px,
+      max-lines: 1
+    ),
+    $bp--h-large: (
+      font-weight: 400,
+      letter-spacing: 0.6px,
+      line-height: 12px,
+      max-lines: 1
+    )
+  );
+
+  @include styles-for-states(map-extend(sth3(), $styles, true), $breakpoints) {
+    @content;
+    text-transform: uppercase;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-news-feed .user
+// m-news-feed .date
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-user-caps-small($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 11px,
+      font-weight: 300,
+      letter-spacing: 0.6px,
+      line-height: 11px
+    ),
+    $bp--h-desktop: (
+      font-size: 11px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 11px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-banner
+// m-banner--theme-standard
+// m-banner--theme-light
+// m-stories title
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-banner-title($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-weight: 200,
+      letter-spacing: 1.2px,
+      max-lines: 5
+    ),
+    $bp--h-small: (
+      font-size: 18px,
+      line-height: 24px,
+      font-weight: 200,
+      letter-spacing: 1px,
+      max-lines: 5
+    ),
+    $bp--h-medium: (
+      font-weight: 200,
+      letter-spacing: 1px,
+      max-lines: 4
+    ),
+    $bp--h-large: (
+      font-weight: 200,
+      letter-spacing: 1px,
+      max-lines: 4
+    )
+  );
+
+  @include styles-for-states(map-extend(sth1(), $styles, true), $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav__tab-button
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-tab-buttons($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: (
+        $meganav-height-h-mobile - 1
+      ),
+      max-lines: 1
+    ),
+    $bp--h-desktop: (
+      font-size: 15px,
+      font-weight: 400,
+      letter-spacing: -0.2px,
+      line-height: 36px,
+      max-lines: 1
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav-mini
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-tab-button-current-position($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 16px,
+      font-weight: 300,
+      letter-spacing: 0.3px,
+      line-height: 32px,
+      max-lines: 1
+    ),
+    $bp--h-desktop: (
+      font-size: 15px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: 36px,
+      max-lines: 1
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// meganav__tab-button (when .is-location)
+// m-profile-slider
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-meganav-tab-buttons-location($breakpoints: false) {
+  $styles: (
+    $bp--h-mobile: (
+      font-size: 16px,
+      font-weight: 300,
+      letter-spacing: 0.4px,
+      line-height: $meganav-height-h-mobile,
+      max-lines: 1
+    ),
+    $bp--h-desktop: (
+      font-size: 15px,
+      font-weight: 400,
+      letter-spacing: -0.2px,
+      line-height: 36px,
+      max-lines: 1
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-text-block
+// m-profile-slider
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-block-title($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-size: 21px,
+      font-weight: 300,
+      letter-spacing: 0.6px,
+      line-height: 28px
+    ),
+    $bp--h-small: (
+      font-size: 30px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 45px
+    ),
+    $bp--h-desktop: (
+      font-size: 30px,
+      font-weight: 300,
+      letter-spacing: 0.5px,
+      line-height: 45px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// m-text-block
+// m-profile-slider
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-text-block-message($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-size: 12px,
+      font-weight: 400,
+      letter-spacing: 0.3px,
+      line-height: 20px
+    ),
+    $bp--h-small: (
+      font-size: 14px,
+      font-weight: 300,
+      letter-spacing: 0.8px,
+      line-height: 24px
+    ),
+    $bp--h-desktop: (
+      font-size: 16px,
+      font-weight: 300,
+      letter-spacing: 0.9px,
+      line-height: 28px
+    )
+  );
+
+  @include styles-for-states($styles, $breakpoints) {
+    @content;
+
+    @at-root .ua-safari & {
+      font-weight: 300 !important;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// stories list item title
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-card-title($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 16px,
+      max-lines: 1
+    ),
+    $bp--h-small: (
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 16px,
+      max-lines: 1
+    ),
+    $bp--h-medium: (
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 16px,
+      max-lines: 1
+    ),
+    $bp--h-large: (
+      font-weight: 300,
+      letter-spacing: 0,
+      line-height: 16px,
+      max-lines: 1
+    )
+  );
+
+  @include styles-for-states(map-extend(sth2(), $styles, true), $breakpoints) {
+    @content;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Applies to modules
+// stories list item content
+////////////////////////////////////////////////////////////////////////////////
+@mixin style-card-content($breakpoints: false) {
+  $styles: (
+    $bp--h-xsmall: (
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 16px,
+      max-lines: 3
+    ),
+    $bp--h-small: (
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 16px,
+      max-lines: 3
+    ),
+    $bp--h-medium: (
+      font-weight: 300,
+      letter-spacing: 0.2px,
+      line-height: 16px,
+      max-lines: 3
+    ),
+    $bp--h-large: (
+      font-weight: 300,
+      letter-spacing: 0,
+      line-height: 16px,
+      max-lines: 3
+    )
+  );
+
+  @include styles-for-states(map-extend(sbt(), $styles, true), $breakpoints) {
+    @content;
+  }
+}

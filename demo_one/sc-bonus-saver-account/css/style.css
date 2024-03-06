@@ -1,0 +1,608 @@
+/**
+ * Fixed Spacing Variables:
+ * Though we can use relative units for most cases, we still need some fixed variable to overcome some drawbacks of relative units.
+ * Example we don't want the left and right side padding of container to be increased relatively to the font-size.
+ * The vertical spacing between two modules to be same regardless of increasing the font-size.
+ * The spacing scale is a base-8 scale. We chose a base-8 scale because eight is a highly composable number (it can be divided and multiplied many times and result in whole numbers), yet allows spacing dense enough for UI. The scale's exception is that it begins at 4px to allow smaller padding and margin for denser parts of the site, from there on it steps up consistently in equal values of 8px. Refer https://primer.style/css/support/
+*/
+/* Em Based Spacing Variables:
+ * Useful for buttons and form elements.
+ * Refer https://primer.style/css/spacing/
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * WebKit font-smoothing
+ * ------------------------------------------------
+ *
+ * References:
+ *
+ * 1. http://maxvoltar.com/sandbox/fontsmoothing/
+ * 2. http://maxvoltar.com/archive/-webkit-font-smoothing
+ * 3. https://gist.github.com/adamstac/5048881
+ *
+ * Values: none, antialiased (default), subpixel-antialiased
+ */
+/**
+ *  Background images with retina support
+ */
+/**
+ * Animates properties for sticky nav elements when page is scrolled
+ * @param: $property . The property that should be animated
+ *
+ */
+/**
+ * Creates a text filled by gradient between two colors
+ *
+ * TODO: Find a crossbrowser solution, this doesn't works on Firefox
+ *
+ * @param  {[type]} $from-color: #6cc9fe       [description]
+ * @param  {[type]} $to-color:   #38d54a       [description]
+ * @param  {[type]} $direction:  120deg        [description]
+ *
+ * @return {[type]}              [description]
+ */
+/**
+ * Triangle decorator
+ */
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * Sets height ratio for standard SC Component.
+ *
+ * @params
+ * $avoid-small-resolutions: Avoids the mixin behaviour for resolutions smaller than medium.
+ *                           It's used in components such as the footer which doesn't have a height
+ *                           behaviour on small resolutions, instead it depends on it's own content's height.
+ *
+ */
+/**
+ *  Hides for all states, assign to the breakpoints passed as first param,
+ *  the display type passed as the second param.
+ *  @param $breakpoint-to-show the breakpoints you want to show
+ *  @param $display the display type to be assigned to breakpoints,defaults to
+ *  (display:block)
+ */
+/**
+ * Sets font-size and font-weight.
+ *
+ * Font-weights smaller than 300 are only allowed when font-size
+ * is higher than 36px.
+ *
+ * Font-sizes bigger than 20px should activate aliased smoothing,
+ * then increase font-weight to 300
+ *
+ * If we're on IE, and font-size
+ * is less or equal than 17px and font-weight is less than 400,
+ * then font-weight is increased to improve readibility.
+ *
+ * @params
+ * $font-size: font size
+ * $font-weight: font weight
+ * $antialiased: boolean to active aliased smoothing
+ * $supers: collection of parent classes to apply the mixin, they have to be separated by comas
+ *
+ *
+ * Example 1:
+ *
+ *.component---header---title {
+ *   @include safe-font-size(15px, 300, false, '.is-upload-step', '.bp-small', '.bp-medium');
+ * }
+ *
+ * The $supers refers to the parent classes, so in this case, the mixin apply when the parent class is .is-upload-step,
+ * bp-small or bp-medium
+ *
+ *
+ * Example 2:
+ *
+ * .component---info.type---header {
+ *    .component---info---title {
+ *      @include safe-font-size(52px, 300, false, '.layout-2cols');
+ *    }
+ * }
+ *
+ * The font size here is 52px, bigger than 20px, so the aliased smoothing should activate.
+ * The $supers is only one, so the mixin only apply to the '.layout-2cols .component---info.type---header .component---info---title'
+ *
+ */
+.sc-content-wrapper--small {
+  max-width: 1101px;
+}
+
+.sc-sales-header {
+  background-color: #f6f6f6;
+}
+.sc-sales-header__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 16px 0;
+}
+.sc-sales-header__logo {
+  margin-right: 12px;
+}
+.sc-sales-header__logo-img {
+  width: 24px;
+}
+.sc-sales-header__logo-img--pc {
+  display: none;
+}
+.sc-sales-header__logo-img--mb {
+  display: block;
+}
+.sc-sales-header__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+.sc-sales-header__title {
+  font-size: 16px;
+}
+
+.sc-sales-form {
+  background-color: #f6f6f6;
+}
+.sc-sales-form__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: -16px;
+  width: calc(100% + 32px);
+  padding: 24px 0;
+}
+.sc-sales-form__col {
+  width: 100%;
+  padding: 16px;
+}
+.sc-sales-form__error {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #fc1c51;
+}
+.sc-sales-form__form-title {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.sc-sales-form .sc-input__input {
+  border: 1px solid #e1e1e1;
+  height: inherit;
+  padding: 8px 16px;
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  width: 100%;
+  font-size: 14px;
+}
+.sc-sales-form .sc-input__input::-webkit-input-placeholder {
+  color: #ccc;
+}
+.sc-sales-form .sc-input__input::-moz-placeholder {
+  color: #ccc;
+}
+.sc-sales-form .sc-input__input:-ms-input-placeholder {
+  color: #ccc;
+}
+.sc-sales-form .sc-input__input::-ms-input-placeholder {
+  color: #ccc;
+}
+.sc-sales-form .sc-input__input::placeholder {
+  color: #ccc;
+}
+.sc-sales-form .sc-input--small {
+  height: 42px;
+}
+.sc-sales-form .sc-input--error {
+  border: 1px solid #d0011b !important;
+}
+.sc-sales-form .sc-input--error .sc-input__input::-webkit-input-placeholder {
+  color: #d0011b;
+}
+.sc-sales-form .sc-input--error .sc-input__input::-moz-placeholder {
+  color: #d0011b;
+}
+.sc-sales-form .sc-input--error .sc-input__input:-ms-input-placeholder {
+  color: #d0011b;
+}
+.sc-sales-form .sc-input--error .sc-input__input::-ms-input-placeholder {
+  color: #d0011b;
+}
+.sc-sales-form .sc-input--error .sc-input__input::placeholder {
+  color: #d0011b;
+}
+.sc-sales-form .sc-input--rounded {
+  border-radius: 6px;
+  overflow: hidden;
+}
+.sc-sales-form .sc-input--rounded .sc-input__input {
+  border-radius: 6px;
+}
+
+.sc-btn--capitalize {
+  text-transform: capitalize;
+}
+.sc-btn--grey {
+  background-color: #e2e2e2;
+  border-color: #e2e2e2;
+}
+.sc-btn--grey:hover {
+  background-color: #eee;
+  border-color: #eee;
+}
+.sc-btn--secondary {
+  background-color: transparent;
+  color: #2772c7;
+  border-color: #2772c7;
+  min-width: 80px;
+  margin-right: 12px;
+}
+.sc-btn--secondary:hover {
+  border-color: #669bd7;
+  color: #669bd7;
+  background-color: transparent;
+}
+.sc-btn--blue {
+  min-width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.sc-input-tab {
+  background-color: #f6f6f6;
+}
+.sc-input-tab__panels {
+  padding: 16px 0;
+}
+.sc-input-tab__panels-content {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+.sc-input-tab__panels-input {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+}
+.sc-input-tab__panels-input:checked + .sc-input-tab__panels-content {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  visibility: visible;
+  overflow: visible;
+  height: auto;
+  opacity: 1;
+}
+.sc-input-tab__selected-item {
+  display: block;
+  color: #fff;
+}
+.sc-input-tab__list-item:last-of-type {
+  border-right: 0;
+}
+.sc-input-tab__step-item {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  min-width: 150px;
+  max-width: 200px;
+  text-align: center;
+  position: relative;
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  font-weight: 400;
+}
+.sc-input-tab__step-item:hover {
+  color: #0c77b9;
+}
+.sc-input-tab__step-item:last-of-type {
+  border-right: 0;
+}
+.sc-input-tab__step-item--active {
+  font-weight: 600;
+}
+.sc-input-tab__step-item--active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 2px solid;
+}
+.sc-input-tab .splide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sc-tab-radio-card__title {
+  font-size: 18px;
+  color: #191919;
+  font-weight: 400;
+  line-height: 1.2;
+  max-width: 791px;
+  margin: 0 auto 25px;
+}
+.sc-tab-radio-card__answer-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: -16px;
+  width: calc(100% + 32px);
+}
+.sc-tab-radio-card__radio-cols {
+  width: 100%;
+  padding: 16px;
+}
+.sc-tab-radio-card__radio-labels {
+  width: 100%;
+  -webkit-box-shadow: 0px 2px 14px rgba(220, 220, 220, 0.5);
+          box-shadow: 0px 2px 14px rgba(220, 220, 220, 0.5);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: left;
+  margin: 0;
+  background: #fff;
+  position: relative;
+}
+.sc-tab-radio-card__radio {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+}
+.sc-tab-radio-card__radio-label-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+  margin: 0;
+  line-height: 1.4;
+}
+.sc-tab-radio-card__radio-pointer {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: #2772c7 solid 1px;
+  border-radius: 50%;
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+}
+.sc-tab-radio-card__radio-pointer::after {
+  width: 25px;
+  height: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  border-radius: 50%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  content: "";
+}
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-tab-radio-card__radio-pointer::after {
+  display: block;
+  background-color: #2772c7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 256 256' width='48px' height='48px'%3E%3Cg fill='%23ffffff' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(5.33333 5.33333)'%3E%3Cpath d='M42.96094 8.98047c-0.5196 0.01548 -1.01276 0.23264 -1.375 0.60547l-24.58594 24.58594l-10.58594 -10.58594c-0.50163 -0.52247 -1.24653 -0.73294 -1.94741 -0.55022c-0.70088 0.18271 -1.24822 0.73006 -1.43094 1.43094c-0.18271 0.70088 0.02775 1.44578 0.55022 1.94741l12 12c0.78106 0.78074 2.04706 0.78074 2.82812 0l26 -26c0.59152 -0.57498 0.76938 -1.45413 0.44787 -2.21383c-0.32151 -0.75969 -1.07643 -1.24408 -1.90099 -1.21977z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-tab-radio-card__card-content {
+  background-color: #2772c7;
+}
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-tab-radio-card__title,
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-tab-radio-card__desc-value--green,
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-tab-radio-card__desc-title {
+  color: #fff;
+}
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-btn--blue {
+  color: #2772c7;
+  background-color: #fff;
+  border-color: #fff;
+}
+.sc-tab-radio-card .sc-tab-radio-card__radio:checked ~ .sc-tab-radio-card__radio-label-group .sc-btn--secondary {
+  color: #fff;
+  border-color: #fff;
+}
+.sc-tab-radio-card .sc-tab-radio-card__radio-labels:has(> .sc-tab-radio-card__radio:checked) {
+  border: 1px solid #2772c7;
+}
+.sc-tab-radio-card__card-content-wrap {
+  width: 100%;
+}
+.sc-tab-radio-card__card-img-wrap, .sc-tab-radio-card__card-content {
+  padding: 16px;
+}
+.sc-tab-radio-card__card-img-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+  min-height: 240px;
+}
+.sc-tab-radio-card__card-img-wrap .sc-tab-radio-card__card-img {
+  max-width: 240px;
+}
+.sc-tab-radio-card__desc-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.sc-tab-radio-card__desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  padding: 16px;
+  width: 50%;
+}
+.sc-tab-radio-card__desc-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a1a1a1;
+}
+.sc-tab-radio-card__desc-value {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.sc-tab-radio-card__desc-value--green {
+  color: #008738;
+}
+.sc-tab-radio-card__btn-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media (min-width: 768px) {
+  .sc-tab-radio-card__radio-cols {
+    width: 50%;
+  }
+  .sc-tab-radio-card__title {
+    font-size: 20px;
+  }
+  .sc-sales-form__wrap {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .sc-sales-form__col {
+    width: 50%;
+  }
+  .sc-sales-header__logo {
+    margin-right: 24px;
+  }
+  .sc-sales-header__logo-img {
+    width: 110px;
+  }
+  .sc-sales-header__logo-img--pc {
+    display: block;
+  }
+  .sc-sales-header__logo-img--mb {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .sc-tab-radio-card__radio-cols {
+    width: 33.33%;
+  }
+  .sc-tab-radio-card__title {
+    font-size: 24px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}/*# sourceMappingURL=style.css.map */

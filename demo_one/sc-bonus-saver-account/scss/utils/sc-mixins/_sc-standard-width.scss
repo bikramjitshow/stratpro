@@ -1,0 +1,56 @@
+@mixin sc-standard-width() {
+  @include gridle_state(--h-xsmall --h-small) {
+    width: calc(100% - #{$grid-h-padding-small} * 2);
+  }
+  @include gridle_state(--h-medium --h-large) {
+    width: 100%;
+    max-width: $grid-liquid-h-max-width-large;
+  }
+  @include gridle_state(--h-xlarge) {
+    width: 100%;
+    max-width: $grid-liquid-h-max-width-xlarge;
+  }
+
+  margin: 0 auto;
+}
+
+@mixin sc-not-fluid($settings: ()) {
+  $left-aligned: map-get($settings, left-aligned);
+  $xsmall-only: map-get($settings, xsmall-only);
+
+  @if ($left-aligned) {
+    @include gridle_state(--h-xsmall) {
+      max-width: $grid-h-max-width-xsmall;
+      margin: 0 auto;
+    }
+    @include gridle_state(--h-small) {
+      max-width: $grid-h-max-width-small;
+      margin: 0 auto;
+    }
+    @include gridle_state(--h-medium --h-large) {
+      max-width: 850px;
+      margin-left: 0;
+    }
+    @include gridle_state(--h-xlarge) {
+      max-width: 930px;
+      margin-left: 0;
+    }
+  } @else {
+    @include gridle_state(--h-xsmall) {
+      max-width: $grid-h-max-width-xsmall;
+    }
+
+    margin: 0 auto;
+    @if ($xsmall-only != true) {
+      @include gridle_state(--h-small) {
+        max-width: $grid-h-max-width-small;
+      }
+      @include gridle_state(--h-medium --h-large) {
+        max-width: $grid-h-max-width-medium-large;
+      }
+      @include gridle_state(--h-xlarge) {
+        max-width: $grid-h-max-width-xlarge;
+      }
+    }
+  }
+}
