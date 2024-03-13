@@ -15,7 +15,6 @@
   &__left-wrap {
     display: inline-flex;
     flex-direction: column;
-
     width: 100%;
   }
   &__left-img-wrap {
@@ -129,17 +128,23 @@
       border-bottom: 1px solid $color-grey-light-5;
       transform: translate(0,-50%) rotate(-45deg);
       transition: all 0.3s ease;
+      visibility: hidden;
+    }
+    &:hover {
+      color: $color-black;
+      &::before {
+        visibility: visible;
+      }
     }
     &--active {
       color: $color-dark;
       font-weight: 500;
 
-      &:hover {
-        border-bottom-color: $color-black;
-      }
       &::before {
+        visibility: visible;
         border-color: $color-dark;
       }
+      
     }
     &:first-child {
       margin-top: 20px;
