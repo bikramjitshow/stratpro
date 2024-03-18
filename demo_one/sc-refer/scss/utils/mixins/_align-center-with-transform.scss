@@ -1,0 +1,52 @@
+//
+// Aligns block using transform/translate
+//
+// @params
+// - vertical
+// - horizontal
+//
+@mixin align-center-with-transform(
+  $vertical: false,
+  $horizontal: false,
+  $additional-transorm: none
+) {
+  @if ($vertical == false and $horizontal == false) {
+    @error "At least '$vertical' or '$horizonal' should be true";
+  }
+
+  @if ($vertical == true and $horizontal == true) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @if ($additional-transorm == none) {
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    } @else {
+      -ms-transform: translate(-50%, -50%) $additional-transorm;
+      transform: translate(-50%, -50%) $additional-transorm;
+    }
+  } @else {
+    @if ($vertical == true) {
+      position: absolute;
+      top: 50%;
+      @if ($additional-transorm == none) {
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      } @else {
+        -ms-transform: translateY(-50%) $additional-transorm;
+        transform: translateY(-50%) $additional-transorm;
+      }
+    }
+    @if ($horizontal == true) {
+      position: absolute;
+      left: 50%;
+      @if ($additional-transorm == none) {
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+      } @else {
+        -ms-transform: translateX(-50%) $additional-transorm;
+        transform: translateX(-50%) $additional-transorm;
+      }
+    }
+  }
+}
