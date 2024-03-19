@@ -1,0 +1,23 @@
+@mixin sc-module-h-paddings {
+  padding: 0;
+
+  @include breakpoint($bp--h-xsmall) {
+    padding-left: $grid-h-padding-xsmall;
+    padding-right: $grid-h-padding-xsmall;
+  }
+
+  @include breakpoint($bp--h-small) {
+    padding-left: $grid-h-padding-small;
+    padding-right: $grid-h-padding-small;
+  }
+
+  @include breakpoint($bp--h-medium) {
+    padding-left: $grid-h-padding-medium;
+    padding-right: $grid-h-padding-medium;
+  }
+
+  @include breakpoint($bp--h-large) {
+    padding-left: $grid-h-padding-large;
+    padding-right: $grid-h-padding-large;
+  }
+}

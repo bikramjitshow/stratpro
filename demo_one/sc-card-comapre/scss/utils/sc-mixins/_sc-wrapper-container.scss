@@ -1,0 +1,22 @@
+@mixin sc-wrapper-container($selector: '.content-wrapper') {
+  > #{$selector} {
+    @include sc-module-h-paddings;
+    margin: 0 auto;
+
+    @include breakpoint($bp--h-xsmall) {
+      max-width: $content-max-width + 2 * $grid-h-padding-xsmall;
+    }
+
+    @include breakpoint($bp--h-small) {
+      max-width: $content-max-width + 2 * $grid-h-padding-small;
+    }
+
+    @include breakpoint($bp--h-medium) {
+      max-width: $content-max-width + 2 * $grid-h-padding-medium;
+    }
+
+    @include breakpoint($bp--h-large) {
+      max-width: $content-max-width + 2 * $grid-h-padding-large;
+    }
+  }
+}

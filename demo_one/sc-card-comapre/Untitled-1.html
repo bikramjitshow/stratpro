@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Filter</title>
+<style>
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sc-casa-product-list__card-box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+  <div class="categories">
+    <a href="#" class="sc-tag" data-filter="">All</a>
+    <a href="#" class="sc-tag" data-filter="saving">Saving</a>
+    <a href="#" class="sc-tag" data-filter="everyday">Everyday</a>
+    <a href="#" class="sc-tag" data-filter="wealth">Wealth</a>
+  </div>
+  <div class="products">
+    <div class="sc-casa-product-list__card-box" data-tags="all-accounts">all</div>
+    <div class="sc-casa-product-list__card-box" data-tags="wealth">wealth</div>
+    <div class="sc-casa-product-list__card-box" data-tags="all-accounts">all</div>
+    <div class="sc-casa-product-list__card-box" data-tags="saving">saving</div>
+    <div class="sc-casa-product-list__card-box" data-tags="wealth">wealth</div>
+    <div class="sc-casa-product-list__card-box" data-tags="everyday">everyday</div>
+    <div class="sc-casa-product-list__card-box" data-tags="saving">saving</div>
+  </div>
+
+  <script>
+    const categories = document.querySelectorAll('.sc-tag');
+    const products = document.querySelectorAll('.sc-casa-product-list__card-box');
+
+    categories.forEach(category => {
+      category.addEventListener('click', () => {
+        const filter = category.getAttribute('data-filter');
+        products.forEach(product => {
+          const tags = product.getAttribute('data-tags').split(' ');
+          if (filter === '' || tags.includes(filter)) {
+            product.style.display = 'block';
+          } else {
+            product.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
