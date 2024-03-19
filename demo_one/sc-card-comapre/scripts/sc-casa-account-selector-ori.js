@@ -26,16 +26,13 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-var cardBoxes = document.querySelectorAll(
-  ".sc-casa-product-list__card-box-item"
-);
-// console.log('cardBoxes', cardBoxes)
+var cardBoxes = document.querySelectorAll(".sc-casa-product-list__card-box");
+
 // Create a map to store max heights for each tag
 var maxHeights = new Map();
 
 // Iterate over each card
 for (var i = 0; i < cardBoxes.length; i++) {
-  // console.log('cardBoxes', cardBoxes[i].getAttribute("data-tags"))
   var cardTags = cardBoxes[i].getAttribute("data-tags").split(" ");
 
   // Iterate over each tag in the current card
@@ -110,7 +107,6 @@ cardBoxes.forEach(function (cardBox) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize by showing the first tab and first 6 offers
-  console.log("DOMContentLoaded LOAD CALLED !!");
   showTab("all-accounts");
 
   // Event listener for tag clicks
@@ -142,34 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     // Hide all product boxes
     document
-      .querySelectorAll(".sc-casa-product-list__card-box-item")
+      .querySelectorAll(".sc-casa-product-list__card-box")
       .forEach(function (box) {
         box.style.display = "none";
       });
 
     // Show the selected category
-    let allFilter = [];
-    if (filter === "all-accounts") {
-      const categories = document.querySelectorAll(".sc-tag");
-      categories.forEach((category) => {
-        const filter = category.getAttribute("data-filter");
-        let allFilter2 = document.querySelectorAll(
-          ".sc-casa-product-list__card-box-item[data-tags*='" + filter + "']"
-        );
-        allFilter.push(...allFilter2);
-      });
-
-      console.log("showtab Filter", filter);
-      console.log("showtab allFilter", allFilter);
-    } else {
-      allFilter = document.querySelectorAll(
-        ".sc-casa-product-list__card-box-item[data-tags*='" + filter + "']"
-      );
-    }
-
+    let allFilter = document.querySelectorAll(
+      ".sc-casa-product-list__card-box[data-tags*='" + filter + "']"
+    );
     allFilter.forEach(function (box, index) {
       box.style.display = index < 5 ? "flex" : "none";
     });
+    console.log("allFilter", allFilter.length);
     loadMoreBtn.style.display = allFilter.length > 5 ? "flex" : "none";
 
     // Update active tag
@@ -183,17 +164,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function loadMore() {
+    var currentFilter = document
+      .querySelector(".sc-tag--tag-color--active")
+      .getAttribute("data-filter");
     var visibleCount = document.querySelectorAll(
-      ".sc-casa-product-list__card-box-item:not([style*='none'])"
+      ".sc-casa-product-list__card-box[data-tags*='" +
+        currentFilter +
+        "']:not([style*='none'])"
     ).length;
 
-    // Show the next 10 offers
+    // Show the next 6 offers
     document
-      .querySelectorAll(".sc-casa-product-list__card-box-item")
+      .querySelectorAll(
+        ".sc-casa-product-list__card-box[data-tags*='" + currentFilter + "']"
+      )
       .forEach(function (box, index) {
-        box.style.display = "flex";
-        if (box.getAttribute("data-tags") === "other-products") {
-          box.style.display = "none";
+        if (index >= visibleCount && index < visibleCount + 10) {
+          box.style.display = "flex";
         }
       });
   }
