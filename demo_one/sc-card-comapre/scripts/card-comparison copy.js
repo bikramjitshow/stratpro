@@ -86,13 +86,15 @@ class CardSelect {
       //Remove Cards
       $('body').on('click', '.compare-box-close', event => {
         let popup_ids = $(event.currentTarget)
-          .siblings('.compare-btn')
+          .siblings()
+          .find('.compare-btn')
           .attr('data-for');
         $(event.currentTarget)
           .parent()
           .remove();
 
-          console.log('popup_ids--', $(event.currentTarget).parent());
+          console.log('popup_ids--', $(event.currentTarget).siblings());
+          console.log('popup_ids--', $(event.currentTarget).siblings('.compare-btn').attr('data-for'));
 
         that.removeBlankCard(popup_ids); //Method for add/remove cards for compare
         let total = $('.single-compare-card').length;

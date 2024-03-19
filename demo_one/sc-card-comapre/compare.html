@@ -473,10 +473,26 @@
       justify-content: center;
     }
 
+    .sc-casa-product-list__first-section {
+      width: 100%;
+    }
+
     .sc-casa-product-list__card-details .buttons {
       margin-right: 16px;
       margin-top: 0;
       padding-bottom: 0;
+    }
+
+    .single-compare-result-box .sc-casa-product-list__second-section {
+      flex-direction: column;
+    }
+
+    .single-compare-result-box .sc-casa-product-list__second-section .buttons {
+      margin-right: 16px;
+    }
+
+    .single-compare-result-box .compare-btn {
+      display: none;
     }
 
     .card-compare-tab .card-compare-tab-content .container .row {
@@ -493,6 +509,24 @@
       display: none;
     }
 
+
+    @media (max-width: 1023.9px) {
+      .sc-casa-product-list__second-section {
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .sc-casa-product-list__second-section .buttons {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 16px;
+      }
+
+      .sc-casa-product-list__second-section .sc-btn.sc-btn--small {
+        min-width: auto;
+      }
+    }
+    
     @media (max-width: 680px) {
       .sc-casa-product-list__card-details {
         padding: 8px;
@@ -511,14 +545,15 @@
       }
 
       .sc-casa-product-list__card-details .buttons {
-        margin-right: 0;
-        margin-top: 0;
+        margin: 0;
       }
 
       .sc-casa-product-list__green-wrapper-image {
         display: none;
       }
     }
+
+    
   </style>
 
   <div class="card-compare-tab">
@@ -616,7 +651,8 @@
                 </div>
                 <div class="sc-casa-product-list__card-details">
                   <h2 class="sc-casa-product-list__title">Bonus$aver</h2>
-                  <p class="sc-casa-product-list__description">Earn high interest rate of up to 7.88% p.a. when you save, invest and transact</p>
+                  <p class="sc-casa-product-list__description">Earn high interest of up to 7.88% p.a. and $0 transaction
+                    fees for your foreign currency transactions </p>
                   <div class="sc-casa-product-list__second-section">
                     <ul class="buttons">
                       <div class="m-text-content no-padding"
@@ -761,9 +797,8 @@
                 </div>
                 <div class="sc-casa-product-list__card-details">
                   <h2 class="sc-casa-product-list__title">Wealth $aver</h2>
-                  <p class="sc-casa-product-list__description">A Priority Banking account with up to
-                    5%
-                    p.a. interest on your first S$500k</p>
+                  <p class="sc-casa-product-list__description">A Priority Banking account to help you grow your wealth
+                    with up to 5.00% interest on your first S$500K</p>
                   <div class="sc-casa-product-list__second-section">
                     <ul class="buttons">
                       <li>
@@ -838,9 +873,8 @@
                 </div>
                 <div class="sc-casa-product-list__card-details">
                   <h2 class="sc-casa-product-list__title">e$aver</h2>
-                  <p class="sc-casa-product-list__description">Get higher interest without locking in
-                    your
-                    cash</p>
+                  <p class="sc-casa-product-list__description">Best savings account with the flexibility to access your
+                    cash at any time with no lock-in period</p>
                   <div class="sc-casa-product-list__second-section">
                     <ul class="buttons">
                       <li>
@@ -917,8 +951,8 @@
                 </div>
                 <div class="sc-casa-product-list__card-details">
                   <h2 class="sc-casa-product-list__title">JumpStart</h2>
-                  <p class="sc-casa-product-list__description">A savings account for young adults aged
-                    between 18 and 26 years old</p>
+                  <p class="sc-casa-product-list__description">A hassle-free savings account for young adults and
+                    students between 18 and 26 years old</p>
                   <div class="sc-casa-product-list__second-section">
                     <ul class="buttons">
                       <li>
@@ -1435,9 +1469,8 @@
                 </div>
                 <div class="sc-casa-product-list__card-details">
                   <h2 class="sc-casa-product-list__title">USD$aver</h2>
-                  <p class="sc-casa-product-list__description">Enjoy up to 5.00% p.a. on your USD
-                    deposits
-                    with no lock-in</p>
+                  <p class="sc-casa-product-list__description">Earn high interest on your USD deposits with no lock-in
+                    period</p>
                   <div class="sc-casa-product-list__second-section">
                     <ul class="buttons">
                       <li>
@@ -1675,7 +1708,7 @@
   <script type="text/javascript" src="https://av.sc.com/assets/global/js/vendor/jquery.min.js?ver=3.1.0"></script>
   <!-- <script type="text/javascript" src="https://av.sc.com/my/comparator/card-comparison.js"></script> -->
   <script type="text/javascript" src="./scripts/card-comparison.js"></script>
-  
+
   <script>
     const categories = document.querySelectorAll('.sc-awards-slider__list .sc-tag');
     const products = document.querySelectorAll('.compare-card-box');
