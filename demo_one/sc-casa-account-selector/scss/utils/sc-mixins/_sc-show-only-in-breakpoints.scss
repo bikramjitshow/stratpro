@@ -1,0 +1,15 @@
+/**
+ *  Hides for all states, assign to the breakpoints passed as first param,
+ *  the display type passed as the second param.
+ *  @param $breakpoint-to-show the breakpoints you want to show
+ *  @param $display the display type to be assigned to breakpoints,defaults to
+ *  (display:block)
+ */
+
+@mixin sc-show-only-in-breakpoints($breakpoint-to-show, $display-type: block) {
+  display: none;
+
+  @include breakpoint($breakpoint-to-show) {
+    display: $display-type;
+  }
+}

@@ -1,0 +1,50 @@
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+
+@mixin elastic-property-bounds(
+  $property,
+  $dimension1,
+  $dimension2,
+  $viewport1,
+  $viewport2,
+  $scaleDim,
+  $important: null
+) {
+  #{$property}: elastic-property-bounds-var(
+    $property,
+    $dimension1,
+    $dimension2,
+    $viewport1,
+    $viewport2,
+    $scaleDim,
+    $important: null
+  );
+}
+
+@function elastic-property-bounds-var(
+  $property,
+  $dimension1,
+  $dimension2,
+  $viewport1,
+  $viewport2,
+  $scaleDim,
+  $important: null
+) {
+  $ratio: ($dimension1 - $dimension2) / ($viewport1 - $viewport2);
+  @return calc(
+      #{$dimension1} - (#{$viewport1} * #{$ratio}) + (100 * #{$ratio}#{$scaleDim})
+    )
+    #{$important};
+}
