@@ -325,7 +325,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="sc-casa-product-list__btn-section">
+                <div class="sc-casa-product-list__btn-section sc-casa-product-list__btn-section--with-compare-btn">
                   <div class="sc-casa-product-list__btn-wrap">
                     <div class="sc-casa-product-list__buttons">
                       <a href="#null" title="Apply Now" class="c-button sc-btn sc-btn--small sc-btn--blue"
@@ -338,6 +338,14 @@
                     </div>
                     <a href="https://www.sc.com/sg/save/current-accounts/bonussaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-bsaver-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more">Learn More</a>
+                  </div>
+                  <div class="sc-casa-product-list__compare-btn" data-for="1">
+                    <input type="checkbox" class="sc-casa-product-list__compare-input" name="compare-input-1" value="0"
+                      id="compare-input-1" />
+                    <label class="sc-casa-product-list__compare-label" for="compare-input-1">
+                      <div class="icon-plus-round-white"></div>
+                      Add to compare
+                    </label>
                   </div>
                 </div>
               </div>
@@ -376,7 +384,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="sc-casa-product-list__btn-section">
+                <div class="sc-casa-product-list__btn-section sc-casa-product-list__btn-section--with-compare-btn">
                   <div class="sc-casa-product-list__btn-wrap">
                     <ul class="sc-casa-product-list__buttons">
                       <li>
@@ -390,6 +398,14 @@
                     </ul>
                     <a href="https://www.sc.com/sg/save/savings-accounts/jumpstart/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-jumpstart-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more">Learn More</a>
+                  </div>
+                  <div class="sc-casa-product-list__compare-btn" data-for="2">
+                    <input type="checkbox" class="sc-casa-product-list__compare-input" name="compare-input-2" value="0"
+                      id="compare-input-2" />
+                    <label class="sc-casa-product-list__compare-label" for="compare-input-2">
+                      <div class="icon-plus-round-white"></div>
+                      Add to compare
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1110,11 +1126,71 @@
         </div>
       </div>
     </div>
+    <div id="compare-section" class="sc-casa-product-list__card-compare card-compare-sticky">
+      <div class="sc-casa-product-list__sh-toggle-btn-wrap">
+        <a href="#null" class="sc-casa-product-list__sh-toggle-btn">Hide</a>
+      </div>
+      <div class="sc-casa-product-list__compare-section">
+        <div class="sc-casa-product-list__compare-section-wrapper">
+          <p id="card-selection-error" class="sc-casa-product-list__card-selection-error"></p>
+          <div class="sc-casa-product-list__compare-selected-cards">
+            <div class="sc-casa-product-list__single-blank-card add-blank-card-sm-0">
+              <p></p>
+              <div class="sc-casa-product-list__add-more">Add more cards</div>
+            </div>
+            <div class="sc-casa-product-list__single-blank-card add-blank-card-sm-1">
+              <p></p>
+              <div class="add-more">Add more cards</div>
+            </div>
+            <div class="sc-casa-product-list__single-blank-card add-blank-card-sm-2">
+              <p></p>
+              <div class="add-more">Add more cards</div>
+            </div>
+          </div>
+          <button class="sc-casa-product-list__compare-action-btn c-button is-theme-solid-green-hollow-white rounded-button">Compare</button>
+        </div>
+      </div>
+    </div>
+    <div id="compare-result-box" class="compare-result-box">
+      <div class="compare-result-box-inner-relative" id="compare-result-box-inner-relative">
+        <div class="compare-result-box-inner">
+          <div class="close-btn">
+            <div class="icon hover-icon icon-close" style="background-image: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10.037" height="10.037" viewBox="0 0 10.037 10.037">
+                <path fill="#010101"
+                  d="M9.744 1.713L8.324.294 5.019 3.6 1.713.294.293 1.713 3.6 5.019.293 8.325l1.42 1.419 3.306-3.306 3.305 3.306 1.42-1.419-3.306-3.306z">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="compare-title">
+            <p>Compare and choose the best credit cards</p>
+          </div>
+          <div class="single-compare-result-box">
+            <div class="compare-card-box mix Cashback compare-box single-loan-box-blank apply-now-back-2"
+              data-order="2">
+              <div class="apply-now-btn apply-now-back">
+                <a href="#"
+                  class="apply-now-back-btn-2 c-button is-theme-solid-green-hollow-white rounded-button">Select Card</a>
+              </div>
+            </div>
+            <div class="compare-card-box mix Cashback compare-box single-loan-box-blank apply-now-back-3"
+              data-order="2">
+              <div class="apply-now-btn apply-now-back">
+                <a href="#"
+                  class="apply-now-back-btn-2 c-button is-theme-solid-green-hollow-white rounded-button">Select Card</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- End Account selector -->
 
 
   <script type="module" src="./scripts/sc-casa-account-selector.js"></script>
+  <script type="module" src="./scripts/sc-casa-account-selector-compare.js"></script>
 
 
 
