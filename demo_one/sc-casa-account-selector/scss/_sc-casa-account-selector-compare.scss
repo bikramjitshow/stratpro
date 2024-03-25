@@ -89,16 +89,50 @@
       z-index: 5;
     }
   }
+  &__compare-section-wrapper {
+    // max-width: 1040px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  &__compare-selected-cards {
+    display: flex;
+    min-width: 520px;
+  }
   &__compare-section {
     background: $color-black;
     text-align: center;
     padding: 25px 0;
     width: 100%;
   }
+  &__single-blank-card {
+    display: none;
+    &.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+      border: 1px dashed #fff;
+      border-radius: 10px;
+      position: relative;
+      max-width: 115px;
+      min-width: 115px;
+      height: 66px;
+      margin: 0 15px;
+    }
+  }
+  &__add-more {
+    padding: 0 10px;
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+  }
 }
 
 .card-compare-sticky {
-
   // compare-section
   .compare-section {
     &.hide-card-sticky {
@@ -134,36 +168,6 @@
       display: inline-block;
       line-height: 20px;
       letter-spacing: 0.5px;
-    }
-    .single-blank-card {
-      display: none;
-      &.show {
-        border: 1px dashed #fff;
-        border-radius: 10px;
-        position: relative;
-        max-width: 115px;
-        min-width: 115px;
-        height: 66px;
-        margin: 0 15px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        color: #fff;
-      }
-      .add-more {
-        padding: 0 10px;
-        text-align: center;
-        display: block;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: 0.5px;
-      }
     }
   }
 }

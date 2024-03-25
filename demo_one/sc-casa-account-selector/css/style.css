@@ -669,11 +669,59 @@
   right: 19px;
   z-index: 5;
 }
+.sc-casa-product-list__compare-section-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+.sc-casa-product-list__compare-selected-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 520px;
+}
 .sc-casa-product-list__compare-section {
   background: #000000;
   text-align: center;
   padding: 25px 0;
   width: 100%;
+}
+.sc-casa-product-list__single-blank-card {
+  display: none;
+}
+.sc-casa-product-list__single-blank-card.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ffffff;
+  border: 1px dashed #fff;
+  border-radius: 10px;
+  position: relative;
+  max-width: 115px;
+  min-width: 115px;
+  height: 66px;
+  margin: 0 15px;
+}
+.sc-casa-product-list__add-more {
+  padding: 0 10px;
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
 }
 
 .card-compare-sticky .compare-section.hide-card-sticky {
@@ -707,36 +755,6 @@
   max-width: 200px;
   text-align: left;
   display: inline-block;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-}
-.card-compare-sticky .compare-section .single-blank-card {
-  display: none;
-}
-.card-compare-sticky .compare-section .single-blank-card.show {
-  border: 1px dashed #fff;
-  border-radius: 10px;
-  position: relative;
-  max-width: 115px;
-  min-width: 115px;
-  height: 66px;
-  margin: 0 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: #fff;
-}
-.card-compare-sticky .compare-section .single-blank-card .add-more {
-  padding: 0 10px;
-  text-align: center;
-  display: block;
-  font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.5px;
 }
