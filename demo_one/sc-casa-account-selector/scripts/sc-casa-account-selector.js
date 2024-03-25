@@ -103,7 +103,8 @@ class AccountSelector {
     //   });
     // });
 
-    this.setHeight(deviceWidth);
+    // this.setHeight(deviceWidth);
+    this.setHeightSameTag(deviceWidth);
     // DOMContentLoaded
     document.addEventListener("DOMContentLoaded", () => {
       // Event listener for category clicks
@@ -138,6 +139,7 @@ class AccountSelector {
     });
   }
 
+  // Get device Width
   numberOfCards(deviceWidth) {
     if (deviceWidth < 681) {
       return 1; //Mobile support 1 cards
@@ -147,7 +149,7 @@ class AccountSelector {
     return 3; //desktop, tabs, etc support 3 cards
   }
 
-  setHeight(w) {
+  setHeightSameTag(w) {
     // Get all the rows of card columns
     const rows = document.querySelectorAll(".sc-casa-product-list__row");
     console.log("----w===", w);
@@ -156,31 +158,105 @@ class AccountSelector {
       const cards = Array.from(
         row.querySelectorAll(".sc-casa-product-list__col")
       );
+      const cardBoxes = document.querySelectorAll(
+        ".sc-casa-product-list__card-box"
+      );
 
       // Loop through the cards in groups of three
-      for (let i = 0; i < cards.length; i += 3) {
-        const group = cards.slice(i, i + 3); // Get a group of three cards
+      for (let i = 0; i < cards.length; i += w) {
+        const group = cards.slice(i, i + w); // Get a group of three cards
 
         // console.log("group->", group);
 
         // Calculate the maximum title height for the current group
+        let maxGreenWrapperHeight = 0;
         let maxTitleHeight = 0;
+        let maxDescriptionHeight = 0;
 
         group.forEach((card) => {
-          // console.log("card->", card);
-
+          const greenWrapper = card.querySelector(
+            ".sc-casa-product-list__green-wrapper"
+          );
           const title = card.querySelector(".sc-casa-product-list__title");
-          maxTitleHeight = Math.max(maxTitleHeight, title.offsetHeight);
+          const description = card.querySelector(
+            ".sc-casa-product-list__description"
+          );
+          if (greenWrapper) {
+            maxGreenWrapperHeight = Math.max(
+              maxGreenWrapperHeight,
+              greenWrapper.offsetHeight
+            );
+          }
+          if (title) {
+            maxTitleHeight = Math.max(maxTitleHeight, title.offsetHeight);
+          }
+          if (description) {
+            maxDescriptionHeight = Math.max(
+              maxDescriptionHeight,
+              description.offsetHeight
+            );
+          }
         });
 
         // Apply the maximum title height to all cards in the current group
         group.forEach((card) => {
+          const greenWrapper = card.querySelector(
+            ".sc-casa-product-list__green-wrapper"
+          );
           const title = card.querySelector(".sc-casa-product-list__title");
-          title.style.height = `${maxTitleHeight}px`;
+          const description = card.querySelector(
+            ".sc-casa-product-list__description"
+          );
+          if (greenWrapper) {
+            greenWrapper.style.height = `${maxGreenWrapperHeight}px`;
+          }
+          if (title) {
+            title.style.height = `${maxTitleHeight}px`;
+          }
+          if (description) {
+            description.style.height = `${maxDescriptionHeight}px`;
+          }
         });
       }
     });
   }
+  // setHeight(w) {
+  //   // Get all the rows of card columns
+  //   const rows = document.querySelectorAll(".sc-casa-product-list__row");
+  //   console.log("----w===", w);
+  //   rows.forEach((row) => {
+  //     // Get all the card columns in the current row
+  //     const cards = Array.from(
+  //       row.querySelectorAll(".sc-casa-product-list__col")
+  //     );
+  //     const cardBoxes = document.querySelectorAll(
+  //       ".sc-casa-product-list__card-box"
+  //     );
+
+  //     // Loop through the cards in groups of three
+  //     for (let i = 0; i < cards.length; i += w) {
+  //       const group = cards.slice(i, i + w); // Get a group of three cards
+
+  //       // console.log("group->", group);
+
+  //       // Calculate the maximum title height for the current group
+  //       let maxTitleHeight = 0;
+
+  //       group.forEach((card) => {
+  //         // console.log("card->", card);
+
+  //         const title = card.querySelector(".sc-casa-product-list__title");
+  //         maxTitleHeight = Math.max(maxTitleHeight, title.offsetHeight);
+  //       });
+
+  //       // Apply the maximum title height to all cards in the current group
+  //       group.forEach((card) => {
+  //         const title = card.querySelector(".sc-casa-product-list__title");
+  //         title.style.height = `${maxTitleHeight}px`;
+  //       });
+  //     }
+  //   });
+  // }
 
   // Implementation for show/filter account card-box method
   showTab(filter, limit) {
