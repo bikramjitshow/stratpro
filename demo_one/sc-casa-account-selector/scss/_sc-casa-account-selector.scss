@@ -44,7 +44,7 @@
     background-color: $color-grey-light-18;
     transition: all 0.5s ease;
     padding: 16px 0;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     z-index: 1000;
   }
   &__category {
@@ -107,6 +107,7 @@
     width: calc(100% + 16px);
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 24px;
   }
   &__col {
     width: 100%;

@@ -171,8 +171,8 @@
 
 
   <!-- Account selector -->
-  <div class="sc-casa-product-list" id="sc-lb-module-casa-categories" data-post-status="edit-draft-status"
-    data-post-status-label="Edit Draft">
+  <div class="sc-casa-product-list" id="sc-lb-module-casa-categories" data-limit="6"
+    data-post-status="edit-draft-status" data-post-status-label="Edit Draft">
     <div class="sc-content-wrapper">
       <!-- list__head -->
       <div class="sc-casa-product-list__head">
@@ -181,9 +181,9 @@
       </div>
 
       <!-- Scroll to top -->
-      <span onclick="topFunction()" class="sc-casa-product-list__scroll" title="Scroll to top">
-        <img src="https://av.sc.com/sg/content/images/scroll-to-top.png" />
-      </span>
+      <a href="#null" class="sc-casa-product-list__scroll" title="Scroll to top">
+        <img src="https://av.sc.com/sg/content/images/scroll-to-top.png" alt="Scroll to top" />
+      </a>
 
       <!-- list__greywrapper -->
       <div class="sc-casa-product-list__greywrapper">
@@ -210,7 +210,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="All Accounts"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color sc-casa-product-list__category--tag-color--active"
-                      data-filter="all-accounts" data-limit="6">
+                      data-filter="all-accounts">
                       <div class="sc-casa-product-list__category-text">
                         Featured Products
                       </div>
@@ -219,7 +219,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="Everyday Use"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color"
-                      data-filter="everyday-use" data-limit="6">
+                      data-filter="everyday-use">
                       <div class="sc-casa-product-list__category-image icon-sc-nw-everday-use" data-grunticon-embed>
                       </div>
                       <div class="sc-casa-product-list__category-text">
@@ -230,7 +230,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="Savings"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color"
-                      data-filter="savings" data-limit="6">
+                      data-filter="savings">
                       <div class="sc-casa-product-list__category-image icon-sc-nw-savings" data-grunticon-embed></div>
                       <div class="sc-casa-product-list__category-text">
                         Savings
@@ -240,7 +240,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="Wealth Building"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color"
-                      data-filter="wealth-building" data-limit="6">
+                      data-filter="wealth-building">
                       <div class="sc-casa-product-list__category-image icon-sc-nw-wealth" data-grunticon-embed></div>
                       <div class="sc-casa-product-list__category-text">
                         Wealth Building
@@ -250,7 +250,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="Foreign Currency"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color"
-                      data-filter="foreign-currency" data-limit="6">
+                      data-filter="foreign-currency">
                       <div class="sc-casa-product-list__category-image icon-sc-nw-fx" data-grunticon-embed></div>
                       <div class="sc-casa-product-list__category-text">
                         Foreign Currency
@@ -260,7 +260,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="Time Deposit"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color"
-                      data-filter="time-deposit" data-limit="6">
+                      data-filter="time-deposit">
                       <div class="sc-casa-product-list__category-image icon-sc-nw-time-deposit" data-grunticon-embed>
                       </div>
                       <div class="sc-casa-product-list__category-text">
@@ -271,7 +271,7 @@
                   <div class="splide__slide">
                     <a href="#null" title="Other Products"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color"
-                      data-filter="other-products" data-limit="6">
+                      data-filter="other-products">
                       <div class="sc-casa-product-list__category-image icon-sc-nw-view-all" data-grunticon-embed></div>
                       <div class="sc-casa-product-list__category-text">Others</div>
                     </a>
@@ -283,8 +283,8 @@
 
           <!-- list__row -->
           <div class="sc-casa-product-list__row">
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-1" data-tags="everyday-use">
+            <div class="sc-casa-product-list__col" data-tags="everyday-use,savings">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -292,8 +292,7 @@
                       class="img-bg" alt="Person, Cleaning" loading="lazy" />
                   </div>
                   <div class="sc-casa-product-list__card-details">
-                    <h2 class="sc-casa-product-list__title">Earn high interest rate of up to 7.88% p.a. when you save,
-                      invest and transact</h2>
+                    <h2 class="sc-casa-product-list__title">Bonus$aver</h2>
                     <p class="sc-casa-product-list__description">
                       Earn high interest rate of up to 7.88% p.a. when you save,
                       invest and transact
@@ -337,13 +336,13 @@
                       </a>
                     </div>
                     <a href="https://www.sc.com/sg/save/current-accounts/bonussaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-bsaver-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-2" data-tags="everyday-use">
+            <div class="sc-casa-product-list__col" data-tags="everyday-use,savings">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -389,13 +388,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/savings-accounts/jumpstart/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-jumpstart-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-3" data-tags="everyday-use">
+            <div class="sc-casa-product-list__col" data-tags="everyday-use">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -441,13 +440,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/current-accounts/supersalary/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-supersal-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-4" data-tags="everyday-use">
+            <div class="sc-casa-product-list__col" data-tags="everyday-use">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -495,13 +494,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/current-accounts/cheque-and-save-account/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-chequensave-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-5" data-tags="savings">
+            <div class="sc-casa-product-list__col" data-tags="savings">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-green">Savings</span>
@@ -550,13 +549,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/savings-accounts/esaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-esaver-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-6" data-tags="savings">
+            <div class="sc-casa-product-list__col" data-tags="savings">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-green">Savings</span>
@@ -598,13 +597,13 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/savings-accounts/esaver-kids/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-esaverkids-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-7" data-tags="savings">
+            <div class="sc-casa-product-list__col" data-tags="savings">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-green">Savings</span>
@@ -650,13 +649,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/savings-accounts/myway/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-myway-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-8" data-tags="wealth-building">
+            <div class="sc-casa-product-list__col" data-tags="wealth-building">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--teak">Wealth Building</span>
@@ -707,13 +706,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/current-accounts/wealth-saver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-wealthsaver-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-9" data-tags="foreign-currency">
+            <div class="sc-casa-product-list__col" data-tags="foreign-currency">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Foreign
@@ -765,13 +764,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/savings-accounts/usdsaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-usdsaver-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-10" data-tags="foreign-currency">
+            <div class="sc-casa-product-list__col" data-tags="foreign-currency">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Foreign
@@ -817,13 +816,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/savings-accounts/fcysaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-fcysaver-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-11" data-tags="time-deposit">
+            <div class="sc-casa-product-list__col" data-tags="time-deposit, everyday-use">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--light-green">Time Deposit</span>
@@ -878,13 +877,13 @@
                       </li>
                     </ul>
                     <a href="https://www.sc.com/sg/save/time-deposits/singapore-dollar-time-deposit/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-sgd_td-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-12" data-tags="time-deposit">
+            <div class="sc-casa-product-list__col" data-tags="time-deposit">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--light-green">Time Deposit</span>
@@ -928,13 +927,13 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/time-deposits/foreign-currency-time-deposits/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-fcy_td-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-13" data-tags="time-deposit">
+            <div class="sc-casa-product-list__col" data-tags="time-deposit">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--light-green">Time Deposit</span>
@@ -978,13 +977,13 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/time-deposits/sustainable-time-deposit/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-sus_td-acquisition-sc_com_CASASelector-sg-en"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-14" data-tags="other-products">
+            <div class="sc-casa-product-list__col" data-tags="other-products">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1001,13 +1000,13 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/current-accounts/xtrasaver/"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-15" data-tags="other-products">
+            <div class="sc-casa-product-list__col" data-tags="other-products">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1016,7 +1015,7 @@
                   </div>
                   <div class="sc-casa-product-list__card-details">
                     <h2 class="sc-casa-product-list__title">
-                      USD High Account USD High Account
+                      USD High Account
                     </h2>
                     <p class="sc-casa-product-list__description">
                       An account for global USD transactions
@@ -1026,13 +1025,13 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/current-accounts/usd-high-account/"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-16" data-tags="other-products">
+            <div class="sc-casa-product-list__col" data-tags="other-products">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1049,13 +1048,13 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/savings-accounts/unlimitedsaver/"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sc-casa-product-list__col">
-              <div class="sc-casa-product-list__card-box compare-card-box card-compare-17" data-tags="other-products">
+            <div class="sc-casa-product-list__col" data-tags="other-products">
+              <div class="sc-casa-product-list__card-box">
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1093,7 +1092,7 @@
                 <div class="sc-casa-product-list__btn-section">
                   <div class="sc-casa-product-list__btn-wrap">
                     <a href="https://www.sc.com/sg/save/savings-accounts/basic-bank-account/"
-                      class="sc-casa-product-list__learn-more">Learn More</a>
+                      class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
                 </div>
               </div>
@@ -1101,7 +1100,7 @@
           </div>
 
           <!-- list__load-more -->
-          <a href="#null" class="sc-casa-product-list__load-more">
+          <a href="#null" title="Load More" class="sc-casa-product-list__load-more">
             <div class="sc-casa-product-list__load-more-text">
               View More
               <div class="sc-casa-product-list__load-more-icon"></div>
