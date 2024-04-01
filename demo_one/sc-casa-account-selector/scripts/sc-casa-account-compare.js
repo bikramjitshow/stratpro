@@ -1,17 +1,19 @@
 // Define the ProductListManager class
-class AccountSelectorCompare {
+class AccountCompare {
+  static width =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
   // init
   init() {
     const that = this;
-    let device = that.numberOfCards($(window).width()); //Detect which types of device is using
+    let device = that.numberOfCards(AccountCompare.width); //Detect which types of device is using
     /* eslint-disable no-unused-vars */
     let newurl;
 
     (($) => {
       let cardComparator = $(".sc-casa-product-list");
-      let compareCardsLabel = cardComparator.attr(
-        "data-compare-cards-label"
-      )
+      let compareCardsLabel = cardComparator.attr("data-compare-cards-label")
         ? cardComparator.attr("data-compare-cards-label")
         : "Please select minimum 2 cards to compare";
       let selectCardLabel = cardComparator.attr("data-select-card-label")
@@ -32,27 +34,23 @@ class AccountSelectorCompare {
       /* eslint-enable no-unused-vars */
 
       //Add/Remove cards for compare
-      $("body").on("click", ".compare-btn", (event) => {
+      $("body").on("click", ".sc-casa-product-list__compare-btn", (event) => {
         that.removeBlankCard($(event.currentTarget).attr("data-for")); //Method of Add/Remove cards for compare
       });
 
       //Selected categories and show correspondent cards
-      $("body").on(
-        "click",
-        ".sc-casa-product-list-buttons button",
-        (event) => {
-          let dataFilter = $(event.currentTarget)
-            .attr("data-filter")
-            .trim()
-            .toLowerCase(); //Get label name
-          let attr = $(event.currentTarget).attr("data-filter"); //Getting attributes value
-          let href = $(event.currentTarget).attr("data-updated-href"); //Getting attributes value
-          that.changeUrl(href, dataFilter);
-          $("button").removeClass("button-active"); //Deactivate previously/default selected categories
-          $(event.currentTarget).addClass("button-active"); //Activate clicked category
-          this.showRelatedCards(attr);
-        }
-      );
+      $("body").on("click", ".sc-casa-product-list-buttons button", (event) => {
+        let dataFilter = $(event.currentTarget)
+          .attr("data-filter")
+          .trim()
+          .toLowerCase(); //Get label name
+        let attr = $(event.currentTarget).attr("data-filter"); //Getting attributes value
+        let href = $(event.currentTarget).attr("data-updated-href"); //Getting attributes value
+        that.changeUrl(href, dataFilter);
+        $("button").removeClass("button-active"); //Deactivate previously/default selected categories
+        $(event.currentTarget).addClass("button-active"); //Activate clicked category
+        this.showRelatedCards(attr);
+      });
 
       //Show Compare Data popup
       $("body").on("click", ".compare-action-btn", () => {
@@ -69,9 +67,7 @@ class AccountSelectorCompare {
         $(".compare-result-box .benefits").removeClass("hide");
         //Selected multiple cards
         $(".single-compare-result-box")
-          .find(
-            ".compare-box-close, .compare-result-grid, .show-promotioin"
-          )
+          .find(".compare-box-close, .compare-result-grid, .show-promotioin")
           .toggleClass("show-card-info hide-card-info");
         $(".compare-result-box").fadeIn(200);
 
@@ -89,7 +85,7 @@ class AccountSelectorCompare {
       //Remove Cards
       $("body").on("click", ".compare-box-close", (event) => {
         let popup_ids = $(event.currentTarget)
-          .siblings(".compare-btn")
+          .siblings(".sc-casa-product-list__compare-btn")
           .attr("data-for");
         $(event.currentTarget).parent().remove();
 
@@ -100,9 +96,7 @@ class AccountSelectorCompare {
         if (total == 0) {
           //Close the modal if no card selected
           $(".single-compare-result-box")
-            .find(
-              ".compare-box-close, .compare-result-grid, .show-promotioin"
-            )
+            .find(".compare-box-close, .compare-result-grid, .show-promotioin")
             .toggleClass("show-card-info hide-card-info");
         }
       });
@@ -110,12 +104,12 @@ class AccountSelectorCompare {
       //minimize/open compare card sticky
       $("body").on("click", ".show-and-hide", (event) => {
         event.preventDefault();
-        $(".compare-section").toggleClass("hide-card-sticky");
+        $(".sc-casa-product-list__compare-section").toggleClass(
+          "hide-card-sticky"
+        );
         $(".show-and-hide").toggleClass("show-icon");
         $(".show-and-hide a").text(
-          $(".show-and-hide a").text() == showLabel
-            ? hideLabel
-            : showLabel
+          $(".show-and-hide a").text() == showLabel ? hideLabel : showLabel
         );
       });
 
@@ -129,9 +123,7 @@ class AccountSelectorCompare {
         if (total == 0) {
           //Close the modal if no card selected
           $(".single-compare-result-box")
-            .find(
-              ".compare-box-close, .compare-result-grid, .show-promotioin"
-            )
+            .find(".compare-box-close, .compare-result-grid, .show-promotioin")
             .toggleClass("show-card-info hide-card-info");
         }
       });
@@ -150,9 +142,7 @@ class AccountSelectorCompare {
             }); //activate page scroll
           }, 500);
           $(".single-compare-result-box")
-            .find(
-              ".compare-box-close, .compare-result-grid, .show-promotioin"
-            )
+            .find(".compare-box-close, .compare-result-grid, .show-promotioin")
             .toggleClass("show-card-info hide-card-info");
         }
       });
@@ -167,9 +157,7 @@ class AccountSelectorCompare {
           }); //activate page scroll
         }, 500);
         $(".single-compare-result-box")
-          .find(
-            ".compare-box-close, .compare-result-grid, .show-promotioin"
-          )
+          .find(".compare-box-close, .compare-result-grid, .show-promotioin")
           .toggleClass("show-card-info hide-card-info");
       });
     })(jQuery);
@@ -321,9 +309,11 @@ class AccountSelectorCompare {
    */
   removeBlankCard(cardIds) {
     (($) => {
+      console.log("removeBlankCard - cardIds:", cardIds);
       $(".add-blank-card").remove();
       let status = $(`[data-for= ${cardIds}]`).hasClass("compare-main");
-      let device = this.numberOfCards($(window).width()); //Detect which types of device is using
+      let device = this.numberOfCards(AccountCompare.width); //Detect which types of device is using
+      console.log("device, cardIds, status", device, cardIds, status)
       this.addRemoveCard(device, cardIds, status);
     })(jQuery);
   }
@@ -378,7 +368,9 @@ class AccountSelectorCompare {
         }, 500);
       } else {
         let temp = "";
-        $(".compare-section").removeClass("hide-card-sticky");
+        $(".sc-casa-product-list__compare-section").removeClass(
+          "hide-card-sticky"
+        );
         $(".show-and-hide a").text(hideLabel);
 
         $(".single-blank-card").removeClass("show"); //hide all add more card box
@@ -396,7 +388,9 @@ class AccountSelectorCompare {
       }
     } else {
       //You have reached cards limit in compare cards Sticky
-      $(".compare-section").removeClass("hide-card-sticky");
+      $(".sc-casa-product-list__compare-section").removeClass(
+        "hide-card-sticky"
+      );
       $(".show-and-hide a").text(hideLabel);
       if (total >= maxCards) {
         $(".card-selection-error")
@@ -413,9 +407,7 @@ class AccountSelectorCompare {
         let html =
           `<div class="single-compare-card compare-activated-card clone-cards-${cardIds}">
       <p>` +
-          $(
-            `.card-compare-${cardIds} .sc-casa-product-list__title`
-          ).text() +
+          $(`.card-compare-${cardIds} .sc-casa-product-list__title`).text() +
           `</p><div class="single-compare-card-image">
       <span class="remove-card" data-identity="card-close-${cardIds}">-</span>
       <img src="` +
@@ -450,12 +442,10 @@ class AccountSelectorCompare {
     }
     return 3; //desktop, tabs, etc support 3 cards
   }
-
-  
 }
 
 // Export an instance of AccountSelector class
-const instance = new AccountSelectorCompare();
+const instance = new AccountCompare();
 instance.init();
 
 export default instance;
