@@ -11,156 +11,355 @@ class AccountCompare {
     /* eslint-disable no-unused-vars */
     let newurl;
 
-    (($) => {
-      let cardComparator = $(".sc-casa-product-list");
-      let compareCardsLabel = cardComparator.attr("data-compare-cards-label")
-        ? cardComparator.attr("data-compare-cards-label")
-        : "Please select minimum 2 cards to compare";
-      let selectCardLabel = cardComparator.attr("data-select-card-label")
-        ? cardComparator.attr("data-select-card-label")
-        : "Select Card";
-      let showLabel = cardComparator.attr("data-show-label")
-        ? cardComparator.attr("data-show-label")
-        : "Show";
-      let hideLabel = cardComparator.attr("data-hide-label")
-        ? cardComparator.attr("data-hide-label")
-        : "Hide";
+    // (($) => {
+    //   let cardComparator = $(".sc-casa-product-list");
+    //   let compareCardsLabel = cardComparator.attr("data-compare-cards-label")
+    //     ? cardComparator.attr("data-compare-cards-label")
+    //     : "Please select minimum 2 cards to compare";
+    //   let selectCardLabel = cardComparator.attr("data-select-card-label")
+    //     ? cardComparator.attr("data-select-card-label")
+    //     : "Select Card";
+    //   let showLabel = cardComparator.attr("data-show-label")
+    //     ? cardComparator.attr("data-show-label")
+    //     : "Show";
+    //   let hideLabel = cardComparator.attr("data-hide-label")
+    //     ? cardComparator.attr("data-hide-label")
+    //     : "Hide";
 
-      $(".m-persistent-bar").addClass("sticky-hidden"); //Hide default sticky bar
+    //   $(".m-persistent-bar").addClass("sticky-hidden"); //Hide default sticky bar
 
-      //Check queryString first time loading
-      let url_string = Utils.getPageUrl().queryString; //Get queryString from url
+    //   //Check queryString first time loading
+    //   let url_string = Utils.getPageUrl().queryString; //Get queryString from url
+    //   that.updateQueryString(url_string);
+    //   /* eslint-enable no-unused-vars */
+
+    //   //Add/Remove cards for compare
+    //   $("body").on("click", ".sc-casa-product-list__compare-btn", (event) => {
+    //     that.removeBlankCard($(event.currentTarget).attr("data-for")); //Method of Add/Remove cards for compare
+    //   });
+
+    //   //Selected categories and show correspondent cards
+    //   $("body").on("click", ".sc-casa-product-list-buttons button", (event) => {
+    //     let dataFilter = $(event.currentTarget)
+    //       .attr("data-filter")
+    //       .trim()
+    //       .toLowerCase(); //Get label name
+    //     let attr = $(event.currentTarget).attr("data-filter"); //Getting attributes value
+    //     let href = $(event.currentTarget).attr("data-updated-href"); //Getting attributes value
+    //     that.changeUrl(href, dataFilter);
+    //     $("button").removeClass("button-active"); //Deactivate previously/default selected categories
+    //     $(event.currentTarget).addClass("button-active"); //Activate clicked category
+    //     this.showRelatedCards(attr);
+    //   });
+
+    //   //Show Compare Data popup
+    //   $("body").on("click", ".compare-action-btn", () => {
+    //     $(".popup-single-loan-box, .single-loan-box-blank").hide();
+    //     let totalCard = $(".compare-main").length; //Check how many cards are selected
+    //     if (totalCard == 0) {
+    //       //No card selected for compare
+    //       return;
+    //     } else if (totalCard == 1) {
+    //       //One card selected for compare
+    //       $(".sc-casa-product-list__card-selection-error").text(compareCardsLabel);
+    //       return;
+    //     }
+    //     $(".sc-casa-product-list__compare-result-box .benefits").removeClass("hide");
+    //     //Selected multiple cards
+    //     $(".single-compare-result-box")
+    //       .find(".compare-box-close, .compare-result-grid, .show-promotioin")
+    //       .toggleClass("show-card-info hide-card-info");
+    //     $(".sc-casa-product-list__compare-result-box").fadeIn(200);
+
+    //     //total cards selected based on device and
+    //     while (totalCard < device) {
+    //       totalCard++;
+    //       $(`.apply-now-back-${totalCard}`).show(); //Show add more card box
+    //     }
+    //     $("body").css({
+    //       overflow: "hidden",
+    //     }); //Hidden page scroll
+    //     return false;
+    //   });
+
+    //   //Remove Cards
+    //   $("body").on("click", ".compare-box-close", (event) => {
+    //     let popup_ids = $(event.currentTarget)
+    //       .siblings(".sc-casa-product-list__compare-btn")
+    //       .attr("data-for");
+    //     $(event.currentTarget).parent().remove();
+
+    //     console.log("popup_ids--", $(event.currentTarget).parent());
+
+    //     that.removeBlankCard(popup_ids); //Method for add/remove cards for compare
+    //     let total = $(".single-compare-card").length;
+    //     if (total == 0) {
+    //       //Close the modal if no card selected
+    //       $(".single-compare-result-box")
+    //         .find(".compare-box-close, .compare-result-grid, .show-promotioin")
+    //         .toggleClass("show-card-info hide-card-info");
+    //     }
+    //   });
+
+    //   //minimize/open compare card sticky
+    //   $("body").on("click", ".show-and-hide", (event) => {
+    //     event.preventDefault();
+    //     $(".sc-casa-product-list__compare-section").toggleClass(
+    //       "hide-card-sticky"
+    //     );
+    //     $(".show-and-hide").toggleClass("show-icon");
+    //     $(".show-and-hide a").text(
+    //       $(".show-and-hide a").text() == showLabel ? hideLabel : showLabel
+    //     );
+    //   });
+
+    //   //Method for remove cards
+    //   $("body").on("click", ".remove-card", (event) => {
+    //     let ids = $(event.currentTarget).attr("data-identity"); //Getting remove btn number
+    //     ids = ids.substr(11);
+    //     $(`.clone-cards-${ids}`).remove(); //Remove selected cards
+    //     that.removeBlankCard(ids); //Method for add/remove cards for compare
+    //     let total = $(".single-compare-card").length; //Checking total selected cards
+    //     if (total == 0) {
+    //       //Close the modal if no card selected
+    //       $(".single-compare-result-box")
+    //         .find(".compare-box-close, .compare-result-grid, .show-promotioin")
+    //         .toggleClass("show-card-info hide-card-info");
+    //     }
+    //   });
+
+    //   //If Click Outside close the cards modal
+    //   $(window).click((event) => {
+    //     if (
+    //       $(event.target).hasClass("apply-now-back-btn-2") ||
+    //       $(event.target).hasClass("compare-result-box-inner-relative")
+    //     ) {
+    //       event.preventDefault();
+    //       $(".sc-casa-product-list__compare-result-box").fadeOut(200);
+    //       setTimeout(() => {
+    //         $("body").css({
+    //           overflow: "auto",
+    //         }); //activate page scroll
+    //       }, 500);
+    //       $(".single-compare-result-box")
+    //         .find(".compare-box-close, .compare-result-grid, .show-promotioin")
+    //         .toggleClass("show-card-info hide-card-info");
+    //     }
+    //   });
+
+    //   //Close the cards modal if clicked close button
+    //   $("body").on("click", ".close-btn", (e) => {
+    //     e.preventDefault();
+    //     $(".sc-casa-product-list__compare-result-box").fadeOut(200);
+    //     setTimeout(() => {
+    //       $("body").css({
+    //         overflow: "auto",
+    //       }); //activate page scroll
+    //     }, 500);
+    //     $(".single-compare-result-box")
+    //       .find(".compare-box-close, .compare-result-grid, .show-promotioin")
+    //       .toggleClass("show-card-info hide-card-info");
+    //   });
+    // })(jQuery);
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize variables for labels
+      let cardComparator = document.querySelector(".sc-casa-product-list");
+      let compareCardsLabel =
+        cardComparator.dataset.compareCardsLabel ||
+        "Please select minimum 2 cards to compare";
+      let selectCardLabel =
+        cardComparator.dataset.selectCardLabel || "Select Card";
+      let showLabel = cardComparator.dataset.showLabel || "Show";
+      let hideLabel = cardComparator.dataset.hideLabel || "Hide";
+
+      // Hide default sticky bar
+      // document
+      //   .querySelector(".m-persistent-bar")
+      //   .classList.add("sticky-hidden");
+
+      // Check queryString first time loading
+      let url_string = Utils.getPageUrl().queryString;
       that.updateQueryString(url_string);
-      /* eslint-enable no-unused-vars */
 
-      //Add/Remove cards for compare
-      $("body").on("click", ".sc-casa-product-list__compare-btn", (event) => {
-        that.removeBlankCard($(event.currentTarget).attr("data-for")); //Method of Add/Remove cards for compare
-      });
+      // Add/Remove cards for compare
+      // document.body.addEventListener("click", function (event) {
+      //   console.log(event)
+      //   if (
+      //     event.target.classList.contains("sc-casa-product-list__compare-btn")
+      //   ) {
+      //     removeBlankCard(event.target.dataset.for);
+      //   }
+      // });
+      const comparebtn = document.querySelector(".sc-casa-product-list__compare-btn");
+      
+      comparebtn.addEventListener("click", (event) => {
+          event.preventDefault();
+          const filter = category.getAttribute("data-filter");
+          that.removeBlankCard(event.target.dataset.for);
+        });
 
-      //Selected categories and show correspondent cards
-      $("body").on("click", ".sc-casa-product-list-buttons button", (event) => {
-        let dataFilter = $(event.currentTarget)
-          .attr("data-filter")
-          .trim()
-          .toLowerCase(); //Get label name
-        let attr = $(event.currentTarget).attr("data-filter"); //Getting attributes value
-        let href = $(event.currentTarget).attr("data-updated-href"); //Getting attributes value
-        that.changeUrl(href, dataFilter);
-        $("button").removeClass("button-active"); //Deactivate previously/default selected categories
-        $(event.currentTarget).addClass("button-active"); //Activate clicked category
-        this.showRelatedCards(attr);
-      });
-
-      //Show Compare Data popup
-      $("body").on("click", ".compare-action-btn", () => {
-        $(".popup-single-loan-box, .single-loan-box-blank").hide();
-        let totalCard = $(".compare-main").length; //Check how many cards are selected
-        if (totalCard == 0) {
-          //No card selected for compare
-          return;
-        } else if (totalCard == 1) {
-          //One card selected for compare
-          $(".sc-casa-product-list__card-selection-error").text(compareCardsLabel);
-          return;
-        }
-        $(".sc-casa-product-list__compare-result-box .benefits").removeClass("hide");
-        //Selected multiple cards
-        $(".single-compare-result-box")
-          .find(".compare-box-close, .compare-result-grid, .show-promotioin")
-          .toggleClass("show-card-info hide-card-info");
-        $(".sc-casa-product-list__compare-result-box").fadeIn(200);
-
-        //total cards selected based on device and
-        while (totalCard < device) {
-          totalCard++;
-          $(`.apply-now-back-${totalCard}`).show(); //Show add more card box
-        }
-        $("body").css({
-          overflow: "hidden",
-        }); //Hidden page scroll
-        return false;
-      });
-
-      //Remove Cards
-      $("body").on("click", ".compare-box-close", (event) => {
-        let popup_ids = $(event.currentTarget)
-          .siblings(".sc-casa-product-list__compare-btn")
-          .attr("data-for");
-        $(event.currentTarget).parent().remove();
-
-        console.log("popup_ids--", $(event.currentTarget).parent());
-
-        that.removeBlankCard(popup_ids); //Method for add/remove cards for compare
-        let total = $(".single-compare-card").length;
-        if (total == 0) {
-          //Close the modal if no card selected
-          $(".single-compare-result-box")
-            .find(".compare-box-close, .compare-result-grid, .show-promotioin")
-            .toggleClass("show-card-info hide-card-info");
+      // Selected categories and show correspondent cards
+      document.body.addEventListener("click", function (event) {
+        if (event.target.closest(".sc-casa-product-list-buttons button")) {
+          let dataFilter = event.target.dataset.filter.trim().toLowerCase();
+          let attr = event.target.dataset.filter;
+          let href = event.target.dataset.updatedHref;
+          changeUrl(href, dataFilter);
+          document.querySelectorAll("button").forEach(function (btn) {
+            btn.classList.remove("button-active");
+          });
+          event.target.classList.add("button-active");
+          showRelatedCards(attr);
         }
       });
 
-      //minimize/open compare card sticky
-      $("body").on("click", ".show-and-hide", (event) => {
-        event.preventDefault();
-        $(".sc-casa-product-list__compare-section").toggleClass(
-          "hide-card-sticky"
-        );
-        $(".show-and-hide").toggleClass("show-icon");
-        $(".show-and-hide a").text(
-          $(".show-and-hide a").text() == showLabel ? hideLabel : showLabel
-        );
-      });
-
-      //Method for remove cards
-      $("body").on("click", ".remove-card", (event) => {
-        let ids = $(event.currentTarget).attr("data-identity"); //Getting remove btn number
-        ids = ids.substr(11);
-        $(`.clone-cards-${ids}`).remove(); //Remove selected cards
-        that.removeBlankCard(ids); //Method for add/remove cards for compare
-        let total = $(".single-compare-card").length; //Checking total selected cards
-        if (total == 0) {
-          //Close the modal if no card selected
-          $(".single-compare-result-box")
-            .find(".compare-box-close, .compare-result-grid, .show-promotioin")
-            .toggleClass("show-card-info hide-card-info");
+      // Show Compare Data popup
+      document.body.addEventListener("click", function (event) {
+        if (event.target.classList.contains("compare-action-btn")) {
+          document
+            .querySelectorAll(".popup-single-loan-box, .single-loan-box-blank")
+            .forEach(function (elem) {
+              elem.style.display = "none";
+            });
+          let totalCard = document.querySelectorAll(".compare-main").length;
+          if (totalCard == 0) {
+            return;
+          } else if (totalCard == 1) {
+            document.querySelector(
+              ".sc-casa-product-list__card-selection-error"
+            ).textContent = compareCardsLabel;
+            return;
+          }
+          document
+            .querySelector(
+              ".sc-casa-product-list__compare-result-box .benefits"
+            )
+            .classList.remove("hide");
+          document
+            .querySelectorAll(
+              ".single-compare-result-box .compare-box-close, .single-compare-result-box .compare-result-grid, .single-compare-result-box .show-promotioin"
+            )
+            .forEach(function (elem) {
+              elem.classList.toggle("show-card-info");
+              elem.classList.toggle("hide-card-info");
+            });
+          document.querySelector(
+            ".sc-casa-product-list__compare-result-box"
+          ).style.display = "block";
+          while (totalCard < device) {
+            totalCard++;
+            document.querySelector(
+              `.apply-now-back-${totalCard}`
+            ).style.display = "block";
+          }
+          document.body.style.overflow = "hidden";
+          event.preventDefault();
         }
       });
 
-      //If Click Outside close the cards modal
-      $(window).click((event) => {
+      // Remove Cards
+      document.body.addEventListener("click", function (event) {
+        if (event.target.classList.contains("compare-box-close")) {
+          let popupIds = event.target.nextElementSibling.dataset.for;
+          event.target.parentElement.remove();
+          removeBlankCard(popupIds);
+          let total = document.querySelectorAll(".single-compare-card").length;
+          if (total == 0) {
+            document
+              .querySelectorAll(
+                ".single-compare-result-box .compare-box-close, .single-compare-result-box .compare-result-grid, .single-compare-result-box .show-promotioin"
+              )
+              .forEach(function (elem) {
+                elem.classList.toggle("show-card-info");
+                elem.classList.toggle("hide-card-info");
+              });
+          }
+        }
+      });
+
+      // Minimize/Open compare card sticky
+      document.body.addEventListener("click", function (event) {
+        if (event.target.classList.contains("show-and-hide")) {
+          event.preventDefault();
+          document
+            .querySelector(".sc-casa-product-list__compare-section")
+            .classList.toggle("hide-card-sticky");
+          document
+            .querySelector(".show-and-hide")
+            .classList.toggle("show-icon");
+          document.querySelector(".show-and-hide a").textContent =
+            document.querySelector(".show-and-hide a").textContent == showLabel
+              ? hideLabel
+              : showLabel;
+        }
+      });
+
+      // Method for remove cards
+      document.body.addEventListener("click", function (event) {
+        if (event.target.classList.contains("remove-card")) {
+          let ids = event.target.dataset.identity.substr(11);
+          document.querySelector(`.clone-cards-${ids}`).remove();
+          removeBlankCard(ids);
+          let total = document.querySelectorAll(".single-compare-card").length;
+          if (total == 0) {
+            document
+              .querySelectorAll(
+                ".single-compare-result-box .compare-box-close, .single-compare-result-box .compare-result-grid, .single-compare-result-box .show-promotioin"
+              )
+              .forEach(function (elem) {
+                elem.classList.toggle("show-card-info");
+                elem.classList.toggle("hide-card-info");
+              });
+          }
+        }
+      });
+
+      // If Click Outside close the cards modal
+      window.addEventListener("click", function (event) {
         if (
-          $(event.target).hasClass("apply-now-back-btn-2") ||
-          $(event.target).hasClass("compare-result-box-inner-relative")
+          event.target.classList.contains("apply-now-back-btn-2") ||
+          event.target.classList.contains("compare-result-box-inner-relative")
         ) {
           event.preventDefault();
-          $(".sc-casa-product-list__compare-result-box").fadeOut(200);
-          setTimeout(() => {
-            $("body").css({
-              overflow: "auto",
-            }); //activate page scroll
+          document.querySelector(
+            ".sc-casa-product-list__compare-result-box"
+          ).style.display = "none";
+          setTimeout(function () {
+            document.body.style.overflow = "auto";
           }, 500);
-          $(".single-compare-result-box")
-            .find(".compare-box-close, .compare-result-grid, .show-promotioin")
-            .toggleClass("show-card-info hide-card-info");
+          document
+            .querySelectorAll(
+              ".single-compare-result-box .compare-box-close, .single-compare-result-box .compare-result-grid, .single-compare-result-box .show-promotioin"
+            )
+            .forEach(function (elem) {
+              elem.classList.toggle("show-card-info");
+              elem.classList.toggle("hide-card-info");
+            });
         }
       });
 
-      //Close the cards modal if clicked close button
-      $("body").on("click", ".close-btn", (e) => {
-        e.preventDefault();
-        $(".sc-casa-product-list__compare-result-box").fadeOut(200);
-        setTimeout(() => {
-          $("body").css({
-            overflow: "auto",
-          }); //activate page scroll
-        }, 500);
-        $(".single-compare-result-box")
-          .find(".compare-box-close, .compare-result-grid, .show-promotioin")
-          .toggleClass("show-card-info hide-card-info");
+      // Close the cards modal if clicked close button
+      document.body.addEventListener("click", function (event) {
+        if (event.target.classList.contains("close-btn")) {
+          event.preventDefault();
+          document.querySelector(
+            ".sc-casa-product-list__compare-result-box"
+          ).style.display = "none";
+          setTimeout(function () {
+            document.body.style.overflow = "auto";
+          }, 500);
+          document
+            .querySelectorAll(
+              ".single-compare-result-box .compare-box-close, .single-compare-result-box .compare-result-grid, .single-compare-result-box .show-promotioin"
+            )
+            .forEach(function (elem) {
+              elem.classList.toggle("show-card-info");
+              elem.classList.toggle("hide-card-info");
+            });
+        }
       });
-    })(jQuery);
+    });
   }
 
   /**
@@ -313,7 +512,7 @@ class AccountCompare {
       $(".add-blank-card").remove();
       let status = $(`[data-for= ${cardIds}]`).hasClass("compare-main");
       let device = this.numberOfCards(AccountCompare.width); //Detect which types of device is using
-      console.log({device, cardIds, status});
+      console.log({ device, cardIds, status });
       debugger;
       this.addRemoveCard(device, cardIds, status);
     })(jQuery);
@@ -331,7 +530,7 @@ class AccountCompare {
    */
   addRemoveCard(maxCards, cardIds, status) {
     let cardComparator = $(".sc-casa-product-list");
-    console.log('cardComparator', cardComparator)
+    console.log("cardComparator", cardComparator);
     let maxCardsLabel = cardComparator.attr("data-max-cards-label")
       ? cardComparator.attr("data-max-cards-label")
       : "You cannot select more than";
@@ -342,9 +541,8 @@ class AccountCompare {
       ? cardComparator.attr("data-hide-label")
       : "Hide";
     let total = $(".single-compare-card").length;
-    console.log({maxCardsLabel, cardsLabel, hideLabel, total})
+    console.log({ maxCardsLabel, cardsLabel, hideLabel, total });
     debugger;
-
 
     //Checking cards are selected or not
     if (status) {
@@ -404,10 +602,10 @@ class AccountCompare {
           .text(`${maxCardsLabel} ${maxCards} ${cardsLabel}`); //Add error text message
       } else {
         //You have slots for add cards in compare cards Sticky
-        console.log("You have slots for add cards in compare cards Sticky")
+        console.log("You have slots for add cards in compare cards Sticky");
         console.log(
           $(`.card-compare-${cardIds} .sc-casa-product-list__title`).text()
-        )
+        );
         $(".card-compare-sticky").css({
           display: "block",
         });
