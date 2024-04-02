@@ -166,57 +166,40 @@ class AccountCompare {
       // Initialize variables for labels
       let cardComparator = document.querySelector(".sc-casa-product-list");
       let compareCardsLabel =
-        cardComparator.dataset.compareCardsLabel ||
+        cardComparator.getAttribute("data-compare-cards-label") ||
         "Please select minimum 2 cards to compare";
       let selectCardLabel =
-        cardComparator.dataset.selectCardLabel || "Select Card";
-      let showLabel = cardComparator.dataset.showLabel || "Show";
-      let hideLabel = cardComparator.dataset.hideLabel || "Hide";
+        cardComparator.getAttribute("data-select-card-label") || "Select Card";
+      let showLabel = cardComparator.getAttribute("data-show-label") || "Show";
+      let hideLabel = cardComparator.getAttribute("data-hide-label") || "Hide";
 
       // Hide default sticky bar
-      // document
-      //   .querySelector(".m-persistent-bar")
-      //   .classList.add("sticky-hidden");
+      let persistentbars = document.querySelectorAll(".m-persistent-bar");
+      persistentbars.forEach((element) => {
+        element.classList.add("sticky-hidden");
+      });
 
       // Check queryString first time loading
       let url_string = Utils.getPageUrl().queryString;
       that.updateQueryString(url_string);
 
       // Add/Remove cards for compare
-      // document.body.addEventListener("click", function (event) {
-      //   console.log(event)
-      //   if (
-      //     event.target.classList.contains("sc-casa-product-list__compare-btn")
-      //   ) {
-      //     removeBlankCard(event.target.dataset.for);
-      //   }
-      // });
-      const comparebtn = document.querySelector(".sc-casa-product-list__compare-btn");
-      
-      comparebtn.addEventListener("click", (event) => {
+      const comparebtns = document.querySelectorAll(
+        ".sc-casa-product-list__compare-btn"
+      );
+      comparebtns.forEach((comparebtn) => {
+        comparebtn.addEventListener("click", (event) => {
           event.preventDefault();
-          const filter = category.getAttribute("data-filter");
-          that.removeBlankCard(event.target.dataset.for);
+          const dataFor = comparebtn.getAttribute("data-for");
+          console.log({ dataFor });
+          that.removeBlankCard(dataFor);
         });
-
-      // Selected categories and show correspondent cards
-      document.body.addEventListener("click", function (event) {
-        if (event.target.closest(".sc-casa-product-list-buttons button")) {
-          let dataFilter = event.target.dataset.filter.trim().toLowerCase();
-          let attr = event.target.dataset.filter;
-          let href = event.target.dataset.updatedHref;
-          changeUrl(href, dataFilter);
-          document.querySelectorAll("button").forEach(function (btn) {
-            btn.classList.remove("button-active");
-          });
-          event.target.classList.add("button-active");
-          showRelatedCards(attr);
-        }
       });
 
       // Show Compare Data popup
-      document.body.addEventListener("click", function (event) {
-        if (event.target.classList.contains("compare-action-btn")) {
+      document
+        .querySelector(".sc-casa-product-list__compare-action-btn")
+        .addEventListener("click", function (event) {
           document
             .querySelectorAll(".popup-single-loan-box, .single-loan-box-blank")
             .forEach(function (elem) {
@@ -231,11 +214,11 @@ class AccountCompare {
             ).textContent = compareCardsLabel;
             return;
           }
-          document
-            .querySelector(
-              ".sc-casa-product-list__compare-result-box .benefits"
-            )
-            .classList.remove("hide");
+          // document
+          //   .querySelector(
+          //     ".sc-casa-product-list__compare-result-box .benefits"
+          //   )
+          //   .classList.remove("hide");
           document
             .querySelectorAll(
               ".single-compare-result-box .compare-box-close, .single-compare-result-box .compare-result-grid, .single-compare-result-box .show-promotioin"
@@ -254,16 +237,15 @@ class AccountCompare {
             ).style.display = "block";
           }
           document.body.style.overflow = "hidden";
-          event.preventDefault();
-        }
-      });
+          // event.preventDefault();
+        });
 
       // Remove Cards
       document.body.addEventListener("click", function (event) {
         if (event.target.classList.contains("compare-box-close")) {
           let popupIds = event.target.nextElementSibling.dataset.for;
           event.target.parentElement.remove();
-          removeBlankCard(popupIds);
+          that.removeBlankCard(popupIds);
           let total = document.querySelectorAll(".single-compare-card").length;
           if (total == 0) {
             document
@@ -279,9 +261,9 @@ class AccountCompare {
       });
 
       // Minimize/Open compare card sticky
-      document.body.addEventListener("click", function (event) {
-        if (event.target.classList.contains("show-and-hide")) {
-          event.preventDefault();
+      document
+        .querySelector(".show-and-hide")
+        .addEventListener("click", function (event) {
           document
             .querySelector(".sc-casa-product-list__compare-section")
             .classList.toggle("hide-card-sticky");
@@ -292,15 +274,14 @@ class AccountCompare {
             document.querySelector(".show-and-hide a").textContent == showLabel
               ? hideLabel
               : showLabel;
-        }
-      });
+        });
 
       // Method for remove cards
       document.body.addEventListener("click", function (event) {
         if (event.target.classList.contains("remove-card")) {
           let ids = event.target.dataset.identity.substr(11);
           document.querySelector(`.clone-cards-${ids}`).remove();
-          removeBlankCard(ids);
+          that.removeBlankCard(ids);
           let total = document.querySelectorAll(".single-compare-card").length;
           if (total == 0) {
             document
@@ -340,8 +321,9 @@ class AccountCompare {
       });
 
       // Close the cards modal if clicked close button
-      document.body.addEventListener("click", function (event) {
-        if (event.target.classList.contains("close-btn")) {
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", function (event) {
           event.preventDefault();
           document.querySelector(
             ".sc-casa-product-list__compare-result-box"
@@ -357,8 +339,7 @@ class AccountCompare {
               elem.classList.toggle("show-card-info");
               elem.classList.toggle("hide-card-info");
             });
-        }
-      });
+        });
     });
   }
 
@@ -430,44 +411,6 @@ class AccountCompare {
   }
 
   /**
-   * Get tab attribute and change url using pushState method
-   * @param {string} labelName //get seected tab attribute ex: all, cashback, rewards etc.
-   * @example
-   *
-   *  changeUrl('labelName')
-   *
-   */
-  changeUrl(labelName, dataFilter) {
-    //Checking which tab clicked
-    let newUrl = "";
-    if (dataFilter == "all") {
-      let searchStr = new RegExp(`${dataFilter}&`, "gi");
-      if (labelName) {
-        newUrl = labelName.replace(searchStr, "");
-      }
-      if (newUrl) {
-        newUrl = `?${newUrl}`;
-      }
-    } else {
-      newUrl = "?filter=" + dataFilter;
-    }
-    newUrl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname +
-      newUrl;
-
-    window.history.pushState(
-      {
-        path: newUrl,
-      },
-      "",
-      newUrl
-    ); //Change URL based on clicked tab
-  }
-
-  /**
    * Get tab attribute and url status, if valid url then show related cards, else redirect to default url
    * @param {boolean} urlStatus //check url is valid or not
    * @param {string} url //get seected tab attribute ex: all, cashback, rewards etc.
@@ -508,12 +451,11 @@ class AccountCompare {
    */
   removeBlankCard(cardIds) {
     (($) => {
-      // console.log("removeBlankCard - cardIds:", cardIds);
+      console.log("removeBlankCard - cardIds:", cardIds);
       $(".add-blank-card").remove();
       let status = $(`[data-for= ${cardIds}]`).hasClass("compare-main");
       let device = this.numberOfCards(AccountCompare.width); //Detect which types of device is using
       console.log({ device, cardIds, status });
-      debugger;
       this.addRemoveCard(device, cardIds, status);
     })(jQuery);
   }
@@ -542,7 +484,6 @@ class AccountCompare {
       : "Hide";
     let total = $(".single-compare-card").length;
     console.log({ maxCardsLabel, cardsLabel, hideLabel, total });
-    debugger;
 
     //Checking cards are selected or not
     if (status) {
@@ -603,9 +544,7 @@ class AccountCompare {
       } else {
         //You have slots for add cards in compare cards Sticky
         console.log("You have slots for add cards in compare cards Sticky");
-        console.log(
-          $(`.card-compare-${cardIds} .sc-casa-product-list__title`).text()
-        );
+        console.log($(`.card-compare-${cardIds}`));
         $(".card-compare-sticky").css({
           display: "block",
         });
@@ -620,7 +559,8 @@ class AccountCompare {
       <span class="remove-card" data-identity="card-close-${cardIds}">-</span>
       <img src="` +
           $(`.card-compare-${cardIds}`).find("img").attr("src") +
-          '" alt=""></div></div>'; //Add selected card divs in temp variables
+          '" alt=""></div></div>';
+        //Add selected card divs in temp variables
         $(".add-blank-card-sm-0").before(html); //Added selected and blank cards div in Compare Cards Sticky
 
         //Add blank cards div in temp variables
