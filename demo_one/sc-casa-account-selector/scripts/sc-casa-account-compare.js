@@ -61,15 +61,15 @@ class AccountCompare {
           return;
         } else if (totalCard == 1) {
           //One card selected for compare
-          $(".card-selection-error").text(compareCardsLabel);
+          $(".sc-casa-product-list__card-selection-error").text(compareCardsLabel);
           return;
         }
-        $(".compare-result-box .benefits").removeClass("hide");
+        $(".sc-casa-product-list__compare-result-box .benefits").removeClass("hide");
         //Selected multiple cards
         $(".single-compare-result-box")
           .find(".compare-box-close, .compare-result-grid, .show-promotioin")
           .toggleClass("show-card-info hide-card-info");
-        $(".compare-result-box").fadeIn(200);
+        $(".sc-casa-product-list__compare-result-box").fadeIn(200);
 
         //total cards selected based on device and
         while (totalCard < device) {
@@ -135,7 +135,7 @@ class AccountCompare {
           $(event.target).hasClass("compare-result-box-inner-relative")
         ) {
           event.preventDefault();
-          $(".compare-result-box").fadeOut(200);
+          $(".sc-casa-product-list__compare-result-box").fadeOut(200);
           setTimeout(() => {
             $("body").css({
               overflow: "auto",
@@ -150,7 +150,7 @@ class AccountCompare {
       //Close the cards modal if clicked close button
       $("body").on("click", ".close-btn", (e) => {
         e.preventDefault();
-        $(".compare-result-box").fadeOut(200);
+        $(".sc-casa-product-list__compare-result-box").fadeOut(200);
         setTimeout(() => {
           $("body").css({
             overflow: "auto",
@@ -309,11 +309,12 @@ class AccountCompare {
    */
   removeBlankCard(cardIds) {
     (($) => {
-      console.log("removeBlankCard - cardIds:", cardIds);
+      // console.log("removeBlankCard - cardIds:", cardIds);
       $(".add-blank-card").remove();
       let status = $(`[data-for= ${cardIds}]`).hasClass("compare-main");
       let device = this.numberOfCards(AccountCompare.width); //Detect which types of device is using
-      console.log("device, cardIds, status", device, cardIds, status)
+      console.log({device, cardIds, status});
+      debugger;
       this.addRemoveCard(device, cardIds, status);
     })(jQuery);
   }
@@ -330,6 +331,7 @@ class AccountCompare {
    */
   addRemoveCard(maxCards, cardIds, status) {
     let cardComparator = $(".sc-casa-product-list");
+    console.log('cardComparator', cardComparator)
     let maxCardsLabel = cardComparator.attr("data-max-cards-label")
       ? cardComparator.attr("data-max-cards-label")
       : "You cannot select more than";
@@ -340,6 +342,10 @@ class AccountCompare {
       ? cardComparator.attr("data-hide-label")
       : "Hide";
     let total = $(".single-compare-card").length;
+    console.log({maxCardsLabel, cardsLabel, hideLabel, total})
+    debugger;
+
+
     //Checking cards are selected or not
     if (status) {
       //Card is already selected
@@ -351,7 +357,7 @@ class AccountCompare {
         .remove();
       $(`.clone-cards-${cardIds}`).remove(); //Remove card divs from modal
 
-      $(".card-selection-error").text("");
+      $(".sc-casa-product-list__card-selection-error").text("");
       total = $(".single-compare-card").length; //Get total selected cards
       $(`.card-compare-${cardIds}`).toggleClass("active");
 
@@ -360,7 +366,7 @@ class AccountCompare {
         $(".card-compare-sticky").css({
           display: "none",
         });
-        $(".compare-result-box").fadeOut(200);
+        $(".sc-casa-product-list__compare-result-box").fadeOut(200);
         setTimeout(() => {
           $("body").css({
             overflow: "auto",
@@ -373,15 +379,15 @@ class AccountCompare {
         );
         $(".show-and-hide a").text(hideLabel);
 
-        $(".single-blank-card").removeClass("show"); //hide all add more card box
+        $(".sc-casa-product-list__single-blank-card").removeClass("show"); //hide all add more card box
         //Add blank cards div in temp variables
         while (total < maxCards) {
           $(`.add-blank-card-sm-${total}`).addClass("show"); //Show add more card box
           total++;
           $(`.apply-now-back-${total}`).show();
         }
-        $(".compare-selected-cards").append(temp); //Added blank cards div in Compare Cards Sticky
-        $(".card-selection-error").text(""); //Remove error texts
+        $(".sc-casa-product-list__compare-selected-cards").append(temp); //Added blank cards div in Compare Cards Sticky
+        $(".sc-casa-product-list__card-selection-error").text(""); //Remove error texts
         $(".card-compare-sticky").css({
           display: "block",
         });
@@ -393,11 +399,15 @@ class AccountCompare {
       );
       $(".show-and-hide a").text(hideLabel);
       if (total >= maxCards) {
-        $(".card-selection-error")
+        $(".sc-casa-product-list__card-selection-error")
           .addClass("cannot-add-2-cards")
           .text(`${maxCardsLabel} ${maxCards} ${cardsLabel}`); //Add error text message
       } else {
         //You have slots for add cards in compare cards Sticky
+        console.log("You have slots for add cards in compare cards Sticky")
+        console.log(
+          $(`.card-compare-${cardIds} .sc-casa-product-list__title`).text()
+        )
         $(".card-compare-sticky").css({
           display: "block",
         });
@@ -416,12 +426,12 @@ class AccountCompare {
         $(".add-blank-card-sm-0").before(html); //Added selected and blank cards div in Compare Cards Sticky
 
         //Add blank cards div in temp variables
-        $(".single-blank-card").removeClass("show"); //Hide all add more card box
+        $(".sc-casa-product-list__single-blank-card").removeClass("show"); //Hide all add more card box
         while (total < maxCards - 1) {
           $(`.add-blank-card-sm-${total}`).addClass("show"); //Show add more card box
           total++;
         }
-        $(".card-selection-error").text(""); //Remove error message
+        $(".sc-casa-product-list__card-selection-error").text(""); //Remove error message
         $(".apply-now-back-2").before(cardClone); //Clone cards in Compare Cards Modal
       }
     }
