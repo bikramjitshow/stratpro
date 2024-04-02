@@ -822,6 +822,53 @@
   height: 100%;
 }
 
+.hide-card-info {
+  display: none;
+}
+
+.show-card-info {
+  display: block;
+}
+
+.compare-main::before {
+  content: "";
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E%0A");
+  background-position: center center;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  display: block;
+  z-index: 9;
+  left: calc(50% - 52px);
+  top: 19px;
+  width: 20px;
+  height: 20px;
+}
+.compare-main::before:hover {
+  cursor: pointer;
+}
+.compare-main::after {
+  content: "Remove";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  right: 0;
+  background: #0091ea;
+  pointer-events: none;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .compare-section.slideUp {
   height: 146px;
   -webkit-transition: all 0.3s ease;
@@ -872,18 +919,18 @@
   right: -18px;
   top: -18px;
   -webkit-box-shadow: 1px 0px 4px #000;
-  box-shadow: 1px 0px 4px #000;
+          box-shadow: 1px 0px 4px #000;
   width: 40px;
   height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: #000;
   border-radius: 50%;
   border: 1px solid #fff;
@@ -949,7 +996,7 @@
   width: 100%;
   top: 50%;
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .single-compare-result-box .compare-result-grid {
@@ -964,7 +1011,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .single-compare-result-box .compare-result-grid .compare-result-grid-row .c-r-g-left {
@@ -977,8 +1024,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .single-compare-result-box .compare-result-grid .compare-result-grid-row .c-r-g-right {
@@ -994,11 +1041,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 15px;
   font-size: 12px;
   color: #fff;
@@ -1022,391 +1069,6 @@
   top: 1px;
 }
 
-.clear-fix {
-  clear: both;
-}
-
-@media (max-width: 1023.98px) {
-  .card-compare-tab .card-compare-tab-content .compare-card-box .promotion-inner {
-    padding: 10px;
-  }
-  .compare-section .compare-section-wrapper {
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-  }
-  .compare-section .card-selection-error {
-    left: 30px;
-    font-size: 14px;
-    line-height: 20px;
-    max-width: 100px;
-  }
-  .compare-section .compare-action-btn {
-    right: 30px;
-  }
-  .compare-section .single-compare-card {
-    display: block;
-    text-align: center;
-    margin: 0 15px;
-  }
-  .compare-section .single-compare-card .single-compare-card-image {
-    max-width: 100px;
-    min-width: 100px;
-  }
-  .compare-section .single-blank-card.show {
-    margin: 0 15px;
-  }
-}
-@media (min-width: 681px) and (max-width: 1023.98px) {
-  .compare-result-box .compare-result-box-inner-relative .compare-result-box-inner .close-btn {
-    right: -9px;
-  }
-  .compare-btn {
-    padding: 15px;
-  }
-  .card-compare-tab .card-compare-tab-content .container {
-    padding: 40px 15px 20px 15px;
-  }
-  .card-compare-tab .card-compare-tab-content .container .row {
-    margin: 0 -5px;
-  }
-  .compare-card-box {
-    width: calc(33.333% - 10px);
-    margin: 0 5px 10px 5px;
-  }
-  .compare-card-box .benefits {
-    padding: 25px;
-  }
-  .compare-card-box .title {
-    padding: 15px 10px 10px 10px;
-    min-height: 66px;
-    max-width: 100%;
-  }
-  .compare-card-box .title .card-name {
-    font-size: 15px;
-    line-height: 20px;
-  }
-  .compare-section .compare-section-wrapper .compare-selected-cards {
-    min-width: 410px;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-  }
-  .compare-section .single-compare-card p {
-    min-height: 38px;
-    max-height: 55px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    margin-bottom: 10px;
-    padding-left: 0;
-    max-width: 120px;
-  }
-  .compare-result-box .compare-card-box .benefits {
-    margin-bottom: 150px;
-  }
-  .compare-card-box .main-benefits {
-    padding: 0 10px;
-  }
-  .compare-card-box .main-benefits .single-gift-tag {
-    padding: 0 5px;
-  }
-  .compare-card-box .main-benefits .single-gift-tag h3 {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-@media (max-width: 767.98px) {
-  .card-compare-tab .tab .card-compare-tab-buttons button {
-    padding: 10px;
-    font-size: 12px;
-    line-height: 18px;
-  }
-  .card-compare-tab .tab .cc-icon-img {
-    display: none;
-  }
-  .card-compare-tab .card-compare-tab-content .container {
-    padding: 20px 20px 5px 20px;
-  }
-  .compare-card-box {
-    width: calc(50% - 10px);
-    margin: 0 5px 10px 5px;
-  }
-  .compare-card-box.active::before {
-    height: calc(100% - 21px);
-  }
-  .compare-card-box .title {
-    min-height: 60px;
-    padding: 15px 10px 10px 10px;
-    max-width: 97%;
-  }
-  .compare-card-box .title .card-name {
-    line-height: 18px;
-    font-size: 13px;
-    letter-spacing: normal;
-    letter-spacing: initial;
-  }
-  .compare-card-box .card-image {
-    min-height: auto;
-  }
-  .compare-card-box .card-image img {
-    max-width: 120px;
-    min-width: auto;
-  }
-  .compare-card-box .main-benefits {
-    min-height: auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    text-align: center;
-    min-height: 144px;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-  }
-  .compare-card-box .main-benefits .single-gift-tag {
-    padding: 0 0px;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  .compare-card-box .main-benefits .single-gift-tag h3 {
-    font-size: 14px;
-    line-height: 20px;
-  }
-  .compare-card-box .main-benefits .single-gift-tag p {
-    font-size: 12px;
-    line-height: 20px;
-  }
-  .compare-card-box .benefits {
-    padding: 10px 15px 15px 15px;
-    margin-bottom: 200px;
-  }
-  .compare-card-box .benefits ul li {
-    font-size: 13px;
-    margin-left: 10px;
-  }
-  .compare-card-box .benefits h4 {
-    font-size: 14px;
-    font-weight: 300;
-  }
-  .compare-card-box .promotion-inner {
-    top: 12px;
-    padding: 0 25px;
-    padding: 10px;
-  }
-  .compare-card-box .promotion-inner .promotion-image img {
-    width: 15px;
-    height: auto;
-  }
-  .compare-card-box .promotion-inner .promotion-details p {
-    font-size: 13px;
-  }
-  .compare-card-box .apply-now-btn .c-button {
-    font-size: 10px;
-    padding: 10px 25px;
-  }
-  .compare-btn {
-    padding: 10px;
-  }
-  .compare-main::before {
-    top: 9px;
-  }
-  .compare-section {
-    padding: 15px 10px;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-line-pack: distribute;
-    align-content: space-around;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-  .compare-section.hide-card-sticky .card-selection-error {
-    display: none;
-  }
-  .compare-section .compare-action-btn {
-    margin: 0;
-    right: inherit;
-    padding: 10px 20px;
-    font-size: 12px;
-    position: relative;
-    z-index: 2;
-  }
-  .compare-section .compare-section-wrapper {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0;
-  }
-  .compare-section .compare-section-wrapper .compare-selected-cards {
-    width: 100%;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    min-width: auto;
-  }
-  .compare-section .card-selection-error {
-    font-size: 13px;
-    line-height: 28px;
-    -webkit-transform: none;
-    transform: none;
-    top: -16px;
-    background-color: #000;
-    padding: 0 10px;
-    left: 0;
-    position: absolute;
-    max-width: none;
-    max-width: initial;
-    width: calc(100% - 70px);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-  .compare-section .single-compare-card {
-    width: 100%;
-    float: left;
-    text-align: left;
-    margin: 0;
-    display: none;
-  }
-  .compare-section .single-compare-card.compare-activated-card {
-    display: block;
-  }
-  .compare-section .single-compare-card p {
-    margin-top: 5px;
-    max-width: none;
-    max-width: initial;
-    padding: 0;
-    float: left;
-  }
-  .compare-section .single-compare-card .single-compare-card-image {
-    float: left;
-    max-width: 25px;
-    min-width: 25px;
-    height: 25px;
-    border: none;
-  }
-  .compare-section .single-compare-card .single-compare-card-image span {
-    display: none;
-  }
-  .compare-section .single-compare-card .single-compare-card-image img {
-    display: none;
-  }
-  .compare-section .single-compare-card .single-compare-card-image .remove-card {
-    position: static;
-    margin-left: 10px;
-  }
-  .compare-section .compare-green-btn {
-    float: right;
-    margin-right: 0px;
-    margin-bottom: 0;
-    position: absolute;
-    right: 10px;
-    top: 11px;
-  }
-  .compare-section .single-blank-card.show {
-    display: none;
-  }
-  .single-compare-result-box .compare-result-grid .compare-result-grid-row p {
-    font-size: 12px;
-    line-height: 18px;
-  }
-  .compare-result-box {
-    padding-top: 20px;
-  }
-  .compare-result-box .compare-result-box-inner-relative {
-    margin: 0 10px;
-  }
-  .compare-result-box .compare-result-box-inner-relative .compare-result-box-inner {
-    position: relative;
-    -webkit-transform: none;
-    transform: none;
-    top: 0;
-  }
-  .compare-result-box .compare-result-box-inner-relative .compare-result-box-inner .single-compare-result-box {
-    padding: 10px 5px 20px 5px;
-  }
-  .compare-result-box .compare-result-box-inner-relative .compare-result-box-inner .close-btn {
-    right: -7px;
-    top: -7px;
-    width: 25px;
-    height: 25px;
-    line-height: 0;
-  }
-  .compare-result-box .compare-result-box-inner-relative .compare-result-box-inner .close-btn svg {
-    position: relative;
-    z-index: 1;
-  }
-  .compare-result-box .compare-card-box .benefits {
-    margin-bottom: 180px;
-  }
-}
-@media (max-width: 420.98px) {
-  .card-compare-tab .tab .card-compare-tab-buttons button {
-    padding: 8px;
-    font-size: 12px;
-    line-height: 16px;
-    min-height: 40px;
-  }
-}
-@media (max-width: 320.98px) {
-  .compare-section .card-selection-error {
-    line-height: 18px;
-  }
-  .compare-card-box {
-    width: calc(100% - 10px);
-  }
-  .compare-card-box .benefits {
-    margin-bottom: 200px;
-  }
-  .compare-card-box .title {
-    min-height: auto;
-    max-width: 100%;
-  }
-  .compare-card-box .main-benefits {
-    -webkit-box-orient: inherit;
-    -webkit-box-direction: inherit;
-    -ms-flex-direction: inherit;
-    flex-direction: inherit;
-    min-height: auto;
-  }
-  .compare-card-box .main-benefits .single-gift-tag {
-    width: 33.333%;
-  }
-  .compare-card-box .benefits {
-    margin-bottom: 20px;
-  }
-  .compare-card-box .promotion-box {
-    position: static;
-  }
-  .compare-result-box .compare-card-box {
-    width: calc(50% - 10px);
-  }
-  .compare-result-box .compare-card-box .card-image img {
-    max-width: 100px;
-  }
-  .compare-result-box .compare-card-box .main-benefits {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  .compare-result-box .compare-card-box .main-benefits .single-gift-tag {
-    width: 100%;
-  }
-  .compare-result-box .compare-card-box .apply-now-btn .c-button {
-    padding: 10px 20px;
-  }
-}
 html {
   scroll-behavior: smooth;
 }/*# sourceMappingURL=style.css.map */
