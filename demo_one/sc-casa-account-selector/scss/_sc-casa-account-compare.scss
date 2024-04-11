@@ -1,46 +1,41 @@
 .sc-casa-product-list {
 	padding-bottom: 0;
-	&__card-box {
-		&.active {
-			&::before {
-				content: "";
-				display: block;
-				position: absolute;
-				width: 100%;
-				height: calc(100% - 55px);
-				border: 2px solid #0091ea;
-				border-bottom: 0;
-				z-index: 2;
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
+	&__btn-section {
+		&--with-compare-btn {
+			padding: 4px 0 0 0;
+			.sc-casa-product-list {
+				&__btn-wrap {
+					margin-bottom: 16px;
+				}
 			}
 		}
 	}
-	&__compare-btn {
-		position: relative;
-		width: 100%;
-		text-align: center;
-		color: $color-white;
-	}
-	&__compare-label {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		font-size: 14px;
-		font-weight: 400;
-		color: $color-white;
-		background-color: $color-blue;
-		padding: 20px;
-		cursor: pointer;
-		.icon-plus-round-white {
-			background-image: url("data:image/svg+xml,%3Csvg id='add-round-white' xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 1' y2='25' transform='translate(25 13)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E");
-			background-position: center center;
-			background-repeat: no-repeat;
-			background-size: 20px 20px;
-			width: 20px;
-			height: 20px;
-			margin-right: 7px;
+}
+
+.sc-add-to-compare-box {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	border: 1px solid $color-grey-light-30;
+	background: $color-white;
+	border-radius: 6px;
+	overflow: hidden;
+	&__active {
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: calc(100% - 55px);
+			border: 2px solid #0091ea;
+			border-bottom: 0;
+			z-index: 2;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
 		}
 	}
 	&__compare-box-close {
@@ -59,36 +54,71 @@
 		cursor: pointer;
 		z-index: 2;
 	}
-	&__compare-input {
-		display: none;
-		opacity: 0;
-		// &:checked {
-		//   ~ .sc-casa-product-list {
-		//     &__compare-label {
-		//       background-color: red;
-		//     }
-		//   }
-		// }
-	}
-	&__btn-section {
-		&--with-compare-btn {
-			padding: 4px 0 0 0;
-			.sc-casa-product-list {
-				&__btn-wrap {
-					margin-bottom: 16px;
-				}
-			}
+}
+
+// full width Compare buttons
+.sc-add-to-compare-btn {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	color: $color-white;
+	&__add {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		background-color: $color-blue;
+		padding: 20px;
+		cursor: pointer;
+		&.hide {
+			display: none;
 		}
+		.icon-plus-round-white {
+			background-image: url("data:image/svg+xml,%3Csvg id='add-round-white' xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 1' y2='25' transform='translate(25 13)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E");
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 20px 20px;
+			width: 20px;
+			height: 20px;
+			margin-right: 7px;
+		}
+	}
+	&__remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		background-color: $color-blue;
+		padding: 20px;
+		cursor: pointer;
+		.icon-minus-round-white {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E%0A");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 20px 20px;
+			width: 20px;
+			height: 20px;
+			margin-right: 7px;
+		}
+		&.hide {
+			display: none;
+		}
+	}
+	&__text {
+		font-size: 14px;
+		font-weight: 400;
+		color: $color-white;
 	}
 }
 
-// card-compare-sticky
+// sc-casa-product-card-compare
 .sc-casa-product-card-compare {
 	position: sticky;
 	bottom: 0;
 	width: 100%;
 	z-index: 99;
 	display: none;
+
 	&__sh-toggle-btn-wrap {
 		position: absolute;
 		right: 0;
@@ -105,6 +135,11 @@
 		font-size: 14px;
 		line-height: 20px;
 		letter-spacing: 0.5px;
+		&--show-icon {
+			&::after {
+				transform: rotate(180deg);
+			}
+		}
 		&::after {
 			content: "";
 			background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='292.362px' height='292.362px' viewBox='0 0 292.362 292.362' style='enable-background:new 0 0 292.362 292.362;' xml:space='preserve'%3E%3Cg%3E%3Cpath fill='%23fff' d='M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279,290.548,72.998,286.935,69.377z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E");
@@ -120,11 +155,14 @@
 		}
 	}
 	&__compare-section-wrapper {
-		max-width: 1040px;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		margin: 0 auto;
+	}
+	&__selected-cards-wrapper {
+		display: flex;
+		align-items: center;
 	}
 	&__selected-cards {
 		display: flex;
@@ -135,7 +173,7 @@
 		text-align: center;
 		padding: 25px 0;
 		width: 100%;
-		&.hide-card-sticky {
+		&--hide-card {
 			height: 0px;
 			overflow: hidden;
 			padding: 0;
@@ -143,13 +181,14 @@
 	}
 	&__card-selection-error {
 		font-size: 16px;
-		color: #fff;
+		color: $color-red-1;
 		font-weight: 300;
 		max-width: 200px;
 		text-align: left;
 		display: inline-block;
 		line-height: 20px;
 		letter-spacing: 0.5px;
+		margin: 0 16px;
 	}
 	&__single-blank-card {
 		display: none;
@@ -175,32 +214,32 @@
 		line-height: 20px;
 		letter-spacing: 0.5px;
 	}
-}
-
-//Append HTML with class by Script single-compare-card
-.single-compare-card {
-	margin: 0 15px;
-	color: #fff;
-	font-size: 17px;
-	line-height: 18px;
-	text-align: left;
-	display: flex;
-	flex-direction: row-reverse;
-	align-items: center;
-	min-width: 0px;
-	transition: all 0.3s ease;
-	p {
+	//Append HTML with class by Script single-compare-card
+	&__single-compare-card {
+		margin-right: 16px;
+		color: #fff;
+		font-size: 16px;
+		text-align: left;
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		min-width: 0px;
+		transition: all 0.3s ease;
+		&--activated-card {
+			.sc-casa-product-card-compare {
+				&__single-compare-card-image {
+					border: none;
+				}
+			}
+		}
+	}
+	&__add-title {
 		font-size: 12px;
 		line-height: 18px;
 		padding-left: 15px;
 		max-width: 85px;
 	}
-	&.compare-activated-card {
-		.single-compare-card-image {
-			border: none;
-		}
-	}
-	.single-compare-card-image {
+	&__single-compare-card-image {
 		border: 1px dashed #fff;
 		border-radius: 10px;
 		position: relative;
@@ -208,38 +247,34 @@
 		min-width: 115px;
 		height: 66px;
 		margin: auto;
-		display: -webkit-box;
-		display: -ms-flexbox;
 		display: flex;
-		-webkit-box-align: center;
-		-ms-flex-align: center;
 		align-items: center;
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
 		justify-content: center;
 		color: #fff;
-		.remove-card {
-			position: absolute;
-			right: -12px;
-			top: -12px;
-			width: 20px;
-			height: 20px;
-			padding: 6px;
-			line-height: 7px;
-			border-radius: 50%;
-			background: #00a546;
-			text-align: center;
-			color: #fff;
-			font-size: 28px;
-			display: block;
-			cursor: pointer;
-			z-index: 2;
-		}
-		img {
-			border-radius: 5px;
-			width: 100%;
-			height: 100%;
-		}
+	}
+	&__remove-card {
+		position: absolute;
+		right: -12px;
+		top: -12px;
+		width: 20px;
+		height: 20px;
+		padding: 6px;
+		line-height: 7px;
+		border-radius: 50%;
+		background: #00a546;
+		text-align: center;
+		color: #fff;
+		font-size: 28px;
+		display: block;
+		cursor: pointer;
+		z-index: 2;
+	}
+	&__place-image {
+		border-radius: 5px;
+		width: 100%;
+		height: 100%;
+		object-position: center;
+		object-fit: cover;
 	}
 }
 
@@ -248,42 +283,6 @@
 }
 .show-card-info {
 	display: block;
-}
-
-// Append class by Script
-.compare-main {
-	&::before {
-		content: "";
-		position: absolute;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E%0A");
-		background-position: center center;
-		background-size: 20px 20px;
-		background-repeat: no-repeat;
-		display: block;
-		z-index: 9;
-		left: calc(50% - 52px);
-		top: 19px;
-		width: 20px;
-		height: 20px;
-		&:hover {
-			cursor: pointer;
-		}
-	}
-	&::after {
-		content: "Remove";
-		position: absolute;
-		width: 100%;
-		text-align: center;
-		left: 0;
-		right: 0;
-		background: #0091ea;
-		pointer-events: none;
-		top: 0;
-		bottom: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 }
 
 // sc-casa-product-compare-result-box
@@ -329,13 +328,21 @@
 				overflow: visible;
 				height: auto;
 			}
-			&__compare-btn {
-				display: none;
-			}
+		}
+		.sc-add-to-compare-btn {
+			display: none;
 		}
 	}
 	&__single-box-blank {
 		border: 1px solid #d4d4d4;
+		.c-button,
+		.c-button-small {
+			min-width: auto;
+			width: 100%;
+			padding: 8px 4px;
+			white-space: normal;
+			line-height: 1.4;
+		}
 	}
 	&__apply-now-btn {
 		display: block;
@@ -363,90 +370,8 @@
 	}
 }
 
-// min 681px
-@include breakpoint($bp--h-small-large) {
-	.sc-casa-product-list {
-	}
-}
-
-// min 1024px
-@include breakpoint($bp--h-desktop) {
-	.sc-casa-product-list {
-	}
-}
-
-// max 767
-@include breakpoint($bp--a-max-767) {
-	.sc-casa-product-card-compare {
-		&__compare-section {
-			padding: 16px;
-			flex-wrap: wrap;
-			align-content: space-around;
-		}
-		&__single-blank-card {
-			&.show {
-				display: none;
-			}
-		}
-		&__selected-cards {
-			width: 100%;
-			flex-wrap: wrap;
-			min-width: auto;
-		}
-		&__card-selection-error {
-			font-size: 12px;
-			transform: none;
-			top: -16px;
-			background-color: #000;
-			padding: 0 16px;
-			left: 0;
-			position: absolute;
-			max-width: none;
-			max-width: initial;
-			width: calc(100% - 70px);
-			display: flex;
-			align-items: center;
-		}
-		&__compare-action-btn.c-button {
-			min-width: auto;
-		}
-	}
-	.single-compare-card {
-		width: 100%;
-		float: left;
-		text-align: left;
-		margin: 0;
-		&.compare-activated-card {
-			display: block;
-		}
-		p {
-			margin-top: 5px;
-			max-width: none;
-			max-width: initial;
-			padding: 0;
-			float: left;
-		}
-		.single-compare-card-image {
-			float: left;
-			max-width: 25px;
-			min-width: 25px;
-			height: 25px;
-			border: none;
-			.remove-card {
-				position: static;
-				margin-left: 10px;
-			}
-			img {
-				display: none;
-			}
-		}
-	}
-}
-
 // max 1023.9px
 @include breakpoint($bp--h-mobile) {
-	.sc-casa-product-list {
-	}
 	.sc-casa-product-card-compare {
 		&__compare-section-wrapper {
 			align-items: flex-end;
@@ -487,4 +412,77 @@
 	}
 }
 
-
+// max 767
+@include breakpoint($bp--a-max-767) {
+	.sc-casa-product-card-compare {
+		&__compare-section {
+			// padding: 16px;
+			flex-wrap: wrap;
+			align-content: space-around;
+		}
+		&__single-blank-card {
+			&.show {
+				display: none;
+			}
+		}
+		&__selected-cards-wrapper {
+			flex-direction: column;
+		}
+		&__selected-cards {
+			width: 100%;
+			flex-wrap: wrap;
+			min-width: auto;
+		}
+		&__card-selection-error {
+			// font-size: 12px;
+			// transform: none;
+			// top: -16px;
+			// background-color: #000;
+			// padding: 0 16px;
+			// left: 0;
+			// position: absolute;
+			// max-width: none;
+			// max-width: initial;
+			// width: calc(100% - 70px);
+			// display: flex;
+			// align-items: center;
+			margin-left: 0;
+			max-width: 100%;
+		}
+		&__compare-action-btn.c-button {
+			min-width: auto;
+			padding: 12px 20px;
+			font-size: 12px;
+		}
+	}
+	.single-compare-card {
+		width: 100%;
+		float: left;
+		text-align: left;
+		margin: 0;
+		&.compare-activated-card {
+			display: block;
+		}
+		p {
+			margin-top: 5px;
+			max-width: 85px;
+			padding: 0;
+			float: left;
+		}
+		.single-compare-card-image {
+			float: left;
+			max-width: 25px;
+			min-width: 25px;
+			height: 25px;
+			border: none;
+			margin: 0;
+			.remove-card {
+				position: static;
+				margin-left: 10px;
+			}
+			img {
+				display: none;
+			}
+		}
+	}
+}
