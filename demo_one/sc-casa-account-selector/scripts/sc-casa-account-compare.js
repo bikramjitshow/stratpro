@@ -70,7 +70,7 @@ class AccountCompare {
           }
           document
             .querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
             )
             .forEach(function (elem) {
               elem.classList.toggle("show-card-info");
@@ -105,7 +105,7 @@ class AccountCompare {
               ".sc-casa-product-compare-result-box__single-box"
             );
             let childElements = singleCompareResultBox.querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
             );
             childElements.forEach(function (element) {
               element.classList.toggle("show-card-info");
@@ -149,7 +149,7 @@ class AccountCompare {
           if (total == 0) {
             document
               .querySelectorAll(
-                ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box"
+                ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
               )
               .forEach(function (elem) {
                 elem.classList.toggle("show-card-info");
@@ -176,7 +176,7 @@ class AccountCompare {
           }, 500);
           document
             .querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
             )
             .forEach(function (elem) {
               elem.classList.toggle("show-card-info");
@@ -198,7 +198,7 @@ class AccountCompare {
           }, 500);
           document
             .querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
             )
             .forEach(function (elem) {
               elem.classList.toggle("show-card-info");
@@ -470,7 +470,7 @@ class AccountCompare {
           .forEach((element) => {
             element.textContent = "";
           });
-        let applyNowBack2Element = document.querySelector(".sc-casa-product-compare-result-box__select-card-btn");
+        let applyNowBack2Element = document.querySelector(".sc-casa-product-compare-result-box__single-box-blank-2");
         cardClone.cloneNode(true);
         if (applyNowBack2Element && cardClone) {
           applyNowBack2Element.parentNode.insertBefore(
