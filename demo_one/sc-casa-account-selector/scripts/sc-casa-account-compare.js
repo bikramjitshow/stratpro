@@ -143,7 +143,7 @@ class AccountCompare {
       document.body.addEventListener("click", function (event) {
         if (event.target.classList.contains("sc-casa-product-card-compare__remove-card")) {
           let ids = event.target.dataset.identity.substr(11);
-          document.querySelector(`.clone-cards-${ids}`).remove();
+          document.querySelector(`.sc-casa-product-card-compare__clone-cards-${ids}`).remove();
           that.removeBlankCard(ids);
           let total = document.querySelectorAll(".sc-casa-product-card-compare__single-compare-card").length;
           if (total == 0) {
@@ -279,7 +279,7 @@ class AccountCompare {
           });
         });
       document
-        .querySelectorAll(`.clone-cards-${cardIds}`)
+        .querySelectorAll(`.sc-casa-product-card-compare__clone-cards-${cardIds}`)
         .forEach((element) => {
           element.remove();
         }); //Remove card divs from modal
@@ -432,7 +432,7 @@ class AccountCompare {
           .querySelector(`.card-compare-${cardIds} img`)
           .getAttribute("src");
 
-        let html = `<div class="sc-casa-product-card-compare__single-compare-card sc-casa-product-card-compare__single-compare-card--activated-card clone-cards-${cardIds}">
+        let html = `<div class="sc-casa-product-card-compare__single-compare-card sc-casa-product-card-compare__single-compare-card--activated-card sc-casa-product-card-compare__clone-cards-${cardIds}">
                       <p class="sc-casa-product-card-compare__add-title">${titleText}</p>
                       <div class="sc-casa-product-card-compare__single-compare-card-image">
                         <span class="sc-casa-product-card-compare__remove-card" data-identity="card-close-${cardIds}">-</span>
