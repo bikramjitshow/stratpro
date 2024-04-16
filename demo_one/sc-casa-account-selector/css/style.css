@@ -170,6 +170,8 @@
   right: 30px;
   z-index: 99;
   cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 .sc-casa-product-list__greywrapper {
   background-color: #fafafa;
@@ -309,22 +311,22 @@
   font-weight: 300;
 }
 .sc-casa-product-list__clip--blue {
-  background: #4579ff;
+  background: #0c77b9;
 }
 .sc-casa-product-list__clip--light-green {
-  background: #38d200;
+  background: #00756a;
 }
 .sc-casa-product-list__clip--dark-green {
-  background: #1f8845;
+  background: #007932;
 }
 .sc-casa-product-list__clip--yellow {
-  background: #ff9e0d;
+  background: #fcb01c;
 }
 .sc-casa-product-list__clip--teak {
-  background: #086788;
+  background: #0a294d;
 }
 .sc-casa-product-list__clip--dark-blue {
-  background: #0c77b9;
+  background: #141924;
 }
 .sc-casa-product-list__card-details {
   display: -webkit-box;
@@ -586,6 +588,7 @@
   .sc-casa-product-list .sc-btn--small {
     min-width: auto;
     padding: 0 16px !important;
+    font-size: 12px;
   }
 }
 .sc-casa-product-list {
@@ -672,15 +675,6 @@
 .sc-add-to-compare-btn__add.hide {
   display: none;
 }
-.sc-add-to-compare-btn__add .icon-plus-round-white {
-  background-image: url("data:image/svg+xml,%3Csvg id='add-round-white' xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 1' y2='25' transform='translate(25 13)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  width: 20px;
-  height: 20px;
-  margin-right: 7px;
-}
 .sc-add-to-compare-btn__remove {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -696,7 +690,19 @@
   padding: 20px;
   cursor: pointer;
 }
-.sc-add-to-compare-btn__remove .icon-minus-round-white {
+.sc-add-to-compare-btn__remove.hide {
+  display: none;
+}
+.sc-add-to-compare-btn__icon-plus {
+  background-image: url("data:image/svg+xml,%3Csvg id='add-round-white' xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 1' y2='25' transform='translate(25 13)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+}
+.sc-add-to-compare-btn__icon-minus {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle data-name='Ellipse 1' cx='25' cy='25' r='25' fill='%23fff'/%3E%3Cline data-name='Line 2' x1='25' transform='translate(12.5 25)' fill='none' stroke='%23006ea6' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='3'/%3E%3C/svg%3E%0A");
   background-position: center;
   background-repeat: no-repeat;
@@ -704,9 +710,6 @@
   width: 20px;
   height: 20px;
   margin-right: 7px;
-}
-.sc-add-to-compare-btn__remove.hide {
-  display: none;
 }
 .sc-add-to-compare-btn__text {
   font-size: 14px;
@@ -779,7 +782,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-width: 520px;
 }
 .sc-casa-product-card-compare__compare-section {
   background: #000000;
@@ -1007,11 +1009,31 @@
   border: 1px solid #fff;
 }
 
+.sc-tab-focus .sc-casa-product-list__category {
+  outline-offset: -2px;
+}
+.sc-tab-focus .sc-casa-product-card-compare__sh-toggle-btn:focus, .sc-tab-focus .sc-casa-product-card-compare__compare-action-btn:focus, .sc-tab-focus .sc-casa-product-card-compare__remove-card:focus {
+  outline-color: #ffffff;
+  outline-offset: 2px;
+}
+.sc-tab-focus .sc-add-to-compare-btn:focus {
+  outline-color: #ffffff;
+  outline-offset: -4px;
+}
+.sc-tab-focus .sc-add-to-compare-box__compare-box-close:focus {
+  outline-color: #008738;
+  outline-offset: 2px;
+}
+.sc-tab-focus .sc-casa-product-compare-result-box__close-btn:focus {
+  outline-color: #0c77b9;
+  outline-offset: 2px;
+}
+
 @media (max-width: 1023.98px) {
   .sc-casa-product-card-compare__compare-section-wrapper {
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .sc-casa-product-card-compare__card-selection-error {
     font-size: 14px;
@@ -1019,32 +1041,37 @@
     max-width: 100px;
   }
   .sc-casa-product-card-compare__selected-cards {
-    min-width: 410px;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
-  .single-compare-card {
-    display: block;
-    text-align: center;
-    margin: 0 15px;
-  }
-  .single-compare-card p {
-    min-height: 38px;
-    max-height: 55px;
+  .sc-casa-product-card-compare__single-compare-card {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
-    margin-bottom: 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    text-align: center;
+    margin: 0 15px;
+  }
+  .sc-casa-product-card-compare__add-title {
+    min-height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 4px;
     padding-left: 0;
     max-width: 120px;
   }
+  .sc-casa-product-compare-result-box__single-box {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
   .sc-casa-product-compare-result-box__single-box .sc-casa-product-list__card-box {
-    width: calc(50% + 32px);
-    margin: 0 8px 8px 8px;
+    width: calc(50% - 16px);
+    margin: 0 8px 16px 8px;
   }
 }
 @media (max-width: 767.98px) {
@@ -1062,14 +1089,19 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .sc-casa-product-card-compare__selected-cards {
     width: 100%;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     min-width: auto;
+    padding-right: 16px;
   }
   .sc-casa-product-card-compare__card-selection-error {
+    font-size: 12px;
     margin-left: 0;
     max-width: 100%;
   }
@@ -1078,22 +1110,33 @@
     padding: 12px 20px;
     font-size: 12px;
   }
-  .single-compare-card {
+  .sc-casa-product-card-compare__single-compare-card {
     width: 100%;
     float: left;
     text-align: left;
     margin: 0;
   }
-  .single-compare-card.compare-activated-card {
-    display: block;
+  .sc-casa-product-card-compare__single-compare-card--activated-card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-bottom: 8px;
   }
-  .single-compare-card p {
-    margin-top: 5px;
-    max-width: 85px;
+  .sc-casa-product-card-compare__add-title {
+    margin: 0;
+    max-width: 100%;
     padding: 0;
     float: left;
+    min-height: auto;
   }
-  .single-compare-card .single-compare-card-image {
+  .sc-casa-product-card-compare__single-compare-card-image {
     float: left;
     max-width: 25px;
     min-width: 25px;
@@ -1101,12 +1144,22 @@
     border: none;
     margin: 0;
   }
-  .single-compare-card .single-compare-card-image .remove-card {
+  .sc-casa-product-card-compare__remove-card {
     position: static;
     margin-left: 10px;
   }
-  .single-compare-card .single-compare-card-image img {
+  .sc-casa-product-card-compare__place-image {
     display: none;
+  }
+  .sc-casa-product-compare-result-box__select-card-btn-wrap {
+    padding: 12px;
+  }
+  .sc-casa-product-compare-result-box__single-box-blank .c-button,
+  .sc-casa-product-compare-result-box__single-box-blank .c-button-small {
+    padding: 8px 4px;
+    white-space: normal;
+    font-size: 12px;
+    line-height: 1.2;
   }
 }
 html {

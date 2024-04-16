@@ -9,7 +9,6 @@ class AccountCompare {
   init() {
     const that = this;
     let device = that.numberOfCards(AccountCompare.width); //Detect which types of device is using
-
     document.addEventListener("DOMContentLoaded", function () {
       // Initialize variables for labels
       let cardComparator = document.querySelector(".sc-add-to-compare");
@@ -36,6 +35,14 @@ class AccountCompare {
         comparebtn.addEventListener("click", (event) => {
           event.preventDefault();
           const dataFor = comparebtn.getAttribute("data-for");
+          const comparebtntexts = comparebtn.querySelectorAll(
+            ".sc-add-to-compare-btn__text"
+          );
+          comparebtntexts.forEach((text) => {
+            if (text.parentNode.classList.contains("hide")) {
+              comparebtn.title = text.textContent;
+            }
+          });
           that.removeBlankCard(dataFor);
         });
       });
@@ -59,7 +66,9 @@ class AccountCompare {
             .forEach(function (elem) {
               elem.style.display = "none";
             });
-          let totalCard = document.querySelectorAll(".sc-add-to-compare-btn--compare-main").length;
+          let totalCard = document.querySelectorAll(
+            ".sc-add-to-compare-btn--compare-main"
+          ).length;
           if (totalCard == 0) {
             return;
           } else if (totalCard == 1) {
@@ -70,7 +79,7 @@ class AccountCompare {
           }
           document
             .querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box "
             )
             .forEach(function (elem) {
               elem.classList.toggle("show-card-info");
@@ -99,13 +108,15 @@ class AccountCompare {
             event.target.parentNode.getAttribute("data-remove-for");
           event.target.parentNode.remove();
           that.removeBlankCard(popup_ids);
-          let total = document.querySelectorAll(".sc-casa-product-card-compare__single-compare-card").length;
+          let total = document.querySelectorAll(
+            ".sc-casa-product-card-compare__single-compare-card"
+          ).length;
           if (total == 0) {
             let singleCompareResultBox = document.querySelector(
               ".sc-casa-product-compare-result-box__single-box"
             );
             let childElements = singleCompareResultBox.querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box "
             );
             childElements.forEach(function (element) {
               element.classList.toggle("show-card-info");
@@ -124,32 +135,36 @@ class AccountCompare {
             .classList.toggle(
               "sc-casa-product-card-compare__compare-section--hide-card"
             );
-          document
-            .querySelector(".sc-casa-product-card-compare__sh-toggle-btn")
-            .classList.toggle(
-              "sc-casa-product-card-compare__sh-toggle-btn--show-icon"
-            );
-          document.querySelector(
+          const togglebtn = document.querySelector(
             ".sc-casa-product-card-compare__sh-toggle-btn"
-          ).textContent =
-            document.querySelector(
-              ".sc-casa-product-card-compare__sh-toggle-btn"
-            ).textContent == showLabel
-              ? hideLabel
-              : showLabel;
+          );
+          togglebtn.classList.toggle(
+            "sc-casa-product-card-compare__sh-toggle-btn--show-icon"
+          );
+          togglebtn.textContent =
+            togglebtn.textContent == showLabel ? hideLabel : showLabel;
+          togglebtn.title = togglebtn.textContent;
         });
 
       // Method for remove cards sticky section card
       document.body.addEventListener("click", function (event) {
-        if (event.target.classList.contains("sc-casa-product-card-compare__remove-card")) {
+        if (
+          event.target.classList.contains(
+            "sc-casa-product-card-compare__remove-card"
+          )
+        ) {
           let ids = event.target.dataset.identity.substr(11);
-          document.querySelector(`.sc-casa-product-card-compare__clone-cards-${ids}`).remove();
+          document
+            .querySelector(`.sc-casa-product-card-compare__clone-cards-${ids}`)
+            .remove();
           that.removeBlankCard(ids);
-          let total = document.querySelectorAll(".sc-casa-product-card-compare__single-compare-card").length;
+          let total = document.querySelectorAll(
+            ".sc-casa-product-card-compare__single-compare-card"
+          ).length;
           if (total == 0) {
             document
               .querySelectorAll(
-                ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
+                ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box "
               )
               .forEach(function (elem) {
                 elem.classList.toggle("show-card-info");
@@ -162,7 +177,9 @@ class AccountCompare {
       // If Click Outside close the cards modal
       window.addEventListener("click", function (event) {
         if (
-          event.target.classList.contains("sc-casa-product-compare-result-box__select-card-btn") ||
+          event.target.classList.contains(
+            "sc-casa-product-compare-result-box__select-card-btn"
+          ) ||
           event.target.classList.contains(
             "sc-casa-product-compare-result-box__inner-relative"
           )
@@ -176,7 +193,7 @@ class AccountCompare {
           }, 500);
           document
             .querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box "
             )
             .forEach(function (elem) {
               elem.classList.toggle("show-card-info");
@@ -198,7 +215,7 @@ class AccountCompare {
           }, 500);
           document
             .querySelectorAll(
-              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box .show-promotioin"
+              ".sc-casa-product-compare-result-box__single-box .sc-add-to-compare-box__compare-box-close, .sc-casa-product-compare-result-box__single-box .compare-result-grid, .sc-casa-product-compare-result-box__single-box "
             )
             .forEach(function (elem) {
               elem.classList.toggle("show-card-info");
@@ -248,7 +265,9 @@ class AccountCompare {
     let hideLabel = cardComparator.dataset.hideLabel
       ? cardComparator.dataset.hideLabel
       : "Hide";
-    let total = document.querySelectorAll(".sc-casa-product-card-compare__single-compare-card").length;
+    let total = document.querySelectorAll(
+      ".sc-casa-product-card-compare__single-compare-card"
+    ).length;
 
     //Checking cards are selected or not
     if (status) {
@@ -272,14 +291,16 @@ class AccountCompare {
         .querySelectorAll(".sc-casa-product-compare-result-box__single-box")
         .forEach((parentElement) => {
           let childElements = parentElement.querySelectorAll(
-            `.card-compare-${cardIds}`
+            `.sc-add-to-compare-box--compare-${cardIds}`
           );
           childElements.forEach((child) => {
             parentElement.removeChild(child);
           });
         });
       document
-        .querySelectorAll(`.sc-casa-product-card-compare__clone-cards-${cardIds}`)
+        .querySelectorAll(
+          `.sc-casa-product-card-compare__clone-cards-${cardIds}`
+        )
         .forEach((element) => {
           element.remove();
         }); //Remove card divs from modal
@@ -291,9 +312,11 @@ class AccountCompare {
         });
 
       //Get total selected cards
-      let total = document.querySelectorAll(".sc-casa-product-card-compare__single-compare-card").length;
+      let total = document.querySelectorAll(
+        ".sc-casa-product-card-compare__single-compare-card"
+      ).length;
       document
-        .querySelector(`.card-compare-${cardIds}`)
+        .querySelector(`.sc-add-to-compare-box--compare-${cardIds}`)
         .classList.toggle("sc-add-to-compare-box__active");
 
       if (total == 0) {
@@ -340,7 +363,9 @@ class AccountCompare {
             addBlankCard.classList.add("show");
           }
           total++;
-          let applyNowBack = document.querySelector(`.sc-casa-product-compare-result-box__single-box-blank-${total}`);
+          let applyNowBack = document.querySelector(
+            `.sc-casa-product-compare-result-box__single-box-blank-${total}`
+          );
           if (applyNowBack) {
             applyNowBack.style.display = "block";
           }
@@ -406,14 +431,24 @@ class AccountCompare {
 
         //Clone selected card divs for Compare Cards Sticky
         let cardClone;
-        let cardElement = document.querySelector(`.card-compare-${cardIds}`);
+        let cardElement = document.querySelector(
+          `.sc-add-to-compare-box--compare-${cardIds}`
+        );
         if (cardElement) {
+          let cardtext = cardElement
+            .querySelector(".sc-add-to-compare-box__title")
+            .textContent.trim();
+          let removecardbtn = cardElement.querySelector(
+            ".sc-add-to-compare-box__compare-box-close"
+          );
+          removecardbtn.title = `Remove-${cardtext}`;
+          removecardbtn.setAttribute("aria-label", removecardbtn.title);
           cardElement.setAttribute("data-remove-for", cardIds);
           cardClone = cardElement.cloneNode(true);
         }
         //Active/deactivate selected cards
         document
-          .querySelector(`.card-compare-${cardIds}`)
+          .querySelector(`.sc-add-to-compare-box--compare-${cardIds}`)
           .classList.toggle("sc-add-to-compare-box__active");
         const datafor = document.querySelector(`[data-for="${cardIds}"]`);
         datafor.classList.add("sc-add-to-compare-btn--compare-main");
@@ -425,17 +460,19 @@ class AccountCompare {
         const addBtn = datafor.querySelector(".sc-add-to-compare-btn__add");
         addBtn.classList.add("hide");
 
-        let titleText = document.querySelector(
-          `.card-compare-${cardIds} .sc-add-to-compare-box__title`
-        ).textContent;
+        let titleText = document
+          .querySelector(
+            `.sc-add-to-compare-box--compare-${cardIds} .sc-add-to-compare-box__title`
+          )
+          .textContent.trim();
         let imgSrc = document
-          .querySelector(`.card-compare-${cardIds} img`)
+          .querySelector(`.sc-add-to-compare-box--compare-${cardIds} img`)
           .getAttribute("src");
 
         let html = `<div class="sc-casa-product-card-compare__single-compare-card sc-casa-product-card-compare__single-compare-card--activated-card sc-casa-product-card-compare__clone-cards-${cardIds}">
                       <p class="sc-casa-product-card-compare__add-title">${titleText}</p>
                       <div class="sc-casa-product-card-compare__single-compare-card-image">
-                        <span class="sc-casa-product-card-compare__remove-card" data-identity="card-close-${cardIds}">-</span>
+                        <a href="#null" class="sc-casa-product-card-compare__remove-card" data-identity="card-close-${cardIds}" title="remove-${titleText}" aria-label="Remove-${titleText}">-</a>
                         <img class="sc-casa-product-card-compare__place-image" src="${imgSrc}" alt="">
                       </div>
                     </div>`;
@@ -456,7 +493,9 @@ class AccountCompare {
           });
         while (total < maxCards - 1) {
           document
-            .querySelectorAll(`.sc-casa-product-card-compare__add-blank-card-${total}`)
+            .querySelectorAll(
+              `.sc-casa-product-card-compare__add-blank-card-${total}`
+            )
             .forEach((element) => {
               element.classList.add("show");
             }); //Show add more card box
@@ -470,7 +509,9 @@ class AccountCompare {
           .forEach((element) => {
             element.textContent = "";
           });
-        let applyNowBack2Element = document.querySelector(".sc-casa-product-compare-result-box__single-box-blank-2");
+        let applyNowBack2Element = document.querySelector(
+          ".sc-casa-product-compare-result-box__single-box-blank-2"
+        );
         cardClone.cloneNode(true);
         if (applyNowBack2Element && cardClone) {
           applyNowBack2Element.parentNode.insertBefore(
@@ -492,15 +533,17 @@ class AccountCompare {
    * return 2 if browse from mobile, else return 3
    */
   numberOfCards(deviceWidth) {
-    // if (deviceWidth < 1024) {
-    //   return 2; //Mobile support 2 cards
-    // }
-    // return 3; //desktop, tabs, etc support 3 cards
-
     let cardComparator = document.querySelector(".sc-add-to-compare");
-    AccountCompare.allowedcompare = cardComparator.getAttribute("data-allowed-compare") || 3;
-    console.log(AccountCompare.allowedcompare)
+    if (deviceWidth < 1024) {
+      AccountCompare.allowedcompare =
+        cardComparator.getAttribute("data-allowed-compare-mobile") || 2;
+      return AccountCompare.allowedcompare;
+      //Mobile support 2 cards
+    }
+    AccountCompare.allowedcompare =
+      cardComparator.getAttribute("data-allowed-compare-desktop") || 3;
     return AccountCompare.allowedcompare;
+    //desktop, tabs, etc support 3 cards
   }
 
   /**
@@ -587,7 +630,7 @@ class AccountCompare {
 }
 
 // Export an instance of AccountSelector class
-const instance = new AccountCompare();
-instance.init();
+const AccountCompareInstance = new AccountCompare();
+AccountCompareInstance.init();
 
-export default instance;
+// export default instance;

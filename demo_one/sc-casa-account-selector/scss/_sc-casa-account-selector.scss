@@ -28,6 +28,8 @@
     right: 30px;
     z-index: 99;
     cursor: pointer;
+    background-color: $color-white;
+    border-radius: 50%;
   }
 
   // list__greywrapper
@@ -151,22 +153,22 @@
     color: #fff;
     font-weight: 300;
     &--blue {
-      background: #4579ff;
+      background: $color-blue;
     }
     &--light-green {
-      background: #38d200;
+      background: $color-green-2;
     }
     &--dark-green {
-      background: #1f8845;
+      background: $color-green-dark;
     }
     &--yellow {
-      background: #ff9e0d;
+      background: $color-yellow;
     }
     &--teak {
-      background: #086788;
+      background: $color-blue-dark-6;
     }
     &--dark-blue {
-      background: $color-blue;
+      background: $color-blue-dark;
     }
   }
 
@@ -401,6 +403,7 @@
       &--small {
         min-width: auto;
         padding: 0 16px !important;
+        font-size: 12px;
       }
     }
   }

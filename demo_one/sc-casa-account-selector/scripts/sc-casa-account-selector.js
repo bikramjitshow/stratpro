@@ -157,7 +157,7 @@ class AccountSelector {
     );
     // Hide all product boxes
     const cols = document.querySelectorAll(".sc-casa-product-list__col");
-    if(cols.length) {
+    if (cols.length) {
       cols.forEach(function (box) {
         box.style.display = "none";
       });
@@ -269,7 +269,7 @@ class AccountSelector {
 }
 
 // Export an instance of AccountSelector class
-const instance = new AccountSelector();
-instance.init();
+const AccountSelectorInstance = new AccountSelector();
+AccountSelectorInstance.init();
 
-export default instance;
+// export default AccountSelectorInstance;

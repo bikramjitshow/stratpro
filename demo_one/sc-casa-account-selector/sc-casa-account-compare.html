@@ -141,12 +141,12 @@
   <script>
     var baseURL = "https:\/\/av.sc.com\/assets\/global";
   </script>
-  <link href='//av.sc.com/assets/global/fonts/sc-sans-web-regular.woff2' rel='preload' as='font'
+  <link href='https://av.sc.com/assets/global/fonts/sc-sans-web-regular.woff2' rel='preload' as='font'
     crossorigin='anonymous' />
-  <link href='//av.sc.com/assets/global/fonts/sc-sans-web-light.woff2' rel='preload' as='font'
+  <link href='https://av.sc.com/assets/global/fonts/sc-sans-web-light.woff2' rel='preload' as='font'
     crossorigin='anonymous' />
-  <link href='//av.sc.com/assets/global/fonts/sc-sans-web-bold.woff2' rel='preload' as='font' crossorigin='anonymous' />
-  <link href='//av.sc.com/assets/global/fonts/sc-sans-web-thin.woff2' rel='preload' as='font' crossorigin='anonymous' />
+  <link href='https://av.sc.com/assets/global/fonts/sc-sans-web-bold.woff2' rel='preload' as='font' crossorigin='anonymous' />
+  <link href='https://av.sc.com/assets/global/fonts/sc-sans-web-thin.woff2' rel='preload' as='font' crossorigin='anonymous' />
   <link rel="icon" href="https://av.sc.com/sg/content/images/content/images/cropped-512x512-1-150x150.png"
     sizes="32x32" />
   <link rel="icon" href="https://av.sc.com/sg/content/images/content/images/cropped-512x512-1-200x200.png"
@@ -167,19 +167,17 @@
 <body class="page-template-default page page-id-162617 page-parent" data-catch="show-overlay"
   data-allowed-params="https://av.sc.com/sg/data/whitelist-parameter/allowable/all.json" data-page-ga=1>
 
-
-
-
   <!-- 
     Account Compare
     ** data-allowed-compare="value" value should be > 1 **
+    ** data-allowed-compare="value" value should be == 2 for mobile <1024px **
   -->
   <div class="sc-casa-product-list sc-add-to-compare" id="sc-lb-module-casa-categories" data-limit="6"
     data-post-status="edit-draft-status" data-post-status-label="Edit Draft" data-compare-cards-label='{
       "minrequireCompare": "Please select minimum 2 cards to compare",
       "maxrequireCompare": "You cannot select more than"
     }
-    ' data-cardslabel="cards" data-allowed-compare="3">
+    ' data-cardslabel="cards" data-allowed-compare-desktop="3" data-allowed-compare-mobile="2">
     <div class="sc-content-wrapper">
       <!-- list__head -->
       <div class="sc-casa-product-list__head">
@@ -215,7 +213,7 @@
               <div class="splide__track">
                 <div class="splide__list sc-casa-product-list__category-wrap">
                   <div class="splide__slide">
-                    <a href="#null" title="All Accounts"
+                    <a href="#null" title="Featured Products"
                       class="sc-casa-product-list__category sc-casa-product-list__category--tag-color sc-casa-product-list__category--tag-color--active"
                       data-filter="all-accounts">
                       <div class="sc-casa-product-list__category-text">
@@ -291,8 +289,8 @@
           <!-- list__row -->
           <div class="sc-casa-product-list__row">
             <div class="sc-casa-product-list__col" data-tags="everyday-use,savings">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-1">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-1">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -346,13 +344,13 @@
                     <a href="https://www.sc.com/sg/save/current-accounts/bonussaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-bsaver-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="1" title="compare-btn-1">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="1" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -360,8 +358,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="everyday-use,savings">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-2">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-2">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -409,13 +407,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/jumpstart/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-jumpstart-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="2" title="compare-btn-2">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="2" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -423,8 +421,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="everyday-use">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-3">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-3">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -472,13 +470,13 @@
                     <a href="https://www.sc.com/sg/save/current-accounts/supersalary/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-supersal-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="3" title="compare-btn-3">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="3" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -486,8 +484,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="everyday-use">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-4">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-4">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Everyday Use</span>
@@ -537,13 +535,13 @@
                     <a href="https://www.sc.com/sg/save/current-accounts/cheque-and-save-account/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-chequensave-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="4" title="compare-btn-4">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="4" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -551,8 +549,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="savings">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-5">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-5">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-green">Savings</span>
@@ -603,13 +601,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/esaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-esaver-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="5" title="compare-btn-5">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="5" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -617,8 +615,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="savings">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-6">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-6">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-green">Savings</span>
@@ -662,13 +660,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/esaver-kids/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-esaverkids-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="6" title="compare-btn-6">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="6" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -676,8 +674,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="savings">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-7">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-7">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-green">Savings</span>
@@ -725,13 +723,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/myway/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-myway-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="7" title="compare-btn-7">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="7" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -739,8 +737,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="wealth-building">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-8">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-8">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--teak">Wealth Building</span>
@@ -793,13 +791,13 @@
                     <a href="https://www.sc.com/sg/save/current-accounts/wealth-saver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-wealthsaver-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="8" title="compare-btn-8">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="8" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -807,8 +805,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="foreign-currency">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-9">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-9">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Foreign
@@ -862,13 +860,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/usdsaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-usdsaver-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="9" title="compare-btn-9">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="9" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -876,8 +874,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="foreign-currency">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-10">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-10">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--dark-blue">Foreign
@@ -925,13 +923,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/fcysaver/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-fcysaver-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="10" title="compare-btn-10">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="10" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -939,8 +937,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="time-deposit, everyday-use">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-11">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-11">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--light-green">Time Deposit</span>
@@ -997,13 +995,13 @@
                     <a href="https://www.sc.com/sg/save/time-deposits/singapore-dollar-time-deposit/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-sgd_td-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="11" title="compare-btn-11">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="11" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1011,8 +1009,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="time-deposit">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-12">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-12">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--light-green">Time Deposit</span>
@@ -1058,13 +1056,13 @@
                     <a href="https://www.sc.com/sg/save/time-deposits/foreign-currency-time-deposits/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-fcy_td-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="12" title="compare-btn-12">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="12" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1072,8 +1070,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="time-deposit">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-13">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-13">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--light-green">Time Deposit</span>
@@ -1119,13 +1117,13 @@
                     <a href="https://www.sc.com/sg/save/time-deposits/sustainable-time-deposit/?Aggregator_instance=CASASelectorLearn&intcid=web_listing-sc_com_CASASelectorLearn-casaselector-staticmedia_others-sng-sc_com_CASASelector-sus_td-acquisition-sc_com_CASASelector-sg-en"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="13" title="compare-btn-13">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="13" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1133,8 +1131,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="other-products">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-14">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-14">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1153,13 +1151,13 @@
                     <a href="https://www.sc.com/sg/save/current-accounts/xtrasaver/"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="14" title="compare-btn-14">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="14" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1167,8 +1165,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="other-products">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-15">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-15">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1189,13 +1187,13 @@
                     <a href="https://www.sc.com/sg/save/current-accounts/usd-high-account/"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="15" title="compare-btn-15">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="15" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1203,8 +1201,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="other-products">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-16">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-16">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1223,13 +1221,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/unlimitedsaver/"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="16" title="compare-btn-16">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="16" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1237,8 +1235,8 @@
               </div>
             </div>
             <div class="sc-casa-product-list__col" data-tags="other-products">
-              <div class="sc-casa-product-list__card-box sc-add-to-compare-box card-compare-17">
-                <div class="sc-add-to-compare-box__compare-box-close hide-card-info">-</div>
+              <div class="sc-casa-product-list__card-box sc-add-to-compare-box sc-add-to-compare-box--compare-17">
+                <a href="#null" class="sc-add-to-compare-box__compare-box-close hide-card-info" title="Remove Result card">-</a>
                 <div class="sc-casa-product-list__content-section">
                   <div class="sc-casa-product-list__card-image">
                     <span class="sc-casa-product-list__clip sc-casa-product-list__clip--yellow">Other Products</span>
@@ -1278,13 +1276,13 @@
                     <a href="https://www.sc.com/sg/save/savings-accounts/basic-bank-account/"
                       class="sc-casa-product-list__learn-more" title="Learn more">Learn More</a>
                   </div>
-                  <a href="#null" class="sc-add-to-compare-btn" data-for="17" title="compare-btn-17">
+                  <a href="#null" class="sc-add-to-compare-btn" data-for="17" title="Add to compare">
                     <div class="sc-add-to-compare-btn__add">
-                      <div class="icon-plus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-plus"></div>
                       <span class="sc-add-to-compare-btn__text">Add to compare</span>
                     </div>
                     <div class="sc-add-to-compare-btn__remove hide">
-                      <div class="icon-minus-round-white"></div>
+                      <div class="sc-add-to-compare-btn__icon-minus"></div>
                       <span class="sc-add-to-compare-btn__text">Remove</span>
                     </div>
                   </a>
@@ -1293,8 +1291,8 @@
             </div>
           </div>
 
-          <!-- list__load-more -->
-          <a href="#null" title="Load More" class="sc-casa-product-list__load-more">
+          <!-- list View More -->
+          <a href="#null" title="View More" class="sc-casa-product-list__load-more">
             <div class="sc-casa-product-list__load-more-text">
               View More
               <div class="sc-casa-product-list__load-more-icon"></div>
@@ -1307,7 +1305,7 @@
     <!-- sc casa product card compare  -->
     <div class="sc-casa-product-card-compare" data-show-label="Show" data-hide-label="Hide">
       <div class="sc-casa-product-card-compare__sh-toggle-btn-wrap">
-        <a href="#null" class="sc-casa-product-card-compare__sh-toggle-btn" title="sh-toggle-btn">Hide
+        <a href="#null" class="sc-casa-product-card-compare__sh-toggle-btn" title="Hide">Hide
         </a>
       </div>
       <div class="sc-casa-product-card-compare__compare-section">
@@ -1316,24 +1314,23 @@
             <div class="sc-casa-product-card-compare__selected-cards">
               <div
                 class="sc-casa-product-card-compare__single-blank-card sc-casa-product-card-compare__add-blank-card-0">
-                <p class="sc-casa-product-card-compare__add-title"></p>
-                <div class="sc-casa-product-card-compare__add-more">Add more cards</div>
+                <!-- <p class="sc-casa-product-card-compare__add-title"></p> -->
+                <p class="sc-casa-product-card-compare__add-more">Add more cards</p>
               </div>
               <div
                 class="sc-casa-product-card-compare__single-blank-card sc-casa-product-card-compare__add-blank-card-1">
-                <p class="sc-casa-product-card-compare__add-title"></p>
-                <div class="sc-casa-product-card-compare__add-more">Add more cards</div>
+                <!-- <p class="sc-casa-product-card-compare__add-title"></p> -->
+                <p class="sc-casa-product-card-compare__add-more">Add more cards</p>
               </div>
               <div
                 class="sc-casa-product-card-compare__single-blank-card sc-casa-product-card-compare__add-blank-card-2">
-                <p class="sc-casa-product-card-compare__add-title"></p>
-                <div class="sc-casa-product-card-compare__add-more">Add more cards</div>
+                <!-- <p class="sc-casa-product-card-compare__add-title"></p> -->
+                <p class="sc-casa-product-card-compare__add-more">Add more cards</p>
               </div>
             </div>
             <p class="sc-casa-product-card-compare__card-selection-error"></p>
           </div>
-          <button
-            class="sc-casa-product-card-compare__compare-action-btn c-button is-theme-solid-green-hollow-white rounded-button">Compare</button>
+          <button type="button" aria-label="Compare selected cards button" class="sc-casa-product-card-compare__compare-action-btn c-button is-theme-solid-green-hollow-white rounded-button">Compare</button>
         </div>
       </div>
     </div>
@@ -1342,7 +1339,7 @@
     <div class="sc-casa-product-compare-result-box">
       <div class="sc-casa-product-compare-result-box__inner-relative">
         <div class="sc-casa-product-compare-result-box__inner">
-          <div class="sc-casa-product-compare-result-box__close-btn">
+          <a href="#null" class="sc-casa-product-compare-result-box__close-btn" title="Close compare result popup">
             <div class="icon hover-icon icon-close" style="background-image: none;">
               <svg xmlns="http://www.w3.org/2000/svg" width="10.037" height="10.037" viewBox="0 0 10.037 10.037">
                 <path fill="#fff"
@@ -1350,7 +1347,7 @@
                 </path>
               </svg>
             </div>
-          </div>
+          </a>
           <div class="sc-casa-product-compare-result-box__compare-title-box">
             <p class="sc-casa-product-compare-result-box__compare-title">Compare and choose the best credit cards</p>
           </div>
@@ -1360,7 +1357,7 @@
               data-order="2">
               <div class="sc-casa-product-compare-result-box__select-card-btn-wrap">
                 <a href="#" class="sc-casa-product-compare-result-box__select-card-btn c-button is-theme-solid-green-hollow-white rounded-button"
-                  title="select-card-btn-2">Select Card</a>
+                  title="Select card button 2">Select Card</a>
               </div>
             </div>
             <div
@@ -1368,7 +1365,7 @@
               data-order="3">
               <div class="sc-casa-product-compare-result-box__select-card-btn-wrap">
                 <a href="#" class="sc-casa-product-compare-result-box__select-card-btn c-button is-theme-solid-green-hollow-white rounded-button"
-                  title="select-card-btn-3">Select Card</a>
+                  title="Select card button 3">Select Card</a>
               </div>
             </div>
           </div>
@@ -1377,26 +1374,8 @@
     </div>
   </div>
   <!-- End Account Compare -->
-
-
-  <script type="module" src="./scripts/sc-casa-account-selector.js"></script>
-  <script type="module" src="./scripts/sc-casa-account-compare.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <script src="./scripts/sc-casa-account-selector.js"></script>
+  <script src="./scripts/sc-casa-account-compare.js"></script>
 
   <script src='https://av.sc.com/assets/global/js/analytics/cross-domain-tracking.min.js?ver=d55d85c'
     id='organisation-script-js'></script>
