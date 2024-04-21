@@ -2,65 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Absolutely Positioned Element with Dynamic Height</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Effect</title>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
 
-        .container {
-            position: relative;
-            /* width: 100%;
-            min-height: 100vh;
-            background-color: #f0f0f0; */
-        }
+    .parallax-container {
+      height: 100vh;
+      /* Adjust height as needed */
+      overflow: hidden;
+      position: relative;
+    }
 
-        .absolute-element {
-            position: absolute;
-            /* top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); */
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .dynamic-content {
-            min-height: 100px;
-            /* Minimum height for the dynamic content */
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    .parallax-img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateZ(0);
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="absolute-element">
-            <div class="dynamic-content">
-                <!-- Your dynamic content goes here -->
-                This is a dynamic content block.
-                <br>
-                It can have variable height based on its content.
-            </div>
-        </div>
-        <div class="dynamic-content">
-            <!-- Your dynamic content goes here -->
-            This is a dynamic content block.
-            <br>
-            It can have variable height based on its content.
-        </div>
-        <div class="dynamic-content">
-            <!-- Your dynamic content goes here -->
-            This is a dynamic content block.
-            <br>
-            It can have variable height based on its content.
-        </div>
-    </div>
+  <div class="parallax-container">
+    <img src="https://www.revolut.com/_next/image-asset/w:1080/q:90/https%3A%2F%2Fassets.revolut.com%2Fpublished-assets-v3%2Fd96dbd85-2cfa-4d97-93ad-78e0ded6d882%2Fe5bf0f73-c3cb-4025-8abc-b00252f358dd.png" alt="Parallax Image" class="parallax-img" data-speed="0.5">
+  </div>
+  <script>
+    window.addEventListener('scroll', function() {
+  let scrollPosition = window.scrollY;
+  let parallaxElements = document.querySelectorAll('.parallax-img');
+
+  parallaxElements.forEach(function(element) {
+    let speed = parseFloat(element.getAttribute('data-speed'));
+    element.style.transform = 'translateY(' + scrollPosition * speed + 'px)';
+  });
+});
+  </script>
 </body>
 
 </html>

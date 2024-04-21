@@ -8,6 +8,7 @@ class ssgTabs {
         window.innerWidth ||
         document.documentElement.clientWidth ||
         document.body.clientWidth;
+
       const firstTab = document.querySelector(
         ".sc-ssg-slider__mo-tab-step-item"
       );
@@ -52,6 +53,23 @@ class ssgTabs {
         });
       }
       that.setHeightHeadcontent();
+    });
+
+    window.addEventListener("scroll", function () {
+      console.log("scroll1");
+      requestAnimationFrame(() => that.parallaxScroll());
+    });
+  }
+
+  parallaxScroll() {
+    console.log("scroll 2");
+    let scrollPosition = window.scrollY;
+    let parallaxElements = document.querySelectorAll(".sc-ssg-slider__bg-img");
+
+    parallaxElements.forEach(function (element) {
+      let speed = parseFloat(element.getAttribute("data-speed"));
+      console.log({ speed });
+      element.style.transform = "translateY(" + scrollPosition * speed + "px)";
     });
   }
 

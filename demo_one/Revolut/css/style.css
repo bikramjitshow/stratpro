@@ -164,6 +164,8 @@
   color: transparent;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
 }
 .sc-ssg-slider__bg-item {
   -webkit-transition: all 0.6s ease;
@@ -264,7 +266,9 @@
   max-width: 200px;
   height: 42px;
   border: 2px solid #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(244, 244, 244, 0.6);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   color: #ffffff;
   font-weight: 500;
   border-radius: 30px;
@@ -277,25 +281,28 @@
   cursor: pointer;
 }
 .sc-ssg-slider__mo-tab-step-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(244, 244, 244, 0.5);
 }
 .sc-ssg-slider__mo-tab-step-item::before {
   position: absolute;
   content: "";
   inset: 0px;
   border-radius: 30px;
-  opacity: 0.15;
+  opacity: 1;
   -webkit-transition: none 0s ease 0s;
   transition: none 0s ease 0s;
   background-size: 0px 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000));
-  background-image: linear-gradient(#000, #000);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dfe3e7), to(#dfe3e7));
+  background-image: linear-gradient(#dfe3e7, #dfe3e7);
   background-repeat: no-repeat;
-  z-index: 1;
+  z-index: -1;
 }
 .sc-ssg-slider__mo-tab-step-item--active {
   background-color: #ffffff;
   color: #000000;
+}
+.sc-ssg-slider__mo-tab-step-item--active:hover {
+  background-color: rgba(244, 244, 244, 0.9);
 }
 .sc-ssg-slider__mo-tab-step-item--active::before {
   -webkit-transition: background-size 8000ms linear 0s;
@@ -408,6 +415,7 @@
   .sc-ssg-slider__main-title {
     font-size: 40px;
     text-align: center;
+    max-width: 800px;
   }
   .sc-ssg-slider__main-description {
     font-size: 14px;
@@ -436,6 +444,7 @@
   .sc-ssg-slider__main-title {
     font-size: 42px;
     text-align: center;
+    max-width: 700px;
   }
   .sc-ssg-slider__main-description {
     font-size: 18px;
