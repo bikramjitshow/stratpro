@@ -161,7 +161,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: calc(100vh - 96px);
+  min-height: calc(100vh - 96px);
 }
 .sc-market-opportunity__head {
   position: relative;
@@ -348,7 +348,7 @@
     padding: 64px 0;
   }
   .sc-market-opportunity__content-wrapper {
-    height: calc(100vh - 128px);
+    min-height: calc(100vh - 128px);
   }
   .sc-market-opportunity__head {
     position: relative;
