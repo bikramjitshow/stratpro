@@ -154,7 +154,20 @@
     display: block;
   }
 }
-
+.sc-tab-focus {
+  .sc-market-opportunity {
+    .sc-btn {
+      &:focus{
+        outline-offset: 2px;
+      }
+    }
+    &__mo-tab-step-item {
+      &:focus{
+        outline-offset: -2px;
+      }
+    }
+  }
+}
 // button
 .sc-btn {
   &--capitalize {

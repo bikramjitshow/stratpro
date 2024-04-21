@@ -324,6 +324,13 @@
   display: block;
 }
 
+.sc-tab-focus .sc-market-opportunity .sc-btn:focus {
+  outline-offset: 2px;
+}
+.sc-tab-focus .sc-market-opportunity__mo-tab-step-item:focus {
+  outline-offset: -2px;
+}
+
 .sc-btn--capitalize {
   text-transform: capitalize;
 }
