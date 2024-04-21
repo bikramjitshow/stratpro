@@ -1,47 +1,43 @@
-class moTabs {
+class ssgTabs {
   static intervalId;
   init() {
     const that = this;
     document.addEventListener("DOMContentLoaded", function () {
-      let inputTab = document.querySelectorAll(
-        ".sc-market-opportunity__mo-tab-list"
-      );
+      let inputTab = document.querySelectorAll(".sc-ssg-slider__mo-tab-list");
       this.deviceWidth =
         window.innerWidth ||
         document.documentElement.clientWidth ||
         document.body.clientWidth;
       const firstTab = document.querySelector(
-        ".sc-market-opportunity__mo-tab-step-item"
+        ".sc-ssg-slider__mo-tab-step-item"
       );
       const firstInputOption = document.querySelector(
-        ".sc-market-opportunity__mo-tab-panels-input"
+        ".sc-ssg-slider__mo-tab-panels-input"
       );
       that.setTabsEventListener();
       that.autoCLick();
       firstTab.click();
       firstInputOption.checked = true;
 
+      that.autoBgimg(0);
       that.setHeadItem();
       // Get the checkbox element
       var checkboxs = document.querySelectorAll(
-        ".sc-market-opportunity__mo-tab-panels-input"
+        ".sc-ssg-slider__mo-tab-panels-input"
       );
       if (checkboxs.length) {
-        checkboxs.forEach((checkbox) => {
-          if (!checkbox.checked) {
-            checkbox.addEventListener("change", function () {
-              // Check if the checkbox is checked
-              console.log("checkbox clicked");
-              // clearInterval(moTabs.intervalId);
-              that.setHeadItem();
-            });
-          }
+        checkboxs.forEach((checkbox, index) => {
+          checkbox.addEventListener("change", function () {
+            // Check if the checkbox is checked
+            console.log("checkbox clicked");
+            // clearInterval(ssgTabs.intervalId);
+            that.setHeadItem();
+            that.autoBgimg(index);
+          });
         });
       }
 
-      const headItems = document.querySelectorAll(
-        ".sc-market-opportunity__head-item"
-      );
+      const headItems = document.querySelectorAll(".sc-ssg-slider__head-item");
       if (headItems.length) {
         headItems.forEach((headitem, index) => {
           if (index > 0) {
@@ -68,15 +64,15 @@ class moTabs {
     let currentIndex = 1;
 
     const alltabs = document.querySelectorAll(
-      ".sc-market-opportunity__mo-tab-step-item"
+      ".sc-ssg-slider__mo-tab-step-item"
     );
 
     // Define the setInterval function to click tabs at intervals
-    moTabs.intervalId = setInterval(() => {
-      // console.log(alltabs[currentIndex].classList.contains("sc-market-opportunity__mo-tab-step-item--active"))
+    ssgTabs.intervalId = setInterval(() => {
+      // console.log(alltabs[currentIndex].classList.contains("sc-ssg-slider__mo-tab-step-item--active"))
       if (
         !alltabs[currentIndex].classList.contains(
-          "sc-market-opportunity__mo-tab-step-item--active"
+          "sc-ssg-slider__mo-tab-step-item--active"
         )
       ) {
         // Click the current tab
@@ -84,8 +80,9 @@ class moTabs {
         alltabs[currentIndex].click();
         console.log(`Clicked tab ${currentIndex}`);
 
+        this.autoBgimg(currentIndex);
         const headItems = document.querySelectorAll(
-          ".sc-market-opportunity__head-item"
+          ".sc-ssg-slider__head-item"
         );
         if (headItems.length) {
           headItems.forEach((headitem, index) => {
@@ -112,9 +109,7 @@ class moTabs {
    */
   setTabsEventListener() {
     console.log("tigger click");
-    const tabs = document.querySelectorAll(
-      ".sc-market-opportunity__mo-tab-step-item"
-    );
+    const tabs = document.querySelectorAll(".sc-ssg-slider__mo-tab-step-item");
     for (let i = 0; i < tabs.length; i++) {
       tabs[i].addEventListener("click", clickPressEvent);
       tabs[i].addEventListener("keyup", clickPressEvent);
@@ -133,13 +128,12 @@ class moTabs {
       // remove active class from tabs
       for (let n = 0; n < tabs.length; n++) {
         tabs[n].className = tabs[n].className.replace(
-          " sc-market-opportunity__mo-tab-step-item--active",
+          " sc-ssg-slider__mo-tab-step-item--active",
           ""
         );
       }
       // add active class to the tab clicked
-      event.target.className +=
-        " " + "sc-market-opportunity__mo-tab-step-item--active";
+      event.target.className += " " + "sc-ssg-slider__mo-tab-step-item--active";
     }
   }
 
@@ -151,11 +145,9 @@ class moTabs {
     const that = this;
     console.log("trigger");
     let currentIndex = 0; // Start currentIndex from 0
-    const headItems = document.querySelectorAll(
-      ".sc-market-opportunity__head-item"
-    );
+    const headItems = document.querySelectorAll(".sc-ssg-slider__head-item");
     const alltabs = document.querySelectorAll(
-      ".sc-market-opportunity__mo-tab-step-item"
+      ".sc-ssg-slider__mo-tab-step-item"
     );
 
     alltabs.forEach((tab, i) => {
@@ -186,36 +178,43 @@ class moTabs {
    */
   setHeightHeadcontent() {
     // Get all the rows of card columns
-    const rows = document.querySelectorAll(".sc-market-opportunity__head-item");
-    const head = document.querySelector(".sc-market-opportunity__head");
-    let currentIndex = 0;
-    let maxcontentheight = 0;
+    const rows = document.querySelectorAll(".sc-ssg-slider__head-item");
+    const head = document.querySelector(".sc-ssg-slider__head");
 
     rows.forEach((card) => {
-      const headcontent = card.querySelector(
-        ".sc-market-opportunity__head-content"
-      );
+      const headcontent = card.querySelector(".sc-ssg-slider__head-content");
       if (headcontent) {
         headcontent.removeAttribute("style");
         head.removeAttribute("style");
-        maxcontentheight = Math.max(maxcontentheight, headcontent.offsetHeight);
-      }
-    });
-
-    // Apply the maximum title height to all cards in the current group
-    rows.forEach((card) => {
-      const headcontent = card.querySelector(
-        ".sc-market-opportunity__head-content"
-      );
-      if (headcontent) {
-        headcontent.style.height = `${maxcontentheight}px`;
-        head.style.height = `${maxcontentheight}px`;
+        const contentHeight = headcontent.offsetHeight;
+        headcontent.style.height = `${contentHeight}px`;
+        head.style.height = `${contentHeight}px`;
       }
     });
   }
+
+  /**
+   * Active the background image
+   * `click` eventlistener
+   */
+  autoBgimg(currentIndex) {
+    console.log("bg currentIndex:", currentIndex);
+    const bgItems = document.querySelectorAll(".sc-ssg-slider__bg-item");
+    if (bgItems.length) {
+      bgItems.forEach((bgItem, index) => {
+        if (index == currentIndex) {
+          // bgItem.style.visibility = "visible";
+          bgItem.style.opacity = 1;
+        } else {
+          // bgItem.style.visibility = "hidden";
+          bgItem.style.opacity = 0;
+        }
+      });
+    }
+  }
 }
 
-const moinstance = new moTabs();
-moinstance.init();
+const ssginstance = new ssgTabs();
+ssginstance.init();
 
 // export default instance;

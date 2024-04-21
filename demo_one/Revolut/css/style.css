@@ -143,14 +143,33 @@
  * The $supers is only one, so the mixin only apply to the '.layout-2cols .component---info.type---header .component---info---title'
  *
  */
-.sc-market-opportunity {
+.sc-ssg-slider {
+  position: relative;
   height: 100%;
   min-height: 100vh;
   width: 100vw;
   line-height: 1.2;
   padding: 48px 0;
 }
-.sc-market-opportunity__content-wrapper {
+.sc-ssg-slider__bg-img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-position: center;
+     object-position: center;
+  color: transparent;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.sc-ssg-slider__bg-item {
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+.sc-ssg-slider__content-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,23 +182,23 @@
           justify-content: center;
   min-height: calc(100vh - 96px);
 }
-.sc-market-opportunity__head {
+.sc-ssg-slider__head {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   min-height: 150px;
 }
-.sc-market-opportunity__head .sc-btn {
+.sc-ssg-slider__head .sc-btn {
   margin-top: 16px;
-  font-size: 12px;
+  font-size: 16px;
   min-width: auto;
-  min-height: 36px;
+  min-height: 42px;
 }
-.sc-market-opportunity__head-item {
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+.sc-ssg-slider__head-item {
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
   position: absolute;
 }
-.sc-market-opportunity__head-content {
+.sc-ssg-slider__head-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,49 +211,47 @@
           flex-direction: column;
   min-height: 150px;
 }
-.sc-market-opportunity__main-title {
-  font-size: 27px;
+.sc-ssg-slider__main-title {
+  font-size: 36px;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
   text-transform: uppercase;
 }
-.sc-market-opportunity__main-description {
-  font-size: 12px;
+.sc-ssg-slider__main-description {
+  font-size: 18px;
   font-weight: 400;
-  color: #000000;
-  margin-top: 12px;
+  color: #ffffff;
+  margin-top: 16px;
   max-width: 480px;
 }
-.sc-market-opportunity__mo-tab-panels {
+.sc-ssg-slider__mo-tab-panels {
   padding: 16px 0;
 }
-.sc-market-opportunity__mo-tab-panels-content {
+.sc-ssg-slider__mo-tab-panels-content {
   visibility: hidden;
   height: 0;
   overflow: hidden;
-  -webkit-animation: fadeOut 1s ease-out forwards;
-          animation: fadeOut 1s ease-out forwards;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
-.sc-market-opportunity__mo-tab-panels-input {
+.sc-ssg-slider__mo-tab-panels-input {
   position: fixed;
   opacity: 0;
   visibility: hidden;
 }
-.sc-market-opportunity__mo-tab-panels-input:checked + .sc-market-opportunity__mo-tab-panels-content {
-  -webkit-animation: fadeIn 0.8s ease-in forwards;
-          animation: fadeIn 0.8s ease-in forwards;
+.sc-ssg-slider__mo-tab-panels-input:checked + .sc-ssg-slider__mo-tab-panels-content {
   visibility: visible;
   overflow: visible;
   height: auto;
 }
-.sc-market-opportunity__mo-tab-selected-item {
+.sc-ssg-slider__mo-tab-selected-item {
   display: block;
   color: #ffffff;
 }
-.sc-market-opportunity__mo-tab-list-item:last-of-type {
+.sc-ssg-slider__mo-tab-list-item:last-of-type {
   border-right: 0;
 }
-.sc-market-opportunity__mo-tab-step-item {
+.sc-ssg-slider__mo-tab-step-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -245,19 +262,24 @@
       -ms-flex-pack: center;
           justify-content: center;
   max-width: 200px;
-  height: 36px;
-  border: 2px solid #000000;
+  height: 42px;
+  border: 2px solid #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 500;
   border-radius: 30px;
   text-align: center;
   position: relative;
   padding: 8px 20px;
   margin: 0 4px;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 16px;
   line-height: normal;
   cursor: pointer;
 }
-.sc-market-opportunity__mo-tab-step-item::before {
+.sc-ssg-slider__mo-tab-step-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.sc-ssg-slider__mo-tab-step-item::before {
   position: absolute;
   content: "";
   inset: 0px;
@@ -266,21 +288,21 @@
   -webkit-transition: none 0s ease 0s;
   transition: none 0s ease 0s;
   background-size: 0px 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#fff));
-  background-image: linear-gradient(#fff, #fff);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000));
+  background-image: linear-gradient(#000, #000);
   background-repeat: no-repeat;
   z-index: 1;
 }
-.sc-market-opportunity__mo-tab-step-item--active {
-  background-color: #000000;
-  color: #ffffff;
+.sc-ssg-slider__mo-tab-step-item--active {
+  background-color: #ffffff;
+  color: #000000;
 }
-.sc-market-opportunity__mo-tab-step-item--active::before {
+.sc-ssg-slider__mo-tab-step-item--active::before {
   -webkit-transition: background-size 8000ms linear 0s;
   transition: background-size 8000ms linear 0s;
   background-size: 100% 100%;
 }
-.sc-market-opportunity .splide {
+.sc-ssg-slider .splide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -288,7 +310,7 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-.sc-market-opportunity__video-wrap {
+.sc-ssg-slider__video-wrap {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -300,7 +322,7 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-.sc-market-opportunity__video-outer {
+.sc-ssg-slider__video-outer {
   height: 100%;
   max-width: 600px;
   max-height: 388px;
@@ -309,48 +331,48 @@
   padding: 0;
   aspect-ratio: 1;
 }
-.sc-market-opportunity__video {
+.sc-ssg-slider__video {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-.sc-market-opportunity__video-desktop {
+.sc-ssg-slider__bg-img-desktop, .sc-ssg-slider__video-desktop {
   display: none;
 }
-.sc-market-opportunity__video-mobile {
+.sc-ssg-slider__bg-img-mobile, .sc-ssg-slider__video-mobile {
   display: block;
 }
 
-.sc-tab-focus .sc-market-opportunity .sc-btn:focus {
+.sc-tab-focus .sc-ssg-slider .sc-btn:focus {
   outline-offset: 2px;
 }
-.sc-tab-focus .sc-market-opportunity__mo-tab-step-item:focus {
+.sc-tab-focus .sc-ssg-slider__mo-tab-step-item:focus {
   outline-offset: -2px;
 }
 
 .sc-btn--capitalize {
   text-transform: capitalize;
 }
-.sc-btn--black {
-  background-color: #000000;
-  border-color: #000000;
+.sc-btn--white {
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
-.sc-btn--black:hover {
-  background-color: #2b2929;
-  border-color: #2b2929;
+.sc-btn--white:hover {
+  background-color: #b7b7b7;
+  border-color: #b7b7b7;
 }
 
 @media (min-width: 768px) {
-  .sc-market-opportunity {
+  .sc-ssg-slider {
     padding: 64px 0;
   }
-  .sc-market-opportunity__content-wrapper {
+  .sc-ssg-slider__content-wrapper {
     min-height: calc(100vh - 128px);
   }
-  .sc-market-opportunity__head {
+  .sc-ssg-slider__head {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -365,12 +387,12 @@
     margin-bottom: 18px;
     min-height: 150px;
   }
-  .sc-market-opportunity__head-item {
-    -webkit-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
+  .sc-ssg-slider__head-item {
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
     position: absolute;
   }
-  .sc-market-opportunity__head-content {
+  .sc-ssg-slider__head-content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -383,49 +405,49 @@
             flex-direction: column;
     min-height: 150px;
   }
-  .sc-market-opportunity__main-title {
+  .sc-ssg-slider__main-title {
     font-size: 40px;
     text-align: center;
   }
-  .sc-market-opportunity__main-description {
+  .sc-ssg-slider__main-description {
     font-size: 14px;
     text-align: center;
   }
-  .sc-market-opportunity__mo-tab-step-item {
+  .sc-ssg-slider__mo-tab-step-item {
     height: 38px;
     font-size: 12px;
   }
-  .sc-market-opportunity__video-outer {
+  .sc-ssg-slider__video-outer {
     aspect-ratio: 2;
   }
-  .sc-market-opportunity__video-desktop {
+  .sc-ssg-slider__bg-img-desktop, .sc-ssg-slider__video-desktop {
     display: block;
   }
-  .sc-market-opportunity__video-mobile {
+  .sc-ssg-slider__bg-img-mobile, .sc-ssg-slider__video-mobile {
     display: none;
   }
 }
 @media (min-width: 1400px) {
-  .sc-market-opportunity__head .sc-btn {
+  .sc-ssg-slider__head .sc-btn {
     min-height: 42px;
     font-size: 16px;
     margin-top: 30px;
   }
-  .sc-market-opportunity__main-title {
+  .sc-ssg-slider__main-title {
     font-size: 42px;
     text-align: center;
   }
-  .sc-market-opportunity__main-description {
+  .sc-ssg-slider__main-description {
     font-size: 18px;
     text-align: center;
     max-width: 600px;
     margin-top: 26px;
   }
-  .sc-market-opportunity__mo-tab-step-item {
+  .sc-ssg-slider__mo-tab-step-item {
     height: 42px;
     font-size: 16px;
   }
-  .sc-market-opportunity__video-outer {
+  .sc-ssg-slider__video-outer {
     height: 100%;
     max-width: 80%;
   }

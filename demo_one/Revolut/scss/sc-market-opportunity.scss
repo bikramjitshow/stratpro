@@ -55,8 +55,7 @@
     visibility: hidden;
     height: 0;
     overflow: hidden;
-    // opacity: 0;
-    animation: fadeOut 1s ease-out forwards;
+    transition: all 0.8s ease;
   }
   &__mo-tab-panels-input {
     position: fixed;
@@ -64,12 +63,9 @@
     visibility: hidden;
     &:checked {
       + .sc-market-opportunity__mo-tab-panels-content {
-        animation: fadeIn 0.8s ease-in forwards;
-        // transition: all 1s ease-out;
         visibility: visible;
         overflow: visible;
         height: auto;
-        // opacity: 1;
       }
     }
   }
