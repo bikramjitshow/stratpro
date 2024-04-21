@@ -31,15 +31,17 @@ class InputTabs {
         headItems.forEach((headitem, index) => {
           if (index > 0) {
             headitem.style.visibility = "hidden";
-            headitem.style.display = "none";
+            // headitem.style.display = "none";
             headitem.style.opacity = 0;
           } else {
             headitem.style.visibility = "visible";
-            headitem.style.display = "flex";
+            // headitem.style.display = "flex";
             headitem.style.opacity = 1;
           }
         });
       }
+      that.setHeightHeadcontent();
+
     });
   }
 
@@ -64,6 +66,7 @@ class InputTabs {
         )
       ) {
         // Click the current tab
+        this.setHeightHeadcontent();
         alltabs[currentIndex].click();
         console.log(`Clicked tab ${currentIndex}`);
 
@@ -74,11 +77,11 @@ class InputTabs {
           headItems.forEach((headitem, index) => {
             if (index == currentIndex) {
               headitem.style.visibility = "visible";
-              headitem.style.display = "flex";
+              // headitem.style.display = "flex";
               headitem.style.opacity = 1;
             } else {
               headitem.style.visibility = "hidden";
-              headitem.style.display = "none";
+              // headitem.style.display = "none";
               headitem.style.opacity = 0;
             }
           });
@@ -147,17 +150,47 @@ class InputTabs {
         headItems.forEach((headitem, index) => {
           if (index === i) {
             headitem.style.visibility = "visible";
-            headitem.style.display = "flex";
+            // headitem.style.display = "flex";
             headitem.style.opacity = 1;
           } else {
             headitem.style.visibility = "hidden";
-            headitem.style.display = "none";
+            // headitem.style.display = "none";
             headitem.style.opacity = 0;
           }
         });
         currentIndex = i; // Update currentIndex to the clicked tab index
       }
     }
+  }
+
+  setHeightHeadcontent() {
+    // Get all the rows of card columns
+    const rows = document.querySelectorAll(".sc-market-opportunity__head-item");
+    const head = document.querySelector(".sc-market-opportunity__head");
+    let currentIndex = 0;
+    let maxcontentheight = 0;
+
+    rows.forEach((card) => {
+      const headcontent = card.querySelector(
+        ".sc-market-opportunity__head-content"
+      );
+      if (headcontent) {
+        headcontent.removeAttribute("style");
+        head.removeAttribute("style");
+        maxcontentheight = Math.max(maxcontentheight, headcontent.offsetHeight);
+      }
+    });
+
+    // Apply the maximum title height to all cards in the current group
+    rows.forEach((card) => {
+      const headcontent = card.querySelector(
+        ".sc-market-opportunity__head-content"
+      );
+      if (headcontent) {
+        headcontent.style.height = `${maxcontentheight}px`;
+        head.style.height = `${maxcontentheight}px`;
+      }
+    });
   }
 }
 

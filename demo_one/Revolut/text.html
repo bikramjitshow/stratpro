@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto Height Div with Absolute Positioning</title>
-<style>
-    .container {
-        position: relative;
-        width: 300px;
-        border: 1px solid #ccc;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absolutely Positioned Element with Dynamic Height</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    .absolute-div {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        display: flex;
-        flex-direction: column;
-    }
+        .container {
+            position: relative;
+            /* width: 100%;
+            min-height: 100vh;
+            background-color: #f0f0f0; */
+        }
 
-    .content {
-        flex-grow: 1;
-        overflow-y: auto;
-    }
-</style>
+        .absolute-element {
+            position: absolute;
+            /* top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dynamic-content {
+            min-height: 100px;
+            /* Minimum height for the dynamic content */
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-    <div class="absolute-div">
-        <div class="content">
-            <!-- Your content goes here -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut leo et purus tempus volutpat.</p>
-            <p>Integer tristique diam vel nibh vestibulum, nec scelerisque lacus dignissim.</p>
-            <p>Phasellus sit amet nisi vehicula, luctus lectus vel, convallis elit.</p>
-            <!-- End of content -->
+    <div class="container">
+        <div class="absolute-element">
+            <div class="dynamic-content">
+                <!-- Your dynamic content goes here -->
+                This is a dynamic content block.
+                <br>
+                It can have variable height based on its content.
+            </div>
+        </div>
+        <div class="dynamic-content">
+            <!-- Your dynamic content goes here -->
+            This is a dynamic content block.
+            <br>
+            It can have variable height based on its content.
+        </div>
+        <div class="dynamic-content">
+            <!-- Your dynamic content goes here -->
+            This is a dynamic content block.
+            <br>
+            It can have variable height based on its content.
         </div>
     </div>
-</div>
 </body>
+
 </html>
