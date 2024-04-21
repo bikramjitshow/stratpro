@@ -148,7 +148,7 @@
   min-height: 100vh;
   width: 100vw;
   line-height: 1.2;
-  padding: 64px 0;
+  padding: 48px 0;
 }
 .sc-market-opportunity__content-wrapper {
   display: -webkit-box;
@@ -161,7 +161,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: calc(100vh - 128px);
+  height: calc(100vh - 96px);
 }
 .sc-market-opportunity__head {
   position: relative;
@@ -344,6 +344,12 @@
 }
 
 @media (min-width: 768px) {
+  .sc-market-opportunity {
+    padding: 64px 0;
+  }
+  .sc-market-opportunity__content-wrapper {
+    height: calc(100vh - 128px);
+  }
   .sc-market-opportunity__head {
     position: relative;
     display: -webkit-box;
