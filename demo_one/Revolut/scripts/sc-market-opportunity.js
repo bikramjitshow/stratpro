@@ -2,7 +2,6 @@ class InputTabs {
   static intervalId;
   init() {
     const that = this;
-    console.log("TABBB CALLLED");
     document.addEventListener("DOMContentLoaded", function () {
       let inputTab = document.querySelectorAll(
         ".sc-market-opportunity__mo-tab-list"
@@ -23,6 +22,22 @@ class InputTabs {
       firstInputOption.checked = true;
 
       that.setHeadItem();
+      // Get the checkbox element
+      var checkboxs = document.querySelectorAll(
+        ".sc-market-opportunity__mo-tab-panels-input"
+      );
+      if (checkboxs.length) {
+        checkboxs.forEach((checkbox) => {
+          if (!checkbox.checked) {
+            checkbox.addEventListener("change", function () {
+              // Check if the checkbox is checked
+              console.log("checkbox clicked");
+              // clearInterval(InputTabs.intervalId);
+              that.setHeadItem();
+            });
+          }
+        });
+      }
 
       const headItems = document.querySelectorAll(
         ".sc-market-opportunity__head-item"
@@ -41,7 +56,6 @@ class InputTabs {
         });
       }
       that.setHeightHeadcontent();
-
     });
   }
 
@@ -112,6 +126,7 @@ class InputTabs {
         return;
       }
       if (event.type == "keyup") {
+        this.setHeightHeadcontent();
         event.target.click();
       }
 
@@ -128,6 +143,10 @@ class InputTabs {
     }
   }
 
+  /**
+   * show hide the content
+   * `click` eventlistener
+   */
   setHeadItem() {
     const that = this;
     console.log("trigger");
@@ -141,8 +160,6 @@ class InputTabs {
 
     alltabs.forEach((tab, i) => {
       tab.addEventListener("click", () => callHead(i));
-      clearInterval(InputTabs.intervalId);
-      that.autoCLick();
     });
 
     function callHead(i) {
@@ -163,6 +180,10 @@ class InputTabs {
     }
   }
 
+  /**
+   * Calculate the Content height
+   * `click` eventlistener
+   */
   setHeightHeadcontent() {
     // Get all the rows of card columns
     const rows = document.querySelectorAll(".sc-market-opportunity__head-item");
