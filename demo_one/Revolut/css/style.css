@@ -161,7 +161,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 128px);
 }
 .sc-market-opportunity__head {
   position: relative;
@@ -393,59 +393,30 @@
   }
 }
 @media (min-width: 1400px) {
+  .sc-market-opportunity__head .sc-btn {
+    min-height: 42px;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+  .sc-market-opportunity__main-title {
+    font-size: 42px;
+    text-align: center;
+  }
+  .sc-market-opportunity__main-description {
+    font-size: 18px;
+    text-align: center;
+    max-width: 600px;
+    margin-top: 26px;
+  }
+  .sc-market-opportunity__mo-tab-step-item {
+    height: 42px;
+    font-size: 16px;
+  }
   .sc-market-opportunity__video-outer {
     height: 100%;
     max-width: 80%;
-    max-height: -webkit-max-content;
-    max-height: -moz-max-content;
-    max-height: max-content;
   }
 }
-/* Define the fade-in animation */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; /* Start with fully transparent */
-  }
-  to {
-    opacity: 1; /* Fade in to fully opaque */
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0; /* Start with fully transparent */
-  }
-  to {
-    opacity: 1; /* Fade in to fully opaque */
-  }
-}
-/* Define the fade-out animation */
-@-webkit-keyframes fadeOut {
-  from {
-    opacity: 1; /* Start with fully opaque */
-  }
-  to {
-    opacity: 0; /* Fade out to fully transparent */
-  }
-}
-@keyframes fadeOut {
-  from {
-    opacity: 1; /* Start with fully opaque */
-  }
-  to {
-    opacity: 0; /* Fade out to fully transparent */
-  }
-}
-/* Apply the animations to elements */
-.fade-in {
-  -webkit-animation: fadeIn 1s ease-in forwards;
-          animation: fadeIn 1s ease-in forwards; /* Fade in over 1 second */
-}
-
-.fade-out {
-  -webkit-animation: fadeOut 1s ease-out forwards;
-          animation: fadeOut 1s ease-out forwards; /* Fade out over 1 second */
-}
-
 html {
   scroll-behavior: smooth;
 }/*# sourceMappingURL=style.css.map */
