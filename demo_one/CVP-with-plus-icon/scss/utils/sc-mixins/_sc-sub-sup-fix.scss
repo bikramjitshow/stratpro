@@ -1,0 +1,13 @@
+@mixin sc-sub-sup-fix() {
+  sup {
+    vertical-align: super;
+    font-size: 50%;
+    line-height: 0;
+  }
+
+  sub {
+    vertical-align: sub;
+    font-size: 50%;
+    line-height: 0;
+  }
+}

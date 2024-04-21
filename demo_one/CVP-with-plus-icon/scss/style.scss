@@ -1,0 +1,23 @@
+// Vars
+@import './vars/colors';
+@import './vars/dimensions';
+@import './vars/layout';
+@import './vars/typography';
+@import 'breakpoint/breakpoint';
+
+// Utils
+@import 'utils/utils';
+
+
+// sc-bonus-saver-account
+// @import './sc-casa-account-selector';
+// @import './sc-casa-account-compare';
+// @import '../sc-cc-products-info/sc-cc-products-info.scss';
+@import './cvp-add-icon.scss';
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+

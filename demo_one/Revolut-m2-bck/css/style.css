@@ -1,0 +1,314 @@
+/**
+ * Fixed Spacing Variables:
+ * Though we can use relative units for most cases, we still need some fixed variable to overcome some drawbacks of relative units.
+ * Example we don't want the left and right side padding of container to be increased relatively to the font-size.
+ * The vertical spacing between two modules to be same regardless of increasing the font-size.
+ * The spacing scale is a base-8 scale. We chose a base-8 scale because eight is a highly composable number (it can be divided and multiplied many times and result in whole numbers), yet allows spacing dense enough for UI. The scale's exception is that it begins at 4px to allow smaller padding and margin for denser parts of the site, from there on it steps up consistently in equal values of 8px. Refer https://primer.style/css/support/
+*/
+/* Em Based Spacing Variables:
+ * Useful for buttons and form elements.
+ * Refer https://primer.style/css/spacing/
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * WebKit font-smoothing
+ * ------------------------------------------------
+ *
+ * References:
+ *
+ * 1. http://maxvoltar.com/sandbox/fontsmoothing/
+ * 2. http://maxvoltar.com/archive/-webkit-font-smoothing
+ * 3. https://gist.github.com/adamstac/5048881
+ *
+ * Values: none, antialiased (default), subpixel-antialiased
+ */
+/**
+ *  Background images with retina support
+ */
+/**
+ * Animates properties for sticky nav elements when page is scrolled
+ * @param: $property . The property that should be animated
+ *
+ */
+/**
+ * Creates a text filled by gradient between two colors
+ *
+ * TODO: Find a crossbrowser solution, this doesn't works on Firefox
+ *
+ * @param  {[type]} $from-color: #6cc9fe       [description]
+ * @param  {[type]} $to-color:   #38d54a       [description]
+ * @param  {[type]} $direction:  120deg        [description]
+ *
+ * @return {[type]}              [description]
+ */
+/**
+ * Triangle decorator
+ */
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * Sets height ratio for standard SC Component.
+ *
+ * @params
+ * $avoid-small-resolutions: Avoids the mixin behaviour for resolutions smaller than medium.
+ *                           It's used in components such as the footer which doesn't have a height
+ *                           behaviour on small resolutions, instead it depends on it's own content's height.
+ *
+ */
+/**
+ *  Hides for all states, assign to the breakpoints passed as first param,
+ *  the display type passed as the second param.
+ *  @param $breakpoint-to-show the breakpoints you want to show
+ *  @param $display the display type to be assigned to breakpoints,defaults to
+ *  (display:block)
+ */
+/**
+ * Sets font-size and font-weight.
+ *
+ * Font-weights smaller than 300 are only allowed when font-size
+ * is higher than 36px.
+ *
+ * Font-sizes bigger than 20px should activate aliased smoothing,
+ * then increase font-weight to 300
+ *
+ * If we're on IE, and font-size
+ * is less or equal than 17px and font-weight is less than 400,
+ * then font-weight is increased to improve readibility.
+ *
+ * @params
+ * $font-size: font size
+ * $font-weight: font weight
+ * $antialiased: boolean to active aliased smoothing
+ * $supers: collection of parent classes to apply the mixin, they have to be separated by comas
+ *
+ *
+ * Example 1:
+ *
+ *.component---header---title {
+ *   @include safe-font-size(15px, 300, false, '.is-upload-step', '.bp-small', '.bp-medium');
+ * }
+ *
+ * The $supers refers to the parent classes, so in this case, the mixin apply when the parent class is .is-upload-step,
+ * bp-small or bp-medium
+ *
+ *
+ * Example 2:
+ *
+ * .component---info.type---header {
+ *    .component---info---title {
+ *      @include safe-font-size(52px, 300, false, '.layout-2cols');
+ *    }
+ * }
+ *
+ * The font size here is 52px, bigger than 20px, so the aliased smoothing should activate.
+ * The $supers is only one, so the mixin only apply to the '.layout-2cols .component---info.type---header .component---info---title'
+ *
+ */
+.sc-market-opportunity {
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
+  line-height: 1.4;
+  padding: 64px 0;
+}
+.sc-market-opportunity__head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+}
+.sc-market-opportunity__head .sc-btn {
+  margin-top: 16px;
+}
+.sc-market-opportunity__main-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
+  text-transform: uppercase;
+}
+.sc-market-opportunity__main-description {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  margin-top: 12px;
+  text-align: center;
+}
+.sc-market-opportunity__mo-tab-panels {
+  padding: 16px 0;
+}
+.sc-market-opportunity__mo-tab-panels-content {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+.sc-market-opportunity__mo-tab-panels-input {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+}
+.sc-market-opportunity__mo-tab-panels-input:checked + .sc-market-opportunity__mo-tab-panels-content {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  visibility: visible;
+  overflow: visible;
+  height: auto;
+  opacity: 1;
+}
+.sc-market-opportunity__mo-tab-selected-item {
+  display: block;
+  color: #ffffff;
+}
+.sc-market-opportunity__mo-tab-list-item:last-of-type {
+  border-right: 0;
+}
+.sc-market-opportunity__mo-tab-step-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 200px;
+  height: 36px;
+  border: 2px solid #000000;
+  border-radius: 30px;
+  text-align: center;
+  position: relative;
+  padding: 8px 20px;
+  margin: 0 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+.sc-market-opportunity__mo-tab-step-item::before {
+  position: absolute;
+  content: "";
+  inset: 0px;
+  border-radius: 30px;
+  opacity: 0.15;
+  -webkit-transition: none 0s ease 0s;
+  transition: none 0s ease 0s;
+  background-size: 0px 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#fff));
+  background-image: linear-gradient(#fff, #fff);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.sc-market-opportunity__mo-tab-step-item--active {
+  background-color: #000000;
+  color: #ffffff;
+}
+.sc-market-opportunity__mo-tab-step-item--active::before {
+  -webkit-transition: background-size 8000ms linear 0s;
+  transition: background-size 8000ms linear 0s;
+  background-size: 100% 100%;
+}
+.sc-market-opportunity .splide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sc-market-opportunity__video-wrap {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sc-market-opportunity__video-outer {
+  height: 100%;
+  max-width: 600px;
+  max-height: 388px;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+  aspect-ratio: 2;
+}
+.sc-market-opportunity__video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.sc-btn--capitalize {
+  text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+  .sc-market-opportunity__main-title {
+    font-size: 32px;
+  }
+  .sc-market-opportunity__main-description {
+    font-size: 16px;
+  }
+  .sc-market-opportunity__mo-tab-step-item {
+    height: 42px;
+    font-size: 14px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}/*# sourceMappingURL=style.css.map */

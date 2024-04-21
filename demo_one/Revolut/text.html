@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Height Div with Absolute Positioning</title>
+<style>
+    .container {
+        position: relative;
+        width: 300px;
+        border: 1px solid #ccc;
+    }
+
+    .absolute-div {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="absolute-div">
+        <div class="content">
+            <!-- Your content goes here -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut leo et purus tempus volutpat.</p>
+            <p>Integer tristique diam vel nibh vestibulum, nec scelerisque lacus dignissim.</p>
+            <p>Phasellus sit amet nisi vehicula, luctus lectus vel, convallis elit.</p>
+            <!-- End of content -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

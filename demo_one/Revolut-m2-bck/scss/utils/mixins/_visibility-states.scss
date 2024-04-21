@@ -1,0 +1,23 @@
+@mixin visible-state(
+  $animation-time: 0.2s,
+  $delay-time: 0s,
+  $animation-type: ease
+) {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity $animation-time $animation-type $delay-time,
+    visibility $animation-time $animation-type $delay-time;
+}
+
+@mixin hidden-state(
+  $animation-time: 0.2s,
+  $delay-time: 0s,
+  $animation-type: ease
+) {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity $animation-time $animation-type $delay-time,
+    visibility $animation-time $animation-type $delay-time;
+}

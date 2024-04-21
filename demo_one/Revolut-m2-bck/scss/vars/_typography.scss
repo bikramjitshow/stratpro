@@ -1,0 +1,47 @@
+// Typography
+//
+
+$font-size-base: 1em !default; // Assumes the browser default, typically `16px`
+$font-size-huge: 2.9375em; // 47px
+$font-size-xlg: 2.25em; // 36px
+$font-size-lg: 1.125em; // 18px
+$font-size-md: 0.875em; // 14px
+$font-size-sm: 0.75em; // 12px
+$font-size-xs: 0.625em; // 10px
+
+$font-weight-thin: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-semi-bold: 500 !default;
+$font-weight-bold: 700 !default;
+
+$line-height-lg: 1.4 !default; // Larger line height for smaller text elements, below font size 18px
+$line-height-sm: 1.25 !default; // Smaller line height for larger text elements, above 19px
+$line-height-normal: normal !default;
+
+$letter-spacing-lg: 0.04em; // Larger letter spacing for smaller text elements, below font size 18px
+$letter-spacing-sm: 0.02em; // Smaller letter spacing for smaller text elements, above 19px
+
+$h1-font-size: 1.5em; // 24px
+$h2-font-size: 1.375em; // 22px
+$h3-font-size: 1.1875em; // 19px
+$h4-font-size: 1.125em; // 18px
+$h5-font-size: 1em; //16px
+$h6-font-size: 1em;
+
+$h1-font-size-desktop: 2.125em; // 34px
+$h2-font-size-desktop: 1.875em; // 30px
+$h3-font-size-desktop: 1.5em; // 24px
+$h4-font-size-desktop: 1.375em; // 22px
+$h5-font-size-desktop: 1.25em; // 20px
+$h6-font-size-desktop: 1.125em; // 18px
+
+// defaults
+//
+
+$default-font-family: 'SC Sans Web', 'SC Sans', Arial, sans-serif;
+$default-font-size: $font-size-base;
+$default-line-height: $line-height-lg;
+$default-font-weight: $font-weight-light;
+$default-font-color: $color-black;
+$default-background-color: $color-white;
