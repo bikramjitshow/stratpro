@@ -1,0 +1,5 @@
+@mixin optimize-legibility {
+  text-rendering: optimizeLegibility;
+  -webkit-text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}

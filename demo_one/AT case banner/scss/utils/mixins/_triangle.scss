@@ -1,0 +1,34 @@
+/**
+ * Triangle decorator
+ */
+@mixin triangle(
+  $dir: 'top',
+  $size: 6px,
+  $offx: -12px,
+  $offy: 0px,
+  $color: $maincolor
+) {
+  display: block;
+  position: absolute;
+  content: '';
+  top: $offy;
+  left: $offx;
+
+  $point: '';
+
+  @if ($dir == 'top') {
+    $point: 'bottom';
+  }
+  @if ($dir == 'right') {
+    $point: 'left';
+  }
+  @if ($dir == 'bottom') {
+    $point: 'top';
+  }
+  @if ($dir == 'left') {
+    $point: 'right';
+  }
+
+  border: $size solid transparent;
+  border-#{$point}-color: $color;
+}

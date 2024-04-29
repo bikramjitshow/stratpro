@@ -64,7 +64,9 @@ class ssgTabs {
   parallaxScroll() {
     console.log("scroll 2");
     let scrollPosition = window.scrollY;
+    let parallaxElementsp = document.querySelector(".sc-ssg-slider");
     let parallaxElements = document.querySelectorAll(".sc-ssg-slider__bg-img");
+    console.log({ scrollPosition });
 
     parallaxElements.forEach(function (element) {
       let speed = parseFloat(element.getAttribute("data-speed"));
@@ -94,7 +96,7 @@ class ssgTabs {
         )
       ) {
         // Click the current tab
-        this.setHeightHeadcontent();
+        // this.setHeightHeadcontent();
         alltabs[currentIndex].click();
         console.log(`Clicked tab ${currentIndex}`);
 
