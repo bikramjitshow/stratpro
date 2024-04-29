@@ -21,7 +21,7 @@ class Atcasebanner {
         console.log(pages);
         pages.forEach((page, i) => {
           page.addEventListener("click", () => {
-            this.activeState(page, i);
+            this.activeState(i);
           });
         });
       }
@@ -82,6 +82,7 @@ class Atcasebanner {
 
   // Pagination Active State
   activeState(id) {
+    console.log(id);
     const paginationElement = document.querySelector(
       ".sc-at-case-bnr__slider-pagination"
     );
