@@ -8,7 +8,16 @@
 // Utils
 @import 'utils/utils';
 
-@import './sc-at-case-banner';
+
+// sc-bonus-saver-account
+@import './sc-products-tiles';
+@import './sc-refer-products';
+@import './sc-refer';
 
 
+
+
+html {
+  scroll-behavior: smooth;
+}
 

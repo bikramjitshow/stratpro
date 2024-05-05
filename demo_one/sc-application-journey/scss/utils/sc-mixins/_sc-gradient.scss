@@ -1,0 +1,8 @@
+@mixin sc-gradient(
+  $from-color: $color-green,
+  $to-color: $color-blue,
+  $direction: 120deg
+) {
+  background: $from-color;
+  background: linear-gradient($direction, $from-color 0%, $to-color 100%);
+}

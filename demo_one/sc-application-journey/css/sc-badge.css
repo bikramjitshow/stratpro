@@ -1,0 +1,26 @@
+.sc-badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.sc-badge svg {
+  width: 8px;
+  height: 11px;
+}
+.sc-badge__text {
+  display: inline;
+  padding: 2px 10px;
+  color: #191919;
+  background-color: rgb(250, 229, 232);
+  border-radius: 0 0 8px 8px;
+  font-size: 12px;
+}
+.sc-badge--green svg path {
+  fill: #a6d0b5;
+}
+.sc-badge--green .sc-badge__text {
+  background-color: #e8f3ec;
+}/*# sourceMappingURL=sc-badge.css.map */

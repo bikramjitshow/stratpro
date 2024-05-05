@@ -1,0 +1,97 @@
+/**
+ * Sets font-size and font-weight.
+ *
+ * Font-weights smaller than 300 are only allowed when font-size
+ * is higher than 36px.
+ *
+ * Font-sizes bigger than 20px should activate aliased smoothing,
+ * then increase font-weight to 300
+ *
+ * If we're on IE, and font-size
+ * is less or equal than 17px and font-weight is less than 400,
+ * then font-weight is increased to improve readibility.
+ *
+ * @params
+ * $font-size: font size
+ * $font-weight: font weight
+ * $antialiased: boolean to active aliased smoothing
+ * $supers: collection of parent classes to apply the mixin, they have to be separated by comas
+ *
+ *
+ * Example 1:
+ *
+ *.component---header---title {
+ *   @include safe-font-size(15px, 300, false, '.is-upload-step', '.bp-small', '.bp-medium');
+ * }
+ *
+ * The $supers refers to the parent classes, so in this case, the mixin apply when the parent class is .is-upload-step,
+ * bp-small or bp-medium
+ *
+ *
+ * Example 2:
+ *
+ * .component---info.type---header {
+ *    .component---info---title {
+ *      @include safe-font-size(52px, 300, false, '.layout-2cols');
+ *    }
+ * }
+ *
+ * The font size here is 52px, bigger than 20px, so the aliased smoothing should activate.
+ * The $supers is only one, so the mixin only apply to the '.layout-2cols .component---info.type---header .component---info---title'
+ *
+ */
+/*
+@mixin safe-font-size($font-size, $font-weight: 300, $antialiased: false, $supers...) {
+  @if($antialiased) {
+    @if($font-size > 20px and $font-weight < 300){
+      $font-weight: 300;
+      @include font-smoothing(antialiased);
+    }
+  }
+
+  $windows-weight: $font-weight;
+
+  @if (($font-weight < 300) and $font-size < 29px) {
+    $font-weight: 300;
+  }
+
+  @if (($font-weight < 400) and $font-size <= 17px) {
+    $windows-weight: 400;
+  }
+
+  @if (length($supers) > 0){
+    @each $class in $supers {
+      @if($class == 'default'){
+        font-size: $font-size;
+        font-weight: $font-weight;
+      } @else {
+        #{$class} & {
+          font-size: $font-size;
+          font-weight: $font-weight;
+        }
+      }
+    }
+  }@else{
+    font-size: $font-size;
+    font-weight: $font-weight;
+  }
+
+  @if ($font-weight != $windows-weight) {
+    @if (length($supers) > 0){
+      @each $class in $supers {
+        @if($class == 'default'){
+          font-weight: $windows-weight;
+        } @else{
+          #{$class}.windows & {
+            font-weight: $windows-weight;
+          }
+        }
+      }
+    } @else{
+      .windows & {
+        font-weight: $windows-weight;
+      }
+    }
+  }
+}
+*/
