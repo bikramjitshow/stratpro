@@ -1,0 +1,34 @@
+.sc-li-campaign__content-wraper {
+  max-width: 1024px;
+  margin: 0 auto;
+  line-height: 1.4;
+  padding-bottom: 70px;
+}
+.sc-li-campaign__bg-wrapper {
+  height: 380px;
+}
+.sc-li-campaign__bnr-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.sc-li-campaign__bnr-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 26px 20px 0 20px;
+}
+.sc-li-campaign__bnr-sub-heading {
+  font-size: 14px;
+  font-weight: 400;
+}
+.sc-li-campaign__bnr-heading {
+  font-size: 19px;
+  font-weight: 500;
+}
+.sc-li-campaign__bnr-heading-bld {
+  font-weight: 500;
+}/*# sourceMappingURL=life-insurance-campaign.css.map */

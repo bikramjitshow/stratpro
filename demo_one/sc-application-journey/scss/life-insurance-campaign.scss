@@ -1,0 +1,203 @@
+.sc-li-campaign {
+  &__content-wraper {
+    max-width: 1024px;
+    margin: 0 auto;
+    line-height: 1.4;
+    background: #f8f8f8;
+
+    // padding-bottom: 70px;
+  }
+
+  // banner
+  &__bg-wrapper {
+    position: relative;
+    height: 380px;
+    &::before {
+      content: "";
+      width: 100%;
+      height: 124px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    }
+  }
+  &__bnr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__bnr-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 26px 20px 0 20px;
+  }
+  &__bnr-sub-heading {
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-white;
+  }
+  &__bnr-heading {
+    font-size: 19px;
+    font-weight: 500;
+    color: $color-white;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &__bnr-heading-bld {
+    font-weight: 500;
+  }
+
+  // Persona
+  &__persona {
+    margin-top: -124px;
+    position: relative;
+    z-index: 1;
+  }
+  &__persona-content {
+    margin-bottom: 16px;
+  }
+  &__persona-heading {
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 6px;
+  }
+  &__persona-desc {
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    color: $color-white;
+  }
+  &__persona-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &__persona-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 115px;
+    height: 115px;
+    padding: 15px 8px 10px 8px;
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: $color-white;
+    border: 2px solid #dfdfdf;
+  }
+  &__persona-btn-active {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(white, white) padding-box,
+      radial-gradient(78.33% 78.33% at 2.36% -6.53%, #2db944 0%, #4478ff 100%) border-box;
+  }
+  &__persona-btn-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  // __graph
+  &__graph {
+    padding: 0 16px;
+    margin-top: 10px;
+    .sc-btn {
+      font-size: 16px;
+      font-weight: 500;
+      max-width: 170px;
+      width: 100%;
+      height: 40px;
+    }
+  }
+  &__graph-wrapper {
+    background-color: $color-white;
+    padding: 20px 16px 30px 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__highcharts-figure {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 16px;
+    max-width: 500px;
+  }
+  &__graph-content-wrap {
+    margin-bottom: 16px;
+  }
+  &__graph-content {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #6b6e73;
+  }
+
+  // Bottom Banner
+  &__bottom-banner {
+    .sc-btn {
+      &--small {
+        min-height: 24px;
+        min-width: 170px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+  &__bottom-banner-content {
+    padding: 15px 15px 20px 15px;
+  }
+  &__bottom-bg-wrapper {
+    position: relative;
+    height: 135px;
+  }
+  &__bottom-banner-heading {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    color: $color-dark;
+    margin-bottom: 15px;
+  }
+
+  // btn-wrap
+  &__btn-wrap {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    background-color: $color-white;
+    z-index: 3;
+    padding: 24px 16px 32px 16px;
+  }
+  // button
+  .sc-btn {
+    margin-bottom: 20px;
+    text-transform: none;
+    &--fullwidth {
+      width: 100%;
+    }
+    &--blue-secondary {
+      background-color: transparent;
+      border-color: $color-blue-16;
+      color: $color-blue-16;
+      &:hover {
+        border-color: $color-blue-light-3;
+        color: $color-blue-light-3;
+        background-color: transparent;
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

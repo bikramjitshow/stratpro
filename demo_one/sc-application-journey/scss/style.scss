@@ -1,23 +1,23 @@
 // Vars
-@import './vars/colors';
-@import './vars/dimensions';
-@import './vars/layout';
-@import './vars/typography';
-@import 'breakpoint/breakpoint';
+@import "./vars/colors";
+@import "./vars/dimensions";
+@import "./vars/layout";
+@import "./vars/typography";
+@import "breakpoint/breakpoint";
 
 // Utils
-@import 'utils/utils';
+@import "utils/utils";
 
-
-// sc-bonus-saver-account
-@import './sc-products-tiles';
-@import './sc-refer-products';
-@import './sc-refer';
-
-
-
+@import "./sc-li-campaign-policy-type";
+@import "./sc-li-campaign-policy-type-card";
+@import "./life-insurance-campaign";
 
 html {
   scroll-behavior: smooth;
 }
-
+.glass-effect {
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+}
