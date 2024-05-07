@@ -5,7 +5,9 @@ class Features {
    */
   init() {
     const parentThis = this;
-    const labels = document.querySelectorAll(".sc-li-campaign__policy-type-filter-step-item");
+    const labels = document.querySelectorAll(
+      ".sc-li-campaign__policy-type-filter-step-item"
+    );
     if (labels.length) {
       labels.forEach((elem) => {
         elem.addEventListener("click", (e) => {
@@ -29,21 +31,21 @@ class Features {
    *
    */
   labelEvtCallback(e) {
-    const targetelem = document.querySelectorAll(".sc-li-campaign__policy-type-filter-step-item");
+    const targetelem = document.querySelectorAll(
+      ".sc-li-campaign__policy-type-filter-step-item"
+    );
     targetelem.forEach((el) => {
-      el.classList.remove("sc-li-campaign__policy-type-filter-step-item--active");
+      el.classList.remove(
+        "sc-li-campaign__policy-type-filter-step-item--active"
+      );
     });
-    e.target.classList.add("sc-li-campaign__policy-type-filter-step-item--active");
+    e.target.classList.add(
+      "sc-li-campaign__policy-type-filter-step-item--active"
+    );
     let labelFor = e.target;
-    console.log('labelFor', labelFor)
-    // selectedLabels.forEach((el) => {
-    //   el.classList.add("sc-features__step-item--active");
-    // });
   }
 }
 
 const instance = new Features();
-window.addEventListener("load", function () {
-  instance.init();
-});
-export default instance;
+instance.init();
+// export default instance;
