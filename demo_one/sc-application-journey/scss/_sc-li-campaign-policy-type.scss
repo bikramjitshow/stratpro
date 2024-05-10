@@ -27,6 +27,13 @@
     height: 0;
     overflow: hidden;
     opacity: 0;
+    transition: all 0.5s ease-in-out;
+    &--active {
+      visibility: visible;
+      overflow: visible;
+      height: auto;
+      opacity: 1;
+    }
   }
   &__policy-type-card-content {
     background-color: #fff;
