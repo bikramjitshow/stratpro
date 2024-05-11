@@ -1,5 +1,3 @@
-// import Highcharts from "../node_modules/highcharts";
-
 class lifeInsuranceCamp {
   static selectedPersona;
   init() {
@@ -39,79 +37,40 @@ class lifeInsuranceCamp {
         that.activeBanner(personaitem);
         that.activeContentBox(personaitem);
         that.generateChart(index + 1, personaitem);
-        // that.tiggerdefaultContentFilter(personaitem);
         that.tiggerContentFilter(personaitem);
       });
     });
   }
 
-  // tiggerContentFilter() {
-  //   let filters = document.querySelectorAll(
-  //     ".sc-li-campaign__policy-type-filter-step-item"
-  //   );
-  //   if (filters.length) {
-  //     filters.forEach((filter) => {
-  //       let firstTitle = filters[0].dataset.filterItem;
-  //       let title = filter.dataset.filterItem;
-  //       filters[0].classList.add(
-  //         "sc-li-campaign__policy-type-filter-step-item--active"
-  //       );
-  //       this.activeFilterContent(firstTitle);
-  //       filter.addEventListener("click", (e) => {
-  //         this.activeFilter(e);
-  //         this.activeFilterContent(title);
-  //       });
-  //     });
-  //   }
-  // }
   tiggerContentFilter(personaitem) {
-    let filteritemparent;
+    let filteritemparent, parentitem, isHide;
     let isFirstFilterActivated = false;
     let filters = document.querySelectorAll(
       ".sc-li-campaign__policy-type-filter-step-item"
     );
     if (filters.length) {
       filters.forEach((filter) => {
-        filteritemparent = filter.closest(".sc-li-campaign__content-box-item")
-          .dataset.content;
+        parentitem = filter.closest(".sc-li-campaign__content-box-item");
+        filteritemparent = parentitem.dataset.content;
+        isHide = parentitem.classList.contains("hide");
         let firstTitle = filters[0].dataset.filterItem;
         let title = filter.dataset.filterItem;
-        if (personaitem === filteritemparent) {
-          // filters[0].classList.add(
-          //   "sc-li-campaign__policy-type-filter-step-item--active"
-          // );
-          // this.activeFilterContent(firstTitle);
+        if (personaitem === filteritemparent && !isHide) {
           if (!isFirstFilterActivated) {
             filter.classList.add(
               "sc-li-campaign__policy-type-filter-step-item--active"
             );
             this.activeFilterContent(firstTitle);
+          } else {
+            filter.classList.remove(
+              "sc-li-campaign__policy-type-filter-step-item--active"
+            );
           }
           isFirstFilterActivated = true;
           filter.addEventListener("click", (e) => {
             this.activeFilter(e);
             this.activeFilterContent(title);
           });
-        }
-      });
-    }
-  }
-
-  tiggerdefaultContentFilter(personaitem) {
-    let filterparent;
-    let isFirstFilterActivated = false;
-    const filters = document.querySelectorAll(
-      ".sc-li-campaign__policy-type-filter-step-item"
-    );
-    if (filters.length) {
-      filters.forEach((filter) => {
-        filterparent = filter.closest(".sc-li-campaign__content-box-item")
-          .dataset.content;
-        if (personaitem === filterparent && !isFirstFilterActivated) {
-          filter.classList.add(
-            "sc-li-campaign__policy-type-filter-step-item--active"
-          );
-          isFirstFilterActivated = true;
         }
       });
     }
