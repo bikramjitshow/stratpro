@@ -135,6 +135,8 @@
 }
 .m-text-content.sc-li-campaign-form-modal {
   padding: 0;
+  border-radius: 32px 32px 0px 0px;
+  overflow: hidden;
 }
 .sc-li-campaign-form-modal-main {
   &.c-modal {
