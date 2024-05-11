@@ -1,5 +1,6 @@
 class lifeInsuranceCamp {
   static selectedPersona;
+  static isChecked;
   init() {
     const that = this;
     console.log("life -insurance-campaign");
@@ -12,6 +13,44 @@ class lifeInsuranceCamp {
       let personaitem = firstpersonaBtn.dataset.persona;
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
+
+      // form
+      // that.getCheckboxes();
+      const checkboxes = document.querySelectorAll(
+        ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
+      );
+      const formSubmitBtn = document.querySelector(
+        ".sc-li-campaign-form__submit-btn"
+      );
+      if (checkboxes.length) {
+        checkboxes.forEach((checkbox) => {
+          console.log(checkbox.checked);
+          console.log(checkbox);
+          // Add event listener to checkbox
+          checkbox.addEventListener("click", function (e) {
+            if (
+              e.target.matches(
+                ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
+              )
+            ) {
+              // Your code here
+              console.log("change", e);
+              if (this.checked) {
+                formSubmitBtn.classList.add("sc-btn--disabled");
+                // formSubmitBtn.disabled = true; // formSubmitBtn disabled if checkbox is checked
+              } else {
+                formSubmitBtn.classList.remove("sc-btn--disabled");
+                // formSubmitBtn.disabled = false; // formSubmitBtn enabled if checkbox is not checked
+              }
+            }
+          });
+        });
+
+        // Add event listener to button
+        formSubmitBtn.addEventListener("click", function () {
+          alert("Button clicked!");
+        });
+      }
     });
   }
 
@@ -234,20 +273,26 @@ class lifeInsuranceCamp {
     // });
   }
 
+  // form
   activeModal() {
     const that = this;
+    const activemodalbtn = document.querySelector(
+      ".sc-li-campaign__active-modal-btn"
+    ).dataset.modalSource;
     document.body.addEventListener("click", function (event) {
-      let closestAnchor = event.target.closest("a");
-      let formModal = document.querySelector(".sc-li-campaign-form-modal");
-      let modalAttr = closestAnchor.getAttribute("data-modal-source");
-      let formmodalAttr = formModal.getAttribute("data-modal-id");
-      let wrapp = document.querySelector(".c-modal");
-      if (modalAttr === formmodalAttr) {
-        formModal.classList.add("sc-li-campaign-form-modal-active");
-        wrapp.classList.add("sc-li-campaign-form-modal-main");
-        // setTimeout(() => {
-        //   that.statusModal(true);
-        // }, 6000);
+      if (event.target.dataset.modalSource === activemodalbtn) {
+        let closestAnchor = event.target.closest("a");
+        let formModal = document.querySelector(".sc-li-campaign-form-modal");
+        let modalAttr = closestAnchor.getAttribute("data-modal-source");
+        let formmodalAttr = formModal.getAttribute("data-modal-id");
+        let wrapp = document.querySelector(".c-modal");
+        if (modalAttr === formmodalAttr) {
+          formModal.classList.add("sc-li-campaign-form-modal-active");
+          wrapp.classList.add("sc-li-campaign-form-modal-main");
+          // setTimeout(() => {
+          //   that.statusModal(true);
+          // }, 6000);
+        }
       }
     });
   }
@@ -258,6 +303,45 @@ class lifeInsuranceCamp {
       //If referral code is empty or invalid
       errorModal.classList.add("sc-error-modal--show");
     }
+  }
+
+  getCheckboxes() {
+    const checkboxes = document.querySelectorAll(
+      ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
+    );
+    const formSubmitBtn = document.querySelector(
+      ".sc-li-campaign-form__submit-btn"
+    );
+    if (checkboxes.length) {
+      checkboxes.forEach((checkbox) => {
+        console.log(checkbox.checked);
+        console.log(checkbox);
+        // Add event listener to checkbox
+        checkbox.addEventListener("change", function (e) {
+          console.log("change", e);
+          // if (this.checked) {
+          //   formSubmitBtn.disabled = true; // formSubmitBtn disabled if checkbox is checked
+          // } else {
+          //   formSubmitBtn.disabled = false; // formSubmitBtn enabled if checkbox is not checked
+          // }
+        });
+      });
+
+      // Add event listener to button
+      formSubmitBtn.addEventListener("click", function () {
+        alert("Button clicked!");
+      });
+    }
+  }
+
+  formSubmit() {
+    const formSubmitBtn = document.querySelector(
+      ".sc-li-campaign-form__submit-btn"
+    );
+
+    console.log(this.isChecked);
+
+    formSubmitBtn.addEventListener("click", () => {});
   }
 }
 

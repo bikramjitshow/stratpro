@@ -82,8 +82,8 @@
     color: $color-white;
   }
   &__bnr-heading {
-    font-size: 19px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 400;
     color: $color-white;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -142,6 +142,19 @@
   &.c-modal {
     > .wrapper {
       overflow-y: hidden;
+      padding-left: 0;
+      padding-right: 0;
+      .modal-content {
+        .closebutton.mobile {
+          width: 24px;
+          height: 24px;
+          right: -30px;
+          top: 30px;
+        }
+        .icon-modal-close-mobile {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' id='cross'%3E%3Cpath fill='%23ffffff' d='M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm3.21 11.79a1 1 0 0 1 0 1.42 1 1 0 0 1-1.42 0L12 13.41l-1.79 1.8a1 1 0 0 1-1.42 0 1 1 0 0 1 0-1.42l1.8-1.79-1.8-1.79a1 1 0 0 1 1.42-1.42l1.79 1.8 1.79-1.8a1 1 0 0 1 1.42 1.42L13.41 12Z' class='color464646 svgShape'%3E%3C/path%3E%3C/svg%3E");
+        }
+      }
     }
   }
 }
