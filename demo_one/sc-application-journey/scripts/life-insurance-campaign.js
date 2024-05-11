@@ -16,41 +16,6 @@ class lifeInsuranceCamp {
 
       // form
       // that.getCheckboxes();
-      const checkboxes = document.querySelectorAll(
-        ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
-      );
-      const formSubmitBtn = document.querySelector(
-        ".sc-li-campaign-form__submit-btn"
-      );
-      if (checkboxes.length) {
-        checkboxes.forEach((checkbox) => {
-          console.log(checkbox.checked);
-          console.log(checkbox);
-          // Add event listener to checkbox
-          checkbox.addEventListener("click", function (e) {
-            if (
-              e.target.matches(
-                ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
-              )
-            ) {
-              // Your code here
-              console.log("change", e);
-              if (this.checked) {
-                formSubmitBtn.classList.add("sc-btn--disabled");
-                // formSubmitBtn.disabled = true; // formSubmitBtn disabled if checkbox is checked
-              } else {
-                formSubmitBtn.classList.remove("sc-btn--disabled");
-                // formSubmitBtn.disabled = false; // formSubmitBtn enabled if checkbox is not checked
-              }
-            }
-          });
-        });
-
-        // Add event listener to button
-        formSubmitBtn.addEventListener("click", function () {
-          alert("Button clicked!");
-        });
-      }
     });
   }
 
@@ -292,6 +257,7 @@ class lifeInsuranceCamp {
           // setTimeout(() => {
           //   that.statusModal(true);
           // }, 6000);
+          that.getCheckboxes();
         }
       }
     });
@@ -306,32 +272,32 @@ class lifeInsuranceCamp {
   }
 
   getCheckboxes() {
-    const checkboxes = document.querySelectorAll(
+    var checkboxes = document.querySelectorAll(
       ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
     );
-    const formSubmitBtn = document.querySelector(
+    var formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
-    if (checkboxes.length) {
-      checkboxes.forEach((checkbox) => {
-        console.log(checkbox.checked);
-        console.log(checkbox);
-        // Add event listener to checkbox
-        checkbox.addEventListener("change", function (e) {
-          console.log("change", e);
-          // if (this.checked) {
-          //   formSubmitBtn.disabled = true; // formSubmitBtn disabled if checkbox is checked
-          // } else {
-          //   formSubmitBtn.disabled = false; // formSubmitBtn enabled if checkbox is not checked
-          // }
+    var selectedCheckbox = [];
+    checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function (e) {
+        var anyChecked = Array.from(checkboxes).some(function (checkbox) {
+          return checkbox.checked;
         });
-      });
 
-      // Add event listener to button
-      formSubmitBtn.addEventListener("click", function () {
-        alert("Button clicked!");
+        if (anyChecked) {
+          formSubmitBtn.classList.remove("sc-btn--disabled");
+        } else {
+          formSubmitBtn.classList.add("sc-btn--disabled");
+        }
+        console.log("change", e);
+        if (this.checked) {
+          console.log(checkbox.getAttribute("id"));
+          selectedCheckbox.push(checkbox.getAttribute("id"));
+        }
+        console.log({selectedCheckbox})
       });
-    }
+    });
   }
 
   formSubmit() {
