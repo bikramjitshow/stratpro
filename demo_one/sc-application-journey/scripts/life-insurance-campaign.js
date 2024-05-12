@@ -275,10 +275,14 @@ class lifeInsuranceCamp {
     var checkboxes = document.querySelectorAll(
       ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
     );
+    var radios = document.querySelectorAll(
+      ".sc-li-campaign-form__radios .sc-radio-box__input"
+    );
     var formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
     var selectedCheckbox = [];
+    var selectedradio = [];
     checkboxes.forEach(function (checkbox) {
       checkbox.addEventListener("change", function (e) {
         var anyChecked = Array.from(checkboxes).some(function (checkbox) {
@@ -298,6 +302,27 @@ class lifeInsuranceCamp {
         console.log({selectedCheckbox})
       });
     });
+    radios.forEach(function (checkbox) {
+      radios.addEventListener("change", function (e) {
+        var anyChecked = Array.from(radios).some(function (radio) {
+          return radio.checked;
+        });
+
+        if (anyChecked) {
+          formSubmitBtn.classList.remove("sc-btn--disabled");
+        } else {
+          formSubmitBtn.classList.add("sc-btn--disabled");
+        }
+        console.log("change", e);
+        if (this.checked) {
+          console.log(radio.getAttribute("id"));
+          selectedradio.push(radio.getAttribute("id"));
+        }
+        console.log({selectedCheckbox})
+      });
+    });
+
+    
   }
 
   formSubmit() {
