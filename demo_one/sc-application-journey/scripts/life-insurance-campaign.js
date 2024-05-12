@@ -1,6 +1,7 @@
 class lifeInsuranceCamp {
   static selectedPersona;
-  static isChecked;
+  static selectedCheckbox = [];
+  static selectedradio = [];
   init() {
     const that = this;
     console.log("life -insurance-campaign");
@@ -14,8 +15,14 @@ class lifeInsuranceCamp {
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
 
-      // form
-      // that.getCheckboxes();
+      // // form
+      // const formSubmitBtn = document.querySelector(
+      //   ".sc-li-campaign-form__submit-btn"
+      // );
+      // formSubmitBtn.addEventListener("click", () => {
+      //   console.log("Form Submit")
+      //   that.allSelectedData();
+      // });
     });
   }
 
@@ -258,6 +265,14 @@ class lifeInsuranceCamp {
           //   that.statusModal(true);
           // }, 6000);
           that.getCheckboxes();
+          // form
+          const formSubmitBtn = document.querySelector(
+            ".sc-li-campaign-form__submit-btn"
+          );
+          formSubmitBtn.addEventListener("click", () => {
+            console.log("Form Submit");
+            that.allSelectedData();
+          });
         }
       }
     });
@@ -281,8 +296,8 @@ class lifeInsuranceCamp {
     var formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
-    var selectedCheckbox = [];
-    var selectedradio = [];
+    // var selectedCheckbox = [];
+    // var selectedradio = [];
     checkboxes.forEach(function (checkbox) {
       checkbox.addEventListener("change", function (e) {
         var anyChecked = Array.from(checkboxes).some(function (checkbox) {
@@ -297,13 +312,13 @@ class lifeInsuranceCamp {
         console.log("change", e);
         if (this.checked) {
           console.log(checkbox.getAttribute("id"));
-          selectedCheckbox.push(checkbox.getAttribute("id"));
+          lifeInsuranceCamp.selectedCheckbox.push(checkbox.getAttribute("id"));
         }
-        console.log({selectedCheckbox})
+        // console.log({selectedCheckbox})
       });
     });
-    radios.forEach(function (checkbox) {
-      radios.addEventListener("change", function (e) {
+    radios.forEach(function (radio) {
+      radio.addEventListener("change", function (e) {
         var anyChecked = Array.from(radios).some(function (radio) {
           return radio.checked;
         });
@@ -316,24 +331,19 @@ class lifeInsuranceCamp {
         console.log("change", e);
         if (this.checked) {
           console.log(radio.getAttribute("id"));
-          selectedradio.push(radio.getAttribute("id"));
+          lifeInsuranceCamp.selectedradio.push(radio.getAttribute("id"));
         }
-        console.log({selectedCheckbox})
+        // console.log({selectedCheckbox})
       });
     });
-
-    
   }
 
-  formSubmit() {
-    const formSubmitBtn = document.querySelector(
-      ".sc-li-campaign-form__submit-btn"
-    );
-
-    console.log(this.isChecked);
-
-    formSubmitBtn.addEventListener("click", () => {});
+  allSelectedData() {
+    // const data = this.selectedCheckbox.con this.selectedradio;
+    console.log(lifeInsuranceCamp.selectedCheckbox);
   }
+
+  formSubmit() {}
 }
 
 const Instance = new lifeInsuranceCamp();
