@@ -30,14 +30,20 @@ class lifeInsuranceCamp {
   }
 
   paramCheck() {
+    let that = this;
     let queryString = Utils.getPageContext().queryString;
     const persona = ScCommonMethods.getQueryParam(
       queryString,
       document.querySelector(".sc-li-campaign").getAttribute("data-query-param")
     );
-
+    const personaBtns = document.querySelectorAll(
+      ".sc-li-campaign__persona-btn"
+    );
     console.log("queryString--", queryString);
     console.log("persona--", persona);
+    if (persona) {
+      that.tiggerPersona(persona);
+    }
   }
 
   addUrlParam() {
@@ -62,6 +68,78 @@ class lifeInsuranceCamp {
 
       // Push the new URL to the browser history without reloading the page
       window.history.pushState({ path: newUrl }, "", newUrl);
+    }
+  }
+
+  // tiggerPersona(persona) {
+  //   // Get all persona buttons
+  //   const personaBtns = document.querySelectorAll(
+  //     ".sc-li-campaign__persona-btn"
+  //   );
+
+  //   // Add click event listener to each persona button
+  //   personaBtns.forEach((btn, index) => {
+  //     const that = this;
+  //     let personaitem = persona;
+  //     btn.addEventListener("click", function () {
+  //       // Remove active class from all persona buttons
+  //       personaBtns.forEach((btn) => {
+  //         btn.classList.remove("sc-li-campaign__persona-btn-active");
+  //       });
+
+  //       // Add active class to the clicked button
+  //       this.classList.add("sc-li-campaign__persona-btn-active");
+  //       console.log(btn.textContent.trim());
+  //       that.activeBanner(personaitem);
+  //       that.activeContentBox(personaitem);
+  //       that.generateChart(index + 1, personaitem);
+  //       that.tiggerContentFilter(personaitem);
+  //     });
+  //   });
+  //   btn.click();
+  // }
+
+  tiggerPersona(persona) {
+    // Get all persona buttons
+    const personaBtns = document.querySelectorAll(
+      ".sc-li-campaign__persona-btn"
+    );
+
+    // Function to handle click event
+    const handleClick = (btn, index) => {
+      let personaitem = btn.dataset.persona;
+      // Remove active class from all persona buttons
+      personaBtns.forEach((btn) => {
+        btn.classList.remove("sc-li-campaign__persona-btn-active");
+      });
+
+      // Add active class to the clicked button
+      btn.classList.add("sc-li-campaign__persona-btn-active");
+      console.log(btn.textContent.trim());
+      this.activeBanner(personaitem);
+      this.activeContentBox(personaitem);
+      this.generateChart(index + 1, personaitem);
+      this.tiggerContentFilter(personaitem);
+    };
+
+    // Add click event listener to each persona button
+    personaBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        handleClick(btn, index);
+      });
+    });
+
+    // Trigger click event with specified persona value
+    if (persona) {
+      const personaIndex = Array.from(personaBtns).findIndex(
+        (btn) => btn.dataset.persona === persona
+      );
+      console.log("personaIndex", personaIndex)
+      if (personaIndex !== -1) {
+        handleClick(personaBtns[personaIndex], personaIndex);
+      } else {
+        console.error(`Persona "${persona}" not found in the persona buttons.`);
+      }
     }
   }
 
