@@ -6,7 +6,7 @@ class lifeInsuranceCamp {
   init() {
     const that = this;
     that.addUrlParam();
-    that.activePersonaClass();
+    // that.activePersonaClass();
     that.activeModal();
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -143,32 +143,32 @@ class lifeInsuranceCamp {
     }
   }
 
-  activePersonaClass() {
-    // Get all persona buttons
-    const personaBtns = document.querySelectorAll(
-      ".sc-li-campaign__persona-btn"
-    );
+  // activePersonaClass() {
+  //   // Get all persona buttons
+  //   const personaBtns = document.querySelectorAll(
+  //     ".sc-li-campaign__persona-btn"
+  //   );
 
-    // Add click event listener to each persona button
-    personaBtns.forEach((btn, index) => {
-      const that = this;
-      let personaitem = btn.dataset.persona;
-      btn.addEventListener("click", function () {
-        // Remove active class from all persona buttons
-        personaBtns.forEach((btn) => {
-          btn.classList.remove("sc-li-campaign__persona-btn-active");
-        });
+  //   // Add click event listener to each persona button
+  //   personaBtns.forEach((btn, index) => {
+  //     const that = this;
+  //     let personaitem = btn.dataset.persona;
+  //     btn.addEventListener("click", function () {
+  //       // Remove active class from all persona buttons
+  //       personaBtns.forEach((btn) => {
+  //         btn.classList.remove("sc-li-campaign__persona-btn-active");
+  //       });
 
-        // Add active class to the clicked button
-        this.classList.add("sc-li-campaign__persona-btn-active");
-        console.log(btn.textContent.trim());
-        that.activeBanner(personaitem);
-        that.activeContentBox(personaitem);
-        that.generateChart(index + 1, personaitem);
-        that.tiggerContentFilter(personaitem);
-      });
-    });
-  }
+  //       // Add active class to the clicked button
+  //       this.classList.add("sc-li-campaign__persona-btn-active");
+  //       console.log(btn.textContent.trim());
+  //       that.activeBanner(personaitem);
+  //       that.activeContentBox(personaitem);
+  //       that.generateChart(index + 1, personaitem);
+  //       that.tiggerContentFilter(personaitem);
+  //     });
+  //   });
+  // }
 
   tiggerContentFilter(personaitem) {
     let filteritemparent, parentitem, isHide;
