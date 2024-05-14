@@ -1,13 +1,16 @@
+import ScCommonMethods from "./sc-common-methods.js";
 class lifeInsuranceCamp {
   static selectedPersona;
   static selectedCheckbox = [];
   static selectedradio = [];
   init() {
     const that = this;
-    console.log("life -insurance-campaign");
+    that.addUrlParam();
     that.activePersonaClass();
     that.activeModal();
+
     document.addEventListener("DOMContentLoaded", function () {
+      that.paramCheck();
       const firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
       );
@@ -24,6 +27,42 @@ class lifeInsuranceCamp {
       //   that.allSelectedData();
       // });
     });
+  }
+
+  paramCheck() {
+    let queryString = Utils.getPageContext().queryString;
+    const persona = ScCommonMethods.getQueryParam(
+      queryString,
+      document.querySelector(".sc-li-campaign").getAttribute("data-query-param")
+    );
+
+    console.log("queryString--", queryString);
+    console.log("persona--", persona);
+  }
+
+  addUrlParam() {
+    // Define your parameter
+    var paramName = "persona";
+    var paramValue = "family";
+
+    // Get the current URL
+    var currentUrl = window.location.href;
+
+    // Check if the parameter already exists in the URL
+    var urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.has(paramName)) {
+      // Construct the new URL with the parameter
+      var separator = currentUrl.indexOf("?") !== -1 ? "&" : "?";
+      var newUrl =
+        currentUrl +
+        separator +
+        paramName +
+        "=" +
+        encodeURIComponent(paramValue);
+
+      // Push the new URL to the browser history without reloading the page
+      window.history.pushState({ path: newUrl }, "", newUrl);
+    }
   }
 
   activePersonaClass() {
@@ -100,7 +139,7 @@ class lifeInsuranceCamp {
     );
   }
   activeFilterContent(activeTitle) {
-    console.log("activeTitle--", activeTitle);
+    // console.log("activeTitle--", activeTitle);
     let filterContents = document.querySelectorAll(
       ".sc-li-campaign__policy-type-filter-panels-content"
     );
@@ -169,80 +208,80 @@ class lifeInsuranceCamp {
     }
     // console.log("ghdata", ghdata);
 
-    // Highcharts.chart(`persona_graph_${id}`, {
-    //   chart: {
-    //     width: null,
-    //     height: 200,
-    //     type: "pie",
-    //     backgroundColor: null,
-    //   },
-    //   title: {
-    //     text: "",
-    //   },
-    //   tooltip: {
-    //     pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
-    //   },
-    //   accessibility: {
-    //     point: {
-    //       valueSuffix: "%",
-    //     },
-    //   },
-    //   plotOptions: {
-    //     pie: {
-    //       allowPointSelect: true,
-    //       cursor: "pointer",
-    //       borderWidth: 4,
-    //       dataLabels: {
-    //         enabled: false,
-    //       },
-    //       showInLegend: true,
-    //     },
-    //   },
-    //   legend: {
-    //     className: "sc-li-campaign__graph-legend",
-    //     layout: "vertical",
-    //     align: "right",
-    //     verticalAlign: "middle",
-    //     labelFormat: "{name}: <b>{y}%</b>",
-    //     symbolHeight: 14,
-    //     symbolWidth: 14,
-    //     symbolRadius: 2,
-    //     width: "50%",
-    //     itemStyle: {
-    //       fontSize: "12px",
-    //       fontWeight: "400",
-    //     },
-    //   },
-    //   series: [
-    //     {
-    //       name: "Young Generation",
-    //       colorByPoint: true,
-    //       data: [
-    //         {
-    //           name: "Critical Illness",
-    //           y: ghdata?.d1,
-    //           color: "#00BCD3",
-    //         },
-    //         {
-    //           name: "Saving Account",
-    //           y: ghdata?.d2,
-    //           color: "#2772C7",
-    //         },
-    //         {
-    //           name: "Life",
-    //           y: ghdata?.d3,
-    //           color: "#00A9F3",
-    //         },
-    //         {
-    //           name: "Medical",
-    //           y: ghdata?.d4,
-    //           color: "#AE6BFC",
-    //         },
-    //       ],
-    //     },
-    //   ],
-    //   exporting: false,
-    // });
+    Highcharts.chart(`persona_graph_${id}`, {
+      chart: {
+        width: null,
+        height: 200,
+        type: "pie",
+        backgroundColor: null,
+      },
+      title: {
+        text: "",
+      },
+      tooltip: {
+        pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+      },
+      accessibility: {
+        point: {
+          valueSuffix: "%",
+        },
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: "pointer",
+          borderWidth: 4,
+          dataLabels: {
+            enabled: false,
+          },
+          showInLegend: true,
+        },
+      },
+      legend: {
+        className: "sc-li-campaign__graph-legend",
+        layout: "vertical",
+        align: "right",
+        verticalAlign: "middle",
+        labelFormat: "{name}: <b>{y}%</b>",
+        symbolHeight: 14,
+        symbolWidth: 14,
+        symbolRadius: 2,
+        width: "50%",
+        itemStyle: {
+          fontSize: "12px",
+          fontWeight: "400",
+        },
+      },
+      series: [
+        {
+          name: "Young Generation",
+          colorByPoint: true,
+          data: [
+            {
+              name: "Critical Illness",
+              y: ghdata?.d1,
+              color: "#00BCD3",
+            },
+            {
+              name: "Saving Account",
+              y: ghdata?.d2,
+              color: "#2772C7",
+            },
+            {
+              name: "Life",
+              y: ghdata?.d3,
+              color: "#00A9F3",
+            },
+            {
+              name: "Medical",
+              y: ghdata?.d4,
+              color: "#AE6BFC",
+            },
+          ],
+        },
+      ],
+      exporting: false,
+    });
   }
 
   // form
@@ -339,8 +378,24 @@ class lifeInsuranceCamp {
   }
 
   allSelectedData() {
+    var checkboxes = document.querySelectorAll(
+      ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
+    );
+    var radios = document.querySelectorAll(
+      ".sc-li-campaign-form__radios .sc-radio-box__input"
+    );
+    const checkboxs = new Object();
+    checkboxes.forEach(function (checkbox, index) {
+      console.log(checkbox.checked);
+      if (!checkbox.checked) {
+        checkboxs.id = `uncheck_${index}`;
+      } else {
+        checkboxs.id = checkbox.getAttribute("id");
+      }
+    });
     // const data = this.selectedCheckbox.con this.selectedradio;
     console.log(lifeInsuranceCamp.selectedCheckbox);
+    console.log(checkboxs);
   }
 
   formSubmit() {}
