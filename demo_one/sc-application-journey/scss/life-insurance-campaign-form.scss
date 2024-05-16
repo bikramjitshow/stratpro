@@ -122,9 +122,14 @@
     &--disabled {
       border-color: #cccbcb;
       background-color: #cccbcb;
+      pointer-events: none;
     }
     &:last-child {
       margin-bottom: 0;
+    }
+    span,
+    .text {
+      pointer-events: none;
     }
   }
 }

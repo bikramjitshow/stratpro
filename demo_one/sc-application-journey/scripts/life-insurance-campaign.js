@@ -5,27 +5,19 @@ class lifeInsuranceCamp {
   static selectedradio = [];
   init() {
     const that = this;
-    that.addUrlParam();
+    // that.addUrlParam();
     // that.activePersonaClass();
     that.activeModal();
 
     document.addEventListener("DOMContentLoaded", function () {
-      that.paramCheck();
       const firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
+      // that.tiggerPersona(personaitem);
+      that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
-
-      // // form
-      // const formSubmitBtn = document.querySelector(
-      //   ".sc-li-campaign-form__submit-btn"
-      // );
-      // formSubmitBtn.addEventListener("click", () => {
-      //   console.log("Form Submit")
-      //   that.allSelectedData();
-      // });
     });
   }
 
@@ -36,74 +28,72 @@ class lifeInsuranceCamp {
       queryString,
       document.querySelector(".sc-li-campaign").getAttribute("data-query-param")
     );
-    const personaBtns = document.querySelectorAll(
+    const firstpersonaBtn = document.querySelector(
       ".sc-li-campaign__persona-btn"
     );
+    let personaitem = firstpersonaBtn.dataset.persona;
     console.log("queryString--", queryString);
     console.log("persona--", persona);
     if (persona) {
       that.tiggerPersona(persona);
+    } else {
+      that.tiggerPersona(personaitem);
     }
   }
 
-  addUrlParam() {
+  addUrlParam(name, value) {
     // Define your parameter
-    var paramName = "persona";
-    var paramValue = "family";
+    // var paramName = name? name : "persona";
+    // var paramValue = value ? value : "young_generation";
+    var paramName = name;
+    var paramValue = value;
+
+    console.log({ paramName, paramValue });
 
     // Get the current URL
     var currentUrl = window.location.href;
 
     // Check if the parameter already exists in the URL
+    // var urlParams = new URLSearchParams(window.location.search);
+    // if (!urlParams.has(paramName)) {
+    //   // Construct the new URL with the parameter
+    //   var separator = currentUrl.indexOf("?") !== -1 ? "&" : "?";
+    //   var newUrl =
+    //     currentUrl +
+    //     separator +
+    //     paramName +
+    //     "=" +
+    //     encodeURIComponent(paramValue);
+
+    //   // Push the new URL to the browser history without reloading the page
+    //   window.history.pushState({ path: newUrl }, "", newUrl);
+    // }
+
+    // Check if the parameter already exists in the URL
     var urlParams = new URLSearchParams(window.location.search);
-    if (!urlParams.has(paramName)) {
-      // Construct the new URL with the parameter
-      var separator = currentUrl.indexOf("?") !== -1 ? "&" : "?";
-      var newUrl =
-        currentUrl +
-        separator +
-        paramName +
-        "=" +
-        encodeURIComponent(paramValue);
-
-      // Push the new URL to the browser history without reloading the page
-      window.history.pushState({ path: newUrl }, "", newUrl);
+    if (urlParams.has(paramName)) {
+      // If the parameter exists, update its value
+      urlParams.set(paramName, paramValue);
+    } else {
+      // If the parameter does not exist, add it
+      urlParams.append(paramName, paramValue);
     }
+
+    // Construct the new URL with the updated parameters
+    var newUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
+
+    // Push the new URL to the browser history without reloading the page
+    window.history.pushState({ path: newUrl }, "", newUrl);
   }
-
-  // tiggerPersona(persona) {
-  //   // Get all persona buttons
-  //   const personaBtns = document.querySelectorAll(
-  //     ".sc-li-campaign__persona-btn"
-  //   );
-
-  //   // Add click event listener to each persona button
-  //   personaBtns.forEach((btn, index) => {
-  //     const that = this;
-  //     let personaitem = persona;
-  //     btn.addEventListener("click", function () {
-  //       // Remove active class from all persona buttons
-  //       personaBtns.forEach((btn) => {
-  //         btn.classList.remove("sc-li-campaign__persona-btn-active");
-  //       });
-
-  //       // Add active class to the clicked button
-  //       this.classList.add("sc-li-campaign__persona-btn-active");
-  //       console.log(btn.textContent.trim());
-  //       that.activeBanner(personaitem);
-  //       that.activeContentBox(personaitem);
-  //       that.generateChart(index + 1, personaitem);
-  //       that.tiggerContentFilter(personaitem);
-  //     });
-  //   });
-  //   btn.click();
-  // }
 
   tiggerPersona(persona) {
     // Get all persona buttons
     const personaBtns = document.querySelectorAll(
       ".sc-li-campaign__persona-btn"
     );
+    const queryparam = document
+      .querySelector(".sc-li-campaign")
+      .getAttribute("data-query-param");
 
     // Function to handle click event
     const handleClick = (btn, index) => {
@@ -115,7 +105,7 @@ class lifeInsuranceCamp {
 
       // Add active class to the clicked button
       btn.classList.add("sc-li-campaign__persona-btn-active");
-      console.log(btn.textContent.trim());
+      this.addUrlParam(queryparam, personaitem);
       this.activeBanner(personaitem);
       this.activeContentBox(personaitem);
       this.generateChart(index + 1, personaitem);
@@ -134,7 +124,7 @@ class lifeInsuranceCamp {
       const personaIndex = Array.from(personaBtns).findIndex(
         (btn) => btn.dataset.persona === persona
       );
-      console.log("personaIndex", personaIndex)
+      console.log("personaIndex", personaIndex);
       if (personaIndex !== -1) {
         handleClick(personaBtns[personaIndex], personaIndex);
       } else {
@@ -378,18 +368,10 @@ class lifeInsuranceCamp {
         if (modalAttr === formmodalAttr) {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
-          // setTimeout(() => {
-          //   that.statusModal(true);
-          // }, 6000);
+
           that.getCheckboxes();
           // form
-          const formSubmitBtn = document.querySelector(
-            ".sc-li-campaign-form__submit-btn"
-          );
-          formSubmitBtn.addEventListener("click", () => {
-            console.log("Form Submit");
-            that.allSelectedData();
-          });
+          that.formSubmit();
         }
       }
     });
@@ -400,6 +382,8 @@ class lifeInsuranceCamp {
     if (status) {
       //If referral code is empty or invalid
       errorModal.classList.add("sc-error-modal--show");
+    } else {
+      errorModal.classList.remove("sc-error-modal--show");
     }
   }
 
@@ -426,10 +410,10 @@ class lifeInsuranceCamp {
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
         }
-        console.log("change", e);
+        // console.log("change", e);
         if (this.checked) {
-          console.log(checkbox.getAttribute("id"));
-          lifeInsuranceCamp.selectedCheckbox.push(checkbox.getAttribute("id"));
+          // console.log(checkbox.value);
+          lifeInsuranceCamp.selectedCheckbox.push(checkbox.value);
         }
         // console.log({selectedCheckbox})
       });
@@ -445,10 +429,10 @@ class lifeInsuranceCamp {
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
         }
-        console.log("change", e);
+        // console.log("change", e);
         if (this.checked) {
-          console.log(radio.getAttribute("id"));
-          lifeInsuranceCamp.selectedradio.push(radio.getAttribute("id"));
+          console.log(radio.value);
+          lifeInsuranceCamp.selectedradio.push(radio.value);
         }
         // console.log({selectedCheckbox})
       });
@@ -462,21 +446,70 @@ class lifeInsuranceCamp {
     var radios = document.querySelectorAll(
       ".sc-li-campaign-form__radios .sc-radio-box__input"
     );
-    const checkboxs = new Object();
-    checkboxes.forEach(function (checkbox, index) {
-      console.log(checkbox.checked);
-      if (!checkbox.checked) {
-        checkboxs.id = `uncheck_${index}`;
-      } else {
-        checkboxs.id = checkbox.getAttribute("id");
+
+    const formValue = {
+      checkbox: [],
+      radio: [],
+    };
+
+    checkboxes.forEach(function (checkbox) {
+      if (checkbox.checked) {
+        formValue.checkbox.push(checkbox.value);
       }
     });
-    // const data = this.selectedCheckbox.con this.selectedradio;
-    console.log(lifeInsuranceCamp.selectedCheckbox);
-    console.log(checkboxs);
+
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        formValue.radio.push(radio.value);
+      }
+    });
+
+    console.log("formValue:", formValue);
   }
 
-  formSubmit() {}
+  // resetCheckboxes() {
+  //   var checkboxes = document.querySelectorAll(
+  //     ".modal-content .sc-li-campaign-form__checkboxs .sc-radio-box__input"
+  //   );
+  //   var radios = document.querySelectorAll(
+  //     ".modal-content .sc-li-campaign-form__radios .sc-radio-box__input"
+  //   );
+  //   var formSubmitBtn = document.querySelector(
+  //     ".sc-li-campaign-form__submit-btn"
+  //   );
+  //   console.log(radios.length)
+
+  //   checkboxes.forEach(function (checkbox) {
+  //     checkbox.checked = false;
+  //   });
+  //   radios.forEach(function (radio, index) {
+  //     console.log(radio)
+  //     console.log("index--", index)
+  //     if (index > 0) {
+  //       radio.checked = false;
+  //       formSubmitBtn.classList.add("sc-btn--disabled");
+  //     }
+  //   });
+  // }
+
+  formSubmit() {
+    const formSubmitBtn = document.querySelector(
+      ".sc-li-campaign-form__submit-btn"
+    );
+    formSubmitBtn.addEventListener("click", () => {
+      console.log("Form Submitted successfully !");
+      this.allSelectedData();
+      // this.resetCheckboxes();
+      setTimeout(() => {
+        this.statusModal(true);
+      }, 2000);
+    });
+    document
+      .querySelector(".sc-error-modal__alert-close")
+      .addEventListener("click", () => {
+        this.statusModal(false);
+      });
+  }
 }
 
 const Instance = new lifeInsuranceCamp();

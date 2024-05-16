@@ -1186,9 +1186,14 @@ p {
 .sc-li-campaign-form .sc-btn--disabled {
   border-color: #cccbcb;
   background-color: #cccbcb;
+  pointer-events: none;
 }
 .sc-li-campaign-form .sc-btn:last-child {
   margin-bottom: 0;
+}
+.sc-li-campaign-form .sc-btn span,
+.sc-li-campaign-form .sc-btn .text {
+  pointer-events: none;
 }
 
 .sc-li-campaign-form-modal-wrap {
