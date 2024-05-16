@@ -7,14 +7,14 @@ class lifeInsuranceCamp {
     const that = this;
     // that.addUrlParam();
     // that.activePersonaClass();
-    that.activeModal();
-
+    
     document.addEventListener("DOMContentLoaded", function () {
       const firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
       // that.tiggerPersona(personaitem);
+      that.activeModal();
       that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
