@@ -377,9 +377,11 @@ class AnalyticsAdobeCommon {
       window.digitalData.form.formFields = [];
       window.digitalData.form.name = formName;
       fields.forEach((field) => {
+        console.log(field)
         window.digitalData.form.formFields.push({
           formFieldName: field.fieldName,
           formFieldValue: field.fieldValue,
+          CTAName: field.CTAName
         });
       });
 
