@@ -1,5 +1,9 @@
 import ScCommonMethods from "./sc-common-methods.js";
 class lifeInsuranceCamp {
+  constructor() {
+    this.ScCalculatorCommon = new ScCalculatorCommon();
+    this.AnalyticsAdobeCommon = new AnalyticsAdobeCommon();
+  }
   static selectedPersona;
   static selectedCheckbox = [];
   static selectedradio = [];
@@ -7,7 +11,7 @@ class lifeInsuranceCamp {
     const that = this;
     // that.addUrlParam();
     // that.activePersonaClass();
-    
+
     document.addEventListener("DOMContentLoaded", function () {
       const firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
@@ -132,33 +136,6 @@ class lifeInsuranceCamp {
       }
     }
   }
-
-  // activePersonaClass() {
-  //   // Get all persona buttons
-  //   const personaBtns = document.querySelectorAll(
-  //     ".sc-li-campaign__persona-btn"
-  //   );
-
-  //   // Add click event listener to each persona button
-  //   personaBtns.forEach((btn, index) => {
-  //     const that = this;
-  //     let personaitem = btn.dataset.persona;
-  //     btn.addEventListener("click", function () {
-  //       // Remove active class from all persona buttons
-  //       personaBtns.forEach((btn) => {
-  //         btn.classList.remove("sc-li-campaign__persona-btn-active");
-  //       });
-
-  //       // Add active class to the clicked button
-  //       this.classList.add("sc-li-campaign__persona-btn-active");
-  //       console.log(btn.textContent.trim());
-  //       that.activeBanner(personaitem);
-  //       that.activeContentBox(personaitem);
-  //       that.generateChart(index + 1, personaitem);
-  //       that.tiggerContentFilter(personaitem);
-  //     });
-  //   });
-  // }
 
   tiggerContentFilter(personaitem) {
     let filteritemparent, parentitem, isHide;
@@ -388,6 +365,7 @@ class lifeInsuranceCamp {
   }
 
   getCheckboxes() {
+    const that = this;
     var checkboxes = document.querySelectorAll(
       ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
     );
@@ -397,9 +375,10 @@ class lifeInsuranceCamp {
     var formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
+    
     // var selectedCheckbox = [];
     // var selectedradio = [];
-    checkboxes.forEach(function (checkbox) {
+    checkboxes.forEach(function (checkbox, i) {
       checkbox.addEventListener("change", function (e) {
         var anyChecked = Array.from(checkboxes).some(function (checkbox) {
           return checkbox.checked;
@@ -410,10 +389,13 @@ class lifeInsuranceCamp {
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
         }
-        // console.log("change", e);
         if (this.checked) {
-          // console.log(checkbox.value);
-          lifeInsuranceCamp.selectedCheckbox.push(checkbox.value);
+          let formData = that.buildFormData();
+          console.log(`${checkbox.name}_${i + 1}`);
+          that.AnalyticsAdobeCommon.handleInsuranceFormSubmit(
+            formData.name,
+            formData.fields
+          );
         }
         // console.log({selectedCheckbox})
       });
@@ -439,58 +421,105 @@ class lifeInsuranceCamp {
     });
   }
 
-  allSelectedData() {
-    var checkboxes = document.querySelectorAll(
-      ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
-    );
-    var radios = document.querySelectorAll(
-      ".sc-li-campaign-form__radios .sc-radio-box__input"
-    );
-
-    const formValue = {
-      checkbox: [],
-      radio: [],
-    };
-
-    checkboxes.forEach(function (checkbox) {
+  // Function to extract checkbox Names
+  getCheckboxNames(container) {
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    let names = [];
+    checkboxes.forEach((checkbox,i) => {
       if (checkbox.checked) {
-        formValue.checkbox.push(checkbox.value);
+        names.push(`${checkbox.name}_${i + 1}`);
+      } else {
+        names.push(`uncheck_${i+1}`);
       }
     });
-
-    radios.forEach(function (radio) {
-      if (radio.checked) {
-        formValue.radio.push(radio.value);
-      }
-    });
-
-    console.log("formValue:", formValue);
+    return names.join(",");
   }
 
-  // resetCheckboxes() {
-  //   var checkboxes = document.querySelectorAll(
-  //     ".modal-content .sc-li-campaign-form__checkboxs .sc-radio-box__input"
-  //   );
-  //   var radios = document.querySelectorAll(
-  //     ".modal-content .sc-li-campaign-form__radios .sc-radio-box__input"
-  //   );
-  //   var formSubmitBtn = document.querySelector(
-  //     ".sc-li-campaign-form__submit-btn"
-  //   );
-  //   console.log(radios.length)
+  // Function to extract checkbox values
+  getCheckboxValues(container) {
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    let values = [];
+    checkboxes.forEach((checkbox,i) => {
+      if (checkbox.checked) {
+        values.push(checkbox.value);
+      }
+    });
+    return values.join(",");
+  }
 
-  //   checkboxes.forEach(function (checkbox) {
-  //     checkbox.checked = false;
-  //   });
-  //   radios.forEach(function (radio, index) {
-  //     console.log(radio)
-  //     console.log("index--", index)
-  //     if (index > 0) {
-  //       radio.checked = false;
-  //       formSubmitBtn.classList.add("sc-btn--disabled");
-  //     }
-  //   });
-  // }
+  // Function to extract radio button Name
+  getRadioNames(container) {
+    const radios = container.querySelectorAll('input[type="radio"]');
+    let name = "";
+    radios.forEach((radio,i) => {
+      if (radio.checked) {
+        name = `${radio.name}_${i + 1}`;
+      }
+    });
+    return name;
+  }
+
+  // Function to extract radio button value
+  getRadioValue(container) {
+    const radios = container.querySelectorAll('input[type="radio"]');
+    let value = "";
+    radios.forEach((radio,i) => {
+      if (radio.checked) {
+        value = radio.value;
+      }
+    });
+    return value;
+  }
+
+  // Main function to build form data object
+  buildFormData() {
+    this.existingFieldNames = new Set();
+    const formdata = {
+      name: "Insurance Campaign Form",
+      fields: [],
+    };
+    const formItems = document.querySelectorAll(".sc-li-campaign-form__item");
+    formItems.forEach((item) => {
+      const fieldTitleElement = item.querySelector(
+        ".sc-li-campaign-form__item-title"
+      );
+      const fieldTitle = fieldTitleElement.getAttribute("data-field");
+
+      // Skip if the field name already exists
+      if (this.existingFieldNames.has(fieldTitle)) {
+        return;
+      }
+
+      let fieldValue = "";
+      let fieldName = "";
+      const checkboxContainer = item.querySelector(
+        ".sc-li-campaign-form__checkboxs"
+      );
+      if (checkboxContainer) {
+        fieldValue = this.getCheckboxValues(checkboxContainer);
+        fieldName = this.getCheckboxNames(checkboxContainer);
+      } else {
+        const radioContainer = item.querySelector(
+          ".sc-li-campaign-form__radios"
+        );
+        if (radioContainer) {
+          fieldValue = this.getRadioValue(radioContainer);
+          fieldName = this.getRadioNames(radioContainer);
+        }
+      }
+
+      formdata.fields.push({
+        fieldName: fieldTitle,
+        fieldValue: fieldValue,
+        CTAName: fieldName,
+      });
+
+      // Add field name to the set to track it
+      this.existingFieldNames.add(fieldTitle);
+    });
+    console.log("formsa----", formdata);
+    return formdata;
+  }
 
   formSubmit() {
     const formSubmitBtn = document.querySelector(
@@ -498,8 +527,15 @@ class lifeInsuranceCamp {
     );
     formSubmitBtn.addEventListener("click", () => {
       console.log("Form Submitted successfully !");
-      this.allSelectedData();
-      // this.resetCheckboxes();
+
+      let formData = this.buildFormData();
+      // console.log(formData);
+
+      this.AnalyticsAdobeCommon.handleInsuranceFormSubmit(
+        formData.name,
+        formData.fields
+      );
+
       setTimeout(() => {
         this.statusModal(true);
       }, 2000);
