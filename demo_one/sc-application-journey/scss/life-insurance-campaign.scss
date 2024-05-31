@@ -226,7 +226,8 @@ p {
     left: 0;
     background-color: $color-white;
     z-index: 3;
-    padding: 24px 16px 32px 16px;
+    padding: 16px;
+    box-shadow: 0 2px 14px rgba(220, 220, 220, 0.5);
   }
   // button
   .sc-btn {
@@ -614,6 +615,29 @@ p {
     text-align: left;
     color: #6b6e73;
   }
+
+  // _footnotes
+  &__footnotes {
+    padding: 40px 0 0 0;
+  }
+  &__footnotes-title {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: $color-dark;
+    margin-bottom: 6px;
+  }
+  &__footnotes-items {
+    list-style: decimal;
+    padding-left: 12px;
+  }
+  &__footnotes-item {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: $color-grey-medium-7;
+    margin-bottom: 4px;
+  }
 }
 
 // sc-policy-type-blue-wrapper
@@ -918,7 +942,8 @@ p {
     left: 0;
     background-color: $color-white;
     z-index: 3;
-    padding: 24px 16px 32px 16px;
+    padding: 16px;
+    box-shadow: 0 2px 14px rgba(220, 220, 220, 0.5);
   }
   .sc-btn {
     margin-bottom: 20px;

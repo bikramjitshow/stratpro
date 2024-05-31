@@ -345,7 +345,7 @@ class lifeInsuranceCamp {
         if (modalAttr === formmodalAttr) {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
-
+          that.closeModal();
           that.getCheckboxes();
           // form
           that.formSubmit();
@@ -364,6 +364,25 @@ class lifeInsuranceCamp {
     }
   }
 
+  closeModal() {
+    // <div class="closebutton icon mobile icon-modal-close-mobile" data-grunticon-embed="" data-send="close-modal"></div>
+    let closebutton = document.querySelector(".closebutton");
+    let fields = {};
+
+    // if (closebutton && closebutton.dataset.send === "close-modal") {
+    console.log(closebutton);
+    closebutton.addEventListener("click", () => {
+      console.log(closebutton);
+      console.log("modal Closed!");
+      // fields.customLinkText = "close-modal";
+      // fields.customLinkRegion = "";
+      // fields.customLinkType = "";
+      // fields.customLinkName = "";
+      // console.log(fields);
+    });
+    // }
+  }
+
   getCheckboxes() {
     const that = this;
     var checkboxes = document.querySelectorAll(
@@ -375,9 +394,7 @@ class lifeInsuranceCamp {
     var formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
-    
-    // var selectedCheckbox = [];
-    // var selectedradio = [];
+    var selecteditems = {};
     checkboxes.forEach(function (checkbox, i) {
       checkbox.addEventListener("change", function (e) {
         var anyChecked = Array.from(checkboxes).some(function (checkbox) {
@@ -390,17 +407,29 @@ class lifeInsuranceCamp {
           formSubmitBtn.classList.add("sc-btn--disabled");
         }
         if (this.checked) {
-          let formData = that.buildFormData();
-          console.log(`${checkbox.name}_${i + 1}`);
-          that.AnalyticsAdobeCommon.handleInsuranceFormSubmit(
+          selecteditems.fieldTitle = e.target
+            .closest(".sc-li-campaign-form__item")
+            .querySelector(".sc-li-campaign-form__item-title").dataset.field;
+          selecteditems.checkname = `${checkbox.name}_${i + 1}`;
+          let formData = that.buildFormItem(e, selecteditems, "checkbox");
+          that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
+            formData.name,
+            formData.fields
+          );
+        } else {
+          selecteditems.fieldTitle = e.target
+            .closest(".sc-li-campaign-form__item")
+            .querySelector(".sc-li-campaign-form__item-title").dataset.field;
+          selecteditems.checkname = `uncheck_${i + 1}`;
+          let formData = that.buildFormItem(e, selecteditems, "checkbox");
+          that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
             formData.name,
             formData.fields
           );
         }
-        // console.log({selectedCheckbox})
       });
     });
-    radios.forEach(function (radio) {
+    radios.forEach(function (radio, i) {
       radio.addEventListener("change", function (e) {
         var anyChecked = Array.from(radios).some(function (radio) {
           return radio.checked;
@@ -411,12 +440,17 @@ class lifeInsuranceCamp {
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
         }
-        // console.log("change", e);
         if (this.checked) {
-          console.log(radio.value);
-          lifeInsuranceCamp.selectedradio.push(radio.value);
-        }
-        // console.log({selectedCheckbox})
+          selecteditems.fieldTitle = e.target
+            .closest(".sc-li-campaign-form__item")
+            .querySelector(".sc-li-campaign-form__item-title").dataset.field;
+          selecteditems.radioname = `${radio.name}_${i + 1}`;
+          let formData = that.buildFormItem(e, selecteditems, "radio");
+          that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
+            formData.name,
+            formData.fields
+          );
+        } 
       });
     });
   }
@@ -425,12 +459,13 @@ class lifeInsuranceCamp {
   getCheckboxNames(container) {
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
     let names = [];
-    checkboxes.forEach((checkbox,i) => {
+    checkboxes.forEach((checkbox, i) => {
       if (checkbox.checked) {
         names.push(`${checkbox.name}_${i + 1}`);
-      } else {
-        names.push(`uncheck_${i+1}`);
-      }
+      } 
+      // else {
+      //   names.push(`uncheck_${i + 1}`);
+      // }
     });
     return names.join(",");
   }
@@ -439,7 +474,7 @@ class lifeInsuranceCamp {
   getCheckboxValues(container) {
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
     let values = [];
-    checkboxes.forEach((checkbox,i) => {
+    checkboxes.forEach((checkbox, i) => {
       if (checkbox.checked) {
         values.push(checkbox.value);
       }
@@ -451,7 +486,7 @@ class lifeInsuranceCamp {
   getRadioNames(container) {
     const radios = container.querySelectorAll('input[type="radio"]');
     let name = "";
-    radios.forEach((radio,i) => {
+    radios.forEach((radio, i) => {
       if (radio.checked) {
         name = `${radio.name}_${i + 1}`;
       }
@@ -463,7 +498,7 @@ class lifeInsuranceCamp {
   getRadioValue(container) {
     const radios = container.querySelectorAll('input[type="radio"]');
     let value = "";
-    radios.forEach((radio,i) => {
+    radios.forEach((radio, i) => {
       if (radio.checked) {
         value = radio.value;
       }
@@ -472,6 +507,34 @@ class lifeInsuranceCamp {
   }
 
   // Main function to build form data object
+  buildFormItem(e, fieldName, fieldType) {
+    console.log("fieldName--", fieldName, fieldType);
+    this.existingFieldNames = new Set();
+    const formdata = {
+      name: "Insurance Campaign Form",
+      fields: [],
+    };
+    const ContainerType = e.target.type;
+    if (ContainerType === "checkbox" && fieldType === "checkbox") {
+      formdata.fields.push({
+        fieldName: fieldName.fieldTitle,
+        CTAName: fieldName.checkname,
+      });
+    } else if (ContainerType === "radio" && fieldType === "radio") {
+      formdata.fields.push({
+        fieldName: fieldName.fieldTitle,
+        CTAName: fieldName.radioname,
+      });
+    } else {
+      formdata.fields.push({
+        fieldName: fieldName.fieldTitle,
+        CTAName: "",
+      });
+    }
+    console.log("form items----", formdata);
+    return formdata;
+  }
+
   buildFormData() {
     this.existingFieldNames = new Set();
     const formdata = {

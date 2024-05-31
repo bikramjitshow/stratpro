@@ -277,79 +277,79 @@ class AnalyticsAdobeCommon {
    * @example
    * adobeFormSuccess('submit')
    */
-  adobeFormSuccess(customLinkText) {
-    if (typeof window.adobeDataLayer == "undefined") return;
-    let that = this;
-    if (typeof window.digitalData == "object") {
-      that.commonAdobeScript();
-      let labelText = "",
-        labelValue = "";
-      let allFields = document.querySelectorAll(
-        ".modular-form .modular-form-container"
-      );
-      if (allFields.length) {
-        // eslint-disable-next-line no-unused-vars
-        for (let i = 0; i < allFields.length; i++) {
-          let attr = allFields[i].getAttribute("data-field-type");
-          let fieldName = allFields[i].getAttribute("data-xml-key");
-          if (!attr || !fieldName) continue;
-          labelText += labelText ? ":" + fieldName : fieldName;
-          if (
-            attr == "alphabetic-text" ||
-            attr == "phone" ||
-            attr == "email" ||
-            attr == "text"
-          ) {
-            let value = allFields[i].querySelector("input").value;
-            labelValue += labelValue ? ":" + value : value;
-          } else if (attr == "phone-code") {
-            let value =
-              allFields[i].querySelector(".code").value +
-              allFields[i].querySelector(".phone-field").value;
-            labelValue += labelValue ? ":" + value : value;
-          } else if (attr == "textarea") {
-            let value = allFields[i].querySelector("textarea").value;
-            labelValue += labelValue ? ":" + value : value;
-          } else if (attr == "dropdown") {
-            let value = allFields[i].querySelector("select").value;
-            labelValue += labelValue ? ":" + value : value;
-          } else if (attr == "checkbox" || attr == "toggle") {
-            let value = allFields[i].querySelector("input:checked");
-            value = value || value == "0" ? "yes" : "no";
-            labelValue += labelValue ? ":" + value : value;
-          } else if (attr == "radio") {
-            let value = allFields[i].querySelector("input:checked").value;
-            labelValue += labelValue ? ":" + value : value;
-          }
-        }
-      }
+  // adobeFormSuccess(customLinkText) {ss
+  //   if (typeof window.adobeDataLayer == "undefined") return;
+  //   let that = this;
+  //   if (typeof window.digitalData == "object") {
+  //     that.commonAdobeScript();
+  //     let labelText = "",
+  //       labelValue = "";
+  //     let allFields = document.querySelectorAll(
+  //       ".modular-form .modular-form-container"
+  //     );
+  //     if (allFields.length) {
+  //       // eslint-disable-next-line no-unused-vars
+  //       for (let i = 0; i < allFields.length; i++) {
+  //         let attr = allFields[i].getAttribute("data-field-type");
+  //         let fieldName = allFields[i].getAttribute("data-xml-key");
+  //         if (!attr || !fieldName) continue;
+  //         labelText += labelText ? ":" + fieldName : fieldName;
+  //         if (
+  //           attr == "alphabetic-text" ||
+  //           attr == "phone" ||
+  //           attr == "email" ||
+  //           attr == "text"
+  //         ) {
+  //           let value = allFields[i].querySelector("input").value;
+  //           labelValue += labelValue ? ":" + value : value;
+  //         } else if (attr == "phone-code") {
+  //           let value =
+  //             allFields[i].querySelector(".code").value +
+  //             allFields[i].querySelector(".phone-field").value;
+  //           labelValue += labelValue ? ":" + value : value;
+  //         } else if (attr == "textarea") {
+  //           let value = allFields[i].querySelector("textarea").value;
+  //           labelValue += labelValue ? ":" + value : value;
+  //         } else if (attr == "dropdown") {
+  //           let value = allFields[i].querySelector("select").value;
+  //           labelValue += labelValue ? ":" + value : value;
+  //         } else if (attr == "checkbox" || attr == "toggle") {
+  //           let value = allFields[i].querySelector("input:checked");
+  //           value = value || value == "0" ? "yes" : "no";
+  //           labelValue += labelValue ? ":" + value : value;
+  //         } else if (attr == "radio") {
+  //           let value = allFields[i].querySelector("input:checked").value;
+  //           labelValue += labelValue ? ":" + value : value;
+  //         }
+  //       }
+  //     }
 
-      labelText = labelText.toLowerCase();
-      labelValue = labelValue.toLowerCase();
+  //     labelText = labelText.toLowerCase();
+  //     labelValue = labelValue.toLowerCase();
 
-      window.digitalData.customLinkClick = {
-        customLinkText: customLinkText,
-        customLinkRegion: "left bottom",
-        customLinkType: "button",
-      };
+  //     window.digitalData.customLinkClick = {
+  //       customLinkText: customLinkText,
+  //       customLinkRegion: "left bottom",
+  //       customLinkType: "button",
+  //     };
 
-      window.digitalData.form.formFields = [];
-      window.digitalData.form.formFields.push({
-        formFieldName: labelText,
-        formFieldValue: labelValue,
-      });
+  //     window.digitalData.form.formFields = [];
+  //     window.digitalData.form.formFields.push({
+  //       formFieldName: labelText,
+  //       formFieldValue: labelValue,
+  //     });
 
-      let dataObject = {
-        ...digitalData,
-        event: "ctaClick",
-      };
-      window.adobeDataLayer.push(dataObject);
-      return {
-        labelText: labelText,
-        labelValue: labelValue,
-      };
-    }
-  }
+  //     let dataObject = {
+  //       ...digitalData,
+  //       event: "ctaClick",
+  //     };
+  //     window.adobeDataLayer.push(dataObject);
+  //     return {
+  //       labelText: labelText,
+  //       labelValue: labelValue,
+  //     };
+  //   }
+  // }
 
   // my
   handleInsuranceFormSubmit(formName, fields) {
@@ -367,7 +367,6 @@ class AnalyticsAdobeCommon {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
-     
       window.digitalData.customLinkClick = {
         customLinkText: "Submit",
         customLinkRegion: "bottom",
@@ -377,11 +376,11 @@ class AnalyticsAdobeCommon {
       window.digitalData.form.formFields = [];
       window.digitalData.form.name = formName;
       fields.forEach((field) => {
-        console.log(field)
+        console.log(field);
         window.digitalData.form.formFields.push({
           formFieldName: field.fieldName,
           formFieldValue: field.fieldValue,
-          CTAName: field.CTAName
+          CTAName: field.CTAName,
         });
       });
 
@@ -394,6 +393,67 @@ class AnalyticsAdobeCommon {
       //   labelText: labelText,
       //   labelValue: labelValue,
       // };
+    }
+  }
+
+  handleInsuranceFormCheck(formName, fields) {
+    console.log(fields);
+    if (typeof window.adobeDataLayer == "undefined") return;
+
+    // if (!window.digitalData) {
+    //   window.digitalData = {};
+    // }
+    if (!window.digitalData.form) {
+      window.digitalData.form = {};
+    }
+    if (!window.digitalData.form.formFields) {
+      window.digitalData.form.formFields = [];
+    }
+    //update adobeDataLayer with calculator submit event
+    if (typeof window.adobeDataLayer !== "undefined") {
+      window.digitalData.form.formFields = [];
+      window.digitalData.form.name = formName;
+      fields.forEach((field) => {
+        window.digitalData.customLinkClick = {
+          customLinkText: field.CTAName,
+          customLinkRegion: "form",
+          customLinkType: "input",
+        };
+        console.log(field);
+        window.digitalData.form.formFields.push({
+          formFieldName: field.fieldName,
+          CTAName: field.CTAName,
+        });
+      });
+
+      let dataObject = {
+        ...digitalData,
+        event: "ctaClick",
+      };
+      window.adobeDataLayer.push(dataObject);
+      // return {
+      //   labelText: labelText,
+      //   labelValue: labelValue,
+      // };
+    }
+  }
+
+  handleCtaClick(fields) {
+    if (typeof window.adobeDataLayer !== "undefined") {
+      let dataObject = {
+        ...digitalData,
+        customLinkClick: {
+          customLinkText: fields.customLinkText,
+          customLinkRegion: fields.customLinkRegion,
+          customLinkType: fields.customLinkType,
+          customLinkName: fields.customLinkName,
+        },
+        event: "ctaClick",
+      };
+      if (fields.form) {
+        dataObject.form = fields.form;
+      }
+      window.adobeDataLayer.push(dataObject);
     }
   }
 
