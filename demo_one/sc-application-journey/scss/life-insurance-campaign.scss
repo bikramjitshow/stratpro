@@ -809,6 +809,10 @@ p {
   }
   &__list-with-icon {
     display: flex;
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
     &::before {
       content: "";
       display: inline-flex;

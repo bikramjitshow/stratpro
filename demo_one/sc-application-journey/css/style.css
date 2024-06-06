@@ -1050,6 +1050,10 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 16px;
+}
+.sc-policy-content-with-icons__list-with-icon:last-child {
+  margin-bottom: 0;
 }
 .sc-policy-content-with-icons__list-with-icon::before {
   content: "";
