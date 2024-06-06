@@ -9,15 +9,11 @@ class lifeInsuranceCamp {
   static selectedradio = [];
   init() {
     const that = this;
-    // that.addUrlParam();
-    // that.activePersonaClass();
-
     document.addEventListener("DOMContentLoaded", function () {
       const firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
-      // that.tiggerPersona(personaitem);
       that.activeModal();
       that.paramCheck();
       that.generateChart(1, personaitem);
@@ -36,8 +32,6 @@ class lifeInsuranceCamp {
       ".sc-li-campaign__persona-btn"
     );
     let personaitem = firstpersonaBtn.dataset.persona;
-    console.log("queryString--", queryString);
-    console.log("persona--", persona);
     if (persona) {
       that.tiggerPersona(persona);
     } else {
@@ -46,32 +40,11 @@ class lifeInsuranceCamp {
   }
 
   addUrlParam(name, value) {
-    // Define your parameter
-    // var paramName = name? name : "persona";
-    // var paramValue = value ? value : "young_generation";
     var paramName = name;
     var paramValue = value;
 
-    console.log({ paramName, paramValue });
-
     // Get the current URL
     var currentUrl = window.location.href;
-
-    // Check if the parameter already exists in the URL
-    // var urlParams = new URLSearchParams(window.location.search);
-    // if (!urlParams.has(paramName)) {
-    //   // Construct the new URL with the parameter
-    //   var separator = currentUrl.indexOf("?") !== -1 ? "&" : "?";
-    //   var newUrl =
-    //     currentUrl +
-    //     separator +
-    //     paramName +
-    //     "=" +
-    //     encodeURIComponent(paramValue);
-
-    //   // Push the new URL to the browser history without reloading the page
-    //   window.history.pushState({ path: newUrl }, "", newUrl);
-    // }
 
     // Check if the parameter already exists in the URL
     var urlParams = new URLSearchParams(window.location.search);
@@ -128,7 +101,6 @@ class lifeInsuranceCamp {
       const personaIndex = Array.from(personaBtns).findIndex(
         (btn) => btn.dataset.persona === persona
       );
-      console.log("personaIndex", personaIndex);
       if (personaIndex !== -1) {
         handleClick(personaBtns[personaIndex], personaIndex);
       } else {
@@ -184,7 +156,6 @@ class lifeInsuranceCamp {
     );
   }
   activeFilterContent(activeTitle) {
-    // console.log("activeTitle--", activeTitle);
     let filterContents = document.querySelectorAll(
       ".sc-li-campaign__policy-type-filter-panels-content"
     );
@@ -204,7 +175,6 @@ class lifeInsuranceCamp {
     }
   }
   activeBanner(activePersona) {
-    // console.log("activePersona--", activePersona);
     let banneritems = document.querySelectorAll(".sc-li-campaign__banner");
     if (banneritems.length) {
       banneritems.forEach((banneritem) => {
@@ -218,7 +188,6 @@ class lifeInsuranceCamp {
     }
   }
   activeContentBox(activePersona) {
-    // console.log("activePersona--", activePersona);
     let contentboxs = document.querySelectorAll(
       ".sc-li-campaign__content-box-item"
     );
@@ -240,93 +209,92 @@ class lifeInsuranceCamp {
    * @param {*} personaitem - persona name
    */
   generateChart(id, personaitem) {
-    // console.log("graph id-", id);
-    let ghdata;
-    const gh = document.querySelectorAll(".sc-li-campaign__graph");
-    if (gh.length) {
-      gh.forEach((item) => {
-        let pgh = item.parentNode.dataset.content;
-        if (personaitem === pgh) {
-          ghdata = JSON.parse(item.dataset.graphValue);
-        }
+    if (id && personaitem) {
+      let ghdata;
+      const gh = document.querySelectorAll(".sc-li-campaign__graph");
+      if (gh.length) {
+        gh.forEach((item) => {
+          let pgh = item.parentNode.dataset.content;
+          if (personaitem === pgh) {
+            ghdata = JSON.parse(item.dataset.graphValue);
+          }
+        });
+      }
+
+      Highcharts.chart(`persona_graph_${id}`, {
+        chart: {
+          height: 200,
+          type: "pie",
+          backgroundColor: null,
+        },
+        title: {
+          text: "",
+        },
+        tooltip: {
+          pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+        },
+        accessibility: {
+          point: {
+            valueSuffix: "%",
+          },
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: "pointer",
+            borderWidth: 4,
+            dataLabels: {
+              enabled: false,
+            },
+            showInLegend: true,
+          },
+        },
+        legend: {
+          className: "sc-li-campaign__graph-legend",
+          layout: "vertical",
+          align: "right",
+          verticalAlign: "middle",
+          labelFormat: "{name}: <b>{y}%</b>",
+          symbolHeight: 14,
+          symbolWidth: 14,
+          symbolRadius: 2,
+          width: "50%",
+          itemStyle: {
+            fontSize: "12px",
+            fontWeight: "400",
+          },
+        },
+        series: [
+          {
+            name: "Young Generation",
+            colorByPoint: true,
+            data: [
+              {
+                name: "Critical Illness",
+                y: ghdata?.d1,
+                color: "#00BCD3",
+              },
+              {
+                name: "Saving Account",
+                y: ghdata?.d2,
+                color: "#2772C7",
+              },
+              {
+                name: "Life",
+                y: ghdata?.d3,
+                color: "#00A9F3",
+              },
+              {
+                name: "Medical",
+                y: ghdata?.d4,
+                color: "#AE6BFC",
+              },
+            ],
+          },
+        ],
+        exporting: false,
       });
     }
-    // console.log("ghdata", ghdata);
-
-    Highcharts.chart(`persona_graph_${id}`, {
-      chart: {
-        width: null,
-        height: 200,
-        type: "pie",
-        backgroundColor: null,
-      },
-      title: {
-        text: "",
-      },
-      tooltip: {
-        pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
-      },
-      accessibility: {
-        point: {
-          valueSuffix: "%",
-        },
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: "pointer",
-          borderWidth: 4,
-          dataLabels: {
-            enabled: false,
-          },
-          showInLegend: true,
-        },
-      },
-      legend: {
-        className: "sc-li-campaign__graph-legend",
-        layout: "vertical",
-        align: "right",
-        verticalAlign: "middle",
-        labelFormat: "{name}: <b>{y}%</b>",
-        symbolHeight: 14,
-        symbolWidth: 14,
-        symbolRadius: 2,
-        width: "50%",
-        itemStyle: {
-          fontSize: "12px",
-          fontWeight: "400",
-        },
-      },
-      series: [
-        {
-          name: "Young Generation",
-          colorByPoint: true,
-          data: [
-            {
-              name: "Critical Illness",
-              y: ghdata?.d1,
-              color: "#00BCD3",
-            },
-            {
-              name: "Saving Account",
-              y: ghdata?.d2,
-              color: "#2772C7",
-            },
-            {
-              name: "Life",
-              y: ghdata?.d3,
-              color: "#00A9F3",
-            },
-            {
-              name: "Medical",
-              y: ghdata?.d4,
-              color: "#AE6BFC",
-            },
-          ],
-        },
-      ],
-      exporting: false,
-    });
   }
 
   // form
@@ -370,21 +338,18 @@ class lifeInsuranceCamp {
     let fields = {};
 
     // if (closebutton && closebutton.dataset.send === "close-modal") {
-    console.log(closebutton);
     closebutton.addEventListener("click", () => {
-      console.log(closebutton);
-      console.log("modal Closed!");
       // fields.customLinkText = "close-modal";
       // fields.customLinkRegion = "";
       // fields.customLinkType = "";
       // fields.customLinkName = "";
-      // console.log(fields);
     });
     // }
   }
 
   getCheckboxes() {
     const that = this;
+    var anycheckboxChecked, anyradioChecked;
     var checkboxes = document.querySelectorAll(
       ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
     );
@@ -394,14 +359,21 @@ class lifeInsuranceCamp {
     var formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
+    radios[0].checked = true;
     var selecteditems = {};
+    
     checkboxes.forEach(function (checkbox, i) {
       checkbox.addEventListener("change", function (e) {
-        var anyChecked = Array.from(checkboxes).some(function (checkbox) {
+        anycheckboxChecked = Array.from(checkboxes).some(function (checkbox) {
           return checkbox.checked;
         });
+        radios.forEach(function () {
+          anyradioChecked = Array.from(radios).some(function (radio) {
+            return radio.checked;
+          });
+        });
 
-        if (anyChecked) {
+        if (anycheckboxChecked && anyradioChecked) {
           formSubmitBtn.classList.remove("sc-btn--disabled");
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
@@ -411,8 +383,10 @@ class lifeInsuranceCamp {
             .closest(".sc-li-campaign-form__item")
             .querySelector(".sc-li-campaign-form__item-title").dataset.field;
           selecteditems.checkname = `${checkbox.name}_${i + 1}`;
-          let formData = that.buildFormItem(e, selecteditems, "checkbox");
+          // let formData = that.buildFormItem(e, selecteditems, "checkbox");
+          let formData = that.buildFormDataItem();
           that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
+            e.target,
             formData.name,
             formData.fields
           );
@@ -421,8 +395,10 @@ class lifeInsuranceCamp {
             .closest(".sc-li-campaign-form__item")
             .querySelector(".sc-li-campaign-form__item-title").dataset.field;
           selecteditems.checkname = `uncheck_${i + 1}`;
-          let formData = that.buildFormItem(e, selecteditems, "checkbox");
+          // let formData = that.buildFormItem(e, selecteditems, "checkbox");
+          let formData = that.buildFormDataItem();
           that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
+            e.target,
             formData.name,
             formData.fields
           );
@@ -431,11 +407,11 @@ class lifeInsuranceCamp {
     });
     radios.forEach(function (radio, i) {
       radio.addEventListener("change", function (e) {
-        var anyChecked = Array.from(radios).some(function (radio) {
+        anyradioChecked = Array.from(radios).some(function (radio) {
           return radio.checked;
         });
 
-        if (anyChecked) {
+        if (anyradioChecked && anycheckboxChecked) {
           formSubmitBtn.classList.remove("sc-btn--disabled");
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
@@ -445,12 +421,14 @@ class lifeInsuranceCamp {
             .closest(".sc-li-campaign-form__item")
             .querySelector(".sc-li-campaign-form__item-title").dataset.field;
           selecteditems.radioname = `${radio.name}_${i + 1}`;
-          let formData = that.buildFormItem(e, selecteditems, "radio");
+          // let formData = that.buildFormItem(e, selecteditems, "radio");
+          let formData = that.buildFormDataItem();
           that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
+            e.target,
             formData.name,
             formData.fields
           );
-        } 
+        }
       });
     });
   }
@@ -462,10 +440,7 @@ class lifeInsuranceCamp {
     checkboxes.forEach((checkbox, i) => {
       if (checkbox.checked) {
         names.push(`${checkbox.name}_${i + 1}`);
-      } 
-      // else {
-      //   names.push(`uncheck_${i + 1}`);
-      // }
+      }
     });
     return names.join(",");
   }
@@ -508,7 +483,6 @@ class lifeInsuranceCamp {
 
   // Main function to build form data object
   buildFormItem(e, fieldName, fieldType) {
-    console.log("fieldName--", fieldName, fieldType);
     this.existingFieldNames = new Set();
     const formdata = {
       name: "Insurance Campaign Form",
@@ -531,7 +505,6 @@ class lifeInsuranceCamp {
         CTAName: "",
       });
     }
-    console.log("form items----", formdata);
     return formdata;
   }
 
@@ -574,13 +547,60 @@ class lifeInsuranceCamp {
       formdata.fields.push({
         fieldName: fieldTitle,
         fieldValue: fieldValue,
-        CTAName: fieldName,
+        // CTAName: fieldName,
       });
 
       // Add field name to the set to track it
       this.existingFieldNames.add(fieldTitle);
     });
-    console.log("formsa----", formdata);
+    return formdata;
+  }
+
+  buildFormDataItem() {
+    this.existingFieldNames = new Set();
+    const formdata = {
+      name: "Insurance Campaign Form",
+      fields: [],
+    };
+    const formItems = document.querySelectorAll(".sc-li-campaign-form__item");
+    formItems.forEach((item) => {
+      const fieldTitleElement = item.querySelector(
+        ".sc-li-campaign-form__item-title"
+      );
+      const fieldTitle = fieldTitleElement.getAttribute("data-field");
+
+      // Skip if the field name already exists
+      if (this.existingFieldNames.has(fieldTitle)) {
+        return;
+      }
+
+      let fieldValue = "";
+      let fieldName = "";
+      const checkboxContainer = item.querySelector(
+        ".sc-li-campaign-form__checkboxs"
+      );
+      if (checkboxContainer) {
+        fieldValue = this.getCheckboxValues(checkboxContainer);
+        fieldName = this.getCheckboxNames(checkboxContainer);
+      } else {
+        const radioContainer = item.querySelector(
+          ".sc-li-campaign-form__radios"
+        );
+        if (radioContainer) {
+          fieldValue = this.getRadioValue(radioContainer);
+          fieldName = this.getRadioNames(radioContainer);
+        }
+      }
+
+      formdata.fields.push({
+        fieldName: fieldTitle,
+        fieldValue: fieldValue,
+      });
+
+      // Add field name to the set to track it
+      this.existingFieldNames.add(fieldTitle);
+    });
+    console.log("formdata--->->", formdata);
     return formdata;
   }
 
@@ -589,19 +609,18 @@ class lifeInsuranceCamp {
       ".sc-li-campaign-form__submit-btn"
     );
     formSubmitBtn.addEventListener("click", () => {
-      console.log("Form Submitted successfully !");
-
       let formData = this.buildFormData();
-      // console.log(formData);
+      formData.ctaname = formSubmitBtn.textContent.trim();
 
       this.AnalyticsAdobeCommon.handleInsuranceFormSubmit(
         formData.name,
+        formData.ctaname,
         formData.fields
       );
 
       setTimeout(() => {
         this.statusModal(true);
-      }, 2000);
+      }, 600);
     });
     document
       .querySelector(".sc-error-modal__alert-close")

@@ -1101,7 +1101,7 @@
           <div class="sc-li-campaign__graph" data-graph-value='{"d1":47,"d2":42,"d3":7,"d4":4}'>
             <div class="sc-li-campaign__graph-wrapper">
               <figure class="sc-li-campaign__highcharts-figure">
-                <div id="persona_graph_1"></div>
+                <div id="persona_graph_1" class="sc-li-campaign__chart"></div>
               </figure>
               <div class="sc-li-campaign__graph-content-wrap">
                 <p class="sc-li-campaign__graph-content">
@@ -1110,6 +1110,25 @@
                 </p>
               </div>
               <a href="#null" class="sc-btn sc-btn--blue-secondary">Learn More</a>
+            </div>
+          </div>
+          <!-- Welcome offer statement -->
+          <div class="sc-li-campaign__welcomeoffer">
+            <div class="sc-li-campaign__wo-wrap">
+              <div class="sc-li-campaign__wo-content">
+                <h3 class="sc-li-campaign__wo-title">Welcome Offer</h3>
+                <p class="sc-li-campaign__wo-desc">
+                  <span class="sc-li-campaign__wo-desc--bld">HK$XXX</span>
+                  virtual appointment gift and up to
+                  <span class="sc-li-campaign__wo-desc--bld">HK$4,000</span>
+                  application gift
+                </p>
+              </div>
+              <div class="sc-li-campaign__wo-img-wrap">
+                <img class="sc-li-campaign__wo-img"
+                  src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.25 7.5H3.75C3.33579 7.5 3 7.83579 3 8.25V11.25C3 11.6642 3.33579 12 3.75 12H20.25C20.6642 12 21 11.6642 21 11.25V8.25C21 7.83579 20.6642 7.5 20.25 7.5Z' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.5 12V18.75C19.5 18.9489 19.421 19.1397 19.2803 19.2803C19.1397 19.421 18.9489 19.5 18.75 19.5H5.25C5.05109 19.5 4.86032 19.421 4.71967 19.2803C4.57902 19.1397 4.5 18.9489 4.5 18.75V12' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 7.5V19.5' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.2426 6.43932C15.182 7.49998 12 7.49998 12 7.49998C12 7.49998 12 4.318 13.0607 3.25734C13.4827 2.83578 14.0549 2.59907 14.6514 2.59924C15.2479 2.59941 15.8199 2.83645 16.2417 3.25825C16.6635 3.68005 16.9006 4.25208 16.9007 4.8486C16.9009 5.44511 16.6642 6.01728 16.2426 6.43932Z' stroke='%2338D200' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.75735 6.43932C8.81801 7.49998 12 7.49998 12 7.49998C12 7.49998 12 4.318 10.9393 3.25734C10.5173 2.83578 9.94512 2.59907 9.3486 2.59924C8.75209 2.59941 8.18005 2.83645 7.75825 3.25825C7.33645 3.68005 7.09941 4.25208 7.09924 4.8486C7.09907 5.44511 7.33579 6.01728 7.75735 6.43932Z' stroke='%2338D200' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+                  alt="welcome offer" />
+              </div>
             </div>
           </div>
           <!-- Policy type -->
@@ -1189,19 +1208,30 @@
                           <div class="sc-policy-content-with-icons__item-content">
                             <p
                               class="sc-policy-content-with-icons__item-text sc-policy-content-with-icons__item-text--bld-text">
-                              HK$500,000
+                              HK$0.99 million
                             </p>
                             <p class="sc-policy-content-with-icons__item-text">
-                              Sum Assured
+                              average sum assured
+                              <sup>1</sup>
                             </p>
                           </div>
                           <div class="sc-policy-content-with-icons__item-content">
                             <p class="sc-policy-content-with-icons__item-text">
-                              <span class="sc-policy-content-with-icons__item-text-bld">X%</span>
-                              of premiums
+                              Every
+                              <span class="sc-policy-content-with-icons__item-text-bld">14 minutes</span>
                             </p>
                             <p class="sc-policy-content-with-icons__item-text">
-                              Saved compared to those aged 35-39
+                              <span class="sc-policy-content-with-icons__item-text-bld">1 person</span>
+                              gets cancer <sup>2</sup>
+                            </p>
+                          </div>
+                          <div class="sc-policy-content-with-icons__item-content">
+                            <p class="sc-policy-content-with-icons__item-text">
+                              <span class="sc-policy-content-with-icons__item-text-bld">25%</span>
+                              of female claimants
+                            </p>
+                            <p class="sc-policy-content-with-icons__item-text">
+                              are aged 31-40 <sup>3</sup>
                             </p>
                           </div>
                         </div>
@@ -1254,7 +1284,21 @@
                   "gap": "15px",
                   "perPage": "1",
                   "perMove": "1",
-                  "fixedWidth": "315px"
+                  "fixedWidth": "315px",
+                  "breakpoints": {
+                    "420": {
+                      "gap": "10px",
+                      "fixedWidth": "315px"
+                    },
+                    "360": {
+                      "gap": "10px",
+                      "fixedWidth": "300px"
+                    },
+                    "340": {
+                      "gap": "10px",
+                      "fixedWidth": "260px"
+                    }
+                  }
                 }'>
                     <div class="splide__track sc-li-campaign__policy-type-card-splide-track">
                       <div class="splide__list sc-li-campaign__policy-type-filter-list">
@@ -1527,19 +1571,28 @@
                           <div class="sc-policy-content-with-icons__item-content">
                             <p
                               class="sc-policy-content-with-icons__item-text sc-policy-content-with-icons__item-text--bld-text">
-                              HK$500,000
+                              HK$1.21 million
                             </p>
                             <p class="sc-policy-content-with-icons__item-text">
-                              Sum Assured
+                              average sum assured <sup>1</sup>
                             </p>
                           </div>
                           <div class="sc-policy-content-with-icons__item-content">
                             <p class="sc-policy-content-with-icons__item-text">
-                              <span class="sc-policy-content-with-icons__item-text-bld">X%</span>
-                              of premiums
+                              Every
+                              <span class="sc-policy-content-with-icons__item-text-bld">14 minutes</span>
                             </p>
                             <p class="sc-policy-content-with-icons__item-text">
                               Saved compared to those aged 35-39
+                            </p>
+                          </div>
+                          <div class="sc-policy-content-with-icons__item-content">
+                            <p class="sc-policy-content-with-icons__item-text">
+                              <span class="sc-policy-content-with-icons__item-text-bld">31%</span>
+                              of critical illness claimants
+                            </p>
+                            <p class="sc-policy-content-with-icons__item-text">
+                              are aged 41-50 <sup>3</sup>
                             </p>
                           </div>
                         </div>
@@ -1583,6 +1636,275 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <!-- card Slider -->
+                  <div class="splide sc-li-campaign__policy-type-card-splide" data-splide='{
+                    "trimSpace": "move",
+                    "pagination": true,
+                    "arrows": false,
+                    "gap": "15px",
+                    "perPage": "1",
+                    "perMove": "1",
+                    "fixedWidth": "315px",
+                    "breakpoints": {
+                      "420": {
+                        "gap": "10px",
+                        "fixedWidth": "315px"
+                      },
+                      "360": {
+                        "gap": "10px",
+                        "fixedWidth": "300px"
+                      },
+                      "340": {
+                        "gap": "10px",
+                        "fixedWidth": "260px"
+                      }
+                    }
+                  }'>
+                    <div class="splide__track sc-li-campaign__policy-type-card-splide-track">
+                      <div class="splide__list sc-li-campaign__policy-type-filter-list">
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- footnotes -->
+                  <div class="sc-refer-products sc-li-campaign__footnotes">
+                    <h3 class="sc-refer-products sc-li-campaign__footnotes-title">
+                      Notes
+                    </h3>
+                    <ul class="sc-li-campaign__footnotes-items">
+                      <li class="sc-li-campaign__footnotes-item">
+                        Prudential Hong Kong Limited individual insurance
+                        clients information as of June 2023
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        [P.19 Pru Claims Report 2023]
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        [P.16 Premium Banking sales kit - Claims by age sheet]
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        Based on an online survey conducted by Prudential in
+                        April 2023 among 500 Hong Kong citizens to understand
+                        the critical illness protection gap among the
+                        population.
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <!-- Panel 3 -->
@@ -1667,6 +1989,275 @@
                       </div>
                     </div>
                   </div>
+                  <!-- card Slider -->
+                  <div class="splide sc-li-campaign__policy-type-card-splide" data-splide='{
+                    "trimSpace": "move",
+                    "pagination": true,
+                    "arrows": false,
+                    "gap": "15px",
+                    "perPage": "1",
+                    "perMove": "1",
+                    "fixedWidth": "315px",
+                    "breakpoints": {
+                      "420": {
+                        "gap": "10px",
+                        "fixedWidth": "315px"
+                      },
+                      "360": {
+                        "gap": "10px",
+                        "fixedWidth": "300px"
+                      },
+                      "340": {
+                        "gap": "10px",
+                        "fixedWidth": "260px"
+                      }
+                    }
+                  }'>
+                    <div class="splide__track sc-li-campaign__policy-type-card-splide-track">
+                      <div class="splide__list sc-li-campaign__policy-type-filter-list">
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- footnotes -->
+                  <div class="sc-refer-products sc-li-campaign__footnotes">
+                    <h3 class="sc-refer-products sc-li-campaign__footnotes-title">
+                      Notes
+                    </h3>
+                    <ul class="sc-li-campaign__footnotes-items">
+                      <li class="sc-li-campaign__footnotes-item">
+                        Prudential Hong Kong Limited individual insurance
+                        clients information as of June 2023
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        [P.19 Pru Claims Report 2023]
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        [P.16 Premium Banking sales kit - Claims by age sheet]
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        Based on an online survey conducted by Prudential in
+                        April 2023 among 500 Hong Kong citizens to understand
+                        the critical illness protection gap among the
+                        population.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <!-- Panel 4 -->
                 <div class="sc-li-campaign__policy-type-filter-panels-content" data-filter-select="filter_4">
@@ -1750,6 +2341,275 @@
                       </div>
                     </div>
                   </div>
+                  <!-- card Slider -->
+                  <div class="splide sc-li-campaign__policy-type-card-splide" data-splide='{
+                    "trimSpace": "move",
+                    "pagination": true,
+                    "arrows": false,
+                    "gap": "15px",
+                    "perPage": "1",
+                    "perMove": "1",
+                    "fixedWidth": "315px",
+                    "breakpoints": {
+                      "420": {
+                        "gap": "10px",
+                        "fixedWidth": "315px"
+                      },
+                      "360": {
+                        "gap": "10px",
+                        "fixedWidth": "300px"
+                      },
+                      "340": {
+                        "gap": "10px",
+                        "fixedWidth": "260px"
+                      }
+                    }
+                  }'>
+                    <div class="splide__track sc-li-campaign__policy-type-card-splide-track">
+                      <div class="splide__list sc-li-campaign__policy-type-filter-list">
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="splide__slide sc-li-campaign__policy-type-splide-slide">
+                          <div class="sc-li-campaign__policy-type-card-box">
+                            <div class="sc-li-campaign__policy-type-content-section">
+                              <div class="sc-li-campaign__policy-type-card-image">
+                                <img width="466" height="175" src="https://av.sc.com/sg/content/images/eaver-new.jpg"
+                                  class="img-bg" alt="Person, Cleaning" loading="lazy" />
+                              </div>
+                              <div class="sc-li-campaign__policy-type-card-details">
+                                <h2 class="sc-li-campaign__policy-type-title">
+                                  PruHealth Critical Illness Extended Care III
+                                </h2>
+                                <p class="sc-li-campaign__policy-type-description">
+                                  Protects against financial impact of ongoing
+                                  diseases and support you on the journey of
+                                  recovery - including multiple strikes of
+                                  cancer, heart attack and stroke.
+                                </p>
+                                <div class="sc-policy-type-blue-wrapper">
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      117 disease conditions covered
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      Up to 860% coverage
+                                    </p>
+                                  </div>
+                                  <div class="sc-policy-type-blue-wrapper__item">
+                                    <p class="sc-policy-type-blue-wrapper__caption">
+                                      HK$XX,XXX
+                                    </p>
+                                    <p class="sc-policy-type-blue-wrapper__description">
+                                      Average annual premium
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="sc-li-campaign__policy-type-green-wrapper">
+                                  <p class="sc-li-campaign__policy-type-green-wrapper-description">
+                                    Earn up to X% refund of first year
+                                    annualized premium
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sc-li-campaign__policy-type-btn-section">
+                              <div class="sc-li-campaign__policy-type-btn-wrap">
+                                <div class="sc-li-campaign__policy-type-buttons">
+                                  <a href="#null" title="Get in touch now"
+                                    class="c-button sc-btn sc-btn--small sc-btn--blue sc-li-campaign__active-modal-btn"
+                                    data-context="Bottom CTA" data-send="show-overlay"
+                                    data-modal-source="sc-li-campaign-form">
+                                    <span class="only-desktop">Get in touch now</span>
+                                    <span class="only-mobile">Get in touch now</span>
+                                  </a>
+                                </div>
+                                <a href="#null" class="sc-li-campaign__policy-type-learn-more"
+                                  title="View Product Brochure">View Product Brochure</a>
+                              </div>
+                              <div class="sc-li-campaign__policy-type-bottom-content">
+                                <p class="sc-li-campaign__policy-type-bottom-txt">
+                                  PRUhealth critical illness extended care III
+                                  is a life insurance plan and is not a bank
+                                  deposit. It is underwritten by Prudential
+                                  Hong Kong Limited (Part of Prudential plc
+                                  (United Kingdom)) (“Prudential”). The Bank
+                                  is an insurance agent of Prudential.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- footnotes -->
+                  <div class="sc-refer-products sc-li-campaign__footnotes">
+                    <h3 class="sc-refer-products sc-li-campaign__footnotes-title">
+                      Notes
+                    </h3>
+                    <ul class="sc-li-campaign__footnotes-items">
+                      <li class="sc-li-campaign__footnotes-item">
+                        Prudential Hong Kong Limited individual insurance
+                        clients information as of June 2023
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        [P.19 Pru Claims Report 2023]
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        [P.16 Premium Banking sales kit - Claims by age sheet]
+                      </li>
+                      <li class="sc-li-campaign__footnotes-item">
+                        Based on an online survey conducted by Prudential in
+                        April 2023 among 500 Hong Kong citizens to understand
+                        the critical illness protection gap among the
+                        population.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1762,7 +2622,7 @@
           <div class="sc-li-campaign__graph" data-graph-value='{"d1":57,"d2":52,"d3":17,"d4":10}'>
             <div class="sc-li-campaign__graph-wrapper">
               <figure class="sc-li-campaign__highcharts-figure">
-                <div id="persona_graph_2"></div>
+                <div id="persona_graph_2" class="sc-li-campaign__chart"></div>
               </figure>
               <div class="sc-li-campaign__graph-content-wrap">
                 <p class="sc-li-campaign__graph-content">
@@ -1771,6 +2631,25 @@
                 </p>
               </div>
               <a href="#null" class="sc-btn sc-btn--blue-secondary">Learn More</a>
+            </div>
+          </div>
+          <!-- Welcome offer statement -->
+          <div class="sc-li-campaign__welcomeoffer">
+            <div class="sc-li-campaign__wo-wrap">
+              <div class="sc-li-campaign__wo-content">
+                <h3 class="sc-li-campaign__wo-title">Welcome Offer</h3>
+                <p class="sc-li-campaign__wo-desc">
+                  <span class="sc-li-campaign__wo-desc--bld">HK$XXX</span>
+                  virtual appointment gift and up to
+                  <span class="sc-li-campaign__wo-desc--bld">HK$4,000</span>
+                  application gift
+                </p>
+              </div>
+              <div class="sc-li-campaign__wo-img-wrap">
+                <img class="sc-li-campaign__wo-img"
+                  src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.25 7.5H3.75C3.33579 7.5 3 7.83579 3 8.25V11.25C3 11.6642 3.33579 12 3.75 12H20.25C20.6642 12 21 11.6642 21 11.25V8.25C21 7.83579 20.6642 7.5 20.25 7.5Z' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.5 12V18.75C19.5 18.9489 19.421 19.1397 19.2803 19.2803C19.1397 19.421 18.9489 19.5 18.75 19.5H5.25C5.05109 19.5 4.86032 19.421 4.71967 19.2803C4.57902 19.1397 4.5 18.9489 4.5 18.75V12' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 7.5V19.5' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.2426 6.43932C15.182 7.49998 12 7.49998 12 7.49998C12 7.49998 12 4.318 13.0607 3.25734C13.4827 2.83578 14.0549 2.59907 14.6514 2.59924C15.2479 2.59941 15.8199 2.83645 16.2417 3.25825C16.6635 3.68005 16.9006 4.25208 16.9007 4.8486C16.9009 5.44511 16.6642 6.01728 16.2426 6.43932Z' stroke='%2338D200' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.75735 6.43932C8.81801 7.49998 12 7.49998 12 7.49998C12 7.49998 12 4.318 10.9393 3.25734C10.5173 2.83578 9.94512 2.59907 9.3486 2.59924C8.75209 2.59941 8.18005 2.83645 7.75825 3.25825C7.33645 3.68005 7.09941 4.25208 7.09924 4.8486C7.09907 5.44511 7.33579 6.01728 7.75735 6.43932Z' stroke='%2338D200' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+                  alt="welcome offer" />
+              </div>
             </div>
           </div>
           <!-- Policy type -->
@@ -1850,19 +2729,28 @@
                           <div class="sc-policy-content-with-icons__item-content">
                             <p
                               class="sc-policy-content-with-icons__item-text sc-policy-content-with-icons__item-text--bld-text">
-                              HK$500,000
+                              HK$1.21 million
                             </p>
                             <p class="sc-policy-content-with-icons__item-text">
-                              Sum Assured
+                              average sum assured <sup>1</sup>
                             </p>
                           </div>
                           <div class="sc-policy-content-with-icons__item-content">
                             <p class="sc-policy-content-with-icons__item-text">
-                              <span class="sc-policy-content-with-icons__item-text-bld">X%</span>
-                              of premiums
+                              Every
+                              <span class="sc-policy-content-with-icons__item-text-bld">14 minutes</span>
                             </p>
                             <p class="sc-policy-content-with-icons__item-text">
                               Saved compared to those aged 35-39
+                            </p>
+                          </div>
+                          <div class="sc-policy-content-with-icons__item-content">
+                            <p class="sc-policy-content-with-icons__item-text">
+                              <span class="sc-policy-content-with-icons__item-text-bld">31%</span>
+                              of critical illness claimants
+                            </p>
+                            <p class="sc-policy-content-with-icons__item-text">
+                              are aged 41-50 <sup>3</sup>
                             </p>
                           </div>
                         </div>
@@ -2396,7 +3284,7 @@
           <div class="sc-li-campaign__graph" data-graph-value='{"d1":47,"d2":22,"d3":10,"d4":12}'>
             <div class="sc-li-campaign__graph-wrapper">
               <figure class="sc-li-campaign__highcharts-figure">
-                <div id="persona_graph_3"></div>
+                <div id="persona_graph_3" class="sc-li-campaign__chart"></div>
               </figure>
               <div class="sc-li-campaign__graph-content-wrap">
                 <p class="sc-li-campaign__graph-content">
@@ -2405,6 +3293,25 @@
                 </p>
               </div>
               <a href="#null" class="sc-btn sc-btn--blue-secondary">Learn More</a>
+            </div>
+          </div>
+          <!-- Welcome offer statement -->
+          <div class="sc-li-campaign__welcomeoffer">
+            <div class="sc-li-campaign__wo-wrap">
+              <div class="sc-li-campaign__wo-content">
+                <h3 class="sc-li-campaign__wo-title">Welcome Offer</h3>
+                <p class="sc-li-campaign__wo-desc">
+                  <span class="sc-li-campaign__wo-desc--bld">HK$XXX</span>
+                  virtual appointment gift and up to
+                  <span class="sc-li-campaign__wo-desc--bld">HK$4,000</span>
+                  application gift
+                </p>
+              </div>
+              <div class="sc-li-campaign__wo-img-wrap">
+                <img class="sc-li-campaign__wo-img"
+                  src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.25 7.5H3.75C3.33579 7.5 3 7.83579 3 8.25V11.25C3 11.6642 3.33579 12 3.75 12H20.25C20.6642 12 21 11.6642 21 11.25V8.25C21 7.83579 20.6642 7.5 20.25 7.5Z' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.5 12V18.75C19.5 18.9489 19.421 19.1397 19.2803 19.2803C19.1397 19.421 18.9489 19.5 18.75 19.5H5.25C5.05109 19.5 4.86032 19.421 4.71967 19.2803C4.57902 19.1397 4.5 18.9489 4.5 18.75V12' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 7.5V19.5' stroke='%232772C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.2426 6.43932C15.182 7.49998 12 7.49998 12 7.49998C12 7.49998 12 4.318 13.0607 3.25734C13.4827 2.83578 14.0549 2.59907 14.6514 2.59924C15.2479 2.59941 15.8199 2.83645 16.2417 3.25825C16.6635 3.68005 16.9006 4.25208 16.9007 4.8486C16.9009 5.44511 16.6642 6.01728 16.2426 6.43932Z' stroke='%2338D200' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.75735 6.43932C8.81801 7.49998 12 7.49998 12 7.49998C12 7.49998 12 4.318 10.9393 3.25734C10.5173 2.83578 9.94512 2.59907 9.3486 2.59924C8.75209 2.59941 8.18005 2.83645 7.75825 3.25825C7.33645 3.68005 7.09941 4.25208 7.09924 4.8486C7.09907 5.44511 7.33579 6.01728 7.75735 6.43932Z' stroke='%2338D200' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+                  alt="welcome offer" />
+              </div>
             </div>
           </div>
           <!-- Policy type -->
@@ -3204,7 +4111,6 @@
     </linearGradient>
   </svg>
 
-  <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
   <script src="./scripts/highcharts.src.js"></script>
   <script src="./scripts/analytics-adobe-common.js"></script>
   <script src="./scripts/sc-calculator-common.js"></script>

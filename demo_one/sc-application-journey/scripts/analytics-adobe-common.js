@@ -352,7 +352,7 @@ class AnalyticsAdobeCommon {
   // }
 
   // my
-  handleInsuranceFormSubmit(formName, fields) {
+  handleInsuranceFormSubmit(formName, ctaname, fields) {
     console.log(fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
@@ -367,11 +367,11 @@ class AnalyticsAdobeCommon {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
-      window.digitalData.customLinkClick = {
-        customLinkText: "Submit",
-        customLinkRegion: "bottom",
-        customLinkType: "button",
-      };
+      // window.digitalData.customLinkClick = {
+      //   customLinkText: ctaname,
+      //   customLinkRegion: "bottom",
+      //   customLinkType: "button",
+      // };
 
       window.digitalData.form.formFields = [];
       window.digitalData.form.name = formName;
@@ -380,7 +380,6 @@ class AnalyticsAdobeCommon {
         window.digitalData.form.formFields.push({
           formFieldName: field.fieldName,
           formFieldValue: field.fieldValue,
-          CTAName: field.CTAName,
         });
       });
 
@@ -389,15 +388,11 @@ class AnalyticsAdobeCommon {
         event: "ctaClick",
       };
       window.adobeDataLayer.push(dataObject);
-      // return {
-      //   labelText: labelText,
-      //   labelValue: labelValue,
-      // };
     }
   }
 
-  handleInsuranceFormCheck(formName, fields) {
-    console.log(fields);
+  handleInsuranceFormCheck(target, formName, fields) {
+    console.log(target, fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
     // if (!window.digitalData) {
@@ -411,18 +406,23 @@ class AnalyticsAdobeCommon {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
+      window.digitalData.ctaName = target
+        .closest('.sc-radio-box')
+        .querySelector('label')
+        .innerText.trim();
+      window.digitalData.ctaPosition = this.calcElementLocation(target);
       window.digitalData.form.formFields = [];
       window.digitalData.form.name = formName;
       fields.forEach((field) => {
-        window.digitalData.customLinkClick = {
-          customLinkText: field.CTAName,
-          customLinkRegion: "form",
-          customLinkType: "input",
-        };
+        // window.digitalData.customLinkClick = {
+        //   customLinkText: field.fieldValue,
+        //   customLinkRegion: "form",
+        //   customLinkType: "input",
+        // };
         console.log(field);
         window.digitalData.form.formFields.push({
           formFieldName: field.fieldName,
-          CTAName: field.CTAName,
+          formFieldValue: field.fieldValue,
         });
       });
 
@@ -431,31 +431,9 @@ class AnalyticsAdobeCommon {
         event: "ctaClick",
       };
       window.adobeDataLayer.push(dataObject);
-      // return {
-      //   labelText: labelText,
-      //   labelValue: labelValue,
-      // };
     }
   }
 
-  handleCtaClick(fields) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        customLinkClick: {
-          customLinkText: fields.customLinkText,
-          customLinkRegion: fields.customLinkRegion,
-          customLinkType: fields.customLinkType,
-          customLinkName: fields.customLinkName,
-        },
-        event: "ctaClick",
-      };
-      if (fields.form) {
-        dataObject.form = fields.form;
-      }
-      window.adobeDataLayer.push(dataObject);
-    }
-  }
 
   /**
    * Track customer interaction with calculators using EDDL approach.
