@@ -209,18 +209,17 @@ class lifeInsuranceCamp {
    * @param {*} personaitem - persona name
    */
   generateChart(id, personaitem) {
-    if (id && personaitem) {
-      let ghdata;
-      const gh = document.querySelectorAll(".sc-li-campaign__graph");
-      if (gh.length) {
-        gh.forEach((item) => {
-          let pgh = item.parentNode.dataset.content;
-          if (personaitem === pgh) {
-            ghdata = JSON.parse(item.dataset.graphValue);
-          }
-        });
-      }
-
+    let ghdata;
+    const gh = document.querySelectorAll(".sc-li-campaign__graph");
+    if (gh.length) {
+      gh.forEach((item) => {
+        let pgh = item.parentNode.dataset.content;
+        if (personaitem === pgh) {
+          ghdata = JSON.parse(item.dataset.graphValue);
+        }
+      });
+    }
+    if (ghdata) {
       Highcharts.chart(`persona_graph_${id}`, {
         chart: {
           height: 200,
@@ -361,7 +360,7 @@ class lifeInsuranceCamp {
     );
     radios[0].checked = true;
     var selecteditems = {};
-    
+
     checkboxes.forEach(function (checkbox, i) {
       checkbox.addEventListener("change", function (e) {
         anycheckboxChecked = Array.from(checkboxes).some(function (checkbox) {
