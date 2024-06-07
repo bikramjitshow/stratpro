@@ -306,12 +306,14 @@ class lifeInsuranceCamp {
       if (event.target.dataset.modalSource === activemodalbtn) {
         let closestAnchor = event.target.closest("a");
         let formModal = document.querySelector(".sc-li-campaign-form-modal");
+        let popupName = formModal.dataset.popup;
         let modalAttr = closestAnchor.getAttribute("data-modal-source");
         let formmodalAttr = formModal.getAttribute("data-modal-id");
         let wrapp = document.querySelector(".c-modal");
         if (modalAttr === formmodalAttr) {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
+          that.AnalyticsAdobeCommon.handlePopupViewedEDDL(popupName);
           that.closeModal();
           that.getCheckboxes();
           // form
@@ -484,7 +486,7 @@ class lifeInsuranceCamp {
   buildFormItem(e, fieldName, fieldType) {
     this.existingFieldNames = new Set();
     const formdata = {
-      name: "Insurance Campaign Form",
+      name: "Get in touch-Insurance Campaign",
       fields: [],
     };
     const ContainerType = e.target.type;

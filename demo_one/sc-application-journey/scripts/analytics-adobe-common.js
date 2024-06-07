@@ -431,6 +431,7 @@ class AnalyticsAdobeCommon {
         event: "ctaClick",
       };
       window.adobeDataLayer.push(dataObject);
+      _satellite.track('callToAction');
     }
   }
 
@@ -483,6 +484,7 @@ class AnalyticsAdobeCommon {
         event: "popupViewed",
       };
       window.adobeDataLayer.push(dataObject);
+      _satellite.track('callToAction');
     }
   }
   /**
