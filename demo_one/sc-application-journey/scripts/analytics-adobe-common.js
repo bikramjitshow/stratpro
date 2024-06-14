@@ -406,11 +406,11 @@ class AnalyticsAdobeCommon {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
-      window.digitalData.ctaName = target
-        .closest('.sc-radio-box')
-        .querySelector('label')
-        .innerText.trim();
-      window.digitalData.ctaPosition = this.calcElementLocation(target);
+      // window.digitalData.ctaName = target
+      //   .closest('.sc-radio-box')
+      //   .querySelector('label')
+      //   .innerText.trim();
+      // window.digitalData.ctaPosition = this.calcElementLocation(target);
       window.digitalData.form.formFields = [];
       window.digitalData.form.formName = formname;
       fields.forEach((field) => {
