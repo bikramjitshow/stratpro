@@ -155,8 +155,11 @@ p {
   }
 
   // __graph
+  .highcharts-credits {
+    display: none;
+  }
   &__graph {
-    padding: 0 16px;
+    padding: 0 10px;
     margin-top: 10px;
     .sc-btn {
       font-size: 16px;
@@ -199,7 +202,7 @@ p {
 
   // Welcome offer statement
   &__welcomeoffer {
-    padding: 40px 16px 0 16px;
+    padding: 40px 10px 0 10px;
   }
   &__wo-wrap {
     display: flex;
@@ -461,9 +464,9 @@ p {
       margin-right: auto !important;
     }
   }
-  &__policy-type-card-splide-track {
-    padding-left: 15px !important;
-  }
+  // &__policy-type-card-splide-track {
+  //   padding-left: 15px !important;
+  // }
 
   // list__card-box
   &__policy-type-card-box {
@@ -524,14 +527,14 @@ p {
   &__policy-type-card-details {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     align-self: stretch;
     padding: 16px;
   }
   &__policy-type-title {
     color: $color-dark;
     text-align: left;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 500;
     padding-bottom: 10px;
   }
@@ -1215,7 +1218,7 @@ p {
       font-size: 16px;
     }
     &__policy-type-title {
-      font-size: 24px;
+      font-size: 16px;
     }
   }
 }
@@ -1234,10 +1237,10 @@ p {
 }
 
 // max 420
-@include breakpoint($bp--a-max-420) {
-  .sc-li-campaign {
-    &__policy-type-card-splide-track {
-      padding-left: 10px !important;
-    }
-  }
-}
+// @include breakpoint($bp--a-max-420) {
+//   .sc-li-campaign {
+//     &__policy-type-card-splide-track {
+//       padding-left: 10px !important;
+//     }
+//   }
+// }
