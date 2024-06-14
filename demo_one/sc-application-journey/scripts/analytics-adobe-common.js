@@ -352,7 +352,7 @@ class AnalyticsAdobeCommon {
   // }
 
   // my
-  handleInsuranceFormSubmit(formName, ctaname, fields) {
+  handleInsuranceFormSubmit(formname, ctaname, fields) {
     console.log(fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
@@ -374,7 +374,7 @@ class AnalyticsAdobeCommon {
       // };
 
       window.digitalData.form.formFields = [];
-      window.digitalData.form.name = formName;
+      window.digitalData.form.formName = formname;
       fields.forEach((field) => {
         console.log(field);
         window.digitalData.form.formFields.push({
@@ -391,7 +391,7 @@ class AnalyticsAdobeCommon {
     }
   }
 
-  handleInsuranceFormCheck(target, formName, fields) {
+  handleInsuranceFormCheck(target, formname, fields) {
     console.log(target, fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
@@ -412,7 +412,7 @@ class AnalyticsAdobeCommon {
         .innerText.trim();
       window.digitalData.ctaPosition = this.calcElementLocation(target);
       window.digitalData.form.formFields = [];
-      window.digitalData.form.name = formName;
+      window.digitalData.form.formName = formname;
       fields.forEach((field) => {
         // window.digitalData.customLinkClick = {
         //   customLinkText: field.fieldValue,
