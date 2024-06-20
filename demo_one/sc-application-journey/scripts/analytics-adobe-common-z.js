@@ -160,7 +160,7 @@ const newranges = {
 /**
  * Implementation for Adobe Analytics Common.
  */
-class AnalyticsAdobeCommon {
+class AnalyticsAdobeCommonZ {
   /**
    * Calculate range values based on original PI value.
    */
@@ -362,8 +362,8 @@ class AnalyticsAdobeCommon {
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
-    if (!window.digitalData.form.fields) {
-      window.digitalData.form.fields = [];
+    if (!window.digitalData.form.formFields) {
+      window.digitalData.form.formFields = [];
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
@@ -373,13 +373,13 @@ class AnalyticsAdobeCommon {
       //   customLinkType: "button",
       // };
 
-      window.digitalData.form.fields = [];
+      window.digitalData.form.formFields = [];
       window.digitalData.form.formName = formname;
       fields.forEach((field) => {
         console.log(field);
-        window.digitalData.form.fields.push({
-          fieldName: field.fieldName,
-          fieldValue: field.fieldValue,
+        window.digitalData.form.formFields.push({
+          formFieldName: field.fieldName,
+          formFieldValue: field.fieldValue,
         });
       });
 
@@ -388,7 +388,7 @@ class AnalyticsAdobeCommon {
         event: "ctaClick",
       };
       window.adobeDataLayer.push(dataObject);
-      _satellite.track("ctaClick");
+      _satellite.track('callToAction');
     }
   }
 
@@ -402,8 +402,8 @@ class AnalyticsAdobeCommon {
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
-    if (!window.digitalData.form.fields) {
-      window.digitalData.form.fields = [];
+    if (!window.digitalData.form.formFields) {
+      window.digitalData.form.formFields = [];
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
@@ -412,7 +412,7 @@ class AnalyticsAdobeCommon {
       //   .querySelector('label')
       //   .innerText.trim();
       // window.digitalData.ctaPosition = this.calcElementLocation(target);
-      window.digitalData.form.fields = [];
+      window.digitalData.form.formFields = [];
       window.digitalData.form.formName = formname;
       fields.forEach((field) => {
         // window.digitalData.customLinkClick = {
@@ -421,9 +421,9 @@ class AnalyticsAdobeCommon {
         //   customLinkType: "input",
         // };
         console.log(field);
-        window.digitalData.form.fields.push({
-          fieldName: field.fieldName,
-          fieldValue: field.fieldValue,
+        window.digitalData.form.formFields.push({
+          formFieldName: field.fieldName,
+          formFieldValue: field.fieldValue,
         });
       });
 
@@ -432,7 +432,6 @@ class AnalyticsAdobeCommon {
         event: "ctaClick",
       };
       window.adobeDataLayer.push(dataObject);
-      _satellite.track("ctaClick");
     }
   }
   
@@ -611,6 +610,6 @@ class AnalyticsAdobeCommon {
   }
 }
 
-const instancedddd = new AnalyticsAdobeCommon();
+const instancezzzz = new AnalyticsAdobeCommonZ();
 
 // export default instance;

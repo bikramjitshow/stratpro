@@ -1,8 +1,7 @@
 import ScCommonMethods from "./sc-common-methods.js";
 class lifeInsuranceCamp {
   constructor() {
-    this.ScCalculatorCommon = new ScCalculatorCommon();
-    this.AnalyticsAdobeCommon = new AnalyticsAdobeCommon();
+    this.AnalyticsAdobeCommon = new AnalyticsAdobeCommonZ();
   }
   static selectedPersona;
   static selectedCheckbox = [];
@@ -14,6 +13,12 @@ class lifeInsuranceCamp {
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
+      // const activemodalbtn = document.querySelector(
+      //   ".sc-li-campaign__active-modal-btn"
+      // );
+      // activemodalbtn.addEventListener("click", () => {
+      //   that.activeModal();
+      //   });
       that.activeModal();
       that.paramCheck();
       that.generateChart(1, personaitem);
@@ -209,12 +214,13 @@ class lifeInsuranceCamp {
    * @param {*} personaitem - persona name
    */
   generateChart(id, personaitem) {
-    let ghdata;
+    let ghdata, seriesName;
     const gh = document.querySelectorAll(".sc-li-campaign__graph");
     if (gh.length) {
       gh.forEach((item) => {
         let pgh = item.parentNode.dataset.content;
         if (personaitem === pgh) {
+          seriesName = item.dataset.seriesName;
           ghdata = JSON.parse(item.dataset.graphValue);
         }
       });
@@ -265,27 +271,27 @@ class lifeInsuranceCamp {
         },
         series: [
           {
-            name: "Young Generation",
+            name: seriesName?.toString() ?? 'series',
             colorByPoint: true,
             data: [
               {
-                name: "Critical Illness",
-                y: ghdata?.d1,
+                name: ghdata?.d1?.title?.toString() ?? 'data 1',
+                y: ghdata?.d1?.value ?? 0,
                 color: "#00BCD3",
               },
               {
-                name: "Saving Account",
-                y: ghdata?.d2,
+                name: ghdata?.d2?.title?.toString() ?? 'data 2',
+                y: ghdata?.d2?.value ?? 0,
                 color: "#2772C7",
               },
               {
-                name: "Life",
-                y: ghdata?.d3,
+                name: ghdata?.d3?.title?.toString() ?? 'data 3',
+                y: ghdata?.d3?.value ?? 0,
                 color: "#00A9F3",
               },
               {
-                name: "Medical",
-                y: ghdata?.d4,
+                name: ghdata?.d4?.title?.toString() ?? 'data 4',
+                y: ghdata?.d4?.value ?? 0,
                 color: "#AE6BFC",
               },
             ],
@@ -306,14 +312,15 @@ class lifeInsuranceCamp {
       if (event.target.dataset.modalSource === activemodalbtn) {
         let closestAnchor = event.target.closest("a");
         let formModal = document.querySelector(".sc-li-campaign-form-modal");
-        let popupName = formModal.dataset.popup;
+        let popupdata = JSON.parse(formModal.dataset.popup);
+        console.log(popupdata);
         let modalAttr = closestAnchor.getAttribute("data-modal-source");
         let formmodalAttr = formModal.getAttribute("data-modal-id");
         let wrapp = document.querySelector(".c-modal");
         if (modalAttr === formmodalAttr) {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
-          that.AnalyticsAdobeCommon.handlePopupViewedEDDL(popupName);
+          that.AnalyticsAdobeCommon.handlePopupViewedEDDL(popupdata.popupname);
           that.closeModal();
           that.getCheckboxes();
           // form
@@ -485,8 +492,10 @@ class lifeInsuranceCamp {
   // Main function to build form data object
   buildFormItem(e, fieldName, fieldType) {
     this.existingFieldNames = new Set();
+    let formModal = document.querySelector(".sc-li-campaign-form-modal");
+    let popupdata = formModal.dataset.popup;
     const formdata = {
-      name: "Get in touch-Insurance Campaign",
+      name: popupdata.formname,
       fields: [],
     };
     const ContainerType = e.target.type;
@@ -511,8 +520,10 @@ class lifeInsuranceCamp {
 
   buildFormData() {
     this.existingFieldNames = new Set();
+    let formModal = document.querySelector(".sc-li-campaign-form-modal");
+    let popupdata = JSON.parse(formModal.dataset.popup);
     const formdata = {
-      name: "Insurance Campaign Form",
+      name: popupdata.formname,
       fields: [],
     };
     const formItems = document.querySelectorAll(".sc-li-campaign-form__item");
@@ -559,8 +570,10 @@ class lifeInsuranceCamp {
 
   buildFormDataItem() {
     this.existingFieldNames = new Set();
+    let formModal = document.querySelector(".sc-li-campaign-form-modal");
+    let popupdata = JSON.parse(formModal.dataset.popup);
     const formdata = {
-      name: "Insurance Campaign Form",
+      name: popupdata.formname,
       fields: [],
     };
     const formItems = document.querySelectorAll(".sc-li-campaign-form__item");
