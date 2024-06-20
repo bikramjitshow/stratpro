@@ -1,0 +1,98 @@
+// @import '../../../../node_modules/@bower_components/breakpoint-sass/stylesheets/breakpoint';
+@import '../../node_modules/@bower_components/breakpoint-sass/stylesheets/breakpoint';
+
+// Device pixel ratio states
+
+$bp--retina-x2: min-resolution 2dppx;
+$bp--retina-x3: min-resolution 3dppx;
+
+// Screen horizontal breakpoints
+$bp--h-xxsmall: all max-width $breakpoint-h-xxsmall + 0.98px;
+$bp--h-xsmall: all max-width $breakpoint-h-xsmall + 0.98px;
+$bp--h-small: all $breakpoint-h-xsmall + 1px $breakpoint-h-small + 0.98px;
+$bp--h-medium: all $breakpoint-h-small + 1px $breakpoint-h-medium + 0.98px;
+$bp--h-large: all $breakpoint-h-medium + 1px;
+$bp--h-xlarge: all $breakpoint-h-large + 1px;
+
+$bp--h-mobile: all max-width $breakpoint-h-small + 0.98px;
+$bp--h-small-large: all $breakpoint-h-xsmall + 1px;
+$bp--h-small-medium: all $breakpoint-h-xsmall + 1px $breakpoint-h-medium + 0.98px;
+$bp--h-desktop: all $breakpoint-h-small + 1px;
+
+$bp--h-gt-xsmall: all $breakpoint-h-xsmall + 1px;
+$bp--h-lt-large: screen max-width $breakpoint-h-medium + 0.98px;
+
+// Screen vertical breakpoints
+
+$bp--v-small: all max-height $breakpoint-v-small;
+$bp--v-lt-medium: all max-height $breakpoint-v-medium;
+$bp--v-gt-medium: all min-height $breakpoint-v-medium;
+
+// Screen ratio states
+
+$bp--portrait: 'only screen' orientation portrait;
+$bp--landscape: 'only screen' orientation landscape;
+
+// breakpoint lists
+
+$bp--h-mobile-list: ($bp--h-xsmall $bp--h-small $bp--h-mobile);
+$bp--h-desktop-list: ($bp--h-medium $bp--h-large $bp--h-desktop);
+
+// nav login ratios
+
+$bp--h-nav-desktop: screen $breakpoint-h-small + 1px $meganav-max-width + 0.98px;
+$bp--h-nav-fixed: $meganav-max-width + 1px;
+
+// Custom sizes
+$bp--a-max-420: all max-width 420.98px;
+$bp--a-min-421: all 421px;
+$bp--a-max-767: all max-width 767.98px;
+$bp--a-min-768: all 768px;
+$bp--a-1024-1139: all 1024px 1139.98px;
+$bp--a-min-1101: all 1101px;
+$bp--a-1140-1200: all 1140px 1200.98px;
+
+$bp--a-max-320: all max-width 320.98px;
+$bp--a-321-375: all 321px 375.98px;
+$bp--a-376-480: all 376px 480.98px;
+$bp--a-769-1024: all 769px 1024.98px;
+$bp--a-360-640: all 360px 640.98px;
+$bp--a-412-732: all 412px 732.98px;
+
+$bp--a-max-511: all max-width 511.98px;
+$bp--a-max-935: all max-width 935.98px;
+$bp--a-max-1210: all max-width 1210.98px;
+$bp--a-min-1210: all 1210px;
+$bp--a-min-512: all 512px;
+$bp--a-max-426: all max-width 426.98px;
+$bp--a-min-950: all 950px;
+$bp--a-min-992: all 992px;
+$bp--a-min-999: all 999px;
+$bp--a-min-1400: all 1400px;
+$bp--a-min-1441: all 1441px;
+$bp--a-768-1100: all 768px 1100.98px;
+$bp--a-768-949: all 768px 949.98px;
+$bp--a-768-998: all 768px 998.98px;
+$bp--a-768-1279: all 768px 1279.98px;
+
+$bp--a-max-330: all max-width 330.98px;
+$bp--a-max-365: all max-width 365.98px;
+$bp--a-max-375: all max-width 375.98px;
+$bp--a-max-991: all max-width 991.98px;
+
+$bp--a-max-1230: all max-width 1230.98px;
+$bp--a-min-1230: all 1230px;
+$bp--a-max-1285: all max-width 1285px;
+$bp--a-767-1230: all 768px 1230.98px;
+$bp--a-650-767: all 650px 767.98px;
+$bp--a-max-650: all max-width 650.98px;
+$bp--a-1230-1400: all 1230px 1400.98px;
+$bp--a-1400-1600: all 1400px 1600.98px;
+$bp--a-max-639: all max-width 639px;
+$bp--a-min-640: all 640px;
+$bp--a-min-1024: all 1024px;
+$bp--a-max-575: all max-width 574.98px;
+$bp--a-992-1100: all 992px $breakpoint-h-medium;
+$bp--a-576-991: all 576px 991px;
+
+$bp--a-681-840: all 681px 840.98px;

@@ -1,0 +1,19 @@
+// Vars
+@import './vars/colors';
+@import './vars/dimensions';
+@import './vars/layout';
+@import './vars/typography';
+@import 'breakpoint/breakpoint';
+
+// Utils
+@import 'utils/utils';
+
+
+@import './sc-market-opportunity.scss';
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+

@@ -1,0 +1,35 @@
+.sc-li-campaign-form__item-title {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+.sc-li-campaign-form__checkboxs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.sc-li-campaign-form__checkbox {
+  margin-bottom: 10px;
+}
+.sc-li-campaign-form__checkbox:last-child {
+  margin-bottom: 0;
+}
+.sc-li-campaign-form__radios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.sc-li-campaign-form__radio {
+  margin-bottom: 10px;
+}
+.sc-li-campaign-form__radio:last-child {
+  margin-bottom: 0;
+}/*# sourceMappingURL=life-insurance-campaign-form.css.map */

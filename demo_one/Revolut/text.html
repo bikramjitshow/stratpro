@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revolut Parallax Effect</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    .parallax-section {
+        position: relative;
+        height: 100vh; /* Adjust height as needed for the parallax effect */
+        background-image: url('https://www.revolut.com/_next/image-asset/w:3840/q:90/https%3A%2F%2Fassets.revolut.com%2Fpublished-assets-v3%2Fd96dbd85-2cfa-4d97-93ad-78e0ded6d882%2Fe5bf0f73-c3cb-4025-8abc-b00252f358dd.png'); /* Replace with your image URL */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* This creates the parallax effect */
+        overflow: hidden; /* Prevent content overflow */
+    }
+    .parallax-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff; /* Text color for contrast */
+    }
+</style>
+</head>
+<body>
+
+  <div style="background-color: red; height: 500px;display: block;"></div>
+<div class="parallax-section" style="background-image: url('https://www.revolut.com/_next/image-asset/w:3840/q:90/https%3A%2F%2Fassets.revolut.com%2Fpublished-assets-v3%2Fd96dbd85-2cfa-4d97-93ad-78e0ded6d882%2Fe5bf0f73-c3cb-4025-8abc-b00252f358dd.png');">
+    <div class="parallax-content">
+        <h1>Welcome to Revolut</h1>
+        <p>Discover a new way to manage your finances.</p>
+        <!-- Add more content as needed -->
+    </div>
+</div>
+<div style="background-color: red; height: 500px;display: block;"></div>
+<!-- Other sections and content -->
+
+</body>
+</html>

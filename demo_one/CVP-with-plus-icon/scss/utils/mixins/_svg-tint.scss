@@ -1,0 +1,15 @@
+@mixin svg-tint($color, $transition: null, $stroke: false) {
+  svg {
+    circle,
+    path {
+      @if ($stroke == false) {
+        fill: $color;
+      } @else {
+        stroke: $color;
+      }
+      @if $transition {
+        transition: $transition;
+      }
+    }
+  }
+}

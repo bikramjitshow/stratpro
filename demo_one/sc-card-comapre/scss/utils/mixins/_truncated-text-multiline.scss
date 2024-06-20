@@ -1,0 +1,39 @@
+@mixin truncated-text-multiline(
+  $max-lines,
+  $line-height,
+  $show-dots: false,
+  $hyphens: none,
+  $flexible-height: true
+) {
+  $height: $max-lines * $line-height;
+  overflow: hidden;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  hyphens: $hyphens;
+  box-sizing: content-box;
+
+  @if ($flexible-height) {
+    height: auto;
+    max-height: $height;
+  } @else {
+    height: $height;
+  }
+
+  @if ($show-dots) {
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -moz-binding: url('ellipsis.xml#ellipsis');
+
+    @if ($max-lines == 1) {
+      // One line
+      white-space: nowrap;
+    } @else {
+      // Multiple line
+      -webkit-line-clamp: $max-lines;
+      -webkit-box-orient: vertical;
+      display: inline-block;
+      display: -webkit-inline-box;
+    }
+  }
+}

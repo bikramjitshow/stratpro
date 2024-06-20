@@ -1,0 +1,35 @@
+@mixin safe-hover($selector: '', $cursor: '') {
+  @at-root .no-touchevents & {
+    @if ($cursor) {
+      cursor: #{$cursor};
+    }
+
+    @if ($selector == '') {
+      &:hover {
+        @content;
+      }
+
+      &.is-current {
+        @content;
+      }
+    } @else {
+      @include in('#{$selector}:hover') {
+        @content;
+      }
+
+      @include in('#{$selector}.is-current') {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin safe-hover-or-active() {
+  @include safe-hover() {
+    @content;
+  }
+
+  &.is-active {
+    @content;
+  }
+}

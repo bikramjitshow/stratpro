@@ -1,0 +1,8 @@
+@mixin display-only-active {
+  & > :not(.active) {
+    display: none;
+  }
+  & > .active {
+    display: block;
+  }
+}

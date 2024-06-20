@@ -1,0 +1,9 @@
+@mixin force-ratio($horizontal, $vertical, $method: 'after') {
+  $padding-percent: ($vertical / $horizontal) * 100%;
+
+  &::#{$method} {
+    content: '';
+    display: block;
+    padding-bottom: $padding-percent;
+  }
+}

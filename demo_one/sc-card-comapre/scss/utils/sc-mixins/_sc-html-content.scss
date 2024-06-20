@@ -1,0 +1,243 @@
+@mixin sc-html-content() {
+  $th-height: 76px;
+  $td-height: 36px;
+
+  /* The below `$ol-list-padding-left` should be applied for `ol` which has `list-style-position` as `outside`. This value is tested with two digits. If the list is lenghtier to 3 digits, then this has to be tested again and should be increased accordingly.*/
+  $ol-list-padding-left: 30px;
+
+  $th-default: (
+    font-size: 10px,
+    font-weight: 400,
+    letter-spacing: 0.6px,
+    line-height: 20px
+  );
+  $td-default: (
+    font-size: 14px,
+    font-weight: 300,
+    letter-spacing: 0.5px,
+    line-height: 30px
+  );
+
+  p {
+    margin-bottom: 14px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $color-green;
+
+      &:hover,
+      &:visited {
+        color: $color-green;
+      }
+    }
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: 50%;
+    line-height: 0;
+  }
+
+  sub {
+    vertical-align: sub;
+    font-size: 50%;
+    line-height: 0;
+  }
+
+  ul,
+  ol {
+    margin-bottom: 10px;
+  }
+
+  > ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+    > li {
+      list-style-type: disc;
+      line-height: 20px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      > ul {
+        padding-left: 20px;
+        margin-top: 10px;
+        > li {
+          list-style-type: circle;
+          line-height: 20px;
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          > ul {
+            padding-left: 20px;
+            margin-top: 10px;
+            > li {
+              list-style-type: disc;
+              line-height: 20px;
+              margin-bottom: 10px;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              > ul {
+                padding-left: 20px;
+                margin-top: 10px;
+                > li {
+                  list-style-type: circle;
+                  line-height: 20px;
+                  margin-bottom: 10px;
+
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: $ol-list-padding-left;
+    margin-top: 10px;
+    > li {
+      list-style-type: decimal;
+      line-height: 20px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      > ol {
+        padding-left: $ol-list-padding-left;
+        margin-top: 10px;
+        > li {
+          list-style-type: lower-latin;
+          line-height: 20px;
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          > ol {
+            padding-left: $ol-list-padding-left;
+            margin-top: 10px;
+            > li {
+              list-style-type: lower-roman;
+              line-height: 20px;
+              margin-bottom: 10px;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              > ol {
+                padding-left: $ol-list-padding-left;
+                margin-top: 10px;
+                > li {
+                  list-style-type: decimal;
+                  line-height: 20px;
+                  margin-bottom: 10px;
+
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  table {
+    display: inline-block;
+    overflow-x: auto;
+    overflow-y: visible;
+    height: auto;
+
+    tr:first-child {
+      height: $th-height;
+      background-color: $color-grey-light-11;
+
+      td {
+        background-color: $color-grey-light-11;
+        height: $th-height;
+        color: $color-blue;
+        text-transform: uppercase;
+        padding-top: 8px;
+        @include sc-text($th-default);
+
+        .th-wrapper {
+          display: inline-block;
+          @include breakpoint($bp--h-small-medium) {
+            width: 200px;
+          }
+          @include breakpoint($bp--h-large) {
+            width: 200px;
+          }
+        }
+      }
+    }
+
+    tr {
+      min-height: $td-height;
+
+      &:last-of-type {
+        border-bottom: transparent;
+      }
+
+      td {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        a {
+          color: $color-green;
+
+          &:hover,
+          &:visited {
+            color: $color-green;
+          }
+        }
+      }
+    }
+
+    tr {
+      padding: 24px;
+      border-bottom: 1px solid $color-grey-light-2;
+    }
+
+    td,
+    th {
+      border-right: 1px solid $color-grey-light-2;
+      vertical-align: middle;
+      padding-right: 20px;
+      padding-left: 20px;
+
+      &:last-of-type {
+        border-right: transparent;
+      }
+    }
+
+    td {
+      text-align: center;
+      background-color: $color-white;
+      min-height: $td-height;
+      @include sc-text($td-default);
+    }
+  }
+}

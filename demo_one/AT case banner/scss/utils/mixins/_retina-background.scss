@@ -1,0 +1,16 @@
+/**
+ *  Background images with retina support
+ */
+@mixin retina-background($file, $type) {
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: contain;
+
+  background-image: url($file+'.'+$type);
+  @include breakpoint($bp--retina-x2) {
+    background-image: url($file+'@2x.'+$type);
+  }
+  @include breakpoint($bp--retina-x3) {
+    background-image: url($file+'@3x.'+$type);
+  }
+}

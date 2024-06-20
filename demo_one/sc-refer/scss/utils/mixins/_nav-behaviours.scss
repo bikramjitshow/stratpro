@@ -1,0 +1,35 @@
+/**
+ * Animates properties for sticky nav elements when page is scrolled
+ * @param: $property . The property that should be animated
+ *
+ */
+
+@mixin nav-behaviours($property: 'height') {
+  @include collapsed-header-prop($property);
+
+  //Sticky behaviour disabled
+  //@include scrolled-behaviour($property);
+}
+
+@mixin collapsed-header-prop($property: 'height') {
+  #{$property}: $meganav-height-h-mobile;
+
+  @include breakpoint($bp--h-desktop) {
+    transition: #{$property} 0.25s ease;
+    #{$property}: $meganav-height-h-desktop;
+
+    @include breakpoint('screen'(max-height $breakpoint-v-medium)) {
+      #{$property}: $meganav-height-v-small;
+    }
+  }
+}
+
+@mixin scrolled-behaviour($property: 'height') {
+  @at-root .is-scrolled & {
+    #{$property}: $header-collapsed-height-mobile;
+
+    @include breakpoint($bp--h-desktop) {
+      #{$property}: $header-collapsed-height-desktop;
+    }
+  }
+}

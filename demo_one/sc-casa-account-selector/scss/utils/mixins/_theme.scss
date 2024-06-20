@@ -1,0 +1,21 @@
+// MIXIN TO APPLY THEME variations
+// USAGE theme($my-module, --theme-gray --theme-white)
+
+@mixin theme($module, $themes) {
+  @if type-of($themes) ==
+    list or
+    type-of($themes) ==
+    string or
+    type-of($themes) ==
+    map
+  {
+    // loop on each theme :
+    @each $theme in $themes {
+      .#{$module}#{$theme} & {
+        @content;
+      }
+    }
+  } @else {
+    @content;
+  }
+}
