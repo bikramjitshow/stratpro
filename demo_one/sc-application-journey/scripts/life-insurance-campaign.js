@@ -44,6 +44,16 @@ class lifeInsuranceCamp {
     }
   }
 
+  removeNullHashFromURL() {
+    if (window.location.hash === "#null") {
+      history.replaceState(
+        "",
+        document.title,
+        window.location.pathname + window.location.search
+      );
+    }
+  }
+
   addUrlParam(name, value) {
     var paramName = name;
     var paramValue = value;
@@ -113,7 +123,6 @@ class lifeInsuranceCamp {
       }
     }
   }
-
   tiggerContentFilter(personaitem) {
     let filteritemparent, parentitem, isHide;
     let isFirstFilterActivated = false;
@@ -271,26 +280,26 @@ class lifeInsuranceCamp {
         },
         series: [
           {
-            name: seriesName?.toString() ?? 'series',
+            name: seriesName?.toString() ?? "series",
             colorByPoint: true,
             data: [
               {
-                name: ghdata?.d1?.title?.toString() ?? 'data 1',
+                name: ghdata?.d1?.title?.toString() ?? "data 1",
                 y: ghdata?.d1?.value ?? 0,
                 color: "#00BCD3",
               },
               {
-                name: ghdata?.d2?.title?.toString() ?? 'data 2',
+                name: ghdata?.d2?.title?.toString() ?? "data 2",
                 y: ghdata?.d2?.value ?? 0,
                 color: "#2772C7",
               },
               {
-                name: ghdata?.d3?.title?.toString() ?? 'data 3',
+                name: ghdata?.d3?.title?.toString() ?? "data 3",
                 y: ghdata?.d3?.value ?? 0,
                 color: "#00A9F3",
               },
               {
-                name: ghdata?.d4?.title?.toString() ?? 'data 4',
+                name: ghdata?.d4?.title?.toString() ?? "data 4",
                 y: ghdata?.d4?.value ?? 0,
                 color: "#AE6BFC",
               },

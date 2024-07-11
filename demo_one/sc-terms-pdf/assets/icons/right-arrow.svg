@@ -1,0 +1,13 @@
+<svg class="sc-segment__icon" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <title>right-arrow-blue-svg</title>
+                <style>
+                  .sb {
+                    fill: none;
+                    stroke: #2772c7;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 1.8;
+                  }
+                </style>
+                <path id="arrow-blue" fill-rule="evenodd" class="sb" d="m9 4.5l7.5 7.5-7.5 7.5"></path>
+              </svg>

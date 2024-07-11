@@ -1,0 +1,5 @@
+// Function to calculate the font size in em.
+
+@function calc-em($target, $context: $default-font-size) {
+  @return $target / $context * 1em;
+}

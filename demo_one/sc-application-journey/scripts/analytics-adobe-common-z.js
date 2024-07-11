@@ -388,7 +388,7 @@ class AnalyticsAdobeCommonZ {
         event: "ctaClick",
       };
       window.adobeDataLayer.push(dataObject);
-      _satellite.track('callToAction');
+      _satellite.track("callToAction");
     }
   }
 
@@ -399,11 +399,13 @@ class AnalyticsAdobeCommonZ {
     // if (!window.digitalData) {
     //   window.digitalData = {};
     // }
-    if (!window.digitalData.form) {
+    if (!window.digitalData.form && !window.digitalData.calculator) {
       window.digitalData.form = {};
+      window.digitalData.calculator = {};
     }
-    if (!window.digitalData.form.formFields) {
+    if (!window.digitalData.form.formFields && !window.digitalData.calculator.fields) {
       window.digitalData.form.formFields = [];
+      window.digitalData.calculator.fields = [];
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
@@ -413,7 +415,10 @@ class AnalyticsAdobeCommonZ {
       //   .innerText.trim();
       // window.digitalData.ctaPosition = this.calcElementLocation(target);
       window.digitalData.form.formFields = [];
+      window.digitalData.calculator.fields = [];
+
       window.digitalData.form.formName = formname;
+      window.digitalData.calculator.name = formname;
       fields.forEach((field) => {
         // window.digitalData.customLinkClick = {
         //   customLinkText: field.fieldValue,
@@ -421,21 +426,25 @@ class AnalyticsAdobeCommonZ {
         //   customLinkType: "input",
         // };
         console.log(field);
-        window.digitalData.form.formFields.push({
+        // window.digitalData.form.formFields.push({
+        //   formFieldName: field.fieldName,
+        //   formFieldValue: field.fieldValue,
+        // });
+        window.digitalData.calculator.fields.push({
           formFieldName: field.fieldName,
           formFieldValue: field.fieldValue,
         });
       });
 
+
       let dataObject = {
         ...digitalData,
         event: "ctaClick",
       };
+
       window.adobeDataLayer.push(dataObject);
     }
   }
-  
-
 
   /**
    * Track customer interaction with calculators using EDDL approach.
@@ -485,7 +494,7 @@ class AnalyticsAdobeCommonZ {
         event: "popupViewed",
       };
       window.adobeDataLayer.push(dataObject);
-      _satellite.track('callToAction');
+      _satellite.track("callToAction");
     }
   }
   /**

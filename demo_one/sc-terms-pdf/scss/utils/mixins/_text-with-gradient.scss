@@ -1,0 +1,25 @@
+/**
+ * Creates a text filled by gradient between two colors
+ *
+ * TODO: Find a crossbrowser solution, this doesn't works on Firefox
+ *
+ * @param  {[type]} $from-color: #6cc9fe       [description]
+ * @param  {[type]} $to-color:   #38d54a       [description]
+ * @param  {[type]} $direction:  120deg        [description]
+ *
+ * @return {[type]}              [description]
+ */
+@mixin text-with-gradient(
+  $from-color: #6cc9fe,
+  $to-color: #38d54a,
+  $direction: 120deg
+) {
+  color: $from-color;
+  background-image: -webkit-linear-gradient(
+    $direction,
+    $from-color 30%,
+    $to-color 70%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
