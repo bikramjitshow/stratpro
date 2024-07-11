@@ -2956,6 +2956,7 @@
       #sc-nav-drop__col-item-1 {
         margin-bottom: 0px;
       }
+    }
   </style>
   <link rel="stylesheet" id="sc-banners-styles-css"
     href="https://av.sc.com/assets/global/css/sc-banners.min.css?ver=9521bd5" media="all" />
@@ -6010,7 +6011,7 @@
       pointer-events: none;
     }
   </style>
-  <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal" data-size="theme">
+  <div class="m-text-content sc-prod-col-terms-modal" data-modal-id="sc-prod-col-terms-modal" data-size="theme">
     <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
       <div class="sc-products-tile-modal__content sc-list sc-rte">
         <p>
@@ -6136,7 +6137,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript:void(0)" title="Proceed to Apply" class="sc-products-tile__scroll-step">
+            <a href="javascript:void(0)" title="Proceed to Apply" class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__scroll-step">
               <span class="only-desktop">Proceed to Apply</span>
               <span class="only-mobile">Apply Now</span>
             </a>
@@ -7334,17 +7335,17 @@
     }
   </style>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // activeScrollToBottom on modal active
+    function activeScrollToBottom() {
       var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
-      var scrollableDiv = document.querySelector(".sc-products-tile-modal");
-
-      console.log(scrollbtn)
-
+      var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
       let clickCount = 0;
       const stepsPerClick = 1; // Number of scroll steps per click
       const totalSteps = 4; // Total number of steps to scroll
-
+      
+      // method scrollToBottom
       function scrollToBottom(element, steps) {
         const totalHeight = element.scrollHeight - element.clientHeight;
         const stepHeight = totalHeight / totalSteps;
@@ -7357,14 +7358,31 @@
         }
       }
 
-      scrollbtn.addEventListener("click", function () {
+      // scrollbtn click event
+      scrollbtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation()
         clickCount++;
         if (clickCount % stepsPerClick === 0) {
           scrollToBottom(scrollableDiv, stepsPerClick);
         }
       });
+    }
+
+    // verify modal active
+    document.body.addEventListener("click", function (event) {
+      let closestAnchor = event.target.closest("a");
+      let modalAttr = closestAnchor.getAttribute("data-modal-source");
+      let activeModal = document.querySelector(".sc-prod-col-terms-modal");
+      let activeModalId = activeModal.getAttribute("data-modal-id");
+      if (modalAttr === activeModalId) {
+        console.log(modalAttr);
+        activeScrollToBottom();
+      }
     });
-  </script>
+  });
+</script>
 
 
   <div class="sc-terms-links">
