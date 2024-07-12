@@ -966,12 +966,29 @@
 
 <body class="home page-template-default page page-id-401221" data-catch="show-overlay"
   data-allowed-params="https://av.sc.com/sg/data/whitelist-parameter/allowable/all.json" data-page-ga="1">
-
   <a href="#null" title="Information-Banking Packages" data-send="show-overlay"
-    data-modal-source="sc-prod-col-terms-modal"> FUCK OFF</a>
+    data-modal-source="sc-prod-col-terms-modal">
+    OPEN MODAL</a>
 
+  <!-- TERMS Modal Content -->
+  <style>
+    .only-desktop,
+    .only-mobile {
+      pointer-events: none;
+    }
+    .sc-products-tile-modal {
+      position: relative;
+    }
+    .sc-products-tile__btn {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      background-color: #ddd;
+      padding: 20px;
+    }
+  </style>
   <div class="m-text-content sc-prod-col-terms-modal" data-modal-id="sc-prod-col-terms-modal" data-size="theme">
-    <div class="sc-products-tile-modal sc-products-tile-modal-new-layout" style="position: relative;">
+    <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
       <div class="sc-products-tile-modal__content sc-list sc-rte">
         <p>
           <strong> Terms and Conditions </strong>
@@ -1086,25 +1103,22 @@
           PageMaker including versions of Lorem Ipsum.
         </p>
       </div>
-      <div class="sc-products-tile__btn" style="position: sticky; bottom: 0;">
+      <div class="sc-products-tile__btn">
         <ul class="buttons">
           <li>
-            <a href="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf" title="Download"
-              class="c-button sc-btn sc-btn--secondary-black sc-btn--small" download>
+            <a href="javascript:void(0)"
+              data-pdf-url="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf" title="Download"
+              class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__download-button" download>
               <span class="only-desktop">Download</span>
               <span class="only-mobile">Download</span>
             </a>
           </li>
           <li>
-            <a href="javascript:void(0)" title="Proceed to Apply"
-              class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__scroll-step">
+            <a href="javascript:void(0)"
+              data-redirect-url="https://origination.sc.com/onboarding/hk/apply.html?referId=12345678&product=1313&campaign=HKSOZ00MCWB000&premium=CM20&cardType=3268&affiliation=2132&lang=en&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-en"
+              title="Proceed to Apply" class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__scroll-step">
               <span class="only-desktop">Proceed to Apply</span>
               <span class="only-mobile">Apply Now</span>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" title="Proceed to Apply" class="sc-products-tile__scroll-step">
-              Proceed to Apply
             </a>
           </li>
         </ul>
@@ -1112,36 +1126,104 @@
     </div>
   </div>
 
-
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       // activeScrollToBottom on modal active
-      function activeScrollToBottom(params) {
+      function activeScrollToBottom() {
         var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
         var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
+        var redirectUrl = "https://example.com"; // Replace with the desired URL
+
         let clickCount = 0;
         const stepsPerClick = 1; // Number of scroll steps per click
         const totalSteps = 4; // Total number of steps to scroll
-        
-        // method scrollToBottom
+        let manualScrollDetected = false;
+
         function scrollToBottom(element, steps) {
           const totalHeight = element.scrollHeight - element.clientHeight;
           const stepHeight = totalHeight / totalSteps;
-          const maxScroll = totalHeight / totalSteps * (clickCount / stepsPerClick);
 
           element.scrollBy(0, stepHeight * steps);
 
-          if (element.scrollTop >= maxScroll) {
-            element.scrollTo(0, maxScroll);
+          if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
+            // Scrolled to the bottom
+            manualScrollDetected = true;
           }
         }
 
-        // scrollbtn click event
-        scrollbtn.addEventListener("click", function () {
-          clickCount++;
-          if (clickCount % stepsPerClick === 0) {
-            scrollToBottom(scrollableDiv, stepsPerClick);
+        scrollableDiv.addEventListener("scroll", function () {
+          if (scrollableDiv.scrollTop + scrollableDiv.clientHeight >= scrollableDiv.scrollHeight) {
+            // Scrolled to the bottom manually
+            manualScrollDetected = true;
           }
+        });
+
+        scrollbtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+
+          if (manualScrollDetected || clickCount >= totalSteps) {
+            window.location.href = redirectUrl;
+          } else {
+            clickCount++;
+            scrollToBottom(scrollableDiv, stepsPerClick);
+
+            if (clickCount >= totalSteps) {
+              // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
+              manualScrollDetected = true;
+            }
+          }
+        });
+      }
+
+      // activeDownloadButton on modal active
+      function activeDownloadButton() {
+        // Download function
+        function downloadPdf(pdfurl, filename) {
+          // Fetch the PDF file and force download
+          if (pdfurl) {
+            let pdfUrl = decodeURI(pdfurl).toString();
+            fetch(pdfUrl)
+              .then((response) => response.blob())
+              .then((blob) => {
+                var url = window.URL.createObjectURL(blob);
+                setTimeout(() => {
+
+                }, 2000);
+                var a = document.createElement("a");
+                a.style.display = "none";
+                a.href = url;
+                a.download = filename || "file.pdf"; // The filename to save as
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+              })
+              .catch(() =>
+                alert("An error occurred while downloading the PDF.")
+              );
+          }
+        }
+
+        // Click event
+        var downloadButton = document.querySelector(
+          ".sc-products-tile__download-button"
+        );
+        console.log(downloadButton);
+        downloadButton.addEventListener("click", function () {
+          // URL of the PDF
+          var pdfUrl =
+            "https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf";
+
+          const encodedURL = encodeURI(pdfUrl);
+          var url = new URL(pdfUrl);
+          var pathname = url.pathname;
+          var segments = pathname.split("/");
+          var filename = segments[segments.length - 1];
+
+          // Fetch the PDF file and force download
+          downloadPdf(encodedURL, filename);
         });
       }
 
@@ -1154,10 +1236,48 @@
         if (modalAttr === activeModalId) {
           console.log(modalAttr);
           activeScrollToBottom();
+          activeDownloadButton();
         }
       });
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
+      var scrollableDiv = document.querySelector(".sc-products-tile-modal");
+      var redirectUrl = "https://example.com"; // Replace with the desired URL
+
+      let clickCount = 0;
+      const totalSteps = 4; // Total number of steps to scroll
+      let manualScrollDetected = false;
+
+      function scrollToBottom(element, steps) {
+        const totalHeight = element.scrollHeight - element.clientHeight;
+        const stepHeight = totalHeight / totalSteps;
+
+        element.scrollBy(0, stepHeight * steps);
+      }
+
+      scrollableDiv.addEventListener("scroll", function () {
+        manualScrollDetected = true;
+      });
+
+      scrollbtn.addEventListener("click", function () {
+        if (manualScrollDetected || clickCount >= totalSteps) {
+          window.location.href = redirectUrl;
+        } else {
+          clickCount++;
+          scrollToBottom(scrollableDiv, 1);
+          if (clickCount >= totalSteps) {
+            // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
+            manualScrollDetected = true;
+          }
+        }
+      });
+    });
+  </script>
+
 
 
   <script src="https://av.sc.com/assets/global/js/analytics/cross-domain-tracking.min.js?ver=90f7d61"

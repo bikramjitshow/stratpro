@@ -6007,7 +6007,8 @@
 
   <!-- TERMS Modal Content -->
   <style>
-    .only-desktop, .only-mobile {
+    .only-desktop,
+    .only-mobile {
       pointer-events: none;
     }
   </style>
@@ -6130,14 +6131,17 @@
       <div class="sc-products-tile__btn">
         <ul class="buttons">
           <li>
-            <a href="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf" title="Download"
-              class="c-button sc-btn sc-btn--secondary-black sc-btn--small" download>
+            <a href="javascript:void(0)"
+              data-pdf-url="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf" title="Download"
+              class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__download-button" download>
               <span class="only-desktop">Download</span>
               <span class="only-mobile">Download</span>
             </a>
           </li>
           <li>
-            <a href="javascript:void(0)" title="Proceed to Apply" class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__scroll-step">
+            <a href="javascript:void(0)"
+              data-redirect-url="https://origination.sc.com/onboarding/hk/apply.html?referId=12345678&product=1313&campaign=HKSOZ00MCWB000&premium=CM20&cardType=3268&affiliation=2132&lang=en&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-en"
+              title="Proceed to Apply" class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__scroll-step">
               <span class="only-desktop">Proceed to Apply</span>
               <span class="only-mobile">Apply Now</span>
             </a>
@@ -7335,54 +7339,127 @@
     }
   </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // activeScrollToBottom on modal active
-    function activeScrollToBottom() {
-      var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
-      var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
-      let clickCount = 0;
-      const stepsPerClick = 1; // Number of scroll steps per click
-      const totalSteps = 4; // Total number of steps to scroll
-      
-      // method scrollToBottom
-      function scrollToBottom(element, steps) {
-        const totalHeight = element.scrollHeight - element.clientHeight;
-        const stepHeight = totalHeight / totalSteps;
-        const maxScroll = totalHeight / totalSteps * (clickCount / stepsPerClick);
+  <!-- ADD NEW SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // activeScrollToBottom on modal active
+      function activeScrollToBottom() {
+        var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
+        var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
+        var redirectUrl = scrollbtn.getAttribute("data-redirect-url");
 
-        element.scrollBy(0, stepHeight * steps);
+        let clickCount = 0;
+        const stepsPerClick = 1; // Number of scroll steps per click
+        const totalSteps = 4; // Total number of steps to scroll
+        let manualScrollDetected = false;
 
-        if (element.scrollTop >= maxScroll) {
-          element.scrollTo(0, maxScroll);
+        function scrollToBottom(element, steps) {
+          const totalHeight = element.scrollHeight - element.clientHeight;
+          const stepHeight = totalHeight / totalSteps;
+
+          element.scrollBy(0, stepHeight * steps);
+
+          if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
+            // Scrolled to the bottom
+            manualScrollDetected = true;
+          }
         }
+
+        scrollableDiv.addEventListener("scroll", function () {
+          if (scrollableDiv.scrollTop + scrollableDiv.clientHeight >= scrollableDiv.scrollHeight) {
+            // Scrolled to the bottom manually
+            manualScrollDetected = true;
+          }
+        });
+
+        scrollbtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+
+          if (manualScrollDetected || clickCount >= totalSteps) {
+            window.location.href = redirectUrl;
+          } else {
+            clickCount++;
+            scrollToBottom(scrollableDiv, stepsPerClick);
+
+            if (clickCount >= totalSteps) {
+              // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
+              manualScrollDetected = true;
+            }
+          }
+        });
       }
 
-      // scrollbtn click event
-      scrollbtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation()
-        clickCount++;
-        if (clickCount % stepsPerClick === 0) {
-          scrollToBottom(scrollableDiv, stepsPerClick);
+      // activeDownloadButton on modal active
+      function activeDownloadButton() {
+        // Download function
+        function downloadPdf(pdfurl, filename) {
+          // Fetch the PDF file and force download
+          if (pdfurl) {
+            let pdfUrl = decodeURI(pdfurl).toString();
+            fetch(pdfUrl)
+              .then((response) => response.blob())
+              .then((blob) => {
+                var url = window.URL.createObjectURL(blob);
+                // setTimeout(() => {
+
+                // }, 2000);
+                var a = document.createElement("a");
+                a.style.display = "none";
+                a.href = url;
+                a.download = filename || "file.pdf"; // The filename to save as
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+              })
+              .catch(() =>
+                alert("An error occurred while downloading the PDF.")
+              );
+          }
+        }
+
+        // Click event
+        var downloadButton = document.querySelector(
+          ".sc-products-tile__download-button"
+        );
+        console.log(downloadButton);
+        downloadButton.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          let closestAnchor = event.target.closest("a");
+          let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
+          // URL of the PDF
+          var pdfUrl = datapdfurl.toString();
+
+          const encodedURL = encodeURI(pdfUrl);
+          var url = new URL(pdfUrl);
+          var pathname = url.pathname;
+          var segments = pathname.split("/");
+          var filename = segments[segments.length - 1];
+
+          // Fetch the PDF file and force download
+          downloadPdf(encodedURL, filename);
+        });
+      }
+
+      // verify modal active
+      document.body.addEventListener("click", function (event) {
+        let closestAnchor = event.target.closest("a");
+        let modalAttr = closestAnchor.getAttribute("data-modal-source");
+        let activeModal = document.querySelector(".sc-prod-col-terms-modal");
+        let activeModalId = activeModal.getAttribute("data-modal-id");
+        if (modalAttr === activeModalId) {
+          console.log(modalAttr);
+          activeScrollToBottom();
+          activeDownloadButton();
         }
       });
-    }
-
-    // verify modal active
-    document.body.addEventListener("click", function (event) {
-      let closestAnchor = event.target.closest("a");
-      let modalAttr = closestAnchor.getAttribute("data-modal-source");
-      let activeModal = document.querySelector(".sc-prod-col-terms-modal");
-      let activeModalId = activeModal.getAttribute("data-modal-id");
-      if (modalAttr === activeModalId) {
-        console.log(modalAttr);
-        activeScrollToBottom();
-      }
     });
-  });
-</script>
+  </script>
+
 
 
   <div class="sc-terms-links">
