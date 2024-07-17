@@ -455,36 +455,37 @@ class AnalyticsAdobeCommonZ {
     let pageData = {
       market: "hk",
       language: "en",
-      segment: "",
+      segment: "wealth",
       pagetype: "",
-      productcategory: "",
+      productcategory: "Insurance",
       productsubcategory: "",
-      productname: "",
-      formname: "",
-      screenname: ""
-    }
+      productname: "Insurance Life Stage Campaign",
+      formname: "Insurance Life Stage Campaign",
+      screenname: "",
+    };
     if (typeof window.adobeDataLayer !== "undefined") {
       let dataObject = {
         ...digitalData,
         event: "page-view",
-        page: {
-          pageInfo: {
-            pageName:
-              "{market}:{language}:{segment}:{page type}:{product category}:{productsubcategory}:{product name}:{form name}:{Screen Name}",
-            buildDetails: "web2.0/web1.0",
-            libDetails: "DEV/STAGE/PRODUCTION",
-          },
-          category: {
-            primaryCategory: "to the level 1 category of the page being viewed",
-            subCategory1: "to the level 1 category of the page being viewed",
-          },
-          attributes: {
-            country: "Country code of the site visited",
-            language: "Language of the site visited",
-            platform: "website/app",
-          },
-        },
+        // page: {
+        //   pageInfo: {
+        //     pageName: `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`,
+        //     buildDetails: "web2.0/web1.0",
+        //     libDetails: "DEV/STAGE/PRODUCTION",
+        //   },
+        //   category: {
+        //     primaryCategory: "to the level 1 category of the page being viewed",
+        //     subCategory1: "to the level 1 category of the page being viewed",
+        //   },
+        //   attributes: {
+        //     country: pageData.market,
+        //     language: pageData.language,
+        //     platform: "website",
+        //   },
+        // },
       };
+
+      window.digitalData.page.pageInfo.pageName = `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`;
       window.adobeDataLayer.push(dataObject);
       _satellite.track("page-view");
     }

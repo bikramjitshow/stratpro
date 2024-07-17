@@ -23,6 +23,7 @@ class lifeInsuranceCamp {
       that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
+      that.AnalyticsAdobeCommon.handlePageView();
     });
   }
 
