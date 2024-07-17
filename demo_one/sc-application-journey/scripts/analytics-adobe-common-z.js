@@ -403,7 +403,10 @@ class AnalyticsAdobeCommonZ {
       window.digitalData.form = {};
       window.digitalData.calculator = {};
     }
-    if (!window.digitalData.form.formFields && !window.digitalData.calculator.fields) {
+    if (
+      !window.digitalData.form.formFields &&
+      !window.digitalData.calculator.fields
+    ) {
       window.digitalData.form.formFields = [];
       window.digitalData.calculator.fields = [];
     }
@@ -436,13 +439,54 @@ class AnalyticsAdobeCommonZ {
         });
       });
 
-
       let dataObject = {
         ...digitalData,
         event: "ctaClick",
       };
 
       window.adobeDataLayer.push(dataObject);
+    }
+  }
+
+  /**
+   * Track page view actions in the page using EDDL approach.
+   */
+  handlePageView(popupdata) {
+    let pageData = {
+      market: "hk",
+      language: "en",
+      segment: "",
+      pagetype: "",
+      productcategory: "",
+      productsubcategory: "",
+      productname: "",
+      formname: "",
+      screenname: ""
+    }
+    if (typeof window.adobeDataLayer !== "undefined") {
+      let dataObject = {
+        ...digitalData,
+        event: "page-view",
+        page: {
+          pageInfo: {
+            pageName:
+              "{market}:{language}:{segment}:{page type}:{product category}:{productsubcategory}:{product name}:{form name}:{Screen Name}",
+            buildDetails: "web2.0/web1.0",
+            libDetails: "DEV/STAGE/PRODUCTION",
+          },
+          category: {
+            primaryCategory: "to the level 1 category of the page being viewed",
+            subCategory1: "to the level 1 category of the page being viewed",
+          },
+          attributes: {
+            country: "Country code of the site visited",
+            language: "Language of the site visited",
+            platform: "website/app",
+          },
+        },
+      };
+      window.adobeDataLayer.push(dataObject);
+      _satellite.track("page-view");
     }
   }
 
@@ -519,6 +563,8 @@ class AnalyticsAdobeCommonZ {
       window.adobeDataLayer.push(dataObject);
     }
   }
+
+  // const mktCountryCode = Utils.getCurrentCountry();
 
   /**
    * calculate vertical position
