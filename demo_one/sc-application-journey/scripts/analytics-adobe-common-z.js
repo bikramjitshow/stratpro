@@ -460,34 +460,18 @@ class AnalyticsAdobeCommonZ {
       productcategory: "Insurance",
       productsubcategory: "",
       productname: "Insurance Life Stage Campaign",
-      formname: "Insurance Life Stage Campaign",
+      formname: "comprehensive assessment short form",
       screenname: "",
     };
     if (typeof window.adobeDataLayer !== "undefined") {
       let dataObject = {
         ...digitalData,
-        event: "page-view",
-        // page: {
-        //   pageInfo: {
-        //     pageName: `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`,
-        //     buildDetails: "web2.0/web1.0",
-        //     libDetails: "DEV/STAGE/PRODUCTION",
-        //   },
-        //   category: {
-        //     primaryCategory: "to the level 1 category of the page being viewed",
-        //     subCategory1: "to the level 1 category of the page being viewed",
-        //   },
-        //   attributes: {
-        //     country: pageData.market,
-        //     language: pageData.language,
-        //     platform: "website",
-        //   },
-        // },
+        event: "pageView",
       };
 
       window.digitalData.page.pageInfo.pageName = `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`;
       window.adobeDataLayer.push(dataObject);
-      _satellite.track("page-view");
+      _satellite.track("pageView");
     }
   }
 
