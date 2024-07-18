@@ -452,6 +452,7 @@ class AnalyticsAdobeCommonZ {
    * Track page view actions in the page using EDDL approach.
    */
   handlePageView(popupdata) {
+    console.log("------PageView called------");
     let pageData = {
       market: "hk",
       language: "en",
@@ -461,17 +462,58 @@ class AnalyticsAdobeCommonZ {
       productsubcategory: "",
       productname: "Insurance Life Stage Campaign",
       formname: "comprehensive assessment short form",
-      screenname: "",
+      screenname: "landing",
     };
+    let products = {
+      productName: "Insurance Life Stage Campaign",
+      subProduct1: "na",
+      subProduct2: "na",
+      // applicationReferenceNumber: "na",
+      // applicationSubmissionStatus: "",
+    };
+
     if (typeof window.adobeDataLayer !== "undefined") {
       let dataObject = {
         ...digitalData,
-        event: "pageView",
+        event: "page-view",
       };
-
+      window.digitalData.products = [];
+      window.digitalData.products.push(products);
       window.digitalData.page.pageInfo.pageName = `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`;
+      window.digitalData.page.attributes.country = pageData.market; 
       window.adobeDataLayer.push(dataObject);
-      _satellite.track("pageView");
+      _satellite.track("page-view");
+    }
+  }
+
+  /**
+   * Track "formStart_shortForm" actions in the page using EDDL approach.
+   */
+  handelFormStartShortForm() {
+    console.log("------handelFormStartShortForm called------");
+    let formdata = {
+      formName: "comprehensive assessment short form",
+      formStepName: "landing",
+      formType: "insurance assessment short form",
+      formPlatform: "",
+    };
+
+    if (typeof window.adobeDataLayer !== "undefined") {
+      let dataObject = {
+        ...digitalData,
+        event: "formStart_shortForm",
+      };
+      // window.digitalData.products = [];
+      // window.digitalData.products[0].applicationReferenceNumber = "na";
+      // window.digitalData.products[0].applicationReferenceNumber = "na";
+      window.digitalData.form = {};
+      window.digitalData.form.formName = formdata.formName;
+      window.digitalData.form.formStepName = formdata.formStepName;
+      window.digitalData.form.formType = formdata.formType;
+      window.digitalData.form.formPlatform = formdata.formPlatform;
+
+      window.adobeDataLayer.push(dataObject);
+      _satellite.track("formStart_shortForm");
     }
   }
 

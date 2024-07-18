@@ -330,6 +330,7 @@ class lifeInsuranceCamp {
         if (modalAttr === formmodalAttr) {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
+          that.AnalyticsAdobeCommon.handelFormStartShortForm();
           that.AnalyticsAdobeCommon.handlePopupViewedEDDL(popupdata.popupname);
           that.closeModal();
           that.getCheckboxes();
