@@ -356,9 +356,6 @@ class AnalyticsAdobeCommonZ {
     console.log(fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
-    // if (!window.digitalData) {
-    //   window.digitalData = {};
-    // }
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
@@ -367,28 +364,27 @@ class AnalyticsAdobeCommonZ {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
-      // window.digitalData.customLinkClick = {
-      //   customLinkText: ctaname,
-      //   customLinkRegion: "bottom",
-      //   customLinkType: "button",
-      // };
+      if (window.digitalData.products) {
+        window.digitalData.products.forEach((item, index) => {
+          window.digitalData.products[index].productFields = [];
 
-      window.digitalData.form.formFields = [];
-      window.digitalData.form.formName = formname;
-      fields.forEach((field) => {
-        console.log(field);
-        window.digitalData.form.formFields.push({
-          formFieldName: field.fieldName,
-          formFieldValue: field.fieldValue,
+          fields.forEach((field) => {
+            console.log(field);
+            window.digitalData.products[index].productFields.push({
+              formFieldName: field.fieldName,
+              formFieldValue: field.fieldValue,
+            });
+          });
         });
-      });
+      }
 
       let dataObject = {
         ...digitalData,
         event: "ctaClick",
       };
+      console.log({ dataObject });
       window.adobeDataLayer.push(dataObject);
-      _satellite.track("callToAction");
+      _satellite.track("ctaClick");
     }
   }
 
@@ -464,13 +460,13 @@ class AnalyticsAdobeCommonZ {
       formname: "comprehensive assessment short form",
       screenname: "landing",
     };
-    let products = {
-      productName: "Insurance Life Stage Campaign",
-      subProduct1: "na",
-      subProduct2: "na",
-      // applicationReferenceNumber: "na",
-      // applicationSubmissionStatus: "",
-    };
+    let products = [
+      {
+        productName: "Insurance Life Stage Campaign",
+        subProduct1: "na",
+        subProduct2: "na",
+      },
+    ];
 
     if (typeof window.adobeDataLayer !== "undefined") {
       let dataObject = {
@@ -478,9 +474,9 @@ class AnalyticsAdobeCommonZ {
         event: "page-view",
       };
       window.digitalData.products = [];
-      window.digitalData.products.push(products);
+      window.digitalData.products.push(...products);
       window.digitalData.page.pageInfo.pageName = `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`;
-      window.digitalData.page.attributes.country = pageData.market; 
+      window.digitalData.page.attributes.country = pageData.market;
       window.adobeDataLayer.push(dataObject);
       _satellite.track("page-view");
     }
@@ -496,6 +492,7 @@ class AnalyticsAdobeCommonZ {
       formStepName: "landing",
       formType: "insurance assessment short form",
       formPlatform: "",
+      popupName: "",
     };
 
     if (typeof window.adobeDataLayer !== "undefined") {
