@@ -1,359 +1,81 @@
 /* global digitalData, _satellite, $ */
-
 /**
- * Pre-defined ranges that can be used in tracking.
- * These ranges can be used inside data-range attributes without having to specifying the data again.
- * E.g. data-range="annualIcome" will get data from ranges.annualIncome.
- */
-const newranges = {
-  monthlyIncome: [
-    {
-      start: 0,
-      end: 10000,
-    },
-    {
-      start: 10000,
-      end: 20000,
-    },
-    {
-      start: 20000,
-      end: 30000,
-    },
-    {
-      start: 30000,
-      end: 40000,
-    },
-    {
-      start: 40000,
-      end: 50000,
-    },
-    {
-      start: 50000,
-      end: 60000,
-    },
-    {
-      start: 60000,
-      end: 70000,
-    },
-    {
-      start: 70000,
-      end: 80000,
-    },
-    {
-      start: 80000,
-      end: 90000,
-    },
-    {
-      start: 90000,
-      end: 100000,
-    },
-    {
-      start: 100000,
-      end: 110000,
-    },
-    {
-      start: 110000,
-      end: 120000,
-    },
-    {
-      start: 120000,
-    },
-  ],
-  loanAmount: [
-    { start: 0, end: 100000 },
-    { start: 100000, end: 200000 },
-    { start: 200000, end: 300000 },
-    { start: 300000, end: 400000 },
-    { start: 400000, end: 500000 },
-    { start: 500000, end: 600000 },
-    { start: 600000, end: 700000 },
-    { start: 700000, end: 800000 },
-    { start: 800000, end: 900000 },
-    { start: 900000, end: 1000000 },
-    { start: 1000000 },
-  ],
-  repaymentAmount: [
-    { start: 0, end: 20000 },
-    { start: 20000, end: 50000 },
-    { start: 50000, end: 100000 },
-    { start: 100000, end: 150000 },
-    { start: 150000, end: 200000 },
-    { start: 200000, end: 250000 },
-    { start: 250000, end: 300000 },
-    { start: 300000, end: 350000 },
-    { start: 350000 },
-  ],
-  apr: [
-    { start: 0, end: 2 },
-    { start: 2, end: 5 },
-    { start: 5, end: 7 },
-    { start: 7, end: 10 },
-    { start: 10, end: 15 },
-    { start: 15, end: 20 },
-    { start: 20, end: 25 },
-    { start: 25 },
-  ],
-  annualIncome: [
-    {
-      start: 0,
-      end: 120000,
-    },
-    {
-      start: 120000,
-      end: 240000,
-    },
-    {
-      start: 240000,
-      end: 360000,
-    },
-    {
-      start: 360000,
-      end: 480000,
-    },
-    {
-      start: 480000,
-      end: 600000,
-    },
-    {
-      start: 600000,
-      end: 720000,
-    },
-    {
-      start: 720000,
-      end: 840000,
-    },
-    {
-      start: 840000,
-      end: 960000,
-    },
-    {
-      start: 960000,
-      end: 1080000,
-    },
-    {
-      start: 1080000,
-      end: 1200000,
-    },
-    {
-      start: 1200000,
-      end: 1320000,
-    },
-    {
-      start: 1320000,
-      end: 1440000,
-    },
-    {
-      start: 1440000,
-    },
-  ],
-  age: [
-    { start: 0, end: 18 },
-    { start: 18, end: 25 },
-    { start: 25, end: 35 },
-    { start: 35, end: 45 },
-    { start: 45, end: 55 },
-    { start: 55, end: 65 },
-    { start: 65, end: 75 },
-    { start: 75 },
-  ],
-};
-/**
- * Implementation for Adobe Analytics Common.
+ * Implementation for Adobe Analytics Insurance Life Stage Campaign.
  */
 class AnalyticsAdobeCommonZ {
   /**
-   * Calculate range values based on original PI value.
+   * Trigger adobe and google analytics
+   * @param {string} title
+   * @param {string} type
+   * @param {string} target
    */
-  calculateRanges(fieldNameValue, currentValue) {
-    let calculatedRange = currentValue;
-    if (!calculatedRange) {
-      calculatedRange = "na";
-    } else {
-      let val = parseInt(calculatedRange.toString().replace(/,/g, ""), 10);
-      for (let i = 0; i < newranges[fieldNameValue].length; i++) {
-        let startVal = newranges[fieldNameValue][i].start;
-        let endVal = newranges[fieldNameValue][i].end;
-        if (val >= startVal && (endVal ? val < endVal : true)) {
-          if (fieldNameValue === "monthlyIncome") {
-            calculatedRange = endVal
-              ? (startVal == 0
-                  ? startVal + "-lt"
-                  : (Math.abs(startVal) / 1000).toFixed() + "k-lt") +
-                (Math.abs(endVal) / 1000).toFixed() +
-                "k"
-              : "ge120k";
-            break;
-          } else if (fieldNameValue === "loanAmount") {
-            calculatedRange = endVal
-              ? (startVal == 0
-                  ? startVal + "-lt"
-                  : (Math.abs(startVal) / 1000).toFixed() + "k-lt") +
-                (endVal == 1000000
-                  ? "1m"
-                  : (Math.abs(endVal) / 1000).toFixed() + "k")
-              : "ge1m";
-            break;
-          } else if (fieldNameValue === "annualIncome") {
-            calculatedRange = endVal
-              ? startVal == 0
-                ? startVal + "-lt"
-                : (startVal >= 1000000
-                    ? Math.abs(startVal) / 1000000 + "m-lt"
-                    : (Math.abs(startVal) / 1000).toFixed() + "k-lt") +
-                  (endVal >= 1000000
-                    ? Math.abs(endVal) / 1000000 + "m"
-                    : (Math.abs(endVal) / 1000).toFixed() + "k")
-              : "ge1.44m";
-            break;
-          } else if (fieldNameValue === "repaymentAmount") {
-            calculatedRange = endVal
-              ? (startVal == 0
-                  ? startVal + "-lt"
-                  : (Math.abs(startVal) / 1000).toFixed() + "k-lt") +
-                (Math.abs(endVal) / 1000).toFixed() +
-                "k"
-              : "ge35k";
-            break;
-          } else if (fieldNameValue === "apr") {
-            calculatedRange = endVal
-              ? startVal == 0
-                ? startVal + "-lt"
-                : startVal + "%-lt" + endVal + "%"
-              : "ge25%";
-            break;
-          } else if (fieldNameValue === "age") {
-            calculatedRange = endVal ? startVal + "-lt" + endVal : "ge75";
-            break;
-          }
-        }
-      }
-    }
-    return calculatedRange;
-  }
-
-  /**
-   * Track customer interaction with calculators.
-   */
-  handleProductCalculatorSubmit(calculatorName, fields) {
-    console.log(fields);
-    digitalData.calculator = {
-      name: calculatorName,
-      fields: fields,
-    };
-    _satellite.track("calculatorSubmit");
-
-    //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        event: "calculatorSubmit",
-      };
-
-      //change calculator payload key names for adobeDataLayer
-      let newFields = [];
-      let obj = {};
-      fields.forEach((el) => {
-        obj = { ...el };
-        obj.formFieldName = obj.fieldName;
-        delete obj.fieldName;
-        obj.formFieldValue = obj.fieldValue;
-        delete obj.fieldValue;
-        newFields.push(obj);
-      });
-      let calculator = {
-        name: calculatorName,
-        fields: newFields,
-      };
-      delete dataObject.calculator;
-      dataObject.calculator = calculator;
-
-      window.adobeDataLayer.push(dataObject);
-    }
+  handleCtaClick(title, type, target) {
+    console.log({ title, type, target });
+    digitalData.event = "ctaClick";
+    digitalData.ctaName = title;
+    digitalData.ctaType = this.getCtaType(target.className, target);
+    digitalData.ctaPosition = this.calcElementLocation(target);
+    _satellite.track("callToAction");
   }
 
   /**
    * form submit event
-   * @param {String} customLinkText button text
-   * @example
-   * adobeFormSuccess('submit')
    */
-  // adobeFormSuccess(customLinkText) {ss
-  //   if (typeof window.adobeDataLayer == "undefined") return;
-  //   let that = this;
-  //   if (typeof window.digitalData == "object") {
-  //     that.commonAdobeScript();
-  //     let labelText = "",
-  //       labelValue = "";
-  //     let allFields = document.querySelectorAll(
-  //       ".modular-form .modular-form-container"
-  //     );
-  //     if (allFields.length) {
-  //       // eslint-disable-next-line no-unused-vars
-  //       for (let i = 0; i < allFields.length; i++) {
-  //         let attr = allFields[i].getAttribute("data-field-type");
-  //         let fieldName = allFields[i].getAttribute("data-xml-key");
-  //         if (!attr || !fieldName) continue;
-  //         labelText += labelText ? ":" + fieldName : fieldName;
-  //         if (
-  //           attr == "alphabetic-text" ||
-  //           attr == "phone" ||
-  //           attr == "email" ||
-  //           attr == "text"
-  //         ) {
-  //           let value = allFields[i].querySelector("input").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "phone-code") {
-  //           let value =
-  //             allFields[i].querySelector(".code").value +
-  //             allFields[i].querySelector(".phone-field").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "textarea") {
-  //           let value = allFields[i].querySelector("textarea").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "dropdown") {
-  //           let value = allFields[i].querySelector("select").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "checkbox" || attr == "toggle") {
-  //           let value = allFields[i].querySelector("input:checked");
-  //           value = value || value == "0" ? "yes" : "no";
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "radio") {
-  //           let value = allFields[i].querySelector("input:checked").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         }
-  //       }
-  //     }
-
-  //     labelText = labelText.toLowerCase();
-  //     labelValue = labelValue.toLowerCase();
-
-  //     window.digitalData.customLinkClick = {
-  //       customLinkText: customLinkText,
-  //       customLinkRegion: "left bottom",
-  //       customLinkType: "button",
-  //     };
-
-  //     window.digitalData.form.formFields = [];
-  //     window.digitalData.form.formFields.push({
-  //       formFieldName: labelText,
-  //       formFieldValue: labelValue,
-  //     });
-
-  //     let dataObject = {
-  //       ...digitalData,
-  //       event: "ctaClick",
-  //     };
-  //     window.adobeDataLayer.push(dataObject);
-  //     return {
-  //       labelText: labelText,
-  //       labelValue: labelValue,
-  //     };
-  //   }
-  // }
-
-  // my
   handleInsuranceFormSubmit(formname, ctaname, fields) {
     console.log(fields);
+    if (typeof window.adobeDataLayer == "undefined") return;
+
+    if (!window.digitalData.form) {
+      window.digitalData.form = {};
+    }
+    //update adobeDataLayer with calculator submit event
+    if (typeof window.adobeDataLayer !== "undefined") {
+      if (window.digitalData.products) {
+        window.digitalData.products.forEach((item, index) => {
+          window.digitalData.products[index].productFields = [];
+          fields.forEach((field) => {
+            console.log(field);
+            window.digitalData.products[index].productFields.push({
+              formFieldName: field.fieldName,
+              formFieldValue: field.fieldValue,
+            });
+          });
+          window.digitalData.products[index].applicationReferenceNumber = "na";
+          window.digitalData.products[index].applicationSubmissionStatus =
+            "Submission Successful";
+        });
+      }
+
+      let dataObject = {
+        ...digitalData,
+        event: "formSubmit_shortForm",
+      };
+      console.log({ dataObject });
+      window.adobeDataLayer.push(dataObject);
+      _satellite.track("formSubmit_shortForm");
+    }
+  }
+
+  /**
+   * form submit Status
+   */
+  handleFormStatus(status) {
+    if (typeof window.adobeDataLayer !== "undefined") {
+      let dataObject = {
+        ...digitalData,
+        event: "formSubmit_shortForm",
+      };
+      window.digitalData.form.popupName = status;
+      window.adobeDataLayer.push(dataObject);
+      _satellite.track("formSubmit_shortForm");
+    }
+  }
+
+  /**
+   * Track Insurance Form Check actions in the page using EDDL approach.
+   */
+  handleInsuranceFormCheck(target, formname, fields) {
+    console.log(target, fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
     if (!window.digitalData.form) {
@@ -364,10 +86,23 @@ class AnalyticsAdobeCommonZ {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
+      // window.digitalData.ctaName = target
+      //   .closest(".sc-radio-box")
+      //   .querySelector("label")
+      //   .innerText.trim();
+      // window.digitalData.ctaPosition = this.calcElementLocation(target);
+      // window.digitalData.form.formFields = [];
+      // fields.forEach((field) => {
+      //   console.log(field);
+      //   window.digitalData.form.formFields.push({
+      //     formFieldName: field.fieldName,
+      //     formFieldValue: field.fieldValue,
+      //   });
+      // });
+
       if (window.digitalData.products) {
         window.digitalData.products.forEach((item, index) => {
           window.digitalData.products[index].productFields = [];
-
           fields.forEach((field) => {
             console.log(field);
             window.digitalData.products[index].productFields.push({
@@ -375,6 +110,8 @@ class AnalyticsAdobeCommonZ {
               formFieldValue: field.fieldValue,
             });
           });
+          // window.digitalData.products[index].applicationReferenceNumber = "na";
+          // window.digitalData.products[index].applicationSubmissionStatus ="Submission Successful";
         });
       }
 
@@ -382,65 +119,24 @@ class AnalyticsAdobeCommonZ {
         ...digitalData,
         event: "ctaClick",
       };
-      console.log({ dataObject });
+
       window.adobeDataLayer.push(dataObject);
       _satellite.track("ctaClick");
     }
   }
 
-  handleInsuranceFormCheck(target, formname, fields) {
-    console.log(target, fields);
-    if (typeof window.adobeDataLayer == "undefined") return;
-
-    // if (!window.digitalData) {
-    //   window.digitalData = {};
-    // }
-    if (!window.digitalData.form && !window.digitalData.calculator) {
-      window.digitalData.form = {};
-      window.digitalData.calculator = {};
-    }
-    if (
-      !window.digitalData.form.formFields &&
-      !window.digitalData.calculator.fields
-    ) {
-      window.digitalData.form.formFields = [];
-      window.digitalData.calculator.fields = [];
-    }
-    //update adobeDataLayer with calculator submit event
+  /**
+   * Track Form Abandon
+   */
+  handleFormAbandon(field) {
     if (typeof window.adobeDataLayer !== "undefined") {
-      // window.digitalData.ctaName = target
-      //   .closest('.sc-radio-box')
-      //   .querySelector('label')
-      //   .innerText.trim();
-      // window.digitalData.ctaPosition = this.calcElementLocation(target);
-      window.digitalData.form.formFields = [];
-      window.digitalData.calculator.fields = [];
-
-      window.digitalData.form.formName = formname;
-      window.digitalData.calculator.name = formname;
-      fields.forEach((field) => {
-        // window.digitalData.customLinkClick = {
-        //   customLinkText: field.fieldValue,
-        //   customLinkRegion: "form",
-        //   customLinkType: "input",
-        // };
-        console.log(field);
-        // window.digitalData.form.formFields.push({
-        //   formFieldName: field.fieldName,
-        //   formFieldValue: field.fieldValue,
-        // });
-        window.digitalData.calculator.fields.push({
-          formFieldName: field.fieldName,
-          formFieldValue: field.fieldValue,
-        });
-      });
-
       let dataObject = {
         ...digitalData,
-        event: "ctaClick",
+        event: "formAbandon",
       };
-
+      window.digitalData.form.formLastAccessedField = field || "na";
       window.adobeDataLayer.push(dataObject);
+      _satellite.track("formAbandon");
     }
   }
 
@@ -500,9 +196,6 @@ class AnalyticsAdobeCommonZ {
         ...digitalData,
         event: "formStart_shortForm",
       };
-      // window.digitalData.products = [];
-      // window.digitalData.products[0].applicationReferenceNumber = "na";
-      // window.digitalData.products[0].applicationReferenceNumber = "na";
       window.digitalData.form = {};
       window.digitalData.form.formName = formdata.formName;
       window.digitalData.form.formStepName = formdata.formStepName;
@@ -511,80 +204,6 @@ class AnalyticsAdobeCommonZ {
 
       window.adobeDataLayer.push(dataObject);
       _satellite.track("formStart_shortForm");
-    }
-  }
-
-  /**
-   * Track customer interaction with calculators using EDDL approach.
-   */
-  handleCalculatorSubmitEDDL(calculatorName, fields) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        calculator: {
-          name: calculatorName,
-          fields: fields,
-        },
-        event: "calculatorSubmit",
-      };
-      window.adobeDataLayer.push(dataObject);
-    }
-  }
-  /**
-   * Track click to action in the page using EDDL approach.
-   */
-  handleCtaClickEDDL(fields) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        customLinkClick: {
-          customLinkText: fields.customLinkText,
-          customLinkRegion: fields.customLinkRegion,
-          customLinkType: fields.customLinkType,
-          customLinkName: fields.customLinkName,
-        },
-        event: "ctaClick",
-      };
-      if (fields.form) {
-        dataObject.form = fields.form;
-      }
-      window.adobeDataLayer.push(dataObject);
-    }
-  }
-  /**
-   * Track popup view actions in the page using EDDL approach.
-   */
-  handlePopupViewedEDDL(popupdata) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        form: popupdata,
-        event: "popupViewed",
-      };
-      window.adobeDataLayer.push(dataObject);
-      _satellite.track("callToAction");
-    }
-  }
-  /**
-   * Track filter applied actions in the page using EDDL approach.
-   */
-  handleFilterAppliedEDDL(fields) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        customLinkClick: {
-          customLinkText: fields.customLinkText,
-          customLinkRegion: fields.customLinkRegion,
-          customLinkType: fields.customLinkType,
-          customLinkName: fields.customLinkName,
-        },
-        customFilter: {
-          filterTitle: fields.customFilter.filterTitle,
-          filterValue: fields.customFilter.filterValue,
-        },
-        event: "filterApplied",
-      };
-      window.adobeDataLayer.push(dataObject);
     }
   }
 
@@ -672,20 +291,39 @@ class AnalyticsAdobeCommonZ {
   }
 
   /**
-   * delay 1 second when once moved the slider bar and trigger events
+   * check class name and return link type
+   * @param {String} className class name of the clicked element
+   * @return {String} return link type like link, button, carousel etc
    * @example
-   * debounceEvents()
+   * getCtaType('sc-btn')
    */
-  debounceEvents(f, delay) {
-    let timer = null;
-    return function () {
-      let context = this,
-        args = arguments;
-      clearTimeout(timer);
-      timer = window.setTimeout(function () {
-        f.apply(context, args);
-      }, delay || 1000);
-    };
+  getCtaType(className, target) {
+    console.log({ className, target });
+    if (target && target.closest(".sc-nav")) {
+      return "nav-link";
+    } else if (
+      className == "" ||
+      typeof className !== "string" ||
+      typeof className.includes === "undefined"
+    ) {
+      return "link";
+    } else if (
+      className.indexOf("sc-btn") !== -1 ||
+      className.indexOf("c-button") !== -1
+    ) {
+      return "button";
+    } else if (
+      className.indexOf("sc-bnr__link") !== -1 ||
+      className.indexOf("slide-anchor-bg") !== -1
+    ) {
+      return "banner";
+    } else if (className.indexOf("sc-carousel__pintiles-item") !== -1) {
+      return "carousel";
+    } else if (className.indexOf("sc-quick-links__link") !== -1) {
+      return "quick-links";
+    } else {
+      return "link";
+    }
   }
 }
 

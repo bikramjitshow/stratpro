@@ -435,8 +435,6 @@ class AnalyticsAdobeCommon {
       _satellite.track("ctaClick");
     }
   }
-  
-
 
   /**
    * Track customer interaction with calculators using EDDL approach.
@@ -486,7 +484,7 @@ class AnalyticsAdobeCommon {
         event: "popupViewed",
       };
       window.adobeDataLayer.push(dataObject);
-      _satellite.track('callToAction');
+      _satellite.track("callToAction");
     }
   }
   /**
@@ -592,6 +590,7 @@ class AnalyticsAdobeCommon {
     }
     return yPosition;
   }
+
 
   /**
    * delay 1 second when once moved the slider bar and trigger events

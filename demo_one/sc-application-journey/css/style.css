@@ -282,6 +282,7 @@ p {
   margin-bottom: 8px;
   overflow: hidden;
   flex-shrink: 0;
+  pointer-events: none;
 }
 .sc-li-campaign .highcharts-credits {
   display: none;

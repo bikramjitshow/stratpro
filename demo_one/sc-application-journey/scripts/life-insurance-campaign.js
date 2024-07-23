@@ -2,6 +2,7 @@ import ScCommonMethods from "./sc-common-methods.js";
 class lifeInsuranceCamp {
   constructor() {
     this.AnalyticsAdobeCommon = new AnalyticsAdobeCommonZ();
+    let lastAccessedField = null;
   }
   static selectedPersona;
   static selectedCheckbox = [];
@@ -19,6 +20,7 @@ class lifeInsuranceCamp {
       // activemodalbtn.addEventListener("click", () => {
       //   that.activeModal();
       //   });
+      that.createTitle();
       that.activeModal();
       that.paramCheck();
       that.generateChart(1, personaitem);
@@ -217,6 +219,22 @@ class lifeInsuranceCamp {
       });
     }
   }
+  createTitle() {
+    let cards = document.querySelectorAll(
+      ".sc-li-campaign__policy-type-card-box"
+    );
+    cards.forEach((item) => {
+      let title = item.querySelector(".sc-li-campaign__policy-type-title");
+      let campBtn = item.querySelector(".sc-li-campaign__active-modal-btn");
+      let learnBtn = item.querySelector(
+        ".sc-li-campaign__policy-type-learn-more"
+      );
+      let campBtnTitle = `${campBtn.children[0].innerText.trim()} - ${title.innerText.trim()}`;
+      let learnBtnTitle = `${learnBtn.innerText.trim()} - ${title.innerText.trim()}`;
+      campBtn.setAttribute("title", campBtnTitle);
+      learnBtn.setAttribute("title", learnBtnTitle);
+    });
+  }
   /**
    * Generate Graph
    *
@@ -319,6 +337,26 @@ class lifeInsuranceCamp {
       ".sc-li-campaign__active-modal-btn"
     ).dataset.modalSource;
     document.body.addEventListener("click", function (event) {
+      that.AnalyticsAdobeCommon.handleCtaClick(
+        event.target.title,
+        "button",
+        event.target
+      );
+
+      // track if modal close
+      if (
+        event.target.classList.contains("closebutton") ||
+        event.target.classList.contains("wrapper")
+      ) {
+        that.AnalyticsAdobeCommon.handleCtaClick(
+          "closebutton",
+          "button",
+          event.target
+        );
+        that.closeModal(this.lastAccessedField);
+      }
+
+      // verify the modal open
       if (event.target.dataset.modalSource === activemodalbtn) {
         let closestAnchor = event.target.closest("a");
         let formModal = document.querySelector(".sc-li-campaign-form-modal");
@@ -331,9 +369,13 @@ class lifeInsuranceCamp {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
           that.AnalyticsAdobeCommon.handelFormStartShortForm();
-          that.AnalyticsAdobeCommon.handlePopupViewedEDDL(popupdata.popupname);
-          that.closeModal();
+          that.AnalyticsAdobeCommon.handleCtaClick(
+            event.target.title,
+            "button",
+            event.target
+          );
           that.getCheckboxes();
+          that.formLastAccessedField();
           // form
           that.formSubmit();
         }
@@ -343,27 +385,25 @@ class lifeInsuranceCamp {
 
   statusModal(status) {
     const errorModal = document.querySelector(".sc-error-modal");
+    let errorModalStatus = errorModal.dataset.formStatus;
     if (status) {
       //If referral code is empty or invalid
       errorModal.classList.add("sc-error-modal--show");
+      this.AnalyticsAdobeCommon.handleFormStatus(errorModalStatus);
     } else {
       errorModal.classList.remove("sc-error-modal--show");
     }
   }
 
   closeModal() {
-    // <div class="closebutton icon mobile icon-modal-close-mobile" data-grunticon-embed="" data-send="close-modal"></div>
-    let closebutton = document.querySelector(".closebutton");
-    let fields = {};
-
-    // if (closebutton && closebutton.dataset.send === "close-modal") {
-    closebutton.addEventListener("click", () => {
-      // fields.customLinkText = "close-modal";
-      // fields.customLinkRegion = "";
-      // fields.customLinkType = "";
-      // fields.customLinkName = "";
-    });
-    // }
+    let lastAccessedField = this.lastAccessedField || "na";
+    if (lastAccessedField) {
+      console.log("Last accessed field:", lastAccessedField);
+      this.AnalyticsAdobeCommon.handleFormAbandon(lastAccessedField);
+    } else {
+      this.AnalyticsAdobeCommon.handleFormAbandon(lastAccessedField);
+      console.log("No field was accessed");
+    }
   }
 
   getCheckboxes() {
@@ -402,7 +442,6 @@ class lifeInsuranceCamp {
             .closest(".sc-li-campaign-form__item")
             .querySelector(".sc-li-campaign-form__item-title").dataset.field;
           selecteditems.checkname = `${checkbox.name}_${i + 1}`;
-          // let formData = that.buildFormItem(e, selecteditems, "checkbox");
           let formData = that.buildFormDataItem();
           that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
             e.target,
@@ -414,7 +453,6 @@ class lifeInsuranceCamp {
             .closest(".sc-li-campaign-form__item")
             .querySelector(".sc-li-campaign-form__item-title").dataset.field;
           selecteditems.checkname = `uncheck_${i + 1}`;
-          // let formData = that.buildFormItem(e, selecteditems, "checkbox");
           let formData = that.buildFormDataItem();
           that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
             e.target,
@@ -440,7 +478,6 @@ class lifeInsuranceCamp {
             .closest(".sc-li-campaign-form__item")
             .querySelector(".sc-li-campaign-form__item-title").dataset.field;
           selecteditems.radioname = `${radio.name}_${i + 1}`;
-          // let formData = that.buildFormItem(e, selecteditems, "radio");
           let formData = that.buildFormDataItem();
           that.AnalyticsAdobeCommon.handleInsuranceFormCheck(
             e.target,
@@ -473,7 +510,7 @@ class lifeInsuranceCamp {
         values.push(checkbox.value);
       }
     });
-    return values.join(",");
+    return values.join("|");
   }
 
   // Function to extract radio button Name
@@ -498,35 +535,6 @@ class lifeInsuranceCamp {
       }
     });
     return value;
-  }
-
-  // Main function to build form data object
-  buildFormItem(e, fieldName, fieldType) {
-    this.existingFieldNames = new Set();
-    let formModal = document.querySelector(".sc-li-campaign-form-modal");
-    let popupdata = formModal.dataset.popup;
-    const formdata = {
-      name: popupdata.formname,
-      fields: [],
-    };
-    const ContainerType = e.target.type;
-    if (ContainerType === "checkbox" && fieldType === "checkbox") {
-      formdata.fields.push({
-        fieldName: fieldName.fieldTitle,
-        CTAName: fieldName.checkname,
-      });
-    } else if (ContainerType === "radio" && fieldType === "radio") {
-      formdata.fields.push({
-        fieldName: fieldName.fieldTitle,
-        CTAName: fieldName.radioname,
-      });
-    } else {
-      formdata.fields.push({
-        fieldName: fieldName.fieldTitle,
-        CTAName: "",
-      });
-    }
-    return formdata;
   }
 
   buildFormData() {
@@ -634,24 +642,47 @@ class lifeInsuranceCamp {
       ".sc-li-campaign-form__submit-btn"
     );
     formSubmitBtn.addEventListener("click", () => {
-      let formData = this.buildFormData();
-      formData.ctaname = formSubmitBtn.textContent.trim();
+      try {
+        let formData = this.buildFormData();
+        formData.ctaname = formSubmitBtn.textContent.trim();
 
-      this.AnalyticsAdobeCommon.handleInsuranceFormSubmit(
-        formData.name,
-        formData.ctaname,
-        formData.fields
-      );
+        this.AnalyticsAdobeCommon.handleInsuranceFormSubmit(
+          formData.name,
+          formData.ctaname,
+          formData.fields
+        );
 
-      setTimeout(() => {
-        this.statusModal(true);
-      }, 600);
+        setTimeout(() => {
+          this.statusModal(true);
+        }, 600);
+      } catch (error) {
+        console.error("Error during form submission:", error);
+        this.statusModal(false); // Optionally close the modal on error
+      }
     });
     document
       .querySelector(".sc-error-modal__alert-close")
       .addEventListener("click", () => {
         this.statusModal(false);
       });
+  }
+
+  formLastAccessedField() {
+    // Get the form and all input fields
+    const form = document.querySelector(".sc-li-campaign-form");
+    if (!form) return;
+    const formElements = form.querySelectorAll("input");
+
+    // Add event listeners to all input fields
+    formElements.forEach((element) => {
+      element.addEventListener("change", (event) => {
+        const itemElement = event.target.closest(".sc-li-campaign-form__item");
+        const titleElement = itemElement.querySelector(
+          ".sc-li-campaign-form__item-title"
+        );
+        this.lastAccessedField = titleElement.innerText;
+      });
+    });
   }
 }
 
