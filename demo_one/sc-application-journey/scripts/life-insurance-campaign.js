@@ -14,12 +14,6 @@ class lifeInsuranceCamp {
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
-      // const activemodalbtn = document.querySelector(
-      //   ".sc-li-campaign__active-modal-btn"
-      // );
-      // activemodalbtn.addEventListener("click", () => {
-      //   that.activeModal();
-      //   });
       that.createTitle();
       that.activeModal();
       that.paramCheck();
@@ -337,8 +331,11 @@ class lifeInsuranceCamp {
       ".sc-li-campaign__active-modal-btn"
     ).dataset.modalSource;
     document.body.addEventListener("click", function (event) {
+      console.log(event.target)
+      let ctaTitle = event.target.title ? event.target.title : event.target.innerText;
+      console.log("ctaTitle--", ctaTitle)
       that.AnalyticsAdobeCommon.handleCtaClick(
-        event.target.title,
+        ctaTitle,
         "button",
         event.target
       );
@@ -370,7 +367,7 @@ class lifeInsuranceCamp {
           wrapp.classList.add("sc-li-campaign-form-modal-main");
           that.AnalyticsAdobeCommon.handelFormStartShortForm();
           that.AnalyticsAdobeCommon.handleCtaClick(
-            event.target.title,
+            ctaTitle,
             "button",
             event.target
           );
@@ -656,7 +653,14 @@ class lifeInsuranceCamp {
           this.statusModal(true);
         }, 600);
       } catch (error) {
-        console.error("Error during form submission:", error);
+        console.error(error);
+        let errObj = {
+          code: error.statusCode,
+          description: error.message,
+          field: this.lastAccessedField,
+        };
+        console.error(errObj);
+        this.AnalyticsAdobeCommon.handleFormError(errObj);
         this.statusModal(false); // Optionally close the modal on error
       }
     });

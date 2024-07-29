@@ -141,6 +141,30 @@ class AnalyticsAdobeCommonZ {
   }
 
   /**
+   * Track Form Abandon
+   */
+  handleFormError(err) {
+    if (typeof window.adobeDataLayer !== "undefined") {
+      let error = [
+        {
+          errorCode: err.code || "na",
+          errorDescription: err.description || "na",
+          errorField: err.field || "na",
+        },
+      ];
+
+      let dataObject = {
+        ...digitalData,
+        event: "formError",
+      };
+      window.digitalData.error = [];
+      window.digitalData.error.push(...error);
+      window.adobeDataLayer.push(dataObject);
+      _satellite.track("formError");
+    }
+  }
+
+  /**
    * Track page view actions in the page using EDDL approach.
    */
   handlePageView(popupdata) {
