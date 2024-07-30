@@ -358,14 +358,14 @@ class lifeInsuranceCamp {
         let closestAnchor = event.target.closest("a");
         let formModal = document.querySelector(".sc-li-campaign-form-modal");
         let popupdata = JSON.parse(formModal.dataset.popup);
-        console.log(popupdata);
+        console.log({popupdata});
         let modalAttr = closestAnchor.getAttribute("data-modal-source");
         let formmodalAttr = formModal.getAttribute("data-modal-id");
         let wrapp = document.querySelector(".c-modal");
         if (modalAttr === formmodalAttr) {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
-          that.AnalyticsAdobeCommon.handelFormStartShortForm();
+          that.AnalyticsAdobeCommon.handelFormStartShortForm(popupdata);
           that.AnalyticsAdobeCommon.handleCtaClick(
             ctaTitle,
             "button",

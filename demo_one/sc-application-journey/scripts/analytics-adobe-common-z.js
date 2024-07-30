@@ -169,17 +169,18 @@ class AnalyticsAdobeCommonZ {
    */
   handlePageView(popupdata) {
     console.log("------PageView called------");
-    let pageData = {
-      market: "hk",
-      language: "en",
-      segment: "wealth",
-      pagetype: "",
-      productcategory: "Insurance",
-      productsubcategory: "",
-      productname: "Insurance Life Stage Campaign",
-      formname: "comprehensive assessment short form",
-      screenname: "landing",
-    };
+    console.log(window.digitalData);
+    // let pageData = {
+    //   market: "hk",
+    //   language: "en",
+    //   segment: "wealth",
+    //   pagetype: "",
+    //   productcategory: "Insurance",
+    //   productsubcategory: "",
+    //   productname: "Insurance Life Stage Campaign",
+    //   formname: "comprehensive assessment short form",
+    //   screenname: "landing",
+    // };
     let products = [
       {
         productName: "Insurance Life Stage Campaign",
@@ -195,8 +196,8 @@ class AnalyticsAdobeCommonZ {
       };
       window.digitalData.products = [];
       window.digitalData.products.push(...products);
-      window.digitalData.page.pageInfo.pageName = `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`;
-      window.digitalData.page.attributes.country = pageData.market;
+      // window.digitalData.page.pageInfo.pageName = `${pageData.market}:${pageData.language}:${pageData.segment}:${pageData.pagetype}:${pageData.productcategory}:${pageData.productsubcategory}:${pageData.productname}:${pageData.formname}:${pageData.screenname}`;
+      // window.digitalData.page.attributes.country = pageData.market;
       window.adobeDataLayer.push(dataObject);
       _satellite.track("page-view");
     }
@@ -205,13 +206,13 @@ class AnalyticsAdobeCommonZ {
   /**
    * Track "formStart_shortForm" actions in the page using EDDL approach.
    */
-  handelFormStartShortForm() {
+  handelFormStartShortForm(data) {
     console.log("------handelFormStartShortForm called------");
     let formdata = {
-      formName: "comprehensive assessment short form",
-      formStepName: "landing",
-      formType: "insurance assessment short form",
-      formPlatform: "",
+      formName: data.formname || "comprehensive assessment short form",
+      formStepName: data.formstepName || "landing",
+      formType: data.formtype || "insurance assessment short form",
+      formPlatform: data.formplatform || "na",
       popupName: "",
     };
 
