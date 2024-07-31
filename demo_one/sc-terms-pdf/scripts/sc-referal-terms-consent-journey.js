@@ -1,4 +1,4 @@
-class lifeInsuranceCamp {
+class referalTermsConsentJourney {
   constructor() {
     let lastAccessedField = null;
   }
@@ -46,11 +46,11 @@ class lifeInsuranceCamp {
         modalClose.click();
         setTimeout(() => {
           window.location.href = redirectUrl;
-        }, 500);
+        }, 1000);
       }
     }
 
-    function scrollToBottom(element, steps) {
+    let scrollToBottom = (element, steps) => {
       const totalHeight = element.scrollHeight - element.clientHeight;
       const stepHeight = totalHeight / totalSteps;
 
@@ -92,10 +92,11 @@ class lifeInsuranceCamp {
     });
   }
 
+
   // activeDownloadButton on modal active
   activeDownloadButton() {
     // Download function
-    function downloadPdf(pdfurl, filename) {
+    let downloadPdf = (pdfurl, filename) => {
       // Fetch the PDF file and force download
       if (pdfurl) {
         let pdfUrl = decodeURI(pdfurl).toString();
@@ -145,5 +146,5 @@ class lifeInsuranceCamp {
   }
 }
 
-const Instance = new lifeInsuranceCamp();
+const Instance = new referalTermsConsentJourney();
 Instance.init();

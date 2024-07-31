@@ -167,7 +167,7 @@ class AnalyticsAdobeCommonZ {
   /**
    * Track page view actions in the page using EDDL approach.
    */
-  handlePageView(popupdata) {
+  handlePageView(data) {
     console.log("------PageView called------");
     console.log(window.digitalData);
     // let pageData = {
@@ -183,9 +183,9 @@ class AnalyticsAdobeCommonZ {
     // };
     let products = [
       {
-        productName: "Insurance Life Stage Campaign",
-        subProduct1: "na",
-        subProduct2: "na",
+        productName: data.productname || "na",
+        subProduct1: data.subproduct1 || "na",
+        subProduct2: data.subproduct2 || "na",
       },
     ];
 
@@ -209,11 +209,11 @@ class AnalyticsAdobeCommonZ {
   handelFormStartShortForm(data) {
     console.log("------handelFormStartShortForm called------");
     let formdata = {
-      formName: data.formname || "comprehensive assessment short form",
-      formStepName: data.formstepName || "landing",
-      formType: data.formtype || "insurance assessment short form",
+      formName: data.formname || "na",
+      formStepName: data.formstepname || "na",
+      formType: data.formtype || "na",
       formPlatform: data.formplatform || "na",
-      popupName: "",
+      popupName: "na",
     };
 
     if (typeof window.adobeDataLayer !== "undefined") {

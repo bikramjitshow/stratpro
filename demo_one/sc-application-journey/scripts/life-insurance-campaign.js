@@ -10,7 +10,9 @@ class lifeInsuranceCamp {
   init() {
     const that = this;
     document.addEventListener("DOMContentLoaded", function () {
-      const firstpersonaBtn = document.querySelector(
+      // let campaign = document.querySelector(".sc-li-campaign");
+      // let campaigndata = JSON.parse(campaign.dataset.pageDetails);
+      let firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
@@ -19,7 +21,7 @@ class lifeInsuranceCamp {
       that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
-      that.AnalyticsAdobeCommon.handlePageView();
+      // that.AnalyticsAdobeCommon.handlePageView(campaigndata);
     });
   }
 
@@ -73,6 +75,9 @@ class lifeInsuranceCamp {
 
     // Push the new URL to the browser history without reloading the page
     window.history.pushState({ path: newUrl }, "", newUrl);
+    setTimeout(() => {
+      this.removeNullHashFromURL();
+    }, 10);
   }
 
   tiggerPersona(persona) {
@@ -324,6 +329,13 @@ class lifeInsuranceCamp {
     }
   }
 
+  hasClasses(event, classNames) {
+    let target = event.target;
+    let isClass = classNames.some((className) =>
+      target.classList.contains(className)
+    );
+    return isClass;
+  }
   // form
   activeModal() {
     const that = this;
@@ -331,25 +343,37 @@ class lifeInsuranceCamp {
       ".sc-li-campaign__active-modal-btn"
     ).dataset.modalSource;
     document.body.addEventListener("click", function (event) {
-      console.log(event.target)
-      let ctaTitle = event.target.title ? event.target.title : event.target.innerText;
-      console.log("ctaTitle--", ctaTitle)
-      that.AnalyticsAdobeCommon.handleCtaClick(
-        ctaTitle,
-        "button",
-        event.target
-      );
+      // event.preventDefault();
+      // event.stopPropagation();
+      let ctaTitle = event.target.title
+        ? event.target.title
+        : event.target.innerText;
+      let classesToCheck = [
+        "sc-li-campaign__persona-btn",
+        "sc-btn",
+        "sc-li-campaign__policy-type-filter-step-item",
+        "sc-li-campaign__policy-type-learn-more",
+      ];
+      console.log(that.hasClasses(event, classesToCheck));
+      if (that.hasClasses(event, classesToCheck)) {
+        console.log("Target has all specified classes.");
+        // that.AnalyticsAdobeCommon.handleCtaClick(
+        //   ctaTitle,
+        //   "button",
+        //   event.target
+        // );
+      }
 
       // track if modal close
       if (
         event.target.classList.contains("closebutton") ||
         event.target.classList.contains("wrapper")
       ) {
-        that.AnalyticsAdobeCommon.handleCtaClick(
-          "closebutton",
-          "button",
-          event.target
-        );
+        // that.AnalyticsAdobeCommon.handleCtaClick(
+        //   "closebutton",
+        //   "button",
+        //   event.target
+        // );
         that.closeModal(this.lastAccessedField);
       }
 
@@ -358,7 +382,7 @@ class lifeInsuranceCamp {
         let closestAnchor = event.target.closest("a");
         let formModal = document.querySelector(".sc-li-campaign-form-modal");
         let popupdata = JSON.parse(formModal.dataset.popup);
-        console.log({popupdata});
+        console.log({ popupdata });
         let modalAttr = closestAnchor.getAttribute("data-modal-source");
         let formmodalAttr = formModal.getAttribute("data-modal-id");
         let wrapp = document.querySelector(".c-modal");
@@ -366,11 +390,11 @@ class lifeInsuranceCamp {
           formModal.classList.add("sc-li-campaign-form-modal-active");
           wrapp.classList.add("sc-li-campaign-form-modal-main");
           that.AnalyticsAdobeCommon.handelFormStartShortForm(popupdata);
-          that.AnalyticsAdobeCommon.handleCtaClick(
-            ctaTitle,
-            "button",
-            event.target
-          );
+          // that.AnalyticsAdobeCommon.handleCtaClick(
+          //   ctaTitle,
+          //   "button",
+          //   event.target
+          // );
           that.getCheckboxes();
           that.formLastAccessedField();
           // form
