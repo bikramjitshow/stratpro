@@ -1,4 +1,4 @@
-/* global digitalData, _satellite, $ */
+/* global digitalData, _satellite */
 
 /**
  * Pre-defined ranges that can be used in tracking.
@@ -82,6 +82,24 @@ const newranges = {
     { start: 250000, end: 300000 },
     { start: 300000, end: 350000 },
     { start: 350000 },
+  ],
+  dailyBalance: [
+    { start: 0, end: 20000 },
+    { start: 20000, end: 50000 },
+    { start: 50000, end: 100000 },
+    { start: 100000, end: 150000 },
+    { start: 150000, end: 200000 },
+    { start: 200000, end: 250000 },
+    { start: 250000, end: 300000 },
+    { start: 300000, end: 350000 },
+    { start: 350000, end: 500000 },
+    { start: 500000, end: 1000000 },
+    { start: 1000000, end: 2000000 },
+    { start: 2000000, end: 3000000 },
+    { start: 3000000, end: 5000000 },
+    { start: 5000000, end: 7500000 },
+    { start: 7500000, end: 10000000 },
+    { start: 10000000 },
   ],
   apr: [
     { start: 0, end: 2 },
@@ -214,10 +232,26 @@ class AnalyticsAdobeCommon {
                 "k"
               : "ge35k";
             break;
+          } else if (fieldNameValue === "dailyBalance") {
+            calculatedRange = endVal
+              ? startVal == 0
+                ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
+                : (Math.abs(startVal) / 1000).toFixed() < 1000
+                ? (Math.abs(startVal) / 1000).toFixed() +
+                  "k-lt" +
+                  (Math.abs(endVal) / 1000).toFixed() +
+                  "k"
+                : (Math.abs(startVal) / 1000000).toFixed() +
+                  "m-lt" +
+                  (Math.abs(endVal) / 1000000).toFixed() +
+                  "m"
+              : "ge10m";
+
+            break;
           } else if (fieldNameValue === "apr") {
             calculatedRange = endVal
               ? startVal == 0
-                ? startVal + "-lt"
+                ? startVal + "-lt" + endVal + "%"
                 : startVal + "%-lt" + endVal + "%"
               : "ge25%";
             break;
@@ -230,12 +264,10 @@ class AnalyticsAdobeCommon {
     }
     return calculatedRange;
   }
-
   /**
    * Track customer interaction with calculators.
    */
   handleProductCalculatorSubmit(calculatorName, fields) {
-    console.log(fields);
     digitalData.calculator = {
       name: calculatorName,
       fields: fields,
@@ -270,172 +302,6 @@ class AnalyticsAdobeCommon {
       window.adobeDataLayer.push(dataObject);
     }
   }
-
-  /**
-   * form submit event
-   * @param {String} customLinkText button text
-   * @example
-   * adobeFormSuccess('submit')
-   */
-  // adobeFormSuccess(customLinkText) {ss
-  //   if (typeof window.adobeDataLayer == "undefined") return;
-  //   let that = this;
-  //   if (typeof window.digitalData == "object") {
-  //     that.commonAdobeScript();
-  //     let labelText = "",
-  //       labelValue = "";
-  //     let allFields = document.querySelectorAll(
-  //       ".modular-form .modular-form-container"
-  //     );
-  //     if (allFields.length) {
-  //       // eslint-disable-next-line no-unused-vars
-  //       for (let i = 0; i < allFields.length; i++) {
-  //         let attr = allFields[i].getAttribute("data-field-type");
-  //         let fieldName = allFields[i].getAttribute("data-xml-key");
-  //         if (!attr || !fieldName) continue;
-  //         labelText += labelText ? ":" + fieldName : fieldName;
-  //         if (
-  //           attr == "alphabetic-text" ||
-  //           attr == "phone" ||
-  //           attr == "email" ||
-  //           attr == "text"
-  //         ) {
-  //           let value = allFields[i].querySelector("input").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "phone-code") {
-  //           let value =
-  //             allFields[i].querySelector(".code").value +
-  //             allFields[i].querySelector(".phone-field").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "textarea") {
-  //           let value = allFields[i].querySelector("textarea").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "dropdown") {
-  //           let value = allFields[i].querySelector("select").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "checkbox" || attr == "toggle") {
-  //           let value = allFields[i].querySelector("input:checked");
-  //           value = value || value == "0" ? "yes" : "no";
-  //           labelValue += labelValue ? ":" + value : value;
-  //         } else if (attr == "radio") {
-  //           let value = allFields[i].querySelector("input:checked").value;
-  //           labelValue += labelValue ? ":" + value : value;
-  //         }
-  //       }
-  //     }
-
-  //     labelText = labelText.toLowerCase();
-  //     labelValue = labelValue.toLowerCase();
-
-  //     window.digitalData.customLinkClick = {
-  //       customLinkText: customLinkText,
-  //       customLinkRegion: "left bottom",
-  //       customLinkType: "button",
-  //     };
-
-  //     window.digitalData.form.formFields = [];
-  //     window.digitalData.form.formFields.push({
-  //       formFieldName: labelText,
-  //       formFieldValue: labelValue,
-  //     });
-
-  //     let dataObject = {
-  //       ...digitalData,
-  //       event: "ctaClick",
-  //     };
-  //     window.adobeDataLayer.push(dataObject);
-  //     return {
-  //       labelText: labelText,
-  //       labelValue: labelValue,
-  //     };
-  //   }
-  // }
-
-  // my
-  handleInsuranceFormSubmit(formname, ctaname, fields) {
-    console.log(fields);
-    if (typeof window.adobeDataLayer == "undefined") return;
-
-    // if (!window.digitalData) {
-    //   window.digitalData = {};
-    // }
-    if (!window.digitalData.form) {
-      window.digitalData.form = {};
-    }
-    if (!window.digitalData.form.fields) {
-      window.digitalData.form.fields = [];
-    }
-    //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== "undefined") {
-      // window.digitalData.customLinkClick = {
-      //   customLinkText: ctaname,
-      //   customLinkRegion: "bottom",
-      //   customLinkType: "button",
-      // };
-
-      window.digitalData.form.fields = [];
-      window.digitalData.form.formName = formname;
-      fields.forEach((field) => {
-        console.log(field);
-        window.digitalData.form.fields.push({
-          fieldName: field.fieldName,
-          fieldValue: field.fieldValue,
-        });
-      });
-
-      let dataObject = {
-        ...digitalData,
-        event: "ctaClick",
-      };
-      window.adobeDataLayer.push(dataObject);
-      _satellite.track("ctaClick");
-    }
-  }
-
-  handleInsuranceFormCheck(target, formname, fields) {
-    console.log(target, fields);
-    if (typeof window.adobeDataLayer == "undefined") return;
-
-    // if (!window.digitalData) {
-    //   window.digitalData = {};
-    // }
-    if (!window.digitalData.form) {
-      window.digitalData.form = {};
-    }
-    if (!window.digitalData.form.fields) {
-      window.digitalData.form.fields = [];
-    }
-    //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== "undefined") {
-      // window.digitalData.ctaName = target
-      //   .closest('.sc-radio-box')
-      //   .querySelector('label')
-      //   .innerText.trim();
-      // window.digitalData.ctaPosition = this.calcElementLocation(target);
-      window.digitalData.form.fields = [];
-      window.digitalData.form.formName = formname;
-      fields.forEach((field) => {
-        // window.digitalData.customLinkClick = {
-        //   customLinkText: field.fieldValue,
-        //   customLinkRegion: "form",
-        //   customLinkType: "input",
-        // };
-        console.log(field);
-        window.digitalData.form.fields.push({
-          fieldName: field.fieldName,
-          fieldValue: field.fieldValue,
-        });
-      });
-
-      let dataObject = {
-        ...digitalData,
-        event: "ctaClick",
-      };
-      window.adobeDataLayer.push(dataObject);
-      _satellite.track("ctaClick");
-    }
-  }
-
   /**
    * Track customer interaction with calculators using EDDL approach.
    */
@@ -470,6 +336,9 @@ class AnalyticsAdobeCommon {
       if (fields.form) {
         dataObject.form = fields.form;
       }
+      dataObject.ctaName = fields.customLinkName;
+      dataObject.ctaPosition = fields.customLinkRegion;
+      dataObject.ctaType = fields.customLinkType;
       window.adobeDataLayer.push(dataObject);
     }
   }
@@ -484,7 +353,6 @@ class AnalyticsAdobeCommon {
         event: "popupViewed",
       };
       window.adobeDataLayer.push(dataObject);
-      _satellite.track("callToAction");
     }
   }
   /**
@@ -506,6 +374,7 @@ class AnalyticsAdobeCommon {
         },
         event: "filterApplied",
       };
+      dataObject.ctaName = fields.customLinkName;
       window.adobeDataLayer.push(dataObject);
     }
   }
@@ -591,7 +460,19 @@ class AnalyticsAdobeCommon {
     return yPosition;
   }
 
-
+  /**
+   * Trigger adobe and google analytics
+   * @param {string} title
+   * @param {string} type
+   * @param {string} target
+   */
+  handleCtaClick(title, type, target) {
+    digitalData.event = "ctaClick";
+    digitalData.ctaName = title;
+    digitalData.ctaType = type;
+    digitalData.ctaPosition = this.calcElementLocation(target);
+    _satellite.track("callToAction");
+  }
   /**
    * delay 1 second when once moved the slider bar and trigger events
    * @example
@@ -605,11 +486,30 @@ class AnalyticsAdobeCommon {
       clearTimeout(timer);
       timer = window.setTimeout(function () {
         f.apply(context, args);
-      }, delay || 1000);
+      }, delay || 500);
     };
+  }
+
+  /**
+   * capture horizontal click position and return it's left or right
+   * @param {Number} xClick horizontal click position
+   * @return {String} return it's left or right
+   * @example
+   * getHorizontalPosition(1000)
+   */
+  getHorizontalPosition(xClick) {
+    let width = Math.max(
+      document.body.scrollWidth,
+      document.documentElement.scrollWidth,
+      document.body.offsetWidth,
+      document.documentElement.offsetWidth,
+      document.documentElement.clientWidth
+    );
+    let median = width / 2;
+    return xClick < median ? "left" : "right";
   }
 }
 
-const instancedddd = new AnalyticsAdobeCommon();
+const instance2 = new AnalyticsAdobeCommon();
 
 // export default instance;

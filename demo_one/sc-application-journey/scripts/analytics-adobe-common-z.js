@@ -21,7 +21,7 @@ class AnalyticsAdobeCommonZ {
   /**
    * form submit event
    */
-  handleInsuranceFormSubmit(formname, ctaname, fields) {
+  handleInsuranceFormSubmit(formname, ctaname, fields, formstatus) {
     console.log(fields);
     if (typeof window.adobeDataLayer == "undefined") return;
 
@@ -30,6 +30,7 @@ class AnalyticsAdobeCommonZ {
     }
     //update adobeDataLayer with calculator submit event
     if (typeof window.adobeDataLayer !== "undefined") {
+      console.log({formstatus})
       if (window.digitalData.products) {
         window.digitalData.products.forEach((item, index) => {
           window.digitalData.products[index].productFields = [];
@@ -40,16 +41,16 @@ class AnalyticsAdobeCommonZ {
               formFieldValue: field.fieldValue,
             });
           });
-          window.digitalData.products[index].applicationReferenceNumber = "na";
-          window.digitalData.products[index].applicationSubmissionStatus =
-            "Submission Successful";
+          window.digitalData.products[index].applicationReferenceNumber = formstatus.refno || "na";
+          window.digitalData.products[index].applicationSubmissionStatus = formstatus.status || "na";
         });
       }
-
+      
       let dataObject = {
         ...digitalData,
         event: "formSubmit_shortForm",
       };
+      window.digitalData.form.popupName = formstatus.popupname;
       console.log({ dataObject });
       window.adobeDataLayer.push(dataObject);
       _satellite.track("formSubmit_shortForm");
@@ -59,17 +60,15 @@ class AnalyticsAdobeCommonZ {
   /**
    * form submit Status
    */
-  handleFormStatus(status) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      let dataObject = {
-        ...digitalData,
-        event: "formSubmit_shortForm",
-      };
-      window.digitalData.form.popupName = status;
-      window.adobeDataLayer.push(dataObject);
-      _satellite.track("formSubmit_shortForm");
-    }
-  }
+  // handleFormStatusPopup(status) {
+  //   if (typeof window.adobeDataLayer !== "undefined") {
+  //     let dataObject = {
+  //       ...digitalData,
+  //     };
+  //     window.digitalData.form.popupName = status;
+  //     window.adobeDataLayer.push(dataObject);
+  //   }
+  // }
 
   /**
    * Track Insurance Form Check actions in the page using EDDL approach.

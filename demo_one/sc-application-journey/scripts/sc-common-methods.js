@@ -7,12 +7,12 @@ class ScCommonMethods {
    */
   getQueryParam(queryString, paramName) {
     // Split the query string into an array of key-value pairs
-    const queryParamsList = queryString.split('&');
-    let paramValue = '';
+    const queryParamsList = queryString.split("&");
+    let paramValue = "";
 
     // eslint-disable-next-line no-unused-vars
     for (const param of queryParamsList) {
-      const [key, value] = param.split('=');
+      const [key, value] = param.split("=");
       if (key === paramName) {
         //it's case sensitive
         paramValue = value;
@@ -25,21 +25,21 @@ class ScCommonMethods {
   /**
    * change browser URL based on query string
    */
-  changeURL(queryParams = '') {
+  changeURL(queryParams = "") {
     //Change Query String
     const newUrl =
       window.location.protocol +
-      '//' +
+      "//" +
       window.location.host +
       window.location.pathname +
-      (queryParams ? `?${queryParams}` : ''); //Set queryString in URL
+      (queryParams ? `?${queryParams}` : ""); //Set queryString in URL
 
     //Change URL based on clicked tab
     window.history.pushState(
       {
-        path: newUrl
+        path: newUrl,
       },
-      '',
+      "",
       newUrl
     );
   }
@@ -59,7 +59,7 @@ class ScCommonMethods {
     let targetPosition = target.getBoundingClientRect().top - width;
     let startPosition = scrollStart === window ? window.pageYOffset : 0;
     let startTime = null;
-    const animation = currentTime => {
+    const animation = (currentTime) => {
       if (startTime === null) startTime = currentTime;
       let timeElapsed = currentTime - startTime;
       let run = that.ease(timeElapsed, startPosition, targetPosition, duration);
@@ -76,6 +76,6 @@ class ScCommonMethods {
   }
 }
 
-const instance = new ScCommonMethods();
+const instance3 = new ScCommonMethods();
 
-export default instance;
+// export default instance;
