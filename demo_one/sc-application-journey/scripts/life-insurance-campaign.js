@@ -7,11 +7,17 @@ class scInsuranceCampaign {
   }
   init() {
     const that = this;
-    let classes = ["sc-li-campaign__policy-type-filter-step-item", "sc-btn", "sc-li-campaign__policy-type-learn-more"];
+    let classes = [
+      "sc-li-campaign__policy-type-filter-step-item",
+      "sc-btn",
+      "sc-li-campaign__policy-type-learn-more",
+    ];
     document.addEventListener("DOMContentLoaded", function () {
-      document.addEventListener("click", function (event) {
+      document.addEventListener("mousedown", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
         if (classes.some((cls) => event.target.classList.contains(cls))) {
-          console.log(event.target);
+          console.log("event Click", event.target);
           that.ctaClick(event);
         }
       });
@@ -31,7 +37,7 @@ class scInsuranceCampaign {
   paramCheck() {
     let that = this;
     let queryString = Utils.getPageContext().queryString;
-    const persona = that.ScCommonMethods.getQueryParam(
+    const persona = ScCommonMethods.getQueryParam(
       queryString,
       document.querySelector(".sc-li-campaign").getAttribute("data-query-param")
     );
@@ -111,7 +117,7 @@ class scInsuranceCampaign {
 
     // Add click event listener to each persona button
     personaBtns.forEach((btn, index) => {
-      btn.addEventListener("click", (event) => {
+      btn.addEventListener("mousedown", (event) => {
         event.preventDefault();
         event.stopPropagation();
         handleClick(btn, index);
@@ -155,8 +161,10 @@ class scInsuranceCampaign {
             );
           }
           isFirstFilterActivated = true;
-          filter.addEventListener("click", (e) => {
-            this.activeFilter(e);
+          filter.addEventListener("mousedown", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            this.activeFilter(event);
             this.activeFilterContent(title);
           });
         }
@@ -346,7 +354,9 @@ class scInsuranceCampaign {
     const activemodalbtn = document.querySelector(
       ".sc-li-campaign__active-modal-btn"
     ).dataset.modalSource;
-    document.body.addEventListener("click", function (event) {
+    document.body.addEventListener("mousedown", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
       // track if modal close
       if (
         event.target.classList.contains("closebutton") ||
@@ -626,7 +636,9 @@ class scInsuranceCampaign {
     const formSubmitBtn = document.querySelector(
       ".sc-li-campaign-form__submit-btn"
     );
-    formSubmitBtn.addEventListener("click", () => {
+    formSubmitBtn.addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       try {
         let formData = this.buildFormData();
         formData.ctaname = formSubmitBtn.textContent.trim();
@@ -651,7 +663,9 @@ class scInsuranceCampaign {
     });
     document
       .querySelector(".sc-error-modal__alert-close")
-      .addEventListener("click", () => {
+      .addEventListener("mousedown", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         this.statusModal(false);
       });
   }
@@ -683,7 +697,7 @@ class scInsuranceCampaign {
           .querySelector('meta[name="sc:page-slug"]')
           .getAttribute("content")
       : null;
-      let linkName =
+    let linkName =
       document.querySelector("title") &&
       document.querySelector("title").innerText
         ? document.querySelector("title").innerText.toLowerCase()
@@ -764,6 +778,28 @@ class scInsuranceCampaign {
       segment: pageName[2],
       userID: "na",
     };
+
+    //For HK adobe data layer
+    //Update page name
+    pageName[3] = pageName[2];
+    pageName[2] = window.digitalData.page.attributes.platform;
+    window.digitalData.page.pageInfo.pageName = pageName.join(":");
+    //Add user info
+    window.digitalData.userInfo = window.digitalData.userInfo || {};
+    window.digitalData.userInfo = window.digitalData.user.userInfo;
+    window.digitalData.userInfo.loginStatus = "not logged-in";
+    delete window.digitalData.user;
+    //Add product info
+    if (pageName[4] != "na" || pageName[5] != "na" || pageName[6] != "na") {
+      window.digitalData.products = window.digitalData.products || [];
+      window.digitalData.products = [
+        {
+          productName: pageName[6],
+          subProduct1: pageName[4],
+          subProduct2: pageName[5],
+        },
+      ];
+    }
 
     let campaignData = that.getCampaignInfo(allowableQueryString);
     window.digitalData.campaign = window.digitalData.campaign || {};
@@ -964,7 +1000,7 @@ class scInsuranceCampaign {
       delete dataObject.customLinkClick;
     }
     console.log("ctaClick dataObject - ", dataObject);
-    // scAnalyticsDataArray.push(dataObject);
+    scAnalyticsDataArray.push(dataObject);
     // _satellite.track("ctaClick");
   }
 
@@ -984,7 +1020,7 @@ class scInsuranceCampaign {
       window.digitalData.form.formPlatform = data.formplatform || "na";
 
       console.log("formStart_shortForm dataObject-", dataObject);
-      // scAnalyticsDataArray.push(dataObject);
+      scAnalyticsDataArray.push(dataObject);
       // _satellite.track("formStart_shortForm");
     }
   }
@@ -999,22 +1035,20 @@ class scInsuranceCampaign {
       window.digitalData.form = {};
     }
     //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== "undefined") {
-      if (window.digitalData.products) {
-        window.digitalData.products.forEach((item, index) => {
-          window.digitalData.products[index].productFields = [];
-          fields.forEach((field) => {
-            window.digitalData.products[index].productFields.push({
-              formFieldName: field.fieldName,
-              formFieldValue: field.fieldValue,
-            });
+    if (window.digitalData.products) {
+      window.digitalData.products.forEach((item, index) => {
+        window.digitalData.products[index].productFields = [];
+        fields.forEach((field) => {
+          window.digitalData.products[index].productFields.push({
+            formFieldName: field.fieldName,
+            formFieldValue: field.fieldValue,
           });
-          window.digitalData.products[index].applicationReferenceNumber =
-            formstatus.refno || "na";
-          window.digitalData.products[index].applicationSubmissionStatus =
-            formstatus.status || "na";
         });
-      }
+        window.digitalData.products[index].applicationReferenceNumber =
+          formstatus.refno || "na";
+        window.digitalData.products[index].applicationSubmissionStatus =
+          formstatus.status || "na";
+      });
 
       let dataObject = {
         ...digitalData,
@@ -1022,7 +1056,7 @@ class scInsuranceCampaign {
       };
       window.digitalData.form.popupName = formstatus.popupname;
       console.log("formSubmit_shortForm dataObject-", dataObject);
-      // scAnalyticsDataArray.push(dataObject);
+      scAnalyticsDataArray.push(dataObject);
       // _satellite.track("formSubmit_shortForm");
     }
   }
@@ -1038,7 +1072,7 @@ class scInsuranceCampaign {
       };
       window.digitalData.form.formLastAccessedField = field || "na";
       console.log("formAbandon dataObject-", dataObject);
-      // scAnalyticsDataArray.push(dataObject);
+      scAnalyticsDataArray.push(dataObject);
       // _satellite.track("formAbandon");
     }
   }
@@ -1063,7 +1097,7 @@ class scInsuranceCampaign {
       window.digitalData.error = [];
       window.digitalData.error.push(...error);
       console.log("formError dataObject-", dataObject);
-      // scAnalyticsDataArray.push(dataObject);
+      scAnalyticsDataArray.push(dataObject);
       // _satellite.track("formError");
     }
   }
@@ -1096,7 +1130,7 @@ class scInsuranceCampaign {
       };
 
       console.log("FormCheck dataObject-", dataObject);
-      // scAnalyticsDataArray.push(dataObject);
+      scAnalyticsDataArray.push(dataObject);
       // _satellite.track("ctaClick");
     }
   }
