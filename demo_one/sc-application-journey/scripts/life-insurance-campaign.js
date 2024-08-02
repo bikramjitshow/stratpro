@@ -978,10 +978,10 @@ class scInsuranceCampaign {
         ...digitalData,
         event: "formStart_shortForm",
       };
-      window.digitalData.form.formName = formdata.formName;
-      window.digitalData.form.formStepName = formdata.formStepName;
-      window.digitalData.form.formType = formdata.formType;
-      window.digitalData.form.formPlatform = formdata.formPlatform;
+      window.digitalData.form.formName = data.formname || "na";
+      window.digitalData.form.formStepName = data.formstepname || "na";
+      window.digitalData.form.formType = data.formtype || "na";
+      window.digitalData.form.formPlatform = data.formplatform || "na";
 
       console.log("formStart_shortForm dataObject-", dataObject);
       // scAnalyticsDataArray.push(dataObject);
