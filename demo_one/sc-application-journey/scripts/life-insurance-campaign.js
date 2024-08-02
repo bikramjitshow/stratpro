@@ -37,7 +37,7 @@ class scInsuranceCampaign {
   paramCheck() {
     let that = this;
     let queryString = Utils.getPageContext().queryString;
-    const persona = ScCommonMethods.getQueryParam(
+    const persona = that.ScCommonMethods.getQueryParam(
       queryString,
       document.querySelector(".sc-li-campaign").getAttribute("data-query-param")
     );
@@ -354,7 +354,7 @@ class scInsuranceCampaign {
     const activemodalbtn = document.querySelector(
       ".sc-li-campaign__active-modal-btn"
     ).dataset.modalSource;
-    document.body.addEventListener("mousedown", function (event) {
+    document.addEventListener("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
       // track if modal close
