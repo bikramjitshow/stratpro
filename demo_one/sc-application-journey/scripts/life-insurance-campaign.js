@@ -367,7 +367,7 @@ class scInsuranceCampaign {
           wrapp.classList.add("sc-li-campaign-form-modal-main");
           setTimeout(() => {
             that.handelFormStartShortForm(popupdata);
-          }, 1000);
+          }, 600);
           that.getCheckboxes();
           that.formLastAccessedField();
           that.formSubmit();
@@ -972,22 +972,12 @@ class scInsuranceCampaign {
    * Track "formStart_shortForm" actions in the page using EDDL approach.
    */
   handelFormStartShortForm(data) {
-    let formdata = {
-      formName: data.formname || "na",
-      formStepName: data.formstepname || "na",
-      formType: data.formtype || "na",
-      formPlatform: data.formplatform || "na",
-      popupName: "na",
-    };
-
-    console.log("formStart_shortForm formdata-", formdata);
-
     if (typeof window.adobeDataLayer !== "undefined") {
+      window.digitalData.form = {};
       let dataObject = {
         ...digitalData,
         event: "formStart_shortForm",
       };
-      window.digitalData.form = {};
       window.digitalData.form.formName = formdata.formName;
       window.digitalData.form.formStepName = formdata.formStepName;
       window.digitalData.form.formType = formdata.formType;
