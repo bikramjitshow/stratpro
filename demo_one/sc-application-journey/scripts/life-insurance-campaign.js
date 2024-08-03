@@ -1,32 +1,59 @@
 /* eslint-disable no-undef */
 class scInsuranceCampaign {
   constructor() {
-    this.AnalyticsAdobeCommon = new AnalyticsAdobeCommon();
+    // this.AnalyticsAdobeCommon = new AnalyticsAdobeCommon();
     this.ScCommonMethods = new ScCommonMethods();
     let lastAccessedField = null;
+    let isModalActive = false;
   }
   init() {
     const that = this;
-    let classes = [
-      "sc-li-campaign__policy-type-filter-step-item",
-      "sc-btn",
-      "sc-li-campaign__policy-type-learn-more",
-    ];
     document.addEventListener("DOMContentLoaded", function () {
-      document.addEventListener("mousedown", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (classes.some((cls) => event.target.classList.contains(cls))) {
+      // event Click for learnmore
+      const learnmore = document.querySelectorAll(
+        ".sc-li-campaign__policy-type-learn-more"
+      );
+      learnmore.forEach((el) => {
+        el.addEventListener("mousedown", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
           console.log("event Click", event.target);
           that.ctaClick(event);
-        }
+        });
       });
+
+      // event Click for Tab
+      const stepItems = document.querySelectorAll(
+        ".sc-li-campaign__policy-type-filter-step-item"
+      );
+      stepItems.forEach((el) => {
+        el.addEventListener("mousedown", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log("event Click", event.target);
+          that.ctaClick(event);
+        });
+      });
+
+      // event Click for Open modal
+      const opemmodalbtns = document.querySelectorAll(
+        ".sc-li-campaign__active-modal-btn"
+      );
+      opemmodalbtns.forEach((el) => {
+        el.addEventListener("mousedown", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log("event Click", event.target);
+          that.ctaClick(event);
+          that.activeModal(event);
+        });
+      });
+
       let firstpersonaBtn = document.querySelector(
         ".sc-li-campaign__persona-btn"
       );
       let personaitem = firstpersonaBtn.dataset.persona;
       that.createTitle();
-      that.activeModal();
       that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
@@ -349,12 +376,49 @@ class scInsuranceCampaign {
   }
 
   // track if modal activated
-  activeModal() {
+  // activeModal() {
+  //   const that = this;
+  //   const activemodalbtn = document.querySelector(
+  //     ".sc-li-campaign__active-modal-btn"
+  //   ).dataset.modalSource;
+  //   document.addEventListener("click", function (event) {
+  //     // event.preventDefault();
+  //     // event.stopPropagation();
+  //     // track if modal close
+  //     if (
+  //       event.target.classList.contains("closebutton") ||
+  //       event.target.classList.contains("wrapper")
+  //     ) {
+  //       that.closeModal(event, this.lastAccessedField);
+  //     }
+  //     // verify the modal open
+  //     if (event.target.dataset.modalSource === activemodalbtn) {
+  //       let closestAnchor = event.target.closest("a");
+  //       let formModal = document.querySelector(".sc-li-campaign-form-modal");
+  //       let popupdata = JSON.parse(formModal.dataset.popup);
+  //       let modalAttr = closestAnchor.getAttribute("data-modal-source");
+  //       let formmodalAttr = formModal.getAttribute("data-modal-id");
+  //       let wrapp = document.querySelector(".c-modal");
+  //       if (modalAttr === formmodalAttr) {
+  //         formModal.classList.add("sc-li-campaign-form-modal-active");
+  //         wrapp.classList.add("sc-li-campaign-form-modal-main");
+  //         setTimeout(() => {
+  //           that.handelFormStartShortForm(popupdata);
+  //         }, 600);
+  //         that.getCheckboxes();
+  //         that.formLastAccessedField();
+  //         that.formSubmit();
+  //       }
+  //     }
+  //   });
+  // }
+
+  toCloseModal(event) {
     const that = this;
-    const activemodalbtn = document.querySelector(
-      ".sc-li-campaign__active-modal-btn"
-    ).dataset.modalSource;
-    document.addEventListener("click", function (event) {
+    const modalContainer = document.querySelector(
+      ".sc-li-campaign-form-modal-main"
+    );
+    modalContainer.addEventListener("mousedown", function (event) {
       event.preventDefault();
       event.stopPropagation();
       // track if modal close
@@ -362,28 +426,34 @@ class scInsuranceCampaign {
         event.target.classList.contains("closebutton") ||
         event.target.classList.contains("wrapper")
       ) {
-        that.closeModal(this.lastAccessedField);
-      }
-      // verify the modal open
-      if (event.target.dataset.modalSource === activemodalbtn) {
-        let closestAnchor = event.target.closest("a");
-        let formModal = document.querySelector(".sc-li-campaign-form-modal");
-        let popupdata = JSON.parse(formModal.dataset.popup);
-        let modalAttr = closestAnchor.getAttribute("data-modal-source");
-        let formmodalAttr = formModal.getAttribute("data-modal-id");
-        let wrapp = document.querySelector(".c-modal");
-        if (modalAttr === formmodalAttr) {
-          formModal.classList.add("sc-li-campaign-form-modal-active");
-          wrapp.classList.add("sc-li-campaign-form-modal-main");
-          setTimeout(() => {
-            that.handelFormStartShortForm(popupdata);
-          }, 600);
-          that.getCheckboxes();
-          that.formLastAccessedField();
-          that.formSubmit();
-        }
+        that.closeModal(event, this.lastAccessedField);
       }
     });
+  }
+
+  activeModal(event) {
+    const that = this;
+    const formmodal = document.querySelector(".sc-li-campaign-form-modal");
+    const formmodalid = formmodal.dataset.modalId;
+    let popupdata = JSON.parse(formmodal.dataset.popup);
+    let modalsource = event.target.dataset.modalSource;
+
+    // modal match
+    if (formmodalid === modalsource) {
+      that.isModalActive = true;
+      formmodal.classList.add("sc-li-campaign-form-modal-active");
+      console.log(event.target.classList);
+      setTimeout(() => {
+        document
+          .querySelector(".c-modal")
+          .classList.add("sc-li-campaign-form-modal-main");
+        that.handelFormStartShortForm(popupdata);
+        that.getCheckboxes();
+        that.formLastAccessedField();
+        that.formSubmit();
+        that.toCloseModal(event);
+      }, 600);
+    }
   }
 
   statusModal(status) {
@@ -399,10 +469,13 @@ class scInsuranceCampaign {
     }
   }
 
-  closeModal() {
+  closeModal(event) {
     let lastAccessedField = this.lastAccessedField || "na";
     if (lastAccessedField) {
+      event.target.setAttribute("title", "closemodal");
+      this.ctaClick(event);
       this.handleFormAbandon(lastAccessedField);
+      this.isModalActive = false;
     }
   }
 
@@ -423,6 +496,8 @@ class scInsuranceCampaign {
 
     checkboxes.forEach(function (checkbox, i) {
       checkbox.addEventListener("change", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         anycheckboxChecked = Array.from(checkboxes).some(function (checkbox) {
           return checkbox.checked;
         });
@@ -464,6 +539,8 @@ class scInsuranceCampaign {
     });
     radios.forEach(function (radio, i) {
       radio.addEventListener("change", function (e) {
+         e.preventDefault();
+        e.stopPropagation();
         anyradioChecked = Array.from(radios).some(function (radio) {
           return radio.checked;
         });
@@ -679,6 +756,8 @@ class scInsuranceCampaign {
     // Add event listeners to all input fields
     formElements.forEach((element) => {
       element.addEventListener("change", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         const itemElement = event.target.closest(".sc-li-campaign-form__item");
         const titleElement = itemElement.querySelector(
           ".sc-li-campaign-form__item-title"
@@ -737,11 +816,6 @@ class scInsuranceCampaign {
       }
 
       if (pageName.length <= 8) {
-        linkName =
-          document.querySelector("title") &&
-          document.querySelector("title").innerText
-            ? document.querySelector("title").innerText.toLowerCase()
-            : "na";
         if (mktCountryCode == "hk") {
           //Screen Name field in CMS is used if filled, in HK.
           pageNameList.push(
@@ -779,10 +853,7 @@ class scInsuranceCampaign {
       userID: "na",
     };
 
-    //For HK adobe data layer
     //Update page name
-    pageName[3] = pageName[2];
-    pageName[2] = window.digitalData.page.attributes.platform;
     window.digitalData.page.pageInfo.pageName = pageName.join(":");
     //Add user info
     window.digitalData.userInfo = window.digitalData.userInfo || {};
@@ -805,6 +876,10 @@ class scInsuranceCampaign {
     window.digitalData.campaign = window.digitalData.campaign || {};
     window.digitalData.campaign = {
       internal: {
+        campaignName: campaignData[0],
+        campaignValue: campaignData[1],
+      },
+      external: {
         campaignName: campaignData[0],
         campaignValue: campaignData[1],
       },
@@ -1001,7 +1076,6 @@ class scInsuranceCampaign {
     }
     console.log("ctaClick dataObject - ", dataObject);
     scAnalyticsDataArray.push(dataObject);
-    // _satellite.track("ctaClick");
   }
 
   /**
@@ -1021,7 +1095,6 @@ class scInsuranceCampaign {
 
       console.log("formStart_shortForm dataObject-", dataObject);
       scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formStart_shortForm");
     }
   }
 
@@ -1057,7 +1130,6 @@ class scInsuranceCampaign {
       window.digitalData.form.popupName = formstatus.popupname;
       console.log("formSubmit_shortForm dataObject-", dataObject);
       scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formSubmit_shortForm");
     }
   }
 
@@ -1073,7 +1145,6 @@ class scInsuranceCampaign {
       window.digitalData.form.formLastAccessedField = field || "na";
       console.log("formAbandon dataObject-", dataObject);
       scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formAbandon");
     }
   }
 
@@ -1098,7 +1169,6 @@ class scInsuranceCampaign {
       window.digitalData.error.push(...error);
       console.log("formError dataObject-", dataObject);
       scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formError");
     }
   }
 
@@ -1110,29 +1180,25 @@ class scInsuranceCampaign {
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
-    //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== "undefined") {
-      if (window.digitalData.products) {
-        window.digitalData.products.forEach((item, index) => {
-          window.digitalData.products[index].productFields = [];
-          fields.forEach((field) => {
-            window.digitalData.products[index].productFields.push({
-              formFieldName: field.fieldName,
-              formFieldValue: field.fieldValue,
-            });
+    if (window.digitalData.products) {
+      window.digitalData.products.forEach((item, index) => {
+        window.digitalData.products[index].productFields = [];
+        fields.forEach((field) => {
+          window.digitalData.products[index].productFields.push({
+            formFieldName: field.fieldName,
+            formFieldValue: field.fieldValue,
           });
         });
-      }
-
-      let dataObject = {
-        ...digitalData,
-        event: "ctaClick",
-      };
-
-      console.log("FormCheck dataObject-", dataObject);
-      scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("ctaClick");
+      });
     }
+
+    let dataObject = {
+      ...digitalData,
+      event: "ctaClick",
+    };
+
+    console.log("FormCheck dataObject-", dataObject);
+    scAnalyticsDataArray.push(dataObject);
   }
 }
 
