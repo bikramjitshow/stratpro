@@ -284,6 +284,12 @@ p {
   flex-shrink: 0;
   pointer-events: none;
 }
+.sc-li-campaign__terms-link {
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 4px;
+}
 .sc-li-campaign .highcharts-credits {
   display: none;
 }
@@ -795,6 +801,20 @@ p {
   text-align: left;
   color: #6b6e73;
   margin-bottom: 4px;
+}
+.sc-li-campaign__disclaimer u {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.sc-li-campaign__disclaimer p {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  color: #6b6e73;
+  margin-bottom: 4px;
+}
+.sc-li-campaign__disclaimer p:last-child {
+  margin-bottom: 0;
 }
 
 .sc-policy-type-blue-wrapper {
