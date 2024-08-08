@@ -297,13 +297,6 @@ p {
   padding: 0 10px;
   margin-top: 10px;
 }
-.sc-li-campaign__graph .sc-btn {
-  font-size: 16px;
-  font-weight: 500;
-  max-width: 170px;
-  width: 100%;
-  height: 40px;
-}
 .sc-li-campaign__chart {
   min-width: 250px;
   max-width: 600px;
@@ -783,38 +776,19 @@ p {
 }
 .sc-li-campaign__footnotes {
   padding: 40px 0 0 0;
+  font-size: 12px;
 }
-.sc-li-campaign__footnotes-title {
+.sc-li-campaign__footnotes strong {
   font-size: 14px;
   font-weight: 500;
   text-align: left;
   color: #191919;
-  margin-bottom: 6px;
 }
-.sc-li-campaign__footnotes-items {
-  list-style: decimal;
-  padding-left: 12px;
-}
-.sc-li-campaign__footnotes-item {
-  font-size: 14px;
+.sc-li-campaign__footnotes p {
+  font-size: 12px;
   font-weight: 500;
   text-align: left;
   color: #6b6e73;
-  margin-bottom: 4px;
-}
-.sc-li-campaign__disclaimer u {
-  display: inline-block;
-  margin-bottom: 4px;
-}
-.sc-li-campaign__disclaimer p {
-  font-size: 14px;
-  font-weight: 500;
-  text-align: left;
-  color: #6b6e73;
-  margin-bottom: 4px;
-}
-.sc-li-campaign__disclaimer p:last-child {
-  margin-bottom: 0;
 }
 
 .sc-policy-type-blue-wrapper {
@@ -896,8 +870,8 @@ p {
   font-weight: 700;
 }
 .sc-policy-content-with-icons__item-text--bld-text {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 600;
 }
 .sc-policy-content-with-icons__item-text--with-check-icon {
   display: flex;

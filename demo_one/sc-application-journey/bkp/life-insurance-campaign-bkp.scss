@@ -171,6 +171,13 @@ p {
   &__graph {
     padding: 0 10px;
     margin-top: 10px;
+    .sc-btn {
+      font-size: 16px;
+      font-weight: 500;
+      max-width: 170px;
+      width: 100%;
+      height: 40px;
+    }
   }
   &__chart {
     min-width: 250px;
@@ -467,6 +474,9 @@ p {
       margin-right: auto !important;
     }
   }
+  // &__policy-type-card-splide-track {
+  //   padding-left: 15px !important;
+  // }
 
   // list__card-box
   &__policy-type-card-box {
@@ -527,6 +537,7 @@ p {
   &__policy-type-card-details {
     display: flex;
     flex-direction: column;
+    // align-items: center;
     align-self: stretch;
     padding: 16px;
   }
@@ -689,59 +700,44 @@ p {
   // _footnotes
   &__footnotes {
     padding: 40px 0 0 0;
-    font-size: 12px;
+  }
+  &__footnotes-title {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: $color-dark;
+    margin-bottom: 6px;
+  }
+  &__footnotes-items {
+    list-style: decimal;
+    padding-left: 12px;
+  }
+  &__footnotes-item {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: $color-grey-medium-7;
+    margin-bottom: 4px;
+  }
 
-    strong {
+  // campaign__disclaimer
+  &__disclaimer {
+    // padding: 6px 0 0 0;
+    u {
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    p {
       font-size: 14px;
       font-weight: 500;
       text-align: left;
-      color: $color-dark;
-    }
-
-    p {
-      font-size: 12px;
-      font-weight: 500;
-      text-align: left;
       color: $color-grey-medium-7;
+      margin-bottom: 4px;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
-  // &__footnotes-title {
-  //   font-size: 14px;
-  //   font-weight: 500;
-  //   text-align: left;
-  //   color: $color-dark;
-  //   margin-bottom: 6px;
-  // }
-  // &__footnotes-items {
-  //   list-style: decimal;
-  //   padding-left: 12px;
-  // }
-  // &__footnotes-item {
-  //   font-size: 12px;
-  //   font-weight: 500;
-  //   text-align: left;
-  //   color: $color-grey-medium-7;
-  //   margin-bottom: 4px;
-  // }
-
-  // campaign__disclaimer
-  // &__disclaimer {
-  //   padding: 6px 0 0 0;
-  //   u {
-  //     display: inline-block;
-  //     margin-bottom: 4px;
-  //   }
-  //   p {
-  //     font-size: 12px;
-  //     font-weight: 500;
-  //     text-align: left;
-  //     color: $color-grey-medium-7;
-  //     margin-bottom: 4px;
-  //     &:last-child {
-  //       margin-bottom: 0;
-  //     }
-  //   }
-  // }
 }
 
 // sc-policy-type-blue-wrapper
@@ -824,8 +820,8 @@ p {
       font-weight: 700;
     }
     &--bld-text {
-      font-size: 22px;
-      font-weight: 600;
+      font-size: 24px;
+      font-weight: 700;
     }
     &--with-check-icon {
       display: flex;
@@ -1272,3 +1268,12 @@ p {
     }
   }
 }
+
+// max 420
+// @include breakpoint($bp--a-max-420) {
+//   .sc-li-campaign {
+//     &__policy-type-card-splide-track {
+//       padding-left: 10px !important;
+//     }
+//   }
+// }
