@@ -682,13 +682,17 @@ p {
   // bottom section
   &__policy-type-bottom-content {
     margin-top: 15px;
-  }
-  &__policy-type-bottom-txt {
     font-size: 12px;
     font-weight: 400;
     text-align: left;
     color: #6b6e73;
   }
+  // &__policy-type-bottom-txt {
+  //   font-size: 12px;
+  //   font-weight: 400;
+  //   text-align: left;
+  //   color: #6b6e73;
+  // }
 
   // _footnotes
   &__footnotes {
