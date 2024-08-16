@@ -312,7 +312,8 @@ class scInsuranceCampaign {
           text: "",
         },
         tooltip: {
-          pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+          format: "{series.name}<br>{key}: <b>{point.y}%</b>",
+          shared: true,
         },
         accessibility: {
           point: {
@@ -328,6 +329,13 @@ class scInsuranceCampaign {
               enabled: false,
             },
             showInLegend: true,
+            point: {
+              events: {
+                legendItemClick: function () {
+                  return false;
+                },
+              },
+            },
           },
         },
         legend: {
@@ -730,7 +738,7 @@ class scInsuranceCampaign {
         this.ctaClick(event);
         setTimeout(() => {
           let formstatus = this.statusModal(true);
-          if(formstatus) {
+          if (formstatus) {
             this.handleInsuranceFormSubmit(formstatus);
           }
         }, 2000);
@@ -753,6 +761,7 @@ class scInsuranceCampaign {
         this.ctaClick(event);
         setTimeout(() => {
           this.statusModal(false);
+          delete window.digitalData.form;
         }, 2000);
       });
   }
@@ -794,9 +803,6 @@ class scInsuranceCampaign {
     const mktCountryCode = Utils.getCurrentCountry();
     this.productId = "na";
     this.pfmId = "na";
-    const formmodal = document.querySelector(".sc-li-campaign-form-modal");
-    let popupdata = JSON.parse(formmodal.dataset.popup);
-
     that.getProductIdPfm();
     window.digitalData = window.digitalData || {};
     if (window.digitalData) {
@@ -820,9 +826,7 @@ class scInsuranceCampaign {
       if (pageName.length > 1) {
         for (let i = 0; i < pageName.length; i++) {
           if (i == 7) {
-            pageNameList.push(
-              popupdata.formname ? popupdata.formname.replace(/ /g, "-") : "na"
-            );
+            pageNameList.push("na");
           } else {
             pageNameList.push(pageName[i] ? pageName[i] : "na");
           }
@@ -911,6 +915,72 @@ class scInsuranceCampaign {
     console.log("page-view dataObject", dataObject);
     window.adobeDataLayer.push(dataObject);
     // _satellite.track("page-view");
+  }
+
+  pageNameUpdate(eventName) {
+    console.log("pageNameUpdate");
+    let eventlist = [
+      "formStart_shortForm",
+      "formSubmit_shortForm",
+      "formAbandon",
+      "formError",
+      "ctaClick",
+    ];
+    let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
+      ? document
+          .querySelector('meta[name="sc:page-slug"]')
+          .getAttribute("content")
+      : null;
+    const mktCountryCode = Utils.getCurrentCountry();
+    const formmodal = document.querySelector(".sc-li-campaign-form-modal");
+    let popupdata = JSON.parse(formmodal.dataset.popup);
+
+    //Push form name and page name in digitalData
+    // if (window.digitalData.hasOwnProperty("form")) {
+    if (
+      window.digitalData.page.pageInfo &&
+      window.digitalData.page.pageInfo.pageName
+    ) {
+      //Set na if pageName are empty
+      let pageName = window.digitalData.page.pageInfo.pageName;
+      pageName = pageName.split(":");
+      let pageNameList = [];
+      console.log("event: ", window.digitalData.event);
+      if (pageName.length > 1) {
+        for (let i = 0; i < pageName.length; i++) {
+          if (i == 7) {
+            console.log("event:", eventName, eventlist.includes(eventName));
+            if (
+              eventlist.includes(eventName) &&
+              window.digitalData.hasOwnProperty("form")
+            ) {
+              pageNameList.push(
+                popupdata.formname
+                  ? popupdata.formname.replace(/ /g, "-")
+                  : "na"
+              );
+            } else {
+              pageNameList.push("na");
+            }
+          } else {
+            pageNameList.push(pageName[i] ? pageName[i] : "na");
+          }
+        }
+      }
+
+      if (pageName.length <= 8) {
+        if (mktCountryCode == "hk") {
+          //Screen Name field in CMS is used if filled, in HK.
+          pageNameList.push(
+            pageName[pageName.length - 1] ? pageName[pageName.length - 1] : "na"
+          );
+        } else {
+          pageNameList.push(pageSlug);
+        }
+      }
+      window.digitalData.page.pageInfo.pageName = pageNameList.join(":");
+    }
+    // }
   }
 
   /**
@@ -1053,6 +1123,7 @@ class scInsuranceCampaign {
 
   ctaClick(event) {
     const that = this;
+    that.pageNameUpdate("ctaClick");
     let closestAnchor = event.target.closest("a");
     let customLinkText = event.target.innerText
       ? event.target.innerText.trim().toLowerCase()
@@ -1068,6 +1139,7 @@ class scInsuranceCampaign {
     let ctaName = event.target.getAttribute("title");
 
     console.log(ctaName);
+
     // status ok popup click
     if (ctaName.toLowerCase() == "ok") {
       const errorModal = document.querySelector(".sc-error-modal");
@@ -1140,6 +1212,7 @@ class scInsuranceCampaign {
   handelFormStartShortForm(data) {
     if (typeof window.adobeDataLayer !== "undefined") {
       window.digitalData.form = {};
+      this.pageNameUpdate("formStart_shortForm");
       let dataObject = {
         ...digitalData,
         event: "formStart_shortForm",
@@ -1163,6 +1236,7 @@ class scInsuranceCampaign {
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
+    this.pageNameUpdate("formSubmit_shortForm");
 
     let dataObject = {
       ...JSON.parse(JSON.stringify(digitalData)),
@@ -1183,6 +1257,7 @@ class scInsuranceCampaign {
    */
   handleFormAbandon(field) {
     if (typeof window.adobeDataLayer !== "undefined") {
+      this.pageNameUpdate("formAbandon");
       let dataObject = {
         ...JSON.parse(JSON.stringify(digitalData)),
         event: "formAbandon",
@@ -1199,6 +1274,7 @@ class scInsuranceCampaign {
    */
   handleFormError(err) {
     if (typeof window.adobeDataLayer !== "undefined") {
+      this.pageNameUpdate("formError");
       let error = [
         {
           errorCode: err.code || "na",
