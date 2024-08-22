@@ -10,7 +10,7 @@ class scInsuranceCampaign {
   init() {
     const that = this;
     document.addEventListener("DOMContentLoaded", function () {
-      // event Click for learnmore
+      // event Click for view product brochure
       const learnmore = document.querySelectorAll(
         ".sc-li-campaign__policy-type-learn-more"
       );
@@ -47,6 +47,26 @@ class scInsuranceCampaign {
           console.log("event Click", event.target);
           that.ctaClick(event);
           that.activeModal(event);
+        });
+      });
+
+      // event Click for learnmore button
+      const learnmorebtn = document.querySelectorAll(
+        ".sc-li-campaign__learn-more-btn"
+      );
+      learnmorebtn.forEach((el) => {
+        el.addEventListener("mousedown", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log("event Click", event.target);
+          that.ctaClick(event);
+          // Get the target ID from the button's data attribute
+          var targetId = this.getAttribute("data-target");
+          var target = document.getElementById(targetId);
+          if (target) {
+            // Scroll to the target element with smooth behavior
+            target.scrollIntoView({ behavior: "smooth" });
+          }
         });
       });
 

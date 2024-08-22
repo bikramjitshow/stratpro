@@ -446,7 +446,10 @@
         </div>
       </div>
 
-      <!-- Persona -->
+      <!-- 
+      Persona 
+      "data-persona" use for persona tab active should not change the value
+      -->
       <div class="sc-li-campaign__persona">
         <div class="sc-li-campaign__persona-content">
           <h2 class="sc-li-campaign__persona-heading">我需要什麼保障？</h2>
@@ -456,7 +459,7 @@
         </div>
         <div class="sc-li-campaign__persona-btns">
           <a href="#null" class="sc-li-campaign__persona-btn sc-li-campaign__persona-btn-active"
-            title="Young Generation Tab" data-persona="young">
+            title="年輕一代" data-persona="young">
             <span class="sc-li-campaign__persona-btn-icon">
               <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -464,9 +467,9 @@
                   fill="#6B6E73" />
               </svg>
             </span>
-            Young Generation
+            年輕一代
           </a>
-          <a href="#null" class="sc-li-campaign__persona-btn" title="Family Tab" data-persona="family">
+          <a href="#null" class="sc-li-campaign__persona-btn" title="愛家一族" data-persona="family">
             <span class="sc-li-campaign__persona-btn-icon">
               <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -474,9 +477,9 @@
                   fill="#6B6E73" />
               </svg>
             </span>
-            Family
+            愛家一族
           </a>
-          <a href="#null" class="sc-li-campaign__persona-btn" title="Golden Age Tab" data-persona="golden">
+          <a href="#null" class="sc-li-campaign__persona-btn" title="黃金歲月" data-persona="golden">
             <span class="sc-li-campaign__persona-btn-icon">
               <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -484,12 +487,15 @@
                   fill="#6B6E73" />
               </svg>
             </span>
-            Golden Age
+            黃金歲月
           </a>
         </div>
       </div>
 
-      <!-- content-box -->
+      <!-- 
+      content-box 
+      "data-content" use for persona tab active should not change the value
+       -->
       <div class="sc-li-campaign__content-box">
         <!-- content-box 1 -->
         <div class="sc-li-campaign__content-box-item" data-content="young">
@@ -511,19 +517,18 @@
           "title": "醫療保障",
           "value": 1
         }
-      }' data-series-name="Young Generation">
+      }' data-series-name="年輕一代">
             <div class="sc-li-campaign__graph-wrapper">
               <figure class="sc-li-campaign__highcharts-figure">
                 <div id="persona_graph_1" class="sc-li-campaign__chart"></div>
               </figure>
               <div class="sc-li-campaign__graph-content-wrap">
                 <p class="sc-li-campaign__graph-content">
-                  No matter single or married, both focus on Savings & Annuity
-                  and Critical Illness in terms of protectioin.
+                  無論你處於單身或已婚，同樣需要有保障成分的儲蓄年金及危疾保險。
                 </p>
               </div>
-              <a href="/hk/promotions/insurance/mobile-campaign" target="_blank" class="sc-btn sc-btn--blue-secondary"
-                title="Learn more - Young Generation Tab">Learn More</a>
+              <a href="#null" class="sc-btn sc-btn--blue-secondary sc-li-campaign__learn-more-btn" data-target="young-policy"
+                title="了解更多 - 年輕一代">了解更多</a>
             </div>
           </div>
           <!-- Welcome offer statement -->
@@ -556,7 +561,7 @@
               </p>
             </div>
             <!-- filter -->
-            <div class="sc-li-campaign__policy-type-filter">
+            <div class="sc-li-campaign__policy-type-filter" id="young-policy">
               <div class="splide sc-li-campaign__policy-type-splide" data-splide='{
               "trimSpace": "move",
               "pagination": false,
@@ -2711,19 +2716,18 @@
           "title": "醫療保障",
           "value": 1
         }
-      }' data-series-name="Family">
+      }' data-series-name="愛家一族">
             <div class="sc-li-campaign__graph-wrapper">
               <figure class="sc-li-campaign__highcharts-figure">
                 <div id="persona_graph_2" class="sc-li-campaign__chart"></div>
               </figure>
               <div class="sc-li-campaign__graph-content-wrap">
                 <p class="sc-li-campaign__graph-content">
-                  No matter single or married, both focus on Savings & Annuity
-                  and Critical Illness in terms of protectioin.
+                  無論你處於單身或已婚，同樣需要有保障成分的儲蓄年金及危疾保險。
                 </p>
               </div>
-              <a href="/hk/promotions/insurance/mobile-campaign" target="_blank" class="sc-btn sc-btn--blue-secondary"
-                title="Learn more - Family Tab">Learn More</a>
+              <a href="#null" class="sc-btn sc-btn--blue-secondary sc-li-campaign__learn-more-btn" data-target="family-policy"
+                title="了解更多 - 愛家一族">了解更多</a>
             </div>
           </div>
           <!-- Welcome offer statement -->
@@ -2756,7 +2760,7 @@
               </p>
             </div>
             <!-- filter -->
-            <div class="sc-li-campaign__policy-type-filter">
+            <div class="sc-li-campaign__policy-type-filter" id="family-policy">
               <div class="splide sc-li-campaign__policy-type-splide" data-splide='{
               "trimSpace": "move",
               "pagination": false,
@@ -4944,19 +4948,18 @@
           "title": "醫療保障",
           "value": 3
         }
-      }' data-series-name="Golden Age">
+      }' data-series-name="黃金歲月">
             <div class="sc-li-campaign__graph-wrapper">
               <figure class="sc-li-campaign__highcharts-figure">
                 <div id="persona_graph_3" class="sc-li-campaign__chart"></div>
               </figure>
               <div class="sc-li-campaign__graph-content-wrap">
                 <p class="sc-li-campaign__graph-content">
-                  No matter single or married, both focus on Savings & Annuity
-                  and Critical Illness in terms of protectioin.
+                  無論你處於單身或已婚，同樣需要有保障成分的儲蓄年金及危疾保險。
                 </p>
               </div>
-              <a href="/hk/promotions/insurance/mobile-campaign" target="_blank" class="sc-btn sc-btn--blue-secondary"
-                title="Learn more - Golden Age Tab">Learn More</a>
+              <a href="#null" class="sc-btn sc-btn--blue-secondary sc-li-campaign__learn-more-btn" data-target="golden-policy"
+                title="了解更多 -黃金歲月">了解更多</a>
             </div>
           </div>
           <!-- Welcome offer statement -->
@@ -4989,7 +4992,7 @@
               </p>
             </div>
             <!-- filter -->
-            <div class="sc-li-campaign__policy-type-filter">
+            <div class="sc-li-campaign__policy-type-filter" id="golden-policy">
               <div class="splide sc-li-campaign__policy-type-splide" data-splide='{
                 "trimSpace": "move",
                 "pagination": false,
@@ -7191,25 +7194,25 @@
               </div>
               <div class="sc-radio-box sc-li-campaign-form__checkbox">
                 <input type="checkbox" class="sc-radio-box__input" id="check_2" tabindex="-1" name="check"
-                  value="The critical illness plans" />
+                  value="危疾保險" />
                 <label class="sc-radio-box__input-label" for="check_2" tabindex="0"
-                  data-label="The critical illness plans">
-                  The critical illness plans
+                  data-label="危疾保險">
+                  危疾保險
                 </label>
               </div>
               <div class="sc-radio-box sc-li-campaign-form__checkbox">
                 <input type="checkbox" class="sc-radio-box__input" id="check_3" tabindex="-1" name="check"
-                  value="The savings plans" />
-                <label class="sc-radio-box__input-label" for="check_3" tabindex="0" data-label="The savings plans">
-                  The savings plans
+                  value="儲蓄保險" />
+                <label class="sc-radio-box__input-label" for="check_3" tabindex="0" data-label="儲蓄保險">
+                  儲蓄保險
                 </label>
               </div>
               <div class="sc-radio-box sc-li-campaign-form__checkbox">
                 <input type="checkbox" class="sc-radio-box__input" id="check_4" tabindex="-1" name="check"
-                  value="The life insurance plans" />
+                  value="人壽保險" />
                 <label class="sc-radio-box__input-label" for="check_4" tabindex="0"
-                  data-label="The life insurance plans">
-                  The life insurance plans
+                  data-label="人壽保險">
+                  人壽保險
                 </label>
               </div>
               <div class="sc-radio-box sc-li-campaign-form__checkbox">
@@ -7307,11 +7310,11 @@ Production
 <script src="https://assets.adobedtm.com/61284d7ff227/d5d3b7b9040a/launch-EN4f4fb118cbd448198dc295c82bd62dd0-staging.min.js" async></script>
 <script src="https://assets.adobedtm.com/61284d7ff227/d5d3b7b9040a/launch-ENa7eb1ee509d342d08c584f8573a369b3.min.js" async></script> -->
 
-  <!-- <script src="./scripts/highcharts.src.js"></script>
+  <script src="./scripts/highcharts.src.js"></script>
 <script src="./scripts/sc-common-methods.js"></script>
-<script src="./scripts/life-insurance-campaign.js"></script> -->
+<script src="./scripts/life-insurance-campaign.js"></script>
 
-  <script src="./sc-insurance-campaign.min.js"></script>
+  <!-- <script src="./sc-insurance-campaign.min.js"></script> -->
 
   <div class="helper-svg-gradients">
     <svg width="100px" height="100px" viewBox="0 0 100 100">
