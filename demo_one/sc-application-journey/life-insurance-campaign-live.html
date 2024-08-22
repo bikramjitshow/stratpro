@@ -449,7 +449,10 @@
         </div>
       </div>
 
-      <!-- Persona -->
+      <!-- 
+      Persona 
+      "data-persona" use for persona tab active should not change the value
+      -->
       <div class="sc-li-campaign__persona">
         <div class="sc-li-campaign__persona-content">
           <h2 class="sc-li-campaign__persona-heading">
@@ -495,7 +498,10 @@
         </div>
       </div>
 
-      <!-- content-box -->
+      <!-- 
+      content-box 
+      "data-content" use for persona tab active should not change the value
+       -->
       <div class="sc-li-campaign__content-box">
         <!-- content-box 1 -->
         <div class="sc-li-campaign__content-box-item" data-content="young">
@@ -528,8 +534,8 @@
                   and Critical Illness in terms of protection.
                 </p>
               </div>
-              <a href="/hk/promotions/insurance/mobile-campaign" target="_blank" class="sc-btn sc-btn--blue-secondary"
-                title="Learn more - Young Generation Tab">Learn More</a>
+              <a href="#null" class="sc-btn sc-btn--blue-secondary sc-li-campaign__learn-more-btn"
+                data-target="young-policy" title="Learn more - Young Generation Tab">Learn More</a>
             </div>
           </div>
           <!-- Welcome offer statement -->
@@ -566,7 +572,7 @@
               </p>
             </div>
             <!-- filter -->
-            <div class="sc-li-campaign__policy-type-filter">
+            <div class="sc-li-campaign__policy-type-filter" id="young-policy">
               <div class="splide sc-li-campaign__policy-type-splide" data-splide='{
               "trimSpace": "move",
               "pagination": false,
@@ -3118,8 +3124,8 @@
                   and Critical Illness in terms of protection.
                 </p>
               </div>
-              <a href="/hk/promotions/insurance/mobile-campaign" target="_blank" class="sc-btn sc-btn--blue-secondary"
-                title="Learn more - Family Tab">Learn More</a>
+              <a href="#null" class="sc-btn sc-btn--blue-secondary sc-li-campaign__learn-more-btn"
+                data-target="family-policy" title="Learn more - Family Tab">Learn More</a>
             </div>
           </div>
           <!-- Welcome offer statement -->
@@ -3156,7 +3162,7 @@
               </p>
             </div>
             <!-- filter -->
-            <div class="sc-li-campaign__policy-type-filter">
+            <div class="sc-li-campaign__policy-type-filter" id="family-policy">
               <div class="splide sc-li-campaign__policy-type-splide" data-splide='{
               "trimSpace": "move",
               "pagination": false,
@@ -5753,8 +5759,8 @@
                   and Critical Illness in terms of protection.
                 </p>
               </div>
-              <a href="/hk/promotions/insurance/mobile-campaign" target="_blank" class="sc-btn sc-btn--blue-secondary"
-                title="Learn more - Golden Age Tab">Learn More</a>
+              <a href="#null" class="sc-btn sc-btn--blue-secondary sc-li-campaign__learn-more-btn"
+                data-target="golden-policy" title="Learn more - Golden Age Tab">Learn More</a>
             </div>
           </div>
           <!-- Welcome offer statement -->
@@ -5791,7 +5797,7 @@
               </p>
             </div>
             <!-- filter -->
-            <div class="sc-li-campaign__policy-type-filter">
+            <div class="sc-li-campaign__policy-type-filter" id="golden-policy">
               <div class="splide sc-li-campaign__policy-type-splide" data-splide='{
                 "trimSpace": "move",
                 "pagination": false,
@@ -8504,11 +8510,11 @@ Production
 <script src="https://assets.adobedtm.com/61284d7ff227/d5d3b7b9040a/launch-EN4f4fb118cbd448198dc295c82bd62dd0-staging.min.js" async></script>
 <script src="https://assets.adobedtm.com/61284d7ff227/d5d3b7b9040a/launch-ENa7eb1ee509d342d08c584f8573a369b3.min.js" async></script> -->
 
-  <!-- <script src="./scripts/highcharts.src.js"></script>
-<script src="./scripts/sc-common-methods.js"></script>
-<script src="./scripts/life-insurance-campaign.js"></script> -->
+  <script src="./scripts/highcharts.src.js"></script>
+  <script src="./scripts/sc-common-methods.js"></script>
+  <script src="./scripts/life-insurance-campaign.js"></script>
 
-  <script src="./sc-insurance-campaign.min.js"></script>
+  <!-- <script src="./sc-insurance-campaign.min.js"></script> -->
 
   <div class="helper-svg-gradients">
     <svg width="100px" height="100px" viewBox="0 0 100 100">
