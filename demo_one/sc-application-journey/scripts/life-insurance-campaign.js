@@ -605,16 +605,16 @@ class scInsuranceCampaign {
   }
 
   // Function to extract checkbox Names
-  getCheckboxNames(container) {
-    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-    let names = [];
-    checkboxes.forEach((checkbox, i) => {
-      if (checkbox.checked) {
-        names.push(`${checkbox.name}_${i + 1}`);
-      }
-    });
-    return names.join("|");
-  }
+  // getCheckboxNames(container) {
+  //   const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+  //   let names = [];
+  //   checkboxes.forEach((checkbox, i) => {
+  //     if (checkbox.checked) {
+  //       names.push(`${checkbox.name}_${i + 1}`);
+  //     }
+  //   });
+  //   return names.join("|");
+  // }
 
   // Function to extract checkbox values
   getCheckboxValues(container) {
@@ -696,6 +696,7 @@ class scInsuranceCampaign {
       // Add field name to the set to track it
       this.existingFieldNames.add(fieldTitle);
     });
+    console.log("formdata",formdata)
     return formdata;
   }
 
@@ -1161,7 +1162,7 @@ class scInsuranceCampaign {
     console.log(ctaName);
 
     // status ok popup click
-    if (ctaName.toLowerCase() == "ok") {
+    if (ctaName.toLowerCase() == "ok" || ctaName.toLowerCase() == "確定") {
       const errorModal = document.querySelector(".sc-error-modal");
       let errorModalStatus = JSON.parse(errorModal.dataset.formStatus);
       let pageName = window.digitalData.page.pageInfo.pageName.split(":");
@@ -1181,9 +1182,10 @@ class scInsuranceCampaign {
     }
 
     //  submit cta click
-    if (ctaName.toLowerCase() == "submit") {
+    if (ctaName.toLowerCase() == "submit" || ctaName.toLowerCase() == "遞交") {
       console.log("ctaName == submit");
       let formData = that.buildFormData();
+      console.log("formData",formData)
       if (formData && window.digitalData.products) {
         window.digitalData.products.forEach((item, index) => {
           window.digitalData.products[index].productFields = [];
