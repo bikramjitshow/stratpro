@@ -1158,11 +1158,12 @@ class scInsuranceCampaign {
         ? document.querySelector("title").innerText.toLowerCase()
         : "na";
     let ctaName = event.target.getAttribute("title");
+    let ctaClass = event.target.classList;
 
-    console.log(ctaName);
+    console.log(ctaName, ctaClass);
 
-    // status ok popup click
-    if (ctaName.toLowerCase() == "ok" || ctaName.toLowerCase() == "確定") {
+    // status ok popup click sc-error-modal__alert-close
+    if (event.target.classList.contains("sc-error-modal__alert-close")) {
       const errorModal = document.querySelector(".sc-error-modal");
       let errorModalStatus = JSON.parse(errorModal.dataset.formStatus);
       let pageName = window.digitalData.page.pageInfo.pageName.split(":");
@@ -1181,8 +1182,8 @@ class scInsuranceCampaign {
       }
     }
 
-    //  submit cta click
-    if (ctaName.toLowerCase() == "submit" || ctaName.toLowerCase() == "遞交") {
+    //  submit cta click sc-li-campaign-form__submit-btn
+    if (event.target.classList.contains("sc-li-campaign-form__submit-btn")) {
       console.log("ctaName == submit");
       let formData = that.buildFormData();
       console.log("formData",formData)
