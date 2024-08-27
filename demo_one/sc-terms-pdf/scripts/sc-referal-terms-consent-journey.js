@@ -4,6 +4,7 @@ class referalTermsConsentJourney {
   }
   init() {
     document.addEventListener("DOMContentLoaded", function () {
+      console.log("referalTermsConsentJourney INIT !!")
       // verify modal active
       document.body.addEventListener("click", function (event) {
         let closestAnchor = event.target.closest("a");
