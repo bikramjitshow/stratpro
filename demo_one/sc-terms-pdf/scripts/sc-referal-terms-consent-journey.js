@@ -3,8 +3,9 @@ class referalTermsConsentJourney {
     let lastAccessedField = null;
   }
   init() {
+    const that = this;
     document.addEventListener("DOMContentLoaded", function () {
-      console.log("referalTermsConsentJourney INIT !!")
+      console.log("referalTermsConsentJourney INIT !!");
       // verify modal active
       document.body.addEventListener("click", function (event) {
         let closestAnchor = event.target.closest("a");
@@ -19,8 +20,8 @@ class referalTermsConsentJourney {
           if (!localStorage.getItem("mtextcontentId")) {
             localStorage.setItem("mtextcontentId", mtextcontentId);
           }
-          this.activeScrollToBottom(modalredirecturl, mtextcontentId);
-          this.activeDownloadButton();
+          that.activeScrollToBottom(modalredirecturl, mtextcontentId);
+          that.activeDownloadButton();
         }
       });
     });
@@ -28,6 +29,7 @@ class referalTermsConsentJourney {
 
   // activeScrollToBottom on modal active
   activeScrollToBottom(toredirect, mtextcontentId) {
+    console.log("activeScrollToBottom !!", toredirect, mtextcontentId);
     var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
     var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
     var modalClose = document.querySelector(".sc-prod-col-terms-modal__close");
@@ -96,6 +98,7 @@ class referalTermsConsentJourney {
 
   // activeDownloadButton on modal active
   activeDownloadButton() {
+    console.log("activeDownloadButton !!");
     // Download function
     let downloadPdf = (pdfurl, filename) => {
       // Fetch the PDF file and force download
