@@ -368,6 +368,11 @@ class scInsuranceCampaign {
           symbolWidth: 14,
           symbolRadius: 2,
           width: "50%",
+          title: {
+            style: {
+              color: "#fe0"
+            }
+        },
           itemStyle: {
             fontSize: "12px",
             fontWeight: "400",

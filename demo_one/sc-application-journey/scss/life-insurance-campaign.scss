@@ -235,6 +235,12 @@ p {
   }
   &__wo-content {
     padding-right: 20px;
+    p {
+      margin-bottom: 4px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
   &__wo-title {
     font-size: 14px;
