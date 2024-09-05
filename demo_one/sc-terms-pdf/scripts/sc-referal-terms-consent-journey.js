@@ -32,6 +32,9 @@ class referalTermsConsentJourney {
     console.log("activeScrollToBottom !!", toredirect, mtextcontentId);
     var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
     var scrollbtnlastTitle = scrollbtn.getAttribute("data-last-title");
+    var downloadButton = document.querySelector(
+      ".sc-products-tile__download-button"
+    );
     var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
     var modalClose = document.querySelector(".sc-prod-col-terms-modal__close");
     var redirectUrl = toredirect;
@@ -90,9 +93,10 @@ class referalTermsConsentJourney {
 
         if (clickCount >= totalSteps) {
           // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
+          downloadButton.style.display = "none";
           scrollbtn.setAttribute("title", scrollbtnlastTitle);
           scrollbtn.children[0].innerText = scrollbtnlastTitle;
-
+          scrollbtn.children[1].innerText = scrollbtnlastTitle;
           manualScrollDetected = true;
         }
       }
