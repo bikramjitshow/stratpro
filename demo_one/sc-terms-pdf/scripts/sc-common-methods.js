@@ -74,6 +74,22 @@ class ScCommonMethods {
     t--;
     return (-c / 2) * (t * (t - 2) - 1) + b;
   }
+  /**
+   * return absolute position of selected div in px
+   * @param {String} element class elements name as an object
+   * @return {Number} return horizontal position in px
+   * @example
+   * getPosition('.selector')
+   */
+  getPosition(element) {
+    if (!element) return '';
+    let yPosition = 0;
+    while (element) {
+      yPosition += element.offsetTop - element.scrollTop + element.clientTop;
+      element = element.offsetParent;
+    }
+    return yPosition;
+  }
 }
 
 const instance3 = new ScCommonMethods();

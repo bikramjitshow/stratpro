@@ -14,7 +14,7 @@ class referalTermsConsentJourney {
           .getAttribute("data-modal-id");
         let modalAttr = closestAnchor.getAttribute("data-modal-source");
         let modalredirecturl = closestAnchor.getAttribute("data-redirect-url");
-        let activeModal = document.querySelector(".sc-prod-col-terms-modal");
+        let activeModal = document.querySelector(".m-text-content");
         let activeModalId = activeModal.getAttribute("data-modal-id");
         if (modalAttr === activeModalId) {
           if (!localStorage.getItem("mtextcontentId")) {
