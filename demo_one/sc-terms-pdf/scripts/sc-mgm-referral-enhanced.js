@@ -9,7 +9,6 @@ class ScMgmReferralEnhanced {
 
   init() {
     const that = this;
-    console.log("referalTermsConsentJourney INIT !!");
     that.productTile = document.querySelector(".sc-product-tiles");
     if (!that.productTile) return;
 
@@ -134,8 +133,11 @@ class ScMgmReferralEnhanced {
           if (ctaTitle) {
             that.triggerPopupViewedTagging(ctaTitle.trim());
           }
-
+        } else if (
+          event.target.classList.contains(".sc-products-tile__scroll-step")
+        ) {
           // verify modal active
+          console.log("referalTermsConsentJourney INIT !!");
           let mtextcontentId = event.target
             .closest(".m-text-content")
             .getAttribute("data-modal-id");
@@ -151,10 +153,10 @@ class ScMgmReferralEnhanced {
       }
     });
 
+    that.activeDownloadButton();
     that.handleSticky();
     that.handleReferId();
     that.updateLinkHref();
-    that.activeDownloadButton();
   }
 
   handleSticky() {
@@ -781,8 +783,8 @@ class ScMgmReferralEnhanced {
     console.log(downloadButton);
     downloadButton.addEventListener("click", function (event) {
       event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
+      // event.stopPropagation();
+      // event.stopImmediatePropagation();
       let closestAnchor = event.target.closest("a");
       let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
       // URL of the PDF
