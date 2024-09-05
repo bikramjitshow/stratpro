@@ -91,6 +91,8 @@ class referalTermsConsentJourney {
         if (clickCount >= totalSteps) {
           // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
           scrollbtn.setAttribute("title", scrollbtnlastTitle);
+          scrollbtn.children[0].innerText = scrollbtnlastTitle;
+
           manualScrollDetected = true;
         }
       }
