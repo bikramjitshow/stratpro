@@ -109,7 +109,6 @@ class ScMgmReferralEnhanced {
 
     //Handle modal close event
     document.body.addEventListener("click", function (event) {
-      console.log("event---", event.target);
       if (modalOpen) {
         let anchor = event.target.closest("a");
         if (
@@ -133,27 +132,11 @@ class ScMgmReferralEnhanced {
           if (ctaTitle) {
             that.triggerPopupViewedTagging(ctaTitle.trim());
           }
-        } else if (
-          event.target.classList.contains(".sc-products-tile__scroll-step")
-        ) {
-          // verify modal active
-          console.log("referalTermsConsentJourney INIT !!");
-          let mtextcontentId = event.target
-            .closest(".m-text-content")
-            .getAttribute("data-modal-id");
-          let modalAttr = anchor.getAttribute("data-modal-source");
-          let modalredirecturl = anchor.getAttribute("data-redirect-url");
-          if (modalAttr === mtextcontentId) {
-            // if (!localStorage.getItem("mtextcontentId")) {
-            //   localStorage.setItem("mtextcontentId", mtextcontentId);
-            // }
-            that.activeScrollToBottom(modalredirecturl, mtextcontentId);
-          }
         }
       }
     });
 
-    that.activeDownloadButton();
+    that.termsModalActive();
     that.handleSticky();
     that.handleReferId();
     that.updateLinkHref();
@@ -662,15 +645,69 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    const newHref = checkedRadio
-      ?.closest("label")
-      .getAttribute("data-card-link");
-    applyNowLinks.forEach(function (link) {
-      link.setAttribute("href", newHref);
+    const isTermsModal = applyNowLinks.getAttribute("data-modal-terms");
+    if (!isTermsModal) {
+      const newHref = checkedRadio
+        ?.closest("label")
+        .getAttribute("data-card-link");
+      applyNowLinks.forEach(function (link) {
+        link.setAttribute("href", newHref);
+      });
+    }
+  }
+
+  /**
+   * Terms Modal Active on init
+   * @example
+   * termsModalActive()
+   */
+  termsModalActive() {
+    const that = this;
+    console.log("termsModalActive INIT !!");
+    document.body.addEventListener("click", function (event) {
+      console.log("event2---", event.target);
+      let closestAnchor = event.target.closest("a");
+      const isTermsModal = event.target.getAttribute("data-modal-terms");
+      console.log({ isTermsModal });
+      if (isTermsModal) {
+        if (
+          closestAnchor &&
+          closestAnchor.getAttribute("href") === "#null" &&
+          event.target.classList.contains("sc-products-tile__is-pdt-selection")
+        ) {
+          setTimeout(() => {
+            let mtextcontentId = event.target
+              .closest(".m-text-content")
+              .getAttribute("data-modal-id");
+            let modalAttr = closestAnchor.getAttribute("data-modal-source");
+            let modalredirecturl =
+              closestAnchor.getAttribute("data-redirect-url");
+            let activeModal = document.querySelector(".m-text-content");
+            let activeModalId = activeModal.getAttribute("data-modal-id");
+            console.log("modalAttr---", modalAttr);
+            console.log("activeModalId---", activeModalId);
+            if (modalAttr === activeModalId) {
+              // if (!localStorage.getItem("mtextcontentId")) {
+              //   localStorage.setItem("mtextcontentId", mtextcontentId);
+              // }
+              that.activeScrollToBottom(modalredirecturl, mtextcontentId);
+              that.activeDownloadButton();
+            } else {
+              console.log("activeModalId Not matched");
+            }
+          }, 150);
+        }
+      }
     });
   }
 
-  // activeScrollToBottom on modal active
+  /**
+   * activeScrollToBottom on modal active
+   * @param {String} toredirect redirect URL
+   * @param {String} mtextcontentId active modal ID
+   * @example
+   * activeScrollToBottom(url,id)
+   */
   activeScrollToBottom(toredirect, mtextcontentId) {
     console.log("activeScrollToBottom !!", toredirect, mtextcontentId);
     var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
@@ -678,28 +715,13 @@ class ScMgmReferralEnhanced {
     var downloadButton = document.querySelector(
       ".sc-products-tile__download-button"
     );
-    var scrollableDiv = document.querySelector(".sc-prod-col-terms-modal");
-    // var modalClose = document.querySelector(".sc-prod-col-terms-modal__close");
+    var scrollableDiv = document.querySelector(".m-text-content");
     var redirectUrl = toredirect;
 
     let clickCount = 0;
     const stepsPerClick = 1; // Number of scroll steps per click
     const totalSteps = 4; // Total number of steps to scroll
     let manualScrollDetected = false;
-    // let previousMtextcontentId = localStorage.getItem("mtextcontentId");
-
-    // Check if the user has been redirected before
-    // if (localStorage.getItem("termsAccepted") === "true") {
-    //   // if (mtextcontentId !== previousMtextcontentId) {
-    //   //   localStorage.setItem("mtextcontentId", mtextcontentId);
-    //   // } else {
-    //     // modalClose.click();
-    //     setTimeout(() => {
-    //       // window.location.href = redirectUrl;
-    //       window.open(redirectUrl, '_blank');
-    //     }, 400);
-    //   // }
-    // }
 
     let scrollToBottom = (element, steps) => {
       const totalHeight = element.scrollHeight - element.clientHeight;
@@ -738,7 +760,7 @@ class ScMgmReferralEnhanced {
 
         if (clickCount >= totalSteps) {
           // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
-          downloadButton.style.display = "none";
+          downloadButton.closest("li").style.display = "none";
           scrollbtn.setAttribute("title", scrollbtnlastTitle);
           scrollbtn.children[0].innerText = scrollbtnlastTitle;
           scrollbtn.children[1].innerText = scrollbtnlastTitle;
@@ -748,7 +770,11 @@ class ScMgmReferralEnhanced {
     });
   }
 
-  // activeDownloadButton on modal active
+  /**
+   * activeDownloadButton on modal active
+   * @example
+   * activeDownloadButton()
+   */
   activeDownloadButton() {
     console.log("activeDownloadButton !!");
     // Download function
@@ -783,8 +809,8 @@ class ScMgmReferralEnhanced {
     console.log(downloadButton);
     downloadButton.addEventListener("click", function (event) {
       event.preventDefault();
-      // event.stopPropagation();
-      // event.stopImmediatePropagation();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
       let closestAnchor = event.target.closest("a");
       let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
       // URL of the PDF
