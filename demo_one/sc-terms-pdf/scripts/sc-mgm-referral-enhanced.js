@@ -109,7 +109,6 @@ class ScMgmReferralEnhanced {
 
     //Handle modal close event
     document.body.addEventListener("click", function (event) {
-      console.log("event1---", event.target);
       if (modalOpen) {
         let anchor = event.target.closest("a");
         if (
@@ -646,12 +645,15 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    const newHref = checkedRadio
-      ?.closest("label")
-      .getAttribute("data-card-link");
-    applyNowLinks.forEach(function (link) {
-      link.setAttribute("href", newHref);
-    });
+    const isTermsModal = applyNowLinks.getAttribute("data-modal-terms");
+    if (!isTermsModal) {
+      const newHref = checkedRadio
+        ?.closest("label")
+        .getAttribute("data-card-link");
+      applyNowLinks.forEach(function (link) {
+        link.setAttribute("href", newHref);
+      });
+    }
   }
 
   /**
@@ -665,32 +667,36 @@ class ScMgmReferralEnhanced {
     document.body.addEventListener("click", function (event) {
       console.log("event2---", event.target);
       let closestAnchor = event.target.closest("a");
-      if (
-        closestAnchor &&
-        closestAnchor.getAttribute("href") === "#null" &&
-        event.target.classList.contains("sc-products-tile__is-pdt-selection")
-      ) {
-        setTimeout(() => {
-          let mtextcontentId = event.target
-            .closest(".m-text-content")
-            .getAttribute("data-modal-id");
-          let modalAttr = closestAnchor.getAttribute("data-modal-source");
-          let modalredirecturl =
-            closestAnchor.getAttribute("data-redirect-url");
-          let activeModal = document.querySelector(".m-text-content");
-          let activeModalId = activeModal.getAttribute("data-modal-id");
-          console.log("modalAttr---", modalAttr);
-          console.log("activeModalId---", activeModalId);
-          if (modalAttr === activeModalId) {
-            // if (!localStorage.getItem("mtextcontentId")) {
-            //   localStorage.setItem("mtextcontentId", mtextcontentId);
-            // }
-            that.activeScrollToBottom(modalredirecturl, mtextcontentId);
-            that.activeDownloadButton();
-          } else {
-            console.log("activeModalId Not matched");
-          }
-        }, 150);
+      const isTermsModal = event.target.getAttribute("data-modal-terms");
+      console.log({ isTermsModal });
+      if (isTermsModal) {
+        if (
+          closestAnchor &&
+          closestAnchor.getAttribute("href") === "#null" &&
+          event.target.classList.contains("sc-products-tile__is-pdt-selection")
+        ) {
+          setTimeout(() => {
+            let mtextcontentId = event.target
+              .closest(".m-text-content")
+              .getAttribute("data-modal-id");
+            let modalAttr = closestAnchor.getAttribute("data-modal-source");
+            let modalredirecturl =
+              closestAnchor.getAttribute("data-redirect-url");
+            let activeModal = document.querySelector(".m-text-content");
+            let activeModalId = activeModal.getAttribute("data-modal-id");
+            console.log("modalAttr---", modalAttr);
+            console.log("activeModalId---", activeModalId);
+            if (modalAttr === activeModalId) {
+              // if (!localStorage.getItem("mtextcontentId")) {
+              //   localStorage.setItem("mtextcontentId", mtextcontentId);
+              // }
+              that.activeScrollToBottom(modalredirecturl, mtextcontentId);
+              that.activeDownloadButton();
+            } else {
+              console.log("activeModalId Not matched");
+            }
+          }, 150);
+        }
       }
     });
   }
