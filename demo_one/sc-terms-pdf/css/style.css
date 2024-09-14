@@ -175,7 +175,8 @@
   width: 100%;
 }
 .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   gap: 0;
 }
 .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
@@ -186,10 +187,15 @@
   margin-right: 0;
 }
 .sc-products-tile-terms-modal .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   row-gap: 0;
-  column-gap: 40px;
+  -webkit-column-gap: 40px;
+     -moz-column-gap: 40px;
+          column-gap: 40px;
 }
 .sc-products-tile-terms-modal .buttons li {
   width: auto;
@@ -223,7 +229,8 @@
     gap: 20px;
   }
   .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     gap: 16px;
   }
   .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
