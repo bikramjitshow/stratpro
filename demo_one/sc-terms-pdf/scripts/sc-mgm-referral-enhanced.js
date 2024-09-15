@@ -38,6 +38,8 @@ class ScMgmReferralEnhanced {
     const recommendedLit = that.productTile.getAttribute(
       "data-recommended-lite"
     );
+    that.isTermModalRequire = false;
+    that.isTermModalActive = false;
 
     if (
       !that.queryParams ||
@@ -104,6 +106,7 @@ class ScMgmReferralEnhanced {
           el.addEventListener("click", (e) => {
             modalOpen = true;
             mainModalId = el.getAttribute("data-modal-source");
+            that.isTermModalRequire = el.getAttribute("data-modal-terms");
           });
         });
       }
@@ -147,6 +150,7 @@ class ScMgmReferralEnhanced {
         //identify the term modal
         if (event.target.classList.contains("sc-products-tile__is-tc")) {
           console.log("term modal active !!");
+          that.isTermModalActive = true;
           that.termsModalActive(event);
         }
       }
@@ -155,7 +159,7 @@ class ScMgmReferralEnhanced {
     // that.termsModalActive();
     that.handleSticky();
     that.handleReferId();
-    that.updateLinkHref(0);
+    // that.updateLinkHref(0);
   }
 
   handleSticky() {
@@ -655,15 +659,17 @@ class ScMgmReferralEnhanced {
   }
 
   updateLinkHref(e) {
-    console.log(e)
+    console.log(e);
+    const that = this;
     const applyNowLinks = document.querySelectorAll(
       ".sc-products-tile__is-pdt-selection"
     );
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    const isTermsModal = applyNowLinks?.getAttribute("data-modal-terms");
-    if (!isTermsModal) {
+    // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-modal-terms");
+    console.log(that.isTermModalRequire);
+    if (!that.isTermModalRequire) {
       const newHref = checkedRadio
         ?.closest("label")
         .getAttribute("data-card-link");
@@ -680,63 +686,66 @@ class ScMgmReferralEnhanced {
    */
   termsModalActive(event) {
     const that = this;
-    that.isTermMdalActive = false;
+    that.isTermModalActive = false;
     // document.body.addEventListener("click", function (event) {
-      console.log("event2---", event.target);
-      let closestAnchor = event.target.closest("a");
-      const isTermsModal = event.target.getAttribute("data-modal-terms");
-      const checkedRadio = document.querySelector(
-        ".sc-products-tile-pdt-selection input:checked"
-      );
-      const newHref = checkedRadio
-        ?.closest("label")
-        .getAttribute("data-card-link");
-      console.log({ newHref });
-      console.log({ isTermsModal });
-      if (isTermsModal) {
-        that.isTermMdalActive = true;
-        if (
-          closestAnchor &&
-          closestAnchor.getAttribute("href") === "#null" &&
-          event.target.classList.contains("sc-products-tile__is-tc")
-        ) {
-          setTimeout(() => {
-            let mtextcontentId = event.target
-              .closest(".m-text-content")
-              .getAttribute("data-modal-id");
-            let modalAttr = closestAnchor.getAttribute("data-modal-source");
-            let modalredirecturl =
-              closestAnchor.getAttribute("data-redirect-url");
-            let activeModal = document.querySelector(".m-text-content");
-            let activeModalId = activeModal.getAttribute("data-modal-id");
-            if (modalAttr === activeModalId) {
-              if (newHref) {
-                that.activeScrollToBottom(newHref, mtextcontentId);
-              } else {
-                that.activeScrollToBottom(modalredirecturl, mtextcontentId);
-              }
-              that.activeDownloadButton();
+    console.log("event2---", event.target);
+    let closestAnchor = event.target.closest("a");
+    const checkedRadio = document.querySelector(
+      ".sc-products-tile-pdt-selection input:checked"
+    );
+    const newHref = checkedRadio
+      ?.closest("label")
+      .getAttribute("data-card-link");
+    console.log({ newHref });
+    console.log(that.isTermModalRequire);
+    if (that.isTermModalRequire) {
+      that.isTermModalActive = true;
+      if (
+        closestAnchor &&
+        closestAnchor.getAttribute("href") === "#null" &&
+        event.target.classList.contains("sc-products-tile__is-tc")
+      ) {
+        setTimeout(() => {
+          let mtextcontentId = event.target
+            .closest(".m-text-content")
+            .getAttribute("data-modal-id");
+          let modalAttr = closestAnchor.getAttribute("data-modal-source");
+          let modalredirecturl =
+            closestAnchor.getAttribute("data-redirect-url");
+          let activeModal = document.querySelector(".m-text-content");
+          let activeModalId = activeModal.getAttribute("data-modal-id");
+          if (modalAttr === activeModalId) {
+            if (newHref) {
+              that.activeScrollToBottom(newHref, mtextcontentId);
             } else {
-              console.log("activeModalId Not matched");
+              that.activeScrollToBottom(modalredirecturl, mtextcontentId);
             }
-          }, 150);
-        }
-      } else {
-        let modalAttr = closestAnchor.getAttribute("data-modal-source");
-        console.log("modalAttr", modalAttr);
-        that.activeModalDataId = modalAttr;
+            that.activeDownloadButton();
+          } else {
+            console.log("activeModalId Not matched");
+          }
+        }, 150);
       }
+    } else {
+      let modalAttr = closestAnchor.getAttribute("data-modal-source");
+      console.log("modalAttr", modalAttr);
+      that.activeModalDataId = modalAttr;
+    }
     // });
   }
 
   termsModalClosed(modalid) {
+    const that = this;
     console.log("termsModalClosed Called!", modalid);
+    that.isTermModalActive = false;
     setTimeout(function () {
       const modalId = document.querySelector(
         `[data-modal-source='${modalid}']`
       );
+      console.log("modalId--",modalId)
       if (modalId) {
         modalId.click();
+        // that.isTermModalRequire = true;
       }
     }, 300);
   }
