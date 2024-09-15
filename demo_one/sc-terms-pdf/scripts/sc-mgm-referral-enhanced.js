@@ -96,12 +96,14 @@ class ScMgmReferralEnhanced {
 
     //Handle popup open
     let modalOpen = false;
+    let mainModalId = "";
     setTimeout(() => {
       const openModals = that.productTile.querySelectorAll("a[href='#null']");
       if (openModals.length) {
         openModals.forEach(function (el) {
-          el.addEventListener("click", () => {
+          el.addEventListener("click", (e) => {
             modalOpen = true;
+            mainModalId = el.getAttribute("data-modal-source");
           });
         });
       }
@@ -111,12 +113,20 @@ class ScMgmReferralEnhanced {
     document.body.addEventListener("click", function (event) {
       if (modalOpen) {
         let anchor = event.target.closest("a");
+        let tm = document
+          .querySelector(".m-text-content")
+          .getAttribute("data-term-modal");
+
         if (
           event.target.className.indexOf("closebutton") !== -1 ||
           event.target.className.indexOf("wrapper") !== -1
         ) {
           modalOpen = false;
           that.triggerCtaClickTagging(event);
+          if (tm) {
+            console.log("term modal closed !!");
+            that.termsModalClosed(mainModalId);
+          }
         } else if (
           anchor &&
           anchor.getAttribute("href") === "#null" &&
@@ -133,13 +143,19 @@ class ScMgmReferralEnhanced {
             that.triggerPopupViewedTagging(ctaTitle.trim());
           }
         }
+
+        //identify the term modal
+        if (event.target.classList.contains("sc-products-tile__is-tc")) {
+          console.log("term modal active !!");
+          that.termsModalActive(event);
+        }
       }
     });
 
-    that.termsModalActive();
+    // that.termsModalActive();
     that.handleSticky();
     that.handleReferId();
-    that.updateLinkHref();
+    that.updateLinkHref(0);
   }
 
   handleSticky() {
@@ -591,7 +607,7 @@ class ScMgmReferralEnhanced {
       }
 
       if (event.target.closest(".sc-products-tile-pdt-selection")) {
-        that.updateLinkHref();
+        that.updateLinkHref(1);
       }
     });
 
@@ -638,14 +654,15 @@ class ScMgmReferralEnhanced {
     }
   }
 
-  updateLinkHref() {
+  updateLinkHref(e) {
+    console.log(e)
     const applyNowLinks = document.querySelectorAll(
       ".sc-products-tile__is-pdt-selection"
     );
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    const isTermsModal = applyNowLinks.getAttribute("data-modal-terms");
+    const isTermsModal = applyNowLinks?.getAttribute("data-modal-terms");
     if (!isTermsModal) {
       const newHref = checkedRadio
         ?.closest("label")
@@ -661,12 +678,10 @@ class ScMgmReferralEnhanced {
    * @example
    * termsModalActive()
    */
-  termsModalActive() {
+  termsModalActive(event) {
     const that = this;
     that.isTermMdalActive = false;
-    that.activeModalDataId = "";
-    that.productTile = document.querySelector(".sc-product-tiles");
-    document.body.addEventListener("click", function (event) {
+    // document.body.addEventListener("click", function (event) {
       console.log("event2---", event.target);
       let closestAnchor = event.target.closest("a");
       const isTermsModal = event.target.getAttribute("data-modal-terms");
@@ -695,9 +710,6 @@ class ScMgmReferralEnhanced {
             let activeModal = document.querySelector(".m-text-content");
             let activeModalId = activeModal.getAttribute("data-modal-id");
             if (modalAttr === activeModalId) {
-              // if (!localStorage.getItem("mtextcontentId")) {
-              //   localStorage.setItem("mtextcontentId", mtextcontentId);
-              // }
               if (newHref) {
                 that.activeScrollToBottom(newHref, mtextcontentId);
               } else {
@@ -710,45 +722,23 @@ class ScMgmReferralEnhanced {
           }, 150);
         }
       } else {
-        // console.log(
-        //   "first",
-        //   event.target
-        //     .closest(".button-wrapper")
-        //     .nextElementSibling.getAttribute("data-modal-id")data-term-modal
-        // );
-        console.log("first", that.activeModalDataId);
-        console.log("first", event.target.getAttribute("data-term-modal"));
-
-        if (!that.activeModalDataId) {
-          let modalAttr = closestAnchor.getAttribute("data-modal-source");
-          console.log(modalAttr);
-          that.activeModalDataId = modalAttr;
-        }
-
-        //
-        if (
-          event.target.className.indexOf("closebutton") !== -1 ||
-          event.target.className.indexOf("wrapper") !== -1
-        ) {
-          if()
-          that.isTermMdalActive = false;
-          setTimeout(function () {
-            console.log({
-              activeModalDataId: that.activeModalDataId,
-              isTermMdalActive: that.isTermMdalActive,
-            });
-            that.isTermMdalActive = false;
-            const modalId = document.querySelector(
-              `[data-modal-source='${that.activeModalDataId}']`
-            );
-            if (modalId) {
-              modalId.click();
-            }
-          }, 300);
-        } else {
-        }
+        let modalAttr = closestAnchor.getAttribute("data-modal-source");
+        console.log("modalAttr", modalAttr);
+        that.activeModalDataId = modalAttr;
       }
-    });
+    // });
+  }
+
+  termsModalClosed(modalid) {
+    console.log("termsModalClosed Called!", modalid);
+    setTimeout(function () {
+      const modalId = document.querySelector(
+        `[data-modal-source='${modalid}']`
+      );
+      if (modalId) {
+        modalId.click();
+      }
+    }, 300);
   }
 
   /**
