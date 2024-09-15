@@ -669,8 +669,6 @@ class ScMgmReferralEnhanced {
     document.body.addEventListener("click", function (event) {
       console.log("event2---", event.target);
       let closestAnchor = event.target.closest("a");
-      let modalAttr = closestAnchor.getAttribute("data-modal-source");
-      console.log(modalAttr);
       const isTermsModal = event.target.getAttribute("data-modal-terms");
       const checkedRadio = document.querySelector(
         ".sc-products-tile-pdt-selection input:checked"
@@ -712,28 +710,43 @@ class ScMgmReferralEnhanced {
           }, 150);
         }
       } else {
-         that.activeModalDataId = modalAttr;
-      }
+        // console.log(
+        //   "first",
+        //   event.target
+        //     .closest(".button-wrapper")
+        //     .nextElementSibling.getAttribute("data-modal-id")data-term-modal
+        // );
+        console.log("first", that.activeModalDataId);
+        console.log("first", event.target.getAttribute("data-term-modal"));
 
-      //
-      if (
-        that.isTermMdalActive &&
-        (event.target.className.indexOf("closebutton") !== -1 ||
-          event.target.className.indexOf("wrapper") !== -1)
-      ) {
-        setTimeout(function () {
-          console.log({
-            activeModalDataId: that.activeModalDataId,
-            isTermMdalActive: that.isTermMdalActive,
-          });
+        if (!that.activeModalDataId) {
+          let modalAttr = closestAnchor.getAttribute("data-modal-source");
+          console.log(modalAttr);
+          that.activeModalDataId = modalAttr;
+        }
+
+        //
+        if (
+          event.target.className.indexOf("closebutton") !== -1 ||
+          event.target.className.indexOf("wrapper") !== -1
+        ) {
+          if()
           that.isTermMdalActive = false;
-          const modalId = document.querySelector(
-            `[data-modal-source='${that.activeModalDataId}']`
-          );
-          if (modalId) {
-            modalId.click();
-          }
-        }, 2000);
+          setTimeout(function () {
+            console.log({
+              activeModalDataId: that.activeModalDataId,
+              isTermMdalActive: that.isTermMdalActive,
+            });
+            that.isTermMdalActive = false;
+            const modalId = document.querySelector(
+              `[data-modal-source='${that.activeModalDataId}']`
+            );
+            if (modalId) {
+              modalId.click();
+            }
+          }, 300);
+        } else {
+        }
       }
     });
   }
