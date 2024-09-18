@@ -160,6 +160,7 @@ class ScMgmReferralEnhanced {
     that.handleSticky();
     that.handleReferId();
     // that.updateLinkHref(0);
+    that.removeHref();
   }
 
   handleSticky() {
@@ -621,13 +622,18 @@ class ScMgmReferralEnhanced {
     );
     // Loop through each mobile link and attach event listeners
     mobileLinks.forEach(function (link) {
+      link.setAttribute("href", "#null");
       link.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
         if (window.innerWidth > 1024) {
           event.preventDefault();
           event.stopPropagation();
           document
             .querySelector(".sc-error-modal--apply")
             .classList.add("sc-error-modal--show");
+        } else {
+          link.setAttribute("href", "#null");
         }
       });
     });
@@ -742,7 +748,7 @@ class ScMgmReferralEnhanced {
       const modalId = document.querySelector(
         `[data-modal-source='${modalid}']`
       );
-      console.log("modalId--",modalId)
+      console.log("modalId--", modalId);
       if (modalId) {
         modalId.click();
         // that.isTermModalRequire = true;
@@ -878,6 +884,25 @@ class ScMgmReferralEnhanced {
 
       // Fetch the PDF file and force download
       downloadPdf(encodedURL, filename);
+    });
+  }
+
+  removeHref() {
+    // Get all elements with the class '.sc-products-tile__mobile-link'
+    const mobileLinks = document.querySelectorAll(
+      ".sc-products-tile__mobile-link"
+    );
+    // Loop through each mobile link and attach event listeners
+    mobileLinks.forEach(function (link) {
+      setTimeout(() => {
+        
+        link.setAttribute("href", "#null");
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          link.setAttribute("href", "#null");
+        });
+      }, 200);
     });
   }
 }
