@@ -156,11 +156,9 @@ class ScMgmReferralEnhanced {
       }
     });
 
-    // that.termsModalActive();
     that.handleSticky();
     that.handleReferId();
     // that.updateLinkHref(0);
-    that.removeHref();
   }
 
   handleSticky() {
@@ -612,7 +610,7 @@ class ScMgmReferralEnhanced {
       }
 
       if (event.target.closest(".sc-products-tile-pdt-selection")) {
-        that.updateLinkHref(1);
+        that.updateLinkHref();
       }
     });
 
@@ -664,8 +662,7 @@ class ScMgmReferralEnhanced {
     }
   }
 
-  updateLinkHref(e) {
-    console.log(e);
+  updateLinkHref() {
     const that = this;
     const applyNowLinks = document.querySelectorAll(
       ".sc-products-tile__is-pdt-selection"
@@ -884,25 +881,6 @@ class ScMgmReferralEnhanced {
 
       // Fetch the PDF file and force download
       downloadPdf(encodedURL, filename);
-    });
-  }
-
-  removeHref() {
-    // Get all elements with the class '.sc-products-tile__mobile-link'
-    const mobileLinks = document.querySelectorAll(
-      ".sc-products-tile__mobile-link"
-    );
-    // Loop through each mobile link and attach event listeners
-    mobileLinks.forEach(function (link) {
-      setTimeout(() => {
-        
-        link.setAttribute("href", "#null");
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-          event.stopPropagation();
-          link.setAttribute("href", "#null");
-        });
-      }, 200);
     });
   }
 }
