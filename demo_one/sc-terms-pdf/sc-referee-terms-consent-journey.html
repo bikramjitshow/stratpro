@@ -405,6 +405,7 @@
 <body class="page-template-default page page-id-673272" data-catch="show-overlay"
   data-allowed-params="https://av.sc.com/hk/data/whitelist-parameter/allowable/all.json" data-page-ga="1">
   <link rel="stylesheet" href="https://av.sc.com/assets/global/css/sc-error-modal.min.css" media="all" />
+
   <style>
     .sc-filter {
       padding: 8px 0;
@@ -423,6 +424,7 @@
       display: inline-flex;
       text-align: center;
       justify-content: center;
+      align-items: center;
     }
 
     .sc-filter__btn--active {
@@ -436,6 +438,25 @@
       top: 0;
       left: 0;
       z-index: 99;
+    }
+
+    .sc-filter__icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+    }
+
+    .sc-filter__icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sc-filter--border .sc-filter__btn {
+      border: 1px solid #e1e1e1;
+    }
+
+    .sc-filter--border .sc-filter__btn--active {
+      border-color: transparent;
     }
 
     .sc-radio-box {
@@ -1464,6 +1485,14 @@
       background-color: #4579ff;
     }
 
+    .sc-product-tiles .sc-tag--dark-blue {
+      background-color: #2b6685;
+    }
+
+    .sc-product-tiles .sc-filter {
+      padding: 16px 0;
+    }
+
     .sc-product-tiles .sc-filter__btn {
       padding: 4px 16px;
       min-width: 70px;
@@ -1598,6 +1627,10 @@
       flex-shrink: 0;
     }
 
+    .sc-products-tile-modal .sc-tag--dark-blue {
+      background-color: #2b6685;
+    }
+
     .sc-products-tile-modal .sc-products-tile__btn {
       padding: 0;
     }
@@ -1624,216 +1657,8 @@
       display: inline-block;
     }
 
-    .sc-product-tile-recommended {
-      max-width: 800px;
-    }
-
-    .sc-product-tile-recommended__sub-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #000;
-      margin-bottom: 16px;
-    }
-
-    .sc-product-tile-recommended__desc {
-      font-size: 14px;
-      margin-top: -8px;
-      margin-bottom: 16px;
-      color: #555;
-    }
-
-    .sc-product-tile-recommended__view-all .sc-products-tile__btn {
-      bottom: 0;
-    }
-
-    .sc-product-tile-recommended__view-all-btn {
-      color: #2772c7;
-      font-size: 14px;
-      text-align: center;
-      margin: 0 auto;
-      display: table;
-      cursor: pointer;
-      margin-top: 24px;
-      background-color: transparent;
-      border: 0;
-      border-bottom: 1px dashed #2772c7;
-      padding: 0 0 4px;
-      font-weight: 500;
-    }
-
-    .sc-product-tile-recommended .sc-products-tile-modal {
-      margin: 0;
-      background-color: #fff;
-      border: 1px solid #dfdfdf;
-      border-radius: 6px;
-      contain: paint;
+    .sc-products-tile-modal .buttons li {
       width: 100%;
-    }
-
-    .sc-product-tile-recommended .sc-products-tile-modal__pdt-top {
-      display: none;
-    }
-
-    .sc-product-tile-is-recommended .sc-products-tile__right {
-      justify-content: flex-start;
-    }
-
-    .sc-product-tile-is-recommended .sc-products-tile__btn {
-      margin-top: 0;
-    }
-
-    .sc-product-tile-is-recommended-back-btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 16px;
-      border: 0;
-      background-color: transparent;
-      padding: 0;
-      font-size: 16px;
-      font-weight: 600;
-      color: #000;
-      cursor: pointer;
-    }
-
-    .sc-product-tile-is-recommended-back-btn::before {
-      content: "";
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(87 87 87 1)'%3E%3Cpath d='M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z'%3E%3C/path%3E%3C/svg%3E");
-      width: 24px;
-      height: 24px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      margin-right: 8px;
-    }
-
-    .sc-product-tile-is-recommended-back-btn:not(.hide)~.sc-product-tiles__sub-title {
-      display: none;
-    }
-
-    .sc-products-tile-steps {
-      border: 1px solid #008738;
-      border-radius: 6px;
-      padding: 16px;
-    }
-
-    .sc-products-tile-steps__col {
-      display: flex;
-      align-items: flex-start;
-      font-size: 14px;
-      color: #191919;
-    }
-
-    .sc-products-tile-steps strong {
-      font-weight: 500;
-    }
-
-    .sc-products-tile-steps__left {
-      margin-right: 8px;
-      min-width: 20px;
-    }
-
-    .c-modal-code-input>.wrapper[data-size="theme"] .modal-content {
-      max-width: 450px;
-    }
-
-    .c-modal-code-input .sc-products-tile-modal__content {
-      margin-bottom: 40px;
-    }
-
-    .c-modal .m-text-content .sc-products-tile-modal {
-      margin-bottom: -16px;
-    }
-
-    .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,
-    .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn {
-      margin-bottom: -16px;
-    }
-
-    .c-modal .m-text-content .sc-products-tile-modal .sc-tag {
-      margin-bottom: 8px;
-    }
-
-    .sc-error-modal__alert-close:hover {
-      background-color: #2772c7;
-    }
-
-    .sc-error-modal__alert-icon svg path {
-      fill: #d0011b;
-      stroke: transparent;
-    }
-
-    .sc-error-modal__alert-title {
-      color: #d0011b;
-    }
-
-    .sc-error-modal--apply .sc-error-modal__alert-icon svg path {
-      fill: #2772c7;
-    }
-
-    .sc-error-modal--apply .sc-error-modal__alert-title {
-      color: #2772c7;
-    }
-
-    @media (min-width: 681px) {
-      .sc-product-tiles__title {
-        font-size: 30px;
-      }
-
-      .sc-product-tiles__title~.sc-product-tiles__desc {
-        font-size: 16px;
-      }
-
-      .sc-product-tiles__desc {
-        font-size: 24px;
-      }
-
-      .sc-product-tiles__sub-title {
-        font-size: 18px;
-      }
-
-      .sc-product-tiles__head-wrapper {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        display: flex;
-        align-items: flex-start;
-        column-gap: 30px;
-      }
-
-      .sc-product-tiles__wrapper {
-        gap: 24px;
-      }
-
-      .sc-product-tiles__row {
-        gap: 24px;
-        align-items: flex-start;
-        flex-direction: row;
-      }
-
-      .sc-product-tiles .sc-products-tile {
-        margin-bottom: 0;
-        max-width: calc(50% - 15px);
-        width: 100%;
-      }
-
-      .sc-products-tile-modal .sc-products-tile__btn .buttons {
-        padding: 20px;
-      }
-
-      .c-modal .m-text-content .sc-products-tile-modal {
-        margin-bottom: -24px;
-      }
-
-      .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,
-      .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn {
-        margin-bottom: -24px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .sc-product-tiles__wrapper {
-        gap: 24px;
-      }
     }
 
     .sc-mgm-referral-input {
@@ -1966,12 +1791,262 @@
       margin-left: auto;
     }
 
+    .c-modal .m-text-content .sc-products-tile-modal {
+      margin-bottom: -16px;
+    }
+
+    .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,
+    .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn {
+      margin-bottom: -16px;
+    }
+
+    .c-modal .m-text-content .sc-products-tile-modal .sc-tag {
+      margin-bottom: 8px;
+    }
+
+    .sc-error-modal__alert-close:hover {
+      background-color: #2772c7;
+    }
+
+    .sc-error-modal__alert-icon svg path {
+      fill: #d0011b;
+      stroke: transparent;
+    }
+
+    .sc-error-modal__alert-title {
+      color: #d0011b;
+    }
+
+    .sc-error-modal--apply .sc-error-modal__alert-icon svg path {
+      fill: #2772c7;
+    }
+
+    .sc-error-modal--apply .sc-error-modal__alert-title {
+      color: #2772c7;
+    }
+
+    .c-modal-code-input>.wrapper[data-size="theme"] .modal-content {
+      max-width: 450px;
+    }
+
+    .c-modal-code-input .sc-products-tile-modal__content {
+      margin-bottom: 40px;
+    }
+
     @media (min-width: 681px) {
+      .sc-product-tiles__title {
+        font-size: 30px;
+      }
+
+      .sc-product-tiles__title~.sc-product-tiles__desc {
+        font-size: 16px;
+      }
+
+      .sc-product-tiles__desc {
+        font-size: 24px;
+      }
+
+      .sc-product-tiles__sub-title {
+        font-size: 18px;
+      }
+
+      .sc-product-tiles__head-wrapper {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        display: flex;
+        align-items: flex-start;
+        column-gap: 30px;
+      }
+
+      .sc-product-tiles__wrapper {
+        gap: 24px;
+      }
+
+      .sc-product-tiles__row {
+        gap: 24px;
+        align-items: flex-start;
+        flex-direction: row;
+      }
+
+      .sc-product-tiles .sc-products-tile {
+        margin-bottom: 0;
+        max-width: calc(50% - 15px);
+        width: 100%;
+      }
+
       .sc-mgm-referral-input {
         margin-top: 0;
         min-height: auto;
       }
 
+      .sc-products-tile-modal .sc-products-tile__btn .buttons {
+        padding: 20px;
+        width: 100%;
+      }
+
+      .c-modal .m-text-content .sc-products-tile-modal {
+        margin-bottom: -24px;
+      }
+
+      .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,
+      .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn {
+        margin-bottom: -24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .sc-product-tiles__wrapper {
+        gap: 24px;
+      }
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      input:focus {
+        font-size: 16px !important;
+      }
+    }
+  </style>
+  <style>
+    .sc-product-tiles .sc-filter {
+      position: sticky;
+      top: 0;
+      height: 60px;
+      z-index: 99;
+    }
+
+    .sc-product-tiles .sc-filter--sticky .splide {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 8px 20px;
+      background-color: #fff;
+      z-index: 99;
+      width: 100%;
+      border-bottom: 1px solid #f6f6f6;
+    }
+
+    @media (min-width: 1024px) {
+      .sc-product-tiles .sc-filter--sticky .splide {
+        top: 56px;
+      }
+
+      .sc-product-tiles .sc-filter--sticky .splide__track {
+        max-width: 1340px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    .sc-product-tile-recommended {
+      max-width: 800px;
+    }
+
+    .sc-product-tile-recommended__sub-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    .sc-product-tile-recommended__desc {
+      font-size: 14px;
+      margin-top: -8px;
+      margin-bottom: 16px;
+      color: #555;
+    }
+
+    .sc-product-tile-recommended__view-all .sc-products-tile__btn {
+      bottom: 0;
+    }
+
+    .sc-product-tile-recommended__view-all-btn {
+      color: #2772c7;
+      font-size: 14px;
+      text-align: center;
+      margin: 0 auto;
+      display: table;
+      cursor: pointer;
+      margin-top: 24px;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px dashed #2772c7;
+      padding: 0 0 4px;
+      font-weight: 500;
+    }
+
+    .sc-product-tile-recommended .sc-products-tile-modal {
+      margin: 0;
+      background-color: #fff;
+      border: 1px solid #dfdfdf;
+      border-radius: 6px;
+      contain: paint;
+      width: 100%;
+    }
+
+    .sc-product-tile-recommended .sc-products-tile-modal__pdt-top {
+      display: none;
+    }
+
+    .sc-product-tile-is-recommended .sc-products-tile__right {
+      justify-content: flex-start;
+    }
+
+    .sc-product-tile-is-recommended .sc-products-tile__btn {
+      margin-top: 0;
+    }
+
+    .sc-product-tile-is-recommended-back-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 16px;
+      border: 0;
+      background-color: transparent;
+      padding: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .sc-product-tile-is-recommended-back-btn::before {
+      content: "";
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(87 87 87 1)'%3E%3Cpath d='M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z'%3E%3C/path%3E%3C/svg%3E");
+      width: 24px;
+      height: 24px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      margin-right: 8px;
+    }
+
+    .sc-product-tile-is-recommended-back-btn:not(.hide)~.sc-product-tiles__sub-title {
+      display: none;
+    }
+
+    .sc-products-tile-steps {
+      border: 1px solid #008738;
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .sc-products-tile-steps__col {
+      display: flex;
+      align-items: flex-start;
+      font-size: 14px;
+      color: #191919;
+    }
+
+    .sc-products-tile-steps strong {
+      font-weight: 500;
+    }
+
+    .sc-products-tile-steps__left {
+      margin-right: 8px;
+      min-width: 20px;
+    }
+
+    @media (min-width: 681px) {
       .sc-product-tile-recommended__sub-title {
         text-align: center;
       }
@@ -1982,9 +2057,49 @@
       }
     }
 
-    @supports (-webkit-touch-callout: none) {
-      input:focus {
-        font-size: 16px !important;
+    .sc-product-tiles-recommended {
+      margin-bottom: 32px;
+      padding: 2px;
+    }
+
+    .sc-product-tiles-recommended__title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      margin-bottom: 16px;
+    }
+
+    .sc-product-tiles-recommended .sc-products-tile {
+      position: relative;
+      border: 0;
+    }
+
+    .sc-product-tiles-recommended .sc-products-tile::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 10px;
+      padding: 2px;
+      border: 0;
+      background: linear-gradient(121deg, #2db944 0, #4478ff 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .sc-product-tiles-recommended .sc-products-tile--with-logo::after {
+      right: 2px;
+      top: 2px;
+      border-top-right-radius: 8px;
+    }
+
+    @media (min-width: 681px) {
+      .sc-product-tiles-recommended__title {
+        font-size: 18px;
       }
     }
   </style>
@@ -2004,7 +2119,7 @@
   </style>
 
   <div class="sc-product-tiles" data-query-param-code="referid" data-query-param-code-length="8"
-    data-query-param-product="p">
+    data-query-param-product="p" data-recommended-lite="true">
     <!-- This inputbox added for MGM Referral Page -->
     <div class="sc-content-wrapper sc-product-tiles__head-wrapper">
       <div class="sc-product-tiles__heading">
@@ -2042,22 +2157,33 @@
           All Referral Offers
         </a>
 
+        <!-- Recommended For you section -->
+        <div class="sc-product-tiles-recommended hide">
+          <h3 class="sc-product-tiles-recommended__title">
+            Recommended for you
+          </h3>
+          <div class="sc-product-tiles-recommended__wrapper">
+            <!-- Copy and paste sc-products-tile here through JS -->
+          </div>
+        </div>
+        <!-- Recommended For you section  END -->
+
         <h3 class="sc-product-tiles__sub-title">Latest Referral Products</h3>
         <!-- Filter -->
         <div class="sc-filter">
           <div class="splide" data-splide='{
-              "trimSpace": "move",
-              "pagination": false,
-              "gap": "16px",
-              "arrows": false,
-              "slideFocus": false,
-              "autoWidth": true,
-              "breakpoints": {
-                "680": {
-                  "gap": "8px"
-                }
-              }
-            }'>
+                  "trimSpace": "move",
+                  "pagination": false,
+                  "gap": "16px",
+                  "arrows": false,
+                  "slideFocus": false,
+                  "autoWidth": true,
+                  "breakpoints": {
+                    "680": {
+                      "gap": "8px"
+                    }
+                  }
+                }'>
             <div class="splide__track">
               <div class="splide__list">
                 <div class="splide__slide">
@@ -2080,6 +2206,11 @@
                   <a href="#null" class="sc-filter__btn" tabindex="0" title="Banking Plans"
                     data-categories="banking-plans">
                     Banking Plans
+                  </a>
+                </div>
+                <div class="splide__slide">
+                  <a href="#null" class="sc-filter__btn" tabindex="0" title="Wealth" data-categories="wealth">
+                    Wealth
                   </a>
                 </div>
               </div>
@@ -2110,11 +2241,11 @@
                   Marathon Savings Account
                 </h2>
                 <!-- <p class="sc-products-tile__desc">
-                    Enjoy up to <strong>4.8% p.a</strong>. savings rate with 3 quick steps online
-                  </p> -->
+                        Enjoy up to <strong>4.5% p.a</strong>. savings rate with 3 quick steps online
+                      </p> -->
                 <div class="sc-products-tile__cvp-list sc-list">
                   <ul>
-                    <li>Up to <strong>4.8% p.a.</strong> savings rate</li>
+                    <li>Up to <strong>4.5% p.a.</strong> savings rate</li>
                     <li>
                       Opening balance as low as <strong>HKD10,000</strong>
                     </li>
@@ -2140,7 +2271,7 @@
                           Marathon Savings Account
                         </h2>
                         <p class="sc-products-tile__desc">
-                          Enjoy up to <strong>4.8% p.a</strong>. savings rate
+                          Enjoy up to <strong>4.5% p.a</strong>. savings rate
                           with 3 quick steps online
                         </p>
                         <ul class="buttons">
@@ -2200,8 +2331,7 @@
                   <a href="#null"
                     data-mobile-href="https://retail.sc.com/scmobile/hk/?ngroute=web.rtob-webview&productCode=DUM&source=MBK&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-deposits-acquisition-inapp_mgm-hk-en"
                     title="Apply Now - Marathon Savings Account"
-                    class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__mobile-link"
-                    >
+                    class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__mobile-link">
                     <span>Apply Now
                       <span class="visuallyhidden">
                         - Marathon Savings Account</span></span>
@@ -2226,7 +2356,7 @@
             <div class="sc-products-tile__right">
               <div class="sc-products-tile__right-container">
                 <a href="#null" title="Information-Standard Chartered Cathay Mastercard" data-send="show-overlay"
-                  data-modal-source="sc-prod-col-detail-modal-cta-792396" data-modal-terms="true">
+                  data-modal-source="sc-prod-col-detail-modal-cta-792396">
                   <div class="sc-products-tile__tags">
                     <span class="sc-tag sc-tag--blue">Credit Card</span>
                     <span class="sc-tag">Miles</span>
@@ -2251,13 +2381,13 @@
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-792396" data-size="theme">
                   <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
                     <!-- <div class="sc-products-tile-modal__pdt-top">
-                      <p class="sc-products-tile-modal__pdt-top-title">
-                        Before you proceed to apply
-                      </p>
-                      <div class="sc-products-tile-modal__pdt-top-desc">
-                        Please see more details about our Cathay Mastercard offer and select a card type
-                      </div>
-                  </div> -->
+                          <p class="sc-products-tile-modal__pdt-top-title">
+                            Before you proceed to apply
+                          </p>
+                          <div class="sc-products-tile-modal__pdt-top-desc">
+                            Please see more details about our Cathay Mastercard offer and select a card type
+                          </div>
+                      </div> -->
                     <div class="sc-products-tile-modal__pdt-dtls">
                       <img width="1600" height="300" src="https://av.sc.com/hk/content/images/hk-cathay-cc-600_380.png"
                         class="sc-products-tile__img" alt="Nature, Outdoors, Logo" loading="lazy" />
@@ -2274,14 +2404,14 @@
                           + Welcome Offer
                         </p>
                         <!-- <ul class="buttons">
-                          <li>
-                            <a href="http://www.sc.com/hk/credit-cards/cathay/" target="_blank"
-                              title="Details-Standard Chartered Cathay Mastercard"
-                              class="c-button sc-products-tile__pdt-details">
-                              Details »
-                            </a>
-                          </li>
-                        </ul> -->
+                              <li>
+                                <a href="http://www.sc.com/hk/credit-cards/cathay/" target="_blank"
+                                  title="Details-Standard Chartered Cathay Mastercard"
+                                  class="c-button sc-products-tile__pdt-details">
+                                  Details »
+                                </a>
+                              </li>
+                            </ul> -->
                       </div>
                     </div>
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
@@ -2299,17 +2429,11 @@
                         <li>
                           <strong>New Cardholders* can earn 6,000 Miles
                           </strong>
-                          <br />
-                          (6,000 Miles from SC Referral Club + 5,000 Miles Top
-                          up on or before 30 June 2024)
                         </li>
                         <li>
                           <strong>
                             Existing Cardholders^ can earn 3,000 Miles
                           </strong>
-                          <br />
-                          (3,000 Miles from SC Referral Club + 2,000 Miles Top
-                          up on or before 30 June 2024)
                         </li>
                       </ul>
 
@@ -2517,10 +2641,10 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#null" target="_blank"
-                            title="Proceed to Apply - Standard Chartered Cathay Mastercard"
-                            class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__is-pdt-selection sc-products-tile__is-tc"
+                          <a href="#null"
                             data-redirect-url="https://origination.sc.com/onboarding/hk/apply.html?product=1313&campaign=HKSOZ00MCWB000&premium=CM20&cardType=3268&affiliation=2132&lang=en&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-en"
+                            target="_blank" title="Proceed to Apply - Standard Chartered Cathay Mastercard"
+                            class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__is-pdt-selection sc-products-tile__is-tc"
                             data-send="show-overlay" data-modal-source="sc-prod-col-terms-modal-cta-792396">
                             <span class="only-desktop">Proceed to Apply</span>
                             <span class="only-mobile">Apply Now</span>
@@ -2567,7 +2691,7 @@
             <div class="sc-products-tile__right">
               <div class="sc-products-tile__right-container">
                 <a href="#null" title="Information-Smart Credit Card" data-send="show-overlay"
-                  data-modal-source="sc-prod-col-detail-modal-cta-795772" data-modal-terms="true">
+                  data-modal-source="sc-prod-col-detail-modal-cta-795772">
                   <div class="sc-products-tile__tags">
                     <span class="sc-tag sc-tag--blue">Credit Card</span>
                     <span class="sc-tag">Cashback</span>
@@ -2588,13 +2712,13 @@
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795772" data-size="theme">
                   <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
                     <!-- <div class="sc-products-tile-modal__pdt-top">
-                      <p class="sc-products-tile-modal__pdt-top-title">
-                          Before you proceed to apply
-                      </p>
-                      <div class="sc-products-tile-modal__pdt-top-desc">
-                        Please see more details about our Smart Card Offer
-                      </div>
-                  </div> -->
+                          <p class="sc-products-tile-modal__pdt-top-title">
+                              Before you proceed to apply
+                          </p>
+                          <div class="sc-products-tile-modal__pdt-top-desc">
+                            Please see more details about our Smart Card Offer
+                          </div>
+                      </div> -->
                     <div class="sc-products-tile-modal__pdt-dtls">
                       <img width="90" height="55" src="https://av.sc.com/hk/content/images/hk-smart-cc-600_380.png"
                         class="sc-products-tile__img" alt="Text, Blade, Razor" loading="lazy" />
@@ -2609,14 +2733,14 @@
                           Welcome Offer
                         </p>
                         <!-- <ul class="buttons">
-                          <li>
-                            <a href="https://www.sc.com/hk/credit-cards/smart/" target="_blank"
-                              title="View Product Details-Smart Credit Card"
-                              class="c-button sc-products-tile__pdt-details">
-                              View Product Details »
-                            </a>
-                          </li>
-                        </ul> -->
+                              <li>
+                                <a href="https://www.sc.com/hk/credit-cards/smart/" target="_blank"
+                                  title="View Product Details-Smart Credit Card"
+                                  class="c-button sc-products-tile__pdt-details">
+                                  View Product Details »
+                                </a>
+                              </li>
+                            </ul> -->
                       </div>
                     </div>
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
@@ -2700,11 +2824,12 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#null" title="Proceed to Apply - Smart Credit Card" target="_blank"
-                            class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__is-tc"
+                          <a href="#null"
                             data-redirect-url="https://origination.sc.com/onboarding/hk/apply.html?product=1282&campaign=HKSOG20VAWV000&premium=ST54&cardType=3267&affiliation=2131&lang=en"
+                            title="Proceed to Apply - Smart Credit Card" target="_blank"
+                            class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__is-tc"
                             data-send="show-overlay" data-modal-source="sc-prod-col-terms-modal-cta-795772">
-                            <span class="only-desktop">Proceed to Apply 2</span>
+                            <span class="only-desktop">Proceed to Apply</span>
                             <span class="only-mobile">Apply Now</span>
                           </a>
                         </li>
@@ -2716,8 +2841,8 @@
               <ul class="sc-products-tile__btn">
                 <li>
                   <a href="#null" title="View Details - Smart Credit Card" data-send="show-overlay"
-                    data-modal-source="sc-prod-col-detail-modal-cta-795772" data-modal-terms="true"
-                    class="c-button sc-btn sc-btn--blue sc-btn--small">
+                    data-modal-source="sc-prod-col-detail-modal-cta-795772"
+                    class="c-button sc-btn sc-btn--blue sc-btn--small" data-modal-terms="true">
                     <span>View Details
                       <span class="visuallyhidden">
                         - Smart Credit Card</span></span>
@@ -2757,8 +2882,8 @@
                 </div>
                 <h2 class="sc-products-tile__title">Payroll Account</h2>
                 <!-- <p class="sc-products-tile__desc">
-                    Apply online to earn up to <strong>HKD1,600</strong> cash rebate
-                  </p> -->
+                        Apply online to earn up to <strong>HKD1,600</strong> cash rebate
+                      </p> -->
                 <div class="sc-products-tile__cvp-list sc-list">
                   <ul>
                     <li>Up to <strong>HKD1,500</strong> cash rebate</li>
@@ -2794,8 +2919,8 @@
                         </h2>
                         <p class="sc-products-tile__desc">
                           Apply online to earn up to
-                          <strong>HKD1,600</strong> cash rebate and extra
-                          2%p.a. savings rate for 12 month
+                          <strong>HKD1,500</strong> cash rebate and extra
+                          2%p.a. savings rate for 6 month
                         </p>
                         <ul class="buttons">
                           <li>
@@ -2941,40 +3066,39 @@
                     </div>
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
                       <p>
-                        <strong>
-                          Earn up to HKD68,888 or 688,880 Asia Miles, and 2
-                          HKIA VIP Lounge vouchers
-                        </strong>
-                        <br />
-                        When you sign up as New-to-bank Priority Private
-                        Client
+                        New Clients who sign up for Priority Private with at
+                        least <strong>HKD8 million</strong> new funds will be
+                        rewarded up to <strong>HKD73,888</strong> cash rebate
+                        and <strong>2 HKIA VIP Lounge vouchers</strong>
                       </p>
                       <ul>
                         <li>
-                          <strong>Earn HK$8,000 cash rebate or 80,000 Asia Miles
-                            referral reward</strong>
-                          <br />
-                          Upon each successful Priority Private referral
+                          <strong>4 dedicated Wealth Management Centres at core
+                            locations in Hong Kong</strong>
                         </li>
                         <li>
-                          <strong>Earn up to HK$3,000 cash rebate</strong>
-                          <br />
-                          Upon successful Professional Investor sign-up
+                          <strong>Preferential deposit rates and exclusive
+                            investment offers</strong>
+                        </li>
+                        <li>
+                          <strong>Prestigious travel and lifestyle experiences as
+                            well as private invitations to Priority Private
+                            exclusive events​</strong>
                         </li>
                       </ul>
                     </div>
                     <ul class="buttons">
                       <li>
                         <!-- <a href="#null" target="_blank" title="Terms & Conditions-Priority Private"
-                          class="sc-btn-link sc-products-tile__terms">
-                          Terms & Conditions
-                        </a> -->
+                              class="sc-btn-link sc-products-tile__terms">
+                              Terms & Conditions
+                            </a> -->
                         <!-- <a href="#null" target="_blank"
-                                                    title="Terms & Conditions-Priority Private"
-                                                    class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
-                                                    data-modal-source="sc-product-action-col-modal-cta-terms-79239701">
-                                                    Terms & Conditions
-                                                </a> -->
+                                                        title="Terms & Conditions-Priority Private"
+                                                        class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
+                                                        data-modal-source="sc-product-action-col-modal-cta-terms-79239701">
+                                                        Terms & Conditions
+                                                    </a> -->
                         <div class="m-text-content" data-modal-id="sc-product-action-col-modal-cta-terms-79239701"
                           data-size="theme">
                           <div class="sc-products-tile-modal">
@@ -3058,8 +3182,8 @@
                   data-modal-source="sc-prod-col-detail-modal-cta-7958011"></a>
                 <div title="Information-Banking Packages">
                   <!-- <div class="sc-products-tile__tags">
-                    <span class="sc-tag sc-tag--black">Banking Plan</span>
-                  </div> -->
+                        <span class="sc-tag sc-tag--black">Banking Plan</span>
+                      </div> -->
                   <h2 class="sc-products-tile__title">Banking Plan</h2>
                   <p class="sc-products-tile__desc">
                     New Clients who sign up for Banking Plan and deposit new
@@ -3128,37 +3252,37 @@
                     </div>
                   </div>
                   <!-- <div class="sc-products-tile__feature">
-                                        <div class="sc-products-tile__feature-box">
-                                            <div class="sc-products-tile__feature-col sc-products-tile__feature-col--head">
-                                            <div class="sc-products-tile__feature-left">Your friend sign up</div>
-                                            <div class="sc-products-tile__feature-right">You get (each refer)</div>
-                                        </div>
-                                            <div class="sc-products-tile__feature-col">
-                                                <div class="sc-products-tile__feature-left">
-                                                    Priority Banking
+                                            <div class="sc-products-tile__feature-box">
+                                                <div class="sc-products-tile__feature-col sc-products-tile__feature-col--head">
+                                                <div class="sc-products-tile__feature-left">Your friend sign up</div>
+                                                <div class="sc-products-tile__feature-right">You get (each refer)</div>
+                                            </div>
+                                                <div class="sc-products-tile__feature-col">
+                                                    <div class="sc-products-tile__feature-left">
+                                                        Priority Banking
+                                                    </div>
+                                                    <div class="sc-products-tile__feature-right">
+                                                        Up to HKD22,000 or 220,000 Asia Miles
+                                                    </div>
                                                 </div>
-                                                <div class="sc-products-tile__feature-right">
-                                                    Up to HKD22,000 or 220,000 Asia Miles
+                                                <div class="sc-products-tile__feature-col">
+                                                    <div class="sc-products-tile__feature-left">
+                                                        Premium Banking
+                                                    </div>
+                                                    <div class="sc-products-tile__feature-right">
+                                                        Up to HKD900 or 9,000 Asia Miles
+                                                    </div>
+                                                </div>
+                                                <div class="sc-products-tile__feature-col">
+                                                    <div class="sc-products-tile__feature-left">
+                                                        Easy Banking
+                                                    </div>
+                                                    <div class="sc-products-tile__feature-right">
+                                                        HKD300 SC Mobile App account opening offer
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="sc-products-tile__feature-col">
-                                                <div class="sc-products-tile__feature-left">
-                                                    Premium Banking
-                                                </div>
-                                                <div class="sc-products-tile__feature-right">
-                                                    Up to HKD900 or 9,000 Asia Miles
-                                                </div>
-                                            </div>
-                                            <div class="sc-products-tile__feature-col">
-                                                <div class="sc-products-tile__feature-left">
-                                                    Easy Banking
-                                                </div>
-                                                <div class="sc-products-tile__feature-right">
-                                                    HKD300 SC Mobile App account opening offer
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                        </div> -->
                 </div>
                 <!-- Modal Content -->
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-7958011" data-size="theme">
@@ -3210,7 +3334,7 @@
                           class="sc-accordion__label" for="two">
                           <span class="sc-products-tile-modal__accordion-left">Premium Banking</span>
                           <span class="sc-products-tile-modal__accordion-right">
-                            Up to <strong>HKD900</strong> or
+                            Up to <strong>HKD900</strong> cash rebate or
                             <strong>9,000</strong> Asia Miles
                           </span>
                         </label>
@@ -3255,10 +3379,10 @@
                           Terms & Conditions
                         </a>
                         <!-- <a href="#null" target="_blank" title="Terms & Conditions-Banking Packages"
-                          class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
-                          data-modal-source="sc-product-action-col-modal-cta-terms-792397014">
-                          Terms & Conditions
-                        </a> -->
+                              class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
+                              data-modal-source="sc-product-action-col-modal-cta-terms-792397014">
+                              Terms & Conditions
+                            </a> -->
                         <div class="m-text-content" data-modal-id="sc-product-action-col-modal-cta-terms-792397014"
                           data-size="theme">
                           <div class="sc-products-tile-modal">
@@ -3326,6 +3450,112 @@
                   </a>
                 </li>
               </ul>
+            </div>
+          </div>
+          <div class="sc-products-tile" data-product-name="sxa" data-cards="wealth">
+            <div class="sc-badge hide">
+              <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+              </svg>
+              <span class="sc-badge__text">Recommended for you</span>
+            </div>
+            <img width="440" height="280"
+              src="https://av.sc.com/hk/content/images/Sept_PDP-MGM-Banner_securities_200X12.png"
+              class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
+            <div class="sc-products-tile__right">
+              <div class="sc-products-tile__right-container">
+                <a href="#null" title="Information-Priority Private" data-send="show-overlay"
+                  data-modal-source="sc-prod-col-detail-modal-cta-7958019"></a>
+                <div class="sc-products-tile__tags">
+                  <span class="sc-tag sc-tag--blue">Securities</span>
+                  <span class="sc-tag">Cash Rebate</span>
+                </div>
+                <h2 class="sc-products-tile__title">Securities Account</h2>
+                <p class="sc-products-tile__desc">
+                  Priority Banking or Priority Private Payroll Client opening
+                  a new Securities Account can enjoy
+                  <strong>Perpetual Securities Buy Brokerage Waiver</strong>
+                </p>
+
+                <!-- Modal Content -->
+                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-7958019" data-size="theme">
+                  <div class="sc-products-tile-modal">
+                    <div class="sc-products-tile-modal__pdt-dtls">
+                      <img width="440" height="280"
+                        src="https://av.sc.com/hk/content/images/Sept_PDP-MGM-Banner_securities_200X12.png"
+                        class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
+                      <div class="sc-products-tile__right">
+                        <div class="sc-products-tile__tags">
+                          <span class="sc-tag sc-tag--blue">Securities</span>
+                          <span class="sc-tag">Cash Rebate</span>
+                        </div>
+                        <h2 class="sc-products-tile__title">
+                          Securities Account
+                        </h2>
+                        <p class="sc-products-tile__desc">
+                          Priority Banking or Priority Private Payroll Client
+                          opening a new Securities Account can enjoy
+                          <strong>Perpetual Securities Buy Brokerage Waiver</strong>
+                        </p>
+                        <ul class="buttons">
+                          <li>
+                            <a href="https://www.sc.com/hk/investment/securities-services/" target="_blank"
+                              title="View Product Details-Priority Private"
+                              class="c-button sc-products-tile__pdt-details">
+                              View Product Details »
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="sc-products-tile__btn">
+                      <div class="sc-products-tile__applied-code hide">
+                        Applied referral code: <span></span>
+                      </div>
+                      <ul class="buttons">
+                        <li>
+                          <a href="#null" title="Copy referral code"
+                            class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                            <span class="only-desktop">Copy referral code</span>
+                            <span class="only-mobile">Copy code</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.sc.com/hk/promotions/sxa-mgm-referral/apply/"
+                            title="Apply Now - Securities Account" class="c-button sc-btn sc-btn--blue sc-btn--small"
+                            target="_blank">
+                            <span class="only-desktop">Apply Now</span>
+                            <span class="only-mobile">Apply Now</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="sc-products-tile__btn">
+                <li>
+                  <a href="https://www.sc.com/hk/promotions/sxa-mgm-referral/apply/"
+                    title="Apply Now - Securities Account" class="c-button sc-btn sc-btn--blue sc-btn--small"
+                    target="_blank">
+                    <span>Apply Now
+                      <span class="visuallyhidden">Apply Now - Securities Account</span></span>
+                  </a>
+                </li>
+              </ul>
+              <p class="sc-products-tile__footer-text">
+                *Applicable to clients who have no securities account from 1
+                July 2023 to 1 July 2024.
+                <br />
+                <br />
+                *Referee must hold at least one valid deposit account (as
+                primary account holder in the case of joint account) when the
+                client apply for securities account.
+                <br />
+                <br />
+                Terms and Conditions Apply
+              </p>
             </div>
           </div>
         </div>
@@ -3404,10 +3634,134 @@
     .only-mobile {
       pointer-events: none;
     }
-  </style>
-  <link rel="stylesheet" href="./css/style.css" />
 
-  <!-- sc-prod-col-terms-modal-cta-792396 -->
+    .sc-products-tile-terms-modal {
+      --tile-padding: 16px;
+      background-color: #f8f8f8;
+      padding: var(--tile-padding);
+      margin: calc(var(--tile-padding) * -1);
+      width: calc(100% + var(--tile-padding) * 2);
+      min-height: auto;
+    }
+
+    .sc-products-tile-terms-modal__terms-title {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    .sc-products-tile-terms-modal__content {
+      margin-bottom: 24px;
+    }
+
+    .sc-products-tile-terms-modal__content~.sc-products-tile-terms-modal__content {
+      margin-top: 24px;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn,
+    .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+      position: sticky;
+      bottom: calc(var(--tile-padding) * -1);
+      width: calc(100% + var(--tile-padding) * 2);
+      margin: var(--tile-padding) calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1);
+      left: 0;
+      padding: 20px;
+      background-color: #ffffff;
+      z-index: 4;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .sc-btn,
+    .sc-products-tile-terms-modal .sc-products-tile__input-btn .sc-btn {
+      width: 100%;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      gap: 0;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
+      width: 100%;
+      margin-right: 8px;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li:last-child {
+      margin-right: 0;
+    }
+
+    .sc-products-tile-terms-modal .buttons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      row-gap: 0;
+      -webkit-column-gap: 40px;
+      -moz-column-gap: 40px;
+      column-gap: 40px;
+    }
+
+    .sc-products-tile-terms-modal .buttons li {
+      width: auto;
+    }
+
+    .sc-products-tile-terms-modal .buttons .sc-btn {
+      min-width: 100px;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table {
+      margin: 16px 0;
+      border: none;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table tr:first-child td {
+      background-color: #ffffff;
+      color: inherit;
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table tr td:last-of-type,
+    .sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
+      border-right: 1px solid #eee;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte p {
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 681px) {
+      .sc-products-tile-terms-modal {
+        --tile-padding: 24px;
+        min-height: 250px;
+      }
+
+      .sc-products-tile-terms-modal .buttons {
+        gap: 20px;
+      }
+
+      .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        gap: 16px;
+      }
+
+      .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
+        margin-right: 0;
+      }
+
+      .c-modal>.wrapper[data-size="theme"] .m-text-content {
+        border-radius: 0;
+      }
+
+      .c-modal .m-text-content .sc-products-tile-terms-modal {
+        margin-bottom: -24px;
+        padding-bottom: 0;
+      }
+    }
+  </style>
+
+  <!-- terms-modal-cta-792396 -->
   <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-792396" data-term-modal="true"
     data-size="theme">
     <div class="sc-products-tile-terms-modal">
@@ -4001,7 +4355,7 @@
     </div>
   </div>
 
-  <!-- sc-prod-col-terms-modal-cta-795772 -->
+  <!-- terms-modal-cta-795772 -->
   <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-795772" data-term-modal="true"
     data-size="theme">
     <div class="sc-products-tile-terms-modal">
@@ -4080,23 +4434,23 @@
                 </ol>
               </li>
               <li>
-                <strong>“Referral Offer”</strong> refers to an offer in each
-                SC Referral Club under which a Referrer will be entitled to
-                upon fulfilment of the requirements in the relevant terms and
-                conditions, including the Priority Private Referral Offer,
-                Priority Banking Referral Offer, Premium Banking Referral
-                Offer, Easy Banking Referral Offer, Payroll Referral Offer,
-                MSA Referral Offer, Standard Chartered Cathay Mastercard
-                Referral Offer and Smart Card Referral Offer.
+                <strong>“Referral Offer”</strong> refers to an offer in each SC Referral Club under which a Referrer
+                will be entitled to upon fulfilment of the
+                requirements in the relevant terms and conditions, including the Priority Private Referral Offer,
+                Priority Banking
+                Referral Offer,
+                Premium Banking Referral Offer, Easy Banking Referral Offer, Payroll Referral Offer, MSA Referral Offer,
+                Standard
+                Chartered
+                Cathay Mastercard Referral Offer and Smart Card Referral Offer.
               </li>
               <li>
-                <strong>“Referee Offer”</strong> refers to an offer in the
-                Standard Chartered Cathay Mastercard SC Referral Club and the
-                Smart Card SC Referral Club under which a Referee will be
-                entitled to upon fulfilment of the requirements in the
-                relevant terms and conditions, including the Standard
-                Chartered Cathay Mastercard Referee Offer and the Smart Card
-                Referee Offer.
+                <strong>“Referee Offer”</strong> refers to an offer in the Standard Chartered Cathay Mastercard SC
+                Referral Club and the Smart Card SC Referral
+                Club under which a Referee will be entitled to upon fulfilment of the requirements in the relevant terms
+                and conditions,
+                including
+                the Standard Chartered Cathay Mastercard Referee Offer and the Smart Card Referee Offer.
               </li>
               <li>
                 <strong>“New Service(s)”</strong> refers to newly applied
@@ -4391,37 +4745,28 @@
             </ol>
           </li>
           <li>
-            <strong>Additional Terms and Conditions for Standard Chartered Cathay
-              Mastercard SC Referral Club (“Standard Chartered Cathay
-              Mastercard SC Referral Club”)</strong><br />
+            <strong>Additional Terms and Conditions for Smart Credit Card SC
+              Referral Club (“Smart Card SC Referral Club”)</strong><br />
             <strong>Important Note:</strong> These Additional Terms are to be
             read together with the General Terms and Conditions in Section A
-            above, and the Terms and Conditions of Standard Chartered Cathay
-            Mastercard on Standard Chartered official website
+            above, and the Terms and Conditions of Standard Chartered Smart
+            Credit Card on Standard Chartered official website
 
             <ol>
               <li>
-                Standard Chartered Cathay Mastercard refers to Standard
-                Chartered Cathay Mastercard, Standard Chartered Cathay
-                Mastercard – Priority Banking or Standard Chartered Cathay
-                Mastercard – Priority Private (each a
-                <strong>“Standard Chartered Cathay Mastercard”</strong>).
-              </li>
-              <li>
-                For the Referrer to be eligible to participate in the Standard
-                Chartered Cathay Mastercard SC Referral Club, the Referee must
-                not currently hold and has not cancelled any principal card of
-                Standard Chartered Cathay Mastercard issued by the Bank in the
-                past 6 months from the date of approval of his/her current
-                application for a principal card of the Standard Chartered
-                Cathay Mastercard.
+                For the Referrer to be eligible to participate in the Smart
+                Card SC Referral Club, the Referee must not currently hold and
+                has not cancelled any principal card of Standard Chartered
+                Credit Card issued by the Bank in the past 6 months from the
+                date of approval of his/her current application for a
+                principal card of the Standard Chartered Smart Credit Card (
+                <strong>“Smart Card”</strong>).
               </li>
               <li>
                 Upon fulfilment of all the following requirements, the
                 referral will be considered as a “Successful Referral” and the
                 Referrer will be entitled to cash rebate, Cash Back or Asia
-                Miles in accordance with the table below (<strong>“Standard Chartered Cathay Mastercard Referral
-                  Offer”</strong>):
+                Miles in accordance with the table below(<strong>“Smart Card Referral Offer”</strong>):
                 <ol>
                   <li>
                     All the relevant requirements as set out in Section A
@@ -4429,14 +4774,13 @@
                   </li>
                   <li>
                     Referee must successfully apply for a principal card of
-                    the Standard Chartered Cathay Mastercard through the
-                    Designated Application Link using the Referral Code during
-                    the Promotion Period; <strong>and</strong>
+                    the Smart Card through the Designated Application Link
+                    using the Referral Code during the Promotion Period;
+                    <strong>and</strong>
                   </li>
                   <li>
-                    Referee must be issued with a principal card of the
-                    Standard Chartered Cathay Mastercard by the Bank on or
-                    before 31 December 2024.
+                    Referee must be issued with a principal card of the Smart
+                    Card by the Bank on or before 31 December 2024.
                   </li>
                 </ol>
 
@@ -4468,49 +4812,41 @@
                 </table>
               </li>
               <li>
-                Each Referrer will only be entitled to the Standard Chartered
-                Cathay Mastercard Referral Offer under the Standard Chartered
-                Cathay Mastercard SC Referral Club for a maximum of 20 times
-                only during the Promotion Period.
+                Each Referrer will only be entitled to the Smart Card Referral
+                Offer under the Smart Card SC Referral Club for a maximum of
+                20 times only during the Promotion Period.
               </li>
               <li>
                 If the Referrer is entitled to cash rebate or CashBack, the
                 Bank will credit the reward on or before 31 March 2025. If the
                 Referrer is entitled to Asia Miles, Asia Miles Limited will
                 credit the Asia Miles rewarded to the Referrer’s Cathay
-                membership account on or before 31 March 2025.
+                membership account within on or before 31 March 2025.
               </li>
               <br />
               <strong>
                 <u>Smart Card Referee Offer</u>
               </strong>
               <li>
-                In addition to the Standard Chartered Cathay Mastercard’s
-                prevailing welcome offer(s) for New Cardholders, the Referee
-                who is issued with a principal card of the Standard Chartered
-                Cathay Mastercard on or before 31 December 2024 through a
-                Successful Referral is entitled to Asia Miles in accordance
-                with the table below (<strong>“Standard Chartered Cathay Mastercard Referee
-                  Offer”</strong>):-
+                IIn addition to the Smart Card’s prevailing welcome offer(s)
+                for New Cardholders, the Referee who is issued with a
+                principal card of the Smart Card on or before 31 December 2024
+                through a Successful Referral is entitled to CashBack in
+                accordance with the table below (<strong>“Smart Card Referee Offer”</strong>):-
 
                 <table>
                   <thead>
                     <tr>
                       <th scope="col"></th>
                       <th scope="col">
-                        <strong>Standard Chartered Cathay Mastercard Referee
-                          Offer</strong>
+                        <strong>Smart Card Referee Offer</strong>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>New Cardholders</td>
-                      <td>6,000 Asia Miles</td>
-                    </tr>
-                    <tr>
-                      <td>Existing Cardholders</td>
-                      <td>3,000 Asia Miles</td>
+                      <td>HKD800 CashBack</td>
                     </tr>
                   </tbody>
                 </table>
@@ -4518,55 +4854,37 @@
               <li>
                 <strong>“New Cardholders”</strong> are applicants who do not
                 currently hold and have not cancelled any principal card of
-                Standard Chartered Credit Card in the past 6 months from the
-                date of approval of their current application for a principal
-                card of the Standard Chartered Cathay Mastercard.
+                Standard Chartered Credit Card issued by the Bank in the past
+                6 months from the date of approval of their current
+                application for a principal card of the Smart Card.
               </li>
               <li>
-                <strong>“Existing Cardholders”</strong> are applicants who
-                currently hold or have cancelled any principal card of
-                Standard Chartered Credit Card, except for the Standard
-                Chartered Cathay Mastercard, issued by the Bank in the past 6
-                months from the date of approval of their current application
-                for a principal card of the Standard Chartered Cathay
-                Mastercard.
+                Each Referee will only be entitled to the Smart Card Referee
+                Offer once during the Promotion Period.
               </li>
               <li>
-                Each Referee will only be entitled to the Standard Chartered
-                Cathay Mastercard Referee Offer once during the Promotion
-                Period.
+                The Smart Card’s prevailing welcome offer(s) is/are subject to
+                relevant prevailing terms and conditions, please visit
+                sc.com/hk/credit-cards/smart/ for details.
               </li>
               <li>
-                The Standard Chartered Cathay Mastercard Referee Offer will be
-                credited to Referee’s Cathay membership accounts associated
-                with their Standard Chartered Cathay Mastercard based on the
-                Bank’s record.
+                Except for the Smart Card’s prevailing welcome offer(s) for
+                New Cardholders, New Cardholders cannot enjoy this Smart Card
+                Referee Offer in conjunction with any other offers for the
+                successful application of the Smart Card.
               </li>
               <li>
-                Standard Chartered Cathay Mastercard’s prevailing welcome
-                offer(s) is/are subject to relevant prevailing terms and
-                conditions, please visit sc.com/hk/en/cathay for details.
+                The CashBack under the Smart Card Referee Offer will be
+                credited to the 360° Rewards Redemption Platform on or before
+                31 March 2025.
               </li>
               <li>
-                Except for the Standard Chartered Cathay Mastercard’s
-                prevailing welcome offer(s) for New Cardholders, both New
-                Cardholders and Existing Cardholders cannot enjoy this
-                Standard Chartered Cathay Mastercard Referee Offer in
-                conjunction with any other offers for the successful
-                application of the Standard Chartered Cathay Mastercard.
-              </li>
-              <li>
-                Asia Miles Limited will credit the Asia Miles rewarded to the
-                Referee’s Cathay membership account on or before 31 March
-                2025.
-              </li>
-              <li>
-                If the Referee who has already received the Standard Chartered
-                Cathay Mastercard Referee Offer subsequently cancels the
-                Standard Chartered Cathay Mastercard within one year from the
-                date of its issuance, the Bank reserves the right to charge
-                against the cost equivalent to the value of the Standard
-                Chartered Cathay Mastercard Referee Offer.
+                If the Referee who has already received the
+                <strong> Smart Card Referee Offer</strong> subsequently
+                cancels the Smart Card within one year from the date of its
+                issuance, the Bank reserves the right to charge against the
+                cost equivalent to the value of the
+                <strong> Smart Card Referee Offer.</strong>
               </li>
             </ol>
           </li>
@@ -4594,7 +4912,13 @@
     </div>
   </div>
 
+  <!-- ADD NEW SCRIPT -->
+  <script type="text/javascript" src="./scripts/sc-common-methods.js"></script>
+  <!-- <script type="text/javascript" src="./scripts/sc-referal-terms-consent-journey.js"></script> -->
+  <script type="text/javascript" src="./scripts/sc-mgm-referral-enhanced.js"></script>
+  <!-- End TERMS Modal Content and style -->
 
+  <!-- sc-terms-links -->
   <style>
     .sc-terms-links {
       padding: 40px 0;
@@ -4660,11 +4984,6 @@
       }
     }
   </style>
-
-  <!-- ADD NEW SCRIPT -->
-  <script type="text/javascript" src="./scripts/sc-common-methods.js"></script>
-  <!-- <script type="text/javascript" src="./scripts/sc-referal-terms-consent-journey.js"></script> -->
-  <script type="text/javascript" src="./scripts/sc-mgm-referral-enhanced.js"></script>
 
   <div class="sc-terms-links">
     <div class="sc-content-wrapper">
