@@ -188,12 +188,12 @@ class scInsuranceCampaign {
    * @param {string} persona
    */
   tiggerPersona(persona) {
-    const personaBtns = document.querySelectorAll(
+    const that = this;
+    that.campaign = document.querySelector(".sc-li-campaign");
+    const personaBtns = that.campaign.querySelectorAll(
       ".sc-li-campaign__persona-btn"
     );
-    const queryparam = document
-      .querySelector(".sc-li-campaign")
-      .getAttribute("data-query-param");
+    const queryparam = that.campaign.getAttribute("data-query-param");
 
     /**
      * Function to handle click event
@@ -209,11 +209,11 @@ class scInsuranceCampaign {
 
       /** Add active class to the clicked button */
       btn.classList.add("sc-li-campaign__persona-btn-active");
-      this.addUrlParam(queryparam, personaitem);
-      this.activeBanner(personaitem);
-      this.activeContentBox(personaitem);
-      this.generateChart(index + 1, personaitem);
-      this.tiggerContentFilter(personaitem);
+      that.addUrlParam(queryparam, personaitem);
+      that.activeBanner(personaitem);
+      that.activeContentBox(personaitem);
+      that.generateChart(index + 1, personaitem);
+      that.tiggerContentFilter(personaitem);
     };
 
     /** Add click event listener to each persona button */
@@ -222,7 +222,7 @@ class scInsuranceCampaign {
         event.preventDefault();
         event.stopPropagation();
         handleClick(btn, index);
-        this.ctaClick(event);
+        that.ctaClick(event);
       });
     });
 
@@ -362,7 +362,7 @@ class scInsuranceCampaign {
     }
   }
 
-  /** 
+  /**
    * Represents a function to create the button dynamic title of product
    * @function createTitle
    */
@@ -512,7 +512,7 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Represents an internal function on form modal active 
+   * Represents an internal function on form modal active
    * @function activeModal
    * @param {event} event
    */
