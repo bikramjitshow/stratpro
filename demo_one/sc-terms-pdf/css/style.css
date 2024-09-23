@@ -213,11 +213,15 @@
   font-weight: 300;
   font-size: 14px;
 }
-.sc-products-tile-terms-modal .sc-rte table tr td:last-of-type, .sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
+.sc-products-tile-terms-modal .sc-rte table tr td:last-of-type,
+.sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
   border-right: 1px solid #eee;
 }
 .sc-products-tile-terms-modal .sc-rte p {
   margin-bottom: 16px;
+}
+.sc-products-tile-terms-modal .sc-rte ul li {
+  list-style-type: upper-latin;
 }
 
 @media (min-width: 681px) {
