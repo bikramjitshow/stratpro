@@ -150,10 +150,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} name
-   * @param {*} value
+   * Represents a update persona param as per user selection
+   * @function addUrlParam
+   * @param {string} name
+   * @param {string} value
    */
   addUrlParam(name, value) {
     var paramName = name;
@@ -183,7 +183,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Click Persona event
+   * Represents a click event for Active Persona
+   * @function tiggerPersona
+   * @param {string} persona
    */
   tiggerPersona(persona) {
     const personaBtns = document.querySelectorAll(
@@ -236,9 +238,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} personaitem
+   * Represents a toggle view of dynamic content as per persona selection
+   * @function tiggerContentFilter
+   * @param {string} personaitem
    */
   tiggerContentFilter(personaitem) {
     let filteritemparent, parentitem, isHide;
@@ -277,9 +279,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} e
+   * Represents a active state of dynamic filter tab as per persona selection
+   * @function activeFilter
+   * @param {event} e
    */
   activeFilter(e) {
     const targetelem = document.querySelectorAll(
@@ -296,9 +298,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} activeTitle
+   * Represents a active state of dynamic filter tab content as per persona selection
+   * @function activeFilterContent
+   * @param {string} activeTitle
    */
   activeFilterContent(activeTitle) {
     let filterContents = document.querySelectorAll(
@@ -321,9 +323,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} activePersona
+   * Represents a active state of dynamic banner as per persona selection
+   * @function activeBanner
+   * @param {string} activePersona
    */
   activeBanner(activePersona) {
     let banneritems = document.querySelectorAll(".sc-li-campaign__banner");
@@ -340,8 +342,8 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
+   * Represents a active state of contentbox as per persona selection
+   * @function activeContentBox
    * @param {*} activePersona
    */
   activeContentBox(activePersona) {
@@ -360,7 +362,10 @@ class scInsuranceCampaign {
     }
   }
 
-  /** Description placeholder */
+  /** 
+   * Represents a function to create the button dynamic title of product
+   * @function createTitle
+   */
   createTitle() {
     let cards = document.querySelectorAll(
       ".sc-li-campaign__policy-type-card-box"
@@ -379,10 +384,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Generate Graph
-   *
-   * @param {*} id -for graph id
-   * @param {*} personaitem - persona name
+   * Represents a function to Generate Graph
+   * @function generateChart
+   * @param {number} id -for graph id
+   * @param {string} personaitem - persona name
    */
   generateChart(id, personaitem) {
     let ghdata, seriesName;
@@ -482,9 +487,8 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} event
+   * Represents a internal function to handle closeModal
+   * @param {event} event
    */
   handleMousedown(event) {
     event.preventDefault();
@@ -497,7 +501,9 @@ class scInsuranceCampaign {
     }
   }
 
-  /** Description placeholder */
+  /**
+   * Represents a internal function to handle closeModal
+   */
   toCloseModal() {
     const modalContainer = document.querySelector(
       ".sc-li-campaign-form-modal-main"
@@ -506,7 +512,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * form modal active event
+   * Represents an internal function on form modal active 
+   * @function activeModal
+   * @param {event} event
    */
   activeModal(event) {
     const that = this;
@@ -524,7 +532,7 @@ class scInsuranceCampaign {
           .querySelector(".c-modal")
           .classList.add("sc-li-campaign-form-modal-main");
         that.handelFormStartShortForm(popupdata);
-        that.getCheckboxes();
+        that.validateSubmit();
         that.formLastAccessedField();
         that.formSubmit();
         that.toCloseModal();
@@ -533,10 +541,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} status
-   * @returns {*}
+   * Represents a function active form status Modal
+   * @function statusModal
+   * @param {string} status
+   * @returns {boolean} True or False
    */
   statusModal(status) {
     const errorModal = document.querySelector(".sc-error-modal");
@@ -551,9 +559,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} event
+   * Represents a function to close form modal
+   * @function closeModal
+   * @param {event} event
    */
   closeModal(event) {
     const modalContainer = document.querySelector(
@@ -571,8 +579,11 @@ class scInsuranceCampaign {
     }
   }
 
-  /** Description placeholder */
-  getCheckboxes() {
+  /**
+   * Represents a function to validate and activate the submit button.
+   * @function validateSubmit
+   */
+  validateSubmit() {
     const that = this;
     var anycheckboxChecked, anyradioChecked;
     var checkboxes = document.querySelectorAll(
@@ -741,7 +752,8 @@ class scInsuranceCampaign {
   }
 
   /**
-   * form last accessd item event
+   * Represents a function to retrieve the last accessed form item
+   * @function formLastAccessedField
    */
   formLastAccessedField() {
     const form = document.querySelector(".sc-li-campaign-form");
@@ -763,7 +775,8 @@ class scInsuranceCampaign {
   }
 
   /**
-   * page name for AA EDDL
+   * Represents a function to generate page name for AA EDDL
+   * @function pageNameInit
    */
   pageNameInit() {
     const that = this;
@@ -890,9 +903,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} eventName
+   * Represents a function to update page name for AA EDDL
+   * @function pageNameUpdate
+   * @example pageNameUpdate("formAbandon")
+   * @param {string} eventName
    */
   pageNameUpdate(eventName) {
     let eventlist = [
@@ -956,7 +970,7 @@ class scInsuranceCampaign {
   }
 
   /**
-   * get productId from URL
+   * Represents a function to get productId from URL for AA EDDL
    * @example
    * getProductId()
    */
@@ -1094,9 +1108,9 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Description placeholder
-   *
-   * @param {*} event
+   * Represents a function to generate page name for AA EDDL
+   * @function ctaClick
+   * @param {event} event
    */
   ctaClick(event) {
     const that = this;
@@ -1179,7 +1193,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Track "formStart_shortForm" actions in the page using EDDL approach.
+   * Represents a form start function for AA EDDL
+   * @function handelFormStartShortForm
+   * @param {object} data - Form data
+   * @description Track "formStart_shortForm" actions in the page using EDDL approach.
    */
   handelFormStartShortForm(data) {
     if (typeof window.adobeDataLayer !== "undefined") {
@@ -1199,7 +1216,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * form submit event
+   * Represents a form submit function for AA EDDL
+   * @function handleInsuranceFormSubmit
+   * @param {object} formstatus - Form status
+   * @description Track "formSubmit_shortForm" actions in the page using EDDL approach.
    */
   handleInsuranceFormSubmit(formstatus) {
     if (typeof window.adobeDataLayer == "undefined") return;
@@ -1224,7 +1244,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Track Form Abandon
+   * Represents a form abandon function for AA EDDL
+   * @function handleFormAbandon
+   * @param {string} field - Form field name
+   * @description Track "formAbandon" actions in the page using EDDL approach.
    */
   handleFormAbandon(field) {
     if (typeof window.adobeDataLayer !== "undefined") {
@@ -1240,7 +1263,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Track Form Abandon
+   * Represents a form error function for AA EDDL
+   * @function handleFormError
+   * @param {object} err - Form error object
+   * @description Track "formError" actions in the page using EDDL approach.
    */
   handleFormError(err) {
     if (typeof window.adobeDataLayer !== "undefined") {
