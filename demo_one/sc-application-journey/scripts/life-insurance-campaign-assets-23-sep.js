@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: life-insurance-campaign-assets.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: life-insurance-campaign-assets.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable no-undef */
+/* eslint-disable no-undef */
 import Highcharts from "highcharts";
 import ScCommonMethods from "../../../assets/js/commons/sc-common-methods";
 import "../../../../src/assets/js/analytics/adobe/eddl/analytics-event-handler.js";
@@ -283,7 +255,7 @@ class scInsuranceCampaign {
         isHide = parentitem.classList.contains("hide");
         let firstTitle = filters[0].dataset.filterItem;
         let title = filter.dataset.filterItem;
-        if (personaitem === filteritemparent &amp;&amp; !isHide) {
+        if (personaitem === filteritemparent && !isHide) {
           if (!isFirstFilterActivated) {
             filter.classList.add(
               "sc-li-campaign__policy-type-filter-step-item--active"
@@ -440,7 +412,7 @@ class scInsuranceCampaign {
           text: "",
         },
         tooltip: {
-          format: "{series.name}&lt;br>{key}: &lt;b>{point.y}%&lt;/b>",
+          format: "{series.name}<br>{key}: <b>{point.y}%</b>",
           shared: true,
         },
         accessibility: {
@@ -471,7 +443,7 @@ class scInsuranceCampaign {
           layout: "vertical",
           align: "right",
           verticalAlign: "middle",
-          labelFormat: "{name}: &lt;b>{y}%&lt;/b>",
+          labelFormat: "{name}: <b>{y}%</b>",
           symbolHeight: 14,
           symbolWidth: 14,
           symbolRadius: 2,
@@ -639,7 +611,7 @@ class scInsuranceCampaign {
           });
         });
 
-        if (anycheckboxChecked &amp;&amp; anyradioChecked) {
+        if (anycheckboxChecked && anyradioChecked) {
           formSubmitBtn.classList.remove("sc-btn--disabled");
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
@@ -654,7 +626,7 @@ class scInsuranceCampaign {
           return radio.checked;
         });
 
-        if (anyradioChecked &amp;&amp; anycheckboxChecked) {
+        if (anyradioChecked && anycheckboxChecked) {
           formSubmitBtn.classList.remove("sc-btn--disabled");
         } else {
           formSubmitBtn.classList.add("sc-btn--disabled");
@@ -700,7 +672,7 @@ class scInsuranceCampaign {
   /**
    * Function to build form data object on submit
    * @function buildFormData
-   * @returns {formdata&lt;object>} form fields details
+   * @returns {formdata<object>} form fields details
    */
   buildFormData() {
     this.existingFieldNames = new Set();
@@ -832,7 +804,7 @@ class scInsuranceCampaign {
 
     /** Push form name and page name in digitalData */
     if (
-      window.digitalData.page.pageInfo &amp;&amp;
+      window.digitalData.page.pageInfo &&
       window.digitalData.page.pageInfo.pageName
     ) {
       /** Set na if pageName are empty */
@@ -840,7 +812,7 @@ class scInsuranceCampaign {
       pageName = pageName.split(":");
       let pageNameList = [];
       if (pageName.length > 1) {
-        for (let i = 0; i &lt; pageName.length; i++) {
+        for (let i = 0; i < pageName.length; i++) {
           if (i == 7) {
             pageNameList.push("na");
           } else {
@@ -849,7 +821,7 @@ class scInsuranceCampaign {
         }
       }
 
-      if (pageName.length &lt;= 8) {
+      if (pageName.length <= 8) {
         if (mktCountryCode == "hk") {
           /** Screen Name field in CMS is used if filled, in HK. */
           pageNameList.push(
@@ -955,7 +927,7 @@ class scInsuranceCampaign {
 
     /** Push form name and page name in digitalData */
     if (
-      window.digitalData.page.pageInfo &amp;&amp;
+      window.digitalData.page.pageInfo &&
       window.digitalData.page.pageInfo.pageName
     ) {
       /** Set na if pageName are empty */
@@ -963,10 +935,10 @@ class scInsuranceCampaign {
       pageName = pageName.split(":");
       let pageNameList = [];
       if (pageName.length > 1) {
-        for (let i = 0; i &lt; pageName.length; i++) {
+        for (let i = 0; i < pageName.length; i++) {
           if (i == 7) {
             if (
-              eventlist.includes(eventName) &amp;&amp;
+              eventlist.includes(eventName) &&
               window.digitalData.hasOwnProperty("form")
             ) {
               pageNameList.push(
@@ -983,7 +955,7 @@ class scInsuranceCampaign {
         }
       }
 
-      if (pageName.length &lt;= 8) {
+      if (pageName.length <= 8) {
         if (mktCountryCode == "hk") {
           /** Screen Name field in CMS is used if filled, in HK. */
           pageNameList.push(
@@ -1008,9 +980,9 @@ class scInsuranceCampaign {
     if (queryString) {
       queryString = queryString.substring(1);
       if (queryString) {
-        queryStringList = queryString.split("&amp;");
+        queryStringList = queryString.split("&");
         if (queryStringList.length) {
-          for (let i = 0; i &lt; queryStringList.length; i++) {
+          for (let i = 0; i < queryStringList.length; i++) {
             let result = queryStringList[i].split("=");
             if (result[0].toLowerCase() == "productid") {
               this.productId = result[1].toLowerCase();
@@ -1036,7 +1008,7 @@ class scInsuranceCampaign {
     let total = allowableQueryString.length;
     let campaignName = "";
     let campaignValue = "";
-    for (let i = 0; i &lt; total; i++) {
+    for (let i = 0; i < total; i++) {
       let cookieValue = that.getCookie(allowableQueryString[i]);
       let localStorageValue = Utils.getLocalStorageWithExpiry(
         allowableQueryString[i]
@@ -1066,7 +1038,7 @@ class scInsuranceCampaign {
     var name = key + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(";");
-    for (var i = 0; i &lt; ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
       while (c.charAt(0) == " ") {
         c = c.substring(1);
@@ -1095,7 +1067,7 @@ class scInsuranceCampaign {
       document.documentElement.clientWidth
     );
     let median = width / 2;
-    return xClick &lt; median ? "left" : "right";
+    return xClick < median ? "left" : "right";
   }
 
   /**
@@ -1106,7 +1078,7 @@ class scInsuranceCampaign {
    * getCtaType('sc-btn')
    */
   getCtaType(className, target) {
-    if (target &amp;&amp; target.closest(".sc-nav")) {
+    if (target && target.closest(".sc-nav")) {
       return "nav-link";
     } else if (
       className == "" ||
@@ -1151,7 +1123,7 @@ class scInsuranceCampaign {
       ? that.getCtaType(closestAnchor.className, event.target)
       : "link";
     let linkName =
-      document.querySelector("title") &amp;&amp;
+      document.querySelector("title") &&
       document.querySelector("title").innerText
         ? document.querySelector("title").innerText.toLowerCase()
         : "na";
@@ -1180,7 +1152,7 @@ class scInsuranceCampaign {
     /** submit cta click */
     if (event.target.classList.contains("sc-li-campaign-form__submit-btn")) {
       let formData = that.buildFormData();
-      if (formData &amp;&amp; window.digitalData.products) {
+      if (formData && window.digitalData.products) {
         window.digitalData.products.forEach((item, index) => {
           window.digitalData.products[index].productFields = [];
           formData.fields.forEach((field) => {
@@ -1327,26 +1299,3 @@ const instance = new scInsuranceCampaign();
 instance.init();
 
 export default instance;
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="scInsuranceCampaign.html">scInsuranceCampaign</a></li></ul><h3>Global</h3><ul><li><a href="global.html#activeBanner">activeBanner</a></li><li><a href="global.html#activeContentBox">activeContentBox</a></li><li><a href="global.html#activeFilter">activeFilter</a></li><li><a href="global.html#activeFilterContent">activeFilterContent</a></li><li><a href="global.html#activeModal">activeModal</a></li><li><a href="global.html#addUrlParam">addUrlParam</a></li><li><a href="global.html#buildFormData">buildFormData</a></li><li><a href="global.html#closeModal">closeModal</a></li><li><a href="global.html#createTitle">createTitle</a></li><li><a href="global.html#ctaClick">ctaClick</a></li><li><a href="global.html#formLastAccessedField">formLastAccessedField</a></li><li><a href="global.html#formSubmit">formSubmit</a></li><li><a href="global.html#generateChart">generateChart</a></li><li><a href="global.html#getCheckboxValuescontainer">getCheckboxValues</a></li><li><a href="global.html#getRadioValuecontainer">getRadioValue</a></li><li><a href="global.html#handelFormStartShortForm">handelFormStartShortForm</a></li><li><a href="global.html#handleFormAbandon">handleFormAbandon</a></li><li><a href="global.html#handleFormError">handleFormError</a></li><li><a href="global.html#handleInsuranceFormSubmit">handleInsuranceFormSubmit</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#instance">instance</a></li><li><a href="global.html#pageNameInit">pageNameInit</a></li><li><a href="global.html#pageNameUpdate">pageNameUpdate</a></li><li><a href="global.html#paramCheck">paramCheck</a></li><li><a href="global.html#removeNullHashFromURL">removeNullHashFromURL</a></li><li><a href="global.html#statusModal">statusModal</a></li><li><a href="global.html#tiggerContentFilter">tiggerContentFilter</a></li><li><a href="global.html#tiggerPersona">tiggerPersona</a></li><li><a href="global.html#validateSubmit">validateSubmit</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Sep 23 2024 22:22:31 GMT+0530 (India Standard Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
