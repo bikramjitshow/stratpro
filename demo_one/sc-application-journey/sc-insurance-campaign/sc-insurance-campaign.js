@@ -12,10 +12,11 @@ class scInsuranceCampaign {
 
   init() {
     const that = this;
+    that.campaign = document.querySelector('.sc-li-campaign');
     document.addEventListener('DOMContentLoaded', function() {
-      // event Click for scbtns
-      const scbtns = document.querySelectorAll('.sc-btn');
-      scbtns.forEach(el => {
+      // event Click for scBtns
+      const scBtns = that.campaign.querySelectorAll('.sc-btn');
+      scBtns.forEach(el => {
         el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
@@ -24,8 +25,8 @@ class scInsuranceCampaign {
       });
 
       // event Click for view product brochure
-      const learnmore = document.querySelectorAll('.sc-li-campaign__policy-type-learn-more');
-      learnmore.forEach(el => {
+      const learnMore = that.campaign.querySelectorAll('.sc-li-campaign__policy-type-learn-more');
+      learnMore.forEach(el => {
         el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
@@ -34,7 +35,9 @@ class scInsuranceCampaign {
       });
 
       // event Click for Tab
-      const stepItems = document.querySelectorAll('.sc-li-campaign__policy-type-filter-step-item');
+      const stepItems = that.campaign.querySelectorAll(
+        '.sc-li-campaign__policy-type-filter-step-item'
+      );
       stepItems.forEach(el => {
         el.addEventListener('mousedown', event => {
           event.preventDefault();
@@ -44,7 +47,7 @@ class scInsuranceCampaign {
       });
 
       // event Click for Open modal
-      const opemmodalbtns = document.querySelectorAll('.sc-li-campaign__active-modal-btn');
+      const opemmodalbtns = that.campaign.querySelectorAll('.sc-li-campaign__active-modal-btn');
       opemmodalbtns.forEach(el => {
         el.addEventListener('mousedown', event => {
           event.preventDefault();
@@ -66,8 +69,8 @@ class scInsuranceCampaign {
       });
 
       // event Click for learnmore button
-      const learnmorebtn = document.querySelectorAll('.sc-li-campaign__learn-more-btn');
-      learnmorebtn.forEach(el => {
+      const learnMoreBtn = that.campaign.querySelectorAll('.sc-li-campaign__learn-more-btn');
+      learnMoreBtn.forEach(el => {
         el.addEventListener('mousedown', function(event) {
           event.preventDefault();
           event.stopPropagation();
@@ -82,7 +85,7 @@ class scInsuranceCampaign {
         });
       });
 
-      let firstpersonaBtn = document.querySelector('.sc-li-campaign__persona-btn');
+      let firstpersonaBtn = that.campaign.querySelector('.sc-li-campaign__persona-btn');
       let personaitem = firstpersonaBtn.dataset.persona;
       that.pageNameInit();
       that.paramCheck();
@@ -94,6 +97,12 @@ class scInsuranceCampaign {
     });
   }
 
+  /**
+   * Represents a parameter check.
+   * @constructor
+   * @param {string} title - The title of the book.
+   * @param {string} author - The author of the book.
+   */
   paramCheck() {
     let that = this;
     let queryString = Utils.getPageContext().queryString;
@@ -143,6 +152,9 @@ class scInsuranceCampaign {
     }, 10);
   }
 
+  /**
+   * Click Persona event
+   */
   tiggerPersona(persona) {
     // Get all persona buttons
     const personaBtns = document.querySelectorAll('.sc-li-campaign__persona-btn');
@@ -400,6 +412,9 @@ class scInsuranceCampaign {
     modalContainer.addEventListener('mousedown', this.handleMousedown);
   }
 
+  /**
+   * form modal active event
+   */
   activeModal(event) {
     const that = this;
     const formmodal = document.querySelector('.sc-li-campaign-form-modal');
@@ -651,6 +666,9 @@ class scInsuranceCampaign {
     });
   }
 
+  /**
+   * form last accessd item event
+   */
   formLastAccessedField() {
     // Get the form and all input fields
     const form = document.querySelector('.sc-li-campaign-form');
@@ -669,6 +687,9 @@ class scInsuranceCampaign {
     });
   }
 
+  /**
+   * page name for AA EDDL
+   */
   pageNameInit() {
     const that = this;
     let allowableQueryString = Utils.constants.ALLOWABLE_QUERYSTRING.scb;
