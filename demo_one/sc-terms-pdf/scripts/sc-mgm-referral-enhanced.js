@@ -8,7 +8,6 @@ class ScMgmReferralEnhanced {
   }
 
   init() {
-    console.log("INIT !!!!");
     const that = this;
     that.productTile = document.querySelector(".sc-product-tiles");
     if (!that.productTile) return;
@@ -101,8 +100,7 @@ class ScMgmReferralEnhanced {
     let modalOpen = false;
     let mainModalId = "";
     setTimeout(() => {
-      // const openModals = that.productTile.querySelectorAll("a[href='#null']");
-      const openModals = document.querySelectorAll("a[href='#null']");
+      const openModals = that.productTile.querySelectorAll("a[href='#null']");
       if (openModals.length) {
         openModals.forEach(function (el) {
           el.addEventListener("click", (e) => {
@@ -116,9 +114,7 @@ class ScMgmReferralEnhanced {
 
     //Handle modal close event
     document.body.addEventListener("click", function (event) {
-      console.log(event);
       if (modalOpen) {
-        console.log("mo", event);
         let anchor = event.target.closest("a");
         let tm = document
           .querySelector(".m-text-content")
@@ -159,20 +155,6 @@ class ScMgmReferralEnhanced {
         }
       }
     });
-
-    // Get the anchor tag and add a click event listener
-    const pdtButton = document.querySelectorAll(".sc-mgm-refer-tc");
-    if (pdtButton.length) {
-      pdtButton.forEach(function (el) {
-        el.addEventListener("click", function (event) {
-          event.preventDefault();
-          event.stopPropagation();
-          console.log("term modal active !!");
-          that.isTermModalActive = true;
-          that.termsModalActive(event);
-        });
-      });
-    }
 
     that.handleSticky();
     that.handleReferId();
@@ -902,7 +884,9 @@ class ScMgmReferralEnhanced {
     });
   }
 
-  isTermAccepted() {}
+  isTermAccepted() {
+    
+  }
 }
 
 const instance = new ScMgmReferralEnhanced();
