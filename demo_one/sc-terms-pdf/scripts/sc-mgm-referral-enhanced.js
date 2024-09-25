@@ -106,7 +106,7 @@ class ScMgmReferralEnhanced {
           el.addEventListener("click", (e) => {
             modalOpen = true;
             mainModalId = el.getAttribute("data-modal-source");
-            that.isTermModalRequire = el.getAttribute("data-modal-terms");
+            that.isTermModalRequire = el.getAttribute("data-terms-enable");
           });
         });
       }
@@ -670,7 +670,7 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-modal-terms");
+    // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-terms-enable");
     console.log(that.isTermModalRequire);
     if (!that.isTermModalRequire) {
       const newHref = checkedRadio
@@ -882,6 +882,10 @@ class ScMgmReferralEnhanced {
       // Fetch the PDF file and force download
       downloadPdf(encodedURL, filename);
     });
+  }
+
+  isTermAccepted() {
+    
   }
 }
 

@@ -108,7 +108,7 @@ class ScMgmReferralEnhanced {
             if (!el.classList.contains("sc-products-tile__mobile-link")) {
               mainModalId = el.getAttribute("data-modal-source");
             }
-            that.isTermModalRequire = el.getAttribute("data-modal-terms");
+            that.isTermModalRequire = el.getAttribute("data-terms-enable");
           });
         });
       }
@@ -671,7 +671,7 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-modal-terms");
+    // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-terms-enable");
     console.log(that.isTermModalRequire);
     if (!that.isTermModalRequire) {
       const newHref = checkedRadio
