@@ -1,0 +1,127 @@
+.sc-products-tile-terms-modal {
+  --tile-padding: 16px;
+  background-color: $color-white-smoke-3;
+  padding: var(--tile-padding);
+  margin: calc(var(--tile-padding) * -1);
+  width: calc(100% + var(--tile-padding) * 2);
+  min-height: auto;
+
+  &__terms-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  &__content {
+    margin-bottom: 24px;
+    ~ .sc-products-tile-terms-modal__content {
+      margin-top: 24px;
+    }
+  }
+
+  .sc-products-tile {
+    &__btn,
+    &__input-btn {
+      position: sticky;
+      bottom: calc(var(--tile-padding) * -1);
+      width: calc(100% + var(--tile-padding) * 2);
+      margin: var(--tile-padding) calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1);
+      left: 0;
+      padding: 20px;
+      background-color: $color-white;
+      z-index: 4;
+      .sc-btn {
+        width: 100%;
+      }
+    }
+    &__btn {
+      .buttons {
+        flex-wrap: nowrap;
+        gap: 0;
+        li {
+          width: 100%;
+          margin-right: 8px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0;
+    column-gap: 40px;
+    li {
+      width: auto;
+    }
+    .sc-btn {
+      min-width: 100px;
+    }
+  }
+  .sc-rte {
+    table {
+      margin: 16px 0;
+      border: none;
+      tr {
+        &:first-child {
+          td {
+            background-color: #ffffff;
+            color: inherit;
+            font-weight: 300;
+            font-size: 14px;
+          }
+        }
+        td,
+        th {
+          &:last-of-type {
+            border-right: 1px solid #eee;
+          }
+        }
+      }
+    }
+    p {
+      margin-bottom: 16px;
+    }
+    ul {
+      li {
+        list-style-type: upper-latin;
+      }
+    }
+  }
+}
+
+@include breakpoint($bp--h-small-large) {
+  .sc-products-tile-terms-modal {
+    --tile-padding: 24px;
+    min-height: 250px;
+    .buttons {
+      gap: 20px;
+    }
+
+    .sc-products-tile {
+      &__btn {
+        .buttons {
+          flex-wrap: nowrap;
+          gap: 16px;
+          li {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .c-modal > .wrapper[data-size="theme"] .m-text-content {
+    border-radius: 0;
+  }
+
+  .c-modal {
+    .m-text-content {
+      .sc-products-tile-terms-modal {
+        margin-bottom: -24px;
+        padding-bottom: 0;
+      }
+    }
+  }
+}
