@@ -148,7 +148,7 @@ class ScMgmReferralEnhanced {
         }
 
         //identify the term modal
-        if (event.target.classList.contains("sc-products-tile__is-tc")) {
+        if (event.target.classList.contains("sc-mgm-refer-tc")) {
           console.log("term modal active !!");
           that.isTermModalActive = true;
           that.termsModalActive(event);
@@ -706,7 +706,7 @@ class ScMgmReferralEnhanced {
       if (
         closestAnchor &&
         closestAnchor.getAttribute("href") === "#null" &&
-        event.target.classList.contains("sc-products-tile__is-tc")
+        event.target.classList.contains("sc-mgm-refer-tc")
       ) {
         setTimeout(() => {
           let mtextcontentId = event.target
