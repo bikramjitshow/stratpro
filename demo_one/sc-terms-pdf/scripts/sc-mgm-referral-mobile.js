@@ -4,14 +4,14 @@
 class ScMgmReferralMobile {
   constructor() {
     this.ScCommonMethods = new ScCommonMethods();
-    this.codeValue = null;
-    window.tcmObject = {
-      termsAccepted: false,
-    };
   }
 
   init() {
     const that = this;
+    window.tcmObject = {
+      termsUpdated: false,
+      termsAccepted: false,
+    };
     that.mgmRefer = document.querySelector(".sc-mgm-refer");
     // Assume that window.object is already defined
     const queryParameter = window.mgmObject.queryParameter || "code";
@@ -53,7 +53,6 @@ class ScMgmReferralMobile {
         that.copyReferralCode(that.codeValue);
       });
     }
-    console.log(window.tcmObject);
     //Handle popup open
     let modalOpen = false;
     let mainModalId = "";
@@ -84,7 +83,6 @@ class ScMgmReferralMobile {
 
     //Handle modal close event
     document.body.addEventListener("click", function (event) {
-      console.log(window.tcmObject);
       if (modalOpen) {
         let anchor = event.target.closest("a");
         let tcModal = document
@@ -126,6 +124,7 @@ class ScMgmReferralMobile {
           event.stopPropagation();
           event.stopImmediatePropagation();
           setTimeout(() => {
+            that.checkAndUpdateDate();
             that.pdtBtnShare(event.target, that.codeValue);
           }, 1000);
         } else if (
@@ -134,6 +133,7 @@ class ScMgmReferralMobile {
           !window.tcmObject.termsAccepted
         ) {
           console.log("term modal active !!");
+          console.log("terms updted--", window.tcmObject.termsUpdated);
           that.isTermModalActive = true;
           that.termsModalActive(event);
         }
@@ -154,6 +154,7 @@ class ScMgmReferralMobile {
     //   });
     // }
 
+    that.checkAndUpdateDate();
     that.handleReferInfo();
     that.handleCardsFilter();
     that.handleViewAll();
@@ -418,6 +419,13 @@ class ScMgmReferralMobile {
           let activeModal = document.querySelector(".m-text-content");
           let activeModalId = activeModal.getAttribute("data-modal-id");
           if (modalAttr === activeModalId) {
+            let tcUpdateInfo = document.querySelector(".sc-info-tile");
+            console.log("termsUpdated--", window.tcmObject.termsUpdated);
+            if (window.tcmObject.termsUpdated) {
+              tcUpdateInfo.classList.remove("hide");
+            } else {
+              tcUpdateInfo.classList.add("hide");
+            }
             that.activeScrollToBottom(event, mtextcontentId);
             that.activeDownloadButton();
           } else {
@@ -447,7 +455,7 @@ class ScMgmReferralMobile {
    * activeScrollToBottom(e,id)
    */
   activeScrollToBottom(event, mtextcontentId) {
-    console.log("activeScrollToBottom !!", event.target, mtextcontentId);
+    console.log("activeScrollToBottom !!", mtextcontentId);
     const that = this;
     let referEvent = event;
     var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
@@ -467,6 +475,7 @@ class ScMgmReferralMobile {
     if (window.tcmObject.termsAccepted) {
       closeButton.click();
       setTimeout(() => {
+        that.checkAndUpdateDate();
         that.pdtBtnShare(referEvent.target, that.codeValue);
       }, 1000);
     }
@@ -507,6 +516,7 @@ class ScMgmReferralMobile {
         window.tcmObject.termsAccepted = true;
         closeButton.click();
         setTimeout(() => {
+          that.checkAndUpdateDate();
           that.pdtBtnShare(referEvent.target, that.codeValue);
         }, 1000);
       } else {
@@ -580,6 +590,94 @@ class ScMgmReferralMobile {
       // Fetch the PDF file and force download
       downloadPdf(encodedURL, filename);
     });
+  }
+
+  // Function to set a cookie
+  setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000); // days to milliseconds
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  // Function to get a cookie value by name
+  getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Function to validate if a string is a valid UTC timestamp
+  isValidUTCTimestamp(timestamp) {
+    const parsed = parseInt(timestamp, 10);
+    const date = new Date(parsed);
+    return !isNaN(parsed) && date.getTime() > 0;
+  }
+
+  // Function to convert a date string (e.g., '24/09/2024') to a UTC timestamp
+  convertToUTCTimestamp(dateStr) {
+    const [day, month, year] = dateStr.split("/").map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day)); // month is 0-indexed
+    return date.getTime();
+  }
+
+  // Function to check if the date value has changed and update storage
+  checkAndUpdateDate() {
+    const that = this;
+    const element = document.querySelector(".m-text-content");
+    const newDateStr = element.getAttribute("data-term-updated-date");
+
+    // Convert the new date string to a UTC timestamp
+    const newDateTimestamp = that.convertToUTCTimestamp(newDateStr);
+
+    // Get stored date from localStorage and cookies
+    let storedDateTimestamp = localStorage.getItem("termUpdatedDate");
+    let cookieDateTimestamp = that.getCookie("termUpdatedDate");
+
+    // Validate stored timestamps (fallback if tampered or invalid)
+    if (!that.isValidUTCTimestamp(storedDateTimestamp)) {
+      console.warn(
+        "Invalid timestamp in localStorage, resetting to the new value."
+      );
+      storedDateTimestamp = null;
+    }
+
+    if (!that.isValidUTCTimestamp(cookieDateTimestamp)) {
+      console.warn("Invalid timestamp in cookies, resetting to the new value.");
+      cookieDateTimestamp = null;
+    }
+
+    // If it's the first time or both storage are invalid, store the new date
+    if (storedDateTimestamp === null || cookieDateTimestamp === null) {
+      console.log("Storing date for the first time.");
+      localStorage.setItem("termUpdatedDate", newDateTimestamp);
+      that.setCookie("termUpdatedDate", newDateTimestamp, 365);
+    } else {
+      // Convert stored values to numbers for comparison
+      storedDateTimestamp = Number(storedDateTimestamp);
+      cookieDateTimestamp = Number(cookieDateTimestamp);
+
+      // Compare the new date timestamp with the stored one
+      if (newDateTimestamp > storedDateTimestamp) {
+        console.log("Date updated:", newDateTimestamp);
+        window.tcmObject.termsUpdated = true;
+
+        // Update localStorage and cookies with the new date
+        localStorage.setItem("termUpdatedDate", newDateTimestamp);
+        that.setCookie("termUpdatedDate", newDateTimestamp, 30);
+      } else {
+        window.tcmObject.termsUpdated = false;
+        console.log("It's a match, no update needed.");
+      }
+    }
   }
 
   /**

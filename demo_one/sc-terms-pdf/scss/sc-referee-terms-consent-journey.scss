@@ -91,6 +91,44 @@
   }
 }
 
+// sc-info-tile
+.sc-info-tile {
+  display: flex;
+  width: 100%;
+  border: 1px solid #38d200;
+  border-radius: 8px;
+  background-color: #e0ffdb;
+  padding: 12px 10px;
+  margin-bottom: 16px;
+  &--green {
+    border: 1px solid #38d200;
+    background-color: #e0ffdb;
+  }
+  &__icon-wrap {
+    margin-right: 4px;
+    img,
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  &__title {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+  &__desc {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 4px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 @include breakpoint($bp--h-small-large) {
   .sc-products-tile-terms-modal {
     --tile-padding: 24px;
