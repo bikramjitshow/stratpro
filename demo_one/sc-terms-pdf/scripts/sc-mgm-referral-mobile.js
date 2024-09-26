@@ -4,6 +4,7 @@
 class ScMgmReferralMobile {
   constructor() {
     this.ScCommonMethods = new ScCommonMethods();
+    this.codeValue = null;
     window.tcmObject = {
       termsAccepted: false,
     };
@@ -15,13 +16,13 @@ class ScMgmReferralMobile {
     // Assume that window.object is already defined
     const queryParameter = window.mgmObject.queryParameter || "code";
     // Get the query parameter value from the URL
-    const codeValue = that.ScCommonMethods.getQueryParam(
+    that.codeValue = that.ScCommonMethods.getQueryParam(
       Utils.getPageContext().queryString,
       queryParameter
     );
 
     const errorModal = document.querySelector(".sc-error-modal");
-    if (!codeValue) {
+    if (!that.codeValue) {
       //If referral code is empty or invalid
       errorModal.classList.add("sc-error-modal--show");
       return;
@@ -43,13 +44,13 @@ class ScMgmReferralMobile {
 
     // Update the content of the div with the extracted code
     const referralCodeDiv = document.querySelector(".sc-mgm-refer__code-text");
-    if (referralCodeDiv) referralCodeDiv.textContent = codeValue;
+    if (referralCodeDiv) referralCodeDiv.textContent = that.codeValue;
 
     // Get the anchor tag and add a click event listener
     const copyCodeButton = document.querySelector(".sc-mgm-refer__copy-code");
     if (copyCodeButton) {
       copyCodeButton.addEventListener("click", function () {
-        that.copyReferralCode(codeValue);
+        that.copyReferralCode(that.codeValue);
       });
     }
     console.log(window.tcmObject);
@@ -58,7 +59,6 @@ class ScMgmReferralMobile {
     let mainModalId = "";
     that.isTermModalRequire = false;
     that.isTermModalActive = false;
-    let modalredirecturl = null;
     setTimeout(() => {
       const openModals = that.mgmRefer.querySelectorAll("a[href='#null']");
       if (openModals.length) {
@@ -69,6 +69,13 @@ class ScMgmReferralMobile {
             console.log(el.getAttribute("data-terms-enable"));
             if (el.getAttribute("data-terms-enable") === "true") {
               that.isTermModalRequire = true;
+            } else {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              if (e.target.classList.contains("sc-mgm-refer-pdt-btn")) {
+                that.pdtBtnShare(e.target, that.codeValue);
+              }
             }
           });
         });
@@ -111,18 +118,15 @@ class ScMgmReferralMobile {
         }
 
         //identify the term modal
-        console.log("that.isTermModalRequire--", that.isTermModalRequire);
-
         if (
           window.tcmObject.termsAccepted &&
           event.target.classList.contains("sc-mgm-refer-tc")
         ) {
-          let redirectUrl = event.target.getAttribute("data-redirect-url");
           event.preventDefault();
           event.stopPropagation();
           event.stopImmediatePropagation();
           setTimeout(() => {
-            window.open(redirectUrl, "_blank");
+            that.pdtBtnShare(event.target, that.codeValue);
           }, 1000);
         } else if (
           event.target.classList.contains("sc-mgm-refer-tc") &&
@@ -137,16 +141,18 @@ class ScMgmReferralMobile {
     });
 
     // Get the anchor tag and add a click event listener
-    const pdtButton = document.querySelectorAll(".sc-mgm-refer-pdt-btn");
-    if (pdtButton.length) {
-      pdtButton.forEach(function (el) {
-        el.addEventListener("mousedown", function (event) {
-          event.preventDefault();
-          event.stopPropagation();
-          that.pdtBtnShare(event.target, codeValue);
-        });
-      });
-    }
+    // const pdtButton = document.querySelectorAll(".sc-mgm-refer-pdt-btn");
+    // if (pdtButton.length) {
+    //   pdtButton.forEach(function (el) {
+    //     el.addEventListener("mousedown", function (event) {
+    //       event.preventDefault();
+    //       event.stopPropagation();
+    //       if (that.isTermModalRequire && window.tcmObject.termsAccepted) {
+    //         that.pdtBtnShare(event.target, that.codeValue);
+    //       }
+    //     });
+    //   });
+    // }
 
     that.handleReferInfo();
     that.handleCardsFilter();
@@ -221,9 +227,16 @@ class ScMgmReferralMobile {
    * collect the share info from clicked share button
    */
   pdtBtnShare(ev, codeValue) {
+    console.log("!!!!!!pdtBtnShare Called !!!!!!");
     let shareTitle = ev.getAttribute("data-shareTitle"),
       shareText = ev.getAttribute("data-shareText"),
       shareURL = ev.getAttribute("data-shareURL");
+    console.log({ ev: ev, codeValue: codeValue });
+    console.log({
+      shareTitle: shareTitle,
+      shareText: shareText,
+      shareURL: shareURL,
+    });
     if (!shareURL) return;
 
     shareURL = shareURL.split("data-share-code").join(codeValue);
@@ -402,12 +415,10 @@ class ScMgmReferralMobile {
             .querySelector(".m-text-content")
             .getAttribute("data-modal-id");
           let modalAttr = closestAnchor.getAttribute("data-modal-source");
-          let modalredirecturl =
-            closestAnchor.getAttribute("data-redirect-url");
           let activeModal = document.querySelector(".m-text-content");
           let activeModalId = activeModal.getAttribute("data-modal-id");
           if (modalAttr === activeModalId) {
-            that.activeScrollToBottom(modalredirecturl, mtextcontentId);
+            that.activeScrollToBottom(event, mtextcontentId);
             that.activeDownloadButton();
           } else {
             console.log("activeModalId Not matched");
@@ -417,52 +428,46 @@ class ScMgmReferralMobile {
     }
   }
 
+  /**
+   * Terms Modal Close
+   * @example
+   * termsModalClosed("modal-1")
+   */
   termsModalClosed(modalid) {
     const that = this;
     console.log("termsModalClosed Called!", modalid);
     that.isTermModalActive = false;
-    setTimeout(function () {
-      const modalId = document.querySelector(
-        `[data-modal-source='${modalid}']`
-      );
-      console.log("modalId--", modalId);
-      if (modalId) {
-        // modalId.click();
-        // that.isTermModalRequire = true;
-      }
-    }, 300);
   }
 
   /**
    * activeScrollToBottom on modal active
-   * @param {String} toredirect redirect URL
+   * @param {event} event event target
    * @param {String} mtextcontentId active modal ID
    * @example
-   * activeScrollToBottom(url,id)
+   * activeScrollToBottom(e,id)
    */
-  activeScrollToBottom(toredirect, mtextcontentId) {
-    console.log("activeScrollToBottom !!", toredirect, mtextcontentId);
+  activeScrollToBottom(event, mtextcontentId) {
+    console.log("activeScrollToBottom !!", event.target, mtextcontentId);
+    const that = this;
+    let referEvent = event;
     var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
     var scrollbtnlastTitle = scrollbtn.getAttribute("data-last-title");
     var downloadButton = document.querySelector(
       ".sc-products-tile__download-button"
     );
     var scrollableDiv = document.querySelector(".m-text-content");
-    var redirectUrl = toredirect;
-
     let clickCount = 0;
     const stepsPerClick = 1; // Number of scroll steps per click
     const totalSteps = 4; // Total number of steps to scroll
     let manualScrollDetected = false;
     const closeButton = document.querySelector(".wrapper");
-    console.log("closeButton-", closeButton);
 
     // Check if the user has been redirected before
     console.log(window.tcmObject);
     if (window.tcmObject.termsAccepted) {
       closeButton.click();
       setTimeout(() => {
-        window.open(redirectUrl, "_blank");
+        that.pdtBtnShare(referEvent.target, that.codeValue);
       }, 1000);
     }
 
@@ -502,7 +507,7 @@ class ScMgmReferralMobile {
         window.tcmObject.termsAccepted = true;
         closeButton.click();
         setTimeout(() => {
-          window.open(redirectUrl, "_blank");
+          that.pdtBtnShare(referEvent.target, that.codeValue);
         }, 1000);
       } else {
         clickCount++;
@@ -577,7 +582,6 @@ class ScMgmReferralMobile {
     });
   }
 
-  isTermAccepted() {}
   /**
    * trigger adobe popupViewed event when showing popups
    */
