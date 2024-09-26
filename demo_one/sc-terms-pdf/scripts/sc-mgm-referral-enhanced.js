@@ -883,10 +883,6 @@ class ScMgmReferralEnhanced {
       downloadPdf(encodedURL, filename);
     });
   }
-
-  isTermAccepted() {
-    
-  }
 }
 
 const instance = new ScMgmReferralEnhanced();
