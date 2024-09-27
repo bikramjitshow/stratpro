@@ -211,6 +211,7 @@ class ScMgmReferralEnhanced {
         const recommendedWrapper = that.productTile.querySelector(
           ".sc-product-tiles-recommended__wrapper"
         );
+        console.log(clonedPdtForRecommended);
         if (recommendedWrapper) {
           recommendedWrapper.appendChild(clonedPdtForRecommended);
         }
@@ -811,7 +812,6 @@ class ScMgmReferralEnhanced {
 
       if (manualScrollDetected || clickCount >= totalSteps) {
         localStorage.setItem("termsAccepted", "true");
-        // window.location.href = redirectUrl;
         window.open(redirectUrl, "_blank");
       } else {
         clickCount++;
