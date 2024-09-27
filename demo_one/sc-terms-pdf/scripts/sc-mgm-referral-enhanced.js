@@ -106,7 +106,9 @@ class ScMgmReferralEnhanced {
           el.addEventListener("click", (e) => {
             modalOpen = true;
             mainModalId = el.getAttribute("data-modal-source");
-            that.isTermModalRequire = el.getAttribute("data-terms-enable");
+            if (el.getAttribute("data-terms-enable") === "true") {
+              that.isTermModalRequire = true;
+            }
           });
         });
       }
@@ -671,7 +673,7 @@ class ScMgmReferralEnhanced {
       ".sc-products-tile-pdt-selection input:checked"
     );
     // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-terms-enable");
-    console.log(that.isTermModalRequire);
+    console.log("isTermModalRequire--", that.isTermModalRequire);
     if (!that.isTermModalRequire) {
       const newHref = checkedRadio
         ?.closest("label")
@@ -700,7 +702,7 @@ class ScMgmReferralEnhanced {
       ?.closest("label")
       .getAttribute("data-card-link");
     console.log({ newHref });
-    console.log(that.isTermModalRequire);
+    console.log("isTermModalRequire--", that.isTermModalRequire);
     if (that.isTermModalRequire) {
       that.isTermModalActive = true;
       if (
@@ -747,8 +749,8 @@ class ScMgmReferralEnhanced {
       );
       console.log("modalId--", modalId);
       if (modalId) {
+        that.isTermModalRequire = true;
         modalId.click();
-        // that.isTermModalRequire = true;
       }
     }, 300);
   }
