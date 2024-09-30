@@ -484,7 +484,7 @@ class ScMgmReferralMobile {
       const totalHeight = element.scrollHeight - element.clientHeight;
       const stepHeight = totalHeight / totalSteps;
 
-      element.scrollBy(0, stepHeight * steps);
+      element.scrollBy({ top: stepHeight * steps, behavior: "smooth" });
 
       if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
         // Scrolled to the bottom

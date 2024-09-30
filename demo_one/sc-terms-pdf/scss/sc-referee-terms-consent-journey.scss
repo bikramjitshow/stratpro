@@ -91,6 +91,21 @@
   }
 }
 
+.c-modal {
+  &.m-text-content {
+    &.sc-products-tile-terms-modal {
+      margin-bottom: -16px;
+      &.sc-products-tile__btn,
+      &.sc-products-tile__input-btn {
+        margin-bottom: -16px;
+      }
+      &.sc-tag {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
 // sc-info-tile
 .sc-info-tile {
   display: flex;
@@ -155,10 +170,13 @@
   }
 
   .c-modal {
-    .m-text-content {
-      .sc-products-tile-terms-modal {
+    &.m-text-content {
+      &.sc-products-tile-terms-modal {
         margin-bottom: -24px;
-        padding-bottom: 0;
+        &.sc-products-tile__btn,
+        &.sc-products-tile__input-btn {
+          margin-bottom: -24px;
+        }
       }
     }
   }

@@ -224,6 +224,16 @@
   list-style-type: upper-latin;
 }
 
+.c-modal.m-text-content.sc-products-tile-terms-modal {
+  margin-bottom: -16px;
+}
+.c-modal.m-text-content.sc-products-tile-terms-modal.sc-products-tile__btn, .c-modal.m-text-content.sc-products-tile-terms-modal.sc-products-tile__input-btn {
+  margin-bottom: -16px;
+}
+.c-modal.m-text-content.sc-products-tile-terms-modal.sc-tag {
+  margin-bottom: 8px;
+}
+
 .sc-info-tile {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -282,9 +292,11 @@
   .c-modal > .wrapper[data-size=theme] .m-text-content {
     border-radius: 0;
   }
-  .c-modal .m-text-content .sc-products-tile-terms-modal {
+  .c-modal.m-text-content.sc-products-tile-terms-modal {
     margin-bottom: -24px;
-    padding-bottom: 0;
+  }
+  .c-modal.m-text-content.sc-products-tile-terms-modal.sc-products-tile__btn, .c-modal.m-text-content.sc-products-tile-terms-modal.sc-products-tile__input-btn {
+    margin-bottom: -24px;
   }
 }
 html {

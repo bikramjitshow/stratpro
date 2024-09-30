@@ -782,7 +782,7 @@ class ScMgmReferralEnhanced {
       const totalHeight = element.scrollHeight - element.clientHeight;
       const stepHeight = totalHeight / totalSteps;
 
-      element.scrollBy(0, stepHeight * steps);
+      element.scrollBy({ top: stepHeight * steps, behavior: "smooth" });
 
       if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
         // Scrolled to the bottom
@@ -836,6 +836,7 @@ class ScMgmReferralEnhanced {
    */
   activeDownloadButton() {
     console.log("activeDownloadButton !!");
+    const that = this;
     // Download function
     let downloadPdf = (pdfurl, filename) => {
       // Fetch the PDF file and force download
@@ -883,6 +884,7 @@ class ScMgmReferralEnhanced {
 
       // Fetch the PDF file and force download
       downloadPdf(encodedURL, filename);
+      that.triggerCtaClickTagging(event);
     });
   }
 }
