@@ -2753,8 +2753,8 @@
                           <a href="#null"
                             data-redirect-url="https://origination.sc.com/onboarding/hk/apply.html?product=1282&campaign=HKSOG20VAWV000&premium=ST54&cardType=3267&affiliation=2131&lang=zh"
                             title="立即申請 - Smart 信用卡" target="_blank"
-                            class="c-button sc-btn sc-btn--blue sc-btn--small sc-mgm-refer-tc"
-                            data-send="show-overlay" data-modal-source="sc-prod-col-terms-modal-cta-795772">
+                            class="c-button sc-btn sc-btn--blue sc-btn--small sc-mgm-refer-tc" data-send="show-overlay"
+                            data-modal-source="sc-prod-col-terms-modal-cta-795772">
                             <span>立即申請
                               <span class="visuallyhidden">
                                 - Smart 信用卡</span></span>
@@ -3506,142 +3506,16 @@
     .only-mobile {
       pointer-events: none;
     }
-
-    .sc-products-tile-terms-modal {
-      --tile-padding: 16px;
-      background-color: #f8f8f8;
-      padding: var(--tile-padding);
-      margin: calc(var(--tile-padding) * -1);
-      width: calc(100% + var(--tile-padding) * 2);
-      min-height: auto;
-    }
-
-    .sc-products-tile-terms-modal__terms-title {
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-
-    .sc-products-tile-terms-modal__content {
-      margin-bottom: 24px;
-    }
-
-    .sc-products-tile-terms-modal__content~.sc-products-tile-terms-modal__content {
-      margin-top: 24px;
-    }
-
-    .sc-products-tile-terms-modal .sc-products-tile__btn,
-    .sc-products-tile-terms-modal .sc-products-tile__input-btn {
-      position: sticky;
-      bottom: calc(var(--tile-padding) * -1);
-      width: calc(100% + var(--tile-padding) * 2);
-      margin: var(--tile-padding) calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1);
-      left: 0;
-      padding: 20px;
-      background-color: #ffffff;
-      z-index: 4;
-    }
-
-    .sc-products-tile-terms-modal .sc-products-tile__btn .sc-btn,
-    .sc-products-tile-terms-modal .sc-products-tile__input-btn .sc-btn {
-      width: 100%;
-    }
-
-    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      gap: 0;
-    }
-
-    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
-      width: 100%;
-      margin-right: 8px;
-    }
-
-    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li:last-child {
-      margin-right: 0;
-    }
-
-    .sc-products-tile-terms-modal .buttons {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      row-gap: 0;
-      -webkit-column-gap: 40px;
-      -moz-column-gap: 40px;
-      column-gap: 40px;
-    }
-
-    .sc-products-tile-terms-modal .buttons li {
-      width: auto;
-    }
-
-    .sc-products-tile-terms-modal .buttons .sc-btn {
-      min-width: 100px;
-    }
-
-    .sc-products-tile-terms-modal .sc-rte table {
-      margin: 16px 0;
-      border: none;
-    }
-
-    .sc-products-tile-terms-modal .sc-rte table tr:first-child td {
-      background-color: #ffffff;
-      color: inherit;
-      font-weight: 300;
-      font-size: 14px;
-    }
-
-    .sc-products-tile-terms-modal .sc-rte table tr td:last-of-type,
-    .sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
-      border-right: 1px solid #eee;
-    }
-
-    .sc-products-tile-terms-modal .sc-rte p {
-      margin-bottom: 16px;
-    }
-
-    @media (min-width: 681px) {
-      .sc-products-tile-terms-modal {
-        --tile-padding: 24px;
-        min-height: 250px;
-      }
-
-      .sc-products-tile-terms-modal .buttons {
-        gap: 20px;
-      }
-
-      .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
-        -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-        gap: 16px;
-      }
-
-      .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
-        margin-right: 0;
-      }
-
-      .c-modal>.wrapper[data-size="theme"] .m-text-content {
-        border-radius: 0;
-      }
-
-      .c-modal .m-text-content .sc-products-tile-terms-modal {
-        margin-bottom: -24px;
-        padding-bottom: 0;
-      }
-    }
   </style>
+  <link rel="stylesheet" href="./css/style.css" />
+
 
   <!-- terms-modal-cta-792396 -->
   <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-792396" data-term-modal="true"
     data-size="theme">
     <div class="sc-products-tile-terms-modal">
-      <!-- <a href="#null" class="sc-prod-col-terms-modal__close" data-send="close-modal"></a> -->
+      <h3 class="sc-products-tile-terms-modal__title">般條款及細則</h3>
       <div class="sc-products-tile-terms-modal__content sc-rte">
-        <p>
-          <strong> Terms and Conditions 792396</strong>
-        </p>
         <ul>
           <li>
             <strong>SC Referral Club 之一般條款及細則</strong>
@@ -4053,11 +3927,8 @@
   <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-795772" data-term-modal="true"
     data-size="theme">
     <div class="sc-products-tile-terms-modal">
-      <!-- <a href="#null" class="sc-prod-col-terms-modal__close" data-send="close-modal"></a> -->
+      <h3 class="sc-products-tile-terms-modal__title">般條款及細則</h3>
       <div class="sc-products-tile-terms-modal__content sc-rte">
-        <p>
-          <strong> Terms and Conditions 795772</strong>
-        </p>
         <ul>
           <li>
             <strong>SC Referral Club 之一般條款及細則</strong>

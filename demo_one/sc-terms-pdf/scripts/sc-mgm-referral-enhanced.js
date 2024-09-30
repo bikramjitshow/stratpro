@@ -790,6 +790,8 @@ class ScMgmReferralEnhanced {
       }
     };
 
+    const closeButton = document.querySelector(".wrapper");
+
     scrollableDiv.addEventListener("scroll", function () {
       const scrollPos = scrollableDiv.scrollTop + scrollableDiv.clientHeight;
       const maxScroll = scrollableDiv.scrollHeight - 1; // Subtract a small margin for precision
@@ -812,6 +814,7 @@ class ScMgmReferralEnhanced {
 
       if (manualScrollDetected || clickCount >= totalSteps) {
         localStorage.setItem("termsAccepted", "true");
+        closeButton.click();
         window.open(redirectUrl, "_blank");
       } else {
         clickCount++;
@@ -883,8 +886,8 @@ class ScMgmReferralEnhanced {
       var filename = segments[segments.length - 1];
 
       // Fetch the PDF file and force download
-      downloadPdf(encodedURL, filename);
       that.triggerCtaClickTagging(event);
+      downloadPdf(encodedURL, filename);
     });
   }
 }
