@@ -8,10 +8,7 @@ class ScMgmReferralMobile {
 
   init() {
     const that = this;
-    window.tcmObject = {
-      termsUpdated: false,
-      termsAccepted: false,
-    };
+    // that.termsState();
     that.mgmRefer = document.querySelector(".sc-mgm-refer");
     // Assume that window.object is already defined
     const queryParameter = window.mgmObject.queryParameter || "code";
@@ -117,8 +114,9 @@ class ScMgmReferralMobile {
 
         //identify the term modal
         if (
+          event.target.classList.contains("sc-mgm-refer-tc") &&
           window.tcmObject.termsAccepted &&
-          event.target.classList.contains("sc-mgm-refer-tc")
+          !window.tcmObject.termsUpdated
         ) {
           event.preventDefault();
           event.stopPropagation();
@@ -131,6 +129,16 @@ class ScMgmReferralMobile {
           event.target.classList.contains("sc-mgm-refer-tc") &&
           that.isTermModalRequire &&
           !window.tcmObject.termsAccepted
+        ) {
+          console.log("term modal active !!");
+          console.log("terms updted--", window.tcmObject.termsUpdated);
+          that.isTermModalActive = true;
+          that.termsModalActive(event);
+        } else if (
+          event.target.classList.contains("sc-mgm-refer-tc") &&
+          that.isTermModalRequire &&
+          window.tcmObject.termsAccepted &&
+          window.tcmObject.termsUpdated
         ) {
           console.log("term modal active !!");
           console.log("terms updted--", window.tcmObject.termsUpdated);
@@ -395,6 +403,50 @@ class ScMgmReferralMobile {
   }
 
   /**
+   * Represent a function
+   * @function termsState
+   * @returns {object} window.tcmObject
+   */
+  termsState() {
+    const that = this;
+    // termsUpdated
+    let isTermsUpdated = false;
+    let storedtermsUpdated = localStorage.getItem("termUpdatedDate");
+    let cookietermsUpdated = that.getCookie("termUpdatedDate");
+    let oldstoredtermsUpdated = localStorage.getItem("oldtermUpdatedDate");
+    let oldcookietermsUpdated = that.getCookie("oldtermUpdatedDate");
+
+    // termsAccepted
+    let storedtermsAccepted = localStorage.getItem("termsAccepted") === "true";
+    let cookietermsAccepted = that.getCookie("termsAccepted") === "true";
+
+    // Compare termsUpdated values to check if they have changed
+    if (oldstoredtermsUpdated || oldcookietermsUpdated) {
+      if (
+        oldstoredtermsUpdated !== storedtermsUpdated ||
+        oldcookietermsUpdated !== cookietermsUpdated
+      ) {
+        isTermsUpdated = true;
+      } else {
+        isTermsUpdated = false;
+      }
+    }
+    console.log({
+      oldstoredtermsUpdated,
+      storedtermsUpdated,
+      cookietermsUpdated,
+      isTermsUpdated,
+    });
+
+    window.tcmObject = {
+      termsUpdated: isTermsUpdated,
+      termsAccepted: storedtermsAccepted || cookietermsAccepted,
+    };
+    console.log(window.tcmObject);
+    return window.tcmObject;
+  }
+
+  /**
    * Terms Modal Active on init
    * @example
    * termsModalActive()
@@ -513,7 +565,18 @@ class ScMgmReferralMobile {
       event.stopImmediatePropagation();
 
       if (manualScrollDetected || clickCount >= totalSteps) {
-        window.tcmObject.termsAccepted = true;
+        localStorage.setItem("termsAccepted", true);
+        that.setCookie("termsAccepted", true, 365);
+        localStorage.setItem(
+          "oldtermUpdatedDate",
+          localStorage.getItem("termUpdatedDate")
+        );
+        that.setCookie(
+          "oldtermUpdatedDate",
+          that.getCookie("termUpdatedDate"),
+          365
+        );
+        that.termsState();
         closeButton.click();
         setTimeout(() => {
           that.checkAndUpdateDate();
@@ -592,7 +655,13 @@ class ScMgmReferralMobile {
     });
   }
 
-  // Function to set a cookie
+  /**
+   * Function to set a cookie
+   * @function setCookie
+   * @param {string} name
+   * @param {string} value
+   * @param {string} days
+   */
   setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -603,7 +672,12 @@ class ScMgmReferralMobile {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
   }
 
-  // Function to get a cookie value by name
+  /**
+   * Function to get a cookie value by name
+   * @function getCookie
+   * @param {string} name
+   * @returns {string} Key
+   */
   getCookie(name) {
     let nameEQ = name + "=";
     let ca = document.cookie.split(";");
@@ -615,21 +689,33 @@ class ScMgmReferralMobile {
     return null;
   }
 
-  // Function to validate if a string is a valid UTC timestamp
+  /**
+   * Function to validate if a string is a valid UTC timestamp
+   * @function isValidUTCTimestamp
+   * @param {string} timestamp
+   * @returns {boolean}
+   */
   isValidUTCTimestamp(timestamp) {
     const parsed = parseInt(timestamp, 10);
     const date = new Date(parsed);
     return !isNaN(parsed) && date.getTime() > 0;
   }
 
-  // Function to convert a date string (e.g., '24/09/2024') to a UTC timestamp
+  /**
+   * Function to convert a date string (e.g., '24/09/2024') to a UTC timestamp
+   * @function convertToUTCTimestamp
+   * @param {string} dateStr
+   * @returns {string} date string
+   */
   convertToUTCTimestamp(dateStr) {
     const [day, month, year] = dateStr.split("/").map(Number);
     const date = new Date(Date.UTC(year, month - 1, day)); // month is 0-indexed
     return date.getTime();
   }
 
-  // Function to check if the date value has changed and update storage
+  /** Function to check if the date value has changed and update storage
+   * @function checkAndUpdateDate
+   */
   checkAndUpdateDate() {
     const that = this;
     const element = document.querySelector(".m-text-content");
@@ -660,6 +746,7 @@ class ScMgmReferralMobile {
       console.log("Storing date for the first time.");
       localStorage.setItem("termUpdatedDate", newDateTimestamp);
       that.setCookie("termUpdatedDate", newDateTimestamp, 365);
+      that.termsState();
     } else {
       // Convert stored values to numbers for comparison
       storedDateTimestamp = Number(storedDateTimestamp);
@@ -668,13 +755,18 @@ class ScMgmReferralMobile {
       // Compare the new date timestamp with the stored one
       if (newDateTimestamp > storedDateTimestamp) {
         console.log("Date updated:", newDateTimestamp);
-        window.tcmObject.termsUpdated = true;
+        // Update localStorage and cookies with the new and old date
+        localStorage.setItem("oldtermUpdatedDate", storedDateTimestamp);
+        that.setCookie("oldtermUpdatedDate", cookieDateTimestamp, 365);
 
-        // Update localStorage and cookies with the new date
         localStorage.setItem("termUpdatedDate", newDateTimestamp);
-        that.setCookie("termUpdatedDate", newDateTimestamp, 30);
+        that.setCookie("termUpdatedDate", newDateTimestamp, 365);
+        // Update localStorage and cookies with the new Terms
+        localStorage.setItem("termsAccepted", false);
+        that.setCookie("termsAccepted", false, 365);
+        that.termsState();
       } else {
-        window.tcmObject.termsUpdated = false;
+        that.termsState();
         console.log("It's a match, no update needed.");
       }
     }

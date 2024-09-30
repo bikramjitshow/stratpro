@@ -208,6 +208,7 @@
 }
 .sc-products-tile-terms-modal .buttons .sc-btn {
   min-width: 100px;
+  margin: 0;
 }
 .sc-products-tile-terms-modal .sc-rte table {
   margin: 16px 0;

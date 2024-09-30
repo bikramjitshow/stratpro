@@ -403,8 +403,8 @@
 
 <body class="page-template-default page page-id-673272" data-catch="show-overlay"
   data-allowed-params="https://av.sc.com/hk/data/whitelist-parameter/allowable/all.json" data-page-ga="1">
+  
   <link rel="stylesheet" href="https://av.sc.com/assets/global/css/sc-error-modal.min.css" media="all" />
-
   <style>
     .sc-filter {
       padding: 8px 0;
@@ -5013,81 +5013,117 @@
   <!-- End TERMS Modal Script -->
   <!-- End TERMS Modal Content and style -->
 
+<!-- sc-terms-links -->
+<style>
+  .sc-terms-links {
+    padding: 40px 0;
+  }
 
+  .sc-terms-links__btn {
+    text-align: center;
+    color: #2772c7;
+    font-size: 14px;
+    display: table;
+    -webkit-text-decoration-style: solid;
+    text-decoration-style: solid;
+    -webkit-text-decoration-color: #2772c7;
+    text-decoration-color: #2772c7;
+    cursor: pointer;
+    margin: 0 auto;
+  }
 
-  <!-- sc-terms-links -->
-  <style>
-    .sc-terms-links {
-      padding: 40px 0;
+  .sc-terms-links__title {
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .sc-terms-links__sub-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-top: 30px;
+    font-weight: 300;
+  }
+
+  .sc-products-tile__terms-link::after {
+    flex-shrink: 0;
+  }
+
+  .sc-terms-links-links .sc-products-tile__terms-link {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #e1e1e1;
+  }
+
+  .sc-terms-links-links ul {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .sc-terms-links-links ul li:last-child .sc-products-tile__terms-link {
+    border: 0;
+  }
+
+  @media (min-width: 681px) {
+    .sc-terms-links__title {
+      font-size: 22px;
+      margin-bottom: 24px;
     }
 
     .sc-terms-links__btn {
-      text-align: center;
-      color: #2772c7;
-      font-size: 14px;
-      display: table;
-      -webkit-text-decoration-style: solid;
-      text-decoration-style: solid;
-      -webkit-text-decoration-color: #2772c7;
-      text-decoration-color: #2772c7;
-      cursor: pointer;
-      margin: 0 auto;
+      font-size: 18px;
     }
+  }
+</style>
 
-    .sc-terms-links__title {
-      font-size: 16px;
-      margin-bottom: 16px;
-      font-weight: 500;
-      text-align: center;
-    }
+<div class="sc-terms-links">
+  <div class="sc-content-wrapper">
+    <a href="https://av.sc.com/hk/content/docs/hk-onebank-mgm-tnc.pdf" target="_blank"
+      title="Terms & Conditions of SC Referral Club" class="sc-terms-links__btn sc-btn-link">Terms & Conditions of SC
+      Referral Club</a>
+  </div>
+</div>
+<link rel="stylesheet" id="sc-hk-pro-content-sec-style-css"
+  href="https://av.sc.com/assets/global/css/hk-promotions-content-section.min.css?ver=9521bd5" media="all" />
 
-    .sc-terms-links__sub-title {
-      font-size: 14px;
-      margin-bottom: 8px;
-      margin-top: 30px;
-      font-weight: 300;
-    }
+<div class="m-promotions-content-section" id="sc-lb-module-hk-pro-content-sec" data-post-status="publish-status"
+  data-post-status-label="Published">
+  <div class="m-promotions-content-section__content m-promotions-content-section__text-center">
+    <p class="m-promotions-content-section__message">
+      To borrow or not to borrow? Borrow only if you can repay!
+    </p>
+  </div>
+</div>
 
-    .sc-products-tile__terms-link::after {
-      flex-shrink: 0;
-    }
+<div class="helper-svg-gradients">
+  <svg width="100px" height="100px" viewBox="0 0 100 100">
+    <defs>
+      <!-- Gradient from blue to green -->
+      <linearGradient id="gradient-blue-to-green" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop stop-color="#6cc9fe" offset="0"></stop>
+        <stop stop-color="#38d54a" offset="1"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
 
-    .sc-terms-links-links .sc-products-tile__terms-link {
-      margin: 0;
-      border: 0;
-      border-radius: 0;
-      border-bottom: 1px solid #e1e1e1;
-    }
+<script src="https://av.sc.com/assets/global/js/vendor/jquery-3.5.1.min.js" id="jquery-js"></script>
+<script src="https://av.sc.com/assets/global/js/vendor.min.js?ver=9521bd5" id="vendor-js"></script>
+<script src="https://av.sc.com/assets/global/icons/grunticon.loader.min.js?ver=9521bd5" id="grunticon-js"></script>
+<script src="https://av.sc.com/assets/global/js/vendor/bundle.min.js?ver=9521bd5" id="bundlejs-js"></script>
+<script src="https://av.sc.com/assets/global/js/grunticon-init.min.js?ver=9521bd5" id="grunticon-init-js"></script>
+<!-- <script src="https://av.sc.com/assets/global/js/onetrust-cookie-custom.min.js?ver=9521bd5"
+    id="sc-onetrust-cookie-script-js"></script> -->
+<script>
+  if (typeof _satellite !== "undefined") {
+    _satellite.pageBottom();
+  }
+</script>
+<script type="text/javascript" src="/WX6KJtfgjwsWWvUCRQ/c59Ozpkbtmpz/cUpOBTN0TwM/GGsjH3/c5BFc"></script>
+</body>
 
-    .sc-terms-links-links ul {
-      border: 1px solid #e1e1e1;
-      border-radius: 8px;
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .sc-terms-links-links ul li:last-child .sc-products-tile__terms-link {
-      border: 0;
-    }
-
-    @media (min-width: 681px) {
-      .sc-terms-links__title {
-        font-size: 22px;
-        margin-bottom: 24px;
-      }
-
-      .sc-terms-links__btn {
-        font-size: 18px;
-      }
-    }
-
-    </><div class="sc-terms-links"><div class="sc-content-wrapper"><a href="https://av.sc.com/hk/content/docs/hk-onebank-mgm-tnc.pdf" target="_blank"
-    title="Terms & Conditions of SC Referral Club" class="sc-terms-links__btn sc-btn-link">Terms & Conditions of SC Referral Club</a></div></div><link rel="stylesheet" id="sc-hk-pro-content-sec-style-css"
-    href="https://av.sc.com/assets/global/css/hk-promotions-content-section.min.css?ver=9521bd5" media="all" /><div class="m-promotions-content-section" id="sc-lb-module-hk-pro-content-sec" data-post-status="publish-status"
-    data-post-status-label="Published"><div class="m-promotions-content-section__content m-promotions-content-section__text-center"><p class="m-promotions-content-section__message">To borrow or not to borrow? Borrow only if you can repay ! </p></div></div><div class="helper-svg-gradients"><svg width="100px" height="100px" viewBox="0 0 100 100"><defs>< !-- Gradient from blue to green --><linearGradient id="gradient-blue-to-green" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#6cc9fe" offset="0"></stop><stop stop-color="#38d54a" offset="1"></stop></linearGradient></defs></svg></div><script src="https://av.sc.com/assets/global/js/vendor/jquery-3.5.1.min.js" id="jquery-js"></script><script src="https://av.sc.com/assets/global/js/vendor.min.js?ver=9521bd5" id="vendor-js"></script><script src="https://av.sc.com/assets/global/icons/grunticon.loader.min.js?ver=9521bd5" id="grunticon-js"></script><script src="https://av.sc.com/assets/global/js/vendor/bundle.min.js?ver=9521bd5" id="bundlejs-js"></script><script src="https://av.sc.com/assets/global/js/grunticon-init.min.js?ver=9521bd5" id="grunticon-init-js"></script>< !-- <script src="https://av.sc.com/assets/global/js/onetrust-cookie-custom.min.js?ver=9521bd5"
-
-    id="sc-onetrust-cookie-script-js"></script>--><script>if (typeof _satellite !=="undefined") {
-      _satellite.pageBottom();
-    }
-
-    </script><script type="text/javascript" src="/WX6KJtfgjwsWWvUCRQ/c59Ozpkbtmpz/cUpOBTN0TwM/GGsjH3/c5BFc"></script></body></html>
+</html>
