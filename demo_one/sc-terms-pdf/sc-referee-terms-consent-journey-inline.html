@@ -403,7 +403,6 @@
 
 <body class="page-template-default page page-id-673272" data-catch="show-overlay"
   data-allowed-params="https://av.sc.com/hk/data/whitelist-parameter/allowable/all.json" data-page-ga="1">
-
   <link rel="stylesheet" href="https://av.sc.com/assets/global/css/sc-error-modal.min.css" media="all" />
   <style>
     .sc-filter {
@@ -3641,6 +3640,10 @@
       min-height: auto;
     }
 
+    .sc-products-tile-terms-modal strong {
+      font-weight: 600;
+    }
+
     .sc-products-tile-terms-modal__title {
       font-size: 18px;
       text-align: center;
@@ -3711,6 +3714,7 @@
 
     .sc-products-tile-terms-modal .buttons .sc-btn {
       min-width: 100px;
+      margin: 0;
     }
 
     .sc-products-tile-terms-modal .sc-rte table {
@@ -3765,6 +3769,10 @@
 
     .sc-products-tile-terms-modal .sc-rte ul li ol li ol li {
       list-style-type: lower-latin;
+    }
+
+    .sc-bottom-btn .sc-mgm-refer-tc.sc-btn {
+      margin: 0;
     }
 
     .c-modal .m-text-content .sc-products-tile-terms-modal {
@@ -5006,7 +5014,1260 @@
 
   <!-- TERMS Modal Script -->
   <script>
-    !function o(n, i, c) { function l(t, e) { if (!i[t]) { if (!n[t]) { var r = "function" == typeof require && require; if (!e && r) return r(t, !0); if (a) return a(t, !0); throw (e = new Error("Cannot find module '" + t + "'")).code = "MODULE_NOT_FOUND", e } r = i[t] = { exports: {} }, n[t][0].call(r.exports, function (e) { return l(n[t][1][e] || e) }, r, r.exports, o, n, i, c) } return i[t].exports } for (var a = "function" == typeof require && require, e = 0; e < c.length; e++)l(c[e]); return l }({ 1: [function (e, t, r) { "use strict"; Object.defineProperty(r, "__esModule", { value: !0 }), r.default = void 0; var l = (e = e("./../../../../../src/assets/js/commons/sc-common-methods")) && e.__esModule ? e : { default: e }; function o(e) { return (o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) { return typeof e } : function (e) { return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e })(e) } function i(t, e) { var r, o = Object.keys(t); return Object.getOwnPropertySymbols && (r = Object.getOwnPropertySymbols(t), e && (r = r.filter(function (e) { return Object.getOwnPropertyDescriptor(t, e).enumerable })), o.push.apply(o, r)), o } function n(o) { for (var e = 1; e < arguments.length; e++) { var n = null != arguments[e] ? arguments[e] : {}; e % 2 ? i(Object(n), !0).forEach(function (e) { var t, r; t = o, r = n[e = e], (e = a(e)) in t ? Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : t[e] = r }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(o, Object.getOwnPropertyDescriptors(n)) : i(Object(n)).forEach(function (e) { Object.defineProperty(o, e, Object.getOwnPropertyDescriptor(n, e)) }) } return o } function c(e, t) { for (var r = 0; r < t.length; r++) { var o = t[r]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, a(o.key), o) } } function a(e) { e = function (e, t) { if ("object" !== o(e) || null === e) return e; var r = e[Symbol.toPrimitive]; if (void 0 === r) return ("string" === t ? String : Number)(e); r = r.call(e, t || "default"); if ("object" !== o(r)) return r; throw new TypeError("@@toPrimitive must return a primitive value.") }(e, "string"); return "symbol" === o(e) ? e : String(e) } e = new (function () { function e() { if (!(this instanceof e)) throw new TypeError("Cannot call a class as a function") } var t, r, o; return t = e, (r = [{ key: "init", value: function () { var e, o, n, i = this; i.productTile = document.querySelector(".sc-product-tiles"), i.productTile && (i.errorModal = document.querySelector(".sc-error-modal"), i.referHeader = i.productTile.querySelector(".sc-product-tiles__head-wrapper"), i.allPdt = i.productTile.querySelector(".sc-product-tile-is-recommended"), i.singlePdt = i.productTile.querySelector(".sc-product-tile-recommended"), i.backBtn = i.productTile.querySelector(".sc-product-tile-is-recommended-back-btn"), i.viewAll = i.productTile.querySelector(".sc-product-tile-recommended__view-all-btn"), i.termsConditions = document.querySelector(".sc-terms-links"), i.queryString = Utils.getPageContext().queryString, i.queryParams = l.default.getQueryParam(i.queryString, i.productTile.getAttribute("data-query-param-code")), e = i.productTile.getAttribute("data-recommended-lite"), i.isTermModalRequire = !1, i.isTermModalActive = !1, i.queryParams && i.queryParams.replace(/[^0-9a-zA-Z]/gi, "").length === Number(i.productTile.getAttribute("data-query-param-code-length")) ? (e ? (i.singlePdt.classList.add("hide"), i.handleRecommendedLite()) : i.handleModalProduct(), i.handleFilter(), i.viewAll && i.viewAll.addEventListener("click", function () { i.toggleProducts(!1), i.termsConditions && i.termsConditions.classList.remove("hide"); var e = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; l.default.smoothScroll(i.backBtn, 500, 767 < e ? 100 : 30) }), i.backBtn && i.backBtn.addEventListener("click", function () { i.toggleProducts(!0), i.referHeader.classList.add("hide"), i.termsConditions && i.termsConditions.classList.add("hide") }), i.productTile.querySelectorAll("a").forEach(function (e) { var t = e.getAttribute("href"); "#null" !== t && e.setAttribute("href", i.updateQueryString(t)) }), o = !1, n = "", setTimeout(function () { var e = i.productTile.querySelectorAll("a[href='#null']"); e.length && e.forEach(function (t) { t.addEventListener("click", function (e) { o = !0, n = t.getAttribute("data-modal-source"), "true" === t.getAttribute("data-terms-enable") && (i.isTermModalRequire = !0) }) }) }, 100), document.body.addEventListener("click", function (e) { var t, r; o && (t = e.target.closest("a"), r = document.querySelector(".m-text-content").getAttribute("data-term-modal"), -1 !== e.target.className.indexOf("closebutton") || -1 !== e.target.className.indexOf("wrapper") ? (o = !1, i.triggerCtaClickTagging(e), r && (console.log("term modal closed !!"), i.termsModalClosed(n))) : t && "#null" === t.getAttribute("href") && e.target.closest(".m-text-content") && (r = t.getAttribute("title") ? t.getAttribute("title") : t.innerText || t.textContent || t.getAttribute("data-context") || t.getAttribute("aria-label")) && i.triggerPopupViewedTagging(r.trim()), e.target.classList.contains("sc-mgm-refer-tc")) && (console.log("term modal active !!"), i.isTermModalActive = !0, i.termsModalActive(e)) }), i.handleSticky(), i.handleReferId()) : (i.errorModal.classList.add("sc-error-modal--show"), document.body.classList.add("modal-open"))) } }, { key: "handleSticky", value: function () { var t = this.productTile.querySelector(".sc-filter"), r = l.default.getPosition(t); t && window.addEventListener("scroll", function () { var e = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; window.scrollY > r - (768 < e ? 100 : 10) ? t.classList.add("sc-filter--sticky") : t.classList.remove("sc-filter--sticky") }) } }, { key: "handleRecommendedLite", value: function () { var e, t, o, r, n = this, i = l.default.getQueryParam(n.queryString, n.productTile.getAttribute("data-query-param-product")), c = (i ? (n.backBtn.classList.add("hide"), n.productTile.querySelector(".sc-product-tiles-recommended").classList.remove("hide"), (c = n.productTile.querySelector("[data-product-name='".concat(i, "']"))) && (r = c.cloneNode(!0), (e = n.productTile.querySelector(".sc-product-tiles-recommended__wrapper")) && e.appendChild(r), r = c.cloneNode(!0), (t = n.productTile.querySelector(".sc-product-tiles__wrapper")) && t.appendChild(r), c.remove(), null != (t = n.productTile.querySelector(".sc-product-tiles__wrapper [data-product-name='".concat(i, "'] .sc-badge"))) && t.classList.remove("hide"), o = 1, (r = e.querySelectorAll(".sc-products-tile-modal__accordion .sc-accordion__input")).length) && r.forEach(function (e) { var t, r = e.getAttribute("id"); r && (r = "".concat(r, "_dynamic_").concat(o), t = e.closest(".sc-products-tile-modal__accordion").querySelector("label"), e.setAttribute("id", r), t.setAttribute("for", r), o++) })) : n.backBtn.classList.add("hide"), n.productTile.querySelectorAll(".sc-products-tile__applied-code")); c.length && c.forEach(function (e) { e.classList.remove("hide"), e.querySelector("span").innerHTML = n.queryParams }) } }, { key: "handleModalProduct", value: function () { var t = this, e = l.default.getQueryParam(t.queryString, t.productTile.getAttribute("data-query-param-product")), r = (e && (r = t.productTile.querySelector("[data-product-name='".concat(e, "']"))) && (r = r.querySelector('a[href="#null"]').getAttribute("data-modal-source")) && (r = document.querySelector("[data-modal-id='".concat(r, "']"))) ? (t.singlePdt.querySelector(".sc-products-tile-modal").remove(), t.viewAll.parentNode.insertBefore(r.querySelector(".sc-products-tile-modal").cloneNode(!0), t.viewAll), t.handleRecommendedProduct(e), t.toggleProducts(!0), t.referHeader.classList.add("hide"), t.termsConditions && t.termsConditions.classList.add("hide")) : (t.backBtn.classList.add("hide"), t.toggleProducts(!1)), t.productTile.querySelectorAll(".sc-products-tile__applied-code")); r.length && r.forEach(function (e) { e.classList.remove("hide"), e.querySelector("span").innerHTML = t.queryParams }) } }, { key: "handleRecommendedProduct", value: function (r) { var o = this.productTile.querySelector(".sc-product-tiles__wrapper"), e = this.productTile.querySelectorAll("[data-product-name]"); e.length && e.forEach(function (e) { var t; e.getAttribute("data-product-name") === r && ((t = e.querySelector(".sc-badge")) && t.classList.remove("hide"), t = e.cloneNode(!0), e.remove(), o.insertBefore(t, o.firstChild)) }) } }, { key: "toggleProducts", value: function (e) { e ? (this.allPdt.classList.add("hide"), this.singlePdt.classList.remove("hide")) : (this.allPdt.classList.remove("hide"), this.singlePdt.classList.add("hide")) } }, { key: "handleFilter", value: function () { var o = this, e = o.productTile.querySelectorAll("[data-categories]"); e.length && e.forEach(function (e) { e.addEventListener("click", function (e) { var t = o.productTile.querySelector(".sc-filter__btn--active"), r = (t && t.classList.remove("sc-filter__btn--active"), e.target.classList.add("sc-filter__btn--active"), e.target.getAttribute("data-categories")), t = (o.productTile.querySelectorAll(".sc-product-tiles__wrapper [data-cards]").forEach(function (e) { var t; "all" === r || (t = e.getAttribute("data-cards"), r === t) ? e.classList.remove("hide") : e.classList.add("hide") }), window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth); l.default.smoothScroll(document.querySelector(".sc-product-tiles__wrapper"), 300, 767 < t ? 150 : 70) }) }) } }, { key: "updateQueryString", value: function (e) { var t = this, e = e.split("?"), r = "".concat(t.productTile.getAttribute("data-query-param-code"), "=").concat(t.queryParams); return e[1] && ((r = new URLSearchParams(e[1])).has(t.productTile.getAttribute("data-query-param-code")) ? r.set("".concat(t.productTile.getAttribute("data-query-param-code")), t.queryParams) : r.append("".concat(t.productTile.getAttribute("data-query-param-code")), t.queryParams)), (e[0] + "?" + r.toString()).toString() } }, { key: "triggerPopupViewedTagging", value: function (t) { setTimeout(function () { var e = n(n({}, digitalData), {}, { form: { formName: "", formStepName: "", formType: "", formPlatform: "" } }); e.form.popupName = t, e.event = "popupViewed", scAnalyticsDataArray.push(e) }, 500) } }, { key: "triggerCtaClickTagging", value: function (e) { var t, r; this.eventFired && (t = "button" == e.target.type ? e.target.type : "link", r = e.target.getAttribute("title") ? e.target.getAttribute("title") : e.target instanceof SVGElement || e.target.getElementsByTagName("svg").length || e.target.classList.contains("closebutton") ? "Close" : (e.target.innerText || e.target.textContent).trim().toLowerCase(), e = n(n({}, digitalData), {}, { customLinkClick: { customLinkText: r, customLinkRegion: this.getHorizontalPosition(e.clientX) + " " + Utils.calcElementLocation(e.target), customLinkType: t }, event: "ctaClick", context: r }), scAnalyticsDataArray.push(e)) } }, { key: "getHorizontalPosition", value: function (e) { return e < Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth) / 2 ? "left" : "right" } }, { key: "handleReferId", value: function () { var e, t, i = this; document.querySelectorAll(".sc-product-tile-is-recommended a, .sc-products-tile-modal a").forEach(function (e) { e.addEventListener("click", function (e) { var t = e.target.closest("a"), r = t.getAttribute("href"); r.includes("#") || (e.preventDefault(), e.stopPropagation(), setTimeout(function () { (r = t.getAttribute("href")) && (r = r.split("referId").join("referid"), t.setAttribute("href", r), window.open(t.getAttribute("href"), "_blank")) }, 50)) }) }), document.body.addEventListener("click", function (e) { var t, r, o = e.target.closest(".c-modal"), n = e.target.closest("a"); o && n && ((t = n.getAttribute("href")).includes("#") || (e.preventDefault(), e.stopPropagation(), setTimeout(function () { (t = n.getAttribute("href")) && (t = t.split("referId").join("referid"), n.setAttribute("href", t), window.open(n.getAttribute("href"), "_blank")) }, 50))), e.target.closest(".sc-products-tile__copy-code") ? (o = e.target.closest(".sc-products-tile-modal").querySelector(".sc-products-tile__applied-code span"), r = document.querySelector(".sc-product-tiles__copy-message"), o = o.innerText, navigator.clipboard.writeText(o).then(function () { r.classList.add("sc-product-tiles__copy-message--show"), setTimeout(function () { r.classList.remove("sc-product-tiles__copy-message--show") }, 3e3) }).catch(function (e) { })) : e.target.closest("a[data-modal-source]") && setTimeout(function () { var e = document.querySelector('.modal-content input[name="checkbox-radio"]'); e && (e.checked = !0) }, 1e3), e.target.closest(".sc-products-tile-pdt-selection") && i.updateLinkHref() }), document.querySelectorAll(".sc-products-tile__mobile-link").forEach(function (t) { t.setAttribute("href", "#null"), t.addEventListener("click", function (e) { e.preventDefault(), e.stopPropagation(), 1024 < window.innerWidth ? (e.preventDefault(), e.stopPropagation(), document.querySelector(".sc-error-modal--apply").classList.add("sc-error-modal--show")) : t.setAttribute("href", "#null") }) }), document.querySelector(".sc-error-modal--apply .sc-error-modal__alert-close").addEventListener("click", function () { document.querySelector(".sc-error-modal--apply").classList.remove("sc-error-modal--show") }), -1 < window.location.href.indexOf("p=") && (e = document.querySelector(".sc-product-tiles")) && (t = 0, 1024 < window.innerWidth && (t = 100), window.scrollTo({ top: e.offsetTop - t, behavior: "smooth" })) } }, { key: "updateLinkHref", value: function () { var t, e = document.querySelectorAll(".sc-products-tile__is-pdt-selection"), r = document.querySelector(".sc-products-tile-pdt-selection input:checked"); console.log("isTermModalRequire--", this.isTermModalRequire), this.isTermModalRequire || (t = null == r ? void 0 : r.closest("label").getAttribute("data-card-link"), e.forEach(function (e) { e.setAttribute("href", t) })) } }, { key: "termsModalActive", value: function (o) { var n = this, i = (n.isTermModalActive = !1, console.log("event2---", o.target), o.target.closest("a")), e = document.querySelector(".sc-products-tile-pdt-selection input:checked"), c = null == e ? void 0 : e.closest("label").getAttribute("data-card-link"); console.log({ newHref: c }), console.log("isTermModalRequire--", n.isTermModalRequire), n.isTermModalRequire ? (n.isTermModalActive = !0, i && "#null" === i.getAttribute("href") && o.target.classList.contains("sc-mgm-refer-tc") && setTimeout(function () { var e = o.target.closest(".m-text-content").getAttribute("data-modal-id"), t = i.getAttribute("data-modal-source"), r = i.getAttribute("data-redirect-url"); t === document.querySelector(".m-text-content").getAttribute("data-modal-id") ? (c ? n.activeScrollToBottom(c, e) : n.activeScrollToBottom(r, e), n.activeDownloadButton()) : console.log("activeModalId Not matched") }, 150)) : (e = i.getAttribute("data-modal-source"), console.log("modalAttr", e), n.activeModalDataId = e) } }, { key: "termsModalClosed", value: function (t) { var r = this; console.log("termsModalClosed Called!", t), r.isTermModalActive = !1, setTimeout(function () { var e = document.querySelector("[data-modal-source='".concat(t, "']")); console.log("modalId--", e), e && (e.click(), r.isTermModalRequire = !0) }, 300) } }, { key: "activeScrollToBottom", value: function (e, t) { console.log("activeScrollToBottom !!", e, t); var o = document.querySelector(".sc-products-tile__scroll-step"), n = o.getAttribute("data-last-title"), i = document.querySelector(".sc-products-tile__download-button"), c = document.querySelector(".m-text-content"), l = e, a = 0, u = !1, d = document.querySelector(".wrapper"); c.addEventListener("scroll", function () { var e = c.scrollTop + c.clientHeight; c.scrollHeight - 1 <= e && (u = !0, console.log("Scroll reached the last end"), i.closest("li").style.display = "none", o.setAttribute("title", n), o.children[0].innerText = n, o.children[1].innerText = n) }), o.addEventListener("click", function (e) { var t, r; e.preventDefault(), e.stopPropagation(), e.stopImmediatePropagation(), u || 4 <= a ? (localStorage.setItem("termsAccepted", "true"), d.click(), window.open(l, "_blank")) : (a++, e = 1, r = (t = c).scrollHeight - t.clientHeight, t.scrollBy({ top: r / 4 * e, behavior: "smooth" }), t.scrollTop + t.clientHeight >= t.scrollHeight && (u = !0), 4 <= a && (i.closest("li").style.display = "none", o.setAttribute("title", n), o.children[0].innerText = n, o.children[1].innerText = n, u = !0)) }) } }, { key: "activeDownloadButton", value: function () { console.log("activeDownloadButton !!"); var e = document.querySelector(".sc-products-tile__download-button"); console.log(e), e.addEventListener("click", function (e) { e.preventDefault(), e.stopPropagation(), e.stopImmediatePropagation(); var r, e = e.target.closest("a").getAttribute("data-pdf-url").toString(), t = encodeURI(e), e = new URL(e).pathname.split("/"), e = e[e.length - 1]; r = e, (e = t) && (e = decodeURI(e).toString(), fetch(e).then(function (e) { return e.blob() }).then(function (e) { var e = window.URL.createObjectURL(e), t = document.createElement("a"); t.style.display = "none", t.href = e, t.download = r || "file.pdf", document.body.appendChild(t), t.click(), document.body.removeChild(t), window.URL.revokeObjectURL(e) }).catch(function () { return alert("An error occurred while downloading the PDF.") })) }) } }]) && c(t.prototype, r), o && c(t, o), Object.defineProperty(t, "prototype", { writable: !1 }), e }()); e.init(), r.default = e }, { "./../../../../../src/assets/js/commons/sc-common-methods": 2 }], 2: [function (e, t, r) { "use strict"; function n(e) { return (n = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) { return typeof e } : function (e) { return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e })(e) } function a(e, t) { return function (e) { if (Array.isArray(e)) return e }(e) || function (e, t) { var r = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]; if (null != r) { var o, n, i, c, l = [], a = !0, u = !1; try { if (i = (r = r.call(e)).next, 0 === t) { if (Object(r) !== r) return; a = !1 } else for (; !(a = (o = i.call(r)).done) && (l.push(o.value), l.length !== t); a = !0); } catch (e) { u = !0, n = e } finally { try { if (!a && null != r.return && (c = r.return(), Object(c) !== c)) return } finally { if (u) throw n } } return l } }(e, t) || u(e, t) || function () { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.") }() } function u(e, t) { var r; if (e) return "string" == typeof e ? o(e, t) : "Map" === (r = "Object" === (r = Object.prototype.toString.call(e).slice(8, -1)) && e.constructor ? e.constructor.name : r) || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? o(e, t) : void 0 } function o(e, t) { (null == t || t > e.length) && (t = e.length); for (var r = 0, o = new Array(t); r < t; r++)o[r] = e[r]; return o } function i(e, t) { for (var r = 0; r < t.length; r++) { var o = t[r]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, function (e) { e = function (e, t) { if ("object" !== n(e) || null === e) return e; var r = e[Symbol.toPrimitive]; if (void 0 === r) return ("string" === t ? String : Number)(e); r = r.call(e, t || "default"); if ("object" !== n(r)) return r; throw new TypeError("@@toPrimitive must return a primitive value.") }(e, "string"); return "symbol" === n(e) ? e : String(e) }(o.key), o) } } Object.defineProperty(r, "__esModule", { value: !0 }), r.default = void 0; var c = new (function () { function e() { if (!(this instanceof e)) throw new TypeError("Cannot call a class as a function") } var t, r, o; return t = e, (r = [{ key: "getQueryParam", value: function (e, t) { var r, o = "", n = function (e, t) { var r, o, n, i, c = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]; if (c) return o = !(r = !0), { s: function () { c = c.call(e) }, n: function () { var e = c.next(); return r = e.done, e }, e: function (e) { o = !0, n = e }, f: function () { try { r || null == c.return || c.return() } finally { if (o) throw n } } }; if (Array.isArray(e) || (c = u(e)) || t && e && "number" == typeof e.length) return c && (e = c), i = 0, { s: t = function () { }, n: function () { return i >= e.length ? { done: !0 } : { done: !1, value: e[i++] } }, e: function (e) { throw e }, f: t }; throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.") }(e.split("&")); try { for (n.s(); !(r = n.n()).done;) { var i = a(r.value.split("="), 2), c = i[0], l = i[1]; if (c === t) { o = l; break } } } catch (e) { n.e(e) } finally { n.f() } return o } }, { key: "changeURL", value: function () { var e = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : "", e = window.location.protocol + "//" + window.location.host + window.location.pathname + (e ? "?".concat(e) : ""); window.history.pushState({ path: e }, "", e) } }, { key: "smoothScroll", value: function (e, o) { var n, i, c, l, t = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : 0, a = 3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : window; e && (n = this, i = e.getBoundingClientRect().top - t, c = a === window ? window.pageYOffset : 0, l = null, requestAnimationFrame(function e(t) { var t = t - (l = null === l ? t : l), r = n.ease(t, c, i, o); a.scrollTo(0, r), t < o && requestAnimationFrame(e) })) } }, { key: "ease", value: function (e, t, r, o) { return (e /= o / 2) < 1 ? r / 2 * e * e + t : -r / 2 * (--e * (e - 2) - 1) + t } }, { key: "getPosition", value: function (e) { if (!e) return ""; for (var t = 0; e;)t += e.offsetTop - e.scrollTop + e.clientTop, e = e.offsetParent; return t } }]) && i(t.prototype, r), o && i(t, o), Object.defineProperty(t, "prototype", { writable: !1 }), e }()); r.default = c }, {}] }, {}, [1]);
+    !(function o(n, i, c) {
+      function l(t, e) {
+        if (!i[t]) {
+          if (!n[t]) {
+            var r = "function" == typeof require && require;
+            if (!e && r) return r(t, !0);
+            if (a) return a(t, !0);
+            throw (
+              (((e = new Error("Cannot find module '" + t + "'")).code =
+                "MODULE_NOT_FOUND"),
+                e)
+            );
+          }
+          (r = i[t] = { exports: {} }),
+            n[t][0].call(
+              r.exports,
+              function (e) {
+                return l(n[t][1][e] || e);
+              },
+              r,
+              r.exports,
+              o,
+              n,
+              i,
+              c
+            );
+        }
+        return i[t].exports;
+      }
+      for (
+        var a = "function" == typeof require && require, e = 0;
+        e < c.length;
+        e++
+      )
+        l(c[e]);
+      return l;
+    })(
+      {
+        1: [
+          function (e, t, r) {
+            "use strict";
+            Object.defineProperty(r, "__esModule", { value: !0 }),
+              (r.default = void 0);
+            var l =
+              (e = e(
+                "./../../../../../src/assets/js/commons/sc-common-methods"
+              )) && e.__esModule
+                ? e
+                : { default: e };
+            function o(e) {
+              return (o =
+                "function" == typeof Symbol &&
+                  "symbol" == typeof Symbol.iterator
+                  ? function (e) {
+                    return typeof e;
+                  }
+                  : function (e) {
+                    return e &&
+                      "function" == typeof Symbol &&
+                      e.constructor === Symbol &&
+                      e !== Symbol.prototype
+                      ? "symbol"
+                      : typeof e;
+                  })(e);
+            }
+            function i(t, e) {
+              var r,
+                o = Object.keys(t);
+              return (
+                Object.getOwnPropertySymbols &&
+                ((r = Object.getOwnPropertySymbols(t)),
+                  e &&
+                  (r = r.filter(function (e) {
+                    return Object.getOwnPropertyDescriptor(t, e).enumerable;
+                  })),
+                  o.push.apply(o, r)),
+                o
+              );
+            }
+            function n(o) {
+              for (var e = 1; e < arguments.length; e++) {
+                var n = null != arguments[e] ? arguments[e] : {};
+                e % 2
+                  ? i(Object(n), !0).forEach(function (e) {
+                    var t, r;
+                    (t = o),
+                      (r = n[(e = e)]),
+                      (e = a(e)) in t
+                        ? Object.defineProperty(t, e, {
+                          value: r,
+                          enumerable: !0,
+                          configurable: !0,
+                          writable: !0,
+                        })
+                        : (t[e] = r);
+                  })
+                  : Object.getOwnPropertyDescriptors
+                    ? Object.defineProperties(
+                      o,
+                      Object.getOwnPropertyDescriptors(n)
+                    )
+                    : i(Object(n)).forEach(function (e) {
+                      Object.defineProperty(
+                        o,
+                        e,
+                        Object.getOwnPropertyDescriptor(n, e)
+                      );
+                    });
+              }
+              return o;
+            }
+            function c(e, t) {
+              for (var r = 0; r < t.length; r++) {
+                var o = t[r];
+                (o.enumerable = o.enumerable || !1),
+                  (o.configurable = !0),
+                  "value" in o && (o.writable = !0),
+                  Object.defineProperty(e, a(o.key), o);
+              }
+            }
+            function a(e) {
+              e = (function (e, t) {
+                if ("object" !== o(e) || null === e) return e;
+                var r = e[Symbol.toPrimitive];
+                if (void 0 === r)
+                  return ("string" === t ? String : Number)(e);
+                r = r.call(e, t || "default");
+                if ("object" !== o(r)) return r;
+                throw new TypeError(
+                  "@@toPrimitive must return a primitive value."
+                );
+              })(e, "string");
+              return "symbol" === o(e) ? e : String(e);
+            }
+            e = new ((function () {
+              function e() {
+                if (!(this instanceof e))
+                  throw new TypeError("Cannot call a class as a function");
+              }
+              var t, r, o;
+              return (
+                (t = e),
+                (r = [
+                  {
+                    key: "init",
+                    value: function () {
+                      var e,
+                        o,
+                        n,
+                        i = this;
+                      (i.productTile =
+                        document.querySelector(".sc-product-tiles")),
+                        i.productTile &&
+                        ((i.errorModal =
+                          document.querySelector(".sc-error-modal")),
+                          (i.referHeader = i.productTile.querySelector(
+                            ".sc-product-tiles__head-wrapper"
+                          )),
+                          (i.allPdt = i.productTile.querySelector(
+                            ".sc-product-tile-is-recommended"
+                          )),
+                          (i.singlePdt = i.productTile.querySelector(
+                            ".sc-product-tile-recommended"
+                          )),
+                          (i.backBtn = i.productTile.querySelector(
+                            ".sc-product-tile-is-recommended-back-btn"
+                          )),
+                          (i.viewAll = i.productTile.querySelector(
+                            ".sc-product-tile-recommended__view-all-btn"
+                          )),
+                          (i.termsConditions =
+                            document.querySelector(".sc-terms-links")),
+                          (i.queryString =
+                            Utils.getPageContext().queryString),
+                          (i.queryParams = l.default.getQueryParam(
+                            i.queryString,
+                            i.productTile.getAttribute(
+                              "data-query-param-code"
+                            )
+                          )),
+                          (e = i.productTile.getAttribute(
+                            "data-recommended-lite"
+                          )),
+                          (i.isTermModalRequire = !1),
+                          (i.isTermModalActive = !1),
+                          i.queryParams &&
+                            i.queryParams.replace(/[^0-9a-zA-Z]/gi, "")
+                              .length ===
+                            Number(
+                              i.productTile.getAttribute(
+                                "data-query-param-code-length"
+                              )
+                            )
+                            ? (e
+                              ? (i.singlePdt.classList.add("hide"),
+                                i.handleRecommendedLite())
+                              : i.handleModalProduct(),
+                              i.handleFilter(),
+                              i.viewAll &&
+                              i.viewAll.addEventListener(
+                                "click",
+                                function () {
+                                  i.toggleProducts(!1),
+                                    i.termsConditions &&
+                                    i.termsConditions.classList.remove(
+                                      "hide"
+                                    );
+                                  var e =
+                                    window.innerWidth ||
+                                    document.documentElement.clientWidth ||
+                                    document.body.clientWidth;
+                                  l.default.smoothScroll(
+                                    i.backBtn,
+                                    500,
+                                    767 < e ? 100 : 30
+                                  );
+                                }
+                              ),
+                              i.backBtn &&
+                              i.backBtn.addEventListener(
+                                "click",
+                                function () {
+                                  i.toggleProducts(!0),
+                                    i.referHeader.classList.add("hide"),
+                                    i.termsConditions &&
+                                    i.termsConditions.classList.add(
+                                      "hide"
+                                    );
+                                }
+                              ),
+                              i.productTile
+                                .querySelectorAll("a")
+                                .forEach(function (e) {
+                                  var t = e.getAttribute("href");
+                                  "#null" !== t &&
+                                    e.setAttribute(
+                                      "href",
+                                      i.updateQueryString(t)
+                                    );
+                                }),
+                              (o = !1),
+                              (n = ""),
+                              setTimeout(function () {
+                                var e =
+                                  i.productTile.querySelectorAll(
+                                    "a[href='#null']"
+                                  );
+                                e.length &&
+                                  e.forEach(function (t) {
+                                    t.addEventListener("click", function (e) {
+                                      (o = !0),
+                                        (n =
+                                          t.getAttribute(
+                                            "data-modal-source"
+                                          )),
+                                        "true" ===
+                                        t.getAttribute(
+                                          "data-terms-enable"
+                                        ) && (i.isTermModalRequire = !0);
+                                    });
+                                  });
+                              }, 100),
+                              document.body.addEventListener(
+                                "click",
+                                function (e) {
+                                  var t, r;
+                                  o &&
+                                    ((t = e.target.closest("a")),
+                                      (r = document
+                                        .querySelector(".m-text-content")
+                                        .getAttribute("data-term-modal")),
+                                      -1 !==
+                                        e.target.className.indexOf(
+                                          "closebutton"
+                                        ) ||
+                                        -1 !==
+                                        e.target.className.indexOf("wrapper")
+                                        ? ((o = !1),
+                                          i.triggerCtaClickTagging(e),
+                                          r &&
+                                          (console.log(
+                                            "term modal closed !!"
+                                          ),
+                                            i.termsModalClosed(n)))
+                                        : t &&
+                                        "#null" === t.getAttribute("href") &&
+                                        e.target.closest(".m-text-content") &&
+                                        (r = t.getAttribute("title")
+                                          ? t.getAttribute("title")
+                                          : t.innerText ||
+                                          t.textContent ||
+                                          t.getAttribute("data-context") ||
+                                          t.getAttribute("aria-label")) &&
+                                        i.triggerPopupViewedTagging(r.trim()),
+                                      e.target.classList.contains(
+                                        "sc-mgm-refer-tc"
+                                      )) &&
+                                    (console.log("term modal active !!"),
+                                      (i.isTermModalActive = !0),
+                                      i.termsModalActive(e));
+                                }
+                              ),
+                              i.handleSticky(),
+                              i.handleReferId())
+                            : (i.errorModal.classList.add(
+                              "sc-error-modal--show"
+                            ),
+                              document.body.classList.add("modal-open")));
+                    },
+                  },
+                  {
+                    key: "handleSticky",
+                    value: function () {
+                      var t = this.productTile.querySelector(".sc-filter"),
+                        r = l.default.getPosition(t);
+                      t &&
+                        window.addEventListener("scroll", function () {
+                          var e =
+                            window.innerWidth ||
+                            document.documentElement.clientWidth ||
+                            document.body.clientWidth;
+                          window.scrollY > r - (768 < e ? 100 : 10)
+                            ? t.classList.add("sc-filter--sticky")
+                            : t.classList.remove("sc-filter--sticky");
+                        });
+                    },
+                  },
+                  {
+                    key: "handleRecommendedLite",
+                    value: function () {
+                      var e,
+                        t,
+                        o,
+                        r,
+                        n = this,
+                        i = l.default.getQueryParam(
+                          n.queryString,
+                          n.productTile.getAttribute(
+                            "data-query-param-product"
+                          )
+                        ),
+                        c =
+                          (i
+                            ? (n.backBtn.classList.add("hide"),
+                              n.productTile
+                                .querySelector(
+                                  ".sc-product-tiles-recommended"
+                                )
+                                .classList.remove("hide"),
+                              (c = n.productTile.querySelector(
+                                "[data-product-name='".concat(i, "']")
+                              )) &&
+                              ((r = c.cloneNode(!0)),
+                                (e = n.productTile.querySelector(
+                                  ".sc-product-tiles-recommended__wrapper"
+                                )) && e.appendChild(r),
+                                (r = c.cloneNode(!0)),
+                                (t = n.productTile.querySelector(
+                                  ".sc-product-tiles__wrapper"
+                                )) && t.appendChild(r),
+                                c.remove(),
+                                null !=
+                                (t = n.productTile.querySelector(
+                                  ".sc-product-tiles__wrapper [data-product-name='".concat(
+                                    i,
+                                    "'] .sc-badge"
+                                  )
+                                )) && t.classList.remove("hide"),
+                                (o = 1),
+                                (r = e.querySelectorAll(
+                                  ".sc-products-tile-modal__accordion .sc-accordion__input"
+                                )).length) &&
+                              r.forEach(function (e) {
+                                var t,
+                                  r = e.getAttribute("id");
+                                r &&
+                                  ((r = ""
+                                    .concat(r, "_dynamic_")
+                                    .concat(o)),
+                                    (t = e
+                                      .closest(
+                                        ".sc-products-tile-modal__accordion"
+                                      )
+                                      .querySelector("label")),
+                                    e.setAttribute("id", r),
+                                    t.setAttribute("for", r),
+                                    o++);
+                              }))
+                            : n.backBtn.classList.add("hide"),
+                            n.productTile.querySelectorAll(
+                              ".sc-products-tile__applied-code"
+                            ));
+                      c.length &&
+                        c.forEach(function (e) {
+                          e.classList.remove("hide"),
+                            (e.querySelector("span").innerHTML =
+                              n.queryParams);
+                        });
+                    },
+                  },
+                  {
+                    key: "handleModalProduct",
+                    value: function () {
+                      var t = this,
+                        e = l.default.getQueryParam(
+                          t.queryString,
+                          t.productTile.getAttribute(
+                            "data-query-param-product"
+                          )
+                        ),
+                        r =
+                          (e &&
+                            (r = t.productTile.querySelector(
+                              "[data-product-name='".concat(e, "']")
+                            )) &&
+                            (r = r
+                              .querySelector('a[href="#null"]')
+                              .getAttribute("data-modal-source")) &&
+                            (r = document.querySelector(
+                              "[data-modal-id='".concat(r, "']")
+                            ))
+                            ? (t.singlePdt
+                              .querySelector(".sc-products-tile-modal")
+                              .remove(),
+                              t.viewAll.parentNode.insertBefore(
+                                r
+                                  .querySelector(".sc-products-tile-modal")
+                                  .cloneNode(!0),
+                                t.viewAll
+                              ),
+                              t.handleRecommendedProduct(e),
+                              t.toggleProducts(!0),
+                              t.referHeader.classList.add("hide"),
+                              t.termsConditions &&
+                              t.termsConditions.classList.add("hide"))
+                            : (t.backBtn.classList.add("hide"),
+                              t.toggleProducts(!1)),
+                            t.productTile.querySelectorAll(
+                              ".sc-products-tile__applied-code"
+                            ));
+                      r.length &&
+                        r.forEach(function (e) {
+                          e.classList.remove("hide"),
+                            (e.querySelector("span").innerHTML =
+                              t.queryParams);
+                        });
+                    },
+                  },
+                  {
+                    key: "handleRecommendedProduct",
+                    value: function (r) {
+                      var o = this.productTile.querySelector(
+                        ".sc-product-tiles__wrapper"
+                      ),
+                        e = this.productTile.querySelectorAll(
+                          "[data-product-name]"
+                        );
+                      e.length &&
+                        e.forEach(function (e) {
+                          var t;
+                          e.getAttribute("data-product-name") === r &&
+                            ((t = e.querySelector(".sc-badge")) &&
+                              t.classList.remove("hide"),
+                              (t = e.cloneNode(!0)),
+                              e.remove(),
+                              o.insertBefore(t, o.firstChild));
+                        });
+                    },
+                  },
+                  {
+                    key: "toggleProducts",
+                    value: function (e) {
+                      e
+                        ? (this.allPdt.classList.add("hide"),
+                          this.singlePdt.classList.remove("hide"))
+                        : (this.allPdt.classList.remove("hide"),
+                          this.singlePdt.classList.add("hide"));
+                    },
+                  },
+                  {
+                    key: "handleFilter",
+                    value: function () {
+                      var o = this,
+                        e =
+                          o.productTile.querySelectorAll("[data-categories]");
+                      e.length &&
+                        e.forEach(function (e) {
+                          e.addEventListener("click", function (e) {
+                            var t = o.productTile.querySelector(
+                              ".sc-filter__btn--active"
+                            ),
+                              r =
+                                (t &&
+                                  t.classList.remove(
+                                    "sc-filter__btn--active"
+                                  ),
+                                  e.target.classList.add(
+                                    "sc-filter__btn--active"
+                                  ),
+                                  e.target.getAttribute("data-categories")),
+                              t =
+                                (o.productTile
+                                  .querySelectorAll(
+                                    ".sc-product-tiles__wrapper [data-cards]"
+                                  )
+                                  .forEach(function (e) {
+                                    var t;
+                                    "all" === r ||
+                                      ((t = e.getAttribute("data-cards")),
+                                        r === t)
+                                      ? e.classList.remove("hide")
+                                      : e.classList.add("hide");
+                                  }),
+                                  window.innerWidth ||
+                                  document.documentElement.clientWidth ||
+                                  document.body.clientWidth);
+                            l.default.smoothScroll(
+                              document.querySelector(
+                                ".sc-product-tiles__wrapper"
+                              ),
+                              300,
+                              767 < t ? 150 : 70
+                            );
+                          });
+                        });
+                    },
+                  },
+                  {
+                    key: "updateQueryString",
+                    value: function (e) {
+                      var t = this,
+                        e = e.split("?"),
+                        r = ""
+                          .concat(
+                            t.productTile.getAttribute(
+                              "data-query-param-code"
+                            ),
+                            "="
+                          )
+                          .concat(t.queryParams);
+                      return (
+                        e[1] &&
+                        ((r = new URLSearchParams(e[1])).has(
+                          t.productTile.getAttribute(
+                            "data-query-param-code"
+                          )
+                        )
+                          ? r.set(
+                            "".concat(
+                              t.productTile.getAttribute(
+                                "data-query-param-code"
+                              )
+                            ),
+                            t.queryParams
+                          )
+                          : r.append(
+                            "".concat(
+                              t.productTile.getAttribute(
+                                "data-query-param-code"
+                              )
+                            ),
+                            t.queryParams
+                          )),
+                        (e[0] + "?" + r.toString()).toString()
+                      );
+                    },
+                  },
+                  {
+                    key: "triggerPopupViewedTagging",
+                    value: function (t) {
+                      setTimeout(function () {
+                        var e = n(
+                          n({}, digitalData),
+                          {},
+                          {
+                            form: {
+                              formName: "",
+                              formStepName: "",
+                              formType: "",
+                              formPlatform: "",
+                            },
+                          }
+                        );
+                        (e.form.popupName = t),
+                          (e.event = "popupViewed"),
+                          scAnalyticsDataArray.push(e);
+                      }, 500);
+                    },
+                  },
+                  {
+                    key: "triggerCtaClickTagging",
+                    value: function (e) {
+                      var t, r;
+                      this.eventFired &&
+                        ((t =
+                          "button" == e.target.type ? e.target.type : "link"),
+                          (r = e.target.getAttribute("title")
+                            ? e.target.getAttribute("title")
+                            : e.target instanceof SVGElement ||
+                              e.target.getElementsByTagName("svg").length ||
+                              e.target.classList.contains("closebutton")
+                              ? "Close"
+                              : (e.target.innerText || e.target.textContent)
+                                .trim()
+                                .toLowerCase()),
+                          (e = n(
+                            n({}, digitalData),
+                            {},
+                            {
+                              customLinkClick: {
+                                customLinkText: r,
+                                customLinkRegion:
+                                  this.getHorizontalPosition(e.clientX) +
+                                  " " +
+                                  Utils.calcElementLocation(e.target),
+                                customLinkType: t,
+                              },
+                              event: "ctaClick",
+                              context: r,
+                            }
+                          )),
+                          scAnalyticsDataArray.push(e));
+                    },
+                  },
+                  {
+                    key: "getHorizontalPosition",
+                    value: function (e) {
+                      return e <
+                        Math.max(
+                          document.body.scrollWidth,
+                          document.documentElement.scrollWidth,
+                          document.body.offsetWidth,
+                          document.documentElement.offsetWidth,
+                          document.documentElement.clientWidth
+                        ) /
+                        2
+                        ? "left"
+                        : "right";
+                    },
+                  },
+                  {
+                    key: "handleReferId",
+                    value: function () {
+                      var e,
+                        t,
+                        i = this;
+                      document
+                        .querySelectorAll(
+                          ".sc-product-tile-is-recommended a, .sc-products-tile-modal a"
+                        )
+                        .forEach(function (e) {
+                          e.addEventListener("click", function (e) {
+                            var t = e.target.closest("a"),
+                              r = t.getAttribute("href");
+                            r.includes("#") ||
+                              (e.preventDefault(),
+                                e.stopPropagation(),
+                                setTimeout(function () {
+                                  (r = t.getAttribute("href")) &&
+                                    ((r = r.split("referId").join("referid")),
+                                      t.setAttribute("href", r),
+                                      window.open(
+                                        t.getAttribute("href"),
+                                        "_blank"
+                                      ));
+                                }, 50));
+                          });
+                        }),
+                        document.body.addEventListener("click", function (e) {
+                          var t,
+                            r,
+                            o = e.target.closest(".c-modal"),
+                            n = e.target.closest("a");
+                          o &&
+                            n &&
+                            ((t = n.getAttribute("href")).includes("#") ||
+                              (e.preventDefault(),
+                                e.stopPropagation(),
+                                setTimeout(function () {
+                                  (t = n.getAttribute("href")) &&
+                                    ((t = t.split("referId").join("referid")),
+                                      n.setAttribute("href", t),
+                                      window.open(
+                                        n.getAttribute("href"),
+                                        "_blank"
+                                      ));
+                                }, 50))),
+                            e.target.closest(".sc-products-tile__copy-code")
+                              ? ((o = e.target
+                                .closest(".sc-products-tile-modal")
+                                .querySelector(
+                                  ".sc-products-tile__applied-code span"
+                                )),
+                                (r = document.querySelector(
+                                  ".sc-product-tiles__copy-message"
+                                )),
+                                (o = o.innerText),
+                                navigator.clipboard
+                                  .writeText(o)
+                                  .then(function () {
+                                    r.classList.add(
+                                      "sc-product-tiles__copy-message--show"
+                                    ),
+                                      setTimeout(function () {
+                                        r.classList.remove(
+                                          "sc-product-tiles__copy-message--show"
+                                        );
+                                      }, 3e3);
+                                  })
+                                  .catch(function (e) { }))
+                              : e.target.closest("a[data-modal-source]") &&
+                              setTimeout(function () {
+                                var e = document.querySelector(
+                                  '.modal-content input[name="checkbox-radio"]'
+                                );
+                                e && (e.checked = !0);
+                              }, 1e3),
+                            e.target.closest(
+                              ".sc-products-tile-pdt-selection"
+                            ) && i.updateLinkHref();
+                        }),
+                        document
+                          .querySelectorAll(".sc-products-tile__mobile-link")
+                          .forEach(function (t) {
+                            t.setAttribute("href", "#null"),
+                              t.addEventListener("click", function (e) {
+                                e.preventDefault(),
+                                  e.stopPropagation(),
+                                  1024 < window.innerWidth
+                                    ? (e.preventDefault(),
+                                      e.stopPropagation(),
+                                      document
+                                        .querySelector(
+                                          ".sc-error-modal--apply"
+                                        )
+                                        .classList.add(
+                                          "sc-error-modal--show"
+                                        ))
+                                    : t.setAttribute("href", "#null");
+                              });
+                          }),
+                        document
+                          .querySelector(
+                            ".sc-error-modal--apply .sc-error-modal__alert-close"
+                          )
+                          .addEventListener("click", function () {
+                            document
+                              .querySelector(".sc-error-modal--apply")
+                              .classList.remove("sc-error-modal--show");
+                          }),
+                        -1 < window.location.href.indexOf("p=") &&
+                        (e = document.querySelector(".sc-product-tiles")) &&
+                        ((t = 0),
+                          1024 < window.innerWidth && (t = 100),
+                          window.scrollTo({
+                            top: e.offsetTop - t,
+                            behavior: "smooth",
+                          }));
+                    },
+                  },
+                  {
+                    key: "updateLinkHref",
+                    value: function () {
+                      var t,
+                        e = document.querySelectorAll(
+                          ".sc-products-tile__is-pdt-selection"
+                        ),
+                        r = document.querySelector(
+                          ".sc-products-tile-pdt-selection input:checked"
+                        );
+                      console.log(
+                        "isTermModalRequire--",
+                        this.isTermModalRequire
+                      ),
+                        this.isTermModalRequire ||
+                        ((t =
+                          null == r
+                            ? void 0
+                            : r
+                              .closest("label")
+                              .getAttribute("data-card-link")),
+                          e.forEach(function (e) {
+                            e.setAttribute("href", t);
+                          }));
+                    },
+                  },
+                  {
+                    key: "termsModalActive",
+                    value: function (o) {
+                      var n = this,
+                        i =
+                          ((n.isTermModalActive = !1),
+                            console.log("event2---", o.target),
+                            o.target.closest("a")),
+                        e = document.querySelector(
+                          ".sc-products-tile-pdt-selection input:checked"
+                        ),
+                        c =
+                          null == e
+                            ? void 0
+                            : e
+                              .closest("label")
+                              .getAttribute("data-card-link");
+                      console.log({ newHref: c }),
+                        console.log(
+                          "isTermModalRequire--",
+                          n.isTermModalRequire
+                        ),
+                        n.isTermModalRequire
+                          ? ((n.isTermModalActive = !0),
+                            i &&
+                            "#null" === i.getAttribute("href") &&
+                            o.target.classList.contains(
+                              "sc-mgm-refer-tc"
+                            ) &&
+                            setTimeout(function () {
+                              var e = o.target
+                                .closest(".m-text-content")
+                                .getAttribute("data-modal-id"),
+                                t = i.getAttribute("data-modal-source"),
+                                r = i.getAttribute("data-redirect-url");
+                              t ===
+                                document
+                                  .querySelector(".m-text-content")
+                                  .getAttribute("data-modal-id")
+                                ? (c
+                                  ? n.activeScrollToBottom(c, e)
+                                  : n.activeScrollToBottom(r, e),
+                                  n.activeDownloadButton())
+                                : console.log("activeModalId Not matched");
+                            }, 150))
+                          : ((e = i.getAttribute("data-modal-source")),
+                            console.log("modalAttr", e),
+                            (n.activeModalDataId = e));
+                    },
+                  },
+                  {
+                    key: "termsModalClosed",
+                    value: function (t) {
+                      var r = this;
+                      console.log("termsModalClosed Called!", t),
+                        (r.isTermModalActive = !1),
+                        setTimeout(function () {
+                          var e = document.querySelector(
+                            "[data-modal-source='".concat(t, "']")
+                          );
+                          console.log("modalId--", e),
+                            e && (e.click(), (r.isTermModalRequire = !0));
+                        }, 300);
+                    },
+                  },
+                  {
+                    key: "activeScrollToBottom",
+                    value: function (e, t) {
+                      console.log("activeScrollToBottom !!", e, t);
+                      var o = document.querySelector(
+                        ".sc-products-tile__scroll-step"
+                      ),
+                        n = o.getAttribute("data-last-title"),
+                        i = document.querySelector(
+                          ".sc-products-tile__download-button"
+                        ),
+                        c = document.querySelector(".m-text-content"),
+                        l = e,
+                        a = 0,
+                        u = !1,
+                        d = document.querySelector(".wrapper");
+                      c.addEventListener("scroll", function () {
+                        var e = c.scrollTop + c.clientHeight;
+                        c.scrollHeight - 1 <= e &&
+                          ((u = !0),
+                            console.log("Scroll reached the last end"),
+                            (i.closest("li").style.display = "none"),
+                            o.setAttribute("title", n),
+                            (o.children[0].innerText = n),
+                            (o.children[1].innerText = n));
+                      }),
+                        o.addEventListener("click", function (e) {
+                          var t, r;
+                          e.preventDefault(),
+                            e.stopPropagation(),
+                            e.stopImmediatePropagation(),
+                            u || 4 <= a
+                              ? (localStorage.setItem(
+                                "termsAccepted",
+                                "true"
+                              ),
+                                d.click(),
+                                window.open(l, "_blank"))
+                              : (a++,
+                                (e = 1),
+                                (r = (t = c).scrollHeight - t.clientHeight),
+                                t.scrollBy({
+                                  top: (r / 4) * e,
+                                  behavior: "smooth",
+                                }),
+                                t.scrollTop + t.clientHeight >=
+                                t.scrollHeight && (u = !0),
+                                4 <= a &&
+                                ((i.closest("li").style.display = "none"),
+                                  o.setAttribute("title", n),
+                                  (o.children[0].innerText = n),
+                                  (o.children[1].innerText = n),
+                                  (u = !0)));
+                        });
+                    },
+                  },
+                  {
+                    key: "activeDownloadButton",
+                    value: function () {
+                      console.log("activeDownloadButton !!");
+                      var e = document.querySelector(
+                        ".sc-products-tile__download-button"
+                      );
+                      console.log(e),
+                        e.addEventListener("click", function (e) {
+                          e.preventDefault(),
+                            e.stopPropagation(),
+                            e.stopImmediatePropagation();
+                          var r,
+                            e = e.target
+                              .closest("a")
+                              .getAttribute("data-pdf-url")
+                              .toString(),
+                            t = encodeURI(e),
+                            e = new URL(e).pathname.split("/"),
+                            e = e[e.length - 1];
+                          (r = e),
+                            (e = t) &&
+                            ((e = decodeURI(e).toString()),
+                              fetch(e)
+                                .then(function (e) {
+                                  return e.blob();
+                                })
+                                .then(function (e) {
+                                  var e = window.URL.createObjectURL(e),
+                                    t = document.createElement("a");
+                                  (t.style.display = "none"),
+                                    (t.href = e),
+                                    (t.download = r || "file.pdf"),
+                                    document.body.appendChild(t),
+                                    t.click(),
+                                    document.body.removeChild(t),
+                                    window.URL.revokeObjectURL(e);
+                                })
+                                .catch(function () {
+                                  return alert(
+                                    "An error occurred while downloading the PDF."
+                                  );
+                                }));
+                        });
+                    },
+                  },
+                ]) && c(t.prototype, r),
+                o && c(t, o),
+                Object.defineProperty(t, "prototype", { writable: !1 }),
+                e
+              );
+            })())();
+            e.init(), (r.default = e);
+          },
+          { "./../../../../../src/assets/js/commons/sc-common-methods": 2 },
+        ],
+        2: [
+          function (e, t, r) {
+            "use strict";
+            function n(e) {
+              return (n =
+                "function" == typeof Symbol &&
+                  "symbol" == typeof Symbol.iterator
+                  ? function (e) {
+                    return typeof e;
+                  }
+                  : function (e) {
+                    return e &&
+                      "function" == typeof Symbol &&
+                      e.constructor === Symbol &&
+                      e !== Symbol.prototype
+                      ? "symbol"
+                      : typeof e;
+                  })(e);
+            }
+            function a(e, t) {
+              return (
+                (function (e) {
+                  if (Array.isArray(e)) return e;
+                })(e) ||
+                (function (e, t) {
+                  var r =
+                    null == e
+                      ? null
+                      : ("undefined" != typeof Symbol &&
+                        e[Symbol.iterator]) ||
+                      e["@@iterator"];
+                  if (null != r) {
+                    var o,
+                      n,
+                      i,
+                      c,
+                      l = [],
+                      a = !0,
+                      u = !1;
+                    try {
+                      if (((i = (r = r.call(e)).next), 0 === t)) {
+                        if (Object(r) !== r) return;
+                        a = !1;
+                      } else
+                        for (
+                          ;
+                          !(a = (o = i.call(r)).done) &&
+                          (l.push(o.value), l.length !== t);
+                          a = !0
+                        );
+                    } catch (e) {
+                      (u = !0), (n = e);
+                    } finally {
+                      try {
+                        if (
+                          !a &&
+                          null != r.return &&
+                          ((c = r.return()), Object(c) !== c)
+                        )
+                          return;
+                      } finally {
+                        if (u) throw n;
+                      }
+                    }
+                    return l;
+                  }
+                })(e, t) ||
+                u(e, t) ||
+                (function () {
+                  throw new TypeError(
+                    "Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+                  );
+                })()
+              );
+            }
+            function u(e, t) {
+              var r;
+              if (e)
+                return "string" == typeof e
+                  ? o(e, t)
+                  : "Map" ===
+                    (r =
+                      "Object" ===
+                        (r = Object.prototype.toString
+                          .call(e)
+                          .slice(8, -1)) && e.constructor
+                        ? e.constructor.name
+                        : r) || "Set" === r
+                    ? Array.from(e)
+                    : "Arguments" === r ||
+                      /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)
+                      ? o(e, t)
+                      : void 0;
+            }
+            function o(e, t) {
+              (null == t || t > e.length) && (t = e.length);
+              for (var r = 0, o = new Array(t); r < t; r++) o[r] = e[r];
+              return o;
+            }
+            function i(e, t) {
+              for (var r = 0; r < t.length; r++) {
+                var o = t[r];
+                (o.enumerable = o.enumerable || !1),
+                  (o.configurable = !0),
+                  "value" in o && (o.writable = !0),
+                  Object.defineProperty(
+                    e,
+                    (function (e) {
+                      e = (function (e, t) {
+                        if ("object" !== n(e) || null === e) return e;
+                        var r = e[Symbol.toPrimitive];
+                        if (void 0 === r)
+                          return ("string" === t ? String : Number)(e);
+                        r = r.call(e, t || "default");
+                        if ("object" !== n(r)) return r;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value."
+                        );
+                      })(e, "string");
+                      return "symbol" === n(e) ? e : String(e);
+                    })(o.key),
+                    o
+                  );
+              }
+            }
+            Object.defineProperty(r, "__esModule", { value: !0 }),
+              (r.default = void 0);
+            var c = new ((function () {
+              function e() {
+                if (!(this instanceof e))
+                  throw new TypeError("Cannot call a class as a function");
+              }
+              var t, r, o;
+              return (
+                (t = e),
+                (r = [
+                  {
+                    key: "getQueryParam",
+                    value: function (e, t) {
+                      var r,
+                        o = "",
+                        n = (function (e, t) {
+                          var r,
+                            o,
+                            n,
+                            i,
+                            c =
+                              ("undefined" != typeof Symbol &&
+                                e[Symbol.iterator]) ||
+                              e["@@iterator"];
+                          if (c)
+                            return (
+                              (o = !(r = !0)),
+                              {
+                                s: function () {
+                                  c = c.call(e);
+                                },
+                                n: function () {
+                                  var e = c.next();
+                                  return (r = e.done), e;
+                                },
+                                e: function (e) {
+                                  (o = !0), (n = e);
+                                },
+                                f: function () {
+                                  try {
+                                    r || null == c.return || c.return();
+                                  } finally {
+                                    if (o) throw n;
+                                  }
+                                },
+                              }
+                            );
+                          if (
+                            Array.isArray(e) ||
+                            (c = u(e)) ||
+                            (t && e && "number" == typeof e.length)
+                          )
+                            return (
+                              c && (e = c),
+                              (i = 0),
+                              {
+                                s: (t = function () { }),
+                                n: function () {
+                                  return i >= e.length
+                                    ? { done: !0 }
+                                    : { done: !1, value: e[i++] };
+                                },
+                                e: function (e) {
+                                  throw e;
+                                },
+                                f: t,
+                              }
+                            );
+                          throw new TypeError(
+                            "Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+                          );
+                        })(e.split("&"));
+                      try {
+                        for (n.s(); !(r = n.n()).done;) {
+                          var i = a(r.value.split("="), 2),
+                            c = i[0],
+                            l = i[1];
+                          if (c === t) {
+                            o = l;
+                            break;
+                          }
+                        }
+                      } catch (e) {
+                        n.e(e);
+                      } finally {
+                        n.f();
+                      }
+                      return o;
+                    },
+                  },
+                  {
+                    key: "changeURL",
+                    value: function () {
+                      var e =
+                        0 < arguments.length && void 0 !== arguments[0]
+                          ? arguments[0]
+                          : "",
+                        e =
+                          window.location.protocol +
+                          "//" +
+                          window.location.host +
+                          window.location.pathname +
+                          (e ? "?".concat(e) : "");
+                      window.history.pushState({ path: e }, "", e);
+                    },
+                  },
+                  {
+                    key: "smoothScroll",
+                    value: function (e, o) {
+                      var n,
+                        i,
+                        c,
+                        l,
+                        t =
+                          2 < arguments.length && void 0 !== arguments[2]
+                            ? arguments[2]
+                            : 0,
+                        a =
+                          3 < arguments.length && void 0 !== arguments[3]
+                            ? arguments[3]
+                            : window;
+                      e &&
+                        ((n = this),
+                          (i = e.getBoundingClientRect().top - t),
+                          (c = a === window ? window.pageYOffset : 0),
+                          (l = null),
+                          requestAnimationFrame(function e(t) {
+                            var t = t - (l = null === l ? t : l),
+                              r = n.ease(t, c, i, o);
+                            a.scrollTo(0, r), t < o && requestAnimationFrame(e);
+                          }));
+                    },
+                  },
+                  {
+                    key: "ease",
+                    value: function (e, t, r, o) {
+                      return (e /= o / 2) < 1
+                        ? (r / 2) * e * e + t
+                        : (-r / 2) * (--e * (e - 2) - 1) + t;
+                    },
+                  },
+                  {
+                    key: "getPosition",
+                    value: function (e) {
+                      if (!e) return "";
+                      for (var t = 0; e;)
+                        (t += e.offsetTop - e.scrollTop + e.clientTop),
+                          (e = e.offsetParent);
+                      return t;
+                    },
+                  },
+                ]) && i(t.prototype, r),
+                o && i(t, o),
+                Object.defineProperty(t, "prototype", { writable: !1 }),
+                e
+              );
+            })())();
+            r.default = c;
+          },
+          {},
+        ],
+      },
+      {},
+      [1]
+    );
   </script>
   <!-- End TERMS Modal Script -->
   <!-- End TERMS Modal Content and style -->
