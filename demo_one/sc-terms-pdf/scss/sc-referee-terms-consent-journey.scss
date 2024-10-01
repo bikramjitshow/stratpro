@@ -6,6 +6,10 @@
   width: calc(100% + var(--tile-padding) * 2);
   min-height: auto;
 
+  strong {
+    font-weight: 600;
+  }
+
   &__title {
     font-size: 18px;
     text-align: center;
@@ -118,6 +122,14 @@
           }
         }
       }
+    }
+  }
+}
+
+.sc-bottom-btn {
+  .sc-mgm-refer-tc {
+    &.sc-btn {
+      margin: 0;
     }
   }
 }

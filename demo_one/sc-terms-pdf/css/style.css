@@ -151,6 +151,9 @@
   width: calc(100% + var(--tile-padding) * 2);
   min-height: auto;
 }
+.sc-products-tile-terms-modal strong {
+  font-weight: 600;
+}
 .sc-products-tile-terms-modal__title {
   font-size: 18px;
   text-align: center;
@@ -252,6 +255,10 @@
 }
 .sc-products-tile-terms-modal .sc-rte ul li ol li ol li {
   list-style-type: lower-latin;
+}
+
+.sc-bottom-btn .sc-mgm-refer-tc.sc-btn {
+  margin: 0;
 }
 
 .c-modal .m-text-content .sc-products-tile-terms-modal {
