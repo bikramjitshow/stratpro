@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  
   document.getElementById("generateQR").addEventListener("click", () => {
     // console.log(window.AF_SMART_SCRIPT);
     if (window.AF_SMART_SCRIPT) {
+      // load the input URL to thr input_url textArea
+      document.getElementById("input_url").innerHTML = window.location.href;
       // Define OneLink URL and parameters
       var oneLinkURL = "https://engmntqa.onelink.me/LtRd/";
       // If a media source key is NOT FOUND on the link and NO default value is found, the script will return a null string
@@ -21,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       console.log(result);
+      console.log(document.getElementById("input_url").innerHTML);
       var result_url = "No output from script";
 
       if (result && result.clickURL) {

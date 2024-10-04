@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Validate smartscript</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -16,6 +16,10 @@
       <button id="generateQR" class="generate-btn">Generate QR Code</button>
     </div>
     <div class="container">
+      <h1>Input URL</h1>
+      <textarea id="input_url" class="present-url"> No input URL</textarea>
+    </div>
+    <div class="container">
       <h1>Generated Output URL</h1>
       <p id="output_url" class="output-url-container"></p>
     </div>
@@ -23,7 +27,6 @@
 
   <script type="text/javascript" src="https://onelinksmartscript.appsflyer.com/onelink-smart-script-latest.js"></script>
   <script src="./scripts/qr.js"></script>
-
 </body>
 
 </html>
