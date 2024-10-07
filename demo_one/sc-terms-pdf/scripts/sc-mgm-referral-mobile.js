@@ -7,6 +7,7 @@ class ScMgmReferralMobile {
   }
 
   init() {
+    console.log("MGM-Mobile JS: build-v7");
     const that = this;
     // that.termsState();
     that.mgmRefer = document.querySelector(".sc-mgm-refer");
