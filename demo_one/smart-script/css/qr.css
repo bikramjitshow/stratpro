@@ -66,4 +66,10 @@ h1 {
 }
 .generate-btn:hover {
   background-color: #217dbb;
+}
+
+.present-url {
+  width: 100%;
+  padding: 16px;
+  text-align: center;
 }/*# sourceMappingURL=qr.css.map */

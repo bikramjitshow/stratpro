@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
   document.getElementById("generateQR").addEventListener("click", () => {
     // console.log(window.AF_SMART_SCRIPT);
     if (window.AF_SMART_SCRIPT) {

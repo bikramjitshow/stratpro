@@ -68,6 +68,12 @@ h1 {
   background-color: #217dbb;
 }
 
+.present-url {
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+}
+
 .ele-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
