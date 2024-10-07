@@ -603,55 +603,119 @@ class ScMgmReferralMobile {
    * @example
    * activeDownloadButton()
    */
+  // activeDownloadButton() {
+  //   console.log("activeDownloadButton !!");
+  //   // Download function
+  //   let downloadPdf = (pdfurl, filename) => {
+  //     // Fetch the PDF file and force download
+  //     if (pdfurl) {
+  //       let pdfUrl = decodeURI(pdfurl).toString();
+  //       fetch(pdfUrl)
+  //         .then((response) => response.blob())
+  //         .then((blob) => {
+  //           var url = window.URL.createObjectURL(blob);
+  //           var a = document.createElement("a");
+  //           a.style.display = "none";
+  //           a.href = url;
+  //           a.download = filename || "file.pdf"; // The filename to save as
+  //           document.body.appendChild(a);
+  //           a.click();
+  //           document.body.removeChild(a);
+  //           window.URL.revokeObjectURL(url);
+  //         })
+  //         .catch(() => alert("An error occurred while downloading the PDF."));
+  //     }
+  //   };
+
+  //   // Click event
+  //   var downloadButton = document.querySelector(
+  //     ".sc-products-tile__download-button"
+  //   );
+  //   console.log(downloadButton);
+  //   downloadButton.addEventListener("click", function (event) {
+  //     event.preventDefault();
+  //     // event.stopPropagation();
+  //     // event.stopImmediatePropagation();
+  //     let closestAnchor = event.target.closest("a");
+  //     let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
+  //     // URL of the PDF
+  //     var pdfUrl = datapdfurl.toString();
+
+  //     const encodedURL = encodeURI(pdfUrl);
+  //     var url = new URL(pdfUrl);
+  //     var pathname = url.pathname;
+  //     var segments = pathname.split("/");
+  //     var filename = segments[segments.length - 1];
+
+  //     // Fetch the PDF file and force download
+  //     downloadPdf(encodedURL, filename);
+  //   });
+  // }
+
   activeDownloadButton() {
     console.log("activeDownloadButton !!");
+
     // Download function
     let downloadPdf = (pdfurl, filename) => {
       // Fetch the PDF file and force download
       if (pdfurl) {
-        let pdfUrl = decodeURI(pdfurl).toString();
+        let pdfUrl = decodeURI(pdfurl).toString(); // Ensure the URL is properly decoded
         fetch(pdfUrl)
-          .then((response) => response.blob())
-          .then((blob) => {
-            var url = window.URL.createObjectURL(blob);
-            // setTimeout(() => {
-
-            // }, 2000);
-            var a = document.createElement("a");
-            a.style.display = "none";
-            a.href = url;
-            a.download = filename || "file.pdf"; // The filename to save as
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok.");
+            }
+            return response.blob(); // Get the blob from response
           })
-          .catch(() => alert("An error occurred while downloading the PDF."));
+          .then((blob) => {
+            // Create a temporary link element
+            const link = document.createElement("a");
+            const url = window.URL.createObjectURL(blob); // Create object URL for the blob
+            link.href = url;
+            link.setAttribute("target", "_blank");
+            link.download = filename || "file.pdf"; // Set the filename for the download
+            document.body.appendChild(link);
+            console.log(link);
+            link.click(); // Trigger download
+            document.body.removeChild(link); // Clean up
+            window.URL.revokeObjectURL(url); // Free memory
+          })
+          .catch((error) => {
+            console.error("Download error:", error);
+            alert("An error occurred while downloading the PDF.");
+          });
       }
     };
 
-    // Click event
-    var downloadButton = document.querySelector(
+    // Select all download buttons
+    var downloadButtons = document.querySelectorAll(
       ".sc-products-tile__download-button"
     );
-    console.log(downloadButton);
-    downloadButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-      let closestAnchor = event.target.closest("a");
-      let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
-      // URL of the PDF
-      var pdfUrl = datapdfurl.toString();
 
-      const encodedURL = encodeURI(pdfUrl);
-      var url = new URL(pdfUrl);
-      var pathname = url.pathname;
-      var segments = pathname.split("/");
-      var filename = segments[segments.length - 1];
+    downloadButtons.forEach((downloadButton) => {
+      downloadButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default anchor click
+        event.stopPropagation(); // Stop event bubbling
 
-      // Fetch the PDF file and force download
-      downloadPdf(encodedURL, filename);
+        // Get the closest anchor element
+        let closestAnchor = event.target.closest("a");
+        if (closestAnchor) {
+          let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
+
+          // URL of the PDF
+          var pdfUrl = datapdfurl.toString();
+          const encodedURL = encodeURI(pdfUrl);
+          var url = new URL(pdfUrl);
+          var pathname = url.pathname;
+          var segments = pathname.split("/");
+          var filename = segments[segments.length - 1];
+
+          // Fetch the PDF file and trigger the download
+          downloadPdf(encodedURL, filename);
+        } else {
+          console.error("Anchor element not found.");
+        }
+      });
     });
   }
 
