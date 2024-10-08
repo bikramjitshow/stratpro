@@ -480,7 +480,7 @@ class ScMgmReferralMobile {
               tcUpdateInfo.classList.add("hide");
             }
             that.activeScrollToBottom(event, mtextcontentId);
-            that.activeDownloadButton();
+            // that.activeDownloadButton();
           } else {
             console.log("activeModalId Not matched");
           }
@@ -653,72 +653,72 @@ class ScMgmReferralMobile {
   //   });
   // }
 
-  activeDownloadButton() {
-    console.log("activeDownloadButton !!");
+  // activeDownloadButton() {
+  //   console.log("activeDownloadButton !!");
 
-    // Download function
-    let downloadPdf = (pdfurl, filename) => {
-      // Fetch the PDF file and force download
-      if (pdfurl) {
-        let pdfUrl = decodeURI(pdfurl).toString(); // Ensure the URL is properly decoded
-        fetch(pdfUrl)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Network response was not ok.");
-            }
-            return response.blob(); // Get the blob from response
-          })
-          .then((blob) => {
-            // Create a temporary link element
-            const link = document.createElement("a");
-            const url = window.URL.createObjectURL(blob); // Create object URL for the blob
-            link.href = url;
-            link.setAttribute("target", "_blank");
-            link.download = filename || "file.pdf"; // Set the filename for the download
-            document.body.appendChild(link);
-            console.log(link);
-            link.click(); // Trigger download
-            document.body.removeChild(link); // Clean up
-            window.URL.revokeObjectURL(url); // Free memory
-          })
-          .catch((error) => {
-            console.error("Download error:", error);
-            alert("An error occurred while downloading the PDF.");
-          });
-      }
-    };
+  //   // Download function
+  //   let downloadPdf = (pdfurl, filename) => {
+  //     // Fetch the PDF file and force download
+  //     if (pdfurl) {
+  //       let pdfUrl = decodeURI(pdfurl).toString(); // Ensure the URL is properly decoded
+  //       fetch(pdfUrl)
+  //         .then((response) => {
+  //           if (!response.ok) {
+  //             throw new Error("Network response was not ok.");
+  //           }
+  //           return response.blob(); // Get the blob from response
+  //         })
+  //         .then((blob) => {
+  //           // Create a temporary link element
+  //           const link = document.createElement("a");
+  //           const url = window.URL.createObjectURL(blob); // Create object URL for the blob
+  //           link.href = url;
+  //           link.setAttribute("target", "_blank");
+  //           link.download = filename || "file.pdf"; // Set the filename for the download
+  //           document.body.appendChild(link);
+  //           console.log(link);
+  //           link.click(); // Trigger download
+  //           document.body.removeChild(link); // Clean up
+  //           window.URL.revokeObjectURL(url); // Free memory
+  //         })
+  //         .catch((error) => {
+  //           console.error("Download error:", error);
+  //           alert("An error occurred while downloading the PDF.");
+  //         });
+  //     }
+  //   };
 
-    // Select all download buttons
-    var downloadButtons = document.querySelectorAll(
-      ".sc-products-tile__download-button"
-    );
+  //   // Select all download buttons
+  //   var downloadButtons = document.querySelectorAll(
+  //     ".sc-products-tile__download-button"
+  //   );
 
-    downloadButtons.forEach((downloadButton) => {
-      downloadButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default anchor click
-        event.stopPropagation(); // Stop event bubbling
+  //   downloadButtons.forEach((downloadButton) => {
+  //     downloadButton.addEventListener("click", function (event) {
+  //       event.preventDefault(); // Prevent default anchor click
+  //       event.stopPropagation(); // Stop event bubbling
 
-        // Get the closest anchor element
-        let closestAnchor = event.target.closest("a");
-        if (closestAnchor) {
-          let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
+  //       // Get the closest anchor element
+  //       let closestAnchor = event.target.closest("a");
+  //       if (closestAnchor) {
+  //         let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
 
-          // URL of the PDF
-          var pdfUrl = datapdfurl.toString();
-          const encodedURL = encodeURI(pdfUrl);
-          var url = new URL(pdfUrl);
-          var pathname = url.pathname;
-          var segments = pathname.split("/");
-          var filename = segments[segments.length - 1];
+  //         // URL of the PDF
+  //         var pdfUrl = datapdfurl.toString();
+  //         const encodedURL = encodeURI(pdfUrl);
+  //         var url = new URL(pdfUrl);
+  //         var pathname = url.pathname;
+  //         var segments = pathname.split("/");
+  //         var filename = segments[segments.length - 1];
 
-          // Fetch the PDF file and trigger the download
-          downloadPdf(encodedURL, filename);
-        } else {
-          console.error("Anchor element not found.");
-        }
-      });
-    });
-  }
+  //         // Fetch the PDF file and trigger the download
+  //         downloadPdf(encodedURL, filename);
+  //       } else {
+  //         console.error("Anchor element not found.");
+  //       }
+  //     });
+  //   });
+  // }
 
   /**
    * Function to set a cookie

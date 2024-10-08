@@ -195,6 +195,10 @@
 .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li:last-child {
   margin-right: 0;
 }
+.sc-products-tile-terms-modal .sc-products-tile__download-button {
+  color: #2772c7;
+  border: none;
+}
 .sc-products-tile-terms-modal .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
