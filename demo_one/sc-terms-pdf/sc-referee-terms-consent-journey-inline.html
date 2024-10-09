@@ -403,13 +403,17 @@
 
 <body class="page-template-default page page-id-673272" data-catch="show-overlay"
   data-allowed-params="https://av.sc.com/hk/data/whitelist-parameter/allowable/all.json" data-page-ga="1">
+
+
+
   <link rel="stylesheet" href="https://av.sc.com/assets/global/css/sc-error-modal.min.css" media="all" />
+  
   <style>
     .sc-filter {
       padding: 8px 0;
       margin-bottom: 16px;
     }
-
+  
     .sc-filter__btn {
       padding: 8px 16px;
       background-color: transparent;
@@ -424,44 +428,44 @@
       justify-content: center;
       align-items: center;
     }
-
+  
     .sc-filter__btn--active {
       background-color: rgba(39, 114, 199, 0.222);
       color: #2772c7;
       font-weight: 500;
     }
-
+  
     .sc-filter__btn--sticky {
       position: sticky;
       top: 0;
       left: 0;
       z-index: 99;
     }
-
+  
     .sc-filter__icon {
       width: 20px;
       height: 20px;
       margin-right: 4px;
     }
-
+  
     .sc-filter__icon svg {
       width: 100%;
       height: 100%;
     }
-
+  
     .sc-filter--border .sc-filter__btn {
       border: 1px solid #e1e1e1;
     }
-
+  
     .sc-filter--border .sc-filter__btn--active {
       border-color: transparent;
     }
-
+  
     .sc-radio-box {
       display: inline-flex;
       position: relative;
     }
-
+  
     .sc-radio-box__input-label {
       font-size: 14px;
       font-weight: 500;
@@ -477,14 +481,14 @@
       align-items: center;
       min-height: 48px;
     }
-
+  
     .sc-radio-box__input {
       position: absolute;
       opacity: 0;
       height: 0;
       width: 0;
     }
-
+  
     .sc-radio-box__input~.sc-radio-box__input-label::before {
       content: "";
       height: 24px;
@@ -497,7 +501,7 @@
       display: inline-block;
       margin-right: 8px;
     }
-
+  
     .sc-radio-box__input:checked~.sc-radio-box__input-label::after {
       content: "";
       background-color: #2772c7;
@@ -510,16 +514,16 @@
       border-width: 0;
       position: absolute;
     }
-
+  
     .sc-radio-box__input:checked~.sc-radio-box__input-label::before {
       background-color: #fff;
       border-color: #2772c7;
     }
-
+  
     .sc-radio-box__input[type="checkbox"]~.sc-radio-box__input-label::before {
       border-radius: 5px;
     }
-
+  
     .sc-radio-box__input[type="checkbox"]:checked~.sc-radio-box__input-label::after {
       content: "";
       position: absolute;
@@ -532,45 +536,45 @@
       transform: rotate(45deg);
       border-radius: 0;
     }
-
+  
     .sc-radio-box__input[type="checkbox"]:checked~.sc-radio-box__input-label::before {
       background-color: #2772c7;
     }
-
+  
     .sc-accordion {
       width: 100%;
     }
-
+  
     .sc-accordion__input {
       position: absolute;
       opacity: 0;
       z-index: -1;
       visibility: hidden;
     }
-
+  
     .sc-accordion__input:checked+.sc-accordion__label::after {
       transform: rotate(180deg);
       top: calc(50% - 6px);
     }
-
+  
     .sc-accordion__input:checked~.sc-accordion__content {
       max-height: 100%;
       padding: 16px;
       overflow: hidden;
       display: block;
     }
-
+  
     .sc-accordion__input:checked~.sc-heading .sc-accordion__label--plus {
       border-bottom: 0;
       font-weight: 700;
     }
-
+  
     .sc-accordion__input:checked~.sc-heading .sc-accordion__label--plus::after {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' fill='%230C77B9' fill-rule='evenodd' rx='.75'/%3E%3C/svg%3E%0A");
       transform: rotate(0) translateY(-50%);
       top: 47%;
     }
-
+  
     .sc-accordion__label {
       padding: 12px 16px;
       background-color: #f6f6f6;
@@ -583,7 +587,7 @@
       display: inline-block;
       width: 100%;
     }
-
+  
     .sc-accordion__label::after {
       content: "";
       width: 13px;
@@ -597,7 +601,7 @@
       transform: translateY(-50%);
       right: 15px;
     }
-
+  
     .sc-accordion__label--plus {
       background-color: #fff;
       padding: 16px 16px 16px 40px;
@@ -606,7 +610,7 @@
       font-weight: 300px;
       margin-bottom: 2px;
     }
-
+  
     .sc-accordion__label--plus::after {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%230C77B9' fill-rule='evenodd'%3E%3Crect width='1.5' height='17' x='11.25' y='3.5' rx='.75'/%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' rx='.75'/%3E%3C/g%3E%3C/svg%3E%0A");
       background-size: 24px 24px;
@@ -617,16 +621,16 @@
       filter: none;
       top: 47%;
     }
-
+  
     .sc-accordion__label--plus-right {
       padding: 16px 40px 16px 0;
     }
-
+  
     .sc-accordion__label--plus-right::after {
       right: 6px;
       left: auto;
     }
-
+  
     .sc-accordion__content {
       max-height: 0;
       padding: 0 16px;
@@ -636,7 +640,7 @@
       display: none;
       font-size: 14px;
     }
-
+  
     .sc-tag {
       display: inline-flex;
       border-radius: 30px;
@@ -651,50 +655,50 @@
       font-weight: 400;
       line-height: normal;
     }
-
+  
     .sc-tag * {
       color: inherit;
     }
-
+  
     .sc-tag--blue {
       background-color: #00bcd3;
     }
-
+  
     .sc-tag--green {
       background-color: #3eb812;
     }
-
+  
     .sc-tag--yellow {
       background-color: #ffba06;
     }
-
+  
     .sc-tag--sky-blue {
       background-color: #00a9f3;
     }
-
+  
     .sc-tag--gold {
       background-color: #f9e377;
     }
-
+  
     .sc-tag--orange {
       background-color: #ff6839;
     }
-
+  
     .sc-tag--gray {
       background-color: #e6e6e6;
       color: #000;
     }
-
+  
     .sc-tag--white {
       background-color: #fff;
       color: #000;
     }
-
+  
     .sc-list ol,
     .sc-list ul {
       padding-left: 0;
     }
-
+  
     .sc-list ol li,
     .sc-list ul li {
       color: #000;
@@ -704,7 +708,7 @@
       list-style: none;
       font-size: 14px;
     }
-
+  
     .sc-list ol li::before,
     .sc-list ul li::before {
       content: "";
@@ -718,23 +722,23 @@
       background-size: 100%;
       display: inline-block;
     }
-
+  
     .sc-list ol li a,
     .sc-list ul li a {
       position: relative;
       z-index: 2;
     }
-
+  
     .sc-badge {
       display: inline-flex;
       align-items: flex-start;
     }
-
+  
     .sc-badge svg {
       width: 8px;
       height: 11px;
     }
-
+  
     .sc-badge__text {
       display: inline;
       padding: 2px 10px;
@@ -743,15 +747,15 @@
       border-radius: 0 0 8px 8px;
       font-size: 12px;
     }
-
+  
     .sc-badge--green svg path {
       fill: #a6d0b5;
     }
-
+  
     .sc-badge--green .sc-badge__text {
       background-color: #e8f3ec;
     }
-
+  
     .sc-products-tile {
       --tile-padding: 16px;
       max-width: 700px;
@@ -766,7 +770,7 @@
       line-height: 1.4;
       width: 100%;
     }
-
+  
     .sc-products-tile__img {
       border-radius: 4px;
       width: 65px;
@@ -775,7 +779,7 @@
       flex-shrink: 0;
       object-fit: cover;
     }
-
+  
     .sc-products-tile__right {
       flex: 1 0 calc(100% - 85px);
       display: flex;
@@ -785,12 +789,12 @@
       position: relative;
       z-index: 2;
     }
-
+  
     .sc-products-tile__right-container {
       width: 100%;
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile__title {
       font-weight: 500;
       font-size: 16px;
@@ -799,18 +803,18 @@
       margin-bottom: 12px;
       display: block;
     }
-
+  
     .sc-products-tile__copy-code {
       position: relative;
       border-color: #2772c7;
       color: #2772c7;
     }
-
+  
     .sc-products-tile__copy-code:hover {
       border-color: #2772c7;
       color: #2772c7;
     }
-
+  
     .sc-products-tile__copy-code::before {
       content: "";
       background-image: url('data:image/svg+xml,<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.24985 3.5V1.25C3.24985 0.83579 3.58564 0.5 3.99985 0.5H12.9998C13.4141 0.5 13.7498 0.83579 13.7498 1.25V11.75C13.7498 12.1642 13.4141 12.5 12.9998 12.5H10.7498V14.7493C10.7498 15.1639 10.4124 15.5 9.99475 15.5H1.00499C0.587942 15.5 0.25 15.1665 0.25 14.7493L0.25195 4.25065C0.252025 3.83608 0.58948 3.5 1.00706 3.5H3.24985ZM1.75181 5L1.75014 14H9.24985V5H1.75181ZM4.74985 3.5H10.7498V11H12.2498V2H4.74985V3.5Z" fill="%232772C7"/></svg>');
@@ -822,13 +826,13 @@
       display: inline-block;
       margin-right: 8px;
     }
-
+  
     .sc-products-tile__tags {
       display: flex;
       flex-wrap: wrap;
       column-gap: 4px;
     }
-
+  
     .sc-products-tile__tags .sc-tag {
       border-radius: 7px;
       padding: 4px 6px;
@@ -841,18 +845,18 @@
       line-height: normal;
       position: static;
     }
-
+  
     .sc-products-tile__tags [class*="--"] {
       color: #fff;
       border-color: transparent;
     }
-
+  
     .sc-products-tile__desc {
       font-size: 14px;
       color: #555;
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile__info-icon {
       width: 15px;
       height: 15px;
@@ -862,41 +866,41 @@
       position: relative;
       top: 2px;
     }
-
+  
     .sc-products-tile__info-icon:target {
       display: block;
     }
-
+  
     .sc-products-tile__info-icon svg {
       width: 100%;
       height: 100%;
     }
-
+  
     .sc-products-tile__cvp-list {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
     }
-
+  
     .sc-products-tile__cvp-list ol li,
     .sc-products-tile__cvp-list ul li {
       color: #555;
     }
-
+  
     .sc-products-tile__cvp {
       font-size: 16px;
       font-weight: 600;
       width: 100%;
       flex: 1 0 calc(50% - 8px);
     }
-
+  
     .sc-products-tile__text {
       font-size: 14px;
       color: #6b6e73;
       display: block;
       font-weight: 300;
     }
-
+  
     .sc-products-tile__pdt-details {
       font-size: 12px;
       color: #2772c7;
@@ -909,7 +913,7 @@
       font-weight: 300;
       letter-spacing: normal;
     }
-
+  
     .sc-products-tile__terms {
       color: #2772c7;
       font-size: 14px;
@@ -921,7 +925,7 @@
       cursor: pointer;
       padding-top: 4px;
     }
-
+  
     .sc-products-tile__terms-link {
       font-size: 14px;
       font-weight: 500;
@@ -943,7 +947,7 @@
       white-space: normal;
       text-align: left;
     }
-
+  
     .sc-products-tile__terms-link::after {
       content: "";
       background-image: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="15" height="15" rx="1.5" stroke="%23AAAAAA"/><path d="M5.85099 4.96413C5.70002 4.96424 5.55752 5.02425 5.4548 5.13097C5.35208 5.23768 5.29756 5.38238 5.30321 5.53324C5.30602 5.60796 5.32354 5.68195 5.35477 5.75098C5.38599 5.82001 5.43031 5.88272 5.48519 5.93553C5.54007 5.98834 5.60443 6.03022 5.6746 6.05877C5.74478 6.08733 5.81938 6.10199 5.89416 6.10194L8.98795 6.10065L4.67802 10.5793C4.5753 10.686 4.52079 10.8307 4.52651 10.9816C4.53222 11.1325 4.59768 11.2772 4.70849 11.3838C4.8193 11.4904 4.96637 11.5503 5.11736 11.5502C5.26835 11.5502 5.41089 11.4902 5.51362 11.3834L9.8237 6.90467L9.94048 9.99696C9.94618 10.1479 10.0116 10.2925 10.1224 10.3992C10.2332 10.5059 10.3803 10.5658 10.5313 10.5657C10.6823 10.5657 10.8249 10.5057 10.9276 10.3989C11.0304 10.2922 11.0849 10.1475 11.0792 9.99656L10.9105 5.5309C10.9077 5.45618 10.8902 5.38221 10.8589 5.31319C10.8277 5.24418 10.7834 5.18148 10.7285 5.12868C10.6177 5.02206 10.4705 4.96218 10.3195 4.96219L5.85099 4.96413Z" fill="%23AAAAAA"/></svg>');
@@ -954,41 +958,41 @@
       display: inline-block;
       flex-shrink: 0;
     }
-
+  
     .sc-products-tile__terms-link:hover {
       color: #008738;
     }
-
+  
     .sc-products-tile__btn {
       margin-top: auto;
     }
-
+  
     .sc-products-tile__input-btn {
       margin-top: 16px;
     }
-
+  
     .sc-products-tile__footer-text {
       font-size: 12px;
       color: #555;
       margin-top: 8px;
     }
-
+  
     .sc-products-tile__footer-text a {
       color: #2772c7;
     }
-
+  
     .sc-products-tile__feature {
       border-radius: 6px;
       overflow: hidden;
       border: 1px solid #008738;
       color: #555;
     }
-
+  
     .sc-products-tile__feature-box {
       border-radius: 5px;
       padding: 16px 0;
     }
-
+  
     .sc-products-tile__feature-col {
       width: 100%;
       display: flex;
@@ -998,11 +1002,11 @@
       position: relative;
       font-size: 15px;
     }
-
+  
     .sc-products-tile__feature-col:last-child {
       margin-bottom: 0;
     }
-
+  
     .sc-products-tile__feature-col::before {
       content: "";
       position: absolute;
@@ -1013,22 +1017,22 @@
       background: linear-gradient(180deg, #0f7aed 0, #38d200 100%);
       border-radius: 10px;
     }
-
+  
     .sc-products-tile__feature-col--head {
       font-size: 13px;
     }
-
+  
     .sc-products-tile__feature-col--head::before {
       content: none;
     }
-
+  
     .sc-products-tile__feature-left,
     .sc-products-tile__feature-right {
       width: 100%;
       padding: 2px 12px;
       position: relative;
     }
-
+  
     .sc-products-tile__feature-left::after {
       content: "";
       background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.1716 6.9999L6.8076 1.63589L8.2218 0.22168L16 7.9999L8.2218 15.778L6.8076 14.3638L12.1716 8.9999H0V6.9999H12.1716Z' fill='%23555555'/%3E%3C/svg%3E");
@@ -1042,58 +1046,58 @@
       top: 50%;
       transform: translateY(-50%);
     }
-
+  
     .sc-products-tile .sc-rte a {
       color: #008738;
     }
-
+  
     .sc-products-tile .sc-badge {
       top: -12px;
       position: absolute;
       left: 12px;
     }
-
+  
     .sc-products-tile .sc-list ol li::before,
     .sc-products-tile .sc-list ul li::before {
       background-image: url('data:image/svg+xml,<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z" fill="black"/></svg>');
     }
-
+  
     .sc-products-tile--bg-black {
       background: linear-gradient(90deg, #1f282e 0, #4f595d 130.78%);
     }
-
+  
     .sc-products-tile--bg-black .sc-products-tile__cvp,
     .sc-products-tile--bg-black .sc-products-tile__desc,
     .sc-products-tile--bg-black .sc-products-tile__title {
       color: #fff;
     }
-
+  
     .sc-products-tile--bg-black .sc-products-tile__text {
       color: #d4d4d4;
     }
-
+  
     .sc-products-tile--bg-black .sc-products-tile__cvp-list ul li {
       color: #fff;
     }
-
+  
     .sc-products-tile--bg-black .sc-products-tile__cvp-list ul li::before {
       background-image: url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_2954_55)'%3E%3Cpath d='M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z' fill='white'/%3E%3Cg clip-path='url(%23clip1_2954_55)'%3E%3Cpath d='M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z' fill='white'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2954_55'%3E%3Crect width='15' height='11' fill='white'/%3E%3C/clipPath%3E%3CclipPath id='clip1_2954_55'%3E%3Crect width='15' height='11' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
     }
-
+  
     .sc-products-tile--bg-black [class|="sc-tag"] {
       border-color: #fff;
       color: #fff;
     }
-
+  
     .sc-products-tile--bg-black~.sc-products-tile__btn .sc-btn--blue {
       background-color: #193043;
       border-color: #193043;
     }
-
+  
     .sc-products-tile--with-logo {
       position: relative;
     }
-
+  
     .sc-products-tile--with-logo::after {
       content: "";
       background-image: url("data:image/svg+xml,%3Csvg width='186' height='360' viewBox='0 0 186 360' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_3644_3' style='mask-type:luminance' maskUnits='userSpaceOnUse' x='0' y='0' width='186' height='360'%3E%3Cpath d='M186 0H0V359.489H186V0Z' fill='white'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_3644_3)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M194.956 354.239L29.4898 247.296C29.4898 247.296 8.73589 235.454 3.98439 213.387C-2.6872 182.405 19.3128 155.846 19.3128 155.846L234.064 294.688C250.628 305.409 255.152 327.336 244.502 343.876C233.564 360.865 211.084 364.615 194.956 354.239Z' fill='%23F6F6F6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M38.2247 132.927C38.2247 132.927 12.8779 117.732 12.8779 82.5915C12.8779 47.5673 38.2146 32.5666 38.2146 32.5666L128.674 -26.2129C145.254 -36.9122 167.429 -32.242 178.207 -15.783C188.984 0.675725 184.28 22.6915 167.701 33.3907L91.4601 82.6784L221.365 166.667C221.365 166.667 244.747 179.97 249.355 202.419C255.785 233.742 234.068 259.546 234.068 259.546L38.2247 132.927Z' fill='%23F6F6F6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M208.495 47.6538C200 47.6556 193.956 50.3136 188.059 54.1242L143.896 82.6785L188.059 111.231C194.013 115.038 200.261 117.702 208.495 117.702C227.979 117.702 243.775 102.022 243.775 82.6781C243.775 63.3347 227.979 47.6499 208.495 47.6538Z' fill='%23F6F6F6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M37.7565 359.907C46.2514 359.905 52.296 357.247 58.1922 353.436L102.355 324.882L58.1922 296.329C52.2386 292.524 45.991 289.858 37.7565 289.858C18.2719 289.858 2.47656 305.54 2.47656 324.883C2.47656 344.226 18.2719 359.912 37.7565 359.907Z' fill='%23F6F6F6'/%3E%3C/g%3E%3C/svg%3E");
@@ -1109,33 +1113,33 @@
       display: inline-block;
       opacity: 0.03;
     }
-
+  
     .sc-products-tile--with-logo:not(.sc-products-tile--bg-black)::after {
       opacity: 1;
     }
-
+  
     .sc-tag--blue {
       background-color: #4579ff;
     }
-
+  
     .sc-tag--black {
       background-color: #000;
     }
-
+  
     .sc-btn--full {
       width: 100%;
     }
-
+  
     @media (min-width: 681px) {
       .sc-products-tile {
         --tile-padding: 24px;
       }
-
+  
       .sc-products-tile__heading {
         margin-bottom: 32px;
       }
     }
-
+  
     .sc-products-tile-modal {
       --tile-padding: 16px;
       background-color: #f8f8f8;
@@ -1144,7 +1148,7 @@
       width: calc(100% + var(--tile-padding) * 2);
       min-height: auto;
     }
-
+  
     .sc-products-tile-modal__pdt-dtls {
       display: flex;
       flex-wrap: wrap;
@@ -1154,51 +1158,51 @@
       margin: calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1) 24px;
       width: calc(100% + var(--tile-padding) * 2);
     }
-
+  
     .sc-products-tile-modal__terms-title {
       font-size: 24px;
       margin-bottom: 24px;
     }
-
+  
     .sc-products-tile-modal__content {
       margin-bottom: 24px;
     }
-
+  
     .sc-products-tile-modal__content~.sc-products-tile-modal__content {
       margin-top: 24px;
     }
-
+  
     .sc-products-tile-modal__apply {
       background-color: #2772c7;
       border-color: #2772c7;
     }
-
+  
     .sc-products-tile-modal__image {
       width: 210px;
       height: auto;
       margin: 0 auto 24px;
       display: block;
     }
-
+  
     .sc-products-tile-modal__pdt-top-title {
       font-size: 15px;
       font-weight: 400;
       color: #6b6e73;
       margin-bottom: 8px !important;
     }
-
+  
     .sc-products-tile-modal__pdt-top-desc {
       font-size: 17px;
       font-weight: 500;
       color: #191919;
     }
-
+  
     .sc-products-tile-modal__pdt-top {
       background-color: #fff;
       margin: calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1) calc(var(--tile-padding));
       padding: 24px;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn,
     .sc-products-tile-modal .sc-products-tile__input-btn {
       position: sticky;
@@ -1210,64 +1214,64 @@
       background-color: #fff;
       z-index: 4;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn .sc-btn,
     .sc-products-tile-modal .sc-products-tile__input-btn .sc-btn {
       width: 100%;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn .buttons {
       flex-wrap: nowrap;
       gap: 0;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn .buttons li {
       width: 100%;
       margin-right: 8px;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn .buttons li:last-child {
       margin-right: 0;
     }
-
+  
     .sc-products-tile-modal .buttons {
       display: flex;
       flex-wrap: wrap;
       row-gap: 0;
       column-gap: 40px;
     }
-
+  
     .sc-products-tile-modal .buttons li {
       width: auto;
     }
-
+  
     .sc-products-tile-modal .buttons .sc-btn {
       min-width: 100px;
     }
-
+  
     .sc-products-tile-modal .sc-list ol,
     .sc-products-tile-modal .sc-list ul {
       margin-bottom: 24px;
     }
-
+  
     .sc-products-tile-modal .sc-list ol:last-child,
     .sc-products-tile-modal .sc-list ul:last-child {
       margin-bottom: 0;
     }
-
+  
     .sc-products-tile-modal .sc-list ol li,
     .sc-products-tile-modal .sc-list ul li {
       color: #6b6e73;
       margin-bottom: 16px;
       padding-left: 32px;
     }
-
+  
     .sc-products-tile-modal .sc-list ol li strong,
     .sc-products-tile-modal .sc-list ul li strong {
       color: #000;
       font-weight: 500;
     }
-
+  
     .sc-products-tile-modal .sc-list ol li::before,
     .sc-products-tile-modal .sc-list ul li::before {
       width: 20px;
@@ -1275,51 +1279,51 @@
       top: -1px;
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M0 12A12 12 0 1 0 12 0 12.013 12.013 0 0 0 0 12Zm22 0A10 10 0 1 1 12 2a10.011 10.011 0 0 1 10 10ZM11.757 7.757l1.414-1.414 4.243 4.243a2 2 0 0 1 0 2.828l-4.243 4.243-1.414-1.414L15 13H6v-2h9Z" fill="%231f8845" data-original="%23000000" class="" opacity="1"></path></g></svg>');
     }
-
+  
     .sc-products-tile-modal .sc-rte p {
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile-modal .sc-tag--blue {
       background-color: #4579ff;
     }
-
+  
     @media (min-width: 681px) {
       .sc-products-tile-modal {
         --tile-padding: 24px;
         min-height: 250px;
       }
-
+  
       .sc-products-tile-modal .buttons {
         gap: 20px;
       }
-
+  
       .sc-products-tile-modal .sc-products-tile__btn .buttons {
         flex-wrap: nowrap;
         gap: 16px;
       }
-
+  
       .sc-products-tile-modal .sc-products-tile__btn .buttons li {
         margin-right: 0;
       }
     }
-
+  
     .sc-products-tile-modal-new-layout .sc-products-tile__terms {
       margin: 0;
     }
-
+  
     .sc-products-tile-pdt-selection {
       margin-bottom: 16px;
       margin-top: 24px;
     }
-
+  
     .sc-products-tile-pdt-selection__title {
       font-size: 16px;
       font-weight: 600;
       color: #191919;
       margin-bottom: 8px;
     }
-
+  
     .sc-products-tile-pdt-selection__tile {
       position: relative;
       display: flex;
@@ -1331,7 +1335,7 @@
       background-color: #fff;
       margin-bottom: 12px;
     }
-
+  
     .sc-products-tile-pdt-selection__img {
       max-width: 65px;
       margin-right: 16px;
@@ -1340,7 +1344,7 @@
       object-position: center;
       flex-shrink: 0;
     }
-
+  
     .sc-products-tile-pdt-selection__pdt-name {
       font-size: 15px;
       font-weight: 500;
@@ -1348,17 +1352,17 @@
       margin-bottom: 16px;
       padding-right: 24px;
     }
-
+  
     .sc-products-tile-pdt-selection__pdt-details * {
       font-size: 13px !important;
     }
-
+  
     .sc-products-tile-pdt-selection__pdt-details.sc-list ol li,
     .sc-products-tile-pdt-selection__pdt-details.sc-list ul li {
       padding-left: 24px;
       margin-bottom: 8px;
     }
-
+  
     .sc-products-tile-pdt-selection__pdt-details.sc-list ol li::before,
     .sc-products-tile-pdt-selection__pdt-details.sc-list ul li::before {
       width: 12px;
@@ -1366,7 +1370,7 @@
       top: 4px;
       background-image: url('data:image/svg+xml,<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z" fill="black"/></svg>');
     }
-
+  
     .sc-products-tile-pdt-selection .sc-radio-box {
       position: absolute;
       inset: 0;
@@ -1375,7 +1379,7 @@
       z-index: 1;
       cursor: pointer;
     }
-
+  
     .sc-products-tile-pdt-selection .sc-radio-box__input-label {
       min-width: auto;
       min-height: auto;
@@ -1387,64 +1391,64 @@
       top: 16px;
       width: 24px;
     }
-
+  
     .sc-products-tile-pdt-selection .sc-radio-box__input:checked~.sc-radio-box__input-label::after {
       left: 12px;
     }
-
+  
     .sc-product-tiles {
       line-height: 1.4;
     }
-
+  
     .sc-product-tiles__head-wrapper {
       padding-top: 32px;
       padding-bottom: 32px;
     }
-
+  
     .sc-product-tiles .sc-mgm-referral-input,
     .sc-product-tiles__heading {
       width: 100%;
     }
-
+  
     .sc-product-tiles__title {
       font-size: 22px;
       color: #000;
       width: 100%;
     }
-
+  
     .sc-product-tiles__title~.sc-product-tiles__desc {
       font-size: 14px;
     }
-
+  
     .sc-product-tiles__desc {
       font-size: 18px;
       color: #555;
     }
-
+  
     .sc-product-tiles__sub-title {
       font-size: 16px;
       font-weight: 600;
       color: #000;
       margin-bottom: 16px;
     }
-
+  
     .sc-product-tiles__container {
       background-color: #f6f6f6;
       padding: 32px 0;
     }
-
+  
     .sc-product-tiles__wrapper {
       display: flex;
       flex-wrap: wrap;
     }
-
+  
     .sc-product-tiles__row {
       width: 100%;
       display: flex;
       gap: 16px;
       flex-direction: column;
     }
-
+  
     .sc-product-tiles__copy-message {
       position: fixed;
       background-color: #191919;
@@ -1461,54 +1465,54 @@
       transition: all 0.3s ease-in-out;
       display: table;
     }
-
+  
     .sc-product-tiles__copy-message--show {
       opacity: 1;
       z-index: 99999;
     }
-
+  
     .sc-product-tiles .sc-products-tile {
       max-width: 100%;
       margin-bottom: 16px;
     }
-
+  
     .sc-product-tiles .sc-products-tile .sc-badge {
       top: -12px;
       left: auto;
       right: 20px;
       z-index: 10;
     }
-
+  
     .sc-product-tiles .sc-tag--blue {
       background-color: #4579ff;
     }
-
+  
     .sc-product-tiles .sc-tag--dark-blue {
       background-color: #2b6685;
     }
-
+  
     .sc-product-tiles .sc-filter {
       padding: 16px 0;
     }
-
+  
     .sc-product-tiles .sc-filter__btn {
       padding: 4px 16px;
       min-width: 70px;
     }
-
+  
     .sc-products-tile-modal__input-title {
       font-size: 24px;
       font-weight: 400;
       color: #191919;
       margin-bottom: 8px;
     }
-
+  
     .sc-products-tile-modal__input-desc {
       font-size: 14px;
       font-weight: 400;
       color: #191919;
     }
-
+  
     .sc-products-tile-modal__code-input {
       width: 100%;
       height: 42px;
@@ -1521,11 +1525,11 @@
       border-radius: 6px;
       text-transform: uppercase;
     }
-
+  
     .sc-products-tile-modal__code-input--error {
       border: 1px solid #d0011b;
     }
-
+  
     .sc-products-tile-modal__input-error {
       color: #d0011b;
       font-size: 12px;
@@ -1534,32 +1538,32 @@
       align-items: center;
       margin-top: 6px;
     }
-
+  
     .sc-products-tile-modal__error-info-icon {
       display: inline-flex;
     }
-
+  
     .sc-products-tile-modal__error-info-icon svg {
       margin-right: 8px;
       width: 15px;
       height: 15px;
     }
-
+  
     .sc-products-tile-modal__error-info-icon svg path {
       stroke: #d0011b;
     }
-
+  
     .sc-products-tile-modal__accordion {
       border: 1px solid #e1e1e1;
       border-radius: 6px;
       background-color: #fff;
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile-modal__accordion:last-of-type {
       margin-bottom: 0;
     }
-
+  
     .sc-products-tile-modal__accordion .sc-accordion__label {
       font-size: 14px;
       font-weight: 500;
@@ -1569,7 +1573,7 @@
       align-items: center;
       padding-right: 40px;
     }
-
+  
     .sc-products-tile-modal__accordion .sc-accordion__label::before {
       content: "";
       position: absolute;
@@ -1582,7 +1586,7 @@
       background: linear-gradient(180deg, #0f7aed 0, #38d200 100%);
       border-radius: 10px;
     }
-
+  
     .sc-products-tile-modal__accordion .sc-accordion__label::after {
       width: 25px;
       height: 25px;
@@ -1591,25 +1595,25 @@
       border-radius: 50%;
       border: 1px solid #b7b7b7;
     }
-
+  
     .sc-products-tile-modal__accordion .sc-list ul li {
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile-modal__accordion .sc-list ul li::before {
       width: 20px;
       height: 20px;
       top: -1px;
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M0 12A12 12 0 1 0 12 0 12.013 12.013 0 0 0 0 12Zm22 0A10 10 0 1 1 12 2a10.011 10.011 0 0 1 10 10ZM11.757 7.757l1.414-1.414 4.243 4.243a2 2 0 0 1 0 2.828l-4.243 4.243-1.414-1.414L15 13H6v-2h9Z" fill="%231f8845" data-original="%23000000" class="" opacity="1"></path></g></svg>');
     }
-
+  
     .sc-products-tile-modal__accordion-left,
     .sc-products-tile-modal__accordion-right {
       width: 100%;
       padding: 2px 12px;
       position: relative;
     }
-
+  
     .sc-products-tile-modal__accordion-left::after {
       content: "";
       background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.1716 6.9999L6.8076 1.63589L8.2218 0.22168L16 7.9999L8.2218 15.778L6.8076 14.3638L12.1716 8.9999H0V6.9999H12.1716Z' fill='%23555555'/%3E%3C/svg%3E");
@@ -1624,23 +1628,23 @@
       transform: translateY(-50%);
       flex-shrink: 0;
     }
-
+  
     .sc-products-tile-modal .sc-tag--dark-blue {
       background-color: #2b6685;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn {
       padding: 0;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn .buttons {
       padding: 20px 16px;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__btn .sc-btn--small {
       padding: 0 8px !important;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__applied-code {
       background: #e5e5e5;
       padding: 8px;
@@ -1648,17 +1652,17 @@
       color: #000;
       text-align: center;
     }
-
+  
     .sc-products-tile-modal .sc-products-tile__applied-code span {
       font-weight: 500;
       text-transform: uppercase;
       display: inline-block;
     }
-
+  
     .sc-products-tile-modal .buttons li {
       width: 100%;
     }
-
+  
     .sc-mgm-referral-input {
       min-height: auto;
       padding: 0;
@@ -1667,11 +1671,11 @@
       background-color: transparent;
       margin-top: 24px;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__input-desc {
       margin-bottom: 8px;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__input-box {
       width: 100%;
       height: 42px;
@@ -1685,23 +1689,23 @@
       display: flex;
       align-items: center;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__input-box--focus {
       border-color: #2772c7;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__input-box--error {
       border-color: #d0011b;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__input-box--success {
       border-color: #008738;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__input-box--success .sc-products-tile-modal__refer-input {
       width: 110px;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__refer-input {
       margin: 0;
       background-color: transparent;
@@ -1713,16 +1717,16 @@
       font-size: 14px;
       color: #000;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__refer-input::placeholder {
       color: #949494;
       text-transform: capitalize;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__refer-input:disabled {
       color: #000;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__error-close {
       padding: 0;
       border: 0;
@@ -1737,11 +1741,11 @@
       background-position: center;
       background-size: 9px;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__success-tick {
       display: inline-block;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__success-tick::after {
       content: "";
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' width='512' height='512' x='0' y='0' viewBox='0 0 24 24' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M7.77 20.589a3.012 3.012 0 0 1-2.137-.883L0 14.073l1.424-1.425 5.633 5.633a1.008 1.008 0 0 0 1.425 0L22.576 4.187 24 5.612 9.906 19.706a3.01 3.01 0 0 1-2.136.883Z' fill='%231f8845' opacity='1' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
@@ -1752,12 +1756,12 @@
       background-size: contain;
       display: inline-block;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__edit,
     .sc-mgm-referral-input .sc-products-tile-modal__error-close {
       margin-left: auto;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__edit {
       color: #2772c7;
       font-size: 14px;
@@ -1769,7 +1773,7 @@
       display: inline-flex;
       align-items: center;
     }
-
+  
     .sc-mgm-referral-input .sc-products-tile-modal__edit::after {
       content: "";
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' width='512' height='512' x='0' y='0' viewBox='0 0 386.615 386.615' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M36.573 309.292h2.09l100.833-21.943a9.924 9.924 0 0 0 5.224-2.612l170.84-170.841a65.833 65.833 0 0 0 19.331-47.02 67.916 67.916 0 0 0-19.331-47.543A65.825 65.825 0 0 0 268.54.003a64.262 64.262 0 0 0-47.02 19.853L51.201 190.696a9.404 9.404 0 0 0-3.135 4.702L26.124 296.231a11.493 11.493 0 0 0 3.135 9.927 10.45 10.45 0 0 0 7.314 3.134zM268.54 20.901c25.103-.002 45.454 20.347 45.456 45.45l-.003.525a43.886 43.886 0 0 1-13.061 31.869l-64.261-64.784a44.93 44.93 0 0 1 31.869-13.06zm-46.498 28.212 64.261 64.261-148.898 148.375-64.261-63.739L222.042 49.113zM64.785 218.909l51.722 51.722-66.351 14.629 14.629-66.351zM368.328 365.717H18.287c-5.771 0-10.449 4.678-10.449 10.449s4.678 10.449 10.449 10.449h350.041c5.771 0 10.449-4.678 10.449-10.449s-4.678-10.449-10.449-10.449z' fill='%232772c7' opacity='1' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
@@ -1780,7 +1784,7 @@
       display: inline-block;
       margin-left: 8px;
     }
-
+  
     .sc-mgm-referral-input .sc-btn {
       min-width: auto;
       min-height: 31px;
@@ -1788,66 +1792,66 @@
       cursor: pointer;
       margin-left: auto;
     }
-
+  
     .c-modal .m-text-content .sc-products-tile-modal {
       margin-bottom: -16px;
     }
-
+  
     .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,
     .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn {
       margin-bottom: -16px;
     }
-
+  
     .c-modal .m-text-content .sc-products-tile-modal .sc-tag {
       margin-bottom: 8px;
     }
-
+  
     .sc-error-modal__alert-close:hover {
       background-color: #2772c7;
     }
-
+  
     .sc-error-modal__alert-icon svg path {
       fill: #d0011b;
       stroke: transparent;
     }
-
+  
     .sc-error-modal__alert-title {
       color: #d0011b;
     }
-
+  
     .sc-error-modal--apply .sc-error-modal__alert-icon svg path {
       fill: #2772c7;
     }
-
+  
     .sc-error-modal--apply .sc-error-modal__alert-title {
       color: #2772c7;
     }
-
+  
     .c-modal-code-input>.wrapper[data-size="theme"] .modal-content {
       max-width: 450px;
     }
-
+  
     .c-modal-code-input .sc-products-tile-modal__content {
       margin-bottom: 40px;
     }
-
+  
     @media (min-width: 681px) {
       .sc-product-tiles__title {
         font-size: 30px;
       }
-
+  
       .sc-product-tiles__title~.sc-product-tiles__desc {
         font-size: 16px;
       }
-
+  
       .sc-product-tiles__desc {
         font-size: 24px;
       }
-
+  
       .sc-product-tiles__sub-title {
         font-size: 18px;
       }
-
+  
       .sc-product-tiles__head-wrapper {
         padding-top: 40px;
         padding-bottom: 40px;
@@ -1855,49 +1859,49 @@
         align-items: flex-start;
         column-gap: 30px;
       }
-
+  
       .sc-product-tiles__wrapper {
         gap: 24px;
       }
-
+  
       .sc-product-tiles__row {
         gap: 24px;
         align-items: flex-start;
         flex-direction: row;
       }
-
+  
       .sc-product-tiles .sc-products-tile {
         margin-bottom: 0;
         max-width: calc(50% - 15px);
         width: 100%;
       }
-
+  
       .sc-mgm-referral-input {
         margin-top: 0;
         min-height: auto;
       }
-
+  
       .sc-products-tile-modal .sc-products-tile__btn .buttons {
         padding: 20px;
         width: 100%;
       }
-
+  
       .c-modal .m-text-content .sc-products-tile-modal {
         margin-bottom: -24px;
       }
-
+  
       .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,
       .c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn {
         margin-bottom: -24px;
       }
     }
-
+  
     @media (min-width: 1024px) {
       .sc-product-tiles__wrapper {
         gap: 24px;
       }
     }
-
+  
     @supports (-webkit-touch-callout: none) {
       input:focus {
         font-size: 16px !important;
@@ -1911,7 +1915,7 @@
       height: 60px;
       z-index: 99;
     }
-
+  
     .sc-product-tiles .sc-filter--sticky .splide {
       position: fixed;
       top: 0;
@@ -1922,41 +1926,41 @@
       width: 100%;
       border-bottom: 1px solid #f6f6f6;
     }
-
+  
     @media (min-width: 1024px) {
       .sc-product-tiles .sc-filter--sticky .splide {
         top: 56px;
       }
-
+  
       .sc-product-tiles .sc-filter--sticky .splide__track {
         max-width: 1340px;
         margin: 0 auto;
         width: 100%;
       }
     }
-
+  
     .sc-product-tile-recommended {
       max-width: 800px;
     }
-
+  
     .sc-product-tile-recommended__sub-title {
       font-size: 18px;
       font-weight: 500;
       color: #000;
       margin-bottom: 8px;
     }
-
+  
     .sc-product-tile-recommended__desc {
       font-size: 14px;
       margin-top: -8px;
       margin-bottom: 16px;
       color: #555;
     }
-
+  
     .sc-product-tile-recommended__view-all .sc-products-tile__btn {
       bottom: 0;
     }
-
+  
     .sc-product-tile-recommended__view-all-btn {
       color: #2772c7;
       font-size: 14px;
@@ -1971,7 +1975,7 @@
       padding: 0 0 4px;
       font-weight: 500;
     }
-
+  
     .sc-product-tile-recommended .sc-products-tile-modal {
       margin: 0;
       background-color: #fff;
@@ -1980,19 +1984,19 @@
       contain: paint;
       width: 100%;
     }
-
+  
     .sc-product-tile-recommended .sc-products-tile-modal__pdt-top {
       display: none;
     }
-
+  
     .sc-product-tile-is-recommended .sc-products-tile__right {
       justify-content: flex-start;
     }
-
+  
     .sc-product-tile-is-recommended .sc-products-tile__btn {
       margin-top: 0;
     }
-
+  
     .sc-product-tile-is-recommended-back-btn {
       position: relative;
       display: inline-flex;
@@ -2006,7 +2010,7 @@
       color: #000;
       cursor: pointer;
     }
-
+  
     .sc-product-tile-is-recommended-back-btn::before {
       content: "";
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(87 87 87 1)'%3E%3Cpath d='M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z'%3E%3C/path%3E%3C/svg%3E");
@@ -2017,61 +2021,61 @@
       background-size: 100%;
       margin-right: 8px;
     }
-
+  
     .sc-product-tile-is-recommended-back-btn:not(.hide)~.sc-product-tiles__sub-title {
       display: none;
     }
-
+  
     .sc-products-tile-steps {
       border: 1px solid #008738;
       border-radius: 6px;
       padding: 16px;
     }
-
+  
     .sc-products-tile-steps__col {
       display: flex;
       align-items: flex-start;
       font-size: 14px;
       color: #191919;
     }
-
+  
     .sc-products-tile-steps strong {
       font-weight: 500;
     }
-
+  
     .sc-products-tile-steps__left {
       margin-right: 8px;
       min-width: 20px;
     }
-
+  
     @media (min-width: 681px) {
       .sc-product-tile-recommended__sub-title {
         text-align: center;
       }
-
+  
       .sc-product-tile-recommended__desc {
         font-size: 16px;
         text-align: center;
       }
     }
-
+  
     .sc-product-tiles-recommended {
       margin-bottom: 32px;
       padding: 2px;
     }
-
+  
     .sc-product-tiles-recommended__title {
       font-size: 16px;
       font-weight: 500;
       color: #000;
       margin-bottom: 16px;
     }
-
+  
     .sc-product-tiles-recommended .sc-products-tile {
       position: relative;
       border: 0;
     }
-
+  
     .sc-product-tiles-recommended .sc-products-tile::before {
       content: "";
       position: absolute;
@@ -2088,34 +2092,68 @@
       -webkit-mask-composite: xor;
       mask-composite: exclude;
     }
-
+  
     .sc-product-tiles-recommended .sc-products-tile--with-logo::after {
       right: 2px;
       top: 2px;
       border-top-right-radius: 8px;
     }
-
+  
     @media (min-width: 681px) {
       .sc-product-tiles-recommended__title {
         font-size: 18px;
       }
     }
   </style>
-
   <style>
     .c-modal>.wrapper[data-size="theme"] .m-text-content {
       border-radius: 24px;
     }
-
+  
     .c-modal>.wrapper[data-size="theme"] .modal-content {
       max-height: none !important;
     }
-
+  
     .c-modal>.wrapper[data-size="theme"] .m-text-content {
       max-height: calc(100vh - 120px);
     }
   </style>
-
+  <style>
+    .sc-bnr .sc-bnr-sub-title {
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-bottom: 16px;
+      line-height: normal;
+    }
+  
+    .sc-bnr .sc-bnr-title {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+  
+    @media (max-width: 680.98px) {
+      .sc-bnr .sc-bnr-title {
+        font-size: 24px;
+  
+      }
+  
+      .sc-bnr .sc-bnr-sub-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+  
+      .sc-bnr .sc-bnr__bg-wrapper img {
+        object-position: right;
+      }
+  
+      .sc-bnr .sc-bnr__wrapper {
+        min-height: 150px;
+      }
+    }
+  </style>
+  
   <div class="sc-product-tiles" data-query-param-code="referid" data-query-param-code-length="8"
     data-query-param-product="p" data-recommended-lite="true">
     <!-- This inputbox added for MGM Referral Page -->
@@ -2127,7 +2165,7 @@
       </div>
     </div>
     <!-- inputbox end -->
-
+  
     <div class="sc-product-tiles__container">
       <!-- Recommended For you section - START -->
       <div class="sc-product-tile-recommended sc-content-wrapper">
@@ -2137,10 +2175,10 @@
         <p class="sc-product-tile-recommended__desc">
           Apply the products below and sign up to be rewarded
         </p>
-
+  
         <!-- Product 1 -->
         <div class="sc-products-tile-modal"></div>
-
+  
         <div class="sc-product-tile-recommended__view-all">
           <a href="javascript:void(0)" class="sc-product-tile-recommended__view-all-btn"
             title="View All Referral Products">
@@ -2149,12 +2187,12 @@
         </div>
       </div>
       <!-- Recommended For you section - END -->
-
+  
       <div class="sc-content-wrapper sc-product-tile-is-recommended">
         <a href="#null" title="All Referral Offers" class="sc-product-tile-is-recommended-back-btn">
           All Referral Offers
         </a>
-
+  
         <!-- Recommended For you section -->
         <div class="sc-product-tiles-recommended hide">
           <h3 class="sc-product-tiles-recommended__title">
@@ -2165,23 +2203,23 @@
           </div>
         </div>
         <!-- Recommended For you section  END -->
-
+  
         <h3 class="sc-product-tiles__sub-title">Latest Referral Products</h3>
         <!-- Filter -->
         <div class="sc-filter">
           <div class="splide" data-splide='{
-          "trimSpace": "move",
-          "pagination": false,
-          "gap": "16px",
-          "arrows": false,
-          "slideFocus": false,
-          "autoWidth": true,
-          "breakpoints": {
-            "680": {
-              "gap": "8px"
+            "trimSpace": "move",
+            "pagination": false,
+            "gap": "16px",
+            "arrows": false,
+            "slideFocus": false,
+            "autoWidth": true,
+            "breakpoints": {
+              "680": {
+                "gap": "8px"
+              }
             }
-          }
-        }'>
+          }'>
             <div class="splide__track">
               <div class="splide__list">
                 <div class="splide__slide">
@@ -2195,8 +2233,7 @@
                     data-categories="deposits">Deposits</a>
                 </div>
                 <div class="splide__slide">
-                  <a href="#null" class="sc-filter__btn" tabindex="0" title="Credit Cards"
-                    data-categories="credit-cards">
+                  <a href="#null" class="sc-filter__btn" tabindex="0" title="Credit Cards" data-categories="credit-cards">
                     Credit Cards
                   </a>
                 </div>
@@ -2215,7 +2252,7 @@
             </div>
           </div>
         </div>
-
+  
         <div class="sc-product-tiles__wrapper">
           <!-- data-product-id is used to make the products order random on each visit -->
           <div class="sc-products-tile" data-product-name="marathon" data-cards="deposits">
@@ -2239,8 +2276,8 @@
                   Marathon Savings Account
                 </h2>
                 <!-- <p class="sc-products-tile__desc">
-                Enjoy up to <strong>4.5% p.a</strong>. savings rate with 3 quick steps online
-              </p> -->
+                  Enjoy up to <strong>4.5% p.a</strong>. savings rate with 3 quick steps online
+                </p> -->
                 <div class="sc-products-tile__cvp-list sc-list">
                   <ul>
                     <li>Up to <strong>4.38% p.a.</strong> savings rate</li>
@@ -2251,7 +2288,7 @@
                     <li>HKD and USD are available for selection</li>
                   </ul>
                 </div>
-
+  
                 <!-- Modal Content -->
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-792376" data-size="theme">
                   <div class="sc-products-tile-modal">
@@ -2294,7 +2331,7 @@
                         </li>
                       </ul>
                     </div>
-
+  
                     <div class="sc-products-tile__btn">
                       <div class="sc-products-tile__applied-code hide">
                         Applied referral code: <span></span>
@@ -2377,13 +2414,13 @@
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-792396" data-size="theme">
                   <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
                     <!-- <div class="sc-products-tile-modal__pdt-top">
-                  <p class="sc-products-tile-modal__pdt-top-title">
-                    Before you proceed to apply
-                  </p>
-                  <div class="sc-products-tile-modal__pdt-top-desc">
-                    Please see more details about our Cathay Mastercard offer and select a card type
-                  </div>
-              </div> -->
+                    <p class="sc-products-tile-modal__pdt-top-title">
+                      Before you proceed to apply
+                    </p>
+                    <div class="sc-products-tile-modal__pdt-top-desc">
+                      Please see more details about our Cathay Mastercard offer and select a card type
+                    </div>
+                </div> -->
                     <div class="sc-products-tile-modal__pdt-dtls">
                       <img width="1600" height="300" src="https://av.sc.com/hk/content/images/hk-cathay-cc-600_380.png"
                         class="sc-products-tile__img" alt="Nature, Outdoors, Logo" loading="lazy" />
@@ -2400,14 +2437,14 @@
                           + Welcome Offer
                         </p>
                         <!-- <ul class="buttons">
-                      <li>
-                        <a href="http://www.sc.com/hk/credit-cards/cathay/" target="_blank"
-                          title="Details-Standard Chartered Cathay Mastercard"
-                          class="c-button sc-products-tile__pdt-details">
-                          Details »
-                        </a>
-                      </li>
-                    </ul> -->
+                        <li>
+                          <a href="http://www.sc.com/hk/credit-cards/cathay/" target="_blank"
+                            title="Details-Standard Chartered Cathay Mastercard"
+                            class="c-button sc-products-tile__pdt-details">
+                            Details »
+                          </a>
+                        </li>
+                      </ul> -->
                       </div>
                     </div>
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
@@ -2432,7 +2469,7 @@
                           </strong>
                         </li>
                       </ul>
-
+  
                       <p>
                         <strong> Miles Earning Rewards: </strong>
                       </p>
@@ -2451,7 +2488,7 @@
                         </li>
                       </ul>
                     </div>
-
+  
                     <ul class="buttons">
                       <li>
                         <a href="https://av.sc.com/hk/content/docs/hk-cc-cxam-onebank-mgm-tnc.pdf" target="_blank"
@@ -2461,14 +2498,13 @@
                         </a>
                       </li>
                       <li>
-                        <a href="https://av.sc.com/hk/content/docs/hk-credit-card-key-facts-statement.pdf"
-                          target="_blank" title="Download Credit Cards Key Facts Statement"
-                          class="sc-btn-link sc-products-tile__terms">
+                        <a href="https://av.sc.com/hk/content/docs/hk-credit-card-key-facts-statement.pdf" target="_blank"
+                          title="Download Credit Cards Key Facts Statement" class="sc-btn-link sc-products-tile__terms">
                           Download Credit Cards Key Facts Statement
                         </a>
                       </li>
                     </ul>
-
+  
                     <div class="sc-products-tile-pdt-selection">
                       <p class="sc-products-tile-pdt-selection__title">
                         Select a card type to proceed
@@ -2480,10 +2516,10 @@
                             name="checkbox-radio" checked />
                           <div class="sc-radio-box__input-label"></div>
                         </label>
-
+  
                         <img class="sc-products-tile-pdt-selection__img"
                           src="https://av.sc.com/hk/content/images/cardface_Cathy.png" alt="image" />
-
+  
                         <div class="sc-products-tile-pdt-selection__content">
                           <p class="sc-products-tile-pdt-selection__pdt-name">
                             Standard Chartered Cathay Mastercard
@@ -2509,10 +2545,10 @@
                             name="checkbox-radio" />
                           <div class="sc-radio-box__input-label"></div>
                         </label>
-
+  
                         <img class="sc-products-tile-pdt-selection__img"
                           src="https://av.sc.com/hk/content/images/cardface_Priority-Cathy.png" alt="image" />
-
+  
                         <div class="sc-products-tile-pdt-selection__content">
                           <p class="sc-products-tile-pdt-selection__pdt-name">
                             Standard Chartered Cathay Mastercard – Priority
@@ -2551,10 +2587,10 @@
                             name="checkbox-radio" />
                           <div class="sc-radio-box__input-label"></div>
                         </label>
-
+  
                         <img class="sc-products-tile-pdt-selection__img"
                           src="https://av.sc.com/hk/content/images/cardface_Priority-Private-Cathy.png" alt="image" />
-
+  
                         <div class="sc-products-tile-pdt-selection__content">
                           <p class="sc-products-tile-pdt-selection__pdt-name">
                             Standard Chartered Cathay Mastercard – Priority
@@ -2588,7 +2624,7 @@
                         </div>
                       </div>
                     </div>
-
+  
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
                       <p>
                         <em>*New cardholders are applicants who do not
@@ -2614,7 +2650,7 @@
                           shopping and bookings with Cathay Holidays, and HK
                           Express flight tickets and duty-free items.</em>
                       </p>
-
+  
                       <p>
                         <em>Terms and conditoins apply</em>
                       </p>
@@ -2623,7 +2659,7 @@
                           repay!</em>
                       </p>
                     </div>
-
+  
                     <div class="sc-products-tile__btn">
                       <div class="sc-products-tile__applied-code hide">
                         Applied referral code: <span></span>
@@ -2708,13 +2744,13 @@
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795772" data-size="theme">
                   <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
                     <!-- <div class="sc-products-tile-modal__pdt-top">
-                  <p class="sc-products-tile-modal__pdt-top-title">
-                      Before you proceed to apply
-                  </p>
-                  <div class="sc-products-tile-modal__pdt-top-desc">
-                    Please see more details about our Smart Card Offer
-                  </div>
-              </div> -->
+                    <p class="sc-products-tile-modal__pdt-top-title">
+                        Before you proceed to apply
+                    </p>
+                    <div class="sc-products-tile-modal__pdt-top-desc">
+                      Please see more details about our Smart Card Offer
+                    </div>
+                </div> -->
                     <div class="sc-products-tile-modal__pdt-dtls">
                       <img width="90" height="55" src="https://av.sc.com/hk/content/images/hk-smart-cc-600_380.png"
                         class="sc-products-tile__img" alt="Text, Blade, Razor" loading="lazy" />
@@ -2729,14 +2765,14 @@
                           Welcome Offer
                         </p>
                         <!-- <ul class="buttons">
-                      <li>
-                        <a href="https://www.sc.com/hk/credit-cards/smart/" target="_blank"
-                          title="View Product Details-Smart Credit Card"
-                          class="c-button sc-products-tile__pdt-details">
-                          View Product Details »
-                        </a>
-                      </li>
-                    </ul> -->
+                        <li>
+                          <a href="https://www.sc.com/hk/credit-cards/smart/" target="_blank"
+                            title="View Product Details-Smart Credit Card"
+                            class="c-button sc-products-tile__pdt-details">
+                            View Product Details »
+                          </a>
+                        </li>
+                      </ul> -->
                       </div>
                     </div>
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
@@ -2775,14 +2811,13 @@
                         </a>
                       </li>
                       <li>
-                        <a href="https://av.sc.com/hk/content/docs/hk-credit-card-key-facts-statement.pdf"
-                          target="_blank" title="Download Credit Cards Key Facts Statement"
-                          class="sc-btn-link sc-products-tile__terms">
+                        <a href="https://av.sc.com/hk/content/docs/hk-credit-card-key-facts-statement.pdf" target="_blank"
+                          title="Download Credit Cards Key Facts Statement" class="sc-btn-link sc-products-tile__terms">
                           Download Credit Cards Key Facts Statement
                         </a>
                       </li>
                     </ul>
-
+  
                     <div class="sc-products-tile-modal__content sc-list sc-rte">
                       <p>
                         <em>*New Cardholders are applicants who do not
@@ -2806,7 +2841,7 @@
                           repay!</em>
                       </p>
                     </div>
-
+  
                     <div class="sc-products-tile__btn">
                       <div class="sc-products-tile__applied-code hide">
                         Applied referral code: <span></span>
@@ -2852,7 +2887,7 @@
                 Chartered Bank (Hong Kong) Limited in the past 6 months from
                 the date of approval of their current applications for a
                 principal card of the Standard Chartered Smart Card.
-
+  
                 <br />
                 <br />
                 Terms and Conditions Apply
@@ -2878,8 +2913,8 @@
                 </div>
                 <h2 class="sc-products-tile__title">Payroll Account</h2>
                 <!-- <p class="sc-products-tile__desc">
-                Apply online to earn up to <strong>HKD1,600</strong> cash rebate
-              </p> -->
+                  Apply online to earn up to <strong>HKD1,600</strong> cash rebate
+                </p> -->
                 <div class="sc-products-tile__cvp-list sc-list">
                   <ul>
                     <li>Up to <strong>HKD1,500</strong> cash rebate</li>
@@ -2898,7 +2933,7 @@
                     </li>
                   </ul>
                 </div>
-
+  
                 <!-- Modal Content -->
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795800" data-size="theme">
                   <div class="sc-products-tile-modal">
@@ -2921,8 +2956,7 @@
                         <ul class="buttons">
                           <li>
                             <a href="https://www.sc.com/hk/deposits/payroll-services-salary-bonuspack/" target="_blank"
-                              title="View Product Details-Payroll Account"
-                              class="c-button sc-products-tile__pdt-details">
+                              title="View Product Details-Payroll Account" class="c-button sc-products-tile__pdt-details">
                               View Details »
                             </a>
                           </li>
@@ -2942,7 +2976,7 @@
                         </li>
                       </ul>
                     </div>
-
+  
                     <div class="sc-products-tile__btn">
                       <div class="sc-products-tile__applied-code hide">
                         Applied referral code: <span></span>
@@ -3029,14 +3063,12 @@
                     </li>
                   </ul>
                 </div>
-
+  
                 <!-- Modal Content -->
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795801" data-size="theme">
                   <div class="sc-products-tile-modal">
-                    <div
-                      class="sc-products-tile-modal__pdt-dtls sc-products-tile--bg-black sc-products-tile--with-logo">
-                      <img width="440" height="280"
-                        src="https://av.sc.com/hk/content/images/hk-pp-centre-1800x1000-1.jpg"
+                    <div class="sc-products-tile-modal__pdt-dtls sc-products-tile--bg-black sc-products-tile--with-logo">
+                      <img width="440" height="280" src="https://av.sc.com/hk/content/images/hk-pp-centre-1800x1000-1.jpg"
                         class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
                       <div class="sc-products-tile__right">
                         <div class="sc-products-tile__tags">
@@ -3086,15 +3118,15 @@
                     <ul class="buttons">
                       <li>
                         <!-- <a href="#null" target="_blank" title="Terms & Conditions-Priority Private"
-                      class="sc-btn-link sc-products-tile__terms">
-                      Terms & Conditions
-                    </a> -->
+                        class="sc-btn-link sc-products-tile__terms">
+                        Terms & Conditions
+                      </a> -->
                         <!-- <a href="#null" target="_blank"
-                                                title="Terms & Conditions-Priority Private"
-                                                class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
-                                                data-modal-source="sc-product-action-col-modal-cta-terms-79239701">
-                                                Terms & Conditions
-                                            </a> -->
+                                                  title="Terms & Conditions-Priority Private"
+                                                  class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
+                                                  data-modal-source="sc-product-action-col-modal-cta-terms-79239701">
+                                                  Terms & Conditions
+                                              </a> -->
                         <div class="m-text-content" data-modal-id="sc-product-action-col-modal-cta-terms-79239701"
                           data-size="theme">
                           <div class="sc-products-tile-modal">
@@ -3141,8 +3173,8 @@
                         </li>
                         <li>
                           <a href="https://www.sc.com/hk/promotions/banking-mgm-referral/apply/?intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-segment-acquisition-inapp_mgm-hk-en&p=pp"
-                            title="Proceed to Apply - Priority Private"
-                            class="c-button sc-btn sc-btn--blue sc-btn--small" target="_blank">
+                            title="Proceed to Apply - Priority Private" class="c-button sc-btn sc-btn--blue sc-btn--small"
+                            target="_blank">
                             <span class="only-desktop">Proceed to Apply</span>
                             <span class="only-mobile">Apply Now</span>
                           </a>
@@ -3178,14 +3210,14 @@
                   data-modal-source="sc-prod-col-detail-modal-cta-7958011"></a>
                 <div title="Information-Banking Packages">
                   <!-- <div class="sc-products-tile__tags">
-                <span class="sc-tag sc-tag--black">Banking Plan</span>
-              </div> -->
+                  <span class="sc-tag sc-tag--black">Banking Plan</span>
+                </div> -->
                   <h2 class="sc-products-tile__title">Banking Plan</h2>
                   <p class="sc-products-tile__desc">
                     New Clients who sign up for Banking Plan and deposit new
                     funds will be rewarded:
                   </p>
-
+  
                   <div class="sc-products-tile-modal__content sc-list sc-rte">
                     <div class="sc-accordion sc-products-tile-modal__accordion">
                       <input class="sc-accordion__input" type="checkbox" tabindex="-1" id="one" />
@@ -3226,7 +3258,7 @@
                         </ul>
                       </div>
                     </div>
-
+  
                     <div class="sc-accordion sc-products-tile-modal__accordion">
                       <input class="sc-accordion__input" type="checkbox" tabindex="-1" id="three" />
                       <label tabindex="0" class="sc-accordion__label" for="three">
@@ -3248,37 +3280,37 @@
                     </div>
                   </div>
                   <!-- <div class="sc-products-tile__feature">
-                                    <div class="sc-products-tile__feature-box">
-                                        <div class="sc-products-tile__feature-col sc-products-tile__feature-col--head">
-                                        <div class="sc-products-tile__feature-left">Your friend sign up</div>
-                                        <div class="sc-products-tile__feature-right">You get (each refer)</div>
-                                    </div>
-                                        <div class="sc-products-tile__feature-col">
-                                            <div class="sc-products-tile__feature-left">
-                                                Priority Banking
-                                            </div>
-                                            <div class="sc-products-tile__feature-right">
-                                                Up to HKD22,000 or 220,000 Asia Miles
-                                            </div>
-                                        </div>
-                                        <div class="sc-products-tile__feature-col">
-                                            <div class="sc-products-tile__feature-left">
-                                                Premium Banking
-                                            </div>
-                                            <div class="sc-products-tile__feature-right">
-                                                Up to HKD900 or 9,000 Asia Miles
-                                            </div>
-                                        </div>
-                                        <div class="sc-products-tile__feature-col">
-                                            <div class="sc-products-tile__feature-left">
-                                                Easy Banking
-                                            </div>
-                                            <div class="sc-products-tile__feature-right">
-                                                HKD300 SC Mobile App account opening offer
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                      <div class="sc-products-tile__feature-box">
+                                          <div class="sc-products-tile__feature-col sc-products-tile__feature-col--head">
+                                          <div class="sc-products-tile__feature-left">Your friend sign up</div>
+                                          <div class="sc-products-tile__feature-right">You get (each refer)</div>
+                                      </div>
+                                          <div class="sc-products-tile__feature-col">
+                                              <div class="sc-products-tile__feature-left">
+                                                  Priority Banking
+                                              </div>
+                                              <div class="sc-products-tile__feature-right">
+                                                  Up to HKD22,000 or 220,000 Asia Miles
+                                              </div>
+                                          </div>
+                                          <div class="sc-products-tile__feature-col">
+                                              <div class="sc-products-tile__feature-left">
+                                                  Premium Banking
+                                              </div>
+                                              <div class="sc-products-tile__feature-right">
+                                                  Up to HKD900 or 9,000 Asia Miles
+                                              </div>
+                                          </div>
+                                          <div class="sc-products-tile__feature-col">
+                                              <div class="sc-products-tile__feature-left">
+                                                  Easy Banking
+                                              </div>
+                                              <div class="sc-products-tile__feature-right">
+                                                  HKD300 SC Mobile App account opening offer
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div> -->
                 </div>
                 <!-- Modal Content -->
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-7958011" data-size="theme">
@@ -3347,7 +3379,7 @@
                           </ul>
                         </div>
                       </div>
-
+  
                       <div class="sc-accordion sc-products-tile-modal__accordion">
                         <input class="sc-accordion__input" type="checkbox" tabindex="-1" id="three" />
                         <label tabindex="0" class="sc-accordion__label" for="three">
@@ -3375,10 +3407,10 @@
                           Terms & Conditions
                         </a>
                         <!-- <a href="#null" target="_blank" title="Terms & Conditions-Banking Packages"
-                      class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
-                      data-modal-source="sc-product-action-col-modal-cta-terms-792397014">
-                      Terms & Conditions
-                    </a> -->
+                        class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
+                        data-modal-source="sc-product-action-col-modal-cta-terms-792397014">
+                        Terms & Conditions
+                      </a> -->
                         <div class="m-text-content" data-modal-id="sc-product-action-col-modal-cta-terms-792397014"
                           data-size="theme">
                           <div class="sc-products-tile-modal">
@@ -3472,7 +3504,7 @@
                   a new Securities Account can enjoy
                   <strong>Perpetual Securities Buy Brokerage Waiver</strong>
                 </p>
-
+  
                 <!-- Modal Content -->
                 <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-7958019" data-size="theme">
                   <div class="sc-products-tile-modal">
@@ -3504,7 +3536,7 @@
                         </ul>
                       </div>
                     </div>
-
+  
                     <div class="sc-products-tile__btn">
                       <div class="sc-products-tile__applied-code hide">
                         Applied referral code: <span></span>
@@ -3561,7 +3593,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Referral Error - Modal -->
   <!-- This is modal is created for MGM Referral Page -->
   <div class="sc-error-modal sc-error-modal--error">
@@ -3595,7 +3627,7 @@
       </ul>
     </div>
   </div>
-
+  
   <!-- Aplly on browser pop up -->
   <div class="sc-error-modal sc-error-modal--error sc-error-modal--apply">
     <div class="sc-error-modal__inside">
@@ -3623,14 +3655,14 @@
       </ul>
     </div>
   </div>
-
+  
   <!-- TERMS Modal Content -->
   <style>
     .only-desktop,
     .only-mobile {
       pointer-events: none;
     }
-
+  
     .sc-products-tile-terms-modal {
       --tile-padding: 16px;
       background-color: #f8f8f8;
@@ -3639,31 +3671,31 @@
       width: calc(100% + var(--tile-padding) * 2);
       min-height: auto;
     }
-
+  
     .sc-products-tile-terms-modal strong {
       font-weight: 600;
     }
-
+  
     .sc-products-tile-terms-modal__title {
       font-size: 18px;
       text-align: center;
       font-weight: 400;
       margin-bottom: 14px;
     }
-
+  
     .sc-products-tile-terms-modal__terms-title {
       font-size: 18px;
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile-terms-modal__content {
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile-terms-modal__content~.sc-products-tile-terms-modal__content {
       margin-top: 16px;
     }
-
+  
     .sc-products-tile-terms-modal .sc-products-tile__btn,
     .sc-products-tile-terms-modal .sc-products-tile__input-btn {
       position: sticky;
@@ -3675,27 +3707,32 @@
       background-color: #ffffff;
       z-index: 4;
     }
-
+  
     .sc-products-tile-terms-modal .sc-products-tile__btn .sc-btn,
     .sc-products-tile-terms-modal .sc-products-tile__input-btn .sc-btn {
       width: 100%;
     }
-
+  
     .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
       gap: 0;
     }
-
+  
     .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
       width: 100%;
       margin-right: 8px;
     }
-
+  
     .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li:last-child {
       margin-right: 0;
     }
-
+  
+    .sc-products-tile-terms-modal .sc-products-tile__download-button {
+      color: #2772c7;
+      border: none;
+    }
+  
     .sc-products-tile-terms-modal .buttons {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -3707,21 +3744,21 @@
       -moz-column-gap: 40px;
       column-gap: 40px;
     }
-
+  
     .sc-products-tile-terms-modal .buttons li {
       width: auto;
     }
-
+  
     .sc-products-tile-terms-modal .buttons .sc-btn {
       min-width: 100px;
       margin: 0;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte table {
       margin: 16px 0;
       border: none;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte table tr:first-child td {
       background-color: #ffffff;
       color: inherit;
@@ -3729,7 +3766,7 @@
       font-size: 14px;
       text-transform: none;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte table tr td,
     .sc-products-tile-terms-modal .sc-rte table tr th {
       line-height: inherit;
@@ -3737,57 +3774,57 @@
       padding: 8px;
       word-break: normal;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte table tr td:last-of-type,
     .sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
       border-right: 1px solid #eee;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte p {
       margin-bottom: 16px;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte ol {
       padding-left: 8px;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte ol li {
       list-style-type: decimal;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte ul {
       padding-left: 8px;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte ul li {
       list-style-type: upper-latin;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte ul li ol li {
       list-style-type: decimal;
     }
-
+  
     .sc-products-tile-terms-modal .sc-rte ul li ol li ol li {
       list-style-type: lower-latin;
     }
-
+  
     .sc-bottom-btn .sc-mgm-refer-tc.sc-btn {
       margin: 0;
     }
-
+  
     .c-modal .m-text-content .sc-products-tile-terms-modal {
       margin-bottom: -16px;
     }
-
+  
     .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__btn,
     .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__input-btn {
       margin-bottom: -16px;
     }
-
+  
     .c-modal .m-text-content .sc-products-tile-terms-modal .sc-tag {
       margin-bottom: 8px;
     }
-
+  
     .sc-info-tile {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -3799,78 +3836,77 @@
       padding: 12px 10px;
       margin-bottom: 16px;
     }
-
+  
     .sc-info-tile--green {
       border: 1px solid #38d200;
       background-color: #e0ffdb;
     }
-
+  
     .sc-info-tile__icon-wrap {
       margin-right: 4px;
     }
-
+  
     .sc-info-tile__icon-wrap img,
     .sc-info-tile__icon-wrap svg {
       width: 24px;
       height: 24px;
     }
-
+  
     .sc-info-tile__title {
       font-size: 12px;
       font-weight: 700;
       text-align: left;
       margin-bottom: 4px;
     }
-
+  
     .sc-info-tile__desc {
       font-size: 12px;
       font-weight: 400;
       text-align: left;
       margin-bottom: 4px;
     }
-
+  
     .sc-info-tile__desc:last-child {
       margin-bottom: 0;
     }
-
+  
     @media (min-width: 681px) {
       .sc-products-tile-terms-modal {
         --tile-padding: 24px;
         min-height: 250px;
       }
-
+  
       .sc-products-tile-terms-modal .buttons {
         gap: 20px;
       }
-
+  
       .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
         gap: 16px;
       }
-
+  
       .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
         margin-right: 0;
       }
-
+  
       .c-modal>.wrapper[data-size=theme] .m-text-content {
         border-radius: 0;
       }
-
+  
       .c-modal .m-text-content .sc-products-tile-terms-modal {
         margin-bottom: -24px;
       }
-
+  
       .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__btn,
       .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__input-btn {
         margin-bottom: -24px;
       }
     }
   </style>
-
+  
   <!-- terms-modal-cta-792396 -->
-  <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-792396" data-term-modal="true"
-    data-size="theme">
+  <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-792396" data-term-modal="true" data-size="theme">
     <div class="sc-products-tile-terms-modal">
       <h3 class="sc-products-tile-terms-modal__title">Terms & Conditions</h3>
       <div class="sc-products-tile-terms-modal__content sc-rte">
@@ -4262,7 +4298,7 @@
             read together with the General Terms and Conditions in Section A
             above, and the Terms and Conditions of Standard Chartered Cathay
             Mastercard on Standard Chartered official website
-
+  
             <ol>
               <li>
                 Standard Chartered Cathay Mastercard refers to Standard
@@ -4303,7 +4339,7 @@
                     before 31 December 2024.
                   </li>
                 </ol>
-
+  
                 <table>
                   <thead>
                     <tr>
@@ -4356,7 +4392,7 @@
                 Successful Referral is entitled to Asia Miles in accordance
                 with the table below (<strong>“Standard Chartered Cathay Mastercard Referee
                   Offer”</strong>):-
-
+  
                 <table>
                   <thead>
                     <tr>
@@ -4456,10 +4492,9 @@
       </div>
     </div>
   </div>
-
+  
   <!-- terms-modal-cta-795772 -->
-  <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-795772" data-term-modal="true"
-    data-size="theme">
+  <div class="m-text-content" data-modal-id="sc-prod-col-terms-modal-cta-795772" data-term-modal="true" data-size="theme">
     <div class="sc-products-tile-terms-modal">
       <h3 class="sc-products-tile-terms-modal__title">Terms & Conditions</h3>
       <div class="sc-products-tile-terms-modal__content sc-rte">
@@ -4850,7 +4885,7 @@
             read together with the General Terms and Conditions in Section A
             above, and the Terms and Conditions of Standard Chartered Smart
             Credit Card on Standard Chartered official website
-
+  
             <ol>
               <li>
                 For the Referrer to be eligible to participate in the Smart
@@ -4882,7 +4917,7 @@
                     Card by the Bank on or before 31 December 2024.
                   </li>
                 </ol>
-
+  
                 <table>
                   <thead>
                     <tr>
@@ -4932,7 +4967,7 @@
                 principal card of the Smart Card on or before 31 December 2024
                 through a Successful Referral is entitled to CashBack in
                 accordance with the table below (<strong>“Smart Card Referee Offer”</strong>):-
-
+  
                 <table>
                   <thead>
                     <tr>
@@ -4992,8 +5027,7 @@
       <div class="sc-products-tile__btn">
         <ul class="buttons">
           <li>
-            <a href="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf"
-              title="Download" target="_blank"
+            <a href="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf" title="Download" target="_blank"
               class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__download-button" download>
               <span class="only-desktop">Download</span>
               <span class="only-mobile">Download</span>
@@ -5010,1266 +5044,15 @@
       </div>
     </div>
   </div>
-
+  
   <!-- TERMS Modal Script -->
   <script>
-    !(function o(n, i, c) {
-      function l(t, e) {
-        if (!i[t]) {
-          if (!n[t]) {
-            var r = "function" == typeof require && require;
-            if (!e && r) return r(t, !0);
-            if (a) return a(t, !0);
-            throw (
-              (((e = new Error("Cannot find module '" + t + "'")).code =
-                "MODULE_NOT_FOUND"),
-                e)
-            );
-          }
-          (r = i[t] = { exports: {} }),
-            n[t][0].call(
-              r.exports,
-              function (e) {
-                return l(n[t][1][e] || e);
-              },
-              r,
-              r.exports,
-              o,
-              n,
-              i,
-              c
-            );
-        }
-        return i[t].exports;
-      }
-      for (
-        var a = "function" == typeof require && require, e = 0;
-        e < c.length;
-        e++
-      )
-        l(c[e]);
-      return l;
-    })(
-      {
-        1: [
-          function (e, t, r) {
-            "use strict";
-            Object.defineProperty(r, "__esModule", { value: !0 }),
-              (r.default = void 0);
-            var l =
-              (e = e(
-                "./../../../../../src/assets/js/commons/sc-common-methods"
-              )) && e.__esModule
-                ? e
-                : { default: e };
-            function o(e) {
-              return (o =
-                "function" == typeof Symbol &&
-                  "symbol" == typeof Symbol.iterator
-                  ? function (e) {
-                    return typeof e;
-                  }
-                  : function (e) {
-                    return e &&
-                      "function" == typeof Symbol &&
-                      e.constructor === Symbol &&
-                      e !== Symbol.prototype
-                      ? "symbol"
-                      : typeof e;
-                  })(e);
-            }
-            function i(t, e) {
-              var r,
-                o = Object.keys(t);
-              return (
-                Object.getOwnPropertySymbols &&
-                ((r = Object.getOwnPropertySymbols(t)),
-                  e &&
-                  (r = r.filter(function (e) {
-                    return Object.getOwnPropertyDescriptor(t, e).enumerable;
-                  })),
-                  o.push.apply(o, r)),
-                o
-              );
-            }
-            function n(o) {
-              for (var e = 1; e < arguments.length; e++) {
-                var n = null != arguments[e] ? arguments[e] : {};
-                e % 2
-                  ? i(Object(n), !0).forEach(function (e) {
-                    var t, r;
-                    (t = o),
-                      (r = n[(e = e)]),
-                      (e = a(e)) in t
-                        ? Object.defineProperty(t, e, {
-                          value: r,
-                          enumerable: !0,
-                          configurable: !0,
-                          writable: !0,
-                        })
-                        : (t[e] = r);
-                  })
-                  : Object.getOwnPropertyDescriptors
-                    ? Object.defineProperties(
-                      o,
-                      Object.getOwnPropertyDescriptors(n)
-                    )
-                    : i(Object(n)).forEach(function (e) {
-                      Object.defineProperty(
-                        o,
-                        e,
-                        Object.getOwnPropertyDescriptor(n, e)
-                      );
-                    });
-              }
-              return o;
-            }
-            function c(e, t) {
-              for (var r = 0; r < t.length; r++) {
-                var o = t[r];
-                (o.enumerable = o.enumerable || !1),
-                  (o.configurable = !0),
-                  "value" in o && (o.writable = !0),
-                  Object.defineProperty(e, a(o.key), o);
-              }
-            }
-            function a(e) {
-              e = (function (e, t) {
-                if ("object" !== o(e) || null === e) return e;
-                var r = e[Symbol.toPrimitive];
-                if (void 0 === r)
-                  return ("string" === t ? String : Number)(e);
-                r = r.call(e, t || "default");
-                if ("object" !== o(r)) return r;
-                throw new TypeError(
-                  "@@toPrimitive must return a primitive value."
-                );
-              })(e, "string");
-              return "symbol" === o(e) ? e : String(e);
-            }
-            e = new ((function () {
-              function e() {
-                if (!(this instanceof e))
-                  throw new TypeError("Cannot call a class as a function");
-              }
-              var t, r, o;
-              return (
-                (t = e),
-                (r = [
-                  {
-                    key: "init",
-                    value: function () {
-                      var e,
-                        o,
-                        n,
-                        i = this;
-                      (i.productTile =
-                        document.querySelector(".sc-product-tiles")),
-                        i.productTile &&
-                        ((i.errorModal =
-                          document.querySelector(".sc-error-modal")),
-                          (i.referHeader = i.productTile.querySelector(
-                            ".sc-product-tiles__head-wrapper"
-                          )),
-                          (i.allPdt = i.productTile.querySelector(
-                            ".sc-product-tile-is-recommended"
-                          )),
-                          (i.singlePdt = i.productTile.querySelector(
-                            ".sc-product-tile-recommended"
-                          )),
-                          (i.backBtn = i.productTile.querySelector(
-                            ".sc-product-tile-is-recommended-back-btn"
-                          )),
-                          (i.viewAll = i.productTile.querySelector(
-                            ".sc-product-tile-recommended__view-all-btn"
-                          )),
-                          (i.termsConditions =
-                            document.querySelector(".sc-terms-links")),
-                          (i.queryString =
-                            Utils.getPageContext().queryString),
-                          (i.queryParams = l.default.getQueryParam(
-                            i.queryString,
-                            i.productTile.getAttribute(
-                              "data-query-param-code"
-                            )
-                          )),
-                          (e = i.productTile.getAttribute(
-                            "data-recommended-lite"
-                          )),
-                          (i.isTermModalRequire = !1),
-                          (i.isTermModalActive = !1),
-                          i.queryParams &&
-                            i.queryParams.replace(/[^0-9a-zA-Z]/gi, "")
-                              .length ===
-                            Number(
-                              i.productTile.getAttribute(
-                                "data-query-param-code-length"
-                              )
-                            )
-                            ? (e
-                              ? (i.singlePdt.classList.add("hide"),
-                                i.handleRecommendedLite())
-                              : i.handleModalProduct(),
-                              i.handleFilter(),
-                              i.viewAll &&
-                              i.viewAll.addEventListener(
-                                "click",
-                                function () {
-                                  i.toggleProducts(!1),
-                                    i.termsConditions &&
-                                    i.termsConditions.classList.remove(
-                                      "hide"
-                                    );
-                                  var e =
-                                    window.innerWidth ||
-                                    document.documentElement.clientWidth ||
-                                    document.body.clientWidth;
-                                  l.default.smoothScroll(
-                                    i.backBtn,
-                                    500,
-                                    767 < e ? 100 : 30
-                                  );
-                                }
-                              ),
-                              i.backBtn &&
-                              i.backBtn.addEventListener(
-                                "click",
-                                function () {
-                                  i.toggleProducts(!0),
-                                    i.referHeader.classList.add("hide"),
-                                    i.termsConditions &&
-                                    i.termsConditions.classList.add(
-                                      "hide"
-                                    );
-                                }
-                              ),
-                              i.productTile
-                                .querySelectorAll("a")
-                                .forEach(function (e) {
-                                  var t = e.getAttribute("href");
-                                  "#null" !== t &&
-                                    e.setAttribute(
-                                      "href",
-                                      i.updateQueryString(t)
-                                    );
-                                }),
-                              (o = !1),
-                              (n = ""),
-                              setTimeout(function () {
-                                var e =
-                                  i.productTile.querySelectorAll(
-                                    "a[href='#null']"
-                                  );
-                                e.length &&
-                                  e.forEach(function (t) {
-                                    t.addEventListener("click", function (e) {
-                                      (o = !0),
-                                        (n =
-                                          t.getAttribute(
-                                            "data-modal-source"
-                                          )),
-                                        "true" ===
-                                        t.getAttribute(
-                                          "data-terms-enable"
-                                        ) && (i.isTermModalRequire = !0);
-                                    });
-                                  });
-                              }, 100),
-                              document.body.addEventListener(
-                                "click",
-                                function (e) {
-                                  var t, r;
-                                  o &&
-                                    ((t = e.target.closest("a")),
-                                      (r = document
-                                        .querySelector(".m-text-content")
-                                        .getAttribute("data-term-modal")),
-                                      -1 !==
-                                        e.target.className.indexOf(
-                                          "closebutton"
-                                        ) ||
-                                        -1 !==
-                                        e.target.className.indexOf("wrapper")
-                                        ? ((o = !1),
-                                          i.triggerCtaClickTagging(e),
-                                          r &&
-                                          (console.log(
-                                            "term modal closed !!"
-                                          ),
-                                            i.termsModalClosed(n)))
-                                        : t &&
-                                        "#null" === t.getAttribute("href") &&
-                                        e.target.closest(".m-text-content") &&
-                                        (r = t.getAttribute("title")
-                                          ? t.getAttribute("title")
-                                          : t.innerText ||
-                                          t.textContent ||
-                                          t.getAttribute("data-context") ||
-                                          t.getAttribute("aria-label")) &&
-                                        i.triggerPopupViewedTagging(r.trim()),
-                                      e.target.classList.contains(
-                                        "sc-mgm-refer-tc"
-                                      )) &&
-                                    (console.log("term modal active !!"),
-                                      (i.isTermModalActive = !0),
-                                      i.termsModalActive(e));
-                                }
-                              ),
-                              i.handleSticky(),
-                              i.handleReferId())
-                            : (i.errorModal.classList.add(
-                              "sc-error-modal--show"
-                            ),
-                              document.body.classList.add("modal-open")));
-                    },
-                  },
-                  {
-                    key: "handleSticky",
-                    value: function () {
-                      var t = this.productTile.querySelector(".sc-filter"),
-                        r = l.default.getPosition(t);
-                      t &&
-                        window.addEventListener("scroll", function () {
-                          var e =
-                            window.innerWidth ||
-                            document.documentElement.clientWidth ||
-                            document.body.clientWidth;
-                          window.scrollY > r - (768 < e ? 100 : 10)
-                            ? t.classList.add("sc-filter--sticky")
-                            : t.classList.remove("sc-filter--sticky");
-                        });
-                    },
-                  },
-                  {
-                    key: "handleRecommendedLite",
-                    value: function () {
-                      var e,
-                        t,
-                        o,
-                        r,
-                        n = this,
-                        i = l.default.getQueryParam(
-                          n.queryString,
-                          n.productTile.getAttribute(
-                            "data-query-param-product"
-                          )
-                        ),
-                        c =
-                          (i
-                            ? (n.backBtn.classList.add("hide"),
-                              n.productTile
-                                .querySelector(
-                                  ".sc-product-tiles-recommended"
-                                )
-                                .classList.remove("hide"),
-                              (c = n.productTile.querySelector(
-                                "[data-product-name='".concat(i, "']")
-                              )) &&
-                              ((r = c.cloneNode(!0)),
-                                (e = n.productTile.querySelector(
-                                  ".sc-product-tiles-recommended__wrapper"
-                                )) && e.appendChild(r),
-                                (r = c.cloneNode(!0)),
-                                (t = n.productTile.querySelector(
-                                  ".sc-product-tiles__wrapper"
-                                )) && t.appendChild(r),
-                                c.remove(),
-                                null !=
-                                (t = n.productTile.querySelector(
-                                  ".sc-product-tiles__wrapper [data-product-name='".concat(
-                                    i,
-                                    "'] .sc-badge"
-                                  )
-                                )) && t.classList.remove("hide"),
-                                (o = 1),
-                                (r = e.querySelectorAll(
-                                  ".sc-products-tile-modal__accordion .sc-accordion__input"
-                                )).length) &&
-                              r.forEach(function (e) {
-                                var t,
-                                  r = e.getAttribute("id");
-                                r &&
-                                  ((r = ""
-                                    .concat(r, "_dynamic_")
-                                    .concat(o)),
-                                    (t = e
-                                      .closest(
-                                        ".sc-products-tile-modal__accordion"
-                                      )
-                                      .querySelector("label")),
-                                    e.setAttribute("id", r),
-                                    t.setAttribute("for", r),
-                                    o++);
-                              }))
-                            : n.backBtn.classList.add("hide"),
-                            n.productTile.querySelectorAll(
-                              ".sc-products-tile__applied-code"
-                            ));
-                      c.length &&
-                        c.forEach(function (e) {
-                          e.classList.remove("hide"),
-                            (e.querySelector("span").innerHTML =
-                              n.queryParams);
-                        });
-                    },
-                  },
-                  {
-                    key: "handleModalProduct",
-                    value: function () {
-                      var t = this,
-                        e = l.default.getQueryParam(
-                          t.queryString,
-                          t.productTile.getAttribute(
-                            "data-query-param-product"
-                          )
-                        ),
-                        r =
-                          (e &&
-                            (r = t.productTile.querySelector(
-                              "[data-product-name='".concat(e, "']")
-                            )) &&
-                            (r = r
-                              .querySelector('a[href="#null"]')
-                              .getAttribute("data-modal-source")) &&
-                            (r = document.querySelector(
-                              "[data-modal-id='".concat(r, "']")
-                            ))
-                            ? (t.singlePdt
-                              .querySelector(".sc-products-tile-modal")
-                              .remove(),
-                              t.viewAll.parentNode.insertBefore(
-                                r
-                                  .querySelector(".sc-products-tile-modal")
-                                  .cloneNode(!0),
-                                t.viewAll
-                              ),
-                              t.handleRecommendedProduct(e),
-                              t.toggleProducts(!0),
-                              t.referHeader.classList.add("hide"),
-                              t.termsConditions &&
-                              t.termsConditions.classList.add("hide"))
-                            : (t.backBtn.classList.add("hide"),
-                              t.toggleProducts(!1)),
-                            t.productTile.querySelectorAll(
-                              ".sc-products-tile__applied-code"
-                            ));
-                      r.length &&
-                        r.forEach(function (e) {
-                          e.classList.remove("hide"),
-                            (e.querySelector("span").innerHTML =
-                              t.queryParams);
-                        });
-                    },
-                  },
-                  {
-                    key: "handleRecommendedProduct",
-                    value: function (r) {
-                      var o = this.productTile.querySelector(
-                        ".sc-product-tiles__wrapper"
-                      ),
-                        e = this.productTile.querySelectorAll(
-                          "[data-product-name]"
-                        );
-                      e.length &&
-                        e.forEach(function (e) {
-                          var t;
-                          e.getAttribute("data-product-name") === r &&
-                            ((t = e.querySelector(".sc-badge")) &&
-                              t.classList.remove("hide"),
-                              (t = e.cloneNode(!0)),
-                              e.remove(),
-                              o.insertBefore(t, o.firstChild));
-                        });
-                    },
-                  },
-                  {
-                    key: "toggleProducts",
-                    value: function (e) {
-                      e
-                        ? (this.allPdt.classList.add("hide"),
-                          this.singlePdt.classList.remove("hide"))
-                        : (this.allPdt.classList.remove("hide"),
-                          this.singlePdt.classList.add("hide"));
-                    },
-                  },
-                  {
-                    key: "handleFilter",
-                    value: function () {
-                      var o = this,
-                        e =
-                          o.productTile.querySelectorAll("[data-categories]");
-                      e.length &&
-                        e.forEach(function (e) {
-                          e.addEventListener("click", function (e) {
-                            var t = o.productTile.querySelector(
-                              ".sc-filter__btn--active"
-                            ),
-                              r =
-                                (t &&
-                                  t.classList.remove(
-                                    "sc-filter__btn--active"
-                                  ),
-                                  e.target.classList.add(
-                                    "sc-filter__btn--active"
-                                  ),
-                                  e.target.getAttribute("data-categories")),
-                              t =
-                                (o.productTile
-                                  .querySelectorAll(
-                                    ".sc-product-tiles__wrapper [data-cards]"
-                                  )
-                                  .forEach(function (e) {
-                                    var t;
-                                    "all" === r ||
-                                      ((t = e.getAttribute("data-cards")),
-                                        r === t)
-                                      ? e.classList.remove("hide")
-                                      : e.classList.add("hide");
-                                  }),
-                                  window.innerWidth ||
-                                  document.documentElement.clientWidth ||
-                                  document.body.clientWidth);
-                            l.default.smoothScroll(
-                              document.querySelector(
-                                ".sc-product-tiles__wrapper"
-                              ),
-                              300,
-                              767 < t ? 150 : 70
-                            );
-                          });
-                        });
-                    },
-                  },
-                  {
-                    key: "updateQueryString",
-                    value: function (e) {
-                      var t = this,
-                        e = e.split("?"),
-                        r = ""
-                          .concat(
-                            t.productTile.getAttribute(
-                              "data-query-param-code"
-                            ),
-                            "="
-                          )
-                          .concat(t.queryParams);
-                      return (
-                        e[1] &&
-                        ((r = new URLSearchParams(e[1])).has(
-                          t.productTile.getAttribute(
-                            "data-query-param-code"
-                          )
-                        )
-                          ? r.set(
-                            "".concat(
-                              t.productTile.getAttribute(
-                                "data-query-param-code"
-                              )
-                            ),
-                            t.queryParams
-                          )
-                          : r.append(
-                            "".concat(
-                              t.productTile.getAttribute(
-                                "data-query-param-code"
-                              )
-                            ),
-                            t.queryParams
-                          )),
-                        (e[0] + "?" + r.toString()).toString()
-                      );
-                    },
-                  },
-                  {
-                    key: "triggerPopupViewedTagging",
-                    value: function (t) {
-                      setTimeout(function () {
-                        var e = n(
-                          n({}, digitalData),
-                          {},
-                          {
-                            form: {
-                              formName: "",
-                              formStepName: "",
-                              formType: "",
-                              formPlatform: "",
-                            },
-                          }
-                        );
-                        (e.form.popupName = t),
-                          (e.event = "popupViewed"),
-                          scAnalyticsDataArray.push(e);
-                      }, 500);
-                    },
-                  },
-                  {
-                    key: "triggerCtaClickTagging",
-                    value: function (e) {
-                      var t, r;
-                      this.eventFired &&
-                        ((t =
-                          "button" == e.target.type ? e.target.type : "link"),
-                          (r = e.target.getAttribute("title")
-                            ? e.target.getAttribute("title")
-                            : e.target instanceof SVGElement ||
-                              e.target.getElementsByTagName("svg").length ||
-                              e.target.classList.contains("closebutton")
-                              ? "Close"
-                              : (e.target.innerText || e.target.textContent)
-                                .trim()
-                                .toLowerCase()),
-                          (e = n(
-                            n({}, digitalData),
-                            {},
-                            {
-                              customLinkClick: {
-                                customLinkText: r,
-                                customLinkRegion:
-                                  this.getHorizontalPosition(e.clientX) +
-                                  " " +
-                                  Utils.calcElementLocation(e.target),
-                                customLinkType: t,
-                              },
-                              event: "ctaClick",
-                              context: r,
-                            }
-                          )),
-                          scAnalyticsDataArray.push(e));
-                    },
-                  },
-                  {
-                    key: "getHorizontalPosition",
-                    value: function (e) {
-                      return e <
-                        Math.max(
-                          document.body.scrollWidth,
-                          document.documentElement.scrollWidth,
-                          document.body.offsetWidth,
-                          document.documentElement.offsetWidth,
-                          document.documentElement.clientWidth
-                        ) /
-                        2
-                        ? "left"
-                        : "right";
-                    },
-                  },
-                  {
-                    key: "handleReferId",
-                    value: function () {
-                      var e,
-                        t,
-                        i = this;
-                      document
-                        .querySelectorAll(
-                          ".sc-product-tile-is-recommended a, .sc-products-tile-modal a"
-                        )
-                        .forEach(function (e) {
-                          e.addEventListener("click", function (e) {
-                            var t = e.target.closest("a"),
-                              r = t.getAttribute("href");
-                            r.includes("#") ||
-                              (e.preventDefault(),
-                                e.stopPropagation(),
-                                setTimeout(function () {
-                                  (r = t.getAttribute("href")) &&
-                                    ((r = r.split("referId").join("referid")),
-                                      t.setAttribute("href", r),
-                                      window.open(
-                                        t.getAttribute("href"),
-                                        "_blank"
-                                      ));
-                                }, 50));
-                          });
-                        }),
-                        document.body.addEventListener("click", function (e) {
-                          var t,
-                            r,
-                            o = e.target.closest(".c-modal"),
-                            n = e.target.closest("a");
-                          o &&
-                            n &&
-                            ((t = n.getAttribute("href")).includes("#") ||
-                              (e.preventDefault(),
-                                e.stopPropagation(),
-                                setTimeout(function () {
-                                  (t = n.getAttribute("href")) &&
-                                    ((t = t.split("referId").join("referid")),
-                                      n.setAttribute("href", t),
-                                      window.open(
-                                        n.getAttribute("href"),
-                                        "_blank"
-                                      ));
-                                }, 50))),
-                            e.target.closest(".sc-products-tile__copy-code")
-                              ? ((o = e.target
-                                .closest(".sc-products-tile-modal")
-                                .querySelector(
-                                  ".sc-products-tile__applied-code span"
-                                )),
-                                (r = document.querySelector(
-                                  ".sc-product-tiles__copy-message"
-                                )),
-                                (o = o.innerText),
-                                navigator.clipboard
-                                  .writeText(o)
-                                  .then(function () {
-                                    r.classList.add(
-                                      "sc-product-tiles__copy-message--show"
-                                    ),
-                                      setTimeout(function () {
-                                        r.classList.remove(
-                                          "sc-product-tiles__copy-message--show"
-                                        );
-                                      }, 3e3);
-                                  })
-                                  .catch(function (e) { }))
-                              : e.target.closest("a[data-modal-source]") &&
-                              setTimeout(function () {
-                                var e = document.querySelector(
-                                  '.modal-content input[name="checkbox-radio"]'
-                                );
-                                e && (e.checked = !0);
-                              }, 1e3),
-                            e.target.closest(
-                              ".sc-products-tile-pdt-selection"
-                            ) && i.updateLinkHref();
-                        }),
-                        document
-                          .querySelectorAll(".sc-products-tile__mobile-link")
-                          .forEach(function (t) {
-                            t.setAttribute("href", "#null"),
-                              t.addEventListener("click", function (e) {
-                                e.preventDefault(),
-                                  e.stopPropagation(),
-                                  1024 < window.innerWidth
-                                    ? (e.preventDefault(),
-                                      e.stopPropagation(),
-                                      document
-                                        .querySelector(
-                                          ".sc-error-modal--apply"
-                                        )
-                                        .classList.add(
-                                          "sc-error-modal--show"
-                                        ))
-                                    : t.setAttribute("href", "#null");
-                              });
-                          }),
-                        document
-                          .querySelector(
-                            ".sc-error-modal--apply .sc-error-modal__alert-close"
-                          )
-                          .addEventListener("click", function () {
-                            document
-                              .querySelector(".sc-error-modal--apply")
-                              .classList.remove("sc-error-modal--show");
-                          }),
-                        -1 < window.location.href.indexOf("p=") &&
-                        (e = document.querySelector(".sc-product-tiles")) &&
-                        ((t = 0),
-                          1024 < window.innerWidth && (t = 100),
-                          window.scrollTo({
-                            top: e.offsetTop - t,
-                            behavior: "smooth",
-                          }));
-                    },
-                  },
-                  {
-                    key: "updateLinkHref",
-                    value: function () {
-                      var t,
-                        e = document.querySelectorAll(
-                          ".sc-products-tile__is-pdt-selection"
-                        ),
-                        r = document.querySelector(
-                          ".sc-products-tile-pdt-selection input:checked"
-                        );
-                      console.log(
-                        "isTermModalRequire--",
-                        this.isTermModalRequire
-                      ),
-                        this.isTermModalRequire ||
-                        ((t =
-                          null == r
-                            ? void 0
-                            : r
-                              .closest("label")
-                              .getAttribute("data-card-link")),
-                          e.forEach(function (e) {
-                            e.setAttribute("href", t);
-                          }));
-                    },
-                  },
-                  {
-                    key: "termsModalActive",
-                    value: function (o) {
-                      var n = this,
-                        i =
-                          ((n.isTermModalActive = !1),
-                            console.log("event2---", o.target),
-                            o.target.closest("a")),
-                        e = document.querySelector(
-                          ".sc-products-tile-pdt-selection input:checked"
-                        ),
-                        c =
-                          null == e
-                            ? void 0
-                            : e
-                              .closest("label")
-                              .getAttribute("data-card-link");
-                      console.log({ newHref: c }),
-                        console.log(
-                          "isTermModalRequire--",
-                          n.isTermModalRequire
-                        ),
-                        n.isTermModalRequire
-                          ? ((n.isTermModalActive = !0),
-                            i &&
-                            "#null" === i.getAttribute("href") &&
-                            o.target.classList.contains(
-                              "sc-mgm-refer-tc"
-                            ) &&
-                            setTimeout(function () {
-                              var e = o.target
-                                .closest(".m-text-content")
-                                .getAttribute("data-modal-id"),
-                                t = i.getAttribute("data-modal-source"),
-                                r = i.getAttribute("data-redirect-url");
-                              t ===
-                                document
-                                  .querySelector(".m-text-content")
-                                  .getAttribute("data-modal-id")
-                                ? (c
-                                  ? n.activeScrollToBottom(c, e)
-                                  : n.activeScrollToBottom(r, e),
-                                  n.activeDownloadButton())
-                                : console.log("activeModalId Not matched");
-                            }, 150))
-                          : ((e = i.getAttribute("data-modal-source")),
-                            console.log("modalAttr", e),
-                            (n.activeModalDataId = e));
-                    },
-                  },
-                  {
-                    key: "termsModalClosed",
-                    value: function (t) {
-                      var r = this;
-                      console.log("termsModalClosed Called!", t),
-                        (r.isTermModalActive = !1),
-                        setTimeout(function () {
-                          var e = document.querySelector(
-                            "[data-modal-source='".concat(t, "']")
-                          );
-                          console.log("modalId--", e),
-                            e && (e.click(), (r.isTermModalRequire = !0));
-                        }, 300);
-                    },
-                  },
-                  {
-                    key: "activeScrollToBottom",
-                    value: function (e, t) {
-                      console.log("activeScrollToBottom !!", e, t);
-                      var o = document.querySelector(
-                        ".sc-products-tile__scroll-step"
-                      ),
-                        n = o.getAttribute("data-last-title"),
-                        i = document.querySelector(
-                          ".sc-products-tile__download-button"
-                        ),
-                        c = document.querySelector(".m-text-content"),
-                        l = e,
-                        a = 0,
-                        u = !1,
-                        d = document.querySelector(".wrapper");
-                      c.addEventListener("scroll", function () {
-                        var e = c.scrollTop + c.clientHeight;
-                        c.scrollHeight - 1 <= e &&
-                          ((u = !0),
-                            console.log("Scroll reached the last end"),
-                            (i.closest("li").style.display = "none"),
-                            o.setAttribute("title", n),
-                            (o.children[0].innerText = n),
-                            (o.children[1].innerText = n));
-                      }),
-                        o.addEventListener("click", function (e) {
-                          var t, r;
-                          e.preventDefault(),
-                            e.stopPropagation(),
-                            e.stopImmediatePropagation(),
-                            u || 4 <= a
-                              ? (localStorage.setItem(
-                                "termsAccepted",
-                                "true"
-                              ),
-                                d.click(),
-                                window.open(l, "_blank"))
-                              : (a++,
-                                (e = 1),
-                                (r = (t = c).scrollHeight - t.clientHeight),
-                                t.scrollBy({
-                                  top: (r / 4) * e,
-                                  behavior: "smooth",
-                                }),
-                                t.scrollTop + t.clientHeight >=
-                                t.scrollHeight && (u = !0),
-                                4 <= a &&
-                                ((i.closest("li").style.display = "none"),
-                                  o.setAttribute("title", n),
-                                  (o.children[0].innerText = n),
-                                  (o.children[1].innerText = n),
-                                  (u = !0)));
-                        });
-                    },
-                  },
-                  {
-                    key: "activeDownloadButton",
-                    value: function () {
-                      console.log("activeDownloadButton !!");
-                      var e = document.querySelector(
-                        ".sc-products-tile__download-button"
-                      );
-                      console.log(e),
-                        e.addEventListener("click", function (e) {
-                          e.preventDefault(),
-                            e.stopPropagation(),
-                            e.stopImmediatePropagation();
-                          var r,
-                            e = e.target
-                              .closest("a")
-                              .getAttribute("data-pdf-url")
-                              .toString(),
-                            t = encodeURI(e),
-                            e = new URL(e).pathname.split("/"),
-                            e = e[e.length - 1];
-                          (r = e),
-                            (e = t) &&
-                            ((e = decodeURI(e).toString()),
-                              fetch(e)
-                                .then(function (e) {
-                                  return e.blob();
-                                })
-                                .then(function (e) {
-                                  var e = window.URL.createObjectURL(e),
-                                    t = document.createElement("a");
-                                  (t.style.display = "none"),
-                                    (t.href = e),
-                                    (t.download = r || "file.pdf"),
-                                    document.body.appendChild(t),
-                                    t.click(),
-                                    document.body.removeChild(t),
-                                    window.URL.revokeObjectURL(e);
-                                })
-                                .catch(function () {
-                                  return alert(
-                                    "An error occurred while downloading the PDF."
-                                  );
-                                }));
-                        });
-                    },
-                  },
-                ]) && c(t.prototype, r),
-                o && c(t, o),
-                Object.defineProperty(t, "prototype", { writable: !1 }),
-                e
-              );
-            })())();
-            e.init(), (r.default = e);
-          },
-          { "./../../../../../src/assets/js/commons/sc-common-methods": 2 },
-        ],
-        2: [
-          function (e, t, r) {
-            "use strict";
-            function n(e) {
-              return (n =
-                "function" == typeof Symbol &&
-                  "symbol" == typeof Symbol.iterator
-                  ? function (e) {
-                    return typeof e;
-                  }
-                  : function (e) {
-                    return e &&
-                      "function" == typeof Symbol &&
-                      e.constructor === Symbol &&
-                      e !== Symbol.prototype
-                      ? "symbol"
-                      : typeof e;
-                  })(e);
-            }
-            function a(e, t) {
-              return (
-                (function (e) {
-                  if (Array.isArray(e)) return e;
-                })(e) ||
-                (function (e, t) {
-                  var r =
-                    null == e
-                      ? null
-                      : ("undefined" != typeof Symbol &&
-                        e[Symbol.iterator]) ||
-                      e["@@iterator"];
-                  if (null != r) {
-                    var o,
-                      n,
-                      i,
-                      c,
-                      l = [],
-                      a = !0,
-                      u = !1;
-                    try {
-                      if (((i = (r = r.call(e)).next), 0 === t)) {
-                        if (Object(r) !== r) return;
-                        a = !1;
-                      } else
-                        for (
-                          ;
-                          !(a = (o = i.call(r)).done) &&
-                          (l.push(o.value), l.length !== t);
-                          a = !0
-                        );
-                    } catch (e) {
-                      (u = !0), (n = e);
-                    } finally {
-                      try {
-                        if (
-                          !a &&
-                          null != r.return &&
-                          ((c = r.return()), Object(c) !== c)
-                        )
-                          return;
-                      } finally {
-                        if (u) throw n;
-                      }
-                    }
-                    return l;
-                  }
-                })(e, t) ||
-                u(e, t) ||
-                (function () {
-                  throw new TypeError(
-                    "Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
-                  );
-                })()
-              );
-            }
-            function u(e, t) {
-              var r;
-              if (e)
-                return "string" == typeof e
-                  ? o(e, t)
-                  : "Map" ===
-                    (r =
-                      "Object" ===
-                        (r = Object.prototype.toString
-                          .call(e)
-                          .slice(8, -1)) && e.constructor
-                        ? e.constructor.name
-                        : r) || "Set" === r
-                    ? Array.from(e)
-                    : "Arguments" === r ||
-                      /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)
-                      ? o(e, t)
-                      : void 0;
-            }
-            function o(e, t) {
-              (null == t || t > e.length) && (t = e.length);
-              for (var r = 0, o = new Array(t); r < t; r++) o[r] = e[r];
-              return o;
-            }
-            function i(e, t) {
-              for (var r = 0; r < t.length; r++) {
-                var o = t[r];
-                (o.enumerable = o.enumerable || !1),
-                  (o.configurable = !0),
-                  "value" in o && (o.writable = !0),
-                  Object.defineProperty(
-                    e,
-                    (function (e) {
-                      e = (function (e, t) {
-                        if ("object" !== n(e) || null === e) return e;
-                        var r = e[Symbol.toPrimitive];
-                        if (void 0 === r)
-                          return ("string" === t ? String : Number)(e);
-                        r = r.call(e, t || "default");
-                        if ("object" !== n(r)) return r;
-                        throw new TypeError(
-                          "@@toPrimitive must return a primitive value."
-                        );
-                      })(e, "string");
-                      return "symbol" === n(e) ? e : String(e);
-                    })(o.key),
-                    o
-                  );
-              }
-            }
-            Object.defineProperty(r, "__esModule", { value: !0 }),
-              (r.default = void 0);
-            var c = new ((function () {
-              function e() {
-                if (!(this instanceof e))
-                  throw new TypeError("Cannot call a class as a function");
-              }
-              var t, r, o;
-              return (
-                (t = e),
-                (r = [
-                  {
-                    key: "getQueryParam",
-                    value: function (e, t) {
-                      var r,
-                        o = "",
-                        n = (function (e, t) {
-                          var r,
-                            o,
-                            n,
-                            i,
-                            c =
-                              ("undefined" != typeof Symbol &&
-                                e[Symbol.iterator]) ||
-                              e["@@iterator"];
-                          if (c)
-                            return (
-                              (o = !(r = !0)),
-                              {
-                                s: function () {
-                                  c = c.call(e);
-                                },
-                                n: function () {
-                                  var e = c.next();
-                                  return (r = e.done), e;
-                                },
-                                e: function (e) {
-                                  (o = !0), (n = e);
-                                },
-                                f: function () {
-                                  try {
-                                    r || null == c.return || c.return();
-                                  } finally {
-                                    if (o) throw n;
-                                  }
-                                },
-                              }
-                            );
-                          if (
-                            Array.isArray(e) ||
-                            (c = u(e)) ||
-                            (t && e && "number" == typeof e.length)
-                          )
-                            return (
-                              c && (e = c),
-                              (i = 0),
-                              {
-                                s: (t = function () { }),
-                                n: function () {
-                                  return i >= e.length
-                                    ? { done: !0 }
-                                    : { done: !1, value: e[i++] };
-                                },
-                                e: function (e) {
-                                  throw e;
-                                },
-                                f: t,
-                              }
-                            );
-                          throw new TypeError(
-                            "Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
-                          );
-                        })(e.split("&"));
-                      try {
-                        for (n.s(); !(r = n.n()).done;) {
-                          var i = a(r.value.split("="), 2),
-                            c = i[0],
-                            l = i[1];
-                          if (c === t) {
-                            o = l;
-                            break;
-                          }
-                        }
-                      } catch (e) {
-                        n.e(e);
-                      } finally {
-                        n.f();
-                      }
-                      return o;
-                    },
-                  },
-                  {
-                    key: "changeURL",
-                    value: function () {
-                      var e =
-                        0 < arguments.length && void 0 !== arguments[0]
-                          ? arguments[0]
-                          : "",
-                        e =
-                          window.location.protocol +
-                          "//" +
-                          window.location.host +
-                          window.location.pathname +
-                          (e ? "?".concat(e) : "");
-                      window.history.pushState({ path: e }, "", e);
-                    },
-                  },
-                  {
-                    key: "smoothScroll",
-                    value: function (e, o) {
-                      var n,
-                        i,
-                        c,
-                        l,
-                        t =
-                          2 < arguments.length && void 0 !== arguments[2]
-                            ? arguments[2]
-                            : 0,
-                        a =
-                          3 < arguments.length && void 0 !== arguments[3]
-                            ? arguments[3]
-                            : window;
-                      e &&
-                        ((n = this),
-                          (i = e.getBoundingClientRect().top - t),
-                          (c = a === window ? window.pageYOffset : 0),
-                          (l = null),
-                          requestAnimationFrame(function e(t) {
-                            var t = t - (l = null === l ? t : l),
-                              r = n.ease(t, c, i, o);
-                            a.scrollTo(0, r), t < o && requestAnimationFrame(e);
-                          }));
-                    },
-                  },
-                  {
-                    key: "ease",
-                    value: function (e, t, r, o) {
-                      return (e /= o / 2) < 1
-                        ? (r / 2) * e * e + t
-                        : (-r / 2) * (--e * (e - 2) - 1) + t;
-                    },
-                  },
-                  {
-                    key: "getPosition",
-                    value: function (e) {
-                      if (!e) return "";
-                      for (var t = 0; e;)
-                        (t += e.offsetTop - e.scrollTop + e.clientTop),
-                          (e = e.offsetParent);
-                      return t;
-                    },
-                  },
-                ]) && i(t.prototype, r),
-                o && i(t, o),
-                Object.defineProperty(t, "prototype", { writable: !1 }),
-                e
-              );
-            })())();
-            r.default = c;
-          },
-          {},
-        ],
-      },
-      {},
-      [1]
-    );
+    !function o(n, i, c) { function a(t, e) { if (!i[t]) { if (!n[t]) { var r = "function" == typeof require && require; if (!e && r) return r(t, !0); if (l) return l(t, !0); throw (e = new Error("Cannot find module '" + t + "'")).code = "MODULE_NOT_FOUND", e } r = i[t] = { exports: {} }, n[t][0].call(r.exports, function (e) { return a(n[t][1][e] || e) }, r, r.exports, o, n, i, c) } return i[t].exports } for (var l = "function" == typeof require && require, e = 0; e < c.length; e++)a(c[e]); return a }({ 1: [function (e, t, r) { "use strict"; Object.defineProperty(r, "__esModule", { value: !0 }), r.default = void 0; var a = (e = e("./../../../../../src/assets/js/commons/sc-common-methods")) && e.__esModule ? e : { default: e }; function o(e) { return (o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) { return typeof e } : function (e) { return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e })(e) } function i(t, e) { var r, o = Object.keys(t); return Object.getOwnPropertySymbols && (r = Object.getOwnPropertySymbols(t), e && (r = r.filter(function (e) { return Object.getOwnPropertyDescriptor(t, e).enumerable })), o.push.apply(o, r)), o } function n(o) { for (var e = 1; e < arguments.length; e++) { var n = null != arguments[e] ? arguments[e] : {}; e % 2 ? i(Object(n), !0).forEach(function (e) { var t, r; t = o, r = n[e = e], (e = l(e)) in t ? Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : t[e] = r }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(o, Object.getOwnPropertyDescriptors(n)) : i(Object(n)).forEach(function (e) { Object.defineProperty(o, e, Object.getOwnPropertyDescriptor(n, e)) }) } return o } function c(e, t) { for (var r = 0; r < t.length; r++) { var o = t[r]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, l(o.key), o) } } function l(e) { e = function (e, t) { if ("object" !== o(e) || null === e) return e; var r = e[Symbol.toPrimitive]; if (void 0 === r) return ("string" === t ? String : Number)(e); r = r.call(e, t || "default"); if ("object" !== o(r)) return r; throw new TypeError("@@toPrimitive must return a primitive value.") }(e, "string"); return "symbol" === o(e) ? e : String(e) } e = new (function () { function e() { if (!(this instanceof e)) throw new TypeError("Cannot call a class as a function") } var t, r, o; return t = e, (r = [{ key: "init", value: function () { var e, o, n, i = this; i.productTile = document.querySelector(".sc-product-tiles"), i.productTile && (i.errorModal = document.querySelector(".sc-error-modal"), i.referHeader = i.productTile.querySelector(".sc-product-tiles__head-wrapper"), i.allPdt = i.productTile.querySelector(".sc-product-tile-is-recommended"), i.singlePdt = i.productTile.querySelector(".sc-product-tile-recommended"), i.backBtn = i.productTile.querySelector(".sc-product-tile-is-recommended-back-btn"), i.viewAll = i.productTile.querySelector(".sc-product-tile-recommended__view-all-btn"), i.termsConditions = document.querySelector(".sc-terms-links"), i.queryString = Utils.getPageContext().queryString, i.queryParams = a.default.getQueryParam(i.queryString, i.productTile.getAttribute("data-query-param-code")), e = i.productTile.getAttribute("data-recommended-lite"), i.isTermModalRequire = !1, i.isTermModalActive = !1, i.queryParams && i.queryParams.replace(/[^0-9a-zA-Z]/gi, "").length === Number(i.productTile.getAttribute("data-query-param-code-length")) ? (e ? (i.singlePdt.classList.add("hide"), i.handleRecommendedLite()) : i.handleModalProduct(), i.handleFilter(), i.viewAll && i.viewAll.addEventListener("click", function () { i.toggleProducts(!1), i.termsConditions && i.termsConditions.classList.remove("hide"); var e = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; a.default.smoothScroll(i.backBtn, 500, 767 < e ? 100 : 30) }), i.backBtn && i.backBtn.addEventListener("click", function () { i.toggleProducts(!0), i.referHeader.classList.add("hide"), i.termsConditions && i.termsConditions.classList.add("hide") }), i.productTile.querySelectorAll("a").forEach(function (e) { var t = e.getAttribute("href"); "#null" !== t && e.setAttribute("href", i.updateQueryString(t)) }), o = !1, n = "", setTimeout(function () { var e = i.productTile.querySelectorAll("a[href='#null']"); e.length && e.forEach(function (t) { t.addEventListener("click", function (e) { o = !0, n = t.getAttribute("data-modal-source"), "true" === t.getAttribute("data-terms-enable") && (i.isTermModalRequire = !0) }) }) }, 100), document.body.addEventListener("click", function (e) { var t, r; o && (t = e.target.closest("a"), r = document.querySelector(".m-text-content").getAttribute("data-term-modal"), -1 !== e.target.className.indexOf("closebutton") || -1 !== e.target.className.indexOf("wrapper") ? (o = !1, i.triggerCtaClickTagging(e), r && i.termsModalClosed(n)) : t && "#null" === t.getAttribute("href") && e.target.closest(".m-text-content") && (r = t.getAttribute("title") ? t.getAttribute("title") : t.innerText || t.textContent || t.getAttribute("data-context") || t.getAttribute("aria-label")) && i.triggerPopupViewedTagging(r.trim()), e.target.classList.contains("sc-mgm-refer-tc")) && (i.isTermModalActive = !0, i.termsModalActive(e)) }), i.handleSticky(), i.handleReferId()) : (i.errorModal.classList.add("sc-error-modal--show"), document.body.classList.add("modal-open"))) } }, { key: "handleSticky", value: function () { var t = this.productTile.querySelector(".sc-filter"), r = a.default.getPosition(t); t && window.addEventListener("scroll", function () { var e = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; window.scrollY > r - (768 < e ? 100 : 10) ? t.classList.add("sc-filter--sticky") : t.classList.remove("sc-filter--sticky") }) } }, { key: "handleRecommendedLite", value: function () { var e, t, o, r, n = this, i = a.default.getQueryParam(n.queryString, n.productTile.getAttribute("data-query-param-product")), c = (i ? (n.backBtn.classList.add("hide"), n.productTile.querySelector(".sc-product-tiles-recommended").classList.remove("hide"), (c = n.productTile.querySelector("[data-product-name='".concat(i, "']"))) && (r = c.cloneNode(!0), (e = n.productTile.querySelector(".sc-product-tiles-recommended__wrapper")) && e.appendChild(r), r = c.cloneNode(!0), (t = n.productTile.querySelector(".sc-product-tiles__wrapper")) && t.appendChild(r), c.remove(), null != (t = n.productTile.querySelector(".sc-product-tiles__wrapper [data-product-name='".concat(i, "'] .sc-badge"))) && t.classList.remove("hide"), o = 1, (r = e.querySelectorAll(".sc-products-tile-modal__accordion .sc-accordion__input")).length) && r.forEach(function (e) { var t, r = e.getAttribute("id"); r && (r = "".concat(r, "_dynamic_").concat(o), t = e.closest(".sc-products-tile-modal__accordion").querySelector("label"), e.setAttribute("id", r), t.setAttribute("for", r), o++) })) : n.backBtn.classList.add("hide"), n.productTile.querySelectorAll(".sc-products-tile__applied-code")); c.length && c.forEach(function (e) { e.classList.remove("hide"), e.querySelector("span").innerHTML = n.queryParams }) } }, { key: "handleModalProduct", value: function () { var t = this, e = a.default.getQueryParam(t.queryString, t.productTile.getAttribute("data-query-param-product")), r = (e && (r = t.productTile.querySelector("[data-product-name='".concat(e, "']"))) && (r = r.querySelector('a[href="#null"]').getAttribute("data-modal-source")) && (r = document.querySelector("[data-modal-id='".concat(r, "']"))) ? (t.singlePdt.querySelector(".sc-products-tile-modal").remove(), t.viewAll.parentNode.insertBefore(r.querySelector(".sc-products-tile-modal").cloneNode(!0), t.viewAll), t.handleRecommendedProduct(e), t.toggleProducts(!0), t.referHeader.classList.add("hide"), t.termsConditions && t.termsConditions.classList.add("hide")) : (t.backBtn.classList.add("hide"), t.toggleProducts(!1)), t.productTile.querySelectorAll(".sc-products-tile__applied-code")); r.length && r.forEach(function (e) { e.classList.remove("hide"), e.querySelector("span").innerHTML = t.queryParams }) } }, { key: "handleRecommendedProduct", value: function (r) { var o = this.productTile.querySelector(".sc-product-tiles__wrapper"), e = this.productTile.querySelectorAll("[data-product-name]"); e.length && e.forEach(function (e) { var t; e.getAttribute("data-product-name") === r && ((t = e.querySelector(".sc-badge")) && t.classList.remove("hide"), t = e.cloneNode(!0), e.remove(), o.insertBefore(t, o.firstChild)) }) } }, { key: "toggleProducts", value: function (e) { e ? (this.allPdt.classList.add("hide"), this.singlePdt.classList.remove("hide")) : (this.allPdt.classList.remove("hide"), this.singlePdt.classList.add("hide")) } }, { key: "handleFilter", value: function () { var o = this, e = o.productTile.querySelectorAll("[data-categories]"); e.length && e.forEach(function (e) { e.addEventListener("click", function (e) { var t = o.productTile.querySelector(".sc-filter__btn--active"), r = (t && t.classList.remove("sc-filter__btn--active"), e.target.classList.add("sc-filter__btn--active"), e.target.getAttribute("data-categories")), t = (o.productTile.querySelectorAll(".sc-product-tiles__wrapper [data-cards]").forEach(function (e) { var t; "all" === r || (t = e.getAttribute("data-cards"), r === t) ? e.classList.remove("hide") : e.classList.add("hide") }), window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth); a.default.smoothScroll(document.querySelector(".sc-product-tiles__wrapper"), 300, 767 < t ? 150 : 70) }) }) } }, { key: "updateQueryString", value: function (e) { var t = this, e = e.split("?"), r = "".concat(t.productTile.getAttribute("data-query-param-code"), "=").concat(t.queryParams); return e[1] && ((r = new URLSearchParams(e[1])).has(t.productTile.getAttribute("data-query-param-code")) ? r.set("".concat(t.productTile.getAttribute("data-query-param-code")), t.queryParams) : r.append("".concat(t.productTile.getAttribute("data-query-param-code")), t.queryParams)), (e[0] + "?" + r.toString()).toString() } }, { key: "triggerPopupViewedTagging", value: function (t) { setTimeout(function () { var e = n(n({}, digitalData), {}, { form: { formName: "", formStepName: "", formType: "", formPlatform: "" } }); e.form.popupName = t, e.event = "popupViewed", scAnalyticsDataArray.push(e) }, 500) } }, { key: "triggerCtaClickTagging", value: function (e) { var t, r; this.eventFired && (t = "button" == e.target.type ? e.target.type : "link", r = e.target.getAttribute("title") ? e.target.getAttribute("title") : e.target instanceof SVGElement || e.target.getElementsByTagName("svg").length || e.target.classList.contains("closebutton") ? "Close" : (e.target.innerText || e.target.textContent).trim().toLowerCase(), e = n(n({}, digitalData), {}, { customLinkClick: { customLinkText: r, customLinkRegion: this.getHorizontalPosition(e.clientX) + " " + Utils.calcElementLocation(e.target), customLinkType: t }, event: "ctaClick", context: r }), scAnalyticsDataArray.push(e)) } }, { key: "getHorizontalPosition", value: function (e) { return e < Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth) / 2 ? "left" : "right" } }, { key: "handleReferId", value: function () { var e, t, i = this; document.querySelectorAll(".sc-product-tile-is-recommended a, .sc-products-tile-modal a").forEach(function (e) { e.addEventListener("click", function (e) { var t = e.target.closest("a"), r = t.getAttribute("href"); r.includes("#") || (e.preventDefault(), e.stopPropagation(), setTimeout(function () { (r = t.getAttribute("href")) && (r = r.split("referId").join("referid"), t.setAttribute("href", r), window.open(t.getAttribute("href"), "_blank")) }, 50)) }) }), document.body.addEventListener("click", function (e) { var t, r, o = e.target.closest(".c-modal"), n = e.target.closest("a"); o && n && ((t = n.getAttribute("href")).includes("#") || (e.preventDefault(), e.stopPropagation(), setTimeout(function () { (t = n.getAttribute("href")) && (t = t.split("referId").join("referid"), n.setAttribute("href", t), window.open(n.getAttribute("href"), "_blank")) }, 50))), e.target.closest(".sc-products-tile__copy-code") ? (o = e.target.closest(".sc-products-tile-modal").querySelector(".sc-products-tile__applied-code span"), r = document.querySelector(".sc-product-tiles__copy-message"), o = o.innerText, navigator.clipboard.writeText(o).then(function () { r.classList.add("sc-product-tiles__copy-message--show"), setTimeout(function () { r.classList.remove("sc-product-tiles__copy-message--show") }, 3e3) }).catch(function (e) { })) : e.target.closest("a[data-modal-source]") && setTimeout(function () { var e = document.querySelector('.modal-content input[name="checkbox-radio"]'); e && (e.checked = !0) }, 1e3), e.target.closest(".sc-products-tile-pdt-selection") && i.updateLinkHref() }), document.querySelectorAll(".sc-products-tile__mobile-link").forEach(function (t) { t.setAttribute("href", "#null"), t.addEventListener("click", function (e) { e.preventDefault(), e.stopPropagation(), 1024 < window.innerWidth ? (e.preventDefault(), e.stopPropagation(), document.querySelector(".sc-error-modal--apply").classList.add("sc-error-modal--show")) : t.setAttribute("href", "#null") }) }), document.querySelector(".sc-error-modal--apply .sc-error-modal__alert-close").addEventListener("click", function () { document.querySelector(".sc-error-modal--apply").classList.remove("sc-error-modal--show") }), -1 < window.location.href.indexOf("p=") && (e = document.querySelector(".sc-product-tiles")) && (t = 0, 1024 < window.innerWidth && (t = 100), window.scrollTo({ top: e.offsetTop - t, behavior: "smooth" })) } }, { key: "updateLinkHref", value: function () { var t, e = document.querySelectorAll(".sc-products-tile__is-pdt-selection"), r = document.querySelector(".sc-products-tile-pdt-selection input:checked"); this.isTermModalRequire || (t = null == r ? void 0 : r.closest("label").getAttribute("data-card-link"), e.forEach(function (e) { e.setAttribute("href", t) })) } }, { key: "termsModalActive", value: function (e) { var r = this, o = (r.isTermModalActive = !1, e.target.closest("a")), t = document.querySelector(".sc-products-tile-pdt-selection input:checked"), n = null == t ? void 0 : t.closest("label").getAttribute("data-card-link"); r.isTermModalRequire ? (r.isTermModalActive = !0, o && "#null" === o.getAttribute("href") && e.target.classList.contains("sc-mgm-refer-tc") && setTimeout(function () { var e = o.getAttribute("data-modal-source"), t = o.getAttribute("data-redirect-url"); e === document.querySelector(".m-text-content").getAttribute("data-modal-id") && (n ? r.activeScrollToBottom(n) : r.activeScrollToBottom(t)) }, 150)) : (t = o.getAttribute("data-modal-source"), r.activeModalDataId = t) } }, { key: "termsModalClosed", value: function (t) { var r = this; r.isTermModalActive = !1, setTimeout(function () { var e = document.querySelector("[data-modal-source='".concat(t, "']")); e && (e.click(), r.isTermModalRequire = !0) }, 300) } }, { key: "activeScrollToBottom", value: function (e) { var o = document.querySelector(".sc-products-tile__scroll-step"), n = o.getAttribute("data-last-title"), i = document.querySelector(".sc-products-tile__download-button"), c = document.querySelector(".m-text-content"), a = e, l = 0, u = !1, s = document.querySelector(".wrapper"); c.addEventListener("scroll", function () { var e = c.scrollTop + c.clientHeight; c.scrollHeight - 1 <= e && (u = !0, i.closest("li").style.display = "none", o.setAttribute("title", n), o.children[0].innerText = n, o.children[1].innerText = n) }), o.addEventListener("click", function (e) { var t, r; e.preventDefault(), e.stopPropagation(), e.stopImmediatePropagation(), u || 4 <= l ? (localStorage.setItem("termsAccepted", "true"), s.click(), window.open(a, "_blank")) : (l++, e = 1, r = (t = c).scrollHeight - t.clientHeight, t.scrollBy({ top: r / 4 * e, behavior: "smooth" }), t.scrollTop + t.clientHeight >= t.scrollHeight && (u = !0), 4 <= l && (i.closest("li").style.display = "none", o.setAttribute("title", n), o.children[0].innerText = n, o.children[1].innerText = n, u = !0)) }) } }]) && c(t.prototype, r), o && c(t, o), Object.defineProperty(t, "prototype", { writable: !1 }), e }()); e.init(), r.default = e }, { "./../../../../../src/assets/js/commons/sc-common-methods": 2 }], 2: [function (e, t, r) { "use strict"; function n(e) { return (n = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) { return typeof e } : function (e) { return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e })(e) } function l(e, t) { return function (e) { if (Array.isArray(e)) return e }(e) || function (e, t) { var r = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]; if (null != r) { var o, n, i, c, a = [], l = !0, u = !1; try { if (i = (r = r.call(e)).next, 0 === t) { if (Object(r) !== r) return; l = !1 } else for (; !(l = (o = i.call(r)).done) && (a.push(o.value), a.length !== t); l = !0); } catch (e) { u = !0, n = e } finally { try { if (!l && null != r.return && (c = r.return(), Object(c) !== c)) return } finally { if (u) throw n } } return a } }(e, t) || u(e, t) || function () { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.") }() } function u(e, t) { var r; if (e) return "string" == typeof e ? o(e, t) : "Map" === (r = "Object" === (r = Object.prototype.toString.call(e).slice(8, -1)) && e.constructor ? e.constructor.name : r) || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? o(e, t) : void 0 } function o(e, t) { (null == t || t > e.length) && (t = e.length); for (var r = 0, o = new Array(t); r < t; r++)o[r] = e[r]; return o } function i(e, t) { for (var r = 0; r < t.length; r++) { var o = t[r]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, function (e) { e = function (e, t) { if ("object" !== n(e) || null === e) return e; var r = e[Symbol.toPrimitive]; if (void 0 === r) return ("string" === t ? String : Number)(e); r = r.call(e, t || "default"); if ("object" !== n(r)) return r; throw new TypeError("@@toPrimitive must return a primitive value.") }(e, "string"); return "symbol" === n(e) ? e : String(e) }(o.key), o) } } Object.defineProperty(r, "__esModule", { value: !0 }), r.default = void 0; var c = new (function () { function e() { if (!(this instanceof e)) throw new TypeError("Cannot call a class as a function") } var t, r, o; return t = e, (r = [{ key: "getQueryParam", value: function (e, t) { var r, o = "", n = function (e, t) { var r, o, n, i, c = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]; if (c) return o = !(r = !0), { s: function () { c = c.call(e) }, n: function () { var e = c.next(); return r = e.done, e }, e: function (e) { o = !0, n = e }, f: function () { try { r || null == c.return || c.return() } finally { if (o) throw n } } }; if (Array.isArray(e) || (c = u(e)) || t && e && "number" == typeof e.length) return c && (e = c), i = 0, { s: t = function () { }, n: function () { return i >= e.length ? { done: !0 } : { done: !1, value: e[i++] } }, e: function (e) { throw e }, f: t }; throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.") }(e.split("&")); try { for (n.s(); !(r = n.n()).done;) { var i = l(r.value.split("="), 2), c = i[0], a = i[1]; if (c === t) { o = a; break } } } catch (e) { n.e(e) } finally { n.f() } return o } }, { key: "changeURL", value: function () { var e = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : "", e = window.location.protocol + "//" + window.location.host + window.location.pathname + (e ? "?".concat(e) : ""); window.history.pushState({ path: e }, "", e) } }, { key: "smoothScroll", value: function (e, o) { var n, i, c, a, t = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : 0, l = 3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : window; e && (n = this, i = e.getBoundingClientRect().top - t, c = l === window ? window.pageYOffset : 0, a = null, requestAnimationFrame(function e(t) { var t = t - (a = null === a ? t : a), r = n.ease(t, c, i, o); l.scrollTo(0, r), t < o && requestAnimationFrame(e) })) } }, { key: "ease", value: function (e, t, r, o) { return (e /= o / 2) < 1 ? r / 2 * e * e + t : -r / 2 * (--e * (e - 2) - 1) + t } }, { key: "getPosition", value: function (e) { if (!e) return ""; for (var t = 0; e;)t += e.offsetTop - e.scrollTop + e.clientTop, e = e.offsetParent; return t } }]) && i(t.prototype, r), o && i(t, o), Object.defineProperty(t, "prototype", { writable: !1 }), e }()); r.default = c }, {}] }, {}, [1]);
   </script>
   <!-- End TERMS Modal Script -->
-  <!-- End TERMS Modal Content and style -->
+  
+
+
 
   <!-- sc-terms-links -->
   <style>
