@@ -82,7 +82,7 @@ class ScCommonMethods {
    * getPosition('.selector')
    */
   getPosition(element) {
-    if (!element) return '';
+    if (!element) return "";
     let yPosition = 0;
     while (element) {
       yPosition += element.offsetTop - element.scrollTop + element.clientTop;
