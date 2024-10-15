@@ -1240,7 +1240,7 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Represents a form abandon function for AA EDDL
+   * Represents a form abandon function for AA EDDLgolden
    * @function handleFormAbandon
    * @param {string} field - Form field name
    * @description Track "formAbandon" actions in the page using EDDL approach.

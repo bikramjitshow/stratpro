@@ -236,11 +236,48 @@ class ScMgmReferralMobile {
   /**
    * collect the share info from clicked share button
    */
+  // pdtBtnShare(ev, codeValue) {
+  //   console.log("!!!!!!pdtBtnShare Called !!!!!!");
+  //   let shareTitle = ev.getAttribute("data-shareTitle"),
+  //     shareText = ev.getAttribute("data-shareText"),
+  //     shareURL = ev.getAttribute("data-shareURL");
+  //   console.log({ ev: ev, codeValue: codeValue });
+  //   console.log({
+  //     shareTitle: shareTitle,
+  //     shareText: shareText,
+  //     shareURL: shareURL,
+  //   });
+  //   if (!shareURL) return;
+
+  //   shareURL = shareURL.split("data-share-code").join(codeValue);
+  //   shareText = shareText.split("data-share-code").join(codeValue);
+
+  //   const deviceOs = Utils.getDeviceDetails().os;
+  //   if (deviceOs === "Android") {
+  //     //Share code for Android
+  //     window.Android.shareAction(
+  //       JSON.stringify({
+  //         shareTitle: shareTitle,
+  //         shareURL: shareURL,
+  //         shareText: shareText,
+  //       })
+  //     );
+  //   } else if (deviceOs === "iOS") {
+  //     //Share code for iOS
+  //     window.webkit.messageHandlers.shareAction.postMessage({
+  //       shareTitle: shareTitle,
+  //       shareURL: shareURL,
+  //       shareText: shareText,
+  //     });
+  //   }
+  // }
+
   pdtBtnShare(ev, codeValue) {
-    console.log("!!!!!!pdtBtnShare Called !!!!!!");
+    const that = this;
     let shareTitle = ev.getAttribute("data-shareTitle"),
       shareText = ev.getAttribute("data-shareText"),
       shareURL = ev.getAttribute("data-shareURL");
+
     console.log({ ev: ev, codeValue: codeValue });
     console.log({
       shareTitle: shareTitle,
@@ -251,24 +288,45 @@ class ScMgmReferralMobile {
 
     shareURL = shareURL.split("data-share-code").join(codeValue);
     shareText = shareText.split("data-share-code").join(codeValue);
-
-    const deviceOs = Utils.getDeviceDetails().os;
-    if (deviceOs === "Android") {
-      //Share code for Android
-      window.Android.shareAction(
-        JSON.stringify({
+    const isFromUniversalDeeplink = that.ScCommonMethods.getQueryParam(
+      that.queryString,
+      "isFromUniversalDeeplink"
+    );
+    console.log({ isFromUniversalDeeplink });
+    if (isFromUniversalDeeplink === "true") {
+      cordova.exec(
+        () => console.log("success callback"),
+        (error) => console.error(error),
+        "SocialSharing",
+        "shareWithOptions",
+        [
+          {
+            title: shareTitle,
+            message: shareText,
+            type: "url",
+            url: shareURL,
+          },
+        ]
+      );
+    } else {
+      const deviceOs = Utils.getDeviceDetails().os;
+      if (deviceOs === "Android") {
+        //Share code for Android
+        window.Android.shareAction(
+          JSON.stringify({
+            shareTitle: shareTitle,
+            shareURL: shareURL,
+            shareText: shareText,
+          })
+        );
+      } else if (deviceOs === "iOS") {
+        //Share code for iOS
+        window.webkit.messageHandlers.shareAction.postMessage({
           shareTitle: shareTitle,
           shareURL: shareURL,
           shareText: shareText,
-        })
-      );
-    } else if (deviceOs === "iOS") {
-      //Share code for iOS
-      window.webkit.messageHandlers.shareAction.postMessage({
-        shareTitle: shareTitle,
-        shareURL: shareURL,
-        shareText: shareText,
-      });
+        });
+      }
     }
   }
 
