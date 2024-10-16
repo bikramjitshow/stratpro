@@ -154,6 +154,24 @@ class ScMgmReferralEnhanced {
           console.log("term modal active !!");
           that.isTermModalActive = true;
           that.termsModalActive(event);
+          let ctaTitle = anchor.getAttribute("title")
+            ? anchor.getAttribute("title")
+            : anchor.innerText ||
+              anchor.textContent ||
+              anchor.getAttribute("data-context") ||
+              anchor.getAttribute("aria-label");
+          console.log({ ctaTitle });
+          if (ctaTitle) {
+            that.triggerPopupViewedTagging(ctaTitle.trim());
+          }
+        }
+
+        // modal close
+        if (
+          event.target.classList.contains("closebutton") ||
+          event.target.classList.contains("wrapper")
+        ) {
+          that.closeModal(event);
         }
       }
     });
@@ -889,6 +907,17 @@ class ScMgmReferralEnhanced {
       that.triggerCtaClickTagging(event);
       downloadPdf(encodedURL, filename);
     });
+  }
+
+  /**
+   * Represents a function to close form modal
+   * @function closeModal
+   * @param {event} event
+   */
+  closeModal(event) {
+    console.log(event);
+    event.target.setAttribute("title", "closemodal");
+    this.triggerCtaClickTagging(event);
   }
 }
 
