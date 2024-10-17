@@ -122,6 +122,7 @@ class ScMgmReferralEnhanced {
           .querySelector(".m-text-content")
           .getAttribute("data-term-modal");
 
+        // Modal Close 
         if (
           event.target.className.indexOf("closebutton") !== -1 ||
           event.target.className.indexOf("wrapper") !== -1
@@ -164,14 +165,6 @@ class ScMgmReferralEnhanced {
           if (ctaTitle) {
             that.triggerPopupViewedTagging(ctaTitle.trim());
           }
-        }
-
-        // modal close
-        if (
-          event.target.classList.contains("closebutton") ||
-          event.target.classList.contains("wrapper")
-        ) {
-          that.closeModal(event);
         }
       }
     });
@@ -515,6 +508,7 @@ class ScMgmReferralEnhanced {
         : event.target.innerText
         ? event.target.innerText.trim().toLowerCase()
         : event.target.textContent.trim().toLowerCase();
+      console.log({ ctaType, customLinkText });
       let dataObject = {
         ...digitalData,
         customLinkClick: {
@@ -909,16 +903,6 @@ class ScMgmReferralEnhanced {
     });
   }
 
-  /**
-   * Represents a function to close form modal
-   * @function closeModal
-   * @param {event} event
-   */
-  closeModal(event) {
-    console.log(event);
-    event.target.setAttribute("title", "closemodal");
-    this.triggerCtaClickTagging(event);
-  }
 }
 
 const instance = new ScMgmReferralEnhanced();
