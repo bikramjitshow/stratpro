@@ -33,6 +33,75 @@
     // Keep the session active by simulating mouse movement every 60 seconds
     keepSessionActive(60000);
   </script>
+  <script>
+    /**
+     * trigger adobe popupViewed event when showing popups
+     */
+      triggerPopupViewedTagging(popupName) {
+        const that = this;
+        setTimeout(function () {
+          if (that.eventFired) {
+            let dataObject = {
+              ...digitalData,
+              form: {
+                formName: "",
+                formStepName: "",
+                formType: "",
+                formPlatform: "",
+              },
+            };
+            dataObject.form.popupName = popupName;
+            dataObject.event = "popupViewed";
+            console.log(dataObject);
+            scAnalyticsDataArray.push(dataObject);
+            that.eventFired = false;
+          }
+        }, 300);
+        setTimeout(function () {
+          that.eventFired = true;
+        }, 500);
+      }
+
+      /**
+       * trigger adobe ctaClick event during click action
+       */
+      triggerCtaClickTagging(event) {
+        const that = this;
+        console.log(event);
+        if (that.eventFired) {
+          let ctaType =
+            event.target.type == "button" ? eventValue.target.type : "link";
+          let customLinkText = event.target.getAttribute("title")
+            ? event.target.getAttribute("title")
+            : event.target instanceof SVGElement ||
+              event.target.getElementsByTagName("svg").length ||
+              event.target.classList.contains("closebutton")
+              ? "Close"
+              : event.target.innerText
+                ? event.target.innerText.trim().toLowerCase()
+                : event.target.textContent.trim().toLowerCase();
+          console.log({ ctaType, customLinkText });
+          let dataObject = {
+            ...digitalData,
+            customLinkClick: {
+              ctaName: customLinkText,
+              ctaPosition:
+                that.getHorizontalPosition(event.clientX) +
+                " " +
+                Utils.calcElementLocation(event.target),
+              ctaType: ctaType,
+            },
+            event: "ctaClick",
+            context: customLinkText,
+          };
+          console.log(dataObject);
+          scAnalyticsDataArray.push(dataObject);
+        }
+        setTimeout(function () {
+          that.eventFired = true;
+        }, 500);
+      }
+  </script>
 </body>
 
 </html>

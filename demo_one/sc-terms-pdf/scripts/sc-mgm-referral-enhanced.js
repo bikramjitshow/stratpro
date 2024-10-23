@@ -122,7 +122,7 @@ class ScMgmReferralEnhanced {
           .querySelector(".m-text-content")
           .getAttribute("data-term-modal");
 
-        // Modal Close 
+        // Modal Close
         if (
           event.target.className.indexOf("closebutton") !== -1 ||
           event.target.className.indexOf("wrapper") !== -1
@@ -150,21 +150,12 @@ class ScMgmReferralEnhanced {
           }
         }
 
+        console.log("init e --> ", event);
         //identify the term modal
         if (event.target.classList.contains("sc-mgm-refer-tc")) {
           console.log("term modal active !!");
           that.isTermModalActive = true;
           that.termsModalActive(event);
-          let ctaTitle = anchor.getAttribute("title")
-            ? anchor.getAttribute("title")
-            : anchor.innerText ||
-              anchor.textContent ||
-              anchor.getAttribute("data-context") ||
-              anchor.getAttribute("aria-label");
-          console.log({ ctaTitle });
-          if (ctaTitle) {
-            that.triggerPopupViewedTagging(ctaTitle.trim());
-          }
         }
       }
     });
@@ -473,22 +464,19 @@ class ScMgmReferralEnhanced {
   }
 
   /**
-   * trigger adobe popupViewed event when showing popups
+   * trigger adobe popupViewed event when showing popups _satellite.track('popupViewed');
    */
   triggerPopupViewedTagging(popupName) {
     setTimeout(() => {
-      let dataObject = {
-        ...digitalData,
-        form: {
-          formName: "",
-          formStepName: "",
-          formType: "",
-          formPlatform: "",
-        },
-      };
-      dataObject.form.popupName = popupName;
-      dataObject.event = "popupViewed";
-      scAnalyticsDataArray.push(dataObject);
+      digitalData.event = 'popupViewed';
+      digitalData.form = {};
+      digitalData.form.formName = '';
+      digitalData.form.formStepName = '';
+      digitalData.form.formType = '';
+      digitalData.form.formPlatform = '';
+      digitalData.form.popupName = popupName;
+      console.log({ digitalData });
+      _satellite.track('popupViewed');
     }, 500);
   }
 
@@ -497,33 +485,24 @@ class ScMgmReferralEnhanced {
    */
   triggerCtaClickTagging(event) {
     const that = this;
-    if (that.eventFired) {
-      let ctaType = event.target.type == "button" ? event.target.type : "link";
-      let customLinkText = event.target.getAttribute("title")
-        ? event.target.getAttribute("title")
-        : event.target instanceof SVGElement ||
-          event.target.getElementsByTagName("svg").length ||
-          event.target.classList.contains("closebutton")
-        ? "Close"
-        : event.target.innerText
-        ? event.target.innerText.trim().toLowerCase()
-        : event.target.textContent.trim().toLowerCase();
-      console.log({ ctaType, customLinkText });
-      let dataObject = {
-        ...digitalData,
-        customLinkClick: {
-          customLinkText: customLinkText,
-          customLinkRegion:
-            that.getHorizontalPosition(event.clientX) +
-            " " +
-            Utils.calcElementLocation(event.target),
-          customLinkType: ctaType,
-        },
-        event: "ctaClick",
-        context: customLinkText,
-      };
-      scAnalyticsDataArray.push(dataObject);
-    }
+    let ctaType = event.target.type == 'button' ? event.target.type : 'link';
+    let customLinkText = event.target.getAttribute('title')
+      ? event.target.getAttribute('title')
+      : event.target instanceof SVGElement ||
+        event.target.getElementsByTagName('svg').length ||
+        event.target.classList.contains('closebutton')
+      ? 'Close'
+      : event.target.innerText
+      ? event.target.innerText.trim().toLowerCase()
+      : event.target.textContent.trim().toLowerCase();
+
+    digitalData.event = 'ctaClick';
+    digitalData.ctaName = customLinkText;
+    digitalData.ctaType = ctaType;
+    digitalData.ctaPosition =
+      that.getHorizontalPosition(event.clientX) + ' ' + Utils.calcElementLocation(event.target);
+    console.log({ digitalData });
+    _satellite.track('callToAction');
   }
 
   /**
@@ -703,6 +682,7 @@ class ScMgmReferralEnhanced {
    * termsModalActive()
    */
   termsModalActive(event) {
+    console.log("termsModalActive e --> ", event);
     const that = this;
     that.isTermModalActive = false;
     // document.body.addEventListener("click", function (event) {
@@ -738,7 +718,6 @@ class ScMgmReferralEnhanced {
             } else {
               that.activeScrollToBottom(modalredirecturl, mtextcontentId);
             }
-            that.activeDownloadButton();
           } else {
             console.log("activeModalId Not matched");
           }
@@ -825,7 +804,6 @@ class ScMgmReferralEnhanced {
       event.stopImmediatePropagation();
 
       if (manualScrollDetected || clickCount >= totalSteps) {
-        localStorage.setItem("termsAccepted", "true");
         closeButton.click();
         window.open(redirectUrl, "_blank");
       } else {
@@ -841,65 +819,6 @@ class ScMgmReferralEnhanced {
           manualScrollDetected = true;
         }
       }
-    });
-  }
-
-  /**
-   * activeDownloadButton on modal active
-   * @example
-   * activeDownloadButton()
-   */
-  activeDownloadButton() {
-    console.log("activeDownloadButton !!");
-    const that = this;
-    // Download function
-    let downloadPdf = (pdfurl, filename) => {
-      // Fetch the PDF file and force download
-      if (pdfurl) {
-        let pdfUrl = decodeURI(pdfurl).toString();
-        fetch(pdfUrl)
-          .then((response) => response.blob())
-          .then((blob) => {
-            var url = window.URL.createObjectURL(blob);
-            // setTimeout(() => {
-
-            // }, 2000);
-            var a = document.createElement("a");
-            a.style.display = "none";
-            a.href = url;
-            a.download = filename || "file.pdf"; // The filename to save as
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-          })
-          .catch(() => alert("An error occurred while downloading the PDF."));
-      }
-    };
-
-    // Click event
-    var downloadButton = document.querySelector(
-      ".sc-products-tile__download-button"
-    );
-    console.log(downloadButton);
-    downloadButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-      let closestAnchor = event.target.closest("a");
-      let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
-      // URL of the PDF
-      var pdfUrl = datapdfurl.toString();
-
-      const encodedURL = encodeURI(pdfUrl);
-      var url = new URL(pdfUrl);
-      var pathname = url.pathname;
-      var segments = pathname.split("/");
-      var filename = segments[segments.length - 1];
-
-      // Fetch the PDF file and force download
-      that.triggerCtaClickTagging(event);
-      downloadPdf(encodedURL, filename);
     });
   }
 

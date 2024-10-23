@@ -1185,7 +1185,13 @@ class scInsuranceCampaign {
     }
 
     scAnalyticsDataArray.push(dataObject);
+    // if (
+    //   Array.isArray(window.digitalData.products) &&
+    //   window.digitalData.products[0] &&
+    //   window.digitalData.products[0].productFields
+    // ) {
     delete window.digitalData.products[0].productFields;
+    // }
   }
 
   /**

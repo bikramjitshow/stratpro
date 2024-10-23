@@ -904,6 +904,65 @@ class ScMgmReferralEnhanced {
       }, 200);
     });
   }
+
+  /**
+   * activeDownloadButton on modal active
+   * @example
+   * activeDownloadButton()
+   */
+  activeDownloadButton() {
+    console.log("activeDownloadButton !!");
+    const that = this;
+    // Download function
+    let downloadPdf = (pdfurl, filename) => {
+      // Fetch the PDF file and force download
+      if (pdfurl) {
+        let pdfUrl = decodeURI(pdfurl).toString();
+        fetch(pdfUrl)
+          .then((response) => response.blob())
+          .then((blob) => {
+            var url = window.URL.createObjectURL(blob);
+            // setTimeout(() => {
+
+            // }, 2000);
+            var a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = filename || "file.pdf"; // The filename to save as
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+          })
+          .catch(() => alert("An error occurred while downloading the PDF."));
+      }
+    };
+
+    // Click event
+    var downloadButton = document.querySelector(
+      ".sc-products-tile__download-button"
+    );
+    console.log(downloadButton);
+    downloadButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      let closestAnchor = event.target.closest("a");
+      let datapdfurl = closestAnchor.getAttribute("data-pdf-url");
+      // URL of the PDF
+      var pdfUrl = datapdfurl.toString();
+
+      const encodedURL = encodeURI(pdfUrl);
+      var url = new URL(pdfUrl);
+      var pathname = url.pathname;
+      var segments = pathname.split("/");
+      var filename = segments[segments.length - 1];
+
+      // Fetch the PDF file and force download
+      that.triggerCtaClickTagging(event);
+      downloadPdf(encodedURL, filename);
+    });
+  }
 }
 
 const instance = new ScMgmReferralEnhanced();

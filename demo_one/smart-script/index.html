@@ -5,7 +5,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Validate smartscript</title>
-  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    h1 {
+      margin-bottom: 16px;
+    }
+
+    .main-container {
+      max-width: 1404px;
+      padding: 0 20px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .container:last-child {
+      margin-bottom: 0;
+    }
+
+    .qr-code-container {
+      margin: 20px auto;
+      width: 200px;
+      height: 200px;
+    }
+
+    .qr-code-container canvas {
+      height: 100%;
+    }
+
+    .generate-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      -webkit-transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease;
+    }
+
+    .generate-btn:hover {
+      background-color: #217dbb;
+    }
+
+    .present-url {
+      width: 100%;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .ele-wrap {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .ele {
+      position: relative;
+      border-radius: 100px 100px/0px 100px;
+      border: 0px solid #800000;
+      margin-bottom: 0;
+    }
+
+    .ele:first-child {
+      background-color: blue;
+    }
+
+    .ele:first-child::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(30, 230, 217);
+      border-radius: 100px 100px/100px 0px;
+      border: 0px solid #800000;
+      position: absolute;
+    }
+
+    .ele:last-child {
+      background-color: limegreen;
+    }
+
+    .ele::after {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(68, 217, 243);
+      border-radius: 0 0 100px 100px/0 0 0px 100px;
+      border: 0px solid #800000;
+      position: absolute;
+    }
+  </style>
 </head>
 
 <body>
@@ -25,10 +124,59 @@
     </div>
   </div>
 
-  <!-- <script type="text/javascript" src="https://onelinksmartscript.appsflyer.com/onelink-smart-script-latest.js"></script> -->
-  <!-- <script src="./scripts/eSaver_App_Promo_May23.js"></script> -->
-  <script src="./scripts/test-ss.js"></script>
-  <script src="./scripts/qrcode.js"></script>
+  <script type="text/javascript" src="https://onelinksmartscript.appsflyer.com/onelink-smart-script-latest.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("generateQR").addEventListener("click", () => {
+        // console.log(window.AF_SMART_SCRIPT);
+        if (window.AF_SMART_SCRIPT) {
+          // load the input URL to thr input_url textArea
+          document.getElementById("input_url").innerHTML = window.location.href;
+          // Define OneLink URL and parameters
+          var oneLinkURL = "https://engmntqa.onelink.me/LtRd/";
+          // If a media source key is NOT FOUND on the link and NO default value is found, the script will return a null string
+          var mediaSource = {
+            keys: ["inmedia"],
+            defaultValue: "my_media_default_source",
+          };
+          var campaign = { keys: ["incmp"] };
+
+          // Generate the OneLink URL using AppsFlyer's Smart Script
+          const result = window.AF_SMART_SCRIPT.generateOneLinkURL({
+            oneLinkURL,
+            afParameters: {
+              mediaSource: mediaSource,
+              campaign: campaign,
+            },
+          });
+
+          console.log(result);
+          console.log(document.getElementById("input_url").innerHTML);
+          var result_url = "No output from script";
+
+          if (result && result.clickURL) {
+            result_url = result.clickURL;
+            // Display the QR code in the div
+            window.AF_SMART_SCRIPT.displayQrCode("qr_code_div", {
+              logo: "../images/onelinklogo.png", // optional logo
+              colorCode: "#3498db", // optional custom color
+            });
+
+            // Optionally fire an impression
+            setTimeout(() => {
+              window.AF_SMART_SCRIPT.fireImpressionsLink();
+            }, 1000);
+          } else {
+            console.error("Failed to generate OneLink URL");
+          }
+          document.getElementById("output_url").innerHTML = result_url;
+        } else {
+          console.error("AF Smart Script not loaded");
+        }
+      });
+    });
+
+  </script>
 </body>
 
 </html>
