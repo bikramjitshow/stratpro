@@ -51,6 +51,18 @@ class scInsuranceCampaign {
         });
       });
 
+      /** event Click for woBnrLinkItems */
+      const woBnrLinkItems = that.campaign.querySelectorAll(
+        ".sc-li-campaign__wo-bnr-link"
+      );
+      woBnrLinkItems.forEach((el) => {
+        el.addEventListener("mousedown", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          that.ctaClick(event);
+        });
+      });
+
       /** event Click for Open modal */
       const opemmodalbtns = that.campaign.querySelectorAll(
         ".sc-li-campaign__active-modal-btn"
@@ -514,12 +526,14 @@ class scInsuranceCampaign {
    * @param {event} event
    */
   activeModal(event) {
+    console.log(event.target)
     const that = this;
     const formmodal = document.querySelector(".sc-li-campaign-form-modal");
     const formmodalid = formmodal.dataset.modalId;
     let popupdata = JSON.parse(formmodal.dataset.popup);
     let modalsource = event.target.dataset.modalSource;
 
+    console.log({formmodalid, modalsource})
     /** If modal match */
     if (formmodalid === modalsource) {
       that.isModalActive = true;

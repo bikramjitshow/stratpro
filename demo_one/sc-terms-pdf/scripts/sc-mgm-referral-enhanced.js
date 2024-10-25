@@ -805,6 +805,7 @@ class ScMgmReferralEnhanced {
 
       if (manualScrollDetected || clickCount >= totalSteps) {
         closeButton.click();
+        
         window.open(redirectUrl, "_blank");
       } else {
         clickCount++;
