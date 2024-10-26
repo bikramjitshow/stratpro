@@ -895,23 +895,20 @@ class ScMgmReferralMobile {
     }
   }
 
-  /**
-   * trigger adobe popupViewed event when showing popups
+   /**
+   * trigger adobe popupViewed event when showing popups _satellite.track('popupViewed');
    */
-  triggerPopupViewedTagging(popupName) {
+   triggerPopupViewedTagging(popupName) {
     setTimeout(() => {
-      let dataObject = {
-        ...digitalData,
-        form: {
-          formName: "",
-          formStepName: "",
-          formType: "",
-          formPlatform: "",
-        },
-      };
-      dataObject.form.popupName = popupName;
-      dataObject.event = "popupViewed";
-      scAnalyticsDataArray.push(dataObject);
+      digitalData.event = 'popupViewed';
+      digitalData.form = {};
+      digitalData.form.formName = '';
+      digitalData.form.formStepName = '';
+      digitalData.form.formType = '';
+      digitalData.form.formPlatform = '';
+      digitalData.form.popupName = popupName;
+      console.log({ digitalData });
+      _satellite.track('popupViewed');
     }, 500);
   }
 
@@ -920,32 +917,24 @@ class ScMgmReferralMobile {
    */
   triggerCtaClickTagging(event) {
     const that = this;
-    if (that.eventFired) {
-      let ctaType = event.target.type == "button" ? event.target.type : "link";
-      let customLinkText = event.target.getAttribute("title")
-        ? event.target.getAttribute("title")
-        : event.target instanceof SVGElement ||
-          event.target.getElementsByTagName("svg").length ||
-          event.target.classList.contains("closebutton")
-        ? "Close"
-        : event.target.innerText
-        ? event.target.innerText.trim().toLowerCase()
-        : event.target.textContent.trim().toLowerCase();
-      let dataObject = {
-        ...digitalData,
-        customLinkClick: {
-          customLinkText: customLinkText,
-          customLinkRegion:
-            that.getHorizontalPosition(event.clientX) +
-            " " +
-            Utils.calcElementLocation(event.target),
-          customLinkType: ctaType,
-        },
-        event: "ctaClick",
-        context: customLinkText,
-      };
-      scAnalyticsDataArray.push(dataObject);
-    }
+    let ctaType = event.target.type == 'button' ? event.target.type : 'link';
+    let customLinkText = event.target.getAttribute('title')
+      ? event.target.getAttribute('title')
+      : event.target instanceof SVGElement ||
+        event.target.getElementsByTagName('svg').length ||
+        event.target.classList.contains('closebutton')
+      ? 'Close'
+      : event.target.innerText
+      ? event.target.innerText.trim().toLowerCase()
+      : event.target.textContent.trim().toLowerCase();
+
+    digitalData.event = 'ctaClick';
+    digitalData.ctaName = customLinkText;
+    digitalData.ctaType = ctaType;
+    digitalData.ctaPosition =
+      that.getHorizontalPosition(event.clientX) + ' ' + Utils.calcElementLocation(event.target);
+    console.log({ digitalData });
+    _satellite.track('callToAction');
   }
 }
 
