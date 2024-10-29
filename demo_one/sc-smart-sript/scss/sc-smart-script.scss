@@ -20,6 +20,12 @@ p {
   font-family: SC Prosper Sans Variable !important;
 }
 
+.sc-apply-product {
+  &__bg {
+    width: 150px;
+    margin-bottom: 16px;
+  }
+}
 
 
 // media queries

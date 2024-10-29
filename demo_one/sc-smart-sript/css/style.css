@@ -162,6 +162,11 @@ p {
   font-family: SC Prosper Sans Variable !important;
 }
 
+.sc-apply-product__bg {
+  width: 150px;
+  margin-bottom: 16px;
+}
+
 html {
   scroll-behavior: smooth;
 }/*# sourceMappingURL=style.css.map */
