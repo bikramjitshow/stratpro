@@ -109,8 +109,8 @@ class ScMgmReferralEnhanced {
           event.target.className.indexOf('closebutton') !== -1 ||
           event.target.className.indexOf('wrapper') !== -1
         ) {
-          console.log(event)
-          console.log(mainModalId)
+          console.log({event})
+          console.log({mainModalId})
           modalOpen = false;
           that.triggerCtaClickTagging(event);
           if (tm) {
@@ -642,15 +642,19 @@ class ScMgmReferralEnhanced {
   }
 
   termsModalClosed(modalid) {
+    console.log({modalid})
     const that = this;
     that.isTermModalActive = false;
     setTimeout(function() {
-      const modalId = document.querySelector(`[data-modal-source='${modalid}']`);
-      console.log(modalId)
-      if (modalId) {
-        modalId.click();
-        that.isTermModalRequire = true;
-      }
+      const modalId = document.querySelectorAll(`[data-modal-source='${modalid}']`);
+      modalId.forEach(item => {
+        console.log(item.classList.contains("sc-btn"));
+        console.log(modalId)
+        if (modalId && item.classList.contains("sc-btn")) {
+          item.click();
+          that.isTermModalRequire = true;
+        }
+      })
     }, 300);
   }
 

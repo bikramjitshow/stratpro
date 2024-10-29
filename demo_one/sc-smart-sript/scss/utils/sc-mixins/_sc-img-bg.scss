@@ -1,0 +1,22 @@
+@mixin sc-img-bg() {
+  .img-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    font-family: 'object-fit: cover; object-position: center;';
+  }
+}
+
+@mixin bg-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  font-family: 'object-fit: cover; object-position: center;';
+  max-width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
