@@ -21,25 +21,120 @@ p {
 }
 
 .sc-apply-product {
-  &__bg {
-    width: 150px;
+  background-color: white;
+  padding: 40px 0;
+  &__top {
+    display: flex;
+    justify-content: right;
+    min-height: 230px;
+    position: relative;
+  }
+  &__desc {
+    font-size: 14px;
+    color: #191919;
+  }
+  &__tile {
+    font-size: 24px;
     margin-bottom: 16px;
+    color: #000;
+  }
+  &__head {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  &__back {
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+  }
+  &__main-tile {
+    font-size: 20px;
+    margin-bottom: 16px;
+    width: 100%;
+    color: #000;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #c3defa;
+    padding: 24px 16px;
+  }
+  &__bg {
+    object-position: left;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    height: 100%;
+  }
+  &__content {
+    padding: 24px 100px 24px 16px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__bottom-container {
+    display: flex;
+
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__bottom-left {
+    max-width: 350px;
+  }
+  .buttons,
+  .sc-inline-buttons {
+    margin-top: 24px;
+  }
+  &__onelink-qr {
+    width: 110px;
+    height: 110px;
+    padding: 2px;
+    background: linear-gradient(180deg, #107bed 0%, #37cf0a 100%);
+    border-radius: 6px;
+    canvas {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 6px;
+    }
   }
 }
-
 
 // media queries
 // min 681px
 @include breakpoint($bp--h-small-large) {
-  
+  .sc-apply-product {
+    &__content {
+      width: 40%;
+      padding: 40px 100px 40px 16px;
+    }
+    &__top {
+      min-height: 330px;
+    }
+    &__bottom {
+      padding: 40px;
+    }
+    &__bottom-container {
+      max-width: 90%;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
 }
 
 // min 1024px
 @include breakpoint($bp--h-desktop) {
-  
 }
 
 // max 1023.9px
 @include breakpoint($bp--h-mobile) {
- 
 }
