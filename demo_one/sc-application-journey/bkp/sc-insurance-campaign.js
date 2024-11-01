@@ -3,32 +3,121 @@ import Highcharts from 'highcharts';
 import ScCommonMethods from '../../../assets/js/commons/sc-common-methods';
 import '../../../../src/assets/js/analytics/adobe/eddl/analytics-event-handler.js';
 
+/** Class representing a scInsuranceCampaign. */
 class scInsuranceCampaign {
+  constructor() {
+    this.lastAccessedField = null;
+    this.isModalActive = false;
+    this.handleMousedown = this.handleMousedown.bind(this);
+  }
+
+  /**
+   * Represents a Initial function.
+   * @function init
+   * @description It will run on script excution
+   */
   init() {
     const that = this;
-    let classes = [
-      'sc-li-campaign__policy-type-filter-step-item',
-      'sc-btn',
-      'sc-li-campaign__policy-type-learn-more'
-    ];
+    that.campaign = document.querySelector('.sc-li-campaign');
     document.addEventListener('DOMContentLoaded', function() {
-      document.addEventListener('click', function(event) {
-        if (classes.some(cls => event.target.classList.contains(cls))) {
-          console.log(event.target);
+      /** event Click for scBtns */
+      const scBtns = that.campaign.querySelectorAll('.sc-btn');
+      scBtns.forEach(el => {
+        el.addEventListener('mousedown', event => {
+          event.preventDefault();
+          event.stopPropagation();
           that.ctaClick(event);
-        }
+        });
       });
-      let firstpersonaBtn = document.querySelector('.sc-li-campaign__persona-btn');
+
+      /** event Click for view product brochure */
+      const learnMore = that.campaign.querySelectorAll('.sc-li-campaign__policy-type-learn-more');
+      learnMore.forEach(el => {
+        el.addEventListener('mousedown', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          that.ctaClick(event);
+        });
+      });
+
+      /** event Click for Tab */
+      const stepItems = that.campaign.querySelectorAll(
+        '.sc-li-campaign__policy-type-filter-step-item'
+      );
+      stepItems.forEach(el => {
+        el.addEventListener('mousedown', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          that.ctaClick(event);
+        });
+      });
+
+      /** event Click for woBnrLinkItems */
+      const woBnrLinkItems = that.campaign.querySelectorAll('.sc-li-campaign__wo-bnr-link');
+      woBnrLinkItems.forEach(el => {
+        el.addEventListener('mousedown', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          that.ctaClick(event);
+        });
+      });
+
+      /** event Click for Open modal */
+      const opemmodalbtns = that.campaign.querySelectorAll('.sc-li-campaign__active-modal-btn');
+      opemmodalbtns.forEach(el => {
+        el.addEventListener('mousedown', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          that.activeModal(event);
+        });
+      });
+
+      /** event Click for alert-close */
+      const alertclose = document.querySelector('.sc-error-modal__alert-close');
+      alertclose.addEventListener('mousedown', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        that.ctaClick(event);
+        setTimeout(() => {
+          that.statusModal(false);
+          delete window.digitalData.form;
+        }, 1000);
+      });
+
+      /** event Click for learnmore button */
+      const learnMoreBtn = that.campaign.querySelectorAll('.sc-li-campaign__learn-more-btn');
+      learnMoreBtn.forEach(el => {
+        el.addEventListener('mousedown', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          that.ctaClick(event);
+          /** Get the target ID from the button's data attribute */
+          var targetId = this.getAttribute('data-target');
+          var target = document.getElementById(targetId);
+          if (target) {
+            /** Scroll to the target element with smooth behavior */
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      let firstpersonaBtn = that.campaign.querySelector('.sc-li-campaign__persona-btn');
       let personaitem = firstpersonaBtn.dataset.persona;
-      that.createTitle();
-      that.activeModal();
+      that.pageNameInit();
       that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
-      that.pageNameInit();
+      setTimeout(() => {
+        that.createTitle();
+      }, 100);
     });
   }
 
+  /**
+   * Represents a parameter check.
+   * @function paramCheck
+   * @description It will check the URL parameter to call tiggerPersona
+   */
   paramCheck() {
     let that = this;
     let queryString = Utils.getPageContext().queryString;
@@ -45,72 +134,93 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a Remove Hash .
+   * @function removeNullHashFromURL
+   * @description It will check the URL parameter, if there has "#null" then it will removed
+   */
   removeNullHashFromURL() {
     if (window.location.hash === '#null') {
       history.replaceState('', document.title, window.location.pathname + window.location.search);
     }
   }
 
+  /**
+   * Represents a update persona param as per user selection
+   * @function addUrlParam
+   * @param {string} name
+   * @param {string} value
+   */
   addUrlParam(name, value) {
     var paramName = name;
     var paramValue = value;
 
-    // Get the current URL
+    /** Get the current URL */
     var currentUrl = window.location.href;
 
-    // Check if the parameter already exists in the URL
+    /** Check if the parameter already exists in the URL */
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has(paramName)) {
-      // If the parameter exists, update its value
+      /** If the parameter exists, update its value */
       urlParams.set(paramName, paramValue);
     } else {
-      // If the parameter does not exist, add it
+      /** If the parameter does not exist, add it */
       urlParams.append(paramName, paramValue);
     }
 
-    // Construct the new URL with the updated parameters
+    /** Construct the new URL with the updated parameters */
     var newUrl = currentUrl.split('?')[0] + '?' + urlParams.toString();
 
-    // Push the new URL to the browser history without reloading the page
+    /** Push the new URL to the browser history without reloading the page */
     window.history.pushState({ path: newUrl }, '', newUrl);
     setTimeout(() => {
       this.removeNullHashFromURL();
     }, 10);
   }
 
+  /**
+   * Represents a click event for Active Persona
+   * @function tiggerPersona
+   * @param {string} persona
+   */
   tiggerPersona(persona) {
-    // Get all persona buttons
-    const personaBtns = document.querySelectorAll('.sc-li-campaign__persona-btn');
-    const queryparam = document.querySelector('.sc-li-campaign').getAttribute('data-query-param');
+    const that = this;
+    that.campaign = document.querySelector('.sc-li-campaign');
+    const personaBtns = that.campaign.querySelectorAll('.sc-li-campaign__persona-btn');
+    const queryparam = that.campaign.getAttribute('data-query-param');
 
-    // Function to handle click event
+    /**
+     * Function to handle click event
+     * @param {object} btn
+     * @param {int} index
+     */
     const handleClick = (btn, index) => {
       let personaitem = btn.dataset.persona;
-      // Remove active class from all persona buttons
+      /** Remove active class from all persona buttons */
       personaBtns.forEach(btn => {
         btn.classList.remove('sc-li-campaign__persona-btn-active');
       });
 
-      // Add active class to the clicked button
+      /** Add active class to the clicked button */
       btn.classList.add('sc-li-campaign__persona-btn-active');
-      this.addUrlParam(queryparam, personaitem);
-      this.activeBanner(personaitem);
-      this.activeContentBox(personaitem);
-      this.generateChart(index + 1, personaitem);
-      this.tiggerContentFilter(personaitem);
+      that.addUrlParam(queryparam, personaitem);
+      that.activeBanner(personaitem);
+      that.activeContentBox(personaitem);
+      that.generateChart(index + 1, personaitem);
+      that.tiggerContentFilter(personaitem);
     };
 
-    // Add click event listener to each persona button
+    /** Add click event listener to each persona button */
     personaBtns.forEach((btn, index) => {
-      btn.addEventListener('click', event => {
+      btn.addEventListener('mousedown', event => {
         event.preventDefault();
         event.stopPropagation();
         handleClick(btn, index);
-        this.ctaClick(event);
+        that.ctaClick(event);
       });
     });
 
-    // Trigger click event with specified persona value
+    /** Trigger click event with specified persona value */
     if (persona) {
       const personaIndex = Array.from(personaBtns).findIndex(
         btn => btn.dataset.persona === persona
@@ -121,6 +231,11 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a toggle view of dynamic content as per persona selection
+   * @function tiggerContentFilter
+   * @param {string} personaitem
+   */
   tiggerContentFilter(personaitem) {
     let filteritemparent, parentitem, isHide;
     let isFirstFilterActivated = false;
@@ -140,8 +255,11 @@ class scInsuranceCampaign {
             filter.classList.remove('sc-li-campaign__policy-type-filter-step-item--active');
           }
           isFirstFilterActivated = true;
-          filter.addEventListener('click', e => {
-            this.activeFilter(e);
+          filter.addEventListener('mousedown', event => {
+            event.preventDefault();
+            event.stopPropagation();
+            this.removeNullHashFromURL();
+            this.activeFilter(event);
             this.activeFilterContent(title);
           });
         }
@@ -149,6 +267,11 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a active state of dynamic filter tab as per persona selection
+   * @function activeFilter
+   * @param {event} e
+   */
   activeFilter(e) {
     const targetelem = document.querySelectorAll('.sc-li-campaign__policy-type-filter-step-item');
     targetelem.forEach(el => {
@@ -157,6 +280,11 @@ class scInsuranceCampaign {
     e.target.classList.add('sc-li-campaign__policy-type-filter-step-item--active');
   }
 
+  /**
+   * Represents a active state of dynamic filter tab content as per persona selection
+   * @function activeFilterContent
+   * @param {string} activeTitle
+   */
   activeFilterContent(activeTitle) {
     let filterContents = document.querySelectorAll(
       '.sc-li-campaign__policy-type-filter-panels-content'
@@ -173,6 +301,11 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a active state of dynamic banner as per persona selection
+   * @function activeBanner
+   * @param {string} activePersona
+   */
   activeBanner(activePersona) {
     let banneritems = document.querySelectorAll('.sc-li-campaign__banner');
     if (banneritems.length) {
@@ -187,6 +320,11 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a active state of contentbox as per persona selection
+   * @function activeContentBox
+   * @param {*} activePersona
+   */
   activeContentBox(activePersona) {
     let contentboxs = document.querySelectorAll('.sc-li-campaign__content-box-item');
     if (contentboxs.length) {
@@ -201,6 +339,10 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a function to create the button dynamic title of product
+   * @function createTitle
+   */
   createTitle() {
     let cards = document.querySelectorAll('.sc-li-campaign__policy-type-card-box');
     cards.forEach(item => {
@@ -215,10 +357,10 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Generate Graph
-   *
-   * @param {*} id -for graph id
-   * @param {*} personaitem - persona name
+   * Represents a function to Generate Graph
+   * @function generateChart
+   * @param {number} id -for graph id
+   * @param {string} personaitem - persona name
    */
   generateChart(id, personaitem) {
     let ghdata, seriesName;
@@ -243,7 +385,8 @@ class scInsuranceCampaign {
           text: ''
         },
         tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          format: '{series.name}<br>{key}: <b>{point.y}%</b>',
+          shared: true
         },
         accessibility: {
           point: {
@@ -258,7 +401,14 @@ class scInsuranceCampaign {
             dataLabels: {
               enabled: false
             },
-            showInLegend: true
+            showInLegend: true,
+            point: {
+              events: {
+                legendItemClick: function() {
+                  return false;
+                }
+              }
+            }
           }
         },
         legend: {
@@ -309,46 +459,66 @@ class scInsuranceCampaign {
     }
   }
 
-  // track if modal activated
-  activeModal() {
-    const that = this;
-    const activemodalbtn = document.querySelector('.sc-li-campaign__active-modal-btn').dataset
-      .modalSource;
-    document.body.addEventListener('click', function(event) {
-      // track if modal close
-      if (
-        event.target.classList.contains('closebutton') ||
-        event.target.classList.contains('wrapper')
-      ) {
-        that.closeModal(this.lastAccessedField);
-      }
-      // verify the modal open
-      if (event.target.dataset.modalSource === activemodalbtn) {
-        let closestAnchor = event.target.closest('a');
-        let formModal = document.querySelector('.sc-li-campaign-form-modal');
-        let popupdata = JSON.parse(formModal.dataset.popup);
-        let modalAttr = closestAnchor.getAttribute('data-modal-source');
-        let formmodalAttr = formModal.getAttribute('data-modal-id');
-        let wrapp = document.querySelector('.c-modal');
-        if (modalAttr === formmodalAttr) {
-          formModal.classList.add('sc-li-campaign-form-modal-active');
-          wrapp.classList.add('sc-li-campaign-form-modal-main');
-          setTimeout(() => {
-            that.handelFormStartShortForm(popupdata);
-          }, 600);
-          that.getCheckboxes();
-          that.formLastAccessedField();
-          that.formSubmit();
-        }
-      }
-    });
+  /**
+   * Represents a internal function to handle closeModal
+   * @param {event} event
+   */
+  handleMousedown(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (
+      event.target.classList.contains('closebutton') ||
+      event.target.classList.contains('wrapper')
+    ) {
+      this.closeModal(event);
+    }
   }
 
+  /**
+   * Represents a internal function to handle closeModal
+   */
+  toCloseModal() {
+    const modalContainer = document.querySelector('.sc-li-campaign-form-modal-main');
+    modalContainer.addEventListener('mousedown', this.handleMousedown);
+  }
+
+  /**
+   * Represents an internal function on form modal active
+   * @function activeModal
+   * @param {event} event
+   */
+  activeModal(event) {
+    const that = this;
+    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
+    const formmodalid = formmodal.dataset.modalId;
+    let popupdata = JSON.parse(formmodal.dataset.popup);
+    let modalsource = event.target.dataset.modalSource;
+
+    /** If modal match */
+    if (formmodalid === modalsource) {
+      that.isModalActive = true;
+      formmodal.classList.add('sc-li-campaign-form-modal-active');
+      setTimeout(() => {
+        document.querySelector('.c-modal').classList.add('sc-li-campaign-form-modal-main');
+        that.handelFormStartShortForm(popupdata);
+        that.validateSubmit();
+        that.formLastAccessedField();
+        that.formSubmit();
+        that.toCloseModal();
+      }, 600);
+    }
+  }
+
+  /**
+   * Represents a function active form status Modal
+   * @function statusModal
+   * @param {string} status
+   * @returns {boolean} True or False
+   */
   statusModal(status) {
     const errorModal = document.querySelector('.sc-error-modal');
     let errorModalStatus = JSON.parse(errorModal.dataset.formStatus);
     if (status) {
-      //If referral code is empty or invalid
       errorModal.classList.add('sc-error-modal--show');
       return errorModalStatus;
     } else {
@@ -357,15 +527,30 @@ class scInsuranceCampaign {
     }
   }
 
-  closeModal() {
+  /**
+   * Represents a function to close form modal
+   * @function closeModal
+   * @param {event} event
+   */
+  closeModal(event) {
+    const modalContainer = document.querySelector('.sc-li-campaign-form-modal-main');
+    event.target.setAttribute('title', 'closemodal');
+    this.ctaClick(event);
     let lastAccessedField = this.lastAccessedField || 'na';
     if (lastAccessedField) {
-      this.handleFormAbandon(lastAccessedField);
+      setTimeout(() => {
+        this.handleFormAbandon(lastAccessedField);
+      }, 1500);
+      modalContainer.removeEventListener('mousedown', this.handleMousedown);
+      this.isModalActive = false;
     }
   }
 
-  getCheckboxes() {
-    const that = this;
+  /**
+   * Represents a function to validate and activate the submit button.
+   * @function validateSubmit
+   */
+  validateSubmit() {
     var anycheckboxChecked, anyradioChecked;
     var checkboxes = document.querySelectorAll(
       '.sc-li-campaign-form__checkboxs .sc-radio-box__input'
@@ -373,10 +558,11 @@ class scInsuranceCampaign {
     var radios = document.querySelectorAll('.sc-li-campaign-form__radios .sc-radio-box__input');
     var formSubmitBtn = document.querySelector('.sc-li-campaign-form__submit-btn');
     radios[0].checked = true;
-    var selecteditems = {};
 
-    checkboxes.forEach(function(checkbox, i) {
+    checkboxes.forEach(function(checkbox) {
       checkbox.addEventListener('change', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         anycheckboxChecked = Array.from(checkboxes).some(function(checkbox) {
           return checkbox.checked;
         });
@@ -391,25 +577,12 @@ class scInsuranceCampaign {
         } else {
           formSubmitBtn.classList.add('sc-btn--disabled');
         }
-        if (this.checked) {
-          selecteditems.fieldTitle = e.target
-            .closest('.sc-li-campaign-form__item')
-            .querySelector('.sc-li-campaign-form__item-title').dataset.field;
-          selecteditems.checkname = `${checkbox.name}_${i + 1}`;
-          let formData = that.buildFormDataItem();
-          that.handleInsuranceFormCheck(e.target, formData.name, formData.fields);
-        } else {
-          selecteditems.fieldTitle = e.target
-            .closest('.sc-li-campaign-form__item')
-            .querySelector('.sc-li-campaign-form__item-title').dataset.field;
-          selecteditems.checkname = `uncheck_${i + 1}`;
-          let formData = that.buildFormDataItem();
-          that.handleInsuranceFormCheck(e.target, formData.name, formData.fields);
-        }
       });
     });
-    radios.forEach(function(radio, i) {
+    radios.forEach(function(radio) {
       radio.addEventListener('change', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         anyradioChecked = Array.from(radios).some(function(radio) {
           return radio.checked;
         });
@@ -419,31 +592,16 @@ class scInsuranceCampaign {
         } else {
           formSubmitBtn.classList.add('sc-btn--disabled');
         }
-        if (this.checked) {
-          selecteditems.fieldTitle = e.target
-            .closest('.sc-li-campaign-form__item')
-            .querySelector('.sc-li-campaign-form__item-title').dataset.field;
-          selecteditems.radioname = `${radio.name}_${i + 1}`;
-          let formData = that.buildFormDataItem();
-          that.handleInsuranceFormCheck(e.target, formData.name, formData.fields);
-        }
       });
     });
   }
 
-  // Function to extract checkbox Names
-  getCheckboxNames(container) {
-    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-    let names = [];
-    checkboxes.forEach((checkbox, i) => {
-      if (checkbox.checked) {
-        names.push(`${checkbox.name}_${i + 1}`);
-      }
-    });
-    return names.join('|');
-  }
-
-  // Function to extract checkbox values
+  /**
+   * Function to extract checkbox values
+   * @function getCheckboxValues(container)
+   * @param {object} container
+   * @returns {string} check boxes values
+   */
   getCheckboxValues(container) {
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
     let values = [];
@@ -455,19 +613,12 @@ class scInsuranceCampaign {
     return values.join('|');
   }
 
-  // Function to extract radio button Name
-  getRadioNames(container) {
-    const radios = container.querySelectorAll('input[type="radio"]');
-    let name = '';
-    radios.forEach((radio, i) => {
-      if (radio.checked) {
-        name = `${radio.name}_${i + 1}`;
-      }
-    });
-    return name;
-  }
-
-  // Function to extract radio button value
+  /**
+   * Function to extract radio button value
+   * @function getRadioValue(container)
+   * @param {object} container
+   * @returns {string} radio options values
+   */
   getRadioValue(container) {
     const radios = container.querySelectorAll('input[type="radio"]');
     let value = '';
@@ -479,7 +630,11 @@ class scInsuranceCampaign {
     return value;
   }
 
-  // function to build form data object on submit
+  /**
+   * Function to build form data object on submit
+   * @function buildFormData
+   * @returns {formdata<object>} form fields details
+   */
   buildFormData() {
     this.existingFieldNames = new Set();
     let formModal = document.querySelector('.sc-li-campaign-form-modal');
@@ -493,7 +648,7 @@ class scInsuranceCampaign {
       const fieldTitleElement = item.querySelector('.sc-li-campaign-form__item-title');
       const fieldTitle = fieldTitleElement.getAttribute('data-field');
 
-      // Skip if the field name already exists
+      /** Skip if the field name already exists */
       if (this.existingFieldNames.has(fieldTitle)) {
         return;
       }
@@ -514,93 +669,56 @@ class scInsuranceCampaign {
         fieldValue: fieldValue
       });
 
-      // Add field name to the set to track it
+      /** Add field name to the set to track it */
       this.existingFieldNames.add(fieldTitle);
     });
     return formdata;
   }
 
-  // function to build form data object on check
-  buildFormDataItem() {
-    this.existingFieldNames = new Set();
-    let formModal = document.querySelector('.sc-li-campaign-form-modal');
-    let popupdata = JSON.parse(formModal.dataset.popup);
-    const formdata = {
-      name: popupdata.formname,
-      fields: []
-    };
-    const formItems = document.querySelectorAll('.sc-li-campaign-form__item');
-    formItems.forEach(item => {
-      const fieldTitleElement = item.querySelector('.sc-li-campaign-form__item-title');
-      const fieldTitle = fieldTitleElement.getAttribute('data-field');
-
-      // Skip if the field name already exists
-      if (this.existingFieldNames.has(fieldTitle)) {
-        return;
-      }
-
-      let fieldValue = '';
-      const checkboxContainer = item.querySelector('.sc-li-campaign-form__checkboxs');
-      if (checkboxContainer) {
-        fieldValue = this.getCheckboxValues(checkboxContainer);
-      } else {
-        const radioContainer = item.querySelector('.sc-li-campaign-form__radios');
-        if (radioContainer) {
-          fieldValue = this.getRadioValue(radioContainer);
-        }
-      }
-
-      formdata.fields.push({
-        fieldName: fieldTitle,
-        fieldValue: fieldValue
-      });
-
-      // Add field name to the set to track it
-      this.existingFieldNames.add(fieldTitle);
-    });
-    return formdata;
-  }
-
-  // function for form Submit
+  /**
+   * function to build form data object on check
+   * @function formSubmit
+   */
   formSubmit() {
+    const that = this;
     const formSubmitBtn = document.querySelector('.sc-li-campaign-form__submit-btn');
-    formSubmitBtn.addEventListener('click', () => {
+    formSubmitBtn.addEventListener('mousedown', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      that.ctaClick(event);
       try {
-        let formData = this.buildFormData();
-        formData.ctaname = formSubmitBtn.textContent.trim();
         setTimeout(() => {
-          let formstatus = this.statusModal(true);
-          this.handleInsuranceFormSubmit(
-            formData.name,
-            formData.ctaname,
-            formData.fields,
-            formstatus
-          );
-        }, 600);
+          let formstatus = that.statusModal(true);
+          if (formstatus) {
+            that.handleInsuranceFormSubmit(formstatus);
+          }
+        }, 1500);
       } catch (error) {
         let errObj = {
           code: error.statusCode,
           description: error.message,
-          field: this.lastAccessedField
+          field: that.lastAccessedField
         };
-        this.handleFormError(errObj);
-        this.statusModal(false); // Optionally close the modal on error
+        that.handleFormError(errObj);
+        that.statusModal(false);
       }
-    });
-    document.querySelector('.sc-error-modal__alert-close').addEventListener('click', () => {
-      this.statusModal(false);
     });
   }
 
+  /**
+   * Represents a function to retrieve the last accessed form item
+   * @function formLastAccessedField
+   */
   formLastAccessedField() {
-    // Get the form and all input fields
     const form = document.querySelector('.sc-li-campaign-form');
     if (!form) return;
     const formElements = form.querySelectorAll('input');
 
-    // Add event listeners to all input fields
+    /** Add event listeners to all input fields */
     formElements.forEach(element => {
       element.addEventListener('change', event => {
+        event.preventDefault();
+        event.stopPropagation();
         const itemElement = event.target.closest('.sc-li-campaign-form__item');
         const titleElement = itemElement.querySelector('.sc-li-campaign-form__item-title');
         this.lastAccessedField = titleElement.innerText;
@@ -608,21 +726,21 @@ class scInsuranceCampaign {
     });
   }
 
+  /**
+   * Represents a function to generate page name for AA EDDL
+   * @function pageNameInit
+   */
   pageNameInit() {
-    console.log('pageNameInit');
     const that = this;
     let allowableQueryString = Utils.constants.ALLOWABLE_QUERYSTRING.scb;
     let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
       ? document.querySelector('meta[name="sc:page-slug"]').getAttribute('content')
       : null;
-    let linkName =
-      document.querySelector('title') && document.querySelector('title').innerText
-        ? document.querySelector('title').innerText.toLowerCase()
-        : 'na';
     const mktCountryCode = Utils.getCurrentCountry();
     this.productId = 'na';
     this.pfmId = 'na';
-
+    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
+    let popupdata = JSON.parse(formmodal.dataset.popup);
     that.getProductIdPfm();
     window.digitalData = window.digitalData || {};
     if (window.digitalData) {
@@ -632,9 +750,9 @@ class scInsuranceCampaign {
       window.digitalData.page.attributes.pfm = this.pfmId;
     }
 
-    //Push form name and page name in digitalData
+    /** Push form name and page name in digitalData */
     if (window.digitalData.page.pageInfo && window.digitalData.page.pageInfo.pageName) {
-      //Set na if pageName are empty
+      /** Set na if pageName are empty */
       let pageName = window.digitalData.page.pageInfo.pageName;
       pageName = pageName.split(':');
       let pageNameList = [];
@@ -649,22 +767,17 @@ class scInsuranceCampaign {
       }
 
       if (pageName.length <= 8) {
-        linkName =
-          document.querySelector('title') && document.querySelector('title').innerText
-            ? document.querySelector('title').innerText.toLowerCase()
-            : 'na';
         if (mktCountryCode == 'hk') {
-          //Screen Name field in CMS is used if filled, in HK.
+          /** Screen Name field in CMS is used if filled, in HK. */
           pageNameList.push(pageName[pageName.length - 1] ? pageName[pageName.length - 1] : 'na');
         } else {
           pageNameList.push(pageSlug);
         }
       }
 
-      //Set na if category objects are empty
+      /** Set na if category objects are empty */
       if (window.digitalData.page.category) {
         let catName = window.digitalData.page.category;
-        // eslint-disable-next-line no-unused-vars
         for (let index in catName) {
           window.digitalData.page.category[index] = catName[index] ? catName[index] : 'na';
         }
@@ -682,14 +795,37 @@ class scInsuranceCampaign {
     window.digitalData.user.userInfo = {
       userStatus: 'guest',
       userType: 'NTB',
-      segment: pageName[2],
+      segment: pageName[3],
       userID: 'na'
     };
+
+    /** Update page name */
+    window.digitalData.page.pageInfo.pageName = pageName.join(':');
+    /** Add user info */
+    window.digitalData.userInfo = window.digitalData.userInfo || {};
+    window.digitalData.userInfo = window.digitalData.user.userInfo;
+    window.digitalData.userInfo.loginStatus = 'not logged-in';
+    delete window.digitalData.user;
+    /* Add product info */
+    if (pageName[4] != 'na' || pageName[5] != 'na' || pageName[6] != 'na') {
+      window.digitalData.products = window.digitalData.products || [];
+      window.digitalData.products = [
+        {
+          productName: pageName[6],
+          subProduct1: pageName[4],
+          subProduct2: pageName[5]
+        }
+      ];
+    }
 
     let campaignData = that.getCampaignInfo(allowableQueryString);
     window.digitalData.campaign = window.digitalData.campaign || {};
     window.digitalData.campaign = {
       internal: {
+        campaignName: campaignData[0],
+        campaignValue: campaignData[1]
+      },
+      external: {
         campaignName: campaignData[0],
         campaignValue: campaignData[1]
       }
@@ -704,13 +840,64 @@ class scInsuranceCampaign {
       context: 'page view'
     };
 
-    console.log('page-view dataObject', dataObject);
-    // scAnalyticsDataArray.push(dataObject);
-    // _satellite.track("page-view");
+    scAnalyticsDataArray.push(dataObject);
   }
 
   /**
-   * get productId from URL
+   * Represents a function to update page name for AA EDDL
+   * @function pageNameUpdate
+   * @example pageNameUpdate("formAbandon")
+   * @param {string} eventName
+   */
+  pageNameUpdate(eventName) {
+    let eventlist = [
+      'formStart_shortForm',
+      'formSubmit_shortForm',
+      'formAbandon',
+      'formError',
+      'ctaClick'
+    ];
+    let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
+      ? document.querySelector('meta[name="sc:page-slug"]').getAttribute('content')
+      : null;
+    const mktCountryCode = Utils.getCurrentCountry();
+    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
+    let popupdata = JSON.parse(formmodal.dataset.popup);
+
+    //Push form name and page name in digitalData
+    if (window.digitalData.page.pageInfo && window.digitalData.page.pageInfo.pageName) {
+      //Set na if pageName are empty
+      let pageName = window.digitalData.page.pageInfo.pageName;
+      pageName = pageName.split(':');
+      let pageNameList = [];
+      if (pageName.length > 1) {
+        for (let i = 0; i < pageName.length; i++) {
+          if (i == 7) {
+            if (eventlist.includes(eventName) && window.digitalData.hasOwnProperty('form')) {
+              pageNameList.push(popupdata.formname ? popupdata.formname.replace(/ /g, '-') : 'na');
+            } else {
+              pageNameList.push('na');
+            }
+          } else {
+            pageNameList.push(pageName[i] ? pageName[i] : 'na');
+          }
+        }
+      }
+
+      if (pageName.length <= 8) {
+        if (mktCountryCode == 'hk') {
+          //Screen Name field in CMS is used if filled, in HK.
+          pageNameList.push(pageName[pageName.length - 1] ? pageName[pageName.length - 1] : 'na');
+        } else {
+          pageNameList.push(pageSlug);
+        }
+      }
+      window.digitalData.page.pageInfo.pageName = pageNameList.join(':');
+    }
+  }
+
+  /**
+   * Represents a function to get productId from URL for AA EDDL
    * @example
    * getProductId()
    */
@@ -842,8 +1029,14 @@ class scInsuranceCampaign {
     }
   }
 
+  /**
+   * Represents a function to generate page name for AA EDDL
+   * @function ctaClick
+   * @param {event} event
+   */
   ctaClick(event) {
     const that = this;
+    that.pageNameUpdate('ctaClick');
     let closestAnchor = event.target.closest('a');
     let customLinkText = event.target.innerText
       ? event.target.innerText.trim().toLowerCase()
@@ -854,8 +1047,45 @@ class scInsuranceCampaign {
         ? document.querySelector('title').innerText.toLowerCase()
         : 'na';
     let ctaName = event.target.getAttribute('title');
+
+    /** status ok popup click */
+    if (event.target.classList.contains('sc-error-modal__alert-close')) {
+      const errorModal = document.querySelector('.sc-error-modal');
+      let errorModalStatus = JSON.parse(errorModal.dataset.formStatus);
+      let pageName = window.digitalData.page.pageInfo.pageName.split(':');
+      window.digitalData.form.popupName = errorModalStatus.popupname;
+      delete window.digitalData.products;
+      /** Add product info */
+      if (pageName[4] != 'na' || pageName[5] != 'na' || pageName[6] != 'na') {
+        window.digitalData.products = window.digitalData.products || [];
+        window.digitalData.products = [
+          {
+            productName: pageName[6],
+            subProduct1: pageName[4],
+            subProduct2: pageName[5]
+          }
+        ];
+      }
+    }
+
+    /** submit cta click */
+    if (event.target.classList.contains('sc-li-campaign-form__submit-btn')) {
+      let formData = that.buildFormData();
+      if (formData && window.digitalData.products) {
+        window.digitalData.products.forEach((item, index) => {
+          window.digitalData.products[index].productFields = [];
+          formData.fields.forEach(field => {
+            window.digitalData.products[index].productFields.push({
+              formFieldName: field.fieldName,
+              formFieldValue: field.fieldValue
+            });
+          });
+        });
+      }
+    }
+
     let dataObject = {
-      ...digitalData,
+      ...JSON.parse(JSON.stringify(digitalData)),
       customLinkClick: {
         customLinkText: customLinkText,
         customLinkRegion:
@@ -874,17 +1104,27 @@ class scInsuranceCampaign {
     if (Utils.getCurrentCountry() == 'hk') {
       delete dataObject.customLinkClick;
     }
-    console.log('ctaClick dataObject - ', dataObject);
-    // scAnalyticsDataArray.push(dataObject);
-    // _satellite.track("ctaClick");
+
+    scAnalyticsDataArray.push(dataObject);
+    if (
+      Array.isArray(window.digitalData.products) &&
+      window.digitalData.products[0] &&
+      window.digitalData.products[0].productFields
+    ) {
+      delete window.digitalData.products[0].productFields;
+    }
   }
 
   /**
-   * Track "formStart_shortForm" actions in the page using EDDL approach.
+   * Represents a form start function for AA EDDL
+   * @function handelFormStartShortForm
+   * @param {object} data - Form data
+   * @description Track "formStart_shortForm" actions in the page using EDDL approach.
    */
   handelFormStartShortForm(data) {
     if (typeof window.adobeDataLayer !== 'undefined') {
       window.digitalData.form = {};
+      this.pageNameUpdate('formStart_shortForm');
       let dataObject = {
         ...digitalData,
         event: 'formStart_shortForm'
@@ -894,70 +1134,64 @@ class scInsuranceCampaign {
       window.digitalData.form.formType = data.formtype || 'na';
       window.digitalData.form.formPlatform = data.formplatform || 'na';
 
-      console.log('formStart_shortForm dataObject-', dataObject);
-      // scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formStart_shortForm");
+      scAnalyticsDataArray.push(dataObject);
     }
   }
 
   /**
-   * form submit event
+   * Represents a form submit function for AA EDDL
+   * @function handleInsuranceFormSubmit
+   * @param {object} formstatus - Form status
+   * @description Track "formSubmit_shortForm" actions in the page using EDDL approach.
    */
-  handleInsuranceFormSubmit(formname, ctaname, fields, formstatus) {
+  handleInsuranceFormSubmit(formstatus) {
     if (typeof window.adobeDataLayer == 'undefined') return;
 
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
-    //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== 'undefined') {
-      if (window.digitalData.products) {
-        window.digitalData.products.forEach((item, index) => {
-          window.digitalData.products[index].productFields = [];
-          fields.forEach(field => {
-            window.digitalData.products[index].productFields.push({
-              formFieldName: field.fieldName,
-              formFieldValue: field.fieldValue
-            });
-          });
-          window.digitalData.products[index].applicationReferenceNumber = formstatus.refno || 'na';
-          window.digitalData.products[index].applicationSubmissionStatus =
-            formstatus.status || 'na';
-        });
-      }
 
-      let dataObject = {
-        ...digitalData,
-        event: 'formSubmit_shortForm'
-      };
-      window.digitalData.form.popupName = formstatus.popupname;
-      console.log('formSubmit_shortForm dataObject-', dataObject);
-      // scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formSubmit_shortForm");
-    }
+    this.pageNameUpdate('formSubmit_shortForm');
+
+    let dataObject = {
+      ...JSON.parse(JSON.stringify(digitalData)),
+      event: 'formSubmit_shortForm'
+    };
+
+    dataObject.products[0].applicationReferenceNumber = formstatus.refno || 'na';
+    dataObject.products[0].applicationSubmissionStatus = formstatus.status || 'na';
+
+    scAnalyticsDataArray.push(dataObject);
   }
 
   /**
-   * Track Form Abandon
+   * Represents a form abandon function for AA EDDL
+   * @function handleFormAbandon
+   * @param {string} field - Form field name
+   * @description Track "formAbandon" actions in the page using EDDL approach.
    */
   handleFormAbandon(field) {
     if (typeof window.adobeDataLayer !== 'undefined') {
+      this.pageNameUpdate('formAbandon');
       let dataObject = {
-        ...digitalData,
+        ...JSON.parse(JSON.stringify(digitalData)),
         event: 'formAbandon'
       };
-      window.digitalData.form.formLastAccessedField = field || 'na';
-      console.log('formAbandon dataObject-', dataObject);
-      // scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formAbandon");
+      dataObject.form.formLastAccessedField = field || 'na';
+      scAnalyticsDataArray.push(dataObject);
+      delete window.digitalData.form;
     }
   }
 
   /**
-   * Track Form Abandon
+   * Represents a form error function for AA EDDL
+   * @function handleFormError
+   * @param {object} err - Form error object
+   * @description Track "formError" actions in the page using EDDL approach.
    */
   handleFormError(err) {
     if (typeof window.adobeDataLayer !== 'undefined') {
+      this.pageNameUpdate('formError');
       let error = [
         {
           errorCode: err.code || 'na',
@@ -972,42 +1206,7 @@ class scInsuranceCampaign {
       };
       window.digitalData.error = [];
       window.digitalData.error.push(...error);
-      console.log('formError dataObject-', dataObject);
-      // scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("formError");
-    }
-  }
-
-  /**
-   * Track Insurance Form Check actions in the page using EDDL approach.
-   */
-  handleInsuranceFormCheck(target, formname, fields) {
-    if (typeof window.adobeDataLayer == 'undefined') return;
-    if (!window.digitalData.form) {
-      window.digitalData.form = {};
-    }
-    //update adobeDataLayer with calculator submit event
-    if (typeof window.adobeDataLayer !== 'undefined') {
-      if (window.digitalData.products) {
-        window.digitalData.products.forEach((item, index) => {
-          window.digitalData.products[index].productFields = [];
-          fields.forEach(field => {
-            window.digitalData.products[index].productFields.push({
-              formFieldName: field.fieldName,
-              formFieldValue: field.fieldValue
-            });
-          });
-        });
-      }
-
-      let dataObject = {
-        ...digitalData,
-        event: 'ctaClick'
-      };
-
-      console.log('FormCheck dataObject-', dataObject);
-      // scAnalyticsDataArray.push(dataObject);
-      // _satellite.track("ctaClick");
+      scAnalyticsDataArray.push(dataObject);
     }
   }
 }

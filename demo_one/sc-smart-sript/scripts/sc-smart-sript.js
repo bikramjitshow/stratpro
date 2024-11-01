@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 class scInsuranceCampaign {
   constructor() {
-    // this.AnalyticsAdobeCommon = new AnalyticsAdobeCommon();
     this.ScCommonMethods = new ScCommonMethods();
   }
 
@@ -27,7 +26,6 @@ class scInsuranceCampaign {
     var custom_ss_ui = { paramKey: "af_ss_ui", defaultValue: "true" };
 
     document.addEventListener("DOMContentLoaded", function () {
-      console.log("result", that.result);
       const deeplinkBtns = that.secProductApply.querySelectorAll(
         ".sc-btn-deeplink-enabled"
       );
@@ -65,6 +63,7 @@ class scInsuranceCampaign {
           });
         });
       }
+      // that.radioHandeler();
     });
   }
 
@@ -77,6 +76,7 @@ class scInsuranceCampaign {
     if (radioBoxes.length) {
       radioBoxes.forEach((radioBox) => {
         radioBox.addEventListener("click", (event) => {
+          console.log(event)
           const closest = event.target.closest("a");
           const selectedId = closest.getAttribute("href");
           if (selectedId) {

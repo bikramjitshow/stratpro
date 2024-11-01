@@ -95,7 +95,7 @@ class scInsuranceCampaign {
         el.addEventListener("mousedown", function (event) {
           event.preventDefault();
           event.stopPropagation();
-          that.ctaClick(event);
+          // that.ctaClick(event);
           /** Get the target ID from the button's data attribute */
           var targetId = this.getAttribute("data-target");
           var target = document.getElementById(targetId);
