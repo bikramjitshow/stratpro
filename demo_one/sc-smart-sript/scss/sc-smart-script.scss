@@ -1,28 +1,6 @@
-@font-face {
-  font-family: SC Prosper Sans Variable;
-  font-style: normal;
-  font-display: swap;
-  src:
-    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.woff2) format("woff2"),
-    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.woff) format("woff"),
-    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.ttf) format("truetype");
-}
-
-* {
-  font-family: SC Prosper Sans Variable !important;
-}
-body,
-button,
-input,
-textarea,
-a,
-p {
-  font-family: SC Prosper Sans Variable !important;
-}
-
-.sc-apply-product {
+// Sc PDT Apply Product Smart Scipt
+.sc-pdt-apply-with-smart-script {
   background-color: white;
-  padding: 40px 0;
   &__top {
     display: flex;
     justify-content: right;
@@ -50,6 +28,9 @@ p {
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
   &__main-tile {
     font-size: 20px;
@@ -64,11 +45,16 @@ p {
     padding: 24px 16px;
   }
   &__bg {
-    object-position: left;
+    position: absolute;
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+  }
+  &__bg-img {
     position: absolute;
     height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: right;
   }
   &__content {
     padding: 24px 100px 24px 16px;
@@ -109,10 +95,11 @@ p {
   }
 }
 
+
 // media queries
 // min 681px
 @include breakpoint($bp--h-small-large) {
-  .sc-apply-product {
+  .sc-pdt-apply-with-smart-script {
     &__content {
       width: 40%;
       padding: 40px 100px 40px 16px;
@@ -127,6 +114,9 @@ p {
       max-width: 90%;
       flex-direction: row;
       align-items: center;
+    }
+    &__bg-img {
+      object-position: left;
     }
   }
 }

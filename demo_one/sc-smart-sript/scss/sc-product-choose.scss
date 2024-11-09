@@ -1,0 +1,100 @@
+// SC Product Choose
+.sc-product-choose {
+  padding: 32px 0;
+  &__title {
+    color: #191919;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  &__pdt-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 32px;
+    margin-bottom: 32px;
+  }
+  &__img {
+    max-width: 170px;
+  }
+  &__content-wrapper {
+    background: linear-gradient(143.01deg, #13a092 -3.64%, #13cb99 83.4%);
+    padding: 3px;
+  }
+  &__content {
+    padding: 32px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: #fff;
+  }
+  &__pdt-box {
+    padding: 16px;
+    background-color: #f3fcfa;
+    margin-bottom: 32px;
+    position: relative;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #191919;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .sc-radio-box {
+    max-width: 220px;
+    position: absolute;
+    top: -10px;
+    left: -35px;
+    &__input-label {
+      border-radius: 6px 16px;
+      background: radial-gradient(
+        160.26% 1130.34% at -36.81% -60.26%,
+        #d6ffc7 0%,
+        #c8e2ff 100%
+      );
+      border: none;
+    }
+  }
+  .sc-inline-buttons {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+// media queries
+// min 681px
+@include breakpoint($bp--h-small-large) {
+  .sc-product-choose {
+    padding: 40px 0;
+    &__title {
+      margin-bottom: 32px;
+    }
+    &__pdt-wrapper {
+      padding: 32px 0 0 0;
+    }
+    &__pdt-box {
+      margin: 0 32px;
+      width: calc(100% / 3 - 64px);
+    }
+    &__pdt-wrapper {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// min 1024px
+@include breakpoint($bp--h-desktop) {
+}
+
+// max 1023.9px
+@include breakpoint($bp--h-mobile) {
+}
