@@ -50,18 +50,7 @@ class ProductChoose {
               }
             }
             that.modalOpenAA();
-            setTimeout(() => {
-              const modal = document.querySelector(".c-modal.is-open");
-              const activeModal = modal?.querySelector(".m-text-content");
-              const activeModalId = activeModal?.getAttribute("data-modal-id");
-              const popupName =
-                activeModal?.getAttribute("data-popup-name") || "Default-Popup";
-              if (modal && activeModalId) {
-                console.log({ modal, activeModalId, popupName });
-                that.triggerPopupViewedTagging(popupName);
-                that.backBtnHandler(that.mainModalId);
-              }
-            }, 400);
+            that.backBtnHandler(that.mainModalId);
           }
         }
       }
@@ -144,23 +133,25 @@ class ProductChoose {
    */
   checkInitialRadio() {
     const that = this;
-    let checkedRadio =
-      document.querySelector(
-        ".c-modal .sc-product-choose .sc-radio-box__input:checked"
-      ) ||
-      document.querySelector(".sc-product-choose .sc-radio-box__input:checked");
+    // Select all forms with the specified class
+    const forms = document.querySelectorAll(".sc-product-choose");
 
-    // If none are checked, select the first radio button by default
-    if (!checkedRadio) {
-      checkedRadio = document.querySelector(that.radioSelector);
-      if (checkedRadio) {
-        checkedRadio.checked = true; // Set the first radio as checked
+    forms.forEach((form) => {
+      // Check if there's already a checked radio button within the current form
+      let checkedRadio = form.querySelector(".sc-radio-box__input:checked");
+
+      // If none are checked, select the first radio button by default
+      if (!checkedRadio) {
+        checkedRadio = form.querySelector(".sc-radio-box__input");
+        if (checkedRadio) {
+          checkedRadio.checked = true; // Set the first radio as checked
+        }
       }
-    }
 
-    if (checkedRadio) {
-      that.updateButtonAttributes(checkedRadio);
-    }
+      if (checkedRadio) {
+        that.updateButtonAttributes(checkedRadio);
+      }
+    });
   }
 
   /**
@@ -239,7 +230,6 @@ class ProductChoose {
       if (modal && activeModalId) {
         console.log({ modal, activeModalId, popupName });
         that.triggerPopupViewedTagging(popupName);
-        that.backBtnHandler(that.mainModalId);
       }
     }, 400);
   }
