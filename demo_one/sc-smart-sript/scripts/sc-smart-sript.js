@@ -141,7 +141,7 @@ class smartScript {
   updateLink(activeModal, result) {
     if (result && result.clickURL) {
       let oneLinkUrlelems = activeModal.querySelectorAll(
-        ".sc-pdt-apply-with-smart-script__onelink-url-href"
+        ".sc-pdt-apply-with-smart-script__onelink-btn"
       );
       if (oneLinkUrlelems.length) {
         oneLinkUrlelems.forEach((oneLinkUrlelem) => {
