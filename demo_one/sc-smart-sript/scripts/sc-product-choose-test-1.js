@@ -21,47 +21,97 @@ class ProductChoose {
           el.addEventListener("click", () => {
             modalOpen = true;
             that.mainModalId = el.getAttribute("data-modal-source");
+            console.log("that.mainModalId---", that.mainModalId);
           });
         });
       }
     }, 100);
 
-    that.ssPopup = false;
+    let hasProductChoose = false;
+    let ssPopup = false;
     //Handle modal close event
     document.body.addEventListener("click", function (event) {
       if (modalOpen) {
+        // modal off
+        // let ssPopup = false;
+        // setTimeout(() => {
+        //   ssPopup = Array.from(
+        //     document.querySelector(".m-text-content").children
+        //   ).some((child) =>
+        //     child.classList.contains("sc-pdt-apply-with-smart-script")
+        //   );
+        //   console.log({
+        //     ssPopup,
+        //   });
+        //   if (
+        //     event.target.className.indexOf("closebutton") !== -1 ||
+        //     event.target.className.indexOf("wrapper") !== -1
+        //   ) {
+        //     modalOpen = false;
+        //     console.log({
+        //       dd: "closemodal",
+        //       ssPopup,
+        //     });
+        //     if (ssPopup) {
+        //       console.log("that.mainModalId---", that.mainModalId);
+        //       that.applyProductModalClosed(that.mainModalId);
+        //     }
+        //   }
+        // }, 400);
+
+        // First check if `sc-product-choose` is present, then store its status
+        if(!hasProductChoose) {
+          hasProductChoose = Array.from(
+            document.querySelector(".m-text-content").children
+          ).some((child) => child.classList.contains("sc-product-choose"));
+        }
+        
+        // Delay the check for `sc-pdt-apply-with-smart-script`
+        setTimeout(() => {
+          // Only proceed to check for `sc-pdt-apply-with-smart-script` if `hasProductChoose` was true
+          console.log({ hasProductChoose });
+          console.log({ ssPopup });
+          if (hasProductChoose) {
+            if (
+              event.target.className.indexOf("closebutton") !== -1 ||
+              event.target.className.indexOf("wrapper") !== -1
+            ) {
+              ssPopup = Array.from(
+                document.querySelector(".m-text-content").children
+              ).some((child) =>
+                child.classList.contains("sc-pdt-apply-with-smart-script")
+              );
+              modalOpen = false;
+              console.log({ dd: "closemodal", ssPopup });
+
+              // Call `applyProductModalClosed` only if `ssPopup` is true
+              if (hasProductChoose && ssPopup) {
+                console.log("that.mainModalId---", that.mainModalId);
+                hasProductChoose = false;
+                that.applyProductModalClosed(that.mainModalId);
+              }
+            }
+          }
+        }, 400);
+
         // modal on
         let anchor = event.target.closest("a");
         if (anchor) {
           const selectedId = anchor.getAttribute("href");
+          const mdlSource = anchor.getAttribute("data-modal-source");
           if (selectedId) {
+            console.log({
+              mdlSource,
+              mainModalId: that.mainModalId,
+              anchor,
+            });
             that.checkInitialRadio();
-
+            // that.modalOpenAA();
             setTimeout(() => {
-              let modal = document.querySelector(".c-modal.is-open");
-              let activeModal = modal.querySelector(".m-text-content");
-              let activeModalId = activeModal.getAttribute("data-modal-id");
-              if (modal && activeModalId) {
-                console.log({ modal, activeModalId });
+              if (that.mainModalId !== mdlSource) {
                 that.backBtnHandler(that.mainModalId);
               }
             }, 400);
-          }
-        }
-
-        // modal off
-        if (
-          event.target.className.indexOf("closebutton") !== -1 ||
-          event.target.className.indexOf("wrapper") !== -1
-        ) {
-          that.ssPopup = Array.from(
-            document.querySelector(".m-text-content").children
-          ).some((child) =>
-            child.classList.contains("sc-pdt-apply-with-smart-script")
-          );
-          modalOpen = false;
-          if (that.ssPopup) {
-            that.applyProductModalClosed(that.mainModalId);
           }
         }
       }
@@ -90,7 +140,6 @@ class ProductChoose {
     const dataHref = radio.getAttribute("data-href");
 
     // Clear previous custom attributes
-    button.classList.remove("sc-btn-deeplink-enabled");
     button.removeAttribute("data-modal-source");
     button.removeAttribute("data-send");
     button.setAttribute("href", "#null");
@@ -99,7 +148,6 @@ class ProductChoose {
     if (dataHref) {
       button.setAttribute("href", dataHref);
     } else if (dataModalIdCode) {
-      button.classList.add("sc-btn-deeplink-enabled");
       button.setAttribute("data-modal-source", dataModalIdCode);
       button.setAttribute("data-send", "show-overlay");
     }
@@ -190,6 +238,7 @@ class ProductChoose {
    */
   backBtnHandler() {
     const that = this;
+    console.log("BACK CLICK");
     const backButtons = document.querySelectorAll(
       ".sc-pdt-apply-with-smart-script__back"
     );
@@ -197,7 +246,7 @@ class ProductChoose {
     if (backButtons.length) {
       backButtons.forEach((backButton) => {
         // Remove any existing event listeners before adding a new one
-        backButton.removeEventListener("mousedown", that.backHandler);
+        // backButton.removeEventListener("mousedown", that.backHandler);
 
         // Define the handler once and attach it
         that.backHandler = (event) => {
@@ -216,6 +265,7 @@ class ProductChoose {
    * Closes the current modal and opens the target modal.
    */
   applyProductModalClosed(modalid) {
+    console.log({ modalid });
     const that = this;
     setTimeout(function () {
       const modalId = document.querySelectorAll(
@@ -228,6 +278,22 @@ class ProductChoose {
       });
     }, 400);
   }
+
+  // modalOpenAA() {
+  //   const that = this;
+  //   setTimeout(() => {
+  //     const modal = document.querySelector(".c-modal.is-open");
+  //     const activeModal = modal?.querySelector(".m-text-content");
+  //     const activeModalId = activeModal?.getAttribute("data-modal-id");
+  //     const popupName =
+  //       activeModal?.getAttribute("data-popup-name") || "Default-Popup";
+
+  //     if (modal && activeModalId) {
+  //       console.log({ modal, activeModalId, popupName });
+  //       that.triggerPopupViewedTagging(popupName);
+  //     }
+  //   }, 400);
+  // }
 
   // AA
   /**
@@ -353,6 +419,27 @@ class ProductChoose {
       delete window.digitalData.products[0].productFields;
     }
   }
+
+  /**
+   * trigger adobe popupViewed event when showing popups _satellite.track('popupViewed');
+   */
+  // triggerPopupViewedTagging(popupName) {
+  //   setTimeout(() => {
+  //     let dataObject = {
+  //       ...digitalData,
+  //       form: {
+  //         formName: "",
+  //         formStepName: "",
+  //         formType: "",
+  //         formPlatform: "",
+  //       },
+  //     };
+  //     dataObject.form.popupName = popupName;
+  //     dataObject.event = "popupViewed";
+  //     console.log("popupviewed--", { dataObject });
+  //     scAnalyticsDataArray.push(dataObject);
+  //   }, 500);
+  // }
 
   /**
    * trigger adobe ctaClick event Digitaldata during click action

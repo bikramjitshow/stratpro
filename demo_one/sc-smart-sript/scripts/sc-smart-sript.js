@@ -47,7 +47,7 @@ class SmartScript {
           const activeModal = modal.querySelector(".m-text-content");
           const activeModalId = activeModal?.getAttribute("data-modal-id");
           if (activeModal && activeModalId) {
-            console.log(activeModalId);
+            // console.log(activeModalId);
             setTimeout(() => {
               const activeModalEle = activeModal.querySelector(
                 ".sc-pdt-apply-with-smart-script"
@@ -84,7 +84,7 @@ class SmartScript {
       this.deepLink = modalApplyProduct.getAttribute("data-deep-link");
 
       const result = this.generateOneLinkURL(this.oneLink, this.deepLink);
-      console.log(result)
+      // console.log(result)
       if (result) {
         this.generateQr(modalApplyProduct, result);
         this.updateLink(modalApplyProduct, result);
@@ -124,7 +124,7 @@ class SmartScript {
       if (qrDiv) {
         qrDiv.querySelectorAll("canvas").forEach((canvas) => canvas.remove()); // Remove existing QR canvases
         const qrId = qrDiv.getAttribute("id").trim();
-        console.log(`Generating QR for ID: ${qrId}`);
+        // console.log(`Generating QR for ID: ${qrId}`);
         window.AF_SMART_SCRIPT.displayQrCode(qrId);
       }
     } else {
