@@ -10,7 +10,6 @@ class ProductChoose {
     that.buttonSelector =
       ".sc-product-choose .sc-btn, .c-modal .sc-product-choose .sc-btn";
     that.radioSelector = ".sc-product-choose .sc-radio-box__input";
-    that.mdlradioSelector = ".c-modal .sc-product-choose .sc-radio-box__input";
 
     //Handle popup open
     that.mainModalId = "";
@@ -33,24 +32,37 @@ class ProductChoose {
         let anchor = event.target.closest("a");
         if (anchor) {
           const selectedId = anchor.getAttribute("href");
+          const mdlSource = anchor.getAttribute("data-modal-source");
           if (selectedId) {
-            let ssPopup = Array.from(
-              document.querySelector(".m-text-content").children
-            ).some((child) =>
-              child.classList.contains("sc-pdt-apply-with-smart-script")
-            );
-            that.checkInitialRadio();
-            if (
-              event.target.className.indexOf("closebutton") !== -1 ||
-              event.target.className.indexOf("wrapper") !== -1
-            ) {
-              modalOpen = false;
-              if (ssPopup) {
-                that.applyProductModalClosed(that.mainModalId);
+            setTimeout(() => {
+              let ssPopup = Array.from(
+                document.querySelector(".c-modal .m-text-content").children
+              ).some((child) =>
+                child.classList.contains("sc-pdt-apply-with-smart-script")
+              );
+              console.log({
+                ssPopup,
+                mdlSource,
+                mainModalId: that.mainModalId,
+                anchor,
+                event: event.target
+              });
+              that.checkInitialRadio();
+              if (
+                event.target.className.indexOf("closebutton") !== -1 ||
+                event.target.className.indexOf("wrapper") !== -1
+              ) {
+                modalOpen = false;
+                console.log({
+                  ssPopup
+                });
+                if (ssPopup) {
+                  that.applyProductModalClosed(that.mainModalId);
+                }
               }
-            }
-            that.modalOpenAA();
-            that.backBtnHandler(that.mainModalId);
+              that.modalOpenAA();
+              that.backBtnHandler(that.mainModalId);
+            }, 400);
           }
         }
       }
@@ -79,7 +91,6 @@ class ProductChoose {
     const dataHref = radio.getAttribute("data-href");
 
     // Clear previous custom attributes
-    button.classList.remove("sc-btn-deeplink-enabled");
     button.removeAttribute("data-modal-source");
     button.removeAttribute("data-send");
     button.setAttribute("href", "#null");
@@ -88,7 +99,6 @@ class ProductChoose {
     if (dataHref) {
       button.setAttribute("href", dataHref);
     } else if (dataModalIdCode) {
-      button.classList.add("sc-btn-deeplink-enabled");
       button.setAttribute("data-modal-source", dataModalIdCode);
       button.setAttribute("data-send", "show-overlay");
     }
@@ -205,6 +215,7 @@ class ProductChoose {
    * Closes the current modal and opens the target modal.
    */
   applyProductModalClosed(modalid) {
+    console.log({ modalid });
     const that = this;
     setTimeout(function () {
       const modalId = document.querySelectorAll(
