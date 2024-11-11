@@ -1,4 +1,5 @@
 /* global digitalData, scAnalyticsDataArray, _satellite, noUiSlider */
+
 const scCommonConstants = {
   DEVELOPMENT: 'development',
   PREVIEW: 'preview',

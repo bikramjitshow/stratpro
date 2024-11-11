@@ -1,9 +1,10 @@
-// SC Product Choose
+@import "./sc-radio-box.scss";
+
 .sc-product-choose {
   padding: 32px 0;
   &__title {
     color: #191919;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
     text-align: center;
     margin-bottom: 40px;
@@ -17,10 +18,12 @@
   }
   &__img {
     max-width: 170px;
+    width: 100%;
   }
   &__content-wrapper {
     background: linear-gradient(143.01deg, #13a092 -3.64%, #13cb99 83.4%);
     padding: 3px;
+    height: 100%;
   }
   &__content {
     padding: 32px 12px;
@@ -68,7 +71,6 @@
   }
 }
 
-
 // media queries
 // min 681px
 @include breakpoint($bp--h-small-large) {
@@ -78,11 +80,12 @@
       margin-bottom: 32px;
     }
     &__pdt-wrapper {
-      padding: 32px 0 0 0;
+      padding: 16px 0 0 0;
     }
     &__pdt-box {
       margin: 0 32px;
-      width: calc(100% / 3 - 64px);
+      max-width: calc(33.33% - 64px);
+      width: 100%;
     }
     &__pdt-wrapper {
       flex-direction: row;
