@@ -1,6 +1,6 @@
 /* global digitalData, scAnalyticsDataArray, _satellite, noUiSlider */
 
-class ScCommonMethods {
+class ScCommonMethodsz {
   // Define constants within the class
   static scCommonConstants = {
     DEVELOPMENT: "development",
@@ -49,7 +49,7 @@ class ScCommonMethods {
    * @example
    * ScCommonMethods.getCtaType('sc-btn')
    */
-  static getCtaType(className, target) {
+  getCtaType(className, target) {
     if (target?.closest("header")) return "nav-link";
     if (target?.closest(".sc-banner__content")) return "masthead-button";
     if (target?.closest(".sc-banner-slider__thumbnail")) return "button";
@@ -75,7 +75,7 @@ class ScCommonMethods {
   /**
    * Track customer interaction for CTA Click.
    */
-  static handleAnalyticsCTA(ev, targetClass = "", ctaObj = {}) {
+  handleAnalyticsCTA(ev, targetClass = "", ctaObj = {}) {
     const closest = targetClass ? targetClass : ev.target.closest("a");
     let customLinkText =
       closest?.getAttribute("title") ||
@@ -129,7 +129,7 @@ class ScCommonMethods {
    * @example
    * ScCommonMethods.calcElementLocation(event)
    */
-  static calcElementLocation(target) {
+  calcElementLocation(target) {
     if (!target) return "";
     if (target.closest(".sc-modal")) return "lightbox";
 
@@ -158,7 +158,7 @@ class ScCommonMethods {
    * @example
    * ScCommonMethods.getHorizontalPosition(1000)
    */
-  static getHorizontalPosition(xClick) {
+  getHorizontalPosition(xClick) {
     const width = Math.max(
       document.body.scrollWidth,
       document.documentElement.scrollWidth,
@@ -174,11 +174,11 @@ class ScCommonMethods {
    * @param {string} text - The text to trim.
    * @returns {string} The trimmed text.
    */
-  static trim(text) {
+  trim(text) {
     return text ? text.trim() : text;
   }
 
   // Other methods and logic can go here
 }
 
-const instanceN = new ScCommonMethods();
+const instanceN = new ScCommonMethodsz();

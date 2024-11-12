@@ -36,7 +36,6 @@ class ProductChoose {
           const selectedId = anchor.getAttribute("href");
           if (selectedId) {
             that.checkInitialRadio();
-
             setTimeout(() => {
               let modal = document.querySelector(".c-modal.is-open");
               let activeModal = modal.querySelector(".m-text-content");
@@ -86,11 +85,10 @@ class ProductChoose {
     if (!button) return;
 
     // Get the data attributes from the radio input
-    const dataModalIdCode = radio.getAttribute("data-modal-id-code");
+    const dataModalIdCode = radio.getAttribute("data-popup-id");
     const dataHref = radio.getAttribute("data-href");
 
     // Clear previous custom attributes
-    button.classList.remove("sc-btn-deeplink-enabled");
     button.removeAttribute("data-modal-source");
     button.removeAttribute("data-send");
     button.setAttribute("href", "#null");
@@ -99,7 +97,6 @@ class ProductChoose {
     if (dataHref) {
       button.setAttribute("href", dataHref);
     } else if (dataModalIdCode) {
-      button.classList.add("sc-btn-deeplink-enabled");
       button.setAttribute("data-modal-source", dataModalIdCode);
       button.setAttribute("data-send", "show-overlay");
     }
@@ -227,173 +224,6 @@ class ProductChoose {
         }
       });
     }, 400);
-  }
-
-  // AA
-  /**
-   * capture horizontal click position and return it's left or right
-   * @param {Number} xClick horizontal click position
-   * @return {String} return it's left or right
-   * @example
-   * getHorizontalPosition(1000)
-   */
-  getHorizontalPosition(xClick) {
-    let width = Math.max(
-      document.body.scrollWidth,
-      document.documentElement.scrollWidth,
-      document.body.offsetWidth,
-      document.documentElement.offsetWidth,
-      document.documentElement.clientWidth
-    );
-    let median = width / 2;
-    return xClick < median ? "left" : "right";
-  }
-
-  /**
-   * check class name and return link type
-   * @param {String} className class name of the clicked element
-   * @return {String} return link type like link, button, carousel etc
-   * @example
-   * getCtaType('sc-btn')
-   */
-  getCtaType(className, target) {
-    if (target && target.closest(".sc-nav")) {
-      return "nav-link";
-    } else if (
-      className == "" ||
-      typeof className !== "string" ||
-      typeof className.includes === "undefined"
-    ) {
-      return "link";
-    } else if (
-      className.indexOf("sc-btn") !== -1 ||
-      className.indexOf("c-button") !== -1
-    ) {
-      return "button";
-    } else if (
-      className.indexOf("sc-bnr__link") !== -1 ||
-      className.indexOf("slide-anchor-bg") !== -1
-    ) {
-      return "banner";
-    } else if (className.indexOf("sc-carousel__pintiles-item") !== -1) {
-      return "carousel";
-    } else if (className.indexOf("sc-quick-links__link") !== -1) {
-      return "quick-links";
-    } else if (className.indexOf("sc-tag") !== -1) {
-      return "tabs";
-    } else {
-      return "link";
-    }
-  }
-
-  /**
-   * Represents a function to generate page name for AA EDDL
-   * @function ctaClick
-   * @param {event} event
-   */
-  ctaClick(event) {
-    const that = this;
-    let closestAnchor = event.target.closest("a");
-    let customLinkText = event.target.innerText
-      ? event.target.innerText.trim().toLowerCase()
-      : event.target.textContent.trim().toLowerCase();
-    let ctaType = closestAnchor
-      ? that.getCtaType(closestAnchor.className, event.target)
-      : "link";
-    let linkName =
-      document.querySelector("title") &&
-      document.querySelector("title").innerText
-        ? document.querySelector("title").innerText.toLowerCase()
-        : "na";
-    let ctaName = event.target.getAttribute("title");
-
-    // Check if the event target is a radio button
-    if (event.target.type === "radio" && event.target.checked) {
-      const radioLabel = document.querySelector(
-        `label[for="${event.target.id}"]`
-      );
-      customLinkText = radioLabel
-        ? radioLabel.innerText.trim().toLowerCase()
-        : customLinkText;
-      ctaName = customLinkText;
-      ctaType = "radio input";
-    }
-
-    let dataObject = {
-      ...JSON.parse(JSON.stringify(digitalData)),
-      customLinkClick: {
-        customLinkText: customLinkText,
-        customLinkRegion:
-          that.getHorizontalPosition(event.clientX) +
-          " " +
-          Utils.calcElementLocation(event.target),
-        customLinkType: ctaType,
-        customLinkName: linkName,
-      },
-      event: "ctaClick",
-      title: document.title,
-      href: window.location.href,
-      context: customLinkText,
-    };
-    dataObject.ctaName = ctaName || customLinkText;
-    dataObject.ctaPosition = Utils.calcElementLocation(event.target);
-    dataObject.ctaType = ctaType;
-
-    if (Utils.getCurrentCountry() == "hk") {
-      delete dataObject.customLinkClick;
-    }
-
-    console.log({ dataObject });
-    scAnalyticsDataArray.push(dataObject);
-    if (
-      Array.isArray(window.digitalData.products) &&
-      window.digitalData.products[0] &&
-      window.digitalData.products[0].productFields
-    ) {
-      delete window.digitalData.products[0].productFields;
-    }
-  }
-
-  /**
-   * trigger adobe ctaClick event Digitaldata during click action
-   */
-  triggerCtaClickTagging(event) {
-    const that = this;
-    let ctaType;
-    let customLinkText;
-
-    if (event.target.type === "radio" && event.target.checked) {
-      // Get label text associated with the radio button
-      const radioLabel = document.querySelector(
-        `label[for="${event.target.id}"]`
-      );
-      customLinkText = radioLabel
-        ? radioLabel.innerText.trim().toLowerCase()
-        : "radio button";
-      ctaType = "radio input";
-    } else {
-      // Default ctaType and customLinkText for non-radio elements
-      ctaType = event.target.type === "button" ? event.target.type : "link";
-      customLinkText = event.target.getAttribute("title")
-        ? event.target.getAttribute("title")
-        : event.target instanceof SVGElement ||
-          event.target.getElementsByTagName("svg").length ||
-          event.target.classList.contains("closebutton")
-        ? "Close"
-        : event.target.innerText
-        ? event.target.innerText.trim().toLowerCase()
-        : event.target.textContent.trim().toLowerCase();
-    }
-
-    digitalData.event = "ctaClick";
-    digitalData.ctaName = customLinkText;
-    digitalData.ctaType = ctaType;
-    digitalData.ctaPosition =
-      that.getHorizontalPosition(event.clientX) +
-      " " +
-      Utils.calcElementLocation(event.target);
-    console.log({ digitalData });
-    _satellite.track("callToAction");
   }
 }
 

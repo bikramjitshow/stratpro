@@ -136,7 +136,7 @@ class ProductChoose {
     if (!button) return;
 
     // Get the data attributes from the radio input
-    const dataModalIdCode = radio.getAttribute("data-modal-id-code");
+    const dataModalIdCode = radio.getAttribute("data-popup-id");
     const dataHref = radio.getAttribute("data-href");
 
     // Clear previous custom attributes
