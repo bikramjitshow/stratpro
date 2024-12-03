@@ -1,10 +1,14 @@
 /* eslint-disable no-undef */
+// import Highcharts from 'highcharts';
+// import ScCommonMethods from '../../../assets/js/commons/sc-common-methods';
+// import '../../../../src/assets/js/analytics/adobe/eddl/analytics-event-handler.js';
+// import { handleAnalyticsCTA } from '../scripts/sc-common-methods-nitro.js';
+
+/** Class representing a scInsuranceCampaign. */
 class scInsuranceCampaign {
   constructor() {
-    // this.AnalyticsAdobeCommon = new AnalyticsAdobeCommon();
-    this.ScCommonMethods = new ScCommonMethods();
-    let lastAccessedField = null;
-    let isModalActive = false;
+    this.lastAccessedField = null;
+    this.isModalActive = false;
     this.handleMousedown = this.handleMousedown.bind(this);
   }
 
@@ -15,24 +19,25 @@ class scInsuranceCampaign {
    */
   init() {
     const that = this;
-    that.campaign = document.querySelector(".sc-li-campaign");
-    document.addEventListener("DOMContentLoaded", function () {
+    that.campaign = document.querySelector('.sc-li-campaign');
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log(handleAnalyticsCTA);
       /** event Click for scBtns */
-      const scBtns = that.campaign.querySelectorAll(".sc-btn");
-      scBtns.forEach((el) => {
-        el.addEventListener("mousedown", (event) => {
+      const scBtns = that.campaign.querySelectorAll('.sc-btn');
+      scBtns.forEach(el => {
+        el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
-          that.ctaClick(event);
+          // that.ctaClick(event);
+          handleAnalyticsCTA(event);
+          
         });
       });
 
       /** event Click for view product brochure */
-      const learnMore = that.campaign.querySelectorAll(
-        ".sc-li-campaign__policy-type-learn-more"
-      );
-      learnMore.forEach((el) => {
-        el.addEventListener("mousedown", (event) => {
+      const learnMore = that.campaign.querySelectorAll('.sc-li-campaign__policy-type-learn-more');
+      learnMore.forEach(el => {
+        el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
           that.ctaClick(event);
@@ -41,10 +46,10 @@ class scInsuranceCampaign {
 
       /** event Click for Tab */
       const stepItems = that.campaign.querySelectorAll(
-        ".sc-li-campaign__policy-type-filter-step-item"
+        '.sc-li-campaign__policy-type-filter-step-item'
       );
-      stepItems.forEach((el) => {
-        el.addEventListener("mousedown", (event) => {
+      stepItems.forEach(el => {
+        el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
           that.ctaClick(event);
@@ -52,11 +57,9 @@ class scInsuranceCampaign {
       });
 
       /** event Click for woBnrLinkItems */
-      const woBnrLinkItems = that.campaign.querySelectorAll(
-        ".sc-li-campaign__wo-bnr-link"
-      );
-      woBnrLinkItems.forEach((el) => {
-        el.addEventListener("mousedown", (event) => {
+      const woBnrLinkItems = that.campaign.querySelectorAll('.sc-li-campaign__wo-bnr-link');
+      woBnrLinkItems.forEach(el => {
+        el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
           that.ctaClick(event);
@@ -64,11 +67,9 @@ class scInsuranceCampaign {
       });
 
       /** event Click for Open modal */
-      const opemmodalbtns = that.campaign.querySelectorAll(
-        ".sc-li-campaign__active-modal-btn"
-      );
-      opemmodalbtns.forEach((el) => {
-        el.addEventListener("mousedown", (event) => {
+      const opemmodalbtns = that.campaign.querySelectorAll('.sc-li-campaign__active-modal-btn');
+      opemmodalbtns.forEach(el => {
+        el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
           that.activeModal(event);
@@ -76,8 +77,8 @@ class scInsuranceCampaign {
       });
 
       /** event Click for alert-close */
-      const alertclose = document.querySelector(".sc-error-modal__alert-close");
-      alertclose.addEventListener("mousedown", (event) => {
+      const alertclose = document.querySelector('.sc-error-modal__alert-close');
+      alertclose.addEventListener('mousedown', event => {
         event.preventDefault();
         event.stopPropagation();
         that.ctaClick(event);
@@ -88,27 +89,22 @@ class scInsuranceCampaign {
       });
 
       /** event Click for learnmore button */
-      const learnMoreBtn = that.campaign.querySelectorAll(
-        ".sc-li-campaign__learn-more-btn"
-      );
-      learnMoreBtn.forEach((el) => {
-        el.addEventListener("mousedown", function (event) {
+      const learnMoreBtn = that.campaign.querySelectorAll('.sc-li-campaign__learn-more-btn');
+      learnMoreBtn.forEach(el => {
+        el.addEventListener('mousedown', function(event) {
           event.preventDefault();
           event.stopPropagation();
-          // that.ctaClick(event);
           /** Get the target ID from the button's data attribute */
-          var targetId = this.getAttribute("data-target");
+          var targetId = this.getAttribute('data-target');
           var target = document.getElementById(targetId);
           if (target) {
             /** Scroll to the target element with smooth behavior */
-            target.scrollIntoView({ behavior: "smooth" });
+            target.scrollIntoView({ behavior: 'smooth' });
           }
         });
       });
 
-      let firstpersonaBtn = that.campaign.querySelector(
-        ".sc-li-campaign__persona-btn"
-      );
+      let firstpersonaBtn = that.campaign.querySelector('.sc-li-campaign__persona-btn');
       let personaitem = firstpersonaBtn.dataset.persona;
       that.pageNameInit();
       that.paramCheck();
@@ -128,13 +124,11 @@ class scInsuranceCampaign {
   paramCheck() {
     let that = this;
     let queryString = Utils.getPageContext().queryString;
-    const persona = that.ScCommonMethods.getQueryParam(
+    const persona = ScCommonMethods.getQueryParam(
       queryString,
-      document.querySelector(".sc-li-campaign").getAttribute("data-query-param")
+      document.querySelector('.sc-li-campaign').getAttribute('data-query-param')
     );
-    const firstpersonaBtn = document.querySelector(
-      ".sc-li-campaign__persona-btn"
-    );
+    const firstpersonaBtn = document.querySelector('.sc-li-campaign__persona-btn');
     let personaitem = firstpersonaBtn.dataset.persona;
     if (persona) {
       that.tiggerPersona(persona);
@@ -149,12 +143,8 @@ class scInsuranceCampaign {
    * @description It will check the URL parameter, if there has "#null" then it will removed
    */
   removeNullHashFromURL() {
-    if (window.location.hash === "#null") {
-      history.replaceState(
-        "",
-        document.title,
-        window.location.pathname + window.location.search
-      );
+    if (window.location.hash === '#null') {
+      history.replaceState('', document.title, window.location.pathname + window.location.search);
     }
   }
 
@@ -182,10 +172,10 @@ class scInsuranceCampaign {
     }
 
     /** Construct the new URL with the updated parameters */
-    var newUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
+    var newUrl = currentUrl.split('?')[0] + '?' + urlParams.toString();
 
     /** Push the new URL to the browser history without reloading the page */
-    window.history.pushState({ path: newUrl }, "", newUrl);
+    window.history.pushState({ path: newUrl }, '', newUrl);
     setTimeout(() => {
       this.removeNullHashFromURL();
     }, 10);
@@ -198,11 +188,9 @@ class scInsuranceCampaign {
    */
   tiggerPersona(persona) {
     const that = this;
-    that.campaign = document.querySelector(".sc-li-campaign");
-    const personaBtns = that.campaign.querySelectorAll(
-      ".sc-li-campaign__persona-btn"
-    );
-    const queryparam = that.campaign.getAttribute("data-query-param");
+    that.campaign = document.querySelector('.sc-li-campaign');
+    const personaBtns = that.campaign.querySelectorAll('.sc-li-campaign__persona-btn');
+    const queryparam = that.campaign.getAttribute('data-query-param');
 
     /**
      * Function to handle click event
@@ -212,12 +200,12 @@ class scInsuranceCampaign {
     const handleClick = (btn, index) => {
       let personaitem = btn.dataset.persona;
       /** Remove active class from all persona buttons */
-      personaBtns.forEach((btn) => {
-        btn.classList.remove("sc-li-campaign__persona-btn-active");
+      personaBtns.forEach(btn => {
+        btn.classList.remove('sc-li-campaign__persona-btn-active');
       });
 
       /** Add active class to the clicked button */
-      btn.classList.add("sc-li-campaign__persona-btn-active");
+      btn.classList.add('sc-li-campaign__persona-btn-active');
       that.addUrlParam(queryparam, personaitem);
       that.activeBanner(personaitem);
       that.activeContentBox(personaitem);
@@ -227,7 +215,7 @@ class scInsuranceCampaign {
 
     /** Add click event listener to each persona button */
     personaBtns.forEach((btn, index) => {
-      btn.addEventListener("mousedown", (event) => {
+      btn.addEventListener('mousedown', event => {
         event.preventDefault();
         event.stopPropagation();
         handleClick(btn, index);
@@ -238,7 +226,7 @@ class scInsuranceCampaign {
     /** Trigger click event with specified persona value */
     if (persona) {
       const personaIndex = Array.from(personaBtns).findIndex(
-        (btn) => btn.dataset.persona === persona
+        btn => btn.dataset.persona === persona
       );
       if (personaIndex !== -1) {
         handleClick(personaBtns[personaIndex], personaIndex);
@@ -254,31 +242,26 @@ class scInsuranceCampaign {
   tiggerContentFilter(personaitem) {
     let filteritemparent, parentitem, isHide;
     let isFirstFilterActivated = false;
-    let filters = document.querySelectorAll(
-      ".sc-li-campaign__policy-type-filter-step-item"
-    );
+    let filters = document.querySelectorAll('.sc-li-campaign__policy-type-filter-step-item');
     if (filters.length) {
-      filters.forEach((filter) => {
-        parentitem = filter.closest(".sc-li-campaign__content-box-item");
+      filters.forEach(filter => {
+        parentitem = filter.closest('.sc-li-campaign__content-box-item');
         filteritemparent = parentitem.dataset.content;
-        isHide = parentitem.classList.contains("hide");
+        isHide = parentitem.classList.contains('hide');
         let firstTitle = filters[0].dataset.filterItem;
         let title = filter.dataset.filterItem;
         if (personaitem === filteritemparent && !isHide) {
           if (!isFirstFilterActivated) {
-            filter.classList.add(
-              "sc-li-campaign__policy-type-filter-step-item--active"
-            );
+            filter.classList.add('sc-li-campaign__policy-type-filter-step-item--active');
             this.activeFilterContent(firstTitle);
           } else {
-            filter.classList.remove(
-              "sc-li-campaign__policy-type-filter-step-item--active"
-            );
+            filter.classList.remove('sc-li-campaign__policy-type-filter-step-item--active');
           }
           isFirstFilterActivated = true;
-          filter.addEventListener("mousedown", (event) => {
+          filter.addEventListener('mousedown', event => {
             event.preventDefault();
             event.stopPropagation();
+            this.removeNullHashFromURL();
             this.activeFilter(event);
             this.activeFilterContent(title);
           });
@@ -293,17 +276,11 @@ class scInsuranceCampaign {
    * @param {event} e
    */
   activeFilter(e) {
-    const targetelem = document.querySelectorAll(
-      ".sc-li-campaign__policy-type-filter-step-item"
-    );
-    targetelem.forEach((el) => {
-      el.classList.remove(
-        "sc-li-campaign__policy-type-filter-step-item--active"
-      );
+    const targetelem = document.querySelectorAll('.sc-li-campaign__policy-type-filter-step-item');
+    targetelem.forEach(el => {
+      el.classList.remove('sc-li-campaign__policy-type-filter-step-item--active');
     });
-    e.target.classList.add(
-      "sc-li-campaign__policy-type-filter-step-item--active"
-    );
+    e.target.classList.add('sc-li-campaign__policy-type-filter-step-item--active');
   }
 
   /**
@@ -313,19 +290,15 @@ class scInsuranceCampaign {
    */
   activeFilterContent(activeTitle) {
     let filterContents = document.querySelectorAll(
-      ".sc-li-campaign__policy-type-filter-panels-content"
+      '.sc-li-campaign__policy-type-filter-panels-content'
     );
     if (filterContents.length) {
-      filterContents.forEach((content) => {
+      filterContents.forEach(content => {
         let datafilter = content.dataset.filterSelect;
         if (activeTitle === datafilter) {
-          content.classList.add(
-            "sc-li-campaign__policy-type-filter-panels-content--active"
-          );
+          content.classList.add('sc-li-campaign__policy-type-filter-panels-content--active');
         } else {
-          content.classList.remove(
-            "sc-li-campaign__policy-type-filter-panels-content--active"
-          );
+          content.classList.remove('sc-li-campaign__policy-type-filter-panels-content--active');
         }
       });
     }
@@ -337,14 +310,14 @@ class scInsuranceCampaign {
    * @param {string} activePersona
    */
   activeBanner(activePersona) {
-    let banneritems = document.querySelectorAll(".sc-li-campaign__banner");
+    let banneritems = document.querySelectorAll('.sc-li-campaign__banner');
     if (banneritems.length) {
-      banneritems.forEach((banneritem) => {
+      banneritems.forEach(banneritem => {
         let datafilter = banneritem.dataset.banner;
         if (activePersona === datafilter) {
-          banneritem.classList.remove("hide");
+          banneritem.classList.remove('hide');
         } else {
-          banneritem.classList.add("hide");
+          banneritem.classList.add('hide');
         }
       });
     }
@@ -356,16 +329,14 @@ class scInsuranceCampaign {
    * @param {*} activePersona
    */
   activeContentBox(activePersona) {
-    let contentboxs = document.querySelectorAll(
-      ".sc-li-campaign__content-box-item"
-    );
+    let contentboxs = document.querySelectorAll('.sc-li-campaign__content-box-item');
     if (contentboxs.length) {
-      contentboxs.forEach((contentbox) => {
+      contentboxs.forEach(contentbox => {
         let datafilter = contentbox.dataset.content;
         if (activePersona === datafilter) {
-          contentbox.classList.remove("hide");
+          contentbox.classList.remove('hide');
         } else {
-          contentbox.classList.add("hide");
+          contentbox.classList.add('hide');
         }
       });
     }
@@ -376,19 +347,15 @@ class scInsuranceCampaign {
    * @function createTitle
    */
   createTitle() {
-    let cards = document.querySelectorAll(
-      ".sc-li-campaign__policy-type-card-box"
-    );
-    cards.forEach((item) => {
-      let title = item.querySelector(".sc-li-campaign__policy-type-title");
-      let campBtn = item.querySelector(".sc-li-campaign__active-modal-btn");
-      let learnBtn = item.querySelector(
-        ".sc-li-campaign__policy-type-learn-more"
-      );
+    let cards = document.querySelectorAll('.sc-li-campaign__policy-type-card-box');
+    cards.forEach(item => {
+      let title = item.querySelector('.sc-li-campaign__policy-type-title');
+      let campBtn = item.querySelector('.sc-li-campaign__active-modal-btn');
+      let learnBtn = item.querySelector('.sc-li-campaign__policy-type-learn-more');
       let campBtnTitle = `${campBtn.children[0].innerText.trim()} - ${title.innerText.trim()}`;
       let learnBtnTitle = `${learnBtn.innerText.trim()} - ${title.innerText.trim()}`;
-      campBtn.setAttribute("title", campBtnTitle);
-      learnBtn.setAttribute("title", learnBtnTitle);
+      campBtn.setAttribute('title', campBtnTitle);
+      learnBtn.setAttribute('title', learnBtnTitle);
     });
   }
 
@@ -400,9 +367,9 @@ class scInsuranceCampaign {
    */
   generateChart(id, personaitem) {
     let ghdata, seriesName;
-    const gh = document.querySelectorAll(".sc-li-campaign__graph");
+    const gh = document.querySelectorAll('.sc-li-campaign__graph');
     if (gh.length) {
-      gh.forEach((item) => {
+      gh.forEach(item => {
         let pgh = item.parentNode.dataset.content;
         if (personaitem === pgh) {
           seriesName = item.dataset.seriesName;
@@ -414,83 +381,83 @@ class scInsuranceCampaign {
       Highcharts.chart(`persona_graph_${id}`, {
         chart: {
           height: 200,
-          type: "pie",
-          backgroundColor: null,
+          type: 'pie',
+          backgroundColor: null
         },
         title: {
-          text: "",
+          text: ''
         },
         tooltip: {
-          format: "{series.name}<br>{key}: <b>{point.y}%</b>",
-          shared: true,
+          format: '{series.name}<br>{key}: <b>{point.y}%</b>',
+          shared: true
         },
         accessibility: {
           point: {
-            valueSuffix: "%",
-          },
+            valueSuffix: '%'
+          }
         },
         plotOptions: {
           pie: {
             allowPointSelect: true,
-            cursor: "pointer",
+            cursor: 'pointer',
             borderWidth: 4,
             dataLabels: {
-              enabled: false,
+              enabled: false
             },
             showInLegend: true,
             point: {
               events: {
-                legendItemClick: function () {
+                legendItemClick: function() {
                   return false;
-                },
-              },
-            },
-          },
+                }
+              }
+            }
+          }
         },
         legend: {
-          className: "sc-li-campaign__graph-legend",
-          layout: "vertical",
-          align: "right",
-          verticalAlign: "middle",
-          labelFormat: "{name}: <b>{y}%</b>",
+          className: 'sc-li-campaign__graph-legend',
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle',
+          labelFormat: '{name}: <b>{y}%</b>',
           symbolHeight: 14,
           symbolWidth: 14,
           symbolRadius: 2,
-          width: "50%",
+          width: '50%',
           itemStyle: {
-            fontSize: "12px",
-            fontWeight: "400",
-          },
+            fontSize: '12px',
+            fontWeight: '400'
+          }
         },
         series: [
           {
-            name: seriesName?.toString() ?? "series",
+            name: seriesName?.toString() ?? 'series',
             colorByPoint: true,
             data: [
               {
-                name: ghdata?.d1?.title?.toString() ?? "data 1",
+                name: ghdata?.d1?.title?.toString() ?? 'data 1',
                 y: ghdata?.d1?.value ?? 0,
-                color: "#00BCD3",
+                color: '#00BCD3'
               },
               {
-                name: ghdata?.d2?.title?.toString() ?? "data 2",
+                name: ghdata?.d2?.title?.toString() ?? 'data 2',
                 y: ghdata?.d2?.value ?? 0,
-                color: "#2772C7",
+                color: '#2772C7'
               },
               {
-                name: ghdata?.d3?.title?.toString() ?? "data 3",
+                name: ghdata?.d3?.title?.toString() ?? 'data 3',
                 y: ghdata?.d3?.value ?? 0,
-                color: "#00A9F3",
+                color: '#00A9F3'
               },
               {
-                name: ghdata?.d4?.title?.toString() ?? "data 4",
+                name: ghdata?.d4?.title?.toString() ?? 'data 4',
                 y: ghdata?.d4?.value ?? 0,
-                color: "#AE6BFC",
-              },
-            ],
-          },
+                color: '#AE6BFC'
+              }
+            ]
+          }
         ],
-        exporting: false,
+        exporting: false
       });
     }
   }
@@ -503,8 +470,8 @@ class scInsuranceCampaign {
     event.preventDefault();
     event.stopPropagation();
     if (
-      event.target.classList.contains("closebutton") ||
-      event.target.classList.contains("wrapper")
+      event.target.classList.contains('closebutton') ||
+      event.target.classList.contains('wrapper')
     ) {
       this.closeModal(event);
     }
@@ -514,10 +481,8 @@ class scInsuranceCampaign {
    * Represents a internal function to handle closeModal
    */
   toCloseModal() {
-    const modalContainer = document.querySelector(
-      ".sc-li-campaign-form-modal-main"
-    );
-    modalContainer.addEventListener("mousedown", this.handleMousedown);
+    const modalContainer = document.querySelector('.sc-li-campaign-form-modal-main');
+    modalContainer.addEventListener('mousedown', this.handleMousedown);
   }
 
   /**
@@ -526,22 +491,18 @@ class scInsuranceCampaign {
    * @param {event} event
    */
   activeModal(event) {
-    console.log(event.target)
     const that = this;
-    const formmodal = document.querySelector(".sc-li-campaign-form-modal");
+    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
     const formmodalid = formmodal.dataset.modalId;
     let popupdata = JSON.parse(formmodal.dataset.popup);
     let modalsource = event.target.dataset.modalSource;
 
-    console.log({formmodalid, modalsource})
     /** If modal match */
     if (formmodalid === modalsource) {
       that.isModalActive = true;
-      formmodal.classList.add("sc-li-campaign-form-modal-active");
+      formmodal.classList.add('sc-li-campaign-form-modal-active');
       setTimeout(() => {
-        document
-          .querySelector(".c-modal")
-          .classList.add("sc-li-campaign-form-modal-main");
+        document.querySelector('.c-modal').classList.add('sc-li-campaign-form-modal-main');
         that.handelFormStartShortForm(popupdata);
         that.validateSubmit();
         that.formLastAccessedField();
@@ -558,13 +519,13 @@ class scInsuranceCampaign {
    * @returns {boolean} True or False
    */
   statusModal(status) {
-    const errorModal = document.querySelector(".sc-error-modal");
+    const errorModal = document.querySelector('.sc-error-modal');
     let errorModalStatus = JSON.parse(errorModal.dataset.formStatus);
     if (status) {
-      errorModal.classList.add("sc-error-modal--show");
+      errorModal.classList.add('sc-error-modal--show');
       return errorModalStatus;
     } else {
-      errorModal.classList.remove("sc-error-modal--show");
+      errorModal.classList.remove('sc-error-modal--show');
       return false;
     }
   }
@@ -575,17 +536,15 @@ class scInsuranceCampaign {
    * @param {event} event
    */
   closeModal(event) {
-    const modalContainer = document.querySelector(
-      ".sc-li-campaign-form-modal-main"
-    );
-    event.target.setAttribute("title", "closemodal");
+    const modalContainer = document.querySelector('.sc-li-campaign-form-modal-main');
+    event.target.setAttribute('title', 'closemodal');
     this.ctaClick(event);
-    let lastAccessedField = this.lastAccessedField || "na";
+    let lastAccessedField = this.lastAccessedField || 'na';
     if (lastAccessedField) {
       setTimeout(() => {
         this.handleFormAbandon(lastAccessedField);
       }, 1500);
-      modalContainer.removeEventListener("mousedown", this.handleMousedown);
+      modalContainer.removeEventListener('mousedown', this.handleMousedown);
       this.isModalActive = false;
     }
   }
@@ -597,48 +556,44 @@ class scInsuranceCampaign {
   validateSubmit() {
     var anycheckboxChecked, anyradioChecked;
     var checkboxes = document.querySelectorAll(
-      ".sc-li-campaign-form__checkboxs .sc-radio-box__input"
+      '.sc-li-campaign-form__checkboxs .sc-radio-box__input'
     );
-    var radios = document.querySelectorAll(
-      ".sc-li-campaign-form__radios .sc-radio-box__input"
-    );
-    var formSubmitBtn = document.querySelector(
-      ".sc-li-campaign-form__submit-btn"
-    );
+    var radios = document.querySelectorAll('.sc-li-campaign-form__radios .sc-radio-box__input');
+    var formSubmitBtn = document.querySelector('.sc-li-campaign-form__submit-btn');
     radios[0].checked = true;
 
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener("change", function (e) {
+    checkboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        anycheckboxChecked = Array.from(checkboxes).some(function (checkbox) {
+        anycheckboxChecked = Array.from(checkboxes).some(function(checkbox) {
           return checkbox.checked;
         });
-        radios.forEach(function () {
-          anyradioChecked = Array.from(radios).some(function (radio) {
+        radios.forEach(function() {
+          anyradioChecked = Array.from(radios).some(function(radio) {
             return radio.checked;
           });
         });
 
         if (anycheckboxChecked && anyradioChecked) {
-          formSubmitBtn.classList.remove("sc-btn--disabled");
+          formSubmitBtn.classList.remove('sc-btn--disabled');
         } else {
-          formSubmitBtn.classList.add("sc-btn--disabled");
+          formSubmitBtn.classList.add('sc-btn--disabled');
         }
       });
     });
-    radios.forEach(function (radio) {
-      radio.addEventListener("change", function (e) {
+    radios.forEach(function(radio) {
+      radio.addEventListener('change', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        anyradioChecked = Array.from(radios).some(function (radio) {
+        anyradioChecked = Array.from(radios).some(function(radio) {
           return radio.checked;
         });
 
         if (anyradioChecked && anycheckboxChecked) {
-          formSubmitBtn.classList.remove("sc-btn--disabled");
+          formSubmitBtn.classList.remove('sc-btn--disabled');
         } else {
-          formSubmitBtn.classList.add("sc-btn--disabled");
+          formSubmitBtn.classList.add('sc-btn--disabled');
         }
       });
     });
@@ -653,12 +608,12 @@ class scInsuranceCampaign {
   getCheckboxValues(container) {
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
     let values = [];
-    checkboxes.forEach((checkbox) => {
+    checkboxes.forEach(checkbox => {
       if (checkbox.checked) {
         values.push(checkbox.value);
       }
     });
-    return values.join("|");
+    return values.join('|');
   }
 
   /**
@@ -669,8 +624,8 @@ class scInsuranceCampaign {
    */
   getRadioValue(container) {
     const radios = container.querySelectorAll('input[type="radio"]');
-    let value = "";
-    radios.forEach((radio) => {
+    let value = '';
+    radios.forEach(radio => {
       if (radio.checked) {
         value = radio.value;
       }
@@ -685,34 +640,28 @@ class scInsuranceCampaign {
    */
   buildFormData() {
     this.existingFieldNames = new Set();
-    let formModal = document.querySelector(".sc-li-campaign-form-modal");
+    let formModal = document.querySelector('.sc-li-campaign-form-modal');
     let popupdata = JSON.parse(formModal.dataset.popup);
     const formdata = {
       name: popupdata.formname,
-      fields: [],
+      fields: []
     };
-    const formItems = document.querySelectorAll(".sc-li-campaign-form__item");
-    formItems.forEach((item) => {
-      const fieldTitleElement = item.querySelector(
-        ".sc-li-campaign-form__item-title"
-      );
-      const fieldTitle = fieldTitleElement.getAttribute("data-field");
+    const formItems = document.querySelectorAll('.sc-li-campaign-form__item');
+    formItems.forEach(item => {
+      const fieldTitleElement = item.querySelector('.sc-li-campaign-form__item-title');
+      const fieldTitle = fieldTitleElement.getAttribute('data-field');
 
       /** Skip if the field name already exists */
       if (this.existingFieldNames.has(fieldTitle)) {
         return;
       }
 
-      let fieldValue = "";
-      const checkboxContainer = item.querySelector(
-        ".sc-li-campaign-form__checkboxs"
-      );
+      let fieldValue = '';
+      const checkboxContainer = item.querySelector('.sc-li-campaign-form__checkboxs');
       if (checkboxContainer) {
         fieldValue = this.getCheckboxValues(checkboxContainer);
       } else {
-        const radioContainer = item.querySelector(
-          ".sc-li-campaign-form__radios"
-        );
+        const radioContainer = item.querySelector('.sc-li-campaign-form__radios');
         if (radioContainer) {
           fieldValue = this.getRadioValue(radioContainer);
         }
@@ -720,7 +669,7 @@ class scInsuranceCampaign {
 
       formdata.fields.push({
         fieldName: fieldTitle,
-        fieldValue: fieldValue,
+        fieldValue: fieldValue
       });
 
       /** Add field name to the set to track it */
@@ -735,10 +684,8 @@ class scInsuranceCampaign {
    */
   formSubmit() {
     const that = this;
-    const formSubmitBtn = document.querySelector(
-      ".sc-li-campaign-form__submit-btn"
-    );
-    formSubmitBtn.addEventListener("mousedown", (event) => {
+    const formSubmitBtn = document.querySelector('.sc-li-campaign-form__submit-btn');
+    formSubmitBtn.addEventListener('mousedown', event => {
       event.preventDefault();
       event.stopPropagation();
       that.ctaClick(event);
@@ -753,7 +700,7 @@ class scInsuranceCampaign {
         let errObj = {
           code: error.statusCode,
           description: error.message,
-          field: that.lastAccessedField,
+          field: that.lastAccessedField
         };
         that.handleFormError(errObj);
         that.statusModal(false);
@@ -766,19 +713,17 @@ class scInsuranceCampaign {
    * @function formLastAccessedField
    */
   formLastAccessedField() {
-    const form = document.querySelector(".sc-li-campaign-form");
+    const form = document.querySelector('.sc-li-campaign-form');
     if (!form) return;
-    const formElements = form.querySelectorAll("input");
+    const formElements = form.querySelectorAll('input');
 
     /** Add event listeners to all input fields */
-    formElements.forEach((element) => {
-      element.addEventListener("change", (event) => {
+    formElements.forEach(element => {
+      element.addEventListener('change', event => {
         event.preventDefault();
         event.stopPropagation();
-        const itemElement = event.target.closest(".sc-li-campaign-form__item");
-        const titleElement = itemElement.querySelector(
-          ".sc-li-campaign-form__item-title"
-        );
+        const itemElement = event.target.closest('.sc-li-campaign-form__item');
+        const titleElement = itemElement.querySelector('.sc-li-campaign-form__item-title');
         this.lastAccessedField = titleElement.innerText;
       });
     });
@@ -792,51 +737,42 @@ class scInsuranceCampaign {
     const that = this;
     let allowableQueryString = Utils.constants.ALLOWABLE_QUERYSTRING.scb;
     let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
-      ? document
-          .querySelector('meta[name="sc:page-slug"]')
-          .getAttribute("content")
+      ? document.querySelector('meta[name="sc:page-slug"]').getAttribute('content')
       : null;
     const mktCountryCode = Utils.getCurrentCountry();
-    this.productId = "na";
-    this.pfmId = "na";
-    const formmodal = document.querySelector(".sc-li-campaign-form-modal");
+    this.productId = 'na';
+    this.pfmId = 'na';
+    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
     let popupdata = JSON.parse(formmodal.dataset.popup);
     that.getProductIdPfm();
     window.digitalData = window.digitalData || {};
     if (window.digitalData) {
       window.digitalData.page = window.digitalData.page || {};
-      window.digitalData.page.attributes =
-        window.digitalData.page.attributes || {};
-      window.digitalData.page.attributes.platform =
-        mktCountryCode == "hk" ? "web" : "website";
+      window.digitalData.page.attributes = window.digitalData.page.attributes || {};
+      window.digitalData.page.attributes.platform = mktCountryCode == 'hk' ? 'web' : 'website';
       window.digitalData.page.attributes.pfm = this.pfmId;
     }
 
     /** Push form name and page name in digitalData */
-    if (
-      window.digitalData.page.pageInfo &&
-      window.digitalData.page.pageInfo.pageName
-    ) {
+    if (window.digitalData.page.pageInfo && window.digitalData.page.pageInfo.pageName) {
       /** Set na if pageName are empty */
       let pageName = window.digitalData.page.pageInfo.pageName;
-      pageName = pageName.split(":");
+      pageName = pageName.split(':');
       let pageNameList = [];
       if (pageName.length > 1) {
         for (let i = 0; i < pageName.length; i++) {
           if (i == 7) {
-            pageNameList.push("na");
+            pageNameList.push('na');
           } else {
-            pageNameList.push(pageName[i] ? pageName[i] : "na");
+            pageNameList.push(pageName[i] ? pageName[i] : 'na');
           }
         }
       }
 
       if (pageName.length <= 8) {
-        if (mktCountryCode == "hk") {
+        if (mktCountryCode == 'hk') {
           /** Screen Name field in CMS is used if filled, in HK. */
-          pageNameList.push(
-            pageName[pageName.length - 1] ? pageName[pageName.length - 1] : "na"
-          );
+          pageNameList.push(pageName[pageName.length - 1] ? pageName[pageName.length - 1] : 'na');
         } else {
           pageNameList.push(pageSlug);
         }
@@ -846,44 +782,42 @@ class scInsuranceCampaign {
       if (window.digitalData.page.category) {
         let catName = window.digitalData.page.category;
         for (let index in catName) {
-          window.digitalData.page.category[index] = catName[index]
-            ? catName[index]
-            : "na";
+          window.digitalData.page.category[index] = catName[index] ? catName[index] : 'na';
         }
       }
 
       const environment = Utils.getCurrentEnvironment();
-      window.digitalData.page.pageInfo.pageName = pageNameList.join(":");
-      window.digitalData.page.pageInfo.buildDetails = "web3.0";
+      window.digitalData.page.pageInfo.pageName = pageNameList.join(':');
+      window.digitalData.page.pageInfo.buildDetails = 'web3.0';
       window.digitalData.page.pageInfo.libDetails =
-        environment === "preview" ? "staging" : environment;
+        environment === 'preview' ? 'staging' : environment;
     }
 
-    let pageName = window.digitalData.page.pageInfo.pageName.split(":");
+    let pageName = window.digitalData.page.pageInfo.pageName.split(':');
     window.digitalData.user = window.digitalData.user || {};
     window.digitalData.user.userInfo = {
-      userStatus: "guest",
-      userType: "NTB",
+      userStatus: 'guest',
+      userType: 'NTB',
       segment: pageName[3],
-      userID: "na",
+      userID: 'na'
     };
 
     /** Update page name */
-    window.digitalData.page.pageInfo.pageName = pageName.join(":");
+    window.digitalData.page.pageInfo.pageName = pageName.join(':');
     /** Add user info */
     window.digitalData.userInfo = window.digitalData.userInfo || {};
     window.digitalData.userInfo = window.digitalData.user.userInfo;
-    window.digitalData.userInfo.loginStatus = "not logged-in";
+    window.digitalData.userInfo.loginStatus = 'not logged-in';
     delete window.digitalData.user;
     /* Add product info */
-    if (pageName[4] != "na" || pageName[5] != "na" || pageName[6] != "na") {
+    if (pageName[4] != 'na' || pageName[5] != 'na' || pageName[6] != 'na') {
       window.digitalData.products = window.digitalData.products || [];
       window.digitalData.products = [
         {
           productName: pageName[6],
           subProduct1: pageName[4],
-          subProduct2: pageName[5],
-        },
+          subProduct2: pageName[5]
+        }
       ];
     }
 
@@ -892,21 +826,21 @@ class scInsuranceCampaign {
     window.digitalData.campaign = {
       internal: {
         campaignName: campaignData[0],
-        campaignValue: campaignData[1],
+        campaignValue: campaignData[1]
       },
       external: {
         campaignName: campaignData[0],
-        campaignValue: campaignData[1],
-      },
+        campaignValue: campaignData[1]
+      }
     };
 
-    let eventName = mktCountryCode == "hk" ? "page-view" : "pageView";
+    let eventName = mktCountryCode == 'hk' ? 'page-view' : 'pageView';
     let dataObject = {
       ...digitalData,
       event: eventName,
       title: document.title,
       href: window.location.href,
-      context: "page view",
+      context: 'page view'
     };
 
     scAnalyticsDataArray.push(dataObject);
@@ -920,62 +854,48 @@ class scInsuranceCampaign {
    */
   pageNameUpdate(eventName) {
     let eventlist = [
-      "formStart_shortForm",
-      "formSubmit_shortForm",
-      "formAbandon",
-      "formError",
-      "ctaClick",
+      'formStart_shortForm',
+      'formSubmit_shortForm',
+      'formAbandon',
+      'formError',
+      'ctaClick'
     ];
     let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
-      ? document
-          .querySelector('meta[name="sc:page-slug"]')
-          .getAttribute("content")
+      ? document.querySelector('meta[name="sc:page-slug"]').getAttribute('content')
       : null;
     const mktCountryCode = Utils.getCurrentCountry();
-    const formmodal = document.querySelector(".sc-li-campaign-form-modal");
+    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
     let popupdata = JSON.parse(formmodal.dataset.popup);
 
-    /** Push form name and page name in digitalData */
-    if (
-      window.digitalData.page.pageInfo &&
-      window.digitalData.page.pageInfo.pageName
-    ) {
-      /** Set na if pageName are empty */
+    //Push form name and page name in digitalData
+    if (window.digitalData.page.pageInfo && window.digitalData.page.pageInfo.pageName) {
+      //Set na if pageName are empty
       let pageName = window.digitalData.page.pageInfo.pageName;
-      pageName = pageName.split(":");
+      pageName = pageName.split(':');
       let pageNameList = [];
       if (pageName.length > 1) {
         for (let i = 0; i < pageName.length; i++) {
           if (i == 7) {
-            if (
-              eventlist.includes(eventName) &&
-              window.digitalData.hasOwnProperty("form")
-            ) {
-              pageNameList.push(
-                popupdata.formname
-                  ? popupdata.formname.replace(/ /g, "-")
-                  : "na"
-              );
+            if (eventlist.includes(eventName) && window.digitalData.hasOwnProperty('form')) {
+              pageNameList.push(popupdata.formname ? popupdata.formname.replace(/ /g, '-') : 'na');
             } else {
-              pageNameList.push("na");
+              pageNameList.push('na');
             }
           } else {
-            pageNameList.push(pageName[i] ? pageName[i] : "na");
+            pageNameList.push(pageName[i] ? pageName[i] : 'na');
           }
         }
       }
 
       if (pageName.length <= 8) {
-        if (mktCountryCode == "hk") {
-          /** Screen Name field in CMS is used if filled, in HK. */
-          pageNameList.push(
-            pageName[pageName.length - 1] ? pageName[pageName.length - 1] : "na"
-          );
+        if (mktCountryCode == 'hk') {
+          //Screen Name field in CMS is used if filled, in HK.
+          pageNameList.push(pageName[pageName.length - 1] ? pageName[pageName.length - 1] : 'na');
         } else {
           pageNameList.push(pageSlug);
         }
       }
-      window.digitalData.page.pageInfo.pageName = pageNameList.join(":");
+      window.digitalData.page.pageInfo.pageName = pageNameList.join(':');
     }
   }
 
@@ -990,13 +910,13 @@ class scInsuranceCampaign {
     if (queryString) {
       queryString = queryString.substring(1);
       if (queryString) {
-        queryStringList = queryString.split("&");
+        queryStringList = queryString.split('&');
         if (queryStringList.length) {
           for (let i = 0; i < queryStringList.length; i++) {
-            let result = queryStringList[i].split("=");
-            if (result[0].toLowerCase() == "productid") {
+            let result = queryStringList[i].split('=');
+            if (result[0].toLowerCase() == 'productid') {
               this.productId = result[1].toLowerCase();
-            } else if (result[0].toLowerCase() == "pfm") {
+            } else if (result[0].toLowerCase() == 'pfm') {
               this.pfmId = result[1].toLowerCase();
             }
           }
@@ -1014,26 +934,24 @@ class scInsuranceCampaign {
    */
   getCampaignInfo(allowableQueryString) {
     const that = this;
-    if (!allowableQueryString.length) return "";
+    if (!allowableQueryString.length) return '';
     let total = allowableQueryString.length;
-    let campaignName = "";
-    let campaignValue = "";
+    let campaignName = '';
+    let campaignValue = '';
     for (let i = 0; i < total; i++) {
       let cookieValue = that.getCookie(allowableQueryString[i]);
-      let localStorageValue = Utils.getLocalStorageWithExpiry(
-        allowableQueryString[i]
-      );
+      let localStorageValue = Utils.getLocalStorageWithExpiry(allowableQueryString[i]);
       if (cookieValue || localStorageValue) {
         if (campaignName) {
-          campaignName += ":";
-          campaignValue += ":";
+          campaignName += ':';
+          campaignValue += ':';
         }
         campaignName += allowableQueryString[i];
         campaignValue += cookieValue || localStorageValue;
       }
     }
-    if (!campaignName) campaignName = "na";
-    if (!campaignValue) campaignValue = "na";
+    if (!campaignName) campaignName = 'na';
+    if (!campaignValue) campaignValue = 'na';
     return [campaignName, campaignValue];
   }
 
@@ -1045,12 +963,12 @@ class scInsuranceCampaign {
    * getCookie('subChanCode')
    */
   getCookie(key) {
-    var name = key + "=";
+    var name = key + '=';
     var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(";");
+    var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-      while (c.charAt(0) == " ") {
+      while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
@@ -1077,7 +995,7 @@ class scInsuranceCampaign {
       document.documentElement.clientWidth
     );
     let median = width / 2;
-    return xClick < median ? "left" : "right";
+    return xClick < median ? 'left' : 'right';
   }
 
   /**
@@ -1088,32 +1006,29 @@ class scInsuranceCampaign {
    * getCtaType('sc-btn')
    */
   getCtaType(className, target) {
-    if (target && target.closest(".sc-nav")) {
-      return "nav-link";
+    if (target && target.closest('.sc-nav')) {
+      return 'nav-link';
     } else if (
-      className == "" ||
-      typeof className !== "string" ||
-      typeof className.includes === "undefined"
+      className == '' ||
+      typeof className !== 'string' ||
+      typeof className.includes === 'undefined'
     ) {
-      return "link";
+      return 'link';
+    } else if (className.indexOf('sc-btn') !== -1 || className.indexOf('c-button') !== -1) {
+      return 'button';
     } else if (
-      className.indexOf("sc-btn") !== -1 ||
-      className.indexOf("c-button") !== -1
+      className.indexOf('sc-bnr__link') !== -1 ||
+      className.indexOf('slide-anchor-bg') !== -1
     ) {
-      return "button";
-    } else if (
-      className.indexOf("sc-bnr__link") !== -1 ||
-      className.indexOf("slide-anchor-bg") !== -1
-    ) {
-      return "banner";
-    } else if (className.indexOf("sc-carousel__pintiles-item") !== -1) {
-      return "carousel";
-    } else if (className.indexOf("sc-quick-links__link") !== -1) {
-      return "quick-links";
-    } else if (className.indexOf("sc-tag") !== -1) {
-      return "tabs";
+      return 'banner';
+    } else if (className.indexOf('sc-carousel__pintiles-item') !== -1) {
+      return 'carousel';
+    } else if (className.indexOf('sc-quick-links__link') !== -1) {
+      return 'quick-links';
+    } else if (className.indexOf('sc-tag') !== -1) {
+      return 'tabs';
     } else {
-      return "link";
+      return 'link';
     }
   }
 
@@ -1124,51 +1039,48 @@ class scInsuranceCampaign {
    */
   ctaClick(event) {
     const that = this;
-    that.pageNameUpdate("ctaClick");
-    let closestAnchor = event.target.closest("a");
+    that.pageNameUpdate('ctaClick');
+    let closestAnchor = event.target.closest('a');
     let customLinkText = event.target.innerText
       ? event.target.innerText.trim().toLowerCase()
       : event.target.textContent.trim().toLowerCase();
-    let ctaType = closestAnchor
-      ? that.getCtaType(closestAnchor.className, event.target)
-      : "link";
+    let ctaType = closestAnchor ? that.getCtaType(closestAnchor.className, event.target) : 'link';
     let linkName =
-      document.querySelector("title") &&
-      document.querySelector("title").innerText
-        ? document.querySelector("title").innerText.toLowerCase()
-        : "na";
-    let ctaName = event.target.getAttribute("title");
+      document.querySelector('title') && document.querySelector('title').innerText
+        ? document.querySelector('title').innerText.toLowerCase()
+        : 'na';
+    let ctaName = event.target.getAttribute('title');
 
     /** status ok popup click */
-    if (event.target.classList.contains("sc-error-modal__alert-close")) {
-      const errorModal = document.querySelector(".sc-error-modal");
+    if (event.target.classList.contains('sc-error-modal__alert-close')) {
+      const errorModal = document.querySelector('.sc-error-modal');
       let errorModalStatus = JSON.parse(errorModal.dataset.formStatus);
-      let pageName = window.digitalData.page.pageInfo.pageName.split(":");
+      let pageName = window.digitalData.page.pageInfo.pageName.split(':');
       window.digitalData.form.popupName = errorModalStatus.popupname;
       delete window.digitalData.products;
       /** Add product info */
-      if (pageName[4] != "na" || pageName[5] != "na" || pageName[6] != "na") {
+      if (pageName[4] != 'na' || pageName[5] != 'na' || pageName[6] != 'na') {
         window.digitalData.products = window.digitalData.products || [];
         window.digitalData.products = [
           {
             productName: pageName[6],
             subProduct1: pageName[4],
-            subProduct2: pageName[5],
-          },
+            subProduct2: pageName[5]
+          }
         ];
       }
     }
 
     /** submit cta click */
-    if (event.target.classList.contains("sc-li-campaign-form__submit-btn")) {
+    if (event.target.classList.contains('sc-li-campaign-form__submit-btn')) {
       let formData = that.buildFormData();
       if (formData && window.digitalData.products) {
         window.digitalData.products.forEach((item, index) => {
           window.digitalData.products[index].productFields = [];
-          formData.fields.forEach((field) => {
+          formData.fields.forEach(field => {
             window.digitalData.products[index].productFields.push({
               formFieldName: field.fieldName,
-              formFieldValue: field.fieldValue,
+              formFieldValue: field.fieldValue
             });
           });
         });
@@ -1180,32 +1092,30 @@ class scInsuranceCampaign {
       customLinkClick: {
         customLinkText: customLinkText,
         customLinkRegion:
-          that.getHorizontalPosition(event.clientX) +
-          " " +
-          Utils.calcElementLocation(event.target),
+          that.getHorizontalPosition(event.clientX) + ' ' + Utils.calcElementLocation(event.target),
         customLinkType: ctaType,
-        customLinkName: linkName,
+        customLinkName: linkName
       },
-      event: "ctaClick",
+      event: 'ctaClick',
       title: document.title,
       href: window.location.href,
-      context: customLinkText,
+      context: customLinkText
     };
     dataObject.ctaName = ctaName || customLinkText;
     dataObject.ctaPosition = Utils.calcElementLocation(event.target);
     dataObject.ctaType = ctaType;
-    if (Utils.getCurrentCountry() == "hk") {
+    if (Utils.getCurrentCountry() == 'hk') {
       delete dataObject.customLinkClick;
     }
 
     scAnalyticsDataArray.push(dataObject);
-    // if (
-    //   Array.isArray(window.digitalData.products) &&
-    //   window.digitalData.products[0] &&
-    //   window.digitalData.products[0].productFields
-    // ) {
-    delete window.digitalData.products[0].productFields;
-    // }
+    if (
+      Array.isArray(window.digitalData.products) &&
+      window.digitalData.products[0] &&
+      window.digitalData.products[0].productFields
+    ) {
+      delete window.digitalData.products[0].productFields;
+    }
   }
 
   /**
@@ -1215,17 +1125,17 @@ class scInsuranceCampaign {
    * @description Track "formStart_shortForm" actions in the page using EDDL approach.
    */
   handelFormStartShortForm(data) {
-    if (typeof window.adobeDataLayer !== "undefined") {
+    if (typeof window.adobeDataLayer !== 'undefined') {
       window.digitalData.form = {};
-      this.pageNameUpdate("formStart_shortForm");
+      this.pageNameUpdate('formStart_shortForm');
       let dataObject = {
         ...digitalData,
-        event: "formStart_shortForm",
+        event: 'formStart_shortForm'
       };
-      window.digitalData.form.formName = data.formname || "na";
-      window.digitalData.form.formStepName = data.formstepname || "na";
-      window.digitalData.form.formType = data.formtype || "na";
-      window.digitalData.form.formPlatform = data.formplatform || "na";
+      window.digitalData.form.formName = data.formname || 'na';
+      window.digitalData.form.formStepName = data.formstepname || 'na';
+      window.digitalData.form.formType = data.formtype || 'na';
+      window.digitalData.form.formPlatform = data.formplatform || 'na';
 
       scAnalyticsDataArray.push(dataObject);
     }
@@ -1238,41 +1148,39 @@ class scInsuranceCampaign {
    * @description Track "formSubmit_shortForm" actions in the page using EDDL approach.
    */
   handleInsuranceFormSubmit(formstatus) {
-    if (typeof window.adobeDataLayer == "undefined") return;
+    if (typeof window.adobeDataLayer == 'undefined') return;
 
     if (!window.digitalData.form) {
       window.digitalData.form = {};
     }
 
-    this.pageNameUpdate("formSubmit_shortForm");
+    this.pageNameUpdate('formSubmit_shortForm');
 
     let dataObject = {
       ...JSON.parse(JSON.stringify(digitalData)),
-      event: "formSubmit_shortForm",
+      event: 'formSubmit_shortForm'
     };
 
-    dataObject.products[0].applicationReferenceNumber =
-      formstatus.refno || "na";
-    dataObject.products[0].applicationSubmissionStatus =
-      formstatus.status || "na";
+    dataObject.products[0].applicationReferenceNumber = formstatus.refno || 'na';
+    dataObject.products[0].applicationSubmissionStatus = formstatus.status || 'na';
 
     scAnalyticsDataArray.push(dataObject);
   }
 
   /**
-   * Represents a form abandon function for AA EDDLgolden
+   * Represents a form abandon function for AA EDDL
    * @function handleFormAbandon
    * @param {string} field - Form field name
    * @description Track "formAbandon" actions in the page using EDDL approach.
    */
   handleFormAbandon(field) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      this.pageNameUpdate("formAbandon");
+    if (typeof window.adobeDataLayer !== 'undefined') {
+      this.pageNameUpdate('formAbandon');
       let dataObject = {
         ...JSON.parse(JSON.stringify(digitalData)),
-        event: "formAbandon",
+        event: 'formAbandon'
       };
-      dataObject.form.formLastAccessedField = field || "na";
+      dataObject.form.formLastAccessedField = field || 'na';
       scAnalyticsDataArray.push(dataObject);
       delete window.digitalData.form;
     }
@@ -1285,19 +1193,19 @@ class scInsuranceCampaign {
    * @description Track "formError" actions in the page using EDDL approach.
    */
   handleFormError(err) {
-    if (typeof window.adobeDataLayer !== "undefined") {
-      this.pageNameUpdate("formError");
+    if (typeof window.adobeDataLayer !== 'undefined') {
+      this.pageNameUpdate('formError');
       let error = [
         {
-          errorCode: err.code || "na",
-          errorDescription: err.description || "na",
-          errorField: err.field || "na",
-        },
+          errorCode: err.code || 'na',
+          errorDescription: err.description || 'na',
+          errorField: err.field || 'na'
+        }
       ];
 
       let dataObject = {
         ...digitalData,
-        event: "formError",
+        event: 'formError'
       };
       window.digitalData.error = [];
       window.digitalData.error.push(...error);

@@ -152,6 +152,23 @@ class ScCommonMethodsz {
   }
 
   /**
+   * return absolute position of selected div in px
+   * @param {String} element class elements name as an object
+   * @return {Number} return horizontal position in px
+   * @example
+   * getPosition('.selector')
+   */
+  getPosition = (element) => {
+    if (!element) return "";
+    let yPosition = 0;
+    while (element) {
+      yPosition += element.offsetTop - element.scrollTop + element.clientTop;
+      element = element.offsetParent;
+    }
+    return yPosition;
+  };
+
+  /**
    * capture horizontal click position and return its left or right
    * @param {Number} xClick horizontal click position
    * @return {String} return 'left' or 'right'

@@ -891,6 +891,9 @@ class ScMgmReferralMobile {
       } else {
         that.termsState();
         console.log("It's a match, no update needed.");
+        setTimeout(() => {
+          
+        }, timeout);
       }
     }
   }

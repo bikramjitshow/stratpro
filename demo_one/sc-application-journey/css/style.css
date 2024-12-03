@@ -371,6 +371,12 @@ p {
 .sc-li-campaign__welcomeoffer {
   padding: 40px 10px 0 10px;
 }
+.sc-li-campaign__welcomeoffer--with-bg .sc-li-campaign__wo-content p {
+  color: #fff;
+}
+.sc-li-campaign__welcomeoffer--with-bg .sc-li-campaign h3, .sc-li-campaign__welcomeoffer--with-bg .sc-li-campaign__wo-title {
+  color: #fff;
+}
 .sc-li-campaign__wo-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -416,7 +422,6 @@ p {
   font-weight: 400;
   text-align: left;
   color: #191919;
-  color: #fff;
   margin-bottom: 4px;
 }
 .sc-li-campaign__wo-content p:last-child {
@@ -799,7 +804,7 @@ p {
   margin-bottom: 5px;
   border-radius: 4px;
   border: 1px solid #fff;
-  background: radial-gradient(160.26% 1130.34% at -36.81% -60.26%, #aff4d1 0%, #a9c7e9 100%);
+  background: radial-gradient(160.26% 1130.34% at -36.81% -60.26%, rgb(214, 255, 199) 0%, rgb(200, 226, 255) 100%);
   overflow: hidden;
 }
 .sc-li-campaign__policy-type-green-wrapper::after {
@@ -860,12 +865,15 @@ p {
   padding-bottom: 16px;
 }
 .sc-li-campaign__policy-type-learn-more {
-  color: #0c77b9;
+  color: #2772c7;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   text-decoration-line: underline;
-  text-decoration-color: #dbf9ff;
+  text-decoration-color: #a9c7e9;
+  text-decoration-style: solid;
+  text-underline-position: from-font;
+  text-underline-offset: 2px;
 }
 .sc-li-campaign__policy-type-load-more-icon {
   width: 17px;
@@ -1044,6 +1052,8 @@ p {
   height: 32px;
   overflow: hidden;
   margin-right: 5px;
+  background-size: cover;
+  background-position: center;
 }
 .sc-policy-content-with-icons__item-title {
   display: -webkit-box;
@@ -1092,6 +1102,18 @@ p {
 }
 .sc-policy-content-with-icons__item-content ul li strong {
   font-weight: 600;
+}
+.sc-policy-content-with-icons__item-content.sc-rte ul {
+  padding-left: 0;
+}
+.sc-policy-content-with-icons__item-content.sc-rte ul:last-child {
+  margin: 0;
+}
+.sc-policy-content-with-icons__item-content.sc-rte p {
+  margin-bottom: 20px;
+}
+.sc-policy-content-with-icons__item-content.sc-rte p:last-child {
+  margin-bottom: 0;
 }
 .sc-policy-content-with-icons__item-text-top {
   font-size: 14px;

@@ -158,5 +158,5 @@ class referalTermsConsentJourney {
   }
 }
 
-const Instance = new referalTermsConsentJourney();
-Instance.init();
+// const Instance2 = new referalTermsConsentJourney();
+// Instance2.init();

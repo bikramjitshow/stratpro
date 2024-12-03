@@ -1,0 +1,11 @@
+//
+// Returns a CSS media query for a specified pixel ratio
+//
+@function create-mediaquery-for-pixelratio($ratio) {
+  $query: '(-webkit-min-device-pixel-ratio: ' + $ratio + '),';
+  $query: $query + '(min--moz-device-pixel-ratio: ' + $ratio + '),';
+  $query: $query + '(-o-min-device-pixel-ratio: ' + $ratio + '),';
+  $query: $query + '(min-resolution: ' + round($ratio * 96dpi) + '),';
+  $query: $query + '(min-resolution: ' + $ratio * 1dppx + ')';
+  @return $query;
+}

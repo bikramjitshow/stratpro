@@ -60,9 +60,13 @@ class SmartScript {
                   this.oneLink,
                   this.deepLink
                 );
-                if (result) {
-                  this.generateQr(activeModalEle, result);
-                  this.updateLink(activeModalEle, result);
+                const processedResult = {
+                  clickURL: this.processDeepLinkURL(result.clickURL),
+                };
+                console.log(processedResult);
+                if (processedResult) {
+                  this.generateQr(activeModalEle, processedResult);
+                  this.updateLink(activeModalEle, processedResult);
                 }
               }
             }, 400);
@@ -70,6 +74,16 @@ class SmartScript {
         }
       }
     }
+  }
+
+  customEncodeUrl(url) {
+    return url.replace(/&/g, "%26").replace(/\?/g, "%3F");
+  }
+
+  processDeepLinkURL(url) {
+    const [baseURL, deepLinkValuePart] = url.split("deep_link_value=");
+    const encodedDeepLinkValue = this.customEncodeUrl(deepLinkValuePart || "");
+    return baseURL + "deep_link_value=" + encodedDeepLinkValue;
   }
 
   /**
@@ -82,12 +96,18 @@ class SmartScript {
     modalApplyProducts.forEach((modalApplyProduct) => {
       this.oneLink = modalApplyProduct.getAttribute("data-one-link");
       this.deepLink = modalApplyProduct.getAttribute("data-deep-link");
+      // const encodedUrl = this.customEncodeUrl(this.deepLink);
+      // console.log(encodedUrl);
 
       const result = this.generateOneLinkURL(this.oneLink, this.deepLink);
-      console.log(result)
-      if (result) {
-        this.generateQr(modalApplyProduct, result);
-        this.updateLink(modalApplyProduct, result);
+      const processedResult = {
+        clickURL: this.processDeepLinkURL(result.clickURL),
+      };
+      console.log(processedResult);
+      console.log({ result });
+      if (processedResult) {
+        this.generateQr(modalApplyProduct, processedResult);
+        this.updateLink(modalApplyProduct, processedResult);
       }
     });
   }
@@ -117,6 +137,7 @@ class SmartScript {
    * Generate QR Code
    */
   generateQr(activeModal, result) {
+    console.log(result.clickURL)
     if (result && result.clickURL) {
       const qrDiv = activeModal.querySelector(
         ".sc-pdt-apply-with-smart-script__onelink-qr-container"

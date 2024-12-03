@@ -1,12 +1,11 @@
 /* global Utils, digitalData, scAnalyticsDataArray */
-// import ScCommonMethods from './../../../../../src/assets/js/commons/sc-common-methods';
-// import ScCommonMethods from "./sc-common-methods.js";
+// import that.ScCommonMethods from './../../../../../src/assets/js/commons/sc-common-methods';
+// import that.ScCommonMethods from "./sc-common-methods.js";
 
 class ScMgmReferralEnhanced {
   constructor() {
     this.ScCommonMethods = new ScCommonMethods();
   }
-
   init() {
     const that = this;
     that.productTile = document.querySelector(".sc-product-tiles");
@@ -103,20 +102,18 @@ class ScMgmReferralEnhanced {
     //Handle popup open
     let modalOpen = false;
     let mainModalId = "";
-    setTimeout(() => {
-      const openModals = that.productTile.querySelectorAll("a[href='#null']");
-      if (openModals.length) {
-        openModals.forEach(function (el) {
-          el.addEventListener("click", () => {
-            modalOpen = true;
-            mainModalId = el.getAttribute("data-modal-source");
-            if (el.getAttribute("data-terms-enable") === "true") {
-              that.isTermModalRequire = true;
-            }
-          });
+    const openModals = that.productTile.querySelectorAll("a[href='#null']");
+    if (openModals.length) {
+      openModals.forEach(function (el) {
+        el.addEventListener("click", () => {
+          modalOpen = true;
+          mainModalId = el.getAttribute("data-modal-source");
+          if (el.getAttribute("data-terms-enable") === "true") {
+            that.isTermModalRequire = true;
+          }
         });
-      }
-    }, 100);
+      });
+    }
 
     //Handle modal close event
     document.body.addEventListener("click", function (event) {
@@ -130,28 +127,26 @@ class ScMgmReferralEnhanced {
           event.target.className.indexOf("closebutton") !== -1 ||
           event.target.className.indexOf("wrapper") !== -1
         ) {
-          console.log({ event });
-          console.log({ mainModalId });
           modalOpen = false;
-          that.triggerCtaClickTagging(event);
           if (tm) {
             that.termsModalClosed(mainModalId);
           }
-        } else if (
-          anchor &&
-          anchor.getAttribute("href") === "#null" &&
-          event.target.closest(".m-text-content")
-        ) {
-          let ctaTitle = anchor.getAttribute("title")
-            ? anchor.getAttribute("title")
-            : anchor.innerText ||
-              anchor.textContent ||
-              anchor.getAttribute("data-context") ||
-              anchor.getAttribute("aria-label");
 
-          if (ctaTitle) {
-            that.triggerPopupViewedTagging(ctaTitle.trim());
-          }
+          let ctaType =
+            event.target.type == "button" ? event.target.type : "link";
+          let customLinkText = event.target.getAttribute("title")
+            ? event.target.getAttribute("title")
+            : event.target instanceof SVGElement ||
+              event.target.getElementsByTagName("svg").length ||
+              event.target.classList.contains("closebutton")
+            ? "Close"
+            : event.target.innerText
+            ? event.target.innerText.trim().toLowerCase()
+            : event.target.textContent.trim().toLowerCase();
+          handleAnalyticsCTA(event, anchor, {
+            ctaType: ctaType,
+            customLinkText: customLinkText,
+          });
         }
 
         //identify the term modal
@@ -465,67 +460,6 @@ class ScMgmReferralEnhanced {
   }
 
   /**
-   * trigger adobe popupViewed event when showing popups _satellite.track('popupViewed');
-   */
-  triggerPopupViewedTagging(popupName) {
-    setTimeout(() => {
-      digitalData.event = "popupViewed";
-      digitalData.form = {};
-      digitalData.form.formName = "";
-      digitalData.form.formStepName = "";
-      digitalData.form.formType = "";
-      digitalData.form.formPlatform = "";
-      digitalData.form.popupName = popupName;
-      _satellite.track("popupViewed");
-    }, 500);
-  }
-
-  /**
-   * trigger adobe ctaClick event during click action
-   */
-  triggerCtaClickTagging(event) {
-    const that = this;
-    let ctaType = event.target.type == "button" ? event.target.type : "link";
-    let customLinkText = event.target.getAttribute("title")
-      ? event.target.getAttribute("title")
-      : event.target instanceof SVGElement ||
-        event.target.getElementsByTagName("svg").length ||
-        event.target.classList.contains("closebutton")
-      ? "Close"
-      : event.target.innerText
-      ? event.target.innerText.trim().toLowerCase()
-      : event.target.textContent.trim().toLowerCase();
-
-    digitalData.event = "ctaClick";
-    digitalData.ctaName = customLinkText;
-    digitalData.ctaType = ctaType;
-    digitalData.ctaPosition =
-      that.getHorizontalPosition(event.clientX) +
-      " " +
-      Utils.calcElementLocation(event.target);
-    _satellite.track("callToAction");
-  }
-
-  /**
-   * capture horizontal click position and return it's left or right
-   * @param {Number} xClick horizontal click position
-   * @return {String} return it's left or right
-   * @example
-   * getHorizontalPosition(1000)
-   */
-  getHorizontalPosition(xClick) {
-    let width = Math.max(
-      document.body.scrollWidth,
-      document.documentElement.scrollWidth,
-      document.body.offsetWidth,
-      document.documentElement.offsetWidth,
-      document.documentElement.clientWidth
-    );
-    let median = width / 2;
-    return xClick < median ? "left" : "right";
-  }
-
-  /**
    * fixed case sensitive issue of the referId
    */
   handleReferId() {
@@ -545,8 +479,6 @@ class ScMgmReferralEnhanced {
             if (href) {
               href = href.split("referId").join("referid");
               closest.setAttribute("href", href);
-              console.log("1");
-              alert("1")
               window.open(closest.getAttribute("href"), "_blank");
             }
           }, 50);
@@ -567,8 +499,6 @@ class ScMgmReferralEnhanced {
             if (href) {
               href = href.split("referId").join("referid");
               closest.setAttribute("href", href);
-              console.log("2");
-              alert("2")
               window.open(closest.getAttribute("href"), "_blank");
             }
           }, 50);
@@ -688,7 +618,7 @@ class ScMgmReferralEnhanced {
     // document.body.addEventListener("click", function (event) {
     let closestAnchor = event.target.closest("a");
     const checkedRadio = document.querySelector(
-      ".sc-products-tile-pdt-selection input:checked"
+      ".c-modal .sc-products-tile-pdt-selection input:checked"
     );
     const newHref = checkedRadio
       ?.closest("label")
@@ -707,6 +637,7 @@ class ScMgmReferralEnhanced {
           let activeModal = document.querySelector(".m-text-content");
           let activeModalId = activeModal.getAttribute("data-modal-id");
           if (modalAttr === activeModalId) {
+            console.log({ newHref, modalredirecturl });
             if (newHref) {
               that.activeScrollToBottom(newHref);
             } else {
@@ -724,27 +655,21 @@ class ScMgmReferralEnhanced {
 
   termsModalClosed(modalid) {
     const that = this;
-    alert("4");
-    alert(that.skipTermsModalClosed);
     if (that.skipTermsModalClosed) {
       return;
     }
-    alert("5")
-    console.log({ modalid });
     that.isTermModalActive = false;
     setTimeout(function () {
       const modalId = document.querySelectorAll(
         `[data-modal-source='${modalid}']`
       );
       modalId.forEach((item) => {
-        console.log(item.classList.contains("sc-btn"));
-        console.log(modalId);
         if (modalId && item.classList.contains("sc-btn")) {
           item.click();
           that.isTermModalRequire = true;
         }
       });
-    }, 300);
+    }, 700);
   }
 
   /**
@@ -754,78 +679,84 @@ class ScMgmReferralEnhanced {
    * activeScrollToBottom(url,id)
    */
   activeScrollToBottom(toredirect) {
+    console.log("toredirect---", toredirect);
     const that = this;
-    var scrollbtn = document.querySelector(".sc-products-tile__scroll-step");
-    var scrollbtnlastTitle = scrollbtn.getAttribute("data-last-title");
-    var downloadButton = document.querySelector(
-      ".sc-products-tile__download-button"
+    var scrollbtns = document.querySelectorAll(
+      ".c-modal .sc-products-tile__scroll-step"
     );
-    var scrollableDiv = document.querySelector(".m-text-content");
-    var redirectUrl = toredirect;
+    if (scrollbtns.length) {
+      scrollbtns.forEach((scrollbtn) => {
+        var scrollbtnlastTitle = scrollbtn.getAttribute("data-last-title");
+        var downloadButton = document.querySelector(
+          ".sc-products-tile__download-button"
+        );
+        var scrollableDiv = document.querySelector(".m-text-content");
+        var redirectUrl = toredirect;
 
-    let clickCount = 0;
-    const stepsPerClick = 1; // Number of scroll steps per click
-    const totalSteps = 4; // Total number of steps to scroll
-    let manualScrollDetected = false;
+        let clickCount = 0;
+        const stepsPerClick = 1; // Number of scroll steps per click
+        const totalSteps = 4; // Total number of steps to scroll
+        let manualScrollDetected = false;
 
-    let scrollToBottom = (element, steps) => {
-      const totalHeight = element.scrollHeight - element.clientHeight;
-      const stepHeight = totalHeight / totalSteps;
+        let scrollToBottom = (element, steps) => {
+          const totalHeight = element.scrollHeight - element.clientHeight;
+          const stepHeight = totalHeight / totalSteps;
 
-      element.scrollBy({ top: stepHeight * steps, behavior: "smooth" });
+          element.scrollBy({ top: stepHeight * steps, behavior: "smooth" });
 
-      if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
-        // Scrolled to the bottom
-        manualScrollDetected = true;
-      }
-    };
-    const closeButton = document.querySelector(".wrapper");
-    scrollableDiv.addEventListener("scroll", function () {
-      const scrollPos = scrollableDiv.scrollTop + scrollableDiv.clientHeight;
-      const maxScroll = scrollableDiv.scrollHeight - 1; // Subtract a small margin for precision
+          if (
+            element.scrollTop + element.clientHeight >=
+            element.scrollHeight
+          ) {
+            // Scrolled to the bottom
+            manualScrollDetected = true;
+          }
+        };
+        const closeButton = document.querySelector(".wrapper");
+        scrollableDiv.addEventListener("scroll", function () {
+          const scrollPos =
+            scrollableDiv.scrollTop + scrollableDiv.clientHeight;
+          const maxScroll = scrollableDiv.scrollHeight - 1; // Subtract a small margin for precision
 
-      if (scrollPos >= maxScroll) {
-        // Scrolled to the bottom
-        manualScrollDetected = true;
-        downloadButton.closest("li").style.display = "none";
-        scrollbtn.setAttribute("title", scrollbtnlastTitle);
-        scrollbtn.children[0].innerText = scrollbtnlastTitle;
-        scrollbtn.children[1].innerText = scrollbtnlastTitle;
-      }
-    });
+          if (scrollPos >= maxScroll) {
+            // Scrolled to the bottom
+            manualScrollDetected = true;
+            downloadButton.closest("li").style.display = "none";
+            scrollbtn.setAttribute("title", scrollbtnlastTitle);
+            scrollbtn.innerText = scrollbtnlastTitle;
+          }
+        });
 
-    scrollbtn.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
+        scrollbtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
 
-      if (manualScrollDetected || clickCount >= totalSteps) {
-        that.skipTermsModalClosed = true;
-        closeButton.click();
-        console.log("modal closesss");
-        console.log("modal closesss redirected");
-        setTimeout(() => {
-          document.body.classList.remove("modal-open");
-          that.skipTermsModalClosed = false;
-        }, 400);
-        console.log("3");
-        alert("3")
-        redirectUrl = that.updateQueryString(redirectUrl);
-          // window.open(redirectUrl, "_blank");
-      } else {
-        clickCount++;
-        scrollToBottom(scrollableDiv, stepsPerClick);
+          if (manualScrollDetected || clickCount >= totalSteps) {
+            that.skipTermsModalClosed = true;
+            closeButton.click();
+            setTimeout(() => {
+              document.body.classList.remove("modal-open");
+              that.skipTermsModalClosed = false;
+            }, 400);
+            redirectUrl = that.updateQueryString(redirectUrl);
+            console.log("redirectUrl---", redirectUrl);
+            window.open(redirectUrl, "_blank");
+          } else {
+            clickCount++;
+            scrollToBottom(scrollableDiv, stepsPerClick);
 
-        if (clickCount >= totalSteps) {
-          // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
-          downloadButton.closest("li").style.display = "none";
-          scrollbtn.setAttribute("title", scrollbtnlastTitle);
-          scrollbtn.children[0].innerText = scrollbtnlastTitle;
-          scrollbtn.children[1].innerText = scrollbtnlastTitle;
-          manualScrollDetected = true;
-        }
-      }
-    });
+            if (clickCount >= totalSteps) {
+              // If it was the last step, set manualScrollDetected to true to handle the next click as redirect
+              downloadButton.closest("li").style.display = "none";
+              scrollbtn.setAttribute("title", scrollbtnlastTitle);
+              scrollbtn.innerText = scrollbtnlastTitle;
+              manualScrollDetected = true;
+            }
+          }
+        });
+      });
+    }
   }
 }
 
