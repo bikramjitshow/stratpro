@@ -694,10 +694,14 @@ class ScMgmReferralEnhanced {
         var redirectUrl = toredirect;
 
         let clickCount = 0;
-        const stepsPerClick = 1; // Number of scroll steps per click
-        const totalSteps = 4; // Total number of steps to scroll
-        let manualScrollDetected = false;
+        // const stepsPerClick = 1; // Number of scroll steps per click
+        // const totalSteps = 4; // Total number of steps to scroll
+        const stepHeightThreshold = 200; // Define a threshold for step size
+        const totalHeight = scrollableDiv.scrollHeight - scrollableDiv.clientHeight;
+        let totalSteps = Math.ceil(totalHeight / stepHeightThreshold); // Calculate total steps dynamically
+        totalSteps = Math.min(totalSteps, 4); // Ensure the maximum value is 4
 
+        let manualScrollDetected = false;
         let scrollToBottom = (element, steps) => {
           const totalHeight = element.scrollHeight - element.clientHeight;
           const stepHeight = totalHeight / totalSteps;
@@ -744,7 +748,7 @@ class ScMgmReferralEnhanced {
             window.open(redirectUrl, "_blank");
           } else {
             clickCount++;
-            scrollToBottom(scrollableDiv, stepsPerClick);
+            scrollToBottom(scrollableDiv, 1);
 
             if (clickCount >= totalSteps) {
               // If it was the last step, set manualScrollDetected to true to handle the next click as redirect

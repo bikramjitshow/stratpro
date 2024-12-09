@@ -76,14 +76,25 @@ class SmartScript {
     }
   }
 
-  customEncodeUrl(url) {
+  /**
+   * Handle character encode string
+   */
+  customEncodeUrl(url = "") {
     return url.replace(/&/g, "%26").replace(/\?/g, "%3F");
   }
 
-  processDeepLinkURL(url) {
-    const [baseURL, deepLinkValuePart] = url.split("deep_link_value=");
-    const encodedDeepLinkValue = this.customEncodeUrl(deepLinkValuePart || "");
-    return baseURL + "deep_link_value=" + encodedDeepLinkValue;
+  /**
+   * Handle Custom Encode Deeplink Url part events
+   */
+  processDeepLinkURL(url = "") {
+    if (url) {
+      const [baseURL, deepLinkValuePart] = url.split("deep_link_value=");
+      const encodedDeepLinkValue = this.customEncodeUrl(
+        deepLinkValuePart || ""
+      );
+      return baseURL + "deep_link_value=" + encodedDeepLinkValue;
+    }
+    return ""; // Fallback for undefined URL
   }
 
   /**
@@ -137,7 +148,7 @@ class SmartScript {
    * Generate QR Code
    */
   generateQr(activeModal, result) {
-    console.log(result.clickURL)
+    console.log(result.clickURL);
     if (result && result.clickURL) {
       const qrDiv = activeModal.querySelector(
         ".sc-pdt-apply-with-smart-script__onelink-qr-container"
