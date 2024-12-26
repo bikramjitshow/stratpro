@@ -31,3 +31,22 @@ https://av.sc.com/hk/zh/content/docs/PVP_TC.pdf
 https://av.sc.com/hk/zh/content/docs/VHIS_Medical_TC.pdf
 
 Terms and conditions
+
+
+
+
+Yes, the mentioned page's HTML CT has been converted to the actual CT. Here’s the current status and pending tasks to go live with the actual CT:
+
+Pending Items:
+
+1. Some Js modification require due to new AA updates. 
+2. A icon issue was there but resolved today. 
+
+Action Plan:
+
+Complete the JS modification by 17th DEC.
+Review and finalize with the relevant team by 17th - 18th DEC.
+Deploy the live version of the actual CT by 20th DEC.
+
+Go Live Date:
+We are targeting 20th DEC to go live with the actual CT, provided all pending items are resolved as per the plan.
