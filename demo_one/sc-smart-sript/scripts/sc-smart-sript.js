@@ -55,18 +55,20 @@ class SmartScript {
               if (activeModalEle) {
                 this.oneLink = activeModalEle.getAttribute("data-one-link");
                 this.deepLink = activeModalEle.getAttribute("data-deep-link");
+                const encodedUrl = this.customEncodeUrl(this.deepLink);
+                console.log(encodedUrl);
 
                 const result = this.generateOneLinkURL(
                   this.oneLink,
                   this.deepLink
                 );
-                const processedResult = {
-                  clickURL: this.processDeepLinkURL(result.clickURL),
-                };
-                console.log(processedResult);
-                if (processedResult) {
-                  this.generateQr(activeModalEle, processedResult);
-                  this.updateLink(activeModalEle, processedResult);
+                // const processedResult = {
+                //   clickURL: this.processDeepLinkURL(result.clickURL),
+                // };
+                console.log(result);
+                if (result) {
+                  this.generateQr(activeModalEle, result);
+                  this.updateLink(activeModalEle, result);
                 }
               }
             }, 400);
@@ -80,7 +82,14 @@ class SmartScript {
    * Handle character encode string
    */
   customEncodeUrl(url = "") {
-    return url.replace(/&/g, "%26").replace(/\?/g, "%3F");
+    let encodedUrl = url
+      .replace(/&/g, "%26")
+      .replace(/\?/g, "%3F")
+      .replace(/:/g, "%3A")
+      .replace(/\//g, "%2F");
+    // let encodedUrl = encodeURIComponent(url);
+    console.log({ encodedUrl });
+    return encodedUrl;
   }
 
   /**
@@ -107,18 +116,18 @@ class SmartScript {
     modalApplyProducts.forEach((modalApplyProduct) => {
       this.oneLink = modalApplyProduct.getAttribute("data-one-link");
       this.deepLink = modalApplyProduct.getAttribute("data-deep-link");
-      // const encodedUrl = this.customEncodeUrl(this.deepLink);
+      const encodedUrl = this.customEncodeUrl(this.deepLink);
       // console.log(encodedUrl);
 
-      const result = this.generateOneLinkURL(this.oneLink, this.deepLink);
-      const processedResult = {
-        clickURL: this.processDeepLinkURL(result.clickURL),
-      };
-      console.log(processedResult);
-      console.log({ result });
-      if (processedResult) {
-        this.generateQr(modalApplyProduct, processedResult);
-        this.updateLink(modalApplyProduct, processedResult);
+      const result = this.generateOneLinkURL(this.oneLink, encodedUrl);
+      // const processedResult = {
+      //   clickURL: this.processDeepLinkURL(result.clickURL),
+      // };
+      console.log(result);
+      // console.log({ result });
+      if (result) {
+        this.generateQr(modalApplyProduct, result);
+        this.updateLink(modalApplyProduct, result);
       }
     });
   }
