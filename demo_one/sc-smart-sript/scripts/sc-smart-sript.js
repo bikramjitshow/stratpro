@@ -10,6 +10,8 @@ class SmartScript {
       campaign: { keys: ["campaign"], defaultValue: "NA" },
       cid: { paramKey: "cid", keys: ["cid"], defaultValue: "NA" },
       channel: { defaultValue: "Website" },
+      cid: { paramKey: "cid", keys: ["cid"], defaultValue: "NA" },
+      is_retargeting: { paramKey: "is_retargeting", defaultValue: "true" },
       custom_ss_ui: { paramKey: "af_ss_ui", defaultValue: "true" },
     };
   }
@@ -137,8 +139,15 @@ class SmartScript {
    */
   generateOneLinkURL(oneLinkURL, deepLinkValue) {
     if (!oneLinkURL) return null;
-    const { mediaSource, campaign, cid, channel, custom_ss_ui } =
-      this.defaultParams;
+    const {
+      mediaSource,
+      campaign,
+      cid,
+      channel,
+      is_retargeting,
+      custom_ss_ui,
+    } = this.defaultParams;
+
     const deepLinkParam = { defaultValue: deepLinkValue };
 
     return window.AF_SMART_SCRIPT.generateOneLinkURL({
@@ -147,8 +156,8 @@ class SmartScript {
         mediaSource,
         campaign,
         deepLinkValue: deepLinkParam,
-        afCustom: [cid, custom_ss_ui],
         channel,
+        afCustom: [cid, custom_ss_ui, is_retargeting],
       },
     });
   }
