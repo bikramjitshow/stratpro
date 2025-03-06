@@ -231,34 +231,41 @@ class ScMgmReferralEnhanced {
       const isSingleViewPdt =
         selectedPdt.getAttribute("data-single-view") === "true";
 
-      console.log("selectedPdt", selectedPdt.querySelector(".sc-products-tile-modal"));
+      console.log(
+        "selectedPdt",
+        selectedPdt.querySelector(".sc-products-tile-modal")
+      );
       console.log("isSingleViewPdt", isSingleViewPdt);
 
       if (selectedPdt) {
-        // Clone the selectedPdt element for the recommended wrapper
-        const clonedPdtForRecommended = selectedPdt.cloneNode(true);
-        const recommendedWrapper = that.productTile.querySelector(
-          ".sc-product-tiles-recommended__wrapper"
-        );
-        if (recommendedWrapper) {
-          recommendedWrapper.appendChild(clonedPdtForRecommended);
-        }
 
-        // isSingleViewPdt
-        if (isSingleViewPdt) {
+         // isSingleViewPdt
+         if (isSingleViewPdt) {
           that.allPdt.classList.add("hide");
           recommendedTiles.classList.add("hide");
           singleViewTile.classList.remove("hide");
           // Clone the selectedPdt element for the recommended wrapper
-          const clonedPdtForRecommended = selectedPdt.querySelector(".sc-products-tile-modal").cloneNode(true);
-          console.log(clonedPdtForRecommended)
+          const clonedPdtForSingleView = selectedPdt
+            .querySelector(".sc-products-tile-modal")
+            .cloneNode(true);
+          console.log(clonedPdtForSingleView);
           const singleviewedWrapper = that.productTile.querySelector(
             ".sc-products-tile-singleview-wrap"
           );
           if (singleviewedWrapper) {
-            singleviewedWrapper.appendChild(clonedPdtForRecommended);
+            singleviewedWrapper.appendChild(clonedPdtForSingleView);
+          }
+        } else {
+          // Clone the selectedPdt element for the recommended wrapper
+          const clonedPdtForRecommended = selectedPdt.cloneNode(true);
+          const recommendedWrapper = that.productTile.querySelector(
+            ".sc-product-tiles-recommended__wrapper"
+          );
+          if (recommendedWrapper) {
+            recommendedWrapper.appendChild(clonedPdtForRecommended);
           }
         }
+
 
         // Clone the selectedPdt element for the tiles wrapper
         const clonedPdtForTiles = selectedPdt.cloneNode(true);
