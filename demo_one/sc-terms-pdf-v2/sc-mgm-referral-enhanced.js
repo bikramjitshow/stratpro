@@ -288,7 +288,7 @@ class ScMgmReferralEnhanced {
           }
           // Clone the selectedPdt element for the tiles wrapper
           const clonedPdtForTiles = selectedPdt.cloneNode(true);
-          that.updateLabelAndInput(clonedPdtForTiles);
+          // that.updateLabelAndInput(clonedPdtForTiles);
           const tilesWrapper = that.productTile.querySelector(
             ".sc-product-tiles__wrapper"
           );
