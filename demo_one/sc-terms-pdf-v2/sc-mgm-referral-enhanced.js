@@ -202,6 +202,29 @@ class ScMgmReferralEnhanced {
     }
   }
 
+  updateLabelAndInput(clonedElement) {
+    console.log(clonedElement);
+    if (!clonedElement) return;
+
+    // Generate a unique ID
+    const uniqueId = `check-box-${Date.now()}`;
+
+    // Find the label and input inside the cloned element
+    const clonedLabel = clonedElement.querySelector("label.sc-radio-box");
+    const clonedInput = clonedElement.querySelector(
+      "input.sc-radio-box__input"
+    );
+
+    console.log(clonedLabel);
+    console.log(clonedInput);
+    console.log(uniqueId);
+
+    if (clonedLabel && clonedInput) {
+      clonedInput.id = uniqueId; // Set unique ID for input
+      clonedLabel.setAttribute("for", uniqueId); // Update 'for' attribute in label
+    }
+  }
+
   /**
    * Handles the display of recommended products by cloning the selected product
    * and placing it in specific tiles, then removing the original product element.
@@ -238,9 +261,8 @@ class ScMgmReferralEnhanced {
       console.log("isSingleViewPdt", isSingleViewPdt);
 
       if (selectedPdt) {
-
-         // isSingleViewPdt
-         if (isSingleViewPdt) {
+        // isSingleViewPdt
+        if (isSingleViewPdt) {
           that.allPdt.classList.add("hide");
           recommendedTiles.classList.add("hide");
           singleViewTile.classList.remove("hide");
@@ -264,44 +286,42 @@ class ScMgmReferralEnhanced {
           if (recommendedWrapper) {
             recommendedWrapper.appendChild(clonedPdtForRecommended);
           }
-        }
+          // Clone the selectedPdt element for the tiles wrapper
+          const clonedPdtForTiles = selectedPdt.cloneNode(true);
+          that.updateLabelAndInput(clonedPdtForTiles);
+          const tilesWrapper = that.productTile.querySelector(
+            ".sc-product-tiles__wrapper"
+          );
+          if (tilesWrapper) {
+            tilesWrapper.appendChild(clonedPdtForTiles);
+          }
+          // Now remove the original selectedPdt
+          selectedPdt.remove();
 
+          const badge = that.productTile.querySelector(
+            `.sc-product-tiles__wrapper [data-product-name='${pdtId}'] .sc-badge`
+          );
+          badge?.classList.remove("hide");
 
-        // Clone the selectedPdt element for the tiles wrapper
-        const clonedPdtForTiles = selectedPdt.cloneNode(true);
-        const tilesWrapper = that.productTile.querySelector(
-          ".sc-product-tiles__wrapper"
-        );
-        if (tilesWrapper) {
-          tilesWrapper.appendChild(clonedPdtForTiles);
-        }
-
-        // Now remove the original selectedPdt
-        selectedPdt.remove();
-
-        const badge = that.productTile.querySelector(
-          `.sc-product-tiles__wrapper [data-product-name='${pdtId}'] .sc-badge`
-        );
-        badge?.classList.remove("hide");
-
-        let counter = 1;
-        const allIds = recommendedWrapper.querySelectorAll(
-          ".sc-products-tile-modal__accordion .sc-accordion__input"
-        );
-        if (allIds.length) {
-          //Generate dynamic Id if accordion is exist in the recommended section
-          allIds.forEach((el) => {
-            let id = el.getAttribute("id");
-            if (id) {
-              id = `${id}_dynamic_${counter}`;
-              const label = el
-                .closest(".sc-products-tile-modal__accordion")
-                .querySelector("label");
-              el.setAttribute("id", id);
-              label.setAttribute("for", id);
-              counter++;
-            }
-          });
+          let counter = 1;
+          const allIds = recommendedWrapper.querySelectorAll(
+            ".sc-products-tile-modal__accordion .sc-accordion__input"
+          );
+          if (allIds.length) {
+            //Generate dynamic Id if accordion is exist in the recommended section
+            allIds.forEach((el) => {
+              let id = el.getAttribute("id");
+              if (id) {
+                id = `${id}_dynamic_${counter}`;
+                const label = el
+                  .closest(".sc-products-tile-modal__accordion")
+                  .querySelector("label");
+                el.setAttribute("id", id);
+                label.setAttribute("for", id);
+                counter++;
+              }
+            });
+          }
         }
       }
     } else {
