@@ -231,7 +231,7 @@ class ScMgmReferralEnhanced {
       const isSingleViewPdt =
         selectedPdt.getAttribute("data-single-view") === "true";
 
-      console.log("selectedPdt", selectedPdt);
+      console.log("selectedPdt", selectedPdt.querySelector(".sc-products-tile-modal"));
       console.log("isSingleViewPdt", isSingleViewPdt);
 
       if (selectedPdt) {
@@ -250,7 +250,8 @@ class ScMgmReferralEnhanced {
           recommendedTiles.classList.add("hide");
           singleViewTile.classList.remove("hide");
           // Clone the selectedPdt element for the recommended wrapper
-          const clonedPdtForRecommended = selectedPdt.cloneNode(true);
+          const clonedPdtForRecommended = selectedPdt.querySelector(".sc-products-tile-modal").cloneNode(true);
+          console.log(clonedPdtForRecommended)
           const singleviewedWrapper = that.productTile.querySelector(
             ".sc-products-tile-singleview-wrap"
           );
