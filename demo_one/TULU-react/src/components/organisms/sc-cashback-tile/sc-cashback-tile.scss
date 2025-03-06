@@ -1,0 +1,90 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+//Atoms
+@import '../../atoms/sc-heading/sc-heading';
+
+//Molecules
+@import '../../molecules/sc-guide-card/sc-guide-card';
+
+/** @define cashback-tile; weak */
+.sc-cashback-tile {
+  padding: $spacer-5 $spacer-0;
+  background-color: $color-light-gray-4;
+  &__guide-cards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+  .sc-guide-card {
+    background-color: $color-white;
+    border: 1px solid $color-light-blue-1;
+    border-radius: 6px;
+    min-height: 0;
+    &__content {
+      margin: $spacer-2 $spacer-0 $spacer-0;
+    }
+    &__content-title {
+      color: $color-blue;
+    }
+    &__col-head {
+      font-size: $font-size-base;
+      font-weight: $font-weight-normal;
+      color: $color-black;
+    }
+    &__col-main {
+      color: $color-black;
+      margin-bottom: $spacer-0;
+      strong {
+        font-size: $font-size-base;
+      }
+    }
+    &__col-desc {
+      color: $color-black;
+      font-size: $font-size-base;
+    }
+  }
+  &__bottom {
+    color: $color-black;
+    border-radius: 6px;
+    background-color: $color-light-blue-3;
+    margin-top: $spacer-3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    padding: $spacer-2 $spacer-4;
+    &-left {
+      font-size: $font-size-lg;
+    }
+    &-right {
+      .sc-inline-buttons__item {
+        margin-bottom: $spacer-0;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .sc-cashback-tile {
+    padding: $spacer-6 $spacer-0;
+    &__guide-cards {
+      flex-direction: row;
+    }
+    .sc-guide-card {
+      padding: $spacer-3;
+    }
+    &__bottom {
+      flex-direction: row;
+      &-left {
+        font-size: $font-size-26;
+      }
+    }
+  }
+}
+/** @end */

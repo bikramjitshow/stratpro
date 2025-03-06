@@ -620,6 +620,7 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".c-modal .sc-products-tile-pdt-selection input:checked"
     );
+    console.log("checkedRadio--", checkedRadio)
     const newHref = checkedRadio
       ?.closest("label")
       .getAttribute("data-card-link");

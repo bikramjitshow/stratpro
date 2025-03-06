@@ -1,0 +1,129 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define column-tile; weak */
+.sc-column-tile {
+  background: linear-gradient(90deg, rgba(31, 40, 46, 0.8) 0%, rgba(79, 89, 93, 0.8) 130.78%);
+  padding: $spacer-3;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  color: $color-white;
+  &__badge {
+    background: rgba(255, 255, 255, 0.6);
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $color-dark-gray-1;
+    border-radius: $spacer-0 $spacer-0 $spacer-4 $spacer-0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: table;
+    padding: $spacer-1 $spacer-4 $spacer-1 $spacer-3;
+    ~ .sc-column-tile {
+      &__left,
+      &__right {
+        margin-top: $spacer-3;
+      }
+    }
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+    .sc-column-tile {
+      &__icon {
+        display: none;
+      }
+    }
+  }
+  &__icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-right: $spacer-2;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__left-content {
+    font-size: $font-size-md;
+    margin-top: $spacer-2;
+  }
+  &__right {
+    min-width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: auto;
+  }
+  &__right-content {
+    font-size: $font-size-md;
+    color: $color-gray-8;
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0 $spacer-1 0 $spacer-1;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    strong {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      color: $color-white;
+    }
+  }
+}
+
+@media (min-width: 680px) {
+  .sc-column-tile {
+    flex-direction: row;
+    padding: $spacer-4;
+    &__badge {
+      ~ .sc-column-tile {
+        &__left,
+        &__right {
+          margin-top: $spacer-2;
+        }
+      }
+    }
+    &__right {
+      display: block;
+      width: auto;
+      .sc-column-tile {
+        &__icon {
+          display: none;
+        }
+      }
+    }
+    &__left {
+      .sc-column-tile {
+        &__icon {
+          display: block;
+        }
+      }
+    }
+    &__left-content {
+      padding-right: $spacer-6;
+      margin-top: 0;
+    }
+    &__right-content {
+      display: block;
+      p {
+        margin-bottom: $spacer-1;
+      }
+      strong {
+        font-size: $font-size-mlg;
+      }
+    }
+  }
+}
+/** @end */

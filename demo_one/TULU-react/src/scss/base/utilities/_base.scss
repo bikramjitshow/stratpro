@@ -1,0 +1,252 @@
+/* stylelint-disable selector-max-type */
+html {
+  background-color: $default-background-color;
+  font-family: $default-font-family;
+  font-size: 100%; /* stylelint-disable-line */
+  width: 100%;
+  min-height: 100%;
+  overflow: initial;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $default-background-color;
+  color: $default-font-color;
+  font-family: $default-font-family;
+  font-weight: $default-font-weight;
+  line-height: $default-line-height;
+  font-size: 16px;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-feature-settings: 'ss01';
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: $default-font-family !important;
+}
+
+iframe {
+  width: 100%;
+}
+strong {
+  font-weight: 600;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+a,
+button,
+input {
+  outline: none;
+}
+sup {
+  font-size: 10px;
+  vertical-align: super;
+}
+sub {
+  font-size: 10px;
+  vertical-align: sub;
+}
+
+label:focus {
+  outline: 0;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+}
+button,
+input,
+select,
+textarea {
+  &:focus-visible {
+    outline: none;
+  }
+}
+strong {
+  font-weight: 600;
+}
+a {
+  color: $color-brand-blue;
+  text-decoration: none;
+}
+
+.visuallyhidden,
+.helper-svg-gradients {
+  @include visuallyhidden;
+}
+.no-scroll {
+  overflow: hidden;
+}
+
+.sc-hide,
+.hide {
+  display: none !important;
+}
+
+.splide {
+  &__arrow {
+    background-color: $color-white;
+    border: 3px solid $color-light-gray-8;
+    width: 28px;
+    height: 28px;
+    opacity: 1;
+    svg {
+      width: 0.875em;
+      height: 0.875em;
+    }
+    svg path {
+      fill: $color-black;
+    }
+    &--prev {
+      left: 8px;
+    }
+    &--next {
+      right: 8px;
+    }
+    &:disabled {
+      display: none;
+    }
+  }
+  &__pagination {
+    bottom: 60px;
+  }
+  &__pagination__page {
+    width: 12px;
+    border-radius: 3px;
+    transition: all 0.3s ease-in;
+    &.is-active {
+      width: 33px;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.sc-blue-bg {
+  background: linear-gradient(90deg, #1f2f87 0, #0a498c 100%) !important;
+  .sc-heading-inner {
+    .sc-title--inner,
+    .sc-description {
+      color: $color-white;
+    }
+
+    .sc-title {
+      color: $color-white;
+    }
+  }
+}
+
+.sc-dark-bg {
+  background-color: $color-dark-gray-6 !important;
+  .sc-heading-inner {
+    .sc-title--inner,
+    .sc-description {
+      color: $color-white;
+    }
+
+    .sc-title {
+      color: $color-white;
+    }
+  }
+}
+
+.sc-white-bg {
+  background-color: $color-white !important;
+}
+
+.sc-module-bg {
+  position: relative;
+  &__img-wrapper {
+    & + div {
+      position: relative;
+      z-index: 2;
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.sc-gray-bg {
+  background-color: $color-light-gray-4 !important;
+}
+
+.sc-no-top-padding {
+  padding-top: 0 !important;
+}
+
+.sc-no-bottom-padding {
+  padding-bottom: 0 !important;
+}
+
+.sc-light-blue-bg {
+  background-color: $color-light-blue-2 !important;
+}
+
+.sc-content-wrapper {
+  @include content-wrapper;
+}
+
+@include desktop {
+  .sc-only-mobile,
+  .only-mobile {
+    display: none !important;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: $color-light-gray-3;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $color-gray-4;
+    border-radius: 10px;
+    &:hover {
+      background: $color-gray-4;
+    }
+  }
+}
+
+@include mobile-tablet {
+  .sc-only-desktop,
+  .only-desktop {
+    display: none !important;
+  }
+}
+#bot-icon-container {
+  transition: bottom 0.3s ease-in-out;
+}
+// When Tab Key press is detected, All focused elements have outline.
+.sc-tab-focus {
+  *:focus {
+    outline: 2px solid $color-brand-blue;
+  }
+  a {
+    outline-offset: -2px;
+  }
+}
+/* stylelint-enable selector-max-type */

@@ -1,0 +1,145 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define disclaimer; weak */
+.sc-disclaimer {
+  padding: $spacer-5 0;
+
+  .sc-description {
+    strong {
+      font-weight: $font-weight-semi-bold;
+      color: $color-dark-blue-4;
+      font-size: $font-size-base;
+    }
+  }
+
+  .sc-external-link-button {
+    margin-top: $spacer-3;
+  }
+
+  &--toggle {
+    .sc-disclaimer {
+      &__toggle {
+        @include visuallyhidden;
+
+        &:checked + .sc-disclaimer__content-mask {
+          height: auto;
+          max-height: 2000px;
+          transition: max-height 1s;
+
+          /* stylelint-disable max-nesting-depth, selector-max-compound-selectors  */
+          &::after {
+            content: none;
+          }
+        }
+
+        &:checked ~ .sc-disclaimer__toggle-trigger .sc-disclaimer__read-more {
+          display: none;
+        }
+
+        &:checked ~ .sc-disclaimer__toggle-trigger .sc-disclaimer__read-less {
+          display: inline-block;
+          background: $color-white
+            url('data:image/svg+xml,<svg width="162" height="165" viewBox="0 0 162 165" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_0_3)"><path d="M156 159L81 84L6 159" stroke="%237C7E82" stroke-width="12" stroke-linecap="round"/><path d="M156 84L81 9L6 84" stroke="%237C7E82" stroke-width="12" stroke-linecap="round"/></g><defs><clipPath id="clip0_0_3"><rect width="162" height="165" fill="white"/></clipPath></defs></svg>');
+          background-position: 87% center;
+          background-size: 12px;
+          background-repeat: no-repeat;
+        }
+
+        ~ .sc-disclaimer__content-mask {
+          max-height: 180px;
+          position: relative;
+          overflow: hidden;
+          transition: max-height 0.5s;
+
+          &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            left: 0;
+            height: 70px;
+            opacity: 1;
+            transition: opacity 1s;
+            display: block;
+            bottom: 0;
+            background: linear-gradient(
+              to bottom,
+              rgba(255, 255, 255, 0) 0,
+              rgba(255, 255, 255, 0) 15%,
+              rgba(255, 255, 255, 0.61) 38%,
+              rgba(255, 255, 255, 0.83) 57%,
+              #fff 100%
+            );
+          }
+        }
+
+        /* stylelint-enable max-nesting-depth, selector-max-compound-selectors  */
+      }
+
+      &__toggle-trigger {
+        display: block;
+        position: relative;
+        text-align: center;
+
+        /* stylelint-disable max-nesting-depth */
+        &::after {
+          content: '';
+          display: inline-block;
+          background-color: $color-grey-border;
+          height: 1px;
+          left: 0;
+          position: absolute;
+          top: 18px;
+          z-index: 1;
+          width: 100%;
+          margin-right: $spacer-6;
+          vertical-align: middle;
+        }
+
+        /* stylelint-enable max-nesting-depth */
+      }
+
+      &__read {
+        color: $color-grey;
+        display: inline-block;
+        font-weight: $font-weight-normal;
+        text-transform: capitalize;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: $font-size-md;
+        position: relative;
+        z-index: 2;
+        padding: $spacer-2 $spacer-6 $spacer-2 $spacer-3;
+        margin: $spacer-0 auto;
+        background: $color-white
+          url('data:image/svg+xml,<svg width="162" height="165" viewBox="0 0 162 165" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6L81 81L156 6" stroke="%237C7E82" stroke-width="12" stroke-linecap="round"/><path d="M6 81L81 156L156 81" stroke="%237C7E82" stroke-width="12" stroke-linecap="round"/></svg>');
+        background-position: 87% center;
+        background-size: 12px;
+        background-repeat: no-repeat;
+      }
+
+      &__read-more {
+        display: inline-block;
+      }
+
+      &__read-less {
+        display: none;
+      }
+    }
+  }
+  &__content-mask {
+    font-size: $font-size-md;
+  }
+}
+
+@include desktop {
+  .sc-disclaimer {
+    padding: $spacer-6 0;
+  }
+}
+
+/** @end */

@@ -1,7 +1,14 @@
 /* eslint-disable no-undef */
 import Highcharts from 'highcharts';
-import ScCommonMethods from '../../../assets/js/commons/sc-common-methods';
 import '../../../../src/assets/js/analytics/adobe/eddl/analytics-event-handler.js';
+import {
+  getHorizontalPosition,
+  calcElementLocation,
+  getPageContext,
+  getCurrentCountry,
+  getQueryParam,
+  getCtaType
+} from '../../../../nitro/src/js/sc-common-methods.js';
 
 /** Class representing a scInsuranceCampaign. */
 class scInsuranceCampaign {
@@ -20,16 +27,6 @@ class scInsuranceCampaign {
     const that = this;
     that.campaign = document.querySelector('.sc-li-campaign');
     document.addEventListener('DOMContentLoaded', function() {
-      /** event Click for scBtns */
-      const scBtns = that.campaign.querySelectorAll('.sc-btn');
-      scBtns.forEach(el => {
-        el.addEventListener('mousedown', event => {
-          event.preventDefault();
-          event.stopPropagation();
-          that.ctaClick(event);
-        });
-      });
-
       /** event Click for view product brochure */
       const learnMore = that.campaign.querySelectorAll('.sc-li-campaign__policy-type-learn-more');
       learnMore.forEach(el => {
@@ -68,6 +65,7 @@ class scInsuranceCampaign {
         el.addEventListener('mousedown', event => {
           event.preventDefault();
           event.stopPropagation();
+          that.ctaClick(event);
           that.activeModal(event);
         });
       });
@@ -90,6 +88,7 @@ class scInsuranceCampaign {
         el.addEventListener('mousedown', function(event) {
           event.preventDefault();
           event.stopPropagation();
+          that.ctaClick(event);
           /** Get the target ID from the button's data attribute */
           var targetId = this.getAttribute('data-target');
           var target = document.getElementById(targetId);
@@ -102,7 +101,6 @@ class scInsuranceCampaign {
 
       let firstpersonaBtn = that.campaign.querySelector('.sc-li-campaign__persona-btn');
       let personaitem = firstpersonaBtn.dataset.persona;
-      that.pageNameInit();
       that.paramCheck();
       that.generateChart(1, personaitem);
       that.tiggerContentFilter(personaitem);
@@ -119,11 +117,8 @@ class scInsuranceCampaign {
    */
   paramCheck() {
     let that = this;
-    let queryString = Utils.getPageContext().queryString;
-    const persona = ScCommonMethods.getQueryParam(
-      queryString,
-      document.querySelector('.sc-li-campaign').getAttribute('data-query-param')
-    );
+    let queryString = getPageContext().queryString;
+    const persona = getQueryParam(queryString, that.campaign.getAttribute('data-query-param'));
     const firstpersonaBtn = document.querySelector('.sc-li-campaign__persona-btn');
     let personaitem = firstpersonaBtn.dataset.persona;
     if (persona) {
@@ -184,7 +179,6 @@ class scInsuranceCampaign {
    */
   tiggerPersona(persona) {
     const that = this;
-    that.campaign = document.querySelector('.sc-li-campaign');
     const personaBtns = that.campaign.querySelectorAll('.sc-li-campaign__persona-btn');
     const queryparam = that.campaign.getAttribute('data-query-param');
 
@@ -534,7 +528,6 @@ class scInsuranceCampaign {
   closeModal(event) {
     const modalContainer = document.querySelector('.sc-li-campaign-form-modal-main');
     event.target.setAttribute('title', 'closemodal');
-    this.ctaClick(event);
     let lastAccessedField = this.lastAccessedField || 'na';
     if (lastAccessedField) {
       setTimeout(() => {
@@ -726,123 +719,6 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Represents a function to generate page name for AA EDDL
-   * @function pageNameInit
-   */
-  pageNameInit() {
-    const that = this;
-    let allowableQueryString = Utils.constants.ALLOWABLE_QUERYSTRING.scb;
-    let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
-      ? document.querySelector('meta[name="sc:page-slug"]').getAttribute('content')
-      : null;
-    const mktCountryCode = Utils.getCurrentCountry();
-    this.productId = 'na';
-    this.pfmId = 'na';
-    const formmodal = document.querySelector('.sc-li-campaign-form-modal');
-    let popupdata = JSON.parse(formmodal.dataset.popup);
-    that.getProductIdPfm();
-    window.digitalData = window.digitalData || {};
-    if (window.digitalData) {
-      window.digitalData.page = window.digitalData.page || {};
-      window.digitalData.page.attributes = window.digitalData.page.attributes || {};
-      window.digitalData.page.attributes.platform = mktCountryCode == 'hk' ? 'web' : 'website';
-      window.digitalData.page.attributes.pfm = this.pfmId;
-    }
-
-    /** Push form name and page name in digitalData */
-    if (window.digitalData.page.pageInfo && window.digitalData.page.pageInfo.pageName) {
-      /** Set na if pageName are empty */
-      let pageName = window.digitalData.page.pageInfo.pageName;
-      pageName = pageName.split(':');
-      let pageNameList = [];
-      if (pageName.length > 1) {
-        for (let i = 0; i < pageName.length; i++) {
-          if (i == 7) {
-            pageNameList.push('na');
-          } else {
-            pageNameList.push(pageName[i] ? pageName[i] : 'na');
-          }
-        }
-      }
-
-      if (pageName.length <= 8) {
-        if (mktCountryCode == 'hk') {
-          /** Screen Name field in CMS is used if filled, in HK. */
-          pageNameList.push(pageName[pageName.length - 1] ? pageName[pageName.length - 1] : 'na');
-        } else {
-          pageNameList.push(pageSlug);
-        }
-      }
-
-      /** Set na if category objects are empty */
-      if (window.digitalData.page.category) {
-        let catName = window.digitalData.page.category;
-        for (let index in catName) {
-          window.digitalData.page.category[index] = catName[index] ? catName[index] : 'na';
-        }
-      }
-
-      const environment = Utils.getCurrentEnvironment();
-      window.digitalData.page.pageInfo.pageName = pageNameList.join(':');
-      window.digitalData.page.pageInfo.buildDetails = 'web3.0';
-      window.digitalData.page.pageInfo.libDetails =
-        environment === 'preview' ? 'staging' : environment;
-    }
-
-    let pageName = window.digitalData.page.pageInfo.pageName.split(':');
-    window.digitalData.user = window.digitalData.user || {};
-    window.digitalData.user.userInfo = {
-      userStatus: 'guest',
-      userType: 'NTB',
-      segment: pageName[3],
-      userID: 'na'
-    };
-
-    /** Update page name */
-    window.digitalData.page.pageInfo.pageName = pageName.join(':');
-    /** Add user info */
-    window.digitalData.userInfo = window.digitalData.userInfo || {};
-    window.digitalData.userInfo = window.digitalData.user.userInfo;
-    window.digitalData.userInfo.loginStatus = 'not logged-in';
-    delete window.digitalData.user;
-    /* Add product info */
-    if (pageName[4] != 'na' || pageName[5] != 'na' || pageName[6] != 'na') {
-      window.digitalData.products = window.digitalData.products || [];
-      window.digitalData.products = [
-        {
-          productName: pageName[6],
-          subProduct1: pageName[4],
-          subProduct2: pageName[5]
-        }
-      ];
-    }
-
-    let campaignData = that.getCampaignInfo(allowableQueryString);
-    window.digitalData.campaign = window.digitalData.campaign || {};
-    window.digitalData.campaign = {
-      internal: {
-        campaignName: campaignData[0],
-        campaignValue: campaignData[1]
-      },
-      external: {
-        campaignName: campaignData[0],
-        campaignValue: campaignData[1]
-      }
-    };
-
-    let eventName = mktCountryCode == 'hk' ? 'page-view' : 'pageView';
-    let dataObject = {
-      ...digitalData,
-      event: eventName,
-      title: document.title,
-      href: window.location.href,
-      context: 'page view'
-    };
-
-    scAnalyticsDataArray.push(dataObject);
-  }
-
-  /**
    * Represents a function to update page name for AA EDDL
    * @function pageNameUpdate
    * @example pageNameUpdate("formAbandon")
@@ -859,7 +735,7 @@ class scInsuranceCampaign {
     let pageSlug = document.querySelector('meta[name="sc:page-slug"]')
       ? document.querySelector('meta[name="sc:page-slug"]').getAttribute('content')
       : null;
-    const mktCountryCode = Utils.getCurrentCountry();
+    const mktCountryCode = getCurrentCountry();
     const formmodal = document.querySelector('.sc-li-campaign-form-modal');
     let popupdata = JSON.parse(formmodal.dataset.popup);
 
@@ -896,147 +772,6 @@ class scInsuranceCampaign {
   }
 
   /**
-   * Represents a function to get productId from URL for AA EDDL
-   * @example
-   * getProductId()
-   */
-  getProductIdPfm() {
-    let queryStringList = [];
-    let queryString = window.location.search;
-    if (queryString) {
-      queryString = queryString.substring(1);
-      if (queryString) {
-        queryStringList = queryString.split('&');
-        if (queryStringList.length) {
-          for (let i = 0; i < queryStringList.length; i++) {
-            let result = queryStringList[i].split('=');
-            if (result[0].toLowerCase() == 'productid') {
-              this.productId = result[1].toLowerCase();
-            } else if (result[0].toLowerCase() == 'pfm') {
-              this.pfmId = result[1].toLowerCase();
-            }
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * based on white list parameters return campaignName and campaignValue
-   * @param {Object} allowableQueryString are whitelist parameters
-   * @return {Object} return collections of campaignName and campaignValue
-   * @example
-   * getCampaignInfo(['subChanCode', 'camp_id', 'promoCode'])
-   */
-  getCampaignInfo(allowableQueryString) {
-    const that = this;
-    if (!allowableQueryString.length) return '';
-    let total = allowableQueryString.length;
-    let campaignName = '';
-    let campaignValue = '';
-    for (let i = 0; i < total; i++) {
-      let cookieValue = that.getCookie(allowableQueryString[i]);
-      let localStorageValue = Utils.getLocalStorageWithExpiry(allowableQueryString[i]);
-      if (cookieValue || localStorageValue) {
-        if (campaignName) {
-          campaignName += ':';
-          campaignValue += ':';
-        }
-        campaignName += allowableQueryString[i];
-        campaignValue += cookieValue || localStorageValue;
-      }
-    }
-    if (!campaignName) campaignName = 'na';
-    if (!campaignValue) campaignValue = 'na';
-    return [campaignName, campaignValue];
-  }
-
-  /**
-   * return cookie value
-   * @param {String} key is the name of the cookie
-   * @return {String} return selected cookie value
-   * @example
-   * getCookie('subChanCode')
-   */
-  getCookie(key) {
-    var name = key + '=';
-    var decodedCookie;
-
-    try {
-      //The decodeURIComponent function can throw an error if the cookie value contains invalid encoding, which might happen if special characters are improperly encoded. To fix this, you can add a try-catch block around decodeURIComponent to handle any decoding errors gracefully.
-      decodedCookie = decodeURIComponent(document.cookie);
-    } catch (e) {
-      return null;
-    }
-
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-
-    return null;
-  }
-
-  /**
-   * capture horizontal click position and return it's left or right
-   * @param {Number} xClick horizontal click position
-   * @return {String} return it's left or right
-   * @example
-   * getHorizontalPosition(1000)
-   */
-  getHorizontalPosition(xClick) {
-    let width = Math.max(
-      document.body.scrollWidth,
-      document.documentElement.scrollWidth,
-      document.body.offsetWidth,
-      document.documentElement.offsetWidth,
-      document.documentElement.clientWidth
-    );
-    let median = width / 2;
-    return xClick < median ? 'left' : 'right';
-  }
-
-  /**
-   * check class name and return link type
-   * @param {String} className class name of the clicked element
-   * @return {String} return link type like link, button, carousel etc
-   * @example
-   * getCtaType('sc-btn')
-   */
-  getCtaType(className, target) {
-    if (target && target.closest('.sc-nav')) {
-      return 'nav-link';
-    } else if (
-      className == '' ||
-      typeof className !== 'string' ||
-      typeof className.includes === 'undefined'
-    ) {
-      return 'link';
-    } else if (className.indexOf('sc-btn') !== -1 || className.indexOf('c-button') !== -1) {
-      return 'button';
-    } else if (
-      className.indexOf('sc-bnr__link') !== -1 ||
-      className.indexOf('slide-anchor-bg') !== -1
-    ) {
-      return 'banner';
-    } else if (className.indexOf('sc-carousel__pintiles-item') !== -1) {
-      return 'carousel';
-    } else if (className.indexOf('sc-quick-links__link') !== -1) {
-      return 'quick-links';
-    } else if (className.indexOf('sc-tag') !== -1) {
-      return 'tabs';
-    } else {
-      return 'link';
-    }
-  }
-
-  /**
    * Represents a function to generate page name for AA EDDL
    * @function ctaClick
    * @param {event} event
@@ -1045,15 +780,15 @@ class scInsuranceCampaign {
     const that = this;
     that.pageNameUpdate('ctaClick');
     let closestAnchor = event.target.closest('a');
-    let customLinkText = event.target.innerText
-      ? event.target.innerText.trim().toLowerCase()
-      : event.target.textContent.trim().toLowerCase();
-    let ctaType = closestAnchor ? that.getCtaType(closestAnchor.className, event.target) : 'link';
-    let linkName =
-      document.querySelector('title') && document.querySelector('title').innerText
-        ? document.querySelector('title').innerText.toLowerCase()
-        : 'na';
-    let ctaName = event.target.getAttribute('title');
+    let customLinkText = (
+      closestAnchor.getAttribute('title') ??
+      event.target.innerText ??
+      event.target.textContent ??
+      ''
+    )
+      .trim()
+      .toLowerCase();
+    let ctaType = closestAnchor ? getCtaType(closestAnchor.className, event.target) : 'link';
 
     /** status ok popup click */
     if (event.target.classList.contains('sc-error-modal__alert-close')) {
@@ -1091,28 +826,46 @@ class scInsuranceCampaign {
       }
     }
 
-    let dataObject = {
-      ...JSON.parse(JSON.stringify(digitalData)),
-      customLinkClick: {
-        customLinkText: customLinkText,
-        customLinkRegion:
-          that.getHorizontalPosition(event.clientX) + ' ' + Utils.calcElementLocation(event.target),
-        customLinkType: ctaType,
-        customLinkName: linkName
-      },
-      event: 'ctaClick',
-      title: document.title,
-      href: window.location.href,
-      context: customLinkText
-    };
-    dataObject.ctaName = ctaName || customLinkText;
-    dataObject.ctaPosition = Utils.calcElementLocation(event.target);
-    dataObject.ctaType = ctaType;
-    if (Utils.getCurrentCountry() == 'hk') {
-      delete dataObject.customLinkClick;
+    const mktCountryCode = getCurrentCountry();
+    if (mktCountryCode === 'sg') {
+      let dataObject = {
+        ...JSON.parse(JSON.stringify(digitalData)),
+        customLinkClick: {
+          customLinkText: customLinkText,
+          customLinkPosition:
+            getHorizontalPosition(event.clientX) + ' ' + calcElementLocation(event.target),
+          customLinkType: ctaType
+        },
+        event: 'ctaClick',
+        title: document.title,
+        href: window.location.href,
+        context: customLinkText
+      };
+      scAnalyticsDataArray.push(dataObject);
+    } else {
+      let linkName =
+        document.querySelector('title') && document.querySelector('title').innerText
+          ? document.querySelector('title').innerText.toLowerCase()
+          : 'na';
+      let dataObject = {
+        ...JSON.parse(JSON.stringify(digitalData)),
+        customLinkClick: {
+          customLinkText: customLinkText,
+          customLinkRegion:
+            getHorizontalPosition(event.clientX) + ' ' + calcElementLocation(event.target),
+          customLinkType: ctaType,
+          customLinkName: linkName
+        },
+        event: 'ctaClick',
+        title: customLinkText,
+        href: window.location.href,
+        context: customLinkText
+      };
+      dataObject.ctaName = customLinkText;
+      dataObject.ctaPosition = calcElementLocation(event.target);
+      dataObject.ctaType = ctaType;
+      scAnalyticsDataArray.push(dataObject);
     }
-
-    scAnalyticsDataArray.push(dataObject);
     if (
       Array.isArray(window.digitalData.products) &&
       window.digitalData.products[0] &&
@@ -1165,6 +918,8 @@ class scInsuranceCampaign {
       event: 'formSubmit_shortForm'
     };
 
+    dataObject.products = dataObject.products || [];
+    dataObject.products[0] = dataObject.products[0] || {};
     dataObject.products[0].applicationReferenceNumber = formstatus.refno || 'na';
     dataObject.products[0].applicationSubmissionStatus = formstatus.status || 'na';
 

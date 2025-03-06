@@ -1,14 +1,14 @@
 /* eslint-disable no-undef */
-import Highcharts from 'highcharts';
-import '../../../../src/assets/js/analytics/adobe/eddl/analytics-event-handler.js';
-import {
-  getHorizontalPosition,
-  calcElementLocation,
-  getPageContext,
-  getCurrentCountry,
-  getQueryParam,
-  getCtaType
-} from '../../../../nitro/src/js/sc-common-methods.js';
+// import Highcharts from 'highcharts';
+// import '../../../../src/assets/js/analytics/adobe/eddl/analytics-event-handler.js';
+// import {
+//   getHorizontalPosition,
+//   calcElementLocation,
+//   getPageContext,
+//   getCurrentCountry,
+//   getQueryParam,
+//   getCtaType
+// } from '../../../../nitro/src/js/sc-common-methods.js';
 
 /** Class representing a scInsuranceCampaign. */
 class scInsuranceCampaign {
@@ -976,4 +976,4 @@ class scInsuranceCampaign {
 const instance = new scInsuranceCampaign();
 instance.init();
 
-export default instance;
+// export default instance;

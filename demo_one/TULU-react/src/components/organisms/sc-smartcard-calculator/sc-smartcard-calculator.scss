@@ -1,0 +1,160 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../molecules/sc-calculator-tile/sc-calculator-tile';
+
+/** @define smart-card-calculator; weak */
+
+.sc-smart-card-calculator {
+  padding: $spacer-6 $spacer-0;
+  background-color: $color-light-gray-11;
+
+  .sc-inline-buttons__item {
+    margin: $spacer-0;
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: $spacer-3;
+    align-items: center;
+  }
+
+  &__inner-wrapper {
+    padding: $spacer-3;
+  }
+
+  &__wrapper {
+    border-radius: $nt-spacer-3;
+    border: $nt-spacer-1 solid $color-blue-1;
+    background-color: $color-white;
+    max-width: 1040px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__input {
+    appearance: none;
+    color: $color-dark-blue-1;
+    font-size: $font-size-20;
+    font-weight: 500;
+    background-color: transparent;
+    border: $spacer-0;
+    margin-left: $spacer-2;
+    width: 62%;
+  }
+
+  &__inner-bottom {
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacer-3;
+    background-color: $color-light-blue-3;
+    flex-direction: column;
+    text-align: center;
+    color: $color-blue;
+  }
+
+  &__inner-bottom-top {
+    font-size: $font-size-md;
+  }
+
+  &__inner-bottom-bottom {
+    font-size: $font-size-lg;
+    font-weight: 600;
+  }
+
+  &__bottom {
+    padding: $spacer-3;
+    text-align: center;
+    color: $color-white;
+    font-size: $font-size-md;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    margin: $spacer-0;
+  }
+
+  &__content-text-head {
+    font-size: $font-size-base;
+    color: $color-gray-10;
+    margin-right: $spacer-3;
+  }
+
+  &__content-input {
+    border: $nt-spacer-1 solid $color-light-blue-1;
+    color: $color-dark-blue-1;
+    font-size: $font-size-base;
+    font-weight: 500;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: $spacer-2 $spacer-2;
+    border-radius: $spacer-1;
+    max-width: 160px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      height: 15px;
+      width: 15px;
+      transform: translateY(-50%);
+      background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5.79289%2013.5H3C2.86739%2013.5%202.74021%2013.4473%202.64645%2013.3535C2.55268%2013.2598%202.5%2013.1326%202.5%2013V10.2071C2.5%2010.1414%202.51293%2010.0764%202.53806%2010.0158C2.56319%209.95509%202.60002%209.89997%202.64645%209.85354L10.1464%202.35354C10.2402%202.25977%2010.3674%202.20709%2010.5%202.20709C10.6326%202.20709%2010.7598%202.25977%2010.8536%202.35354L13.6464%205.14643C13.7402%205.2402%2013.7929%205.36738%2013.7929%205.49999C13.7929%205.63259%2013.7402%205.75977%2013.6464%205.85354L6.14645%2013.3535C6.10002%2013.4%206.0449%2013.4368%205.98424%2013.4619C5.92357%2013.4871%205.85855%2013.5%205.79289%2013.5Z%22%20stroke%3D%22black%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M8.5%204L12%207.5%22%20stroke%3D%22black%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M5.96805%2013.4681L2.5318%2010.0318%22%20stroke%3D%22black%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');
+    }
+  }
+
+  &__content {
+    &:first-child {
+      margin-bottom: $spacer-5;
+    }
+  }
+
+  &__error-msg {
+    color: $color-red;
+    font-size: $font-size-sm;
+    margin-top: $nt-spacer-3;
+    display: none;
+  }
+}
+
+@include tablet-desktop {
+  .sc-smart-card-calculator {
+    &__inner-wrapper {
+      padding: $spacer-5 $spacer-6;
+    }
+    &__content-wrapper {
+      justify-content: space-between;
+    }
+  }
+}
+
+@include desktop {
+  .sc-smart-card-calculator {
+    &__inner-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 $spacer-3;
+
+      &:first-child {
+        margin-bottom: $spacer-0;
+      }
+    }
+
+    &__content-text-head {
+      text-align: right;
+    }
+  }
+}
+/** @end */

@@ -1,0 +1,176 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Atoms
+@import '../../atoms/sc-tag/sc-tag';
+@import '../../atoms/sc-badge/sc-badge';
+
+/** @define card-tile; weak */
+.sc-card-tile {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  background-color: $color-white;
+  position: relative;
+  &__title {
+    font-size: $font-size-base;
+    margin-bottom: $spacer-3;
+    width: 100%;
+    font-weight: $font-weight-semi-bold;
+    color: $color-text;
+  }
+  &__description {
+    overflow-wrap: anywhere;
+    width: 100%;
+    margin: 0;
+    font-size: $font-size-md;
+    color: $color-text;
+    a {
+      position: relative;
+      z-index: 2;
+    }
+    ~ .sc-card-tile__tags {
+      margin-top: $spacer-3;
+    }
+  }
+  &__content {
+    padding: $spacer-4 $spacer-3;
+    white-space: normal;
+  }
+  &__tile-image {
+    height: 240px;
+  }
+  &__link {
+    width: 100%;
+  }
+  &__tile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    font-family: 'object-fit: cover; object-position: center;';
+    transition: all 0.3s ease;
+    display: block;
+  }
+  &__icon {
+    margin: $spacer-4 $spacer-3 0;
+    svg {
+      height: 80px;
+      width: 80px;
+    }
+    &--small {
+      svg {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+  &__badges {
+    position: absolute;
+    top: -14px;
+    left: 12px;
+    z-index: 3;
+  }
+  &__tags {
+    margin-bottom: $spacer-3;
+    .sc-tag {
+      margin-right: $spacer-2;
+    }
+  }
+  &__location {
+    color: $color-blue;
+    font-size: $font-size-md;
+    position: relative;
+    display: flex;
+    &::before {
+      content: '';
+      width: 14px;
+      height: 18px;
+      border: 0;
+      flex-shrink: 0;
+      position: relative;
+      top: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      margin-right: $spacer-2;
+      display: inline-block;
+      background-image: url('data:image/svg+xml,<svg width="430" height="513" viewBox="0 0 430 513" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M215.104 512.171L200.233 499.424C179.732 482.258 0.724609 327.661 0.724609 214.577C0.724609 96.179 96.7056 0.197998 215.104 0.197998C333.502 0.197998 429.483 96.179 429.483 214.577C429.483 327.662 250.476 482.259 230.06 499.509L215.104 512.171ZM215.104 46.553C122.351 46.658 47.1856 121.823 47.0806 214.576C47.0806 285.618 157.213 399.106 215.104 451.049C272.996 399.085 383.127 285.532 383.127 214.576C383.022 121.823 307.858 46.659 215.104 46.553Z" fill="%232772C7"/><path d="M215.104 299.555C168.172 299.555 130.126 261.509 130.126 214.577C130.126 167.645 168.172 129.599 215.104 129.599C262.036 129.599 300.082 167.645 300.082 214.577C300.082 261.509 262.037 299.555 215.104 299.555ZM215.104 172.087C191.638 172.087 172.615 191.11 172.615 214.576C172.615 238.042 191.638 257.065 215.104 257.065C238.57 257.065 257.593 238.042 257.593 214.576C257.593 191.11 238.571 172.087 215.104 172.087Z" fill="%232772C7"/></svg>');
+    }
+  }
+  &__location-text {
+    display: -webkit-box; /* stylelint-disable-line value-no-vendor-prefix */
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical; /* stylelint-disable-line property-no-vendor-prefix */
+    overflow: hidden;
+  }
+
+  &__read-more {
+    padding: 0 $spacer-3 $spacer-4;
+    width: 100%;
+    font-size: $font-size-sm;
+    color: $color-gray-1;
+    display: flex;
+    align-items: center;
+  }
+  &--horizontal {
+    .sc-card-tile {
+      &__link {
+        display: flex;
+        height: 100%;
+      }
+      &__tile-image {
+        width: 130px;
+        min-height: 200px;
+        height: auto;
+        flex-shrink: 0;
+      }
+      &__read-more {
+        position: absolute;
+        bottom: -16px;
+        left: 130px;
+        width: auto;
+      }
+      &__content {
+        padding-bottom: $spacer-6;
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-card-tile {
+    &__content {
+      padding: $spacer-4;
+    }
+    &__read-more {
+      padding: $spacer-0 $spacer-6 $spacer-4;
+    }
+    &__icon {
+      margin: $spacer-4 $spacer-4 $spacer-0;
+    }
+  }
+}
+
+@include larger {
+  .sc-card-tile {
+    &--horizontal {
+      .sc-card-tile {
+        &__tile-image {
+          width: 200px;
+        }
+        &__read-more {
+          left: 200px;
+          bottom: -7px;
+        }
+      }
+    }
+  }
+}
+/** @end */

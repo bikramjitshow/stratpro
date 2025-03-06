@@ -1,18 +1,16 @@
-/* eslint-disable no-undef */
-class SmartScript {
+class ScSmartScript {
   constructor() {
     this.oneLink = null;
     this.deepLink = null;
 
     // Define shared settings
     this.defaultParams = {
-      mediaSource: { keys: ["media_source"], defaultValue: "Website" },
-      campaign: { keys: ["campaign"], defaultValue: "NA" },
-      cid: { paramKey: "cid", keys: ["cid"], defaultValue: "NA" },
-      channel: { defaultValue: "Website" },
-      cid: { paramKey: "cid", keys: ["cid"], defaultValue: "NA" },
-      is_retargeting: { paramKey: "is_retargeting", defaultValue: "true" },
-      custom_ss_ui: { paramKey: "af_ss_ui", defaultValue: "true" },
+      mediaSource: { keys: ['media_source'], defaultValue: 'Website' },
+      campaign: { keys: ['campaign'], defaultValue: 'NA' },
+      cid: { paramKey: 'cid', keys: ['cid'], defaultValue: 'NA' },
+      channel: { defaultValue: 'Website' },
+      is_retargeting: { paramKey: 'is_retargeting', defaultValue: 'true' },
+      custom_ss_ui: { paramKey: 'af_ss_ui', defaultValue: 'true' }
     };
   }
 
@@ -22,52 +20,52 @@ class SmartScript {
    * @description It will run on script execution
    */
   init() {
-    document.addEventListener("DOMContentLoaded", () => {
+    // document.addEventListener('DOMContentLoaded', () => {
       // Handle modal event
-      document.body.addEventListener("click", (event) => {
-        const anchor = event.target.closest("a");
+      document.body.addEventListener('click', event => {
+        const anchor = event.target.closest('a');
         if (anchor) {
           this.handleModalEvent(anchor, event);
         }
       });
 
       this.initializeOnelink();
-    });
+    // });
+  }
+
+  /**
+   * Handle character encode string
+   */
+  customEncodeUrl(url = '') {
+    let encodedUrl = url
+      .replace(/&/g, '%26')
+      .replace(/\?/g, '%3F')
+      .replace(/:/g, '%3A')
+      .replace(/\//g, '%2F');
+    return encodedUrl;
   }
 
   /**
    * Handle modal click events
    */
   handleModalEvent(anchor, event) {
-    const selectedId = anchor.getAttribute("href");
+    const selectedId = anchor.getAttribute('href');
     if (selectedId) {
-      const modalsource = anchor.getAttribute("data-modal-source");
+      const modalsource = anchor.getAttribute('data-modal-source');
       if (modalsource) {
-        const modal = document.querySelector(".c-modal.is-open");
+        const modal = document.querySelector('.c-modal.is-open');
         if (modal) {
           event.preventDefault();
-          const activeModal = modal.querySelector(".m-text-content");
-          const activeModalId = activeModal?.getAttribute("data-modal-id");
+          const activeModal = modal.querySelector('.m-text-content');
+          const activeModalId = activeModal?.getAttribute('data-modal-id');
           if (activeModal && activeModalId) {
-            console.log(activeModalId);
             setTimeout(() => {
-              const activeModalEle = activeModal.querySelector(
-                ".sc-pdt-apply-with-smart-script"
-              );
+              const activeModalEle = activeModal.querySelector('.sc-pdt-apply-with-smart-script');
               if (activeModalEle) {
-                this.oneLink = activeModalEle.getAttribute("data-one-link");
-                this.deepLink = activeModalEle.getAttribute("data-deep-link");
-                const encodedUrl = this.customEncodeUrl(this.deepLink);
-                console.log(encodedUrl);
-
-                const result = this.generateOneLinkURL(
-                  this.oneLink,
-                  this.deepLink
-                );
-                // const processedResult = {
-                //   clickURL: this.processDeepLinkURL(result.clickURL),
-                // };
-                console.log(result);
+                this.oneLink = activeModalEle.getAttribute('data-one-link');
+                this.deepLink = activeModalEle.getAttribute('data-deep-link');
+                const encodedDeepLink = this.customEncodeUrl(this.deepLink);
+                const result = this.generateOneLinkURL(this.oneLink, encodedDeepLink);
                 if (result) {
                   this.generateQr(activeModalEle, result);
                   this.updateLink(activeModalEle, result);
@@ -81,52 +79,15 @@ class SmartScript {
   }
 
   /**
-   * Handle character encode string
-   */
-  customEncodeUrl(url = "") {
-    let encodedUrl = url
-      .replace(/&/g, "%26")
-      .replace(/\?/g, "%3F")
-      .replace(/:/g, "%3A")
-      .replace(/\//g, "%2F");
-    // let encodedUrl = encodeURIComponent(url);
-    console.log({ encodedUrl });
-    return encodedUrl;
-  }
-
-  /**
-   * Handle Custom Encode Deeplink Url part events
-   */
-  processDeepLinkURL(url = "") {
-    if (url) {
-      const [baseURL, deepLinkValuePart] = url.split("deep_link_value=");
-      const encodedDeepLinkValue = this.customEncodeUrl(
-        deepLinkValuePart || ""
-      );
-      return baseURL + "deep_link_value=" + encodedDeepLinkValue;
-    }
-    return ""; // Fallback for undefined URL
-  }
-
-  /**
    * Initialize OneLink URL on load
    */
   initializeOnelink() {
-    const modalApplyProducts = document.querySelectorAll(
-      ".sc-pdt-apply-with-smart-script"
-    );
-    modalApplyProducts.forEach((modalApplyProduct) => {
-      this.oneLink = modalApplyProduct.getAttribute("data-one-link");
-      this.deepLink = modalApplyProduct.getAttribute("data-deep-link");
-      const encodedUrl = this.customEncodeUrl(this.deepLink);
-      // console.log(encodedUrl);
-
-      const result = this.generateOneLinkURL(this.oneLink, encodedUrl);
-      // const processedResult = {
-      //   clickURL: this.processDeepLinkURL(result.clickURL),
-      // };
-      console.log(result);
-      // console.log({ result });
+    const modalApplyProducts = document.querySelectorAll('.sc-pdt-apply-with-smart-script');
+    modalApplyProducts.forEach(modalApplyProduct => {
+      this.oneLink = modalApplyProduct.getAttribute('data-one-link');
+      this.deepLink = modalApplyProduct.getAttribute('data-deep-link');
+      const encodedDeepLink = this.customEncodeUrl(this.deepLink);
+      const result = this.generateOneLinkURL(this.oneLink, encodedDeepLink);
       if (result) {
         this.generateQr(modalApplyProduct, result);
         this.updateLink(modalApplyProduct, result);
@@ -144,10 +105,9 @@ class SmartScript {
       campaign,
       cid,
       channel,
-      is_retargeting,
       custom_ss_ui,
+      is_retargeting
     } = this.defaultParams;
-
     const deepLinkParam = { defaultValue: deepLinkValue };
 
     return window.AF_SMART_SCRIPT.generateOneLinkURL({
@@ -156,9 +116,9 @@ class SmartScript {
         mediaSource,
         campaign,
         deepLinkValue: deepLinkParam,
-        channel,
         afCustom: [cid, custom_ss_ui, is_retargeting],
-      },
+        channel
+      }
     });
   }
 
@@ -166,19 +126,15 @@ class SmartScript {
    * Generate QR Code
    */
   generateQr(activeModal, result) {
-    console.log(result.clickURL);
     if (result && result.clickURL) {
       const qrDiv = activeModal.querySelector(
-        ".sc-pdt-apply-with-smart-script__onelink-qr-container"
+        '.sc-pdt-apply-with-smart-script__onelink-qr-container'
       );
       if (qrDiv) {
-        qrDiv.querySelectorAll("canvas").forEach((canvas) => canvas.remove()); // Remove existing QR canvases
-        const qrId = qrDiv.getAttribute("id").trim();
-        console.log(`Generating QR for ID: ${qrId}`);
+        qrDiv.querySelectorAll('canvas').forEach(canvas => canvas.remove()); // Remove existing QR canvases
+        const qrId = qrDiv.getAttribute('id').trim();
         window.AF_SMART_SCRIPT.displayQrCode(qrId);
       }
-    } else {
-      console.error("Failed to generate OneLink URL");
     }
   }
 
@@ -188,13 +144,17 @@ class SmartScript {
   updateLink(activeModal, result) {
     if (result && result.clickURL) {
       activeModal
-        .querySelectorAll(".sc-pdt-apply-with-smart-script__onelink-btn")
-        .forEach((oneLinkUrlelem) => {
-          oneLinkUrlelem.setAttribute("href", result.clickURL);
+        .querySelectorAll('.sc-pdt-apply-with-smart-script__onelink-btn')
+        .forEach(oneLinkUrlelem => {
+          oneLinkUrlelem.setAttribute('href', result.clickURL);
         });
     }
   }
 }
 
-const Instance = new SmartScript();
-Instance.init();
+const instance = new ScSmartScript();
+window.addEventListener('load', function() {
+  instance.init();
+});
+
+// export default instance;

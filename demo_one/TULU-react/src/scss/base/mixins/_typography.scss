@@ -1,0 +1,28 @@
+// Typography
+
+// Heading mixins for use within components
+/* stylelint-disable scss/at-mixin-pattern */
+@mixin h1 {
+  font-size: $font-size-huge;
+  @include desktop {
+    font-size: $font-size-mlg;
+  }
+}
+@mixin h2 {
+  font-size: $font-size-xlg;
+  @include desktop {
+    font-size: $font-size-mlg;
+  }
+}
+@mixin h3 {
+  font-size: $font-size-mlg;
+  @include desktop {
+    font-size: $font-size-lg;
+  }
+}
+@mixin h4 {
+  font-size: $font-size-lg;
+  @include desktop {
+    font-size: $font-size-base;
+  }
+}

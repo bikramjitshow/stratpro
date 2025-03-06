@@ -1,0 +1,104 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Card Tile CSS
+@import '../../../../src/components/molecules/sc-card-tile/sc-card-tile';
+
+/** @define related-links; weak */
+
+.sc-related-links {
+  background-color: $color-dark-gray-6;
+  padding: $spacer-5 $spacer-0;
+  &:not(.sc-related-links-three-col) {
+    .sc-title {
+      color: $color-white;
+    }
+    .sc-description {
+      color: $color-white;
+    }
+  }
+  &__wrapper {
+    width: 100%;
+    padding: $spacer-0 $spacer-4;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sc-card-tile {
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    * {
+      color: $color-black;
+    }
+
+    &__content {
+      min-height: 90px;
+    }
+
+    &__icon {
+      margin: $spacer-0;
+      position: absolute;
+      left: $spacer-3;
+      top: $spacer-3;
+
+      svg {
+        height: 16px;
+        width: 24px;
+      }
+    }
+
+    &__tile-image {
+      height: 200px;
+    }
+
+    &__title {
+      font-size: $font-size-lg;
+      margin-bottom: $spacer-0;
+      color: $color-black;
+    }
+  }
+
+  .splide {
+    &__slide {
+      width: 240px;
+    }
+
+    &__track {
+      padding-top: $nt-spacer-2;
+      padding-bottom: $nt-spacer-2;
+    }
+  }
+  .sc-inline-buttons {
+    margin-top: auto;
+  }
+}
+
+@include larger {
+  .sc-related-links {
+    padding: $spacer-6 $spacer-0;
+
+    &__wrapper {
+      padding: $spacer-0 $spacer-5;
+    }
+
+    .sc-card-tile {
+      &__icon {
+        left: 24px;
+        top: 24px;
+      }
+    }
+  }
+}
+
+/** @end */

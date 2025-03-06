@@ -1,0 +1,82 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../molecules/sc-product-list-tile/sc-product-list-tile';
+
+/** @define mission-tracker; weak */
+.sc-mission-tracker {
+  max-width: 1024px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgb(44, 58, 135) 0%, rgba(0, 97, 199, 0.8) 100%);
+  &__title {
+    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-30;
+    color: $color-white;
+    padding: 0 $spacer-3;
+  }
+  &__sub-title {
+    font-size: $font-size-md;
+    color: $color-white;
+    padding: 0 $spacer-3;
+    margin-top: $spacer-3;
+  }
+  &__wrapper {
+    background: $color-white;
+    border-radius: 30px 30px 0 0;
+    padding: $spacer-5 $spacer-3 $spacer-4;
+    width: 100%;
+  }
+
+  &__img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: $spacer-3;
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__box {
+    margin-bottom: $spacer-5;
+  }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 0 $spacer-3;
+  }
+  &__sub-head {
+    margin-bottom: $spacer-3;
+    font-weight: $font-weight-semi-bold;
+    color: $color-dark-blue-4;
+  }
+  &__disclaimer {
+    font-size: $font-size-md;
+    color: $color-dark-gray-5;
+    strong {
+      font-weight: $font-weight-semi-bold;
+    }
+  }
+  .sc-inline-buttons {
+    margin-top: $spacer-2;
+  }
+  .sc-product-list-tile {
+    margin-bottom: $spacer-3;
+  }
+}
+/** @end */
+
+.smartbanner {
+  display: none !important;
+}
+.smartbanner-show {
+  margin-top: 0 !important;
+}

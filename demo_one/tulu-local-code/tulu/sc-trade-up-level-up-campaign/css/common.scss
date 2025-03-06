@@ -1,0 +1,138 @@
+/* common css file where we define the font and some base css */
+/** @define common; weak */
+/* stylelint-disable */
+
+body {
+  margin: 0;
+  line-height: normal;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: auto;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+// removing arrows from input type number
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block;
+}
+
+.only-desktop {
+  display: none;
+}
+
+.only-mobile {
+  display: block;
+}
+
+/* Rich Text Editor */
+.sc-rte {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  figure {
+    margin: 8px 0;
+  }
+
+  figcaption {
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    word-break: break-word;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid $color-grey-border;
+    padding: 8px;
+    background-color: $color-white;
+    vertical-align: middle;
+  }
+
+  th {
+    color: $color-blue;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 16px;
+
+    li {
+      margin-bottom: 8px;
+
+      ul,
+      ol {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: 20px;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  p {
+    color: $color-black;
+    margin-bottom: 8px;
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+.sc-content-wrapper {
+  padding: 0 $spacer-3;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Apply touch-action only on mobile devices */
+@media (pointer: coarse) and (max-width: 768px) {
+  body {
+    /* Allow scrolling, prevent zoom */
+    touch-action: pan-x pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+/** @end */

@@ -1,0 +1,285 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Molecule
+@import '../../molecules/sc-guide-card/sc-guide-card';
+@import '../../molecules/sc-tile-info/sc-tile-info';
+@import '../../molecules/sc-heading-gradient/sc-heading-gradient';
+@import '../../molecules/sc-card-cvp/sc-card-cvp';
+@import '../../molecules/sc-start-account-step/sc-start-account-step';
+@import '../../molecules/sc-miles-card/sc-miles-card';
+
+/** @define product-info; weak */
+
+.sc-product-info {
+  padding: $spacer-5 $spacer-0;
+  background-color: $color-light-gray-5;
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &__left {
+    padding: $spacer-3;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    min-height: 210px;
+    margin-bottom: $nt-spacer-4;
+    display: flex;
+    align-items: center;
+    &--two-col {
+      padding: $spacer-0;
+      flex-direction: column;
+    }
+  }
+  &__left--three-col {
+    background-color: rgb(241, 247, 253);
+    border-radius: 0 0 6px 6px;
+    flex-direction: column;
+    padding: $spacer-3;
+    margin-bottom: $spacer-0;
+    order: 2;
+    /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+    ~ .sc-product-info__right {
+      background-color: rgb(241, 247, 253);
+      border-radius: 6px 6px 0 0;
+      padding: $spacer-3;
+      margin-bottom: 0;
+      .sc-cvp {
+        margin: $spacer-5 $spacer-0 $spacer-0;
+        width: 100%;
+        &__icon {
+          display: none;
+        }
+        &__top,
+        &__bottom {
+          color: $color-gray-1;
+          font-weight: 400;
+        }
+        &__middle {
+          strong {
+            font-size: $font-size-mlg;
+            color: $color-gray-1;
+          }
+        }
+      }
+      .sc-start-account__button {
+        margin: $spacer-5 $spacer-0 $spacer-0;
+      }
+    }
+    .sc-start-account-step {
+      margin-bottom: $spacer-3;
+      &:last-of-type {
+        margin-bottom: $spacer-0;
+      }
+    }
+    /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+  }
+
+  &__right {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    .sc-inline-buttons {
+      margin-top: auto;
+    }
+  }
+  &__content-box {
+    position: relative;
+    z-index: 3;
+    max-width: 380px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  &__title {
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-semi-bold;
+    color: $color-text;
+    margin-bottom: $spacer-6;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  &--reverse {
+    .sc-product-info {
+      &__container {
+        flex-direction: column-reverse;
+      }
+      &__left {
+        margin-bottom: $spacer-0;
+      }
+      &__right {
+        margin-bottom: $nt-spacer-4;
+      }
+    }
+  }
+  .sc-guide-card {
+    min-height: 200px;
+    margin-bottom: $nt-spacer-4;
+    &:last-child {
+      margin: $spacer-0;
+    }
+  }
+  .sc-miles-journey {
+    margin-bottom: $nt-spacer-4;
+    &:last-child {
+      margin: $spacer-0;
+    }
+  }
+}
+@include tablet-desktop {
+  .sc-product-info {
+    padding: $spacer-6 $spacer-0;
+    &__left {
+      padding: $spacer-4 $spacer-5;
+    }
+    &__left--two-col {
+      padding: $spacer-0;
+      min-height: auto;
+      .sc-guide-card {
+        height: 100%;
+      }
+    }
+    &__left--three-col {
+      margin-right: $spacer-0;
+      flex-direction: row;
+      padding: $spacer-3;
+      ~ .sc-product-info__right {
+        .sc-cvp__icon {
+          display: block;
+        }
+      }
+      .sc-start-account-step {
+        margin-bottom: $spacer-0;
+        margin-right: $spacer-3;
+        &:last-of-type {
+          margin-right: $spacer-0;
+        }
+      }
+    }
+    .sc-miles-journey {
+      margin-right: $nt-spacer-4;
+      margin-bottom: $spacer-0;
+    }
+    .sc-guide-card {
+      &--is-img {
+        min-height: 400px;
+      }
+    }
+  }
+}
+@include desktop {
+  .sc-product-info {
+    &__container {
+      flex-direction: row;
+      &--four-col {
+        flex-wrap: nowrap;
+      }
+    }
+    &__left {
+      width: 45%;
+      flex-shrink: 0;
+      margin-right: $spacer-3;
+      margin-bottom: $spacer-0;
+      min-height: 250px;
+    }
+    &__left--two-col {
+      padding: $spacer-0;
+    }
+    &__left--three-col {
+      width: 65%;
+      order: initial;
+      margin-right: $spacer-0;
+      border-radius: 6px 0 0 6px;
+      padding: $spacer-4;
+      ~ .sc-product-info__right {
+        border-radius: 0 6px 6px 0;
+        padding: $spacer-5 $spacer-3;
+      }
+    }
+
+    &--reverse {
+      .sc-product-info {
+        &__container {
+          flex-direction: row-reverse;
+        }
+        &__left {
+          margin-right: $spacer-0;
+        }
+        &__right {
+          margin-right: $spacer-3;
+          margin-bottom: $spacer-0;
+        }
+      }
+    }
+    .sc-product-info {
+      &__left {
+        flex-direction: row;
+      }
+    }
+    .sc-miles-journey,
+    .sc-guide-card {
+      margin-right: $spacer-3;
+    }
+    .sc-guide-card {
+      margin-bottom: $spacer-0;
+      margin-right: $spacer-3;
+      min-height: 270px;
+      &--is-img {
+        min-height: 270px;
+      }
+      &--invest {
+        .sc-guide-card {
+          /* stylelint-disable max-nesting-depth */
+          &__top {
+            margin-left: -$spacer-4;
+            width: calc(100% + 48px);
+            margin-top: -$spacer-4;
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+      }
+    }
+  }
+}
+@include tablet {
+  .sc-product-info {
+    &__left {
+      min-height: 400px;
+    }
+  }
+}
+@include mobile {
+  .sc-product-info {
+    &--cvp-mbl-column {
+      .sc-cvp {
+        flex-direction: column;
+      }
+      .sc-tile-info {
+        &__button {
+          justify-content: flex-start;
+        }
+      }
+    }
+    .sc-btn-link {
+      margin-top: $spacer-4;
+    }
+  }
+}
+/** @end */

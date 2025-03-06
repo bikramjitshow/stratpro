@@ -1,0 +1,89 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define checkbox; weak */
+.sc-checkbox {
+  display: block;
+  position: relative;
+  padding-left: $spacer-5;
+  font-size: $font-size-md;
+  color: $color-black;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      ~ .sc-checkbox__checkmark {
+        background-color: $color-blue;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border-radius: 3px;
+    background-color: $color-light-gray-10;
+    cursor: pointer;
+    border: 2px solid transparent;
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 7px;
+      top: 2px;
+      width: 5px;
+      height: 11px;
+      border: solid $color-white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+  /* stylelint-disable max-nesting-depth */
+  /* stylelint-disable plugin/selector-bem-pattern */
+  &.sc-checkbox--radio {
+    .sc-checkbox {
+      &__checkmark {
+        border-radius: 50%;
+        background: $color-white;
+        border: 2px solid $color-light-gray-10;
+        top: -4px;
+      }
+
+      &__input {
+        &:checked {
+          ~ .sc-checkbox__checkmark::after {
+            display: block;
+            background-color: $color-blue;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            transform: none;
+            top: 2px;
+            left: 2px;
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+
+  /* stylelint-enable plugin/selector-bem-pattern */
+  /* stylelint-enable max-nesting-depth */
+}
+
+/** @end */

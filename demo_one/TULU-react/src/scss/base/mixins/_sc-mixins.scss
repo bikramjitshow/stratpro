@@ -1,0 +1,118 @@
+// SC Mixins
+
+// Aspect ratio.
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &::before {
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%; /* stylelint-disable-line */
+    content: '';
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// Subscript and superscript size
+@mixin sc-sub-sup-fix() {
+  /* stylelint-disable selector-max-type */
+  sup {
+    vertical-align: super;
+    font-size: 10px; /* stylelint-disable-line */
+    line-height: 0;
+  }
+
+  sub {
+    vertical-align: sub;
+    font-size: 10px; /* stylelint-disable-line */
+    line-height: 0;
+  }
+  /* stylelint-enable selector-max-type */
+}
+
+// Position sticky to the wrapper
+@mixin cover {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+// Mixin for px to em converter.
+$browser-context: 16;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+// Usage:   @include transition(width, height 0.3s ease-in-out);
+// Output:  -webkit-transition(width 0.2s, height 0.3s ease-in-out);
+//          transition(width 0.2s, height 0.3s ease-in-out);
+//
+// Pass in any number of transitions
+@mixin transition($transitions...) {
+  $unfolded-transitions: ();
+  @each $transition in $transitions {
+    $unfolded-transitions: append($unfolded-transitions, unfold-transition($transition), comma);
+  }
+
+  transition: $unfolded-transitions;
+}
+
+@function unfold-transition($transition) {
+  // Default values
+  $property: all;
+  $duration: 0.2s;
+  $easing: null; // Browser default is ease, which is what we want
+  $delay: null; // Browser default is 0, which is what we want
+  $default-properties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfolded-transition: ();
+  @for $i from 1 through length($default-properties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($default-properties, $i);
+    }
+    $unfolded-transition: append($unfolded-transition, $p);
+  }
+
+  @return $unfolded-transition;
+}
+
+// Content wrapper
+@mixin content-wrapper {
+  width: 100%;
+  padding: $spacer-0 $spacer-3;
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  @include tablet-desktop {
+    padding: $spacer-0 $spacer-5;
+  }
+}
+
+@mixin visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  padding: $spacer-0;
+  border: 0;
+}

@@ -1,0 +1,51 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define title; weak */
+.sc-title {
+  color: $color-text;
+  font-size: $font-size-mlg;
+  font-weight: $font-weight-normal;
+  position: relative;
+  margin-bottom: $spacer-4;
+  &--underline {
+    &::after {
+      content: '';
+      width: 100px;
+      height: 8px;
+      background-image: url('data:image/svg+xml,<svg width="102" height="9" viewBox="0 0 102 9" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="0.40332" width="101.695" height="8.47458" fill="%2338D200"/><rect x="33.8984" y="0.40332" width="67.7966" height="8.47458" fill="%230F7AED"/></svg>');
+      background-position: center center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      display: block;
+      margin-top: $nt-spacer-4;
+    }
+  }
+  &--center {
+    text-align: center;
+  }
+  &--bold {
+    font-weight: $font-weight-bold;
+  }
+  &--with-drop {
+    &::before {
+      content: 'ª';
+      color: $color-brand-blue;
+    }
+    &::after {
+      content: 'º';
+      color: $color-brand-green;
+    }
+  }
+}
+
+@include desktop {
+  .sc-title {
+    font-size: $font-size-xlg;
+    margin-bottom: $spacer-5;
+  }
+}
+/** @end */

@@ -1,0 +1,107 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Atom-Molecule
+@import '../../atoms/sc-tag/sc-tag';
+@import '../../molecules/sc-col-tile/sc-col-tile';
+
+/** @define offer-dropdown; weak */
+.sc-offer-dropdown {
+  padding: $spacer-5 0;
+  background-color: $color-light-gray-5;
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sc-col-tile {
+    margin-bottom: $spacer-3;
+    min-height: 130px;
+    background: $color-white;
+
+    &--bg-dark {
+      background-color: rgba(37, 37, 37, 0.6);
+    }
+
+    &__image {
+      max-width: 130px;
+      max-height: 130px;
+    }
+
+    &__container {
+      align-items: flex-start;
+    }
+
+    &__title {
+      margin-top: $spacer-2;
+      .sc-tag {
+        display: inline-block;
+        margin: $spacer-1 $spacer-1 $spacer-1 0;
+        width: fit-content;
+      }
+    }
+
+    &__input {
+      &:checked {
+        ~ .sc-col-tile__container {
+          /* stylelint-disable max-nesting-depth, selector-max-compound-selectors   */
+          .sc-col-tile__image {
+            width: 130px;
+            height: 130px;
+          }
+          /* stylelint-enable max-nesting-depth, selector-max-compound-selectors   */
+        }
+      }
+    }
+
+    &__label {
+      margin-top: -30px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+      padding-left: 146px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+      transition: margin-top 0s;
+    }
+
+    &__desc {
+      transition: all 0.1s;
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-offer-dropdown {
+    &__container {
+      margin-left: -8px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+      margin-right: -8px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+      width: calc(100% + 16px);
+    }
+
+    .sc-col-tile {
+      width: calc(50% - 16px);
+      margin-left: $spacer-2;
+      margin-right: $spacer-2;
+    }
+
+    &--three-column {
+      .sc-col-tile {
+        width: calc(50% - 16px);
+      }
+    }
+  }
+}
+
+@include desktop {
+  .sc-offer-dropdown {
+    .sc-col-tile {
+      width: calc(50% - 16px);
+    }
+    &--three-column {
+      .sc-col-tile {
+        width: calc(33% - 16px);
+      }
+    }
+  }
+}
+
+/** @end */

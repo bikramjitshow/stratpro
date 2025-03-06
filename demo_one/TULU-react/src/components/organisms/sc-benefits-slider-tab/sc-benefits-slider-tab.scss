@@ -1,0 +1,228 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../molecules/sc-benefit-tile/sc-benefit-tile';
+
+/** @define benefits-slider-tab; weak */
+
+.sc-benefits-slider-tab {
+  padding: $spacer-6 0;
+  position: relative;
+  overflow: hidden;
+  background-color: $color-dark-blue-5;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(31, 40, 46) 0%, rgb(79, 89, 93) 130.78%);
+    opacity: 0.9;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-normal;
+    margin-bottom: $spacer-5;
+    color: $color-white;
+    max-width: 1000px;
+  }
+  &__tabs {
+    color: $color-white;
+  }
+  &__tab-text {
+    text-align: center;
+    font-size: $font-size-sm;
+  }
+  &__contents-slide {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    .sc-benefit-tile {
+      width: 100%;
+    }
+  }
+  &__tab-icon {
+    width: 20px;
+    height: 20px;
+    display: none;
+    flex-shrink: 0;
+    margin-right: $spacer-2;
+    position: relative;
+    &::before {
+      content: '';
+      background-image: url('data:image/svg+xml,<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5465 1.5694L10.6259 2.95866L8.68634 1.56565C8.20048 1.22285 7.58566 1.15494 7.04098 1.38348L6.909 1.44547C6.43785 1.69169 6.10977 2.14213 6.02232 2.67332L5.64613 5.01189L3.29319 5.40351C2.71193 5.49895 2.22755 5.88368 2.00056 6.42959L1.94603 6.58042C1.78875 7.08776 1.87556 7.63583 2.18894 8.07271L3.57676 9.99166L2.18451 11.9327C1.84214 12.4191 1.77396 13.0347 2.0024 13.5782L2.06457 13.7102C2.31132 14.1815 2.76107 14.5093 3.29198 14.5968L5.63094 14.9733L6.02238 17.3258C6.11675 17.9056 6.49879 18.3895 7.04105 18.6168L7.19167 18.6719C7.69847 18.8309 8.2475 18.7454 8.6904 18.4317L10.6107 17.0417L12.5464 18.4309C12.8387 18.6397 13.1818 18.75 13.5337 18.75C13.7575 18.75 13.9793 18.7059 14.1889 18.6185L14.322 18.5566C14.7969 18.3106 15.1274 17.8595 15.2149 17.3269L15.5905 14.9876L17.9439 14.5968C18.524 14.5014 19.0069 14.1202 19.2348 13.5782C19.4639 13.0332 19.3949 12.4176 19.05 11.9291L17.622 9.93872L17.2555 8.8688L17.1304 8.51324L12.5762 13.0676C12.202 13.4425 11.7044 13.6486 11.1741 13.6486C10.6438 13.6486 10.1463 13.4425 9.77222 13.0677L6.62635 9.92186C6.25134 9.54757 6.0452 9.05001 6.0452 8.51986C6.0452 7.98958 6.25133 7.49202 6.62619 7.11789C7.00065 6.74282 7.49823 6.5367 8.02835 6.5367C8.55859 6.5367 9.05618 6.74281 9.43035 7.11759L11.1741 8.86058L15.6695 4.36533L15.3355 3.41755L15.2148 2.67422C15.1196 2.09249 14.7347 1.60791 14.1885 1.38158C13.641 1.1542 13.0273 1.22448 12.5465 1.5694Z" fill="white"/><path d="M11.1731 12.4059C10.9836 12.4059 10.7942 12.3334 10.6498 12.1891L7.50412 9.04336C7.21477 8.75401 7.21477 8.28617 7.50412 7.99682C7.79361 7.70734 8.26131 7.70734 8.55079 7.99682L11.1731 10.6191L18.6065 3.18576C18.8959 2.89641 19.3636 2.89641 19.6531 3.18576C19.9425 3.47511 19.9425 3.94295 19.6531 4.2323L11.6964 12.1891C11.552 12.3334 11.3626 12.4059 11.1731 12.4059Z" fill="white"/></svg>');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+  &__contents-0 {
+    .splide {
+      &__pagination {
+        position: static;
+        margin-top: $spacer-5;
+        transform: none;
+        background-color: transparent;
+      }
+      &__pagination__page {
+        width: 12px;
+        border-radius: 2px;
+        transition: all 0.3s ease-in;
+        /* stylelint-disable max-nesting-depth */
+        &.is-active {
+          opacity: 1;
+          width: 33px;
+          transform: none;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+  &__tabs-0 {
+    display: none;
+    .splide__slide {
+      border: 1px solid $color-white !important;
+      color: $color-white;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: $spacer-2 $spacer-3;
+      min-height: 70px;
+      margin-bottom: $spacer-2;
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+      &.is-active {
+        background: rgba(255, 255, 255, 0.15);
+        font-weight: 500;
+        .sc-benefits-slider-tab__tab-icon {
+          display: block;
+          ~ .sc-benefits-slider-tab__tab-text {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    .splide {
+      &__list {
+        flex-direction: column;
+      }
+      &__pagination {
+        flex-direction: column;
+        right: -30px;
+        left: auto;
+        background-color: transparent;
+        li {
+          &:last-child,
+          &:first-child {
+            margin: 0;
+          }
+        }
+      }
+      &__pagination__page {
+        height: 12px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in;
+        margin-bottom: $spacer-0;
+        &.is-active {
+          height: 33px;
+          transform: none;
+          opacity: 1;
+        }
+      }
+    }
+    /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+  }
+  .sc-title {
+    color: $color-white;
+  }
+  .sc-inline-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: $spacer-6;
+  }
+  .splide {
+    &__arrows {
+      display: none;
+    }
+  }
+  .sc-content-wrapper {
+    position: relative;
+    z-index: 3;
+  }
+}
+@include desktop {
+  .sc-benefits-slider-tab {
+    &::after {
+      background: linear-gradient(90deg, rgb(31, 40, 46) 0%, rgb(79, 89, 93) 130.78%);
+    }
+    &__title {
+      font-size: $font-size-mlg;
+    }
+    &__container {
+      display: flex;
+      align-items: center;
+    }
+    &__wrapper {
+      width: calc(100% - 170px);
+    }
+    &__tab {
+      width: 170px;
+    }
+    &__tabs-0 {
+      display: block;
+    }
+    &__contents-slide {
+      gap: 40px;
+      flex-wrap: nowrap;
+      padding-right: 60px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+    }
+  }
+}
+
+// Ipad Pro screen css
+// @media screen and (min-device-width: 1024px) and (max-device-width: 1200px)
+@include mobile-tablet {
+  .sc-benefits-slider-tab {
+    &__tab {
+      display: none;
+    }
+    &__wrapper {
+      width: 100%;
+    }
+  }
+}
+/** @end */
+
+/** @define tab-focus; weak */
+.sc-tab-focus {
+  .sc-benefits-slider-tab .splide__slide:focus {
+    outline-offset: -6px;
+    outline-color: $color-yellow-1;
+  }
+}
+
+/** @end */

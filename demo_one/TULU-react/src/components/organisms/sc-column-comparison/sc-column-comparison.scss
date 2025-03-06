@@ -1,0 +1,192 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Atom-Molecule
+@import '../../atoms/sc-badge/sc-badge';
+@import '../../molecules/sc-cvp/sc-cvp';
+
+/** @define column-comparison; weak */
+.sc-column-comparison {
+  background-color: $color-light-gray-11;
+  padding: $spacer-6 0;
+  position: relative;
+  .sc-content-wrapper {
+    position: relative;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__col {
+    padding: $spacer-5;
+    background-color: $color-white;
+    width: 200px;
+    border-radius: 8px;
+    &-item {
+      width: 100%;
+      min-height: 146px;
+      align-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      padding-top: $spacer-2;
+      padding-bottom: $spacer-2;
+      &::after {
+        content: '';
+        width: 70%;
+        height: 2px;
+        background: linear-gradient(
+          89.99deg,
+          rgba(102, 114, 119, 0) 0%,
+          #667277 50.2%,
+          rgba(102, 114, 119, 0) 100.41%
+        );
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+      }
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+    &-item-head {
+      min-height: 194px;
+    }
+  }
+  &__value {
+    width: 100%;
+    margin-bottom: $spacer-1;
+    color: $color-gray-9;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: $font-size-sm;
+
+    strong {
+      color: $color-dark-gray-5;
+      font-size: $font-size-30;
+      font-weight: 500;
+      margin-right: $spacer-1;
+      line-height: $line-height-sm;
+    }
+    &--center {
+      text-align: center;
+    }
+  }
+  &__cvp {
+    width: 100%;
+    text-align: center;
+    strong {
+      font-weight: 600;
+      margin-right: $spacer-1;
+    }
+    p {
+      font-size: $font-size-sm;
+      color: $color-gray-9;
+      margin-bottom: $spacer-1;
+    }
+  }
+  .sc-badge {
+    position: absolute;
+    left: -52px;
+    top: 20%;
+    &__text {
+      font-weight: 500;
+      font-size: $font-size-md;
+    }
+  }
+
+  .splide {
+    &__pagination {
+      position: relative;
+      margin-top: $spacer-2;
+      bottom: -8px;
+      &__page {
+        /* stylelint-disable max-nesting-depth */
+        background: $color-gray-1;
+        &.is-active {
+          background: $color-gray-5;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    margin-top: $spacer-4;
+  }
+}
+
+@include desktop {
+  .sc-column-comparison {
+    &__col {
+      width: 250px;
+      &-item {
+        min-height: 190px;
+      }
+    }
+    .splide {
+      &__slide {
+        &:first-child {
+          margin-left: auto;
+          /* stylelint-disable max-nesting-depth */
+          .sc-column-comparison {
+            &__col {
+              border: 1px solid rgba(217, 219, 221, 1);
+              background: $color-light-gray-4;
+              border-radius: 16px 0 0 16px;
+            }
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+        &:last-child {
+          margin-right: auto !important;
+          .sc-column-comparison {
+            /* stylelint-disable max-nesting-depth */
+            &__col {
+              border-radius: 0 16px 16px 0;
+            }
+            /* stylelint-enable max-nesting-depth */
+          }
+        }
+      }
+    }
+    &__cvp {
+      text-align: left;
+      display: block;
+      p {
+        font-size: $font-size-lg;
+      }
+    }
+    &__value {
+      font-size: $font-size-base;
+      strong {
+        font-size: $font-size-48;
+      }
+    }
+  }
+}
+
+/** @end */

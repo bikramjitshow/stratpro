@@ -1,0 +1,31 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define inline-buttons; weak */
+.sc-inline-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  &__item {
+    display: inline-flex;
+    margin: $spacer-0 $spacer-2 $spacer-3 $spacer-0;
+    &:last-child {
+      margin-right: $spacer-0;
+    }
+    &:only-child {
+      margin-bottom: $spacer-0;
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-inline-buttons {
+    &__item {
+      margin: $spacer-0 $spacer-3 $spacer-3 $spacer-0;
+    }
+  }
+}
+/** @end */

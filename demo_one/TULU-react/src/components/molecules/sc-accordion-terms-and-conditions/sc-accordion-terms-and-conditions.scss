@@ -1,0 +1,84 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define accordion-terms */
+.sc-accordion-terms {
+  &__panel {
+    display: block;
+    position: relative;
+    padding-left: 0;
+    border-bottom: solid 1px $color-light-gray-5;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__header {
+    cursor: pointer;
+    display: block;
+    font-size: $font-size-md;
+    color: $color-blue;
+    font-weight: $font-weight-bold;
+    padding: $spacer-3 0;
+    min-height: 44px;
+    /* stylelint-disable plugin/selector-bem-pattern */
+    // This <a> tag is inserted in the HTML from TinyMCE editor. Class cannot be added here.
+    a {
+      color: $color-blue;
+      display: block;
+      font-size: $font-size-base;
+      text-decoration: underline;
+    }
+    /* stylelint-enable plugin/selector-bem-pattern */
+  }
+
+  &__text {
+    display: none;
+    padding-bottom: $spacer-3;
+    color: $color-grey;
+    font-size: $font-size-base;
+  }
+
+  &__input {
+    @include visuallyhidden;
+    visibility: hidden;
+    &:checked {
+      ~ .sc-accordion-terms__header {
+        color: $color-text;
+        &:hover {
+          cursor: default;
+        }
+      }
+      ~ .sc-accordion-terms__text {
+        display: block;
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-accordion-terms {
+    &__panel {
+      padding-left: $spacer-3;
+    }
+  }
+}
+
+@include desktop {
+  .sc-accordion-terms {
+    &__header {
+      font-size: $font-size-base;
+      padding: $spacer-3 0;
+    }
+
+    &__input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+}
+/** @end */

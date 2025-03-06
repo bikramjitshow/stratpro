@@ -1,0 +1,94 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define fees-and-charges; weak */
+.sc-fees-and-charges {
+  display: flex;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+  padding: $spacer-3;
+  margin-left: -$spacer-2;
+  margin-right: -$spacer-2;
+  border-radius: 6px;
+  .sc-heading {
+    font-size: $font-size-base;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-spacing-sm;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+  }
+
+  &__column {
+    width: 100%;
+  }
+
+  &__card {
+    border-bottom: 1px solid $color-light-gray-5;
+    position: relative;
+    padding: $spacer-3 0 $spacer-2;
+    font-size: $font-size-md;
+    float: left;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__desc {
+    width: 100%;
+    padding: $spacer-2 0 0 0;
+    float: left;
+    padding-right: 0;
+  }
+
+  &__title {
+    color: $color-text;
+    display: inline-block;
+  }
+
+  &__fee {
+    color: $color-text;
+    font-weight: $font-weight-bold;
+    float: right;
+  }
+  &__promo-fee {
+    text-decoration: line-through; /* stylelint-disable-line */
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+    color: $color-grey;
+  }
+}
+
+@include tablet-desktop {
+  .sc-fees-and-charges {
+    padding: $spacer-5;
+    &__column {
+      &:nth-child(2) {
+        padding-left: $spacer-6;
+      }
+    }
+    &__desc {
+      padding-right: 30%; /* stylelint-disable-line */
+    }
+  }
+}
+
+@include mobile {
+  .sc-fees-and-charges {
+    display: grid;
+    &__column {
+      &:nth-child(2) {
+        padding-top: $nt-spacer-4;
+      }
+      .sc-fees-and-charges {
+        &__fee {
+          float: none;
+        }
+      }
+    }
+  }
+}
+/** @end */

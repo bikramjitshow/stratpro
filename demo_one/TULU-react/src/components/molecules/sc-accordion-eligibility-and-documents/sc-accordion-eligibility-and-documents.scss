@@ -1,0 +1,185 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define eligibility-doc; weak */
+.sc-eligibility-doc {
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+  padding: $spacer-3;
+  float: left;
+  width: 100%;
+  border-radius: 6px;
+  &__input {
+    @include visuallyhidden;
+    visibility: hidden;
+    &:checked {
+      + .sc-eligibility-doc__label {
+        border-bottom: 4px solid $color-blue;
+        color: $color-blue;
+        font-weight: $font-weight-bold;
+        /* stylelint-disable max-nesting-depth */
+        // Click to collapse content is created using checkbox button.
+        // This increases the nesting depth.
+        &::after {
+          background: $color-blue;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+
+    &:first-child:checked ~ .sc-eligibility-doc__panels .sc-eligibility-doc__panel:first-child,
+    &:nth-child(3):checked ~ .sc-eligibility-doc__panels .sc-eligibility-doc__panel:nth-child(2),
+    &:nth-child(5):checked ~ .sc-eligibility-doc__panels .sc-eligibility-doc__panel:nth-child(3),
+    &:nth-child(7):checked ~ .sc-eligibility-doc__panels .sc-eligibility-doc__panel:nth-child(4) {
+      display: block;
+    }
+  }
+
+  &__label {
+    position: relative;
+    display: inline-block;
+    padding: $spacer-3 $spacer-3;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    width: 49%;
+    text-align: center;
+    color: $color-text;
+    margin-bottom: $spacer-4;
+
+    &:hover {
+      color: $color-blue;
+      &::after {
+        color: $color-blue;
+      }
+    }
+  }
+  &__panels {
+    float: left;
+    width: 100%;
+  }
+
+  &__panel {
+    display: none;
+    padding: 0;
+    border-top: 1px solid $color-light-gray-7;
+  }
+  &__img-sm {
+    margin-top: $spacer-4;
+  }
+}
+
+@include tablet-desktop {
+  .sc-eligibility-doc {
+    padding: $spacer-5;
+    &__label {
+      width: auto;
+      min-width: 200px;
+      font-size: $font-size-base;
+    }
+  }
+}
+@include desktop {
+  .sc-eligibility-doc {
+    &__label {
+      min-width: 265px;
+      font-weight: $font-weight-normal;
+    }
+  }
+}
+/** @end */
+
+/** @define two-column; weak */
+.sc-two-column {
+  display: block;
+  margin-top: $spacer-2;
+
+  .sc-h3 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacer-3;
+    color: $color-text;
+    display: block;
+  }
+
+  .sc-h4 {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-top: $spacer-4;
+    margin-bottom: $spacer-3;
+    display: block;
+  }
+
+  ul,
+  ol {
+    font-size: $font-size-base;
+    color: $color-grey;
+    margin-bottom: $spacer-3;
+    list-style: none !important;
+    padding-left: $spacer-0 !important;
+    li {
+      font-size: $font-size-md;
+      color: $color-grey;
+      padding-left: $spacer-4;
+      padding-bottom: $spacer-2;
+      position: relative;
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+      // Elements are inserted to HTML from tinymce editor in the back end.
+      // The list is styled with tick bullets using 'after'.
+      &::before {
+        content: '';
+        position: absolute;
+        height: 13px;
+        left: 0;
+        top: 5px;
+        width: 13px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15.042' height='11.631' viewBox='0.312 0.312 15.042 11.631'%3E%3Cpath fill='%23555' d='M6.43 11.449c-.201.198-.502.198-.803 0l-.1-.197-.201-.196-.803-.789L.912 6.522c-.201-.197-.201-.591 0-.788l1.103-1.183c.201-.197.502-.197.804 0l3.21 3.351L12.851.807c.2-.197.501-.197.802 0l1.104 1.183c.2.197.2.592 0 .788L6.43 11.449z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      ul,
+      ol {
+        margin-top: $spacer-2;
+        padding-left: $spacer-3;
+        li {
+          list-style-type: disc;
+          padding-left: 0;
+          &::before {
+            content: none;
+          }
+        }
+      }
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+    }
+  }
+
+  &__column {
+    flex: 1;
+    &:first-child {
+      padding-right: 0;
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-two-column {
+    display: flex;
+
+    .sc-h3 {
+      font-size: $font-size-lg;
+    }
+
+    .sc-h4 {
+      font-size: $font-size-base;
+    }
+
+    &__column {
+      &:first-child {
+        padding-right: $spacer-6;
+      }
+    }
+  }
+}
+/** @end */

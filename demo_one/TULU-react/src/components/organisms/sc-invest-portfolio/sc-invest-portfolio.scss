@@ -1,0 +1,313 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../atoms/sc-tag/sc-tag';
+@import '../../molecules/sc-invest-card/sc-invest-card';
+
+/** @define invest-portfolio; weak */
+.sc-invest-portfolio {
+  padding: $spacer-6 0;
+
+  &__container {
+    .splide__pagination {
+      bottom: 0;
+      margin-top: $spacer-5;
+      position: static;
+
+      &__page {
+        width: 12px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in;
+
+        /* stylelint-disable max-nesting-depth */
+        &.is-active {
+          width: 33px;
+          opacity: 1;
+          transform: none;
+        }
+
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+
+  &__card-wrapper {
+    .splide__pagination {
+      bottom: 0;
+    }
+  }
+
+  &.sc-dark-bg,
+  .sc-blue-bg {
+    .sc-tab-minimal--curve {
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+      .sc-tab-minimal {
+        &__head {
+          /* stylelint-disable plugin/selector-bem-pattern */
+          &-button {
+            color: $color-white !important; //!important is added for override the css
+          }
+
+          &-button--active {
+            background-color: $color-white !important; //!important is added for override the css
+            color: $color-dark-gray-1 !important; //!important is added for override the css
+
+            &::after,
+            &::before {
+              background: url('data:image/svg+xml,<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0C3.48711 23.8383 11.7404 30.928 35 35H17.5H0V0Z" fill="white"/></svg>') !important; //!important is added for override the css
+            }
+          }
+          /* stylelint-enable plugin/selector-bem-pattern  */
+        }
+      }
+
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors  */
+    }
+  }
+
+  &__mobile {
+    display: block;
+  }
+
+  &__desktop {
+    display: none;
+  }
+
+  .sc-title {
+    &--center {
+      text-align: left;
+    }
+  }
+
+  .sc-portfolio-card {
+    width: 100%;
+    min-height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgb(219, 219, 219, 0.5);
+    background: linear-gradient(180deg, rgba(37, 47, 59, 1) 0%, rgb(102, 106, 109) 100%);
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      flex-direction: row;
+    }
+
+    &__content {
+      width: 100%;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semi-bold;
+      color: $color-white;
+      padding: $nt-spacer-4;
+
+      strong {
+        font-size: $font-size-base;
+      }
+    }
+
+    &__title {
+      color: $color-white;
+      font-size: $font-size-base;
+      font-weight: $font-weight-normal;
+      padding: $spacer-3;
+      position: relative;
+      margin-bottom: auto;
+    }
+
+    &__image {
+      max-width: 140px;
+      height: auto;
+      width: 100%;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .sc-tag--bg-gradient {
+      background: radial-gradient(
+        78.33% 78.33% at 2.36% -6.53%,
+        rgb(49, 202, 216) 0%,
+        rgb(19, 203, 153) 100%
+      );
+      color: $color-dark-gray-1;
+      text-transform: inherit;
+      align-items: center;
+      font-size: $font-size-base;
+      margin-left: auto;
+      border-radius: 0 0 0 24px;
+      /* stylelint-disable selector-max-compound-selectors */
+      strong {
+        font-size: $font-size-lg;
+      }
+      /* stylelint-enable selector-max-compound-selectors */
+    }
+  }
+
+  .splide__slide {
+    &:nth-child(even) {
+      .sc-portfolio-card__container {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .sc-tab-minimal {
+    padding: 0;
+
+    &--curve {
+      margin: $spacer-0 auto;
+      background-color: transparent;
+      .sc-tab-minimal {
+        /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+        &__head {
+          .splide__track {
+            &::before {
+              content: '';
+              width: 100%;
+              height: 80%;
+              position: absolute;
+              bottom: 0;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 20px 20px 0 0;
+            }
+          }
+          .splide__slide {
+            background: transparent;
+            border: 0;
+            padding: $spacer-0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            &:first-child,
+            &:last-child {
+              border: 0;
+            }
+
+            &:first-child {
+              .sc-tab-minimal__head-button {
+                border-radius: 24px $spacer-0 $spacer-0 $spacer-0;
+              }
+            }
+
+            &:last-child {
+              margin-right: auto;
+
+              .sc-tab-minimal__head-button {
+                border-radius: 0 24px 0 0;
+              }
+            }
+          }
+
+          &-button {
+            height: auto;
+            font-size: $font-size-md;
+            color: $color-dark-gray-1;
+            padding: $nt-spacer-3 $spacer-3;
+            position: relative;
+          }
+
+          &-button--active {
+            padding: $spacer-2 $spacer-3;
+            border-radius: 24px 24px 0 0 !important;
+            background-color: $color-grey;
+            color: $color-white;
+            font-size: $font-size-lg;
+
+            &::after,
+            &::before {
+              position: absolute;
+              content: '';
+              background: url('data:image/svg+xml,<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0C3.48711 23.8383 11.7404 30.928 35 35H17.5H0V0Z" fill="%236b6e73"/></svg>');
+              width: 35px;
+              height: 36px;
+              background-size: cover;
+              background-repeat: no-repeat;
+              bottom: -8px;
+              z-index: 3;
+            }
+
+            &::after {
+              right: -33px;
+            }
+
+            &::before {
+              transform: scaleX(-1);
+              left: -33px;
+            }
+          }
+        }
+        /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+      }
+
+      .sc-invest-card {
+        background-color: $color-white;
+        margin: $spacer-0 auto;
+        max-width: 550px;
+        border-radius: 0 0 24px 24px;
+      }
+    }
+  }
+
+  .sc-invest-card {
+    max-width: initial;
+  }
+}
+
+@include tablet-desktop {
+  .sc-invest-portfolio {
+    .sc-title {
+      &--center {
+        text-align: center;
+      }
+    }
+    .sc-tab-minimal {
+      &__content-item {
+        visibility: visible;
+        height: auto;
+      }
+      &__head {
+        display: none;
+      }
+      &--curve {
+        .sc-invest-card {
+          border-radius: 24px;
+        }
+      }
+    }
+
+    &__cards {
+      flex-direction: row;
+
+      .sc-invest-card {
+        margin-right: $spacer-3;
+        margin-bottom: $spacer-0;
+
+        &:last-child {
+          margin-right: $spacer-0;
+        }
+      }
+    }
+
+    &__mobile {
+      display: none;
+    }
+
+    &__desktop {
+      display: block;
+    }
+  }
+}
+
+/** @end */

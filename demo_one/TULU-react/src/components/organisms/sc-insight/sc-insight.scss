@@ -1,0 +1,98 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../atoms/sc-tag/sc-tag';
+@import '../../molecules/sc-card-tile/sc-card-tile';
+
+/** @define insight; weak */
+.sc-insight {
+  padding: $spacer-6 $spacer-0;
+  position: relative;
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $spacer-5;
+
+    .splide__pagination {
+      bottom: -25px;
+      &__page {
+        width: 12px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in;
+        /* stylelint-disable max-nesting-depth */
+        &.is-active {
+          width: 33px;
+          opacity: 1;
+          transform: none;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+  &--bg-dark {
+    background-color: rgb(16, 34, 51);
+    .sc-description {
+      color: rgb(224, 224, 224);
+    }
+    .sc-title {
+      background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(192, 192, 192) 100%);
+      background-clip: text; // stylelint-disable-line csstree/validator
+      -webkit-background-clip: text; // stylelint-disable-line property-no-vendor-prefix
+      color: transparent;
+    }
+  }
+  .sc-card-tile {
+    box-shadow: 0 4px 20px -6px rgba(27, 36, 44, 0.05);
+    border: 1px solid $color-gray-6;
+    border-radius: 6px;
+    max-width: 220px;
+    overflow: hidden;
+    &__tile-image {
+      height: 125px;
+      position: relative;
+    }
+    &__content {
+      padding: $nt-spacer-4;
+    }
+    &__title {
+      color: $color-dark-gray-1;
+      margin-bottom: $nt-spacer-4;
+      font-size: $font-size-md;
+    }
+    &__description {
+      color: $color-grey;
+      font-weight: 500;
+      display: -webkit-box; /* stylelint-disable-line value-no-vendor-prefix */
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical; /* stylelint-disable-line property-no-vendor-prefix */
+      overflow: hidden;
+    }
+  }
+  .sc-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-weight: $font-weight-semi-bold;
+    z-index: 2;
+  }
+
+  .sc-title {
+    &--center {
+      text-align: left;
+    }
+  }
+}
+@include tablet-desktop {
+  .sc-insight {
+    .sc-title {
+      &--center {
+        text-align: center;
+      }
+    }
+  }
+}
+/** @end */

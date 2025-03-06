@@ -1,0 +1,8 @@
+attribute added -> data-consolidate
+Finding similar element for consolidate api -> data-child-class="sc-tulu-camp-tab__content-item-diversify"
+
+
+data-attribute-name="data-diversify-api" 
+
+
+ 340 555 84 

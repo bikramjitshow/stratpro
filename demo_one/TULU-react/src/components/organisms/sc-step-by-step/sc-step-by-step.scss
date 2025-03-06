@@ -1,0 +1,719 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+@import '../../molecules/sc-qr-box/sc-qr-box';
+
+/** @define step-by-step; weak */
+
+.sc-step-by-step {
+  @include sc-sub-sup-fix;
+  background-color: $color-white;
+  padding: $spacer-5 $spacer-0;
+  line-height: $line-height-sm;
+
+  &__main-head {
+    max-width: 1404px;
+    padding: $spacer-0 $spacer-4;
+    margin: $spacer-0 auto;
+    width: 100%;
+    background-color: $color-white;
+    padding-top: $spacer-5;
+  }
+
+  &__main-title {
+    font-size: $spacer-4;
+    color: $color-black;
+    text-align: center;
+    font-weight: $font-weight-light;
+  }
+
+  &__main-desc {
+    font-size: $font-size-base;
+    text-align: center;
+    margin-top: $spacer-2;
+  }
+
+  .sc-content-wrapper {
+    max-width: 870px;
+    margin: $spacer-0 auto;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__head {
+    text-align: center;
+    margin-bottom: $spacer-4;
+  }
+
+  &__title {
+    font-size: $font-size-mlg;
+    text-align: center;
+    margin-bottom: $spacer-2;
+  }
+
+  &__desc {
+    font-size: $font-size-md;
+    color: $color-gray-9;
+
+    strong {
+      font-weight: $font-weight-semi-bold;
+      margin-bottom: $spacer-1;
+    }
+
+    p {
+      margin-bottom: $spacer-1;
+
+      &:last-child {
+        margin-bottom: $spacer-0;
+      }
+    }
+
+    ul {
+      padding-left: $spacer-3;
+      margin-top: $spacer-2;
+      list-style: disc;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      li {
+        margin-bottom: $spacer-2;
+      }
+    }
+
+    ol {
+      padding-left: $spacer-3;
+      margin-top: $spacer-2;
+      list-style: decimal;
+
+      li {
+        margin-bottom: $spacer-2;
+      }
+    }
+  }
+
+  &__description {
+    font-size: $font-size-md;
+    margin-top: $spacer-3;
+    text-align: center;
+  }
+
+  &__slider-img {
+    width: 100%;
+    height: auto;
+    max-width: 240px;
+    border-radius: 15px;
+  }
+
+  &__slider-content {
+    font-size: $font-size-base;
+    color: $color-black;
+
+    .splide {
+      display: flex;
+      align-items: flex-start;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__arrows {
+        display: none;
+      }
+
+      &__slide {
+        border: 0 !important;
+        cursor: pointer;
+        text-align: center;
+
+        &:last-child {
+          margin-bottom: $spacer-0;
+        }
+      }
+    }
+
+    .sc-inline-buttons {
+      margin-top: $spacer-3;
+    }
+  }
+
+  &__no-arrow {
+    .sc-step-by-step {
+      &__slider {
+        padding: $spacer-0;
+      }
+
+      &__left .splide__arrows {
+        display: none;
+      }
+    }
+  }
+
+  &__left .splide__arrow {
+    border: 2px solid $color-text;
+
+    svg {
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+      path {
+        fill: $color-text;
+      }
+
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+    }
+  }
+
+  &__step-num {
+    font-size: $font-size-md;
+    font-weight: 400;
+    color: $color-gray-1;
+    margin-bottom: $spacer-1;
+    text-transform: capitalize;
+  }
+
+  &__footer-note {
+    margin: $spacer-4 auto $spacer-0;
+    font-size: $font-size-md;
+    max-width: 1440px;
+    padding: 0 $spacer-4;
+  }
+
+  &__right {
+    margin-bottom: $spacer-0;
+  }
+
+  .splide {
+    &__pagination {
+      position: relative;
+      bottom: $spacer-0;
+      background-color: transparent;
+
+      li {
+        position: relative;
+      }
+    }
+
+    &__pagination__page {
+      /* stylelint-disable max-nesting-depth */
+      &:hover {
+        opacity: 1;
+      }
+
+      &.is-active {
+        transform: none;
+        background-color: $color-gray-3;
+      }
+
+      /* stylelint-enable max-nesting-depth */
+    }
+
+    &__slide {
+      text-align: center;
+      /* stylelint-disable max-nesting-depth */
+      &.is-active {
+        .sc-step-by-step {
+          &__desc {
+            color: rgba(25, 57, 78, 1);
+          }
+
+          &__step-num {
+            color: $color-green-10;
+          }
+        }
+      }
+
+      /* stylelint-enable max-nesting-depth */
+    }
+  }
+
+  .sc-inline-buttons {
+    justify-content: center;
+    margin-top: $spacer-4;
+  }
+
+  /* stylelint-disable, plugin/selector-bem-pattern, max-nesting-depth, selector-max-compound-selectors   */
+  &.sc-dark-bg,
+  &.sc-blue-bg {
+    .sc-step-by-step {
+      &__head {
+        margin-bottom: $spacer-4;
+      }
+
+      &__title {
+        color: $color-white;
+      }
+
+      &__desc {
+        color: $color-white;
+      }
+
+      &__step-num {
+        color: $color-gray-3;
+      }
+
+      &__slider {
+        .splide {
+          &__slide {
+            &.is-active {
+              display: flex;
+            }
+          }
+
+          &__pagination__page {
+            &.is-active {
+              background-color: $color-white;
+            }
+          }
+        }
+
+        &-img {
+          margin: 0 auto;
+        }
+      }
+
+      &__left {
+        .splide__arrow {
+          border: 2px solid $color-light-gray-2;
+
+          svg {
+            path {
+              fill: $color-white;
+            }
+          }
+        }
+      }
+
+      &__slider-content {
+        .splide {
+          &__slide {
+            &.is-active {
+              .sc-step-by-step__desc {
+                color: $color-white;
+              }
+            }
+          }
+        }
+
+        .sc-step-by-step {
+          &__desc {
+            color: $color-gray-3;
+          }
+        }
+      }
+    }
+  }
+
+  /* stylelint-enable, plugin/selector-bem-pattern, max-nesting-depth, selector-max-compound-selectors   */
+  &--with-arrow {
+    .sc-step-by-step {
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors   */
+      &__slider {
+        .splide {
+          &__slide {
+            &.is-active {
+              display: flex;
+              align-items: flex-start;
+            }
+          }
+        }
+
+        &-img {
+          margin: 0 auto;
+        }
+      }
+
+      &__left {
+        .splide__arrow {
+          height: 30px;
+          width: 30px;
+          background: none;
+          background-color: transparent;
+
+          &--prev {
+            left: 0;
+          }
+
+          &--next {
+            right: 0;
+          }
+        }
+      }
+
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors   */
+    }
+  }
+
+  .sc-heading-inner {
+    width: 100%;
+  }
+
+  &--is-image-big {
+    .sc-content-wrapper {
+      max-width: 1404px;
+    }
+
+    .sc-step-by-step {
+      &__slider {
+        padding: 0;
+      }
+      &__slider-img {
+        max-width: 100%;
+      }
+    }
+    &.sc-step-by-step {
+      &--with-arrow {
+        /* stylelint-disable max-nesting-depth, plugin/selector-bem-pattern */
+        .sc-step-by-step {
+          &__slider {
+            padding: $spacer-0 $spacer-6;
+          }
+        }
+        /* stylelint-enable max-nesting-depth, plugin/selector-bem-pattern */
+      }
+    }
+  }
+  &:not(.sc-dark-bg, .sc-blue-bg) {
+    .sc-btn {
+      &--secondary-white {
+        border-color: $color-text;
+        color: $color-text;
+        &:hover {
+          background-color: $color-light-blue-5;
+          color: $color-brand-blue;
+          border-color: $color-brand-blue;
+        }
+      }
+    }
+  }
+
+  &--full-width {
+    .sc-content-wrapper {
+      max-width: 1040px;
+    }
+    .sc-step-by-step {
+      &__slider-img {
+        max-width: 350px;
+      }
+    }
+    &.sc-dark-bg {
+      /* stylelint-disable max-nesting-depth, plugin/selector-bem-pattern */
+      .sc-btn {
+        text-transform: unset;
+      }
+      .sc-title {
+        font-size: $font-size-22;
+      }
+      /* stylelint-enable max-nesting-depth, plugin/selector-bem-pattern */
+    }
+  }
+}
+
+@include desktop {
+  .sc-step-by-step {
+    .sc-content-wrapper {
+      flex-direction: row;
+    }
+
+    &__title {
+      font-size: $font-size-mlg;
+      text-align: left;
+    }
+
+    &__head {
+      text-align: left;
+    }
+
+    &__left {
+      width: 40%;
+    }
+
+    &__slider-content {
+      /* stylelint-disable max-nesting-depth */
+      .splide {
+        &__slide {
+          padding-bottom: $spacer-4;
+          padding-left: $spacer-6;
+          text-align: left;
+
+          &::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            border: 2px solid $color-grey;
+            background: rgba(25, 57, 78, 1);
+            margin-right: $spacer-2;
+            vertical-align: middle;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            z-index: 1;
+          }
+
+          &::after {
+            content: '';
+            border-left: 2px dotted $color-gray-1;
+            height: 100%;
+            width: 2px;
+            position: absolute;
+            top: 0;
+            left: 9px;
+          }
+
+          &.is-active {
+            &::before {
+              background-color: $color-green-10;
+              border: 2px solid $color-green-10;
+            }
+          }
+
+          &:last-child {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      /* stylelint-enable max-nesting-depth */
+    }
+
+    .sc-inline-buttons {
+      justify-content: left;
+    }
+
+    /* stylelint-disable, plugin/selector-bem-pattern, max-nesting-depth, selector-max-compound-selectors */
+    &.sc-blue-bg {
+      .sc-step-by-step {
+        &__slider-content {
+          .splide {
+            &__slide {
+              &::before {
+                background: $color-dark-blue-2;
+              }
+
+              &.is-active {
+                &::before {
+                  background-color: $color-green-10;
+                  border: 2px solid $color-green-10;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* stylelint-enable, plugin/selector-bem-pattern, max-nesting-depth, selector-max-compound-selectors */
+    &--with-number {
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors   */
+      .sc-step-by-step {
+        &__slider-content {
+          counter-reset: section;
+
+          .splide__track {
+            &::before {
+              left: 13px;
+              border-left: 1px dashed rgb(177 179 182);
+            }
+          }
+
+          .splide__slide {
+            &::before {
+              counter-increment: section;
+              content: counter(section);
+              width: 26px;
+              height: 26px;
+              text-align: center;
+              color: $color-white;
+              font-size: $font-size-md;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              background: rgb(149 151 154);
+              border: 1px solid rgb(149 151 154);
+            }
+
+            &::after {
+              border-left: 2px dotted rgb(149 151 154);
+              left: 11px;
+            }
+
+            &.is-active {
+              &::before {
+                background: $color-brand-green;
+                border: 1px solid $color-brand-green;
+              }
+            }
+          }
+        }
+      }
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors   */
+    }
+    &--full-width {
+      &.sc-dark-bg {
+        /* stylelint-disable max-nesting-depth, plugin/selector-bem-pattern */
+        .sc-title--inner {
+          font-size: $font-size-30;
+        }
+        /* stylelint-enable max-nesting-depth, plugin/selector-bem-pattern */
+      }
+    }
+
+    &--is-image-big {
+      .sc-step-by-step {
+        &__left {
+          width: 55%;
+        }
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-step-by-step {
+    padding: $spacer-6 $spacer-0;
+
+    &__main-title {
+      font-size: $font-size-mlg;
+    }
+
+    &__description {
+      text-align: left;
+    }
+
+    &__left {
+      flex-shrink: 0;
+      margin-right: $spacer-6;
+    }
+
+    &__slider {
+      padding: 0 $spacer-6;
+    }
+
+    &__no-arrow {
+      .sc-step-by-step {
+        &__left {
+          width: 50%;
+          flex-shrink: 0;
+          padding-left: $spacer-6;
+        }
+      }
+    }
+
+    &__desc {
+      ul {
+        display: block;
+      }
+    }
+
+    &__slider-content {
+      font-size: $font-size-base;
+      color: $color-black;
+    }
+  }
+}
+
+@include mobile-tablet {
+  .sc-step-by-step {
+    &__slider-content {
+      margin-bottom: $spacer-4;
+    }
+
+    .splide {
+      /* stylelint-disable max-nesting-depth */
+      &__slide {
+        opacity: 0.5;
+
+        .sc-step-by-step {
+          &__step-num,
+          &__desc {
+            display: none;
+          }
+        }
+
+        &.is-active {
+          opacity: 1;
+
+          .sc-step-by-step {
+            &__step-num,
+            &__desc {
+              display: block;
+            }
+          }
+        }
+      }
+
+      &__pagination {
+        margin-top: $spacer-4;
+      }
+
+      /* stylelint-enable max-nesting-depth */
+    }
+  }
+}
+
+@include tablet {
+  .sc-step-by-step {
+    &__slider {
+      padding: $spacer-0;
+    }
+
+    &__right {
+      margin-left: $spacer-4;
+    }
+
+    &--full-width {
+      /* stylelint-disable max-nesting-depth, plugin/selector-bem-pattern */
+      &.sc-dark-bg {
+        .sc-title--inner {
+          font-size: $font-size-mlg;
+        }
+      }
+      /* stylelint-enable max-nesting-depth, plugin/selector-bem-pattern */
+    }
+    &__left {
+      margin-right: 0;
+
+    }
+  }
+}
+
+@include mobile {
+  .sc-step-by-step {
+    &__left {
+      .splide {
+        &__slide {
+          width: 240px !important;
+        }
+      }
+    }
+    &--is-image-big {
+      .sc-step-by-step {
+        &__left {
+          /* stylelint-disable max-nesting-depth */
+          .splide__slide {
+            width: 300px !important;
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+      }
+      &.sc-step-by-step {
+        &--with-arrow {
+          /* stylelint-disable max-nesting-depth, plugin/selector-bem-pattern */
+          .sc-step-by-step {
+            &__slider {
+              padding: $spacer-0;
+            }
+          }
+          /* stylelint-enable max-nesting-depth, plugin/selector-bem-pattern */
+        }
+      }
+    }
+  }
+}
+
+/** @end */

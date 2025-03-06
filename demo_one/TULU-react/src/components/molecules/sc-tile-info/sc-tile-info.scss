@@ -1,0 +1,57 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Molecules
+@import '../../molecules/sc-heading-gradient/sc-heading-gradient';
+@import '../../molecules/sc-cvp/sc-cvp';
+
+/** @define tile-info; weak */
+
+.sc-tile-info {
+  width: 100%;
+  background: $color-white;
+  display: flex;
+  flex-direction: column;
+  padding: $spacer-3;
+  height: 100%;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacer-4;
+  }
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: $spacer-4;
+  }
+  &__content-box {
+    position: relative;
+    z-index: 3;
+    max-width: 380px;
+  }
+  &__title {
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-semi-bold;
+    color: $color-dark-gray-1;
+    margin-bottom: $spacer-5;
+  }
+}
+
+@include tablet-desktop {
+  .sc-tile-info {
+    padding: $spacer-4 $spacer-5;
+    .sc-heading-gradient {
+      padding-right: $spacer-4;
+    }
+    .sc-inline-buttons {
+      justify-content: center;
+    }
+  }
+}
+
+/** @end */

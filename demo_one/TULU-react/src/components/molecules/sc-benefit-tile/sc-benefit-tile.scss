@@ -1,0 +1,55 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define benefit-tile; weak */
+.sc-benefit-tile {
+  color: $color-dark-gray-1;
+  display: flex;
+  align-items: flex-start;
+  &__icon {
+    margin-right: $spacer-3;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        fill: $color-white;
+      }
+    }
+  }
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    margin-bottom: $spacer-2;
+  }
+  &__desc {
+    font-size: $font-size-md;
+    font-weight: $font-weight-light;
+  }
+  &--white {
+    color: $color-white;
+    .sc-benefit-tile {
+      &__title {
+        color: $color-white;
+      }
+      /* stylelint-disable max-nesting-depth */
+      &__desc {
+        color: $color-light-gray-2;
+        a {
+          text-decoration: underline;
+        }
+        * {
+          color: $color-light-gray-2;
+        }
+      }
+      /* stylelint-enable max-nesting-depth */
+    }
+  }
+}
+
+/** @end */

@@ -1,0 +1,49 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Atom
+@import '../../molecules/sc-cvp/sc-cvp';
+
+//Molecule
+@import '../../molecules/sc-reward-card/sc-reward-card';
+
+/** @define reward-card-tiles; weak */
+
+.sc-reward-card-tiles {
+  background-image: linear-gradient(to right, #293a8d, #0061c9);
+  padding: $spacer-5 $spacer-0;
+  .sc-title {
+    color: $color-white;
+  }
+  .sc-description {
+    color: $color-white;
+  }
+  .splide {
+    &__pagination {
+      bottom: -32px;
+    }
+    &__pagination__page {
+      border-radius: 50%;
+      width: 8px;
+      margin: $spacer-2 $spacer-1;
+    }
+    &__pagination__page.is-active {
+      border-radius: 8px;
+      width: 40px;
+      background-color: $color-blue-14;
+      margin: $spacer-2;
+    }
+  }
+
+  &__desc {
+    color: $color-white;
+  }
+  .sc-reward-card {
+    margin: $spacer-0;
+  }
+}
+
+/** @end */
