@@ -42,6 +42,7 @@ class ScMgmReferralEnhanced {
     that.isTermModalActive = false;
     that.skipTermsModalClosed = false;
     that.isSingleViewPdt = false;
+    that.selectedRadioBox = null;
 
     // Append the referid
     const urlParams = new URLSearchParams(window.location.search);
@@ -175,7 +176,7 @@ class ScMgmReferralEnhanced {
 
         //identify the term modal
         if (event.target.classList.contains("sc-mgm-refer-tc")) {
-          that.isTermModalActive = true;
+          // that.isTermModalActive = true;
           that.termsModalActive(event);
         }
       }
@@ -651,8 +652,11 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
+    console.log("updateLinkHref---1", checkedRadio)
+    that.selectedRadioBox = checkedRadio;
     // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-terms-enable");
     if (!that.isTermModalRequire) {
+      console.log("updateLinkHref---2")
       const newHref = checkedRadio
         ?.closest("label")
         .getAttribute("data-card-link");
@@ -672,14 +676,20 @@ class ScMgmReferralEnhanced {
     that.isTermModalActive = false;
     // document.body.addEventListener("click", function (event) {
     let closestAnchor = event.target.closest("a");
+    // debugger;
+
     const checkedRadio = document.querySelector(
-      ".c-modal .sc-products-tile-pdt-selection input:checked"
+      ".sc-products-tile-pdt-selection input:checked"
     );
+    console.log("that.selectedRadioBox ---", that.selectedRadioBox)
     console.log("checkedRadio--", checkedRadio);
-    const newHref = checkedRadio
+    // if (!checkedRadio) {
+    //   console.info("No radio button is checked in .sc-products-tile-pdt-selection");
+    //   return; // Exit early if no checked radio is found
+    // }
+    const newHref = that.selectedRadioBox
       ?.closest("label")
       .getAttribute("data-card-link");
-    console.log("newHref--", newHref);
     if (that.isTermModalRequire) {
       that.isTermModalActive = true;
       if (
@@ -690,13 +700,13 @@ class ScMgmReferralEnhanced {
         event.preventDefault();
         event.stopPropagation();
         setTimeout(() => {
-          console.log("closestAnchor--", closestAnchor);
           let modalAttr = closestAnchor.getAttribute("data-modal-source");
           let modalredirecturl =
             closestAnchor.getAttribute("data-redirect-url");
           let activeModal = document.querySelector(".m-text-content");
           let activeModalId = activeModal.getAttribute("data-modal-id");
           if (modalAttr === activeModalId) {
+            console.log({ newHref, modalredirecturl });
             if (newHref) {
               that.activeScrollToBottom(newHref);
             } else {
