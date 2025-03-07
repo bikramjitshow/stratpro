@@ -1,6 +1,6 @@
 /* global Utils */
-// import ScCommonMethods from "./sc-common-methods-2.js";
-// import { handleAnalyticsCTA } from "./sc-common-methods.js";
+// import ScCommonMethods from './sc-common-methods-2.js';
+// import { handleAnalyticsCTA } from './sc-common-methods.js';
 
 class ScMgmReferralEnhanced {
   constructor() {
@@ -164,10 +164,10 @@ class ScMgmReferralEnhanced {
             : event.target.innerText
             ? event.target.innerText.trim().toLowerCase()
             : event.target.textContent.trim().toLowerCase();
-          handleAnalyticsCTA(event, anchor, {
-            ctaType: ctaType,
-            customLinkText: customLinkText,
-          });
+          // handleAnalyticsCTA(event, anchor, {
+          //   ctaType: ctaType,
+          //   customLinkText: customLinkText
+          // });
         }
 
         //identify the term modal
@@ -202,6 +202,29 @@ class ScMgmReferralEnhanced {
     }
   }
 
+  updateLabelAndInput(clonedElement) {
+    console.log(clonedElement);
+    if (!clonedElement) return;
+
+    // Generate a unique ID
+    const uniqueId = `check-box-${Date.now()}`;
+
+    // Find the label and input inside the cloned element
+    const clonedLabel = clonedElement.querySelector("label.sc-radio-box");
+    const clonedInput = clonedElement.querySelector(
+      "input.sc-radio-box__input"
+    );
+
+    console.log(clonedLabel);
+    console.log(clonedInput);
+    console.log(uniqueId);
+
+    if (clonedLabel && clonedInput) {
+      clonedInput.id = uniqueId; // Set unique ID for input
+      clonedLabel.setAttribute("for", uniqueId); // Update 'for' attribute in label
+    }
+  }
+
   /**
    * Handles the display of recommended products by cloning the selected product
    * and placing it in specific tiles, then removing the original product element.
@@ -219,57 +242,86 @@ class ScMgmReferralEnhanced {
       const recommendedTiles = that.productTile.querySelector(
         ".sc-product-tiles-recommended"
       );
+      const singleViewTile = that.productTile.querySelector(
+        ".sc-product-tile-singleview"
+      );
       recommendedTiles.classList.remove("hide");
 
       const selectedPdt = that.productTile.querySelector(
         `[data-product-name='${pdtId}']`
       );
 
+      const isSingleViewPdt =
+        selectedPdt.getAttribute("data-single-view") === "true";
+
+      console.log(
+        "selectedPdt",
+        selectedPdt.querySelector(".sc-products-tile-modal")
+      );
+      console.log("isSingleViewPdt", isSingleViewPdt);
+
       if (selectedPdt) {
-        // Clone the selectedPdt element for the recommended wrapper
-        const clonedPdtForRecommended = selectedPdt.cloneNode(true);
-        const recommendedWrapper = that.productTile.querySelector(
-          ".sc-product-tiles-recommended__wrapper"
-        );
-        if (recommendedWrapper) {
-          recommendedWrapper.appendChild(clonedPdtForRecommended);
-        }
+        // isSingleViewPdt
+        if (isSingleViewPdt) {
+          that.allPdt.classList.add("hide");
+          recommendedTiles.classList.add("hide");
+          singleViewTile.classList.remove("hide");
+          // Clone the selectedPdt element for the recommended wrapper
+          const clonedPdtForSingleView = selectedPdt
+            .querySelector(".sc-products-tile-modal")
+            .cloneNode(true);
+          console.log(clonedPdtForSingleView);
+          const singleviewedWrapper = that.productTile.querySelector(
+            ".sc-products-tile-singleview-wrap"
+          );
+          if (singleviewedWrapper) {
+            singleviewedWrapper.appendChild(clonedPdtForSingleView);
+          }
+        } else {
+          // Clone the selectedPdt element for the recommended wrapper
+          const clonedPdtForRecommended = selectedPdt.cloneNode(true);
+          const recommendedWrapper = that.productTile.querySelector(
+            ".sc-product-tiles-recommended__wrapper"
+          );
+          if (recommendedWrapper) {
+            recommendedWrapper.appendChild(clonedPdtForRecommended);
+          }
+          // Clone the selectedPdt element for the tiles wrapper
+          const clonedPdtForTiles = selectedPdt.cloneNode(true);
+          // that.updateLabelAndInput(clonedPdtForTiles);
+          const tilesWrapper = that.productTile.querySelector(
+            ".sc-product-tiles__wrapper"
+          );
+          if (tilesWrapper) {
+            tilesWrapper.appendChild(clonedPdtForTiles);
+          }
+          // Now remove the original selectedPdt
+          selectedPdt.remove();
 
-        // Clone the selectedPdt element for the tiles wrapper
-        const clonedPdtForTiles = selectedPdt.cloneNode(true);
-        const tilesWrapper = that.productTile.querySelector(
-          ".sc-product-tiles__wrapper"
-        );
-        if (tilesWrapper) {
-          tilesWrapper.appendChild(clonedPdtForTiles);
-        }
+          const badge = that.productTile.querySelector(
+            `.sc-product-tiles__wrapper [data-product-name='${pdtId}'] .sc-badge`
+          );
+          badge?.classList.remove("hide");
 
-        // Now remove the original selectedPdt
-        selectedPdt.remove();
-
-        const badge = that.productTile.querySelector(
-          `.sc-product-tiles__wrapper [data-product-name='${pdtId}'] .sc-badge`
-        );
-        badge?.classList.remove("hide");
-
-        let counter = 1;
-        const allIds = recommendedWrapper.querySelectorAll(
-          ".sc-products-tile-modal__accordion .sc-accordion__input"
-        );
-        if (allIds.length) {
-          //Generate dynamic Id if accordion is exist in the recommended section
-          allIds.forEach((el) => {
-            let id = el.getAttribute("id");
-            if (id) {
-              id = `${id}_dynamic_${counter}`;
-              const label = el
-                .closest(".sc-products-tile-modal__accordion")
-                .querySelector("label");
-              el.setAttribute("id", id);
-              label.setAttribute("for", id);
-              counter++;
-            }
-          });
+          let counter = 1;
+          const allIds = recommendedWrapper.querySelectorAll(
+            ".sc-products-tile-modal__accordion .sc-accordion__input"
+          );
+          if (allIds.length) {
+            //Generate dynamic Id if accordion is exist in the recommended section
+            allIds.forEach((el) => {
+              let id = el.getAttribute("id");
+              if (id) {
+                id = `${id}_dynamic_${counter}`;
+                const label = el
+                  .closest(".sc-products-tile-modal__accordion")
+                  .querySelector("label");
+                el.setAttribute("id", id);
+                label.setAttribute("for", id);
+                counter++;
+              }
+            });
+          }
         }
       }
     } else {
@@ -593,6 +645,7 @@ class ScMgmReferralEnhanced {
       });
 
     if (window.location.href.indexOf("p=") > -1) {
+      that.isTermModalRequire = true;
       // Scroll down to the section with the class 'sc-product-tiles'
       const productTilesSection = document.querySelector(".sc-product-tiles");
       if (productTilesSection) {
@@ -641,7 +694,7 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".c-modal .sc-products-tile-pdt-selection input:checked"
     );
-    console.log("checkedRadio--", checkedRadio)
+    console.log("checkedRadio--", checkedRadio);
     const newHref = checkedRadio
       ?.closest("label")
       .getAttribute("data-card-link");
@@ -652,6 +705,8 @@ class ScMgmReferralEnhanced {
         closestAnchor.getAttribute("href") === "#null" &&
         event.target.classList.contains("sc-mgm-refer-tc")
       ) {
+        event.preventDefault();
+        event.stopPropagation();
         setTimeout(() => {
           let modalAttr = closestAnchor.getAttribute("data-modal-source");
           let modalredirecturl =
@@ -659,7 +714,6 @@ class ScMgmReferralEnhanced {
           let activeModal = document.querySelector(".m-text-content");
           let activeModalId = activeModal.getAttribute("data-modal-id");
           if (modalAttr === activeModalId) {
-            console.log({ newHref, modalredirecturl });
             if (newHref) {
               that.activeScrollToBottom(newHref);
             } else {
@@ -701,6 +755,7 @@ class ScMgmReferralEnhanced {
    * activeScrollToBottom(url,id)
    */
   activeScrollToBottom(toredirect) {
+    console.log({toredirect});
     const that = this;
     var scrollbtns = document.querySelectorAll(
       ".c-modal .sc-products-tile__scroll-step"
