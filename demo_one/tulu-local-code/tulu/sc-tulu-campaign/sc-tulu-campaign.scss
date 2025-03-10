@@ -1,0 +1,1656 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+//Atoms
+@import '../../atoms/sc-button/sc-button';
+@import '../../atoms/sc-radio-box/sc-radio-box';
+@import '../../atoms/sc-tooltip/sc-tooltip';
+
+// Molecule
+@import '../../molecules/sc-cvp/sc-cvp';
+
+//Organisms
+@import '../../organisms/sc-faq/sc-faq';
+
+/** @define tulu-camp; weak */
+
+.sc-tulu-camp {
+  max-width: 1024px;
+  margin: 0 auto;
+  color: $color-black;
+  position: relative;
+  background: $color-light-gray-6;
+
+  &__wrapper {
+    padding: 0 $spacer-3;
+  }
+}
+/** @end */
+
+/** @define tulu-camp-page; weak */
+
+// Page
+.sc-tulu-camp-page {
+  &--green {
+    .sc-tulu-camp-header,
+    .sc-tulu-camp-tab {
+      background: $color-light-green-1;
+    }
+    .sc-tulu-camp-wrapper-full__column {
+      box-shadow: 0 4px 8px 0 $color-light-green-1 inset;
+    }
+  }
+
+  &--blue {
+    .sc-tulu-camp-header,
+    .sc-tulu-camp-tab {
+      background: $color-light-blue-2;
+    }
+    .sc-tulu-camp-wrapper-full__column {
+      box-shadow: 0 4px 8px 0 $color-light-blue-2 inset;
+    }
+  }
+
+  &--purple {
+    .sc-tulu-camp-header,
+    .sc-tulu-camp-tab {
+      background-color: rgba(145, 125, 227, 0.102);
+    }
+    .sc-tulu-camp-wrapper-full__column {
+      box-shadow: 0 4px 8px 0 rgba(145, 124, 227, 0.102) inset;
+    }
+  }
+}
+/** @end */
+
+/** @define tulu-camp-main; weak */
+//Body Section
+
+.sc-tulu-camp-main {
+  display: none;
+  /* stylelint-disable plugin/selector-bem-pattern */
+  &.active {
+    display: block;
+  }
+  /* stylelint-enable plugin/selector-bem-pattern */
+}
+/** @end */
+
+/** @define tulu-camp-header; weak */
+//Header
+.sc-tulu-camp-header {
+  background-color: $color-white;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacer-3 0;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: $color-black;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__back {
+    margin-right: $spacer-2;
+  }
+}
+/** @end */
+
+/** @define tulu-camp-wrapper-full; weak */
+// Full width wrapper
+.sc-tulu-camp-wrapper-full {
+  margin: 0 -16px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+  padding: $spacer-5 $spacer-3;
+  background-color: $color-white;
+  border-radius: 40px 40px 0 0;
+  margin-top: $spacer-3;
+
+  &__inner {
+    background-color: $color-white;
+    border: 1px solid $color-gray-6;
+    border-radius: 8px;
+  }
+
+  &__title {
+    color: $color-black;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  .sc-heading-inner {
+    .sc-title {
+      font-size: 17px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+      font-weight: $font-weight-semi-bold;
+    }
+
+    .sc-description {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semi-bold;
+      color: $color-grey;
+      margin-top: $spacer-2;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    padding: $spacer-4 $spacer-3;
+    box-shadow: 0 4px 8px 0 rgba(232, 243, 236, 1) inset;
+  }
+}
+/** @end */
+
+/** @define tulu-camp-milescard; weak */
+//Miles card
+.sc-tulu-camp-milescard {
+  padding-bottom: $spacer-4;
+  background-color: $color-white;
+  box-shadow: 0 2px 19px 0 rgba(0, 0, 0, 0.051);
+  border-radius: 0 0 32px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: -16px;
+    top: 35px;
+    background-image: url("data:image/svg+xml,%3Csvg width='173' height='125' viewBox='0 0 173 125' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M111.892 1.30395e-06C97.1768 0.003102 86.7069 4.74639 76.494 11.5462L0 62.5008L76.494 113.452C86.807 120.244 97.6292 125 111.892 125C145.64 125 173 97.0185 173 62.5C173 27.9823 145.64 -0.00697527 111.892 1.30395e-06Z' fill='url(%23paint0_linear_122_62)' fill-opacity='0.3'/%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M110.071 6C96.1213 6.00295 86.1962 10.5186 76.5146 16.992L4 65.5008L76.5146 114.007C86.291 120.473 96.5503 125 110.071 125C142.063 125 168 98.3616 168 65.5C168 32.6391 142.063 5.99336 110.071 6Z' fill='url(%23paint1_linear_122_62)' fill-opacity='0.3'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_122_62' x1='45.8785' y1='24.3338' x2='129.823' y2='130.389' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3EFFF'/%3E%3Cstop offset='1' stop-color='%2312B8E5'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear_122_62' x1='47.4917' y1='29.1658' x2='127.484' y2='129.8' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3EFFF'/%3E%3Cstop offset='1' stop-color='%2312B8E5'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+    z-index: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__main {
+    background: linear-gradient(82.13deg, #dfdfdf -1.46%, #fff 98.54%);
+    padding: $nt-spacer-1;
+    border-radius: 33px 7px 33px 11px;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+  }
+
+  &__inner {
+    background: linear-gradient(90deg, #fff 32%, rgba(255, 255, 255, 0.9) 52.5%, #74cfff 100%);
+    padding: $spacer-2;
+    border-radius: 32px 6px 0 0;
+  }
+
+  &__desc {
+    background: linear-gradient(90deg, #fff 49.5%, #a1d8eb 100%);
+    padding: $spacer-2;
+    border-radius: 0 0 32px 10px;
+    border-top: 1px solid $color-gray-6;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+
+    strong {
+      font-size: $font-size-base;
+    }
+  }
+
+  .sc-tooltip {
+    &__text {
+      background-color: $color-light-blue-2;
+      color: $color-dark-gray-1;
+      top: 50%;
+      left: calc(100% + 10px);
+      transform: translateY(-50%);
+      bottom: auto;
+      width: 160px;
+      text-align: left;
+    }
+    &::before {
+      transform: rotate(90deg) translate(0, -15px);
+      background-image: url("data:image/svg+xml,%3Csvg width='14' height='7' viewBox='0 0 14 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 7L0 0H14L7 7Z' fill='%23EAF0F8'/%3E%3C/svg%3E");
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  .sc-cvp {
+    &__top {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+/** @end */
+
+/** @define tulu-camp-tab; weak */
+// Tab
+
+.sc-tulu-camp-tab {
+  padding: $spacer-3 0;
+
+  &__head-button {
+    min-width: 40px;
+    font-weight: $font-weight-semi-bold;
+    padding: $spacer-2 $spacer-3;
+    border: 0;
+    background-color: transparent;
+    max-width: 250px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-md;
+    color: $color-grey;
+
+    &--active {
+      background-color: $color-light-blue-2;
+      border-radius: 24px;
+      color: $color-blue;
+      box-shadow: none;
+      font-weight: $font-weight-bold;
+      /* stylelint-disable plugin/selector-bem-pattern , max-nesting-depth */
+      &.sc-tulu-camp-tab__head-button {
+        &--blue {
+          color: $color-blue-18;
+        }
+
+        &--green {
+          color: $color-green-12;
+        }
+
+        &--purple {
+          color: $color-purple-3;
+        }
+      }
+      /* stylelint-enable plugin/selector-bem-pattern, max-nesting-depth */
+    }
+  }
+
+  .splide {
+    margin-bottom: $spacer-3;
+  }
+
+  &--with-icon {
+    /* stylelint-disable max-nesting-depth */
+    .sc-tulu-camp-tab {
+      /* stylelint-disable selector-max-compound-selectors */
+      &__head-button {
+        svg {
+          width: 18px;
+          height: 18px;
+          margin-right: $spacer-1;
+
+          path {
+            fill: $color-gray-2;
+          }
+        }
+
+        &--active {
+          background-color: $color-white;
+
+          svg path {
+            /* stylelint-disable-next-line */
+            fill: revert-layer;
+          }
+        }
+      }
+      /* stylelint-enable selector-max-compound-selectors */
+    }
+    /* stylelint-enable max-nesting-depth */
+  }
+
+  &__content-item {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+}
+/** @end */
+
+/** @define tulu-camp-product-card; weak */
+// product card
+.sc-tulu-camp-product-card {
+  margin-top: $spacer-3;
+
+  &__main {
+    padding: $nt-spacer-1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, 0.051);
+    z-index: 1;
+    position: relative;
+  }
+
+  &__inner {
+    position: relative;
+    background: $color-white;
+    border-radius: 20px;
+    display: flex;
+    padding: $spacer-3;
+    overflow: hidden;
+  }
+
+  &__badge {
+    background: $color-light-blue-2;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    color: $color-grey;
+    border-radius: 0 0 0 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: table;
+    padding: $spacer-1 $spacer-3;
+  }
+
+  &__icon {
+    margin-right: $spacer-2;
+
+    svg,
+    img {
+      width: 40px;
+      height: 40px;
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+  }
+
+  &__desc {
+    font-size: $font-size-13;
+    font-weight: $font-weight-semi-bold;
+    color: $color-grey;
+  }
+
+  &__progress {
+    margin-top: $spacer-2;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__progress-bar {
+    background: $color-light-gray-2;
+    border: 1px solid $color-gray-6;
+    border-radius: 6px;
+    height: 7px;
+    width: 100%;
+    flex: 100%;
+    margin-top: $spacer-2;
+  }
+
+  &__progress-bar-inner {
+    height: 6px;
+    border-radius: 6px;
+  }
+
+  &__progress-value {
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+  }
+
+  &__progress-total {
+    font-size: $font-size-13;
+
+    strong {
+      font-size: $font-size-20;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &__progress-desc {
+    font-size: $font-size-13;
+    color: $color-grey;
+    margin-top: $spacer-2;
+  }
+
+  &__bottom {
+    background: $color-light-gray-2;
+    padding: $spacer-5 $spacer-3 $spacer-3;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    margin-top: -16px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__task-desc {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    margin-right: $spacer-1;
+  }
+
+  &__task-icon {
+    margin-right: $spacer-2;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      background-color: $color-white;
+      padding: $spacer-1;
+      border-radius: 50%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 80px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+  }
+
+  &__task {
+    font-size: $font-size-md;
+    color: $color-gray-1;
+    font-weight: $font-weight-semi-bold;
+    margin-right: $spacer-1;
+  }
+
+  &__task-value {
+    color: $color-gray-6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    background-color: $color-white;
+    padding: $spacer-1 $spacer-2;
+    border: 2px solid $color-gray-6;
+    border-radius: 50px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      margin-right: $spacer-1;
+
+      path {
+        fill: $color-black;
+      }
+    }
+  }
+
+  &__details {
+    width: calc(100% - 48px);
+  }
+
+  &--blue {
+    .sc-tulu-camp-product-card {
+      &__main {
+        background: linear-gradient(
+          213.15deg,
+          #19bcfc 0.58%,
+          #e3e3e3 5.87%,
+          #e3e3e3 79.24%,
+          #4ca0f7 94.79%
+        );
+      }
+
+      &__progress-bar-inner {
+        background-color: $color-blue-18;
+      }
+
+      &__progress-value {
+        color: $color-blue-18;
+      }
+
+      &__bottom {
+        background: $color-light-blue-2;
+      }
+
+      &__task-value {
+        color: $color-blue-18;
+        border: 2px solid $color-blue-18;
+        /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+        svg {
+          path {
+            fill: $color-blue-18;
+          }
+        }
+        /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+      }
+    }
+  }
+
+  &--green {
+    .sc-tulu-camp-product-card {
+      &__main {
+        background: linear-gradient(
+          213.15deg,
+          #19bcfc 0.58%,
+          #e3e3e3 5.87%,
+          #e3e3e3 79.24%,
+          #3bbd77 94.79%
+        );
+      }
+
+      &__progress-bar-inner {
+        background-color: $color-green-12;
+      }
+
+      &__progress-value {
+        color: $color-green-12;
+      }
+
+      &__bottom {
+        background: $color-light-green-1;
+      }
+
+      &__task-value {
+        color: $color-green-12;
+        border: 2px solid $color-green-12;
+        /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+        svg {
+          path {
+            fill: $color-green-12;
+          }
+        }
+        /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+      }
+    }
+  }
+
+  &--purple {
+    .sc-tulu-camp-product-card {
+      &__main {
+        background: linear-gradient(
+          213.15deg,
+          #19bcfc 0.58%,
+          #e3e3e3 5.87%,
+          #e3e3e3 79.24%,
+          #917ce3 94.79%
+        );
+      }
+
+      &__progress-bar-inner {
+        background-color: $color-purple-3;
+      }
+
+      &__progress-value {
+        color: $color-purple-3;
+      }
+
+      &__bottom {
+        background: rgba(145, 124, 227, 0.102);
+      }
+
+      &__task-value {
+        color: $color-purple-3;
+        border: 2px solid $color-purple-3;
+        /* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+        svg {
+          path {
+            fill: $color-purple-3;
+          }
+        }
+        /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+      }
+    }
+  }
+}
+/** @end */
+
+/** @define tulu-camp-earnings; weak */
+// Earnings
+.sc-tulu-camp-earnings {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    margin: $spacer-4 0;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semi-bold;
+  }
+  &__cards {
+    display: flex;
+    flex-direction: column;
+  }
+  &__card {
+    margin: $spacer-2 0;
+    padding: $nt-spacer-4 $spacer-2;
+    background-color: $color-white;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $color-gray-6;
+    border-radius: 10px;
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-white;
+    border: 1px solid $color-light-gray-2;
+    border-radius: 16px;
+    width: 44px;
+    height: 44px;
+    svg {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      padding: $spacer-1;
+    }
+  }
+  &__text {
+    white-space: nowrap;
+    margin-left: $spacer-2;
+  }
+  &__head {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semi-bold;
+  }
+  &__sub-head {
+    margin: $spacer-1 0 0;
+    color: $color-grey;
+    font-size: $font-size-13;
+    font-weight: $font-weight-semi-bold;
+  }
+  &__right {
+    font-size: $font-size-20;
+    p {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: $color-gray-9;
+    }
+    strong {
+      font-size: $font-size-base;
+      color: $color-black;
+      margin-right: $spacer-1;
+      font-weight: $font-weight-semi-bold;
+    }
+  }
+  /* stylelint-disable max-nesting-depth */
+  &--blue {
+    .sc-tulu-camp-earnings {
+      &__icon {
+        svg {
+          background-color: $color-light-gray-2;
+        }
+      }
+    }
+  }
+  &--green {
+    .sc-tulu-camp-earnings {
+      &__icon {
+        svg {
+          background-color: $color-light-green-1;
+        }
+      }
+    }
+  }
+  &--purple {
+    .sc-tulu-camp-earnings {
+      &__icon {
+        svg {
+          background-color: rgb(238, 236, 247);
+        }
+      }
+    }
+  }
+  /* stylelint-enable max-nesting-depth */
+}
+
+/** @end */
+
+/** @define tulu-camp-progress; weak */
+//Progess Circle
+.sc-tulu-camp-progress {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__circle {
+    background: transparent;
+    border: 2px solid $color-gray-5;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $spacer-2;
+    font-size: $font-size-md;
+    line-height: $font-size-md;
+
+    svg {
+      display: none;
+      width: 12px;
+    }
+  }
+
+  &__number {
+    color: $color-gray-3;
+    span {
+      font-size: $font-size-13;
+    }
+
+    svg {
+      margin-right: $spacer-1;
+      path {
+        fill: $color-gray-3;
+      }
+    }
+  }
+
+  &__title {
+    margin: $spacer-2 0;
+    padding: 0 $nt-spacer-2;
+    white-space: nowrap;
+    font-size: $font-size-11;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  &__line {
+    width: 100%;
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    &::before {
+      background-color: $color-gray-3;
+      height: 2px;
+      content: '';
+      width: 60%;
+      position: absolute;
+      top: 16px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    position: relative;
+    width: calc(100% / 6);
+    margin-top: $spacer-3;
+
+    &--completed {
+      .sc-tulu-camp-progress {
+        /* stylelint-disable max-nesting-depth*/
+        &__circle {
+          background: $color-light-green-5;
+          border: 2px solid $color-light-green-5;
+
+          svg {
+            display: block;
+          }
+        }
+
+        &__number {
+          color: $color-green-12;
+          /* stylelint-disable selector-max-compound-selectors */
+
+          svg {
+            path {
+              fill: $color-green-12;
+            }
+          }
+
+          /* stylelint-enable selector-max-compound-selectors */
+        }
+
+        &__line {
+          &::before {
+            background-color: $color-light-green-5;
+          }
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+
+    // &--next-in-progress {
+    //   /* stylelint-disable max-nesting-depth */
+    //   .sc-tulu-camp-progress {
+    //     &__line {
+    //       &::before,
+    //       &::after {
+    //         content: '';
+    //         display: block;
+    //         right: 20%;
+    //       }
+    //       &::before {
+    //         border-color: $color-light-green-5;
+    //         border-style: solid;
+    //         border-width: 0 0 2px 2px;
+    //         height: 6px;
+    //         height: 10px;
+    //         margin-top: -4px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+    //         width: 10px;
+    //         background-color: transparent;
+    //         transform: rotate(225deg);
+    //       }
+    //       &::after {
+    //         background: $color-light-green-5;
+    //         height: 2px;
+    //         width: 60%;
+    //       }
+    //     }
+    //   }
+    //   /* stylelint-enable max-nesting-depth */
+    // }
+
+    &--in-progress {
+      /* stylelint-disable max-nesting-depth */
+      .sc-tulu-camp-progress {
+        &__circle {
+          background: transparent;
+          border: 2px solid $color-light-green-5;
+
+          svg {
+            display: none;
+          }
+
+          span {
+            color: $color-dark-blue-4;
+          }
+        }
+
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+    &:last-child {
+      .sc-tulu-camp-progress__line::before {
+        content: none;
+      }
+    }
+  }
+
+  /* stylelint-disable max-nesting-depth, selector-max-compound-selectors, csstree/validator */
+  &--column-view {
+    .sc-tulu-camp-progress {
+      &__section {
+        flex-direction: column;
+        width: 33.33%;
+        &--completed {
+          .sc-tulu-camp-progress {
+            &__circle {
+              border-color: $color-light-green-5;
+              background-color: $color-white;
+              &::before {
+                content: '';
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: $spacer-3;
+                height: $spacer-3;
+                background-color: $color-brand-green;
+                background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='73' height='64' viewBox='0 0 73 64'%3E%3Cpath fill='%230c3a66' d='M65.765 3.831c-1.115 0.274-1.893 0.777-3.045 1.947-0.603 0.613-9.024 9.445-18.706 19.621l-17.609 18.496-0.329-0.338-7.781-8.201c-3.055-3.237-5.745-6.045-8.453-8.835l0.206 0.213c-0.987-1.053-2.386-1.709-3.939-1.709-0.87 0-1.691 0.206-2.419 0.571l0.031-0.014c-1.078 0.569-1.944 1.412-2.526 2.438l-0.016 0.031c-0.339 0.713-0.537 1.55-0.537 2.434 0 0.868 0.191 1.691 0.534 2.429l-0.015-0.036c0.183 0.375 0.695 1.070 1.143 1.545 7.685 8.138 14.453 15.201 21.268 22.218l-0.514-0.532c0.708 0.583 1.594 0.975 2.565 1.086l0.023 0.002c0.248 0.041 0.533 0.064 0.824 0.064 1.492 0 2.842-0.612 3.811-1.599l0.001-0.001c0.521-0.494 37.111-38.903 40.485-42.505 0.856-0.821 1.455-1.904 1.668-3.12l0.005-0.034c0.049-0.268 0.076-0.577 0.076-0.892 0-1.478-0.61-2.814-1.593-3.77l-0.001-0.001c-0.997-1.018-2.385-1.649-3.921-1.649-0.438 0-0.864 0.051-1.273 0.148l0.037-0.007z'%3E%3C/path%3E%3C/svg%3E");
+                background-size: 8px;
+                background-position: center;
+                background-repeat: no-repeat;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                right: -2px;
+              }
+              svg path {
+                fill: revert-layer;
+              }
+            }
+            &::after {
+              content: '';
+              width: 14px;
+              height: 14px;
+              position: absolute;
+              top: 0;
+              right: 0;
+              background: $color-light-green-5;
+              border: 2px solid $color-light-green-5;
+              border-radius: 50%;
+              background-image: url("data:image/svg+xml,%3Csvg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.8334 2L7.72224 13.6667L2.16675 7.83333' stroke='%230C3A66' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+              background-position: center;
+              background-size: 8px;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+
+      &__circle {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        svg {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+        }
+        svg path {
+          fill: #aaa;
+        }
+      }
+    }
+  }
+  /* stylelint-enable max-nesting-depth, selector-max-compound-selectors, csstree/validator */
+}
+/** @end */
+
+/** @define tulu-camp-timeline; weak */
+.sc-tulu-camp-timeline {
+  margin-top: $spacer-3;
+  &__box {
+    padding: $spacer-3;
+    border: 1px solid $color-light-gray-1;
+    border-radius: 8px 8px 14px;
+    position: relative;
+    margin-bottom: $spacer-3;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.6) 89.44%,
+      rgba(187, 243, 250, 0.6) 98.89%
+    );
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-icon {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-right {
+      display: flex;
+      margin-left: $spacer-3;
+      min-width: 100px;
+      justify-content: end;
+    }
+    &-title {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semi-bold;
+
+      color: $color-grey;
+      position: relative;
+      margin-left: $spacer-5;
+      &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        transform: translate(0, -50%);
+        left: -32px;
+        width: 24px;
+        height: 24px;
+        background-image: url("data:image/svg+xml,%0A%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.5 12C23.5 18.0751 18.5751 23 12.5 23C6.42487 23 1.5 18.0751 1.5 12C1.5 5.92487 6.42487 1 12.5 1C18.5751 1 23.5 5.92487 23.5 12Z' stroke='%23CCCBCB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      }
+    }
+    &-text {
+      color: $color-gray-3;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      padding-left: $spacer-2;
+    }
+    /* stylelint-disable max-nesting-depth */
+    &--progress {
+      .sc-tulu-camp-timeline__box {
+        &-title {
+          color: $color-black;
+          &::before {
+            background-image: url('data:image/svg+xml,<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 12C23.5 18.0751 18.5751 23 12.5 23C6.42487 23 1.5 18.0751 1.5 12C1.5 5.92487 6.42487 1 12.5 1C18.5751 1 23.5 5.92487 23.5 12Z" stroke="%2392E773" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+          }
+        }
+      }
+    }
+    &--active {
+      .sc-tulu-camp-timeline__box {
+        &-title::before {
+          background-image: url('data:image/svg+xml,<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 24C19.1274 24 24.5 18.6274 24.5 12C24.5 5.37258 19.1274 0 12.5 0C5.87258 0 0.5 5.37258 0.5 12C0.5 18.6274 5.87258 24 12.5 24Z" fill="%2392E773"/><path d="M17.5 9L10.8333 16L7.5 12.5" stroke="%230C3A66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        }
+        &-text {
+          color: $color-blue-17;
+        }
+        /* stylelint-disable selector-max-compound-selectors */
+        &-icon {
+          svg path {
+            fill: $color-blue-17;
+          }
+        }
+        /* stylelint-enable selector-max-compound-selectors */
+      }
+    }
+    &--disable {
+      background: $color-light-gray-1;
+      .sc-tulu-camp-timeline__box {
+        &-title {
+          color: $color-grey;
+          &::before {
+            background-image: url('data:image/svg+xml,<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.750 0.024 C 11.670 0.033,11.398 0.061,11.146 0.087 C 9.949 0.206,8.571 0.592,7.424 1.130 C 4.057 2.706,1.578 5.794,0.790 9.396 C 0.569 10.406,0.524 10.844,0.524 12.000 C 0.524 13.156,0.569 13.594,0.790 14.604 C 1.778 19.118,5.382 22.722,9.896 23.710 C 10.906 23.931,11.344 23.976,12.500 23.976 C 13.656 23.976,14.094 23.931,15.104 23.710 C 19.618 22.722,23.222 19.118,24.210 14.604 C 24.431 13.594,24.476 13.156,24.476 12.000 C 24.476 10.844,24.431 10.406,24.210 9.396 C 23.136 4.487,19.046 0.756,14.021 0.101 C 13.573 0.042,12.040 -0.009,11.750 0.024 M12.831 7.065 C 13.501 7.222,14.137 7.727,14.431 8.333 C 14.661 8.809,14.711 9.059,14.738 9.865 L 14.762 10.583 15.081 10.583 C 15.606 10.583,15.955 10.814,16.108 11.264 C 16.160 11.414,16.167 11.874,16.157 14.231 C 16.146 16.861,16.141 17.029,16.068 17.167 C 15.959 17.371,15.799 17.534,15.604 17.639 C 15.438 17.729,15.434 17.729,12.333 17.729 C 9.232 17.729,9.229 17.729,9.063 17.639 C 8.867 17.534,8.707 17.371,8.599 17.167 C 8.525 17.029,8.520 16.861,8.509 14.231 C 8.499 11.874,8.507 11.414,8.558 11.264 C 8.712 10.814,9.060 10.583,9.585 10.583 L 9.905 10.583 9.929 9.865 C 9.955 9.058,10.006 8.808,10.237 8.333 C 10.417 7.963,10.849 7.506,11.215 7.298 C 11.690 7.029,12.305 6.940,12.831 7.065 M11.764 8.163 C 11.452 8.311,11.208 8.552,11.053 8.868 C 10.942 9.095,10.937 9.133,10.924 9.844 L 10.910 10.583 12.333 10.583 L 13.757 10.583 13.743 9.844 C 13.730 9.133,13.725 9.095,13.613 8.868 C 13.260 8.148,12.449 7.839,11.764 8.163 M12.077 13.174 C 11.993 13.197,11.847 13.281,11.752 13.362 C 11.042 13.970,11.427 15.167,12.333 15.167 C 13.239 15.167,13.625 13.970,12.916 13.363 C 12.756 13.226,12.477 13.119,12.304 13.129 C 12.263 13.132,12.161 13.152,12.077 13.174 " fill="%236B6E73" stroke="none" fill-rule="evenodd"></path></svg>');
+          }
+        }
+      }
+    }
+    /* stylelint-enable max-nesting-depth */
+    &::after {
+      position: absolute;
+      content: '';
+      width: 20px;
+      height: 1px;
+      border: 1px solid $color-gray-6;
+      transform: rotate(-90deg);
+      bottom: -12px;
+      left: 20px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+      &::after {
+        content: none;
+      }
+    }
+  }
+  &__cvp {
+    display: flex;
+    padding-left: $spacer-5;
+    margin-top: $spacer-3;
+  }
+  &__cvp-image {
+    width: 60px;
+    height: 40px;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 6px;
+    }
+  }
+  &__cvp-item {
+    padding-left: $spacer-3;
+  }
+  &__cvp-title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    color: $color-dark-gray-1;
+    margin-bottom: $spacer-1;
+  }
+  &__cvp-text {
+    font-size: $font-size-sm;
+    color: $color-gray-1;
+  }
+}
+/** @end */
+
+/** @define tulu-camp-modal; weak */
+// Modal
+.sc-tulu-camp-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+
+  /* stylelint-disable plugin/selector-bem-pattern */
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    .sc-tulu-camp-popup__dialog,
+    .sc-tulu-camp-modal__dialog {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  /* stylelint-enable plugin/selector-bem-pattern */
+
+  &__dialog {
+    background-color: $color-white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: 600px;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+    width: 100%;
+    height: calc(100% - 32px);
+    bottom: 0;
+    border-bottom: 1px solid $color-grey-border;
+  }
+
+  &__body {
+    text-align: left;
+    padding: $spacer-5 $spacer-3;
+    background: $color-white;
+    height: calc(100% - 105px);
+    overflow-y: auto;
+    width: 100%;
+
+    &:has(.sc-tulu-camp-doc) {
+      padding: $spacer-4 0;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid $color-light-gray-1;
+    box-shadow: 0 2px 14px 0 rgba(220, 220, 220, 0.5);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: $color-white;
+    padding: $spacer-3;
+    right: 0;
+    display: flex;
+    z-index: 10;
+  }
+
+  &__content {
+    height: 100%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacer-3;
+    font-weight: $font-weight-semi-bold;
+    align-items: center;
+    border-bottom: 1px solid $color-light-gray-1;
+  }
+
+  &__close,
+  &__download {
+    border: 0;
+    background: $color-white;
+    cursor: pointer;
+    display: flex;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .sc-btn {
+    width: 100%;
+  }
+
+  &__footer-btn {
+    width: 100%;
+    position: relative;
+    &--dark {
+      background-color: $color-dark-blue-3;
+      border-color: $color-dark-blue-3;
+
+      font-weight: $font-weight-bold;
+    }
+    &::before {
+      content: 'ª';
+      color: $color-white;
+      position: absolute;
+      left: 50px;
+      font-size: $font-size-huge;
+      top: calc(50% - 3px);
+      transform: translate(50%, -50%);
+    }
+
+    &--disabled {
+      border-color: $color-light-blue-6;
+      color: $color-dark-blue-9;
+      background-color: $color-light-blue-6;
+
+      &:hover {
+        cursor: not-allowed;
+        border-color: $color-light-blue-6;
+        color: $color-dark-blue-9;
+        background-color: $color-light-blue-6;
+      }
+
+      &::before {
+        content: 'ª';
+        color: $color-dark-blue-9;
+      }
+    }
+  }
+
+  &--close-btn {
+    .sc-tulu-camp-modal {
+      &__header {
+        border-bottom: 0;
+      }
+
+      &__close {
+        width: 100%;
+        justify-content: right;
+      }
+    }
+  }
+
+  &--full-height {
+    .sc-tulu-camp-modal {
+      &__body {
+        height: 100%;
+        padding-bottom: $spacer-6;
+      }
+    }
+  }
+
+  &--popup {
+    background-color: rgb(84, 117, 147);
+    .sc-tulu-camp-modal {
+      &__body {
+        max-height: 500px;
+        padding-bottom: 80px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+        overflow-y: scroll;
+      }
+
+      &__dialog {
+        background: transparent;
+        left: 16px;
+        right: 16px;
+        width: calc(100% - 32px);
+        height: auto;
+        margin: 0 auto;
+        bottom: 20px;
+        box-shadow: none;
+        overflow-y: auto;
+        border-radius: 43px 24px 55px 34px;
+      }
+      .sc-tulu-camp-doc {
+        /* stylelint-disable max-nesting-depth */
+        &__content,
+        &__title {
+          color: $color-dark-blue-4;
+        }
+        &__title {
+          font-size: $font-size-20;
+          margin-bottom: $spacer-2;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+}
+/** @end */
+
+/** @define tulu-camp-doc; weak */
+//Modal Docs
+.sc-tulu-camp-doc {
+  &__content {
+    font-size: $font-size-md;
+    color: $color-gray-1;
+    margin-bottom: $spacer-3;
+  }
+
+  &__title {
+    font-size: $font-size-22;
+    color: $color-dark-gray-1;
+    font-weight: $font-weight-semi-bold;
+    margin-bottom: $spacer-3;
+  }
+
+  strong {
+    color: $color-black;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  li {
+    margin: $spacer-1 0;
+    list-style: none;
+    padding-left: $spacer-4;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background-color: $color-gray-1;
+      position: absolute;
+      left: 8px;
+      border-radius: 20px;
+      top: 10px;
+    }
+  }
+  p {
+    margin-top: $spacer-2;
+  }
+  &__image {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__tc {
+    padding: $spacer-2 $spacer-3 $spacer-2 $spacer-0;
+    .sc-radio-box__input-label {
+      padding: $spacer-0;
+      border: $spacer-0;
+    }
+    .sc-radio-box__input[type='checkbox'] ~ .sc-radio-box__input-label::before {
+      width: 24px;
+      height: 24px;
+      border-radius: 0;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-width: 2px;
+    }
+    .sc-radio-box__input[type='checkbox']:checked ~ .sc-radio-box__input-label::before {
+      background-color: $color-brand-green;
+      border-color: $color-brand-green;
+    }
+    .sc-radio-box__input[type='checkbox']:checked ~ .sc-radio-box__input-label::after {
+      background-color: transparent;
+      left: 10px;
+    }
+  }
+
+  &__tc-link {
+    display: inline-block;
+  }
+}
+/** @end */
+
+/** @define tulu-camp-questionnaire; weak */
+// Questionnaire
+.sc-tulu-camp-questionnaire {
+  max-width: 1024px;
+  margin: 0 auto $spacer-5 auto;
+  position: relative;
+  z-index: 100;
+  background-color: $color-white;
+  border-radius: 0 0 55px 35px;
+  box-shadow: 0 7px 10px 0 rgba(215, 215, 215, 0.71);
+  &::before {
+    background-color: rgb(145 124 227 / 40%);
+    content: '';
+    height: 90%;
+    width: calc(100% + 32px);
+    position: absolute;
+    z-index: -1;
+    left: -16px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    border-radius: 40%;
+    filter: blur(40px);
+  }
+  &__test {
+    border-top: 3px solid $color-light-blue-6;
+    background: linear-gradient(180deg, #fff 67.94%, #f3f8fe 94.41%, #d7eaff 105%);
+    border-radius: 20px 20px 0 0;
+    padding: $spacer-4 $spacer-3;
+    &-text {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semi-bold;
+      color: $color-grey;
+      span {
+        font-size: $font-size-md;
+      }
+    }
+  }
+  &__question {
+    padding: $spacer-5 $spacer-3;
+
+    background-color: $color-white;
+
+    &-text {
+      color: $color-dark-blue-4;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+      margin-bottom: $spacer-4;
+    }
+  }
+  &__heading {
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-bold;
+    color: $color-dark-gray-1;
+    margin-bottom: $spacer-4;
+  }
+  .sc-radio-box {
+    display: flex;
+    margin-top: $spacer-3;
+    &__input-label {
+      font-size: $font-size-20;
+      font-weight: 400;
+      color: $color-dark-gray-5;
+      padding: $spacer-2 0;
+      border: 0;
+      &::before {
+        width: 24px;
+        height: 24px;
+        margin-right: $spacer-3;
+        border: 0;
+        background: none center no-repeat;
+        background-image: url('data:image/svg+xml,<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.97724 1.5C10.7505 1.50039 12.0068 2.07806 13.3196 2.98531L22.7416 9.50009L13.3238 16.0116C13.3231 16.0121 13.3224 16.0125 13.3217 16.013C11.9942 16.9202 10.6883 17.5 8.97746 17.5C4.90338 17.5 1.5 13.9756 1.5 9.5C1.5 5.02434 4.90352 1.49913 8.97724 1.5Z" stroke="%23B2B2B2" stroke-width="2"/></svg>');
+      }
+    }
+    &__input:checked ~ .sc-radio-box__input-label::after {
+      width: 24px;
+      height: 24px;
+      margin-right: $spacer-3;
+      border: 0;
+      top: 12px;
+      left: 0;
+      transform: none;
+      background: none center no-repeat;
+      background-image: url('data:image/svg+xml,<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.97746 0.5C11.0188 0.500446 12.4713 1.18348 13.8881 2.16265L24.5 9.50011L13.8881 16.8371C12.4574 17.8152 10.9561 18.5 8.97746 18.5C4.2956 18.5 0.500001 14.4707 0.5 9.5C0.499999 4.52945 4.29559 0.498996 8.97746 0.5Z" fill="%2338D200"/></svg>');
+    }
+  }
+
+  &__btn {
+    padding: 0 $spacer-3 $spacer-4;
+  }
+
+  &__feedback {
+    position: relative;
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+    padding-left: $spacer-4;
+    display: none;
+    margin-top: $spacer-2;
+
+    &::before {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 0;
+      content: '';
+    }
+
+    &--show {
+      display: block;
+    }
+
+    &--success {
+      color: $color-green;
+
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 14C11.8137 14 14.5 11.3137 14.5 8C14.5 4.68629 11.8137 2 8.5 2C5.18629 2 2.5 4.68629 2.5 8C2.5 11.3137 5.18629 14 8.5 14Z' stroke='%231F8845' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11.25 6.5L7.58331 10L5.75 8.25' stroke='%231F8845' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      }
+    }
+
+    &--fail {
+      color: $color-red;
+
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 14C11.8137 14 14.5 11.3137 14.5 8C14.5 4.68629 11.8137 2 8.5 2C5.18629 2 2.5 4.68629 2.5 8C2.5 11.3137 5.18629 14 8.5 14Z' stroke='%23D0021B' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8.5 5V8.5' stroke='%23D0021B' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8.5 11.5C8.91421 11.5 9.25 11.1642 9.25 10.75C9.25 10.3358 8.91421 10 8.5 10C8.08579 10 7.75 10.3358 7.75 10.75C7.75 11.1642 8.08579 11.5 8.5 11.5Z' fill='%23D0021B'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  &__feedback-desc {
+    margin-top: $spacer-2;
+    color: $color-dark-blue-4;
+    font-size: $font-size-md;
+    font-weight: $font-weight-light;
+  }
+}
+/** @end */
+
+/** @define tulu-camp-how-it-works; weak */
+// How it works
+.sc-tulu-camp-how-it-works {
+  margin: $spacer-2 0 $spacer-3;
+  &__card {
+    counter-reset: section;
+    list-style: none;
+    width: auto;
+    height: auto;
+    padding: $spacer-3 $spacer-4;
+    border: 1.3px solid transparent;
+    border-radius: 9px 30px 9px 9px;
+    background: linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(213.15deg, #19bcfc 0.58%, #e3e3e3 5.87%, #e3e3e3 79.24%, #00e14d 94.79%)
+        border-box; /* Gradient border */
+    li {
+      &::before {
+        counter-increment: section;
+        content: counter(section);
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 2px solid $color-light-green-5;
+        border-radius: 50%;
+        background: transparent;
+        font-size: $font-size-md;
+        text-align: center;
+        font-weight: $font-weight-semi-bold;
+        color: $color-dark-blue-4;
+        top: 0;
+        left: -4px;
+        line-height: 1.2;
+      }
+    }
+  }
+  &__card-item {
+    padding-bottom: $spacer-3;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__card-row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item-title {
+    font-size: $font-size-15;
+    font-weight: $font-weight-semi-bold;
+    padding-bottom: $nt-spacer-2;
+    color: $color-dark-gray-1;
+  }
+  &__item-description {
+    font-size: $font-size-md;
+    color: $color-gray-1;
+    font-weight: 400;
+  }
+  &__item-link {
+    text-decoration: none;
+    color: $color-blue-17;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+  }
+}
+/** @end */
+
+/** @define faq; weak */
+//FAQ
+.sc-faq {
+  padding: $spacer-2 0 $spacer-3;
+  background: $color-white;
+
+  .sc-content-wrapper {
+    padding: 0;
+  }
+
+  &__accordion {
+    border-bottom: 0;
+
+    ~ .sc-faq__accordion {
+      border-radius: 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 6px 6px;
+      border-bottom: 1px solid $color-gray-6;
+    }
+  }
+
+  &__terms-link {
+    border-radius: 6px 6px 0 0;
+    border-top: 1px solid $color-gray-6;
+
+    ~ .sc-faq__terms-link {
+      border-radius: 0;
+      border-top: 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 6px 6px;
+    }
+  }
+}
+
+/** @end */
+
+/** @define heading-inner; weak */
+// Heading
+.sc-heading-inner {
+  margin-bottom: $spacer-2;
+  .sc-title {
+    font-size: $font-size-15;
+    font-weight: $font-weight-semi-bold;
+  }
+}
+/** @end */

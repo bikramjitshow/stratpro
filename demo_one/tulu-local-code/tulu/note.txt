@@ -1,8 +1,8 @@
-attribute added -> data-consolidate
-Finding similar element for consolidate api -> data-child-class="sc-tulu-camp-tab__content-item-diversify"
+What is the identifier name to open the "L0. Campaign Register_No AsiaMiles No." or "L0. Campaign Registration" window?
+The minimize icon is in the "L0. Campaign Register_No AsiaMiles No." or "L0. Campaign Registration" window. Can we go forward without clicking the "Get Started" button?
+Trade Up: What is the correct JSON structure
+Level Up: Picture and reading point details
+Where did we get the * Template – Documents
 
 
-data-attribute-name="data-diversify-api" 
-
-
- 340 555 84 
+class="sc-tulu-camp-wrapper-full__title" data-context="ut"

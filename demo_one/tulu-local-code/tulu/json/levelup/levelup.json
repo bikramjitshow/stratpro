@@ -5,26 +5,26 @@
   "CustomerCost": 0.0,
   "ContentFormat": "Image",
   "SellableEndDate": "19700101T000000.000 GMT",
-  "Label": "EGSRTULUUTDiversify",
+  "Label": "EGSRTULULevelupArticlenQuiz",
   "PaidLookalikeValue": "",
   "Benefits": "Action is to increase Term deposit product with bank, for customer with currency other than HKD",
   "WhyRelevant": "",
   "Sellable": false,
   "ProductSearchCriteria": "",
-  "Name": "EGSRTULUUTDiversify",
+  "Name": "EGSRTULULevelupArticlenQuiz",
   "ShortDescription": "Action is to increase Term deposit product with bank, for customer with currency other than HKD",
   "GroupID": "Deposits",
   "PaidAudienceName": "",
-  "Identifier": "/AcquisitionSales/Deposits/EGSRTULUUTDiversify",
+  "Identifier": "/AcquisitionSales/Deposits/EGSRTULULevelupArticlenQuiz",
   "BundleType": "",
-  "Placement": "diversify_page",
+  "Placement": "levelup_page",
   "SellableStartDate": "19700101T000000.000 GMT",
   "JourneyStep": "",
   "Propensity": 0.0,
   "AgentCompensation": 0,
   "BannerLabel": "",
   "ClassIdentifier": "Offer",
-  "Priority": 4.99999999e8,
+  "Priority": 499999999,
   "Channel": "Mobile",
   "BundleName": "",
   "ImageURL": "",
@@ -32,20 +32,32 @@
   "Variant": "",
   "Fields": [
     {
-      "Value": "Y",
-      "Name": "OpenAccount"
+      "Value": "RE101",
+      "ArticleReadFlag": "Y",
+      "ArticleConsolidatedAmount": "100",
+      "QuizFlag": "Y",
+      "QuizConsolidatedAmount": "100"
     },
     {
-      "Value": "Y",
-      "Name": "FirstTrade"
+      "Value": "RE102",
+      "ArticleReadFlag": "N",
+      "ArticleConsolidatedAmount": "200",
+      "QuizFlag": "Y",
+      "QuizConsolidatedAmount": "1300"
     },
     {
-      "Value": "Y",
-      "Name": "CompletionBonus"
+      "Value": "RE103",
+      "ArticleReadFlag": "N",
+      "ArticleConsolidatedAmount": "200",
+      "QuizFlag": "Y",
+      "QuizConsolidatedAmount": "1300"
     },
     {
-      "Value": "",
-      "Name": "Finish all actions to earn bonus miles"
+      "Value": "RE104",
+      "ArticleReadFlag": "N",
+      "ArticleConsolidatedAmount": "200",
+      "QuizFlag": "Y",
+      "QuizConsolidatedAmount": "1300"
     }
   ],
   "InternalCost": 0,

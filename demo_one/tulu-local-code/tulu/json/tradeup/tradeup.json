@@ -36,11 +36,11 @@
       "Name": "RewardValue"
     },
     {
-      "Value": "3",
+      "Value": "4",
       "Name": "RewardCount"
     },
     {
-      "Value": "300",
+      "Value": "200",
       "Name": "ConsolidatedAmount"
     }
   ],
