@@ -136,6 +136,14 @@ class ScMgmReferralEnhanced {
           if (el.getAttribute("data-terms-enable") === "true") {
             that.isTermModalRequire = true;
           }
+          setTimeout(() => {
+            const checkedRadio = document.querySelector(
+              ".c-modal .sc-products-tile-pdt-selection input:checked"
+            );
+            console.log("onload updateLinkHref---1", checkedRadio)
+            that.selectedRadioBox = checkedRadio;
+          }, 1050);
+          
         });
       });
     }
@@ -177,6 +185,7 @@ class ScMgmReferralEnhanced {
         //identify the term modal
         if (event.target.classList.contains("sc-mgm-refer-tc")) {
           // that.isTermModalActive = true;
+          console.log("TC CALL");
           that.termsModalActive(event);
         }
       }
@@ -184,7 +193,7 @@ class ScMgmReferralEnhanced {
 
     that.handleSticky();
     that.handleReferId();
-    // that.updateLinkHref(0);
+    // that.updateLinkHref();
   }
 
   handleSticky() {
@@ -257,9 +266,20 @@ class ScMgmReferralEnhanced {
             ".sc-products-tile-singleview-wrap"
           );
           if (singleviewedWrapper) {
+            const checkedRadio = document.querySelector(
+              ".sc-products-tile-pdt-selection input:checked"
+            );
+            console.log("singleviewedWrapper---1", checkedRadio)
+            that.selectedRadioBox = checkedRadio;
             singleviewedWrapper.appendChild(clonedPdtForSingleView);
           }
         } else {
+          const checkedRadio = document.querySelector(
+            ".sc-products-tile-pdt-selection input:checked"
+          );
+          console.log("else singleviewedWrapper---2", checkedRadio)
+          that.selectedRadioBox = checkedRadio;
+
           // Clone the selectedPdt element for the recommended wrapper
           const clonedPdtForRecommended = selectedPdt.cloneNode(true);
           const recommendedWrapper = that.productTile.querySelector(
@@ -677,17 +697,13 @@ class ScMgmReferralEnhanced {
     that.isTermModalActive = false;
     // document.body.addEventListener("click", function (event) {
     let closestAnchor = event.target.closest("a");
-    // debugger;
 
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    console.log("that.selectedRadioBox ---", that.selectedRadioBox)
+    console.log("closestAnchor ---", closestAnchor);
+    console.log("that.selectedRadioBox ---", that.selectedRadioBox);
     console.log("checkedRadio--", checkedRadio);
-    // if (!checkedRadio) {
-    //   console.info("No radio button is checked in .sc-products-tile-pdt-selection");
-    //   return; // Exit early if no checked radio is found
-    // }
     const newHref = that.selectedRadioBox
       ?.closest("label")
       .getAttribute("data-card-link");
