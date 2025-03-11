@@ -255,7 +255,6 @@ class ScMgmReferralEnhanced {
         if (that.isSingleViewPdt) {
           that.allPdt.classList.add("hide");
           that.referHeader.classList.add("hide");
-          that.referHeader.classList.add('hide');
           recommendedTiles.classList.add("hide");
           singleViewTile.classList.remove("hide");
           // Clone the selectedPdt element for the recommended wrapper
