@@ -1,244 +1,96 @@
-/* global Utils */
-// import ScCommonMethods from './sc-common-methods-2.js';
-// import { handleAnalyticsCTA } from './sc-common-methods.js';
-
 class ScMgmReferralEnhanced {
   constructor() {
     this.ScCommonMethods = new ScCommonMethods();
   }
+
   init() {
-    const that = this;
-    that.productTile = document.querySelector(".sc-product-tiles");
-    if (!that.productTile) return;
+    this.cacheElements();
+    if (!this.productTile) return;
+    this.setupReferId();
+    this.validateReferId();
+    this.setupEventListeners();
+  }
 
-    that.errorModal = document.querySelector(".sc-error-modal");
-    that.referHeader = that.productTile.querySelector(
-      ".sc-product-tiles__head-wrapper"
-    );
-    that.allPdt = that.productTile.querySelector(
-      ".sc-product-tile-is-recommended"
-    );
-    that.singlePdt = that.productTile.querySelector(
-      ".sc-product-tile-recommended"
-    );
+  cacheElements() {
+    this.productTile = document.querySelector(".sc-product-tiles");
+    this.errorModal = document.querySelector(".sc-error-modal");
+    this.termsConditions = document.querySelector(".sc-terms-links");
+    this.referHeader = this.productTile?.querySelector(".sc-product-tiles__head-wrapper");
+    this.allPdt = this.productTile?.querySelector(".sc-product-tile-is-recommended");
+    this.singlePdt = this.productTile?.querySelector(".sc-product-tile-recommended");
+    this.queryString = Utils.getPageContext().queryString;
+    this.queryParams = this.ScCommonMethods.getQueryParam(this.queryString, this.productTile?.getAttribute("data-query-param-code"));
+  }
 
-    // that.backBtn = that.productTile.querySelector(
-    //   ".sc-product-tile-is-recommended-back-btn"
-    // );
-    // that.viewAll = that.productTile.querySelector(
-    //   ".sc-product-tile-recommended__view-all-btn"
-    // );
-    that.termsConditions = document.querySelector(".sc-terms-links");
-
-    that.queryString = Utils.getPageContext().queryString;
-    that.queryParams = that.ScCommonMethods.getQueryParam(
-      that.queryString,
-      that.productTile.getAttribute("data-query-param-code")
-    );
-    const recommendedLit = that.productTile.getAttribute(
-      "data-recommended-lite"
-    );
-    that.isTermModalRequire = false;
-    that.isTermModalActive = false;
-    that.skipTermsModalClosed = false;
-    that.isSingleViewPdt = false;
-
-    // Append the referid
-    const urlParams = new URLSearchParams(window.location.search);
-    const referid = urlParams.get("referid");
-
+  setupReferId() {
+    const referid = new URLSearchParams(window.location.search).get("referid");
     if (referid) {
-      const allUrl = document.querySelectorAll(".sc-product-tiles a");
-      allUrl.forEach(function (el) {
+      document.querySelectorAll(".sc-product-tiles a").forEach(el => {
         el.addEventListener("mousedown", (event) => {
-          const href = event.target.closest("a").getAttribute("href");
-          // Only modify the href if it contains "retail.sc.com" and doesn't already have the referid
-          if (
-            href.includes("retail.sc.com") &&
-            !href.includes(`referid=${referid}`)
-          ) {
-            // Append the referid without duplicating
-            const newHref = href.includes("?")
-              ? href + `&referid=${referid}`
-              : href + `?referid=${referid}`;
-            event.target.closest("a").setAttribute("href", newHref);
+          const anchor = event.target.closest("a");
+          if (!anchor) return;
+          const href = anchor.getAttribute("href");
+          if (href.includes("retail.sc.com") && !href.includes(`referid=${referid}`)) {
+            anchor.setAttribute("href", href.includes("?") ? `${href}&referid=${referid}` : `${href}?referid=${referid}`);
           }
         });
       });
     }
+  }
 
-    //Invalid referId in the URL show error popup
-    if (
-      !that.queryParams ||
-      that.queryParams.replace(/[^0-9a-zA-Z]/gi, "").length !==
-        Number(that.productTile.getAttribute("data-query-param-code-length"))
-    ) {
-      //Invalid referId in the URL
-      that.errorModal.classList.add("sc-error-modal--show");
+  validateReferId() {
+    const paramCodeLength = Number(this.productTile?.getAttribute("data-query-param-code-length"));
+    if (!this.queryParams || this.queryParams.replace(/\W/g, "").length !== paramCodeLength) {
+      this.errorModal?.classList.add("sc-error-modal--show");
       document.body.classList.add("modal-open");
-      return;
-    } else if (recommendedLit) {
-      that.singlePdt.classList.add("hide");
-      that.handleRecommendedLite();
     } else {
-      that.handleModalProduct();
+      this.handleProductDisplay();
     }
+  }
 
-    that.handleFilter();
+  setupEventListeners() {
+    document.body.addEventListener("click", (event) => this.handleBodyClick(event));
+    window.addEventListener("scroll", () => this.handleSticky());
+  }
 
-    //Handle display all product
-    // if (that.viewAll) {
-    //   that.viewAll.addEventListener("click", function () {
-    //     //Display all products
-    //     that.toggleProducts(false);
-    //     if (that.termsConditions) that.termsConditions.classList.remove("hide");
-    //     const width =
-    //       window.innerWidth ||
-    //       document.documentElement.clientWidth ||
-    //       document.body.clientWidth;
-    //     ScCommonMethods.smoothScroll(that.backBtn, 500, width > 767 ? 100 : 30);
-    //   });
-    // }
+  handleProductDisplay() {
+    if (this.productTile?.getAttribute("data-recommended-lite")) {
+      this.singlePdt?.classList.add("hide");
+      this.handleRecommendedLite();
+    } else {
+      this.handleModalProduct();
+    }
+  }
 
-    //Handle back button
-    // if (that.backBtn) {
-    //   that.backBtn.addEventListener("click", function () {
-    //     //Display all products
-    //     that.toggleProducts(true);
-    //     that.referHeader.classList.add("hide");
-    //     if (that.termsConditions) that.termsConditions.classList.add("hide");
-    //   });
-    // }
+  handleSticky() {
+    const headingWrapper = this.productTile?.querySelector(".sc-filter");
+    if (!headingWrapper) return;
+    const headingPosition = this.ScCommonMethods.getPosition(headingWrapper);
+    const isSticky = window.scrollY > headingPosition - (window.innerWidth > 768 ? 100 : 10);
+    headingWrapper.classList.toggle("sc-filter--sticky", isSticky);
+  }
 
-    //Update product URL
-    setTimeout(() => {
-      //Added some delay so that the data-mobile-href update the href first
-      const pdtUrls = that.productTile.querySelectorAll("a");
-      pdtUrls.forEach(function (pdtUrl) {
-        const currentURL = pdtUrl.getAttribute("href");
-        if (currentURL !== "#null") {
-          pdtUrl.setAttribute("href", that.updateQueryString(currentURL));
-        }
-      });
-    }, 300);
+  handleBodyClick(event) {
+    const target = event.target;
+    if (target.closest(".closebutton") || target.closest(".wrapper")) {
+      document.body.classList.remove("modal-open");
+    }
+    if (target.closest(".sc-products-tile__copy-code")) {
+      this.copyReferralCode(target);
+    }
+  }
 
-    //Handle popup open
-    let modalOpen = false;
-    that.mainModalId = "";
-    const openModals = that.productTile.querySelectorAll("a[href='#null']");
-    if (openModals.length) {
-      openModals.forEach(function (el) {
-        el.addEventListener("click", () => {
-          modalOpen = true;
-          that.mainModalId = el.getAttribute("data-modal-source");
-          console.log(el);
-          if (el.getAttribute("data-terms-enable") === "true") {
-            that.isTermModalRequire = true;
-          }
-        });
+  copyReferralCode(target) {
+    const codeSpan = target.closest(".sc-products-tile-modal")?.querySelector(".sc-products-tile__applied-code span");
+    if (codeSpan) {
+      navigator.clipboard.writeText(codeSpan.innerText).then(() => {
+        const messageDiv = document.querySelector(".sc-product-tiles__copy-message");
+        messageDiv?.classList.add("sc-product-tiles__copy-message--show");
+        setTimeout(() => messageDiv?.classList.remove("sc-product-tiles__copy-message--show"), 3000);
       });
     }
-
-    //Handle modal close event
-    document.body.addEventListener("click", function (event) {
-      if (modalOpen) {
-        let anchor = event.target.closest("a");
-        let tm = document
-          .querySelector(".m-text-content")
-          .getAttribute("data-term-modal");
-
-        if (
-          event.target.className.indexOf("closebutton") !== -1 ||
-          event.target.className.indexOf("wrapper") !== -1
-        ) {
-          modalOpen = false;
-          if (tm) {
-            that.termsModalClosed(that.mainModalId);
-          }
-
-          let ctaType =
-            event.target.type == "button" ? event.target.type : "link";
-          let customLinkText = event.target.getAttribute("title")
-            ? event.target.getAttribute("title")
-            : event.target instanceof SVGElement ||
-              event.target.getElementsByTagName("svg").length ||
-              event.target.classList.contains("closebutton")
-            ? "Close"
-            : event.target.innerText
-            ? event.target.innerText.trim().toLowerCase()
-            : event.target.textContent.trim().toLowerCase();
-          // handleAnalyticsCTA(event, anchor, {
-          //   ctaType: ctaType,
-          //   customLinkText: customLinkText
-          // });
-        }
-
-        //identify the term modal
-        if (event.target.classList.contains("sc-mgm-refer-tc")) {
-          that.isTermModalActive = true;
-          that.termsModalActive(event);
-        }
-      }
-    });
-
-    that.handleSticky();
-    that.handleReferId();
-    // that.updateLinkHref(0);
   }
-
-  
-
-  /**
-   * Terms Modal Active on init
-   * @example
-   * termsModalActive()
-   */
-  termsModalActive(event) {
-    const that = this;
-    that.isTermModalActive = false;
-    // document.body.addEventListener("click", function (event) {
-    let closestAnchor = event.target.closest("a");
-    const checkedRadio = document.querySelector(
-      ".c-modal .sc-products-tile-pdt-selection input:checked"
-    );
-    console.log("checkedRadio--", checkedRadio);
-    const newHref = checkedRadio
-      ?.closest("label")
-      .getAttribute("data-card-link");
-    if (that.isTermModalRequire) {
-      that.isTermModalActive = true;
-      if (
-        closestAnchor &&
-        closestAnchor.getAttribute("href") === "#null" &&
-        event.target.classList.contains("sc-mgm-refer-tc")
-      ) {
-        // event.preventDefault();
-        // event.stopPropagation();
-        setTimeout(() => {
-          let modalAttr = closestAnchor.getAttribute("data-modal-source");
-          let modalredirecturl =
-            closestAnchor.getAttribute("data-redirect-url");
-          let activeModal = document.querySelector(".m-text-content");
-          let activeModalId = activeModal.getAttribute("data-modal-id");
-          if (modalAttr === activeModalId) {
-            console.log({ newHref, modalredirecturl });
-            if (newHref) {
-              that.activeScrollToBottom(newHref);
-            } else {
-              that.activeScrollToBottom(modalredirecturl);
-            }
-          }
-        }, 150);
-      }
-    } else {
-      let modalAttr = closestAnchor.getAttribute("data-modal-source");
-      that.activeModalDataId = modalAttr;
-    }
-    // });
-  }
-  }
+}
 
 const instance = new ScMgmReferralEnhanced();
 instance.init();
-
-// export default instance;

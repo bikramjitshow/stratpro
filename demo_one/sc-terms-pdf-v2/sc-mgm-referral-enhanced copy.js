@@ -5,7 +5,6 @@
 class ScMgmReferralEnhanced {
   constructor() {
     this.ScCommonMethods = new ScCommonMethods();
-    // this.handleAnalyticsCTA = new handleAnalyticsCTA();
   }
   init() {
     const that = this;
@@ -23,6 +22,12 @@ class ScMgmReferralEnhanced {
       ".sc-product-tile-recommended"
     );
 
+    // that.backBtn = that.productTile.querySelector(
+    //   ".sc-product-tile-is-recommended-back-btn"
+    // );
+    // that.viewAll = that.productTile.querySelector(
+    //   ".sc-product-tile-recommended__view-all-btn"
+    // );
     that.termsConditions = document.querySelector(".sc-terms-links");
 
     that.queryString = Utils.getPageContext().queryString;
@@ -83,6 +88,30 @@ class ScMgmReferralEnhanced {
 
     that.handleFilter();
 
+    //Handle display all product
+    // if (that.viewAll) {
+    //   that.viewAll.addEventListener("click", function () {
+    //     //Display all products
+    //     that.toggleProducts(false);
+    //     if (that.termsConditions) that.termsConditions.classList.remove("hide");
+    //     const width =
+    //       window.innerWidth ||
+    //       document.documentElement.clientWidth ||
+    //       document.body.clientWidth;
+    //     ScCommonMethods.smoothScroll(that.backBtn, 500, width > 767 ? 100 : 30);
+    //   });
+    // }
+
+    //Handle back button
+    // if (that.backBtn) {
+    //   that.backBtn.addEventListener("click", function () {
+    //     //Display all products
+    //     that.toggleProducts(true);
+    //     that.referHeader.classList.add("hide");
+    //     if (that.termsConditions) that.termsConditions.classList.add("hide");
+    //   });
+    // }
+
     //Update product URL
     setTimeout(() => {
       //Added some delay so that the data-mobile-href update the href first
@@ -108,13 +137,17 @@ class ScMgmReferralEnhanced {
           if (el.getAttribute("data-terms-enable") === "true") {
             that.isTermModalRequire = true;
           }
+          that.radioBtns = document.querySelectorAll(
+            '.c-modal .sc-product-choose .sc-radio-box__input'
+          );
           setTimeout(() => {
             const checkedRadio = document.querySelector(
               ".c-modal .sc-products-tile-pdt-selection input:checked"
             );
-            console.log("onload updateLinkHref---1", checkedRadio);
+            console.log("onload updateLinkHref---1", checkedRadio)
             that.selectedRadioBox = checkedRadio;
           }, 1050);
+          
         });
       });
     }
@@ -147,10 +180,10 @@ class ScMgmReferralEnhanced {
             : event.target.innerText
             ? event.target.innerText.trim().toLowerCase()
             : event.target.textContent.trim().toLowerCase();
-          that.handleAnalyticsCTA(event, anchor, {
-            ctaType: ctaType,
-            customLinkText: customLinkText,
-          });
+          // handleAnalyticsCTA(event, anchor, {
+          //   ctaType: ctaType,
+          //   customLinkText: customLinkText
+          // });
         }
 
         //identify the term modal
@@ -164,6 +197,7 @@ class ScMgmReferralEnhanced {
 
     that.handleSticky();
     that.handleReferId();
+    // that.updateLinkHref();
   }
 
   handleSticky() {
@@ -239,7 +273,7 @@ class ScMgmReferralEnhanced {
             const checkedRadio = document.querySelector(
               ".sc-products-tile-pdt-selection input:checked"
             );
-            console.log("singleviewedWrapper---1", checkedRadio);
+            console.log("singleviewedWrapper---1", checkedRadio)
             that.selectedRadioBox = checkedRadio;
             singleviewedWrapper.appendChild(clonedPdtForSingleView);
           }
@@ -247,7 +281,7 @@ class ScMgmReferralEnhanced {
           const checkedRadio = document.querySelector(
             ".sc-products-tile-pdt-selection input:checked"
           );
-          console.log("else singleviewedWrapper---2", checkedRadio);
+          console.log("else singleviewedWrapper---2", checkedRadio)
           that.selectedRadioBox = checkedRadio;
 
           // Clone the selectedPdt element for the recommended wrapper
@@ -297,6 +331,9 @@ class ScMgmReferralEnhanced {
         }
       }
     }
+    // else {
+    //   that.backBtn.classList.add("hide");
+    // }
 
     const appliedCodes = that.productTile.querySelectorAll(
       ".sc-products-tile__applied-code"
@@ -355,14 +392,17 @@ class ScMgmReferralEnhanced {
           }
         } else {
           //No product found
+          // that.backBtn.classList.add("hide");
           that.toggleProducts(false);
         }
       } else {
         //No product found
+        // that.backBtn.classList.add("hide");
         that.toggleProducts(false);
       }
     } else {
       //Display all products
+      // that.backBtn.classList.add("hide");
       that.toggleProducts(false);
     }
 
@@ -578,11 +618,7 @@ class ScMgmReferralEnhanced {
         }, 1000);
       }
 
-      if (
-        event.target.closest(
-          ".sc-products-tile-pdt-selection input[type='radio']"
-        )
-      ) {
+      if (event.target.closest(".sc-products-tile-pdt-selection")) {
         that.updateLinkHref();
       }
     });
@@ -641,11 +677,11 @@ class ScMgmReferralEnhanced {
     const checkedRadio = document.querySelector(
       ".sc-products-tile-pdt-selection input:checked"
     );
-    console.log("updateLinkHref---1", checkedRadio);
+    console.log("updateLinkHref---1", checkedRadio)
     that.selectedRadioBox = checkedRadio;
     // const isTermsModal = that.isTermModalActive | applyNowLinks.getAttribute("data-terms-enable");
     if (!that.isTermModalRequire) {
-      console.log("updateLinkHref---2");
+      console.log("updateLinkHref---2")
       const newHref = checkedRadio
         ?.closest("label")
         .getAttribute("data-card-link");
@@ -820,43 +856,16 @@ class ScMgmReferralEnhanced {
 
   handleRadioBtns() {
     const that = this;
-    // that.radioBtns = document.querySelectorAll(
-    //   ".c-modal .sc-products-tile-pdt-selection .sc-radio-box__input"
-    // );
-    // if (that.radioBtns.length) {
-    //   that.radioBtns.forEach((btn) => {
-    //     btn.addEventListener("click", (event) => {
-    //       handleAnalyticsCTA(
-    //         event,
-    //         event.target
-    //           .closest(".sc-radio-box")
-    //           .querySelector(".sc-radio-box__input-label"),
-    //         {
-    //           ctaType: "radio-button",
-    //         }
-    //       );
-    //     });
-    //   });
-    // }
-    // Step 1: Find all radio inputs, even inside cloned modals
-    const radioInputs = document.querySelectorAll("input[type='radio']");
-    console.log(radioInputs);
-
-    // Step 2: Listen for a change event to capture the selected radio
-    if (radioInputs.length) {
-      radioInputs.forEach((radio) => {
-        radio.addEventListener("change", function () {
-          const selectedRadio = document.querySelector(
-            "input[type='radio']:checked"
+    if (that.radioBtns.length) {
+      that.radioBtns.forEach(btn => {
+        btn.addEventListener('click', event => {
+          handleAnalyticsCTA(
+            event,
+            event.target.closest('.sc-radio-box').querySelector('.sc-radio-box__input-label'),
+            {
+              ctaType: 'radio-button'
+            }
           );
-
-          if (selectedRadio) {
-            // Step 3: Target the selected radio label or input and console log it
-            const selectedLabel =
-              selectedRadio.closest("label") || selectedRadio;
-            console.log("Selected Radio Input:", selectedRadio);
-            console.log("Selected Radio Label:", selectedLabel);
-          }
         });
       });
     }
