@@ -19,9 +19,37 @@ class ScTuluCampaign {
       FirstTrade: "Make your first trade",
       levelUp: [
         {
-          articleId: "wealth-needs-1",
-          quizValue: 12,
+          articleId: "wealth-needs-3",
+          quizValue: 3,
         },
+        {
+          articleId: "wealth-needs-5",
+          quizValue: 2,
+        },
+        {
+          articleId: "wealth-needs-2",
+          quizValue: 1,
+        },
+        {
+          articleId: "wealth-needs-9",
+          quizValue: 1,
+        },
+        {
+          articleId: "wealth-needs-13",
+          quizValue: 2,
+        },
+        {
+          articleId: "wealth-needs-16",
+          quizValue: 3,
+        },
+        {
+          articleId: "wealth-needs-21",
+          quizValue: 1,
+        },
+        {
+          articleId: "wealth-needs-19",
+          quizValue: 4,
+        }
       ],
       tradeUp: {
         progressNumber: [100, 200, 300],
@@ -279,7 +307,31 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-1",
+              Value: "wealth-needs-3",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "Y",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 400,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "Y",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 100,
+            },
+          ],
+        },
+        {
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-5",
             },
             {
               Name: "ArticleRead",
@@ -311,30 +363,6 @@ class ScTuluCampaign {
             },
             {
               Name: "ArticleTotalAmount",
-              Value: 400,
-            },
-            {
-              Name: "QuizCompleted",
-              Value: "Y",
-            },
-            {
-              Name: "QuizTotalAmount",
-              Value: 100,
-            },
-          ],
-        },
-        {
-          Fields: [
-            {
-              Name: "ArticleID",
-              Value: "wealth-needs-3",
-            },
-            {
-              Name: "ArticleRead",
-              Value: "Y",
-            },
-            {
-              Name: "ArticleTotalAmount",
               Value: 600,
             },
             {
@@ -351,7 +379,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-4",
+              Value: "wealth-needs-9",
             },
             {
               Name: "ArticleRead",
@@ -375,7 +403,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-5",
+              Value: "wealth-needs-13",
             },
             {
               Name: "ArticleRead",
@@ -399,7 +427,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-6",
+              Value: "wealth-needs-16",
             },
             {
               Name: "ArticleRead",
@@ -423,7 +451,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-7",
+              Value: "wealth-needs-21",
             },
             {
               Name: "ArticleRead",
@@ -447,7 +475,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-8",
+              Value: "wealth-needs-19",
             },
             {
               Name: "ArticleRead",
