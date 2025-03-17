@@ -114,6 +114,7 @@ class ScMgmReferralEnhanced {
             );
             console.log("onload updateLinkHref---1", checkedRadio);
             that.selectedRadioBox = checkedRadio;
+            that.handleRadioBtns();
           }, 1050);
         });
       });
@@ -164,6 +165,7 @@ class ScMgmReferralEnhanced {
 
     that.handleSticky();
     that.handleReferId();
+    that.handleRadioBtns();
   }
 
   handleSticky() {
@@ -242,6 +244,7 @@ class ScMgmReferralEnhanced {
             console.log("singleviewedWrapper---1", checkedRadio);
             that.selectedRadioBox = checkedRadio;
             singleviewedWrapper.appendChild(clonedPdtForSingleView);
+            // that.handleRadioBtns();
           }
         } else {
           const checkedRadio = document.querySelector(
@@ -821,7 +824,7 @@ class ScMgmReferralEnhanced {
   handleRadioBtns() {
     const that = this;
     // that.radioBtns = document.querySelectorAll(
-    //   ".c-modal .sc-products-tile-pdt-selection .sc-radio-box__input"
+    //   ".sc-products-tile-pdt-selection .sc-radio-box__input"
     // );
     // if (that.radioBtns.length) {
     //   that.radioBtns.forEach((btn) => {
@@ -845,7 +848,7 @@ class ScMgmReferralEnhanced {
     // Step 2: Listen for a change event to capture the selected radio
     if (radioInputs.length) {
       radioInputs.forEach((radio) => {
-        radio.addEventListener("change", function () {
+        radio.addEventListener("change", function (event) {
           const selectedRadio = document.querySelector(
             "input[type='radio']:checked"
           );
@@ -856,6 +859,24 @@ class ScMgmReferralEnhanced {
               selectedRadio.closest("label") || selectedRadio;
             console.log("Selected Radio Input:", selectedRadio);
             console.log("Selected Radio Label:", selectedLabel);
+            console.log(
+              event,
+              event.target
+                .closest(".sc-products-tile-pdt-selection__tile")
+                .querySelector(".sc-products-tile-pdt-selection__pdt-name").innerText,
+              {
+                ctaType: "radio-button",
+              }
+            )
+            handleAnalyticsCTA(
+              event,
+              event.target
+                .closest(".sc-products-tile-pdt-selection__tile")
+                .querySelector(".sc-products-tile-pdt-selection__pdt-name").innerText,
+              {
+                ctaType: "radio-button",
+              }
+            );
           }
         });
       });

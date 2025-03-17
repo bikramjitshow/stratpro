@@ -1,70 +1,70 @@
 /* eslint-disable no-useless-escape */
 /* global digitalData, scAnalyticsDataArray, _satellite, noUiSlider */
 window.scCommonConstants = {
-  DEVELOPMENT: 'development',
-  PREVIEW: 'preview',
-  PRODUCTION: 'production',
-  STAGING: 'staging',
-  PERSONAL: 'personal',
-  PRIORITY: 'priority',
-  BUSINESS: 'business',
-  CORPORATE: 'corporate',
-  PRIVATE: 'private',
-  COMMERCIAL: 'commercial',
+  DEVELOPMENT: "development",
+  PREVIEW: "preview",
+  PRODUCTION: "production",
+  STAGING: "staging",
+  PERSONAL: "personal",
+  PRIORITY: "priority",
+  BUSINESS: "business",
+  CORPORATE: "corporate",
+  PRIVATE: "private",
+  COMMERCIAL: "commercial",
 
-  LANGUAGES: ['en', 'zh'],
+  LANGUAGES: ["en", "zh"],
 
   ALLOWABLE_QUERYSTRING: {
     scb: [
-      'subChanCode',
-      'camp_id',
-      'pid',
-      'promoCode',
-      'promo',
-      'referId',
-      'instance',
-      'state',
-      'utm_source',
-      'utm_medium',
-      'utm_campaign',
-      'utm_term',
-      'utm_content',
-      'GiPrm',
-      'productName',
-      'truspleBuyerId',
-      'CTID'
+      "subChanCode",
+      "camp_id",
+      "pid",
+      "promoCode",
+      "promo",
+      "referId",
+      "instance",
+      "state",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+      "GiPrm",
+      "productName",
+      "truspleBuyerId",
+      "CTID",
     ],
-    others: ['gclid', 'gclsrc'],
-    'partner-urls': [
-      'https://www.royalsundaram.in/.*',
-      'https://www.maxbupa.com/.*',
-      'https://www.bharti-axagi.co.in/.*',
-      'https://www.iciciprulife.com/.*',
-      'https://www.einsure.allianz.com.sg/.*',
-      'https://www.allianz-travel-insure.com.sg/.*',
-      'https://www.lin.ee/.*',
-      'https://www.piapp.com/.*'
-    ]
+    others: ["gclid", "gclsrc"],
+    "partner-urls": [
+      "https://www.royalsundaram.in/.*",
+      "https://www.maxbupa.com/.*",
+      "https://www.bharti-axagi.co.in/.*",
+      "https://www.iciciprulife.com/.*",
+      "https://www.einsure.allianz.com.sg/.*",
+      "https://www.allianz-travel-insure.com.sg/.*",
+      "https://www.lin.ee/.*",
+      "https://www.piapp.com/.*",
+    ],
   },
 
   URL_OBJ: [
-    'cmsdev',
-    'preview',
-    'standardchartered',
-    'sc',
-    'com',
-    'av',
-    'assets',
-    'global',
-    'development',
-    'staging',
-    'digital',
-    'https',
-    'cmsstage',
-    'cms',
-    'dev',
-    'zoo'
-  ]
+    "cmsdev",
+    "preview",
+    "standardchartered",
+    "sc",
+    "com",
+    "av",
+    "assets",
+    "global",
+    "development",
+    "staging",
+    "digital",
+    "https",
+    "cmsstage",
+    "cms",
+    "dev",
+    "zoo",
+  ],
 };
 
 /**
@@ -72,15 +72,15 @@ window.scCommonConstants = {
  * @param {string} currentURL - The URL to be broken down.
  * @returns {Object} An object representing the components of the URL.
  */
-const urlBreakdown = currentURL => {
+const urlBreakdown = (currentURL) => {
   var parser = parseUrl(currentURL);
   var queryString = parser.search,
-    parts = parser.pathname.split('/'),
+    parts = parser.pathname.split("/"),
     hash = parser.hash,
     countryMapping = {
-      sgbeta: 'sg'
+      sgbeta: "sg",
     };
-  if (queryString && queryString.indexOf('?') === 0) {
+  if (queryString && queryString.indexOf("?") === 0) {
     queryString = queryString.slice(1);
   }
   var pageURL = {
@@ -88,20 +88,20 @@ const urlBreakdown = currentURL => {
     country: null,
     language: null,
     category: null,
-    segment: 'personal',
+    segment: "personal",
     subcategory: null,
     slug: null,
     queryString: queryString,
     hash: null,
-    pathname: document.location.pathname
+    pathname: document.location.pathname,
   };
 
   pageURL.domain = parser.hostname;
   pageURL.country = parts[1];
-  pageURL.language = 'en';
+  pageURL.language = "en";
 
-  if (pageURL.country === 'cn' || pageURL.country === 'tw') {
-    pageURL.language = 'zh';
+  if (pageURL.country === "cn" || pageURL.country === "tw") {
+    pageURL.language = "zh";
   }
 
   if (parts[2]) {
@@ -112,28 +112,34 @@ const urlBreakdown = currentURL => {
     }
   }
 
-  if (parts[parts.length - 1] !== '' && parts[parts.length - 1] !== 'index.html') {
+  if (
+    parts[parts.length - 1] !== "" &&
+    parts[parts.length - 1] !== "index.html"
+  ) {
     pageURL.slug = parts[parts.length - 1];
   } else {
     pageURL.slug = parts[parts.length - 2];
   }
 
   if (pageURL.slug) {
-    if (pageURL.slug.indexOf('.') !== -1) {
-      var slugger = pageURL.slug.split('.');
+    if (pageURL.slug.indexOf(".") !== -1) {
+      var slugger = pageURL.slug.split(".");
       pageURL.name = slugger[0];
       pageURL.extension = slugger[1];
     } else {
       pageURL.name = pageURL.slug;
-      pageURL.extension = '';
+      pageURL.extension = "";
     }
   } else {
-    pageURL.slug = '';
-    pageURL.name = '';
-    pageURL.extension = '';
+    pageURL.slug = "";
+    pageURL.name = "";
+    pageURL.extension = "";
   }
 
-  if (parts.length <= 4 && window.scCommonConstants.LANGUAGES.indexOf(pageURL.slug) !== -1) {
+  if (
+    parts.length <= 4 &&
+    window.scCommonConstants.LANGUAGES.indexOf(pageURL.slug) !== -1
+  ) {
     pageURL.slug = pageURL.country;
   }
 
@@ -145,10 +151,10 @@ const urlBreakdown = currentURL => {
     pageURL.subcategory = parts[3];
   }
 
-  if (pageURL.pathname && pageURL.pathname.indexOf('priority') !== -1) {
-    pageURL.segment = 'priority';
-  } else if (pageURL.pathname && pageURL.pathname.indexOf('business') !== -1) {
-    pageURL.segment = 'business';
+  if (pageURL.pathname && pageURL.pathname.indexOf("priority") !== -1) {
+    pageURL.segment = "priority";
+  } else if (pageURL.pathname && pageURL.pathname.indexOf("business") !== -1) {
+    pageURL.segment = "business";
   }
 
   if (countryMapping[pageURL.country]) {
@@ -163,11 +169,14 @@ const urlBreakdown = currentURL => {
  * @param {string} url - The URL to parse.
  * @returns {Object} An object representing the parsed URL components.
  */
-const parseUrl = url => {
-  var parser = document.createElement('a');
+const parseUrl = (url) => {
+  var parser = document.createElement("a");
   parser.href = url;
-  if (parser.protocol != 'mailto:') {
-    var link_path = '/' === parser.pathname.charAt(0) ? parser.pathname : '/' + parser.pathname;
+  if (parser.protocol != "mailto:") {
+    var link_path =
+      "/" === parser.pathname.charAt(0)
+        ? parser.pathname
+        : "/" + parser.pathname;
   } else {
     link_path = parser.pathname;
   }
@@ -176,12 +185,13 @@ const parseUrl = url => {
     protocal: parser.protocol,
     hostname: parser.hostname,
     port: parser.port,
-    pathname: parser.hash.indexOf('?') !== -1 ? link_path + parser.hash : link_path,
+    pathname:
+      parser.hash.indexOf("?") !== -1 ? link_path + parser.hash : link_path,
     rawpath: link_path,
     query: parser.query || parser.search,
     search: parser.query || parser.search,
     hash: parser.hash,
-    host: parser.host
+    host: parser.host,
   };
 };
 
@@ -205,7 +215,7 @@ const getPageContext = () => {
     segment: null,
     category: null,
     subcategory: null,
-    slug: null
+    slug: null,
   };
 
   if ($title) {
@@ -213,11 +223,11 @@ const getPageContext = () => {
   }
 
   if ($country) {
-    pageContext.country = $country.getAttribute('content');
+    pageContext.country = $country.getAttribute("content");
   }
 
   if ($language) {
-    pageContext.language = $language.getAttribute('content');
+    pageContext.language = $language.getAttribute("content");
   }
 
   if (!pageContext.language) {
@@ -225,24 +235,24 @@ const getPageContext = () => {
     if (docLang) {
       // Document language can be in languageCode-countryCode format, e.g en-US.
       // In front-end context, we don't need countryCode part
-      pageContext.language = docLang.split('-')[0].toLowerCase();
+      pageContext.language = docLang.split("-")[0].toLowerCase();
     }
   }
 
   if ($segment) {
-    pageContext.segment = $segment.getAttribute('content');
+    pageContext.segment = $segment.getAttribute("content");
   }
 
   if ($category) {
-    pageContext.category = $category.getAttribute('content');
+    pageContext.category = $category.getAttribute("content");
   }
 
   if ($subcategory) {
-    pageContext.subcategory = $subcategory.getAttribute('content');
+    pageContext.subcategory = $subcategory.getAttribute("content");
   }
 
   if ($slug) {
-    pageContext.slug = $slug.getAttribute('content');
+    pageContext.slug = $slug.getAttribute("content");
   }
 
   return extend(urlBreakdown(window.location.href), pageContext);
@@ -255,7 +265,7 @@ const getPageContext = () => {
  * @returns {Object} The extended object.
  */
 const extend = (obj, src) => {
-  Object.keys(src).forEach(function(key) {
+  Object.keys(src).forEach(function (key) {
     obj[key] = src[key];
   });
   return obj;
@@ -278,7 +288,7 @@ const getCurrentCountry = () => {
  * @param {string} text - The text to trim.
  * @returns {string} The trimmed text.
  */
-const trim = text => {
+const trim = (text) => {
   if (text) {
     return text.trim();
   }
@@ -309,7 +319,7 @@ const isInternalDomain = (domain, ctaUrl) => {
     /www.wowmanhattan.com.sg/,
     /saml.singpass.gov.sg/,
     /scb-sg.onelink.me/,
-    /#null/
+    /#null/,
   ];
 
   for (let i = 0; i < internal.length; i++) {
@@ -318,17 +328,23 @@ const isInternalDomain = (domain, ctaUrl) => {
     }
   }
 
-  const partnerUrls = window.scCommonConstants.ALLOWABLE_QUERYSTRING['partner-urls'];
+  const partnerUrls =
+    window.scCommonConstants.ALLOWABLE_QUERYSTRING["partner-urls"];
 
   if (!Array.isArray(partnerUrls) || partnerUrls.length === 0) {
     return false; // No URLs to check
   }
 
-  const partnerStatus = partnerUrls.some(url =>
-    new RegExp(`^${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i').test(ctaUrl)
+  const partnerStatus = partnerUrls.some((url) =>
+    new RegExp(`^${url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i").test(
+      ctaUrl
+    )
   );
 
-  if (!partnerStatus && !document.querySelector('[data-modal-id="external-links-disclaimer"]')) {
+  if (
+    !partnerStatus &&
+    !document.querySelector('[data-modal-id="external-links-disclaimer"]')
+  ) {
     //No disclaimer code added, so directly go to the clicked URL
     return true;
   }
@@ -342,8 +358,8 @@ const isInternalDomain = (domain, ctaUrl) => {
  * @example
  * getHorizontalPosition(1000)
  */
-const getHorizontalPosition = xClick => {
-  if (!xClick) return 'left';
+const getHorizontalPosition = (xClick) => {
+  if (!xClick) return "left";
   const maxWidth = Math.max(
     document.body.scrollWidth,
     document.documentElement.scrollWidth,
@@ -352,25 +368,25 @@ const getHorizontalPosition = xClick => {
     document.documentElement.clientWidth
   );
   const mktCountryCode = getCurrentCountry();
-  if (mktCountryCode !== 'hk' && mktCountryCode !== 'sg') {
+  if (mktCountryCode !== "hk" && mktCountryCode !== "sg") {
     const median = maxWidth / 2;
-    return xClick < median ? 'left' : 'right';
+    return xClick < median ? "left" : "right";
   }
 
   //Sorted array of positions
   const positions = [
     {
-      name: 'left',
-      depth: 30
+      name: "left",
+      depth: 30,
     },
     {
-      name: mktCountryCode === 'sg' ? 'center' : 'middle',
-      depth: 70
+      name: mktCountryCode === "sg" ? "center" : "middle",
+      depth: 70,
     },
     {
-      name: 'right',
-      depth: 100
-    }
+      name: "right",
+      depth: 100,
+    },
   ];
   const scrollDepth = (xClick * 100) / maxWidth;
   for (let i = 0; i < positions.length; i++) {
@@ -387,8 +403,8 @@ const getHorizontalPosition = xClick => {
  * @example
  * getCookie('subChanCode')
  */
-const getCookie = key => {
-  const name = key + '=';
+const getCookie = (key) => {
+  const name = key + "=";
   let decodedCookie;
 
   try {
@@ -398,10 +414,10 @@ const getCookie = key => {
     return null;
   }
 
-  const ca = decodedCookie.split(';');
+  const ca = decodedCookie.split(";");
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) == " ") {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
@@ -416,7 +432,7 @@ const getCookie = key => {
  * Method to get localstorage value.
  * @param {string} key
  */
-const getLocalStorageWithExpiry = key => {
+const getLocalStorageWithExpiry = (key) => {
   const itemStr = localStorage.getItem(key);
   // if the item doesn't exist, return null
   if (!itemStr) {
@@ -443,35 +459,36 @@ const getLocalStorageWithExpiry = key => {
  */
 
 // CTA Postion
-const calcElementLocation = target => {
-  if (!target) return '';
-  if (target.closest('.c-modal') || target.closest('.sc-modal')) {
-    return 'middle';
+const calcElementLocation = (target) => {
+  if (!target) return "";
+  if (target.closest(".c-modal") || target.closest(".sc-modal")) {
+    return "middle";
   }
 
   if (
-    typeof target.className === 'string' &&
-    typeof target.className.includes !== 'undefined' &&
-    (target.className.indexOf('sc-card-comparator__compare-btn') !== -1 ||
-      target.className.indexOf('sc-card-comparator__card-remove') !== -1)
+    typeof target.className === "string" &&
+    typeof target.className.includes !== "undefined" &&
+    (target.className.indexOf("sc-card-comparator__compare-btn") !== -1 ||
+      target.className.indexOf("sc-card-comparator__card-remove") !== -1)
   ) {
-    return 'bottom';
+    return "bottom";
   }
 
-  const closestTarget = target.closest('a') ?? target.closest('label') ?? target;
+  const closestTarget =
+    target.closest("a") ?? target.closest("label") ?? target;
   let fromTop = parseInt(getPosition(closestTarget), 10) * 100;
   if (
-    target.closest('.sc-persistent-bar') ??
-    target.closest('.m-persistent-bootom-bar') ??
-    target.closest('.sc-wealthsaver-calc__sticky') ??
-    target.closest('.sc-ft-calc__sticky') ??
-    target.closest('.sc-miles-calc__total-result--sticky') ??
-    target.closest('.sc-bundled-products__sticky-outer') ??
-    target.closest('.sc-bundled-products-sticky__sticky')
+    target.closest(".sc-persistent-bar") ??
+    target.closest(".m-persistent-bootom-bar") ??
+    target.closest(".sc-wealthsaver-calc__sticky") ??
+    target.closest(".sc-ft-calc__sticky") ??
+    target.closest(".sc-miles-calc__total-result--sticky") ??
+    target.closest(".sc-bundled-products__sticky-outer") ??
+    target.closest(".sc-bundled-products-sticky__sticky")
   ) {
     //Persistent bar in the bottom
     fromTop = parseInt(window.scrollY + window.innerHeight, 10) * 100;
-  } else if (target.closest('.m-persistent-bar')) {
+  } else if (target.closest(".m-persistent-bar")) {
     //Persistent bar in the top
     fromTop = parseInt(window.scrollY + 70, 10) * 100;
   }
@@ -479,21 +496,21 @@ const calcElementLocation = target => {
   //Sorted array of positions
   let positions = [
     {
-      name: 'top',
-      depth: 30
+      name: "top",
+      depth: 30,
     },
     {
-      name: 'middle',
-      depth: 70
+      name: "middle",
+      depth: 70,
     },
     {
-      name: 'bottom',
-      depth: 100
-    }
+      name: "bottom",
+      depth: 100,
+    },
   ];
   let maxHeight = Math.max(document.body.clientHeight, window.outerHeight);
   if (maxHeight <= 0) {
-    return '';
+    return "";
   }
   let scrollDepth = fromTop / maxHeight;
   for (let i = 0; i < positions.length; i++) {
@@ -502,32 +519,32 @@ const calcElementLocation = target => {
     }
   }
   if (
-    typeof target.parentNode.parentNode.className === 'string' &&
-    typeof target.parentNode.parentNode.className.includes !== 'undefined' &&
-    target.parentNode.parentNode.className.indexOf('sc-hdr__search') !== -1
+    typeof target.parentNode.parentNode.className === "string" &&
+    typeof target.parentNode.parentNode.className.includes !== "undefined" &&
+    target.parentNode.parentNode.className.indexOf("sc-hdr__search") !== -1
   ) {
-    return 'top';
+    return "top";
   }
-  return 'bottom';
+  return "bottom";
 };
 
 const getCurrentEnvironment = () => {
   var urlObj = window.scCommonConstants.URL_OBJ;
   var domain = getPageUrl().domain;
-  if (domain.indexOf(urlObj[3] + '.' + urlObj[4]) !== -1) {
-    if (domain === urlObj[0] + '.' + urlObj[3] + '.' + urlObj[4]) {
+  if (domain.indexOf(urlObj[3] + "." + urlObj[4]) !== -1) {
+    if (domain === urlObj[0] + "." + urlObj[3] + "." + urlObj[4]) {
       return window.scCommonConstants.DEVELOPMENT;
-    } else if (domain === urlObj[12] + '.' + urlObj[3] + '.' + urlObj[4]) {
+    } else if (domain === urlObj[12] + "." + urlObj[3] + "." + urlObj[4]) {
       return window.scCommonConstants.STAGING;
-    } else if (domain === urlObj[13] + '.' + urlObj[3] + '.' + urlObj[4]) {
+    } else if (domain === urlObj[13] + "." + urlObj[3] + "." + urlObj[4]) {
       return window.scCommonConstants.PREVIEW;
     } else {
       return window.scCommonConstants.PRODUCTION;
     }
-  } else if (domain === urlObj[1] + '.' + urlObj[2] + '.' + urlObj[4]) {
-    if (getPageUrl().pathname.match('^/staging')) {
+  } else if (domain === urlObj[1] + "." + urlObj[2] + "." + urlObj[4]) {
+    if (getPageUrl().pathname.match("^/staging")) {
       return window.scCommonConstants.STAGING;
-    } else if (getPageUrl().pathname.match('^/development')) {
+    } else if (getPageUrl().pathname.match("^/development")) {
       return window.scCommonConstants.DEVELOPMENT;
     } else {
       return window.scCommonConstants.PREVIEW;
@@ -546,38 +563,38 @@ const getPageUrl = () => {
  * @example
  * getIntExtCampaignInfo('in')
  */
-const getIntExtCampaignInfo = country => {
+const getIntExtCampaignInfo = (country) => {
   let allowableQueryString = window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb;
-  if (country == 'in' || country == 'pk' || country == 'hk') {
+  if (country == "in" || country == "pk" || country == "hk") {
     //Special whitelisted parameters
     allowableQueryString = [
-      'aggregator_code',
-      'aggregator_type',
-      'aggregator_instance',
-      'intcid',
-      'subChanCode',
-      'referId',
-      'instance',
-      'camp_id',
-      'pid',
-      'promoCode',
-      'promo',
-      'state'
+      "aggregator_code",
+      "aggregator_type",
+      "aggregator_instance",
+      "intcid",
+      "subChanCode",
+      "referId",
+      "instance",
+      "camp_id",
+      "pid",
+      "promoCode",
+      "promo",
+      "state",
     ];
   }
-  let externalCampaignParams = ['cid']; //external campaign parameter(s) for HK
+  let externalCampaignParams = ["cid"]; //external campaign parameter(s) for HK
   let total = allowableQueryString.length;
-  let intCampaignName = '';
-  let intCampaignValue = '';
+  let intCampaignName = "";
+  let intCampaignValue = "";
   let queryStringList = [];
   let queryString = window.location.search;
-  let extCampaignName = '';
-  let extCampaignValue = '';
+  let extCampaignName = "";
+  let extCampaignValue = "";
 
   if (queryString) {
     queryString = queryString.substring(1);
     if (queryString) {
-      queryStringList = queryString.split('&');
+      queryStringList = queryString.split("&");
     }
   }
   //Take it from local storage
@@ -589,22 +606,22 @@ const getIntExtCampaignInfo = country => {
     if (cookieValue || localStorageValue) {
       foundParam = true;
       if (intCampaignName && intCampaignValue) {
-        intCampaignName += ':';
-        intCampaignValue += ':';
+        intCampaignName += ":";
+        intCampaignValue += ":";
       }
       intCampaignName += allowableQueryString[i];
       intCampaignValue += cookieValue || localStorageValue;
     } else {
       if (intCampaignName) {
-        intCampaignName += ':';
-        intCampaignValue += ':';
+        intCampaignName += ":";
+        intCampaignValue += ":";
       }
       intCampaignName += allowableQueryString[i];
       if (queryStringList.length) {
         let found = false;
         let result;
         for (let j = 0; j < queryStringList.length; j++) {
-          result = queryStringList[j].split('=');
+          result = queryStringList[j].split("=");
           if (result[0].toLowerCase() == allowableQueryString[i]) {
             found = true;
             break;
@@ -614,10 +631,10 @@ const getIntExtCampaignInfo = country => {
           foundParam = true;
           intCampaignValue += result[1];
         } else {
-          intCampaignValue += 'na';
+          intCampaignValue += "na";
         }
       } else {
-        intCampaignValue += 'na';
+        intCampaignValue += "na";
       }
     }
   }
@@ -625,13 +642,16 @@ const getIntExtCampaignInfo = country => {
   //External campaign
   if (queryStringList.length) {
     for (let i = 0; i < queryStringList.length; i++) {
-      let result = queryStringList[i].split('=');
+      let result = queryStringList[i].split("=");
       if (allowableQueryString.indexOf(result[0]) === -1) {
         //exclude whitelisted parameters from external campaign
-        if (country !== 'hk' || externalCampaignParams.indexOf(result[0]) !== -1) {
-          if (extCampaignValue != '') {
-            extCampaignName += ':';
-            extCampaignValue += ':';
+        if (
+          country !== "hk" ||
+          externalCampaignParams.indexOf(result[0]) !== -1
+        ) {
+          if (extCampaignValue != "") {
+            extCampaignName += ":";
+            extCampaignValue += ":";
           }
           extCampaignName += result[0];
           extCampaignValue += result[1];
@@ -640,9 +660,9 @@ const getIntExtCampaignInfo = country => {
     }
   }
 
-  if (!foundParam && (country == 'in' || country == 'hk')) {
-    intCampaignName = '';
-    intCampaignValue = '';
+  if (!foundParam && (country == "in" || country == "hk")) {
+    intCampaignName = "";
+    intCampaignValue = "";
   } else {
     intCampaignName = intCampaignName.toLowerCase();
     intCampaignValue = intCampaignValue.toLowerCase();
@@ -655,7 +675,7 @@ const getIntExtCampaignInfo = country => {
     intName: intCampaignName,
     intVal: intCampaignValue,
     extName: extCampaignName,
-    extVal: extCampaignValue
+    extVal: extCampaignValue,
   };
 };
 
@@ -666,8 +686,8 @@ const getIntExtCampaignInfo = country => {
  * @example
  * getPosition('.selector')
  */
-const getPosition = element => {
-  if (!element) return '';
+const getPosition = (element) => {
+  if (!element) return "";
   let yPosition = 0;
   while (element) {
     yPosition += element.offsetTop - element.scrollTop + element.clientTop;
@@ -684,15 +704,15 @@ const detectOS = () => {
 
   // iOS detection
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-    return 'iOS';
+    return "iOS";
   }
 
   // Android detection
   if (/android/i.test(userAgent)) {
-    return 'Android';
+    return "Android";
   }
 
-  return 'Unknown';
+  return "Unknown";
 };
 
 /**
@@ -705,68 +725,68 @@ const detectOS = () => {
 // CTA Type
 const getCtaType = (className, target) => {
   const mktCountryCode = getCurrentCountry();
-  if (mktCountryCode === 'hk' || mktCountryCode === 'sg') {
+  if (mktCountryCode === "hk" || mktCountryCode === "sg") {
     if (target) {
       if (
         target.closest(
-          '.sc-meganav__hamburger, .sc-meganav__close-button, .sc-meganav__login-btn, .sc-meganav__login-close, .c-button, .sc-btn'
+          ".sc-meganav__hamburger, .sc-meganav__close-button, .sc-meganav__login-btn, .sc-meganav__login-close, .c-button, .sc-btn"
         )
       ) {
-        return 'button';
+        return "button";
       }
-      if (target.closest('.sc-meganav__btn-search-mbl')) {
-        return 'search';
+      if (target.closest(".sc-meganav__btn-search-mbl")) {
+        return "search";
       }
-      if (target.closest('header')) {
-        return 'nav-link';
+      if (target.closest("header")) {
+        return "nav-link";
       }
       if (
         target.closest(
-          '.sc-recommend .sc-filter__btn, .sc-digital-guide__tab-item, .sc-tab-minimal__head-button, .sc-right-tab .splide__slide, .sc-tab__item'
+          ".sc-recommend .sc-filter__btn, .sc-digital-guide__tab-item, .sc-tab-minimal__head-button, .sc-right-tab .splide__slide, .sc-tab__item"
         )
       ) {
-        return 'tab';
+        return "tab";
       }
       if (
         target.closest(
-          '.sc-accordion__label, .sc-faq-two-column__label, .sc-faq__accordion-label, .c-plus-minus-accordion___item'
+          ".sc-accordion__label, .sc-faq-two-column__label, .sc-faq__accordion-label, .c-plus-minus-accordion___item"
         ) &&
-        !target.closest('a')
+        !target.closest("a")
       ) {
-        return 'accordion';
+        return "accordion";
       }
-      if (target.closest('.sc-quick-tools, .m-quick-links')) {
-        return 'quick-links';
+      if (target.closest(".sc-quick-tools, .m-quick-links")) {
+        return "quick-links";
       }
     }
-    return 'link';
+    return "link";
   } else {
-    if (target && target.closest('header')) {
-      return 'nav-link';
-    } else if (target && target.closest('.sc-banner__content')) {
-      return 'masthead-button';
-    } else if (target && target.closest('.sc-banner-slider__thumbnail')) {
-      return 'button';
-    } else if (target && target.closest('.sc-benefits-slider-tab__tabs-0')) {
-      return 'button';
-    } else if (target && target.closest('.sc-banner-przn-block')) {
-      return 'widget-button';
-    } else if (target && target.closest('.sc-filter__btn')) {
-      return 'button';
-    } else if (target && target.closest('.sc-quick-tools__links')) {
-      return 'quick-link';
-    } else if (target && target.closest('.sc-filter')) {
-      return 'button';
-    } else if (target && target.closest('.sc-digital-guide .splide')) {
-      return 'button';
-    } else if (target && target.closest('.sc-benefits-slider-tab__tab')) {
-      return 'button';
-    } else if (target && target.closest('.sc-footer')) {
-      return 'footer-link';
-    } else if (target && target.closest('.sc-persistent-bar')) {
-      return 'persistent-bar-link';
+    if (target && target.closest("header")) {
+      return "nav-link";
+    } else if (target && target.closest(".sc-banner__content")) {
+      return "masthead-button";
+    } else if (target && target.closest(".sc-banner-slider__thumbnail")) {
+      return "button";
+    } else if (target && target.closest(".sc-benefits-slider-tab__tabs-0")) {
+      return "button";
+    } else if (target && target.closest(".sc-banner-przn-block")) {
+      return "widget-button";
+    } else if (target && target.closest(".sc-filter__btn")) {
+      return "button";
+    } else if (target && target.closest(".sc-quick-tools__links")) {
+      return "quick-link";
+    } else if (target && target.closest(".sc-filter")) {
+      return "button";
+    } else if (target && target.closest(".sc-digital-guide .splide")) {
+      return "button";
+    } else if (target && target.closest(".sc-benefits-slider-tab__tab")) {
+      return "button";
+    } else if (target && target.closest(".sc-footer")) {
+      return "footer-link";
+    } else if (target && target.closest(".sc-persistent-bar")) {
+      return "persistent-bar-link";
     } else {
-      return 'link';
+      return "link";
     }
   }
 };
@@ -774,18 +794,24 @@ const getCtaType = (className, target) => {
 /**
  * Track customer interaction for CTA Click.
  */
-const handleAnalyticsCTA = (ev, targetClass = '', ctaObj = {}) => {
-  if (typeof launchscript === 'undefined' && !document.querySelector('#adobelaunchscript')) {
+const handleAnalyticsCTA = (ev, targetClass = "", ctaObj = {}) => {
+  if (
+    typeof launchscript === "undefined" &&
+    !document.querySelector("#adobelaunchscript")
+  ) {
     //Adobe Analytics not enable for this market
     return;
   }
-  const closest = targetClass ? targetClass : ev.target.closest('a');
+  const closest = targetClass ? targetClass : ev.target.closest("a");
 
-  let { ctaType, ctaPosition, xLinkRegion, customLinkText, linkName, context } = ctaObj;
+  let { ctaType, ctaPosition, xLinkRegion, customLinkText, linkName, context } =
+    ctaObj;
+
+  console.log("HHHHHH");
 
   const mktCountryCode = getCurrentCountry();
   if (!ctaType) {
-    ctaType = closest ? getCtaType(closest.className, ev.target) : 'link';
+    ctaType = closest ? getCtaType(closest.className, ev.target) : "link";
   }
 
   if (!ctaPosition) {
@@ -797,79 +823,95 @@ const handleAnalyticsCTA = (ev, targetClass = '', ctaObj = {}) => {
   }
 
   if (!customLinkText && closest) {
-    customLinkText = (closest.getAttribute('title') ?? closest.innerText ?? closest.textContent)
+    customLinkText = (
+      closest.getAttribute("title") ??
+      closest.innerText ??
+      closest.textContent
+    )
       ?.trim()
       .toLowerCase();
   }
 
   if (!linkName) {
     linkName =
-      document.querySelector('title') && document.querySelector('title').innerText
-        ? document.querySelector('title').innerText.toLowerCase()
-        : 'na';
+      document.querySelector("title") &&
+      document.querySelector("title").innerText
+        ? document.querySelector("title").innerText.toLowerCase()
+        : "na";
   }
 
   if (!context) {
     context = getCtaContext(closest);
   }
 
-  const customLinkRegion = xLinkRegion + ' ' + ctaPosition;
+  const customLinkRegion = xLinkRegion + " " + ctaPosition;
 
   let updatedCtaPosition = ctaPosition;
-  if (mktCountryCode === 'sg') {
+  if (mktCountryCode === "sg") {
     updatedCtaPosition = customLinkRegion;
   }
-  if (typeof eddlEnabled === 'undefined') {
+  if (typeof eddlEnabled === "undefined") {
     //This code is added for the HK market because full EDDL is not implemented in HK market
     digitalData.ctaName = customLinkText;
     digitalData.ctaPosition = ctaPosition;
-    if (typeof _satellite !== 'undefined' && typeof _satellite.track === 'function') {
-      _satellite.track('callToAction');
+    if (
+      typeof _satellite !== "undefined" &&
+      typeof _satellite.track === "function"
+    ) {
+      _satellite.track("callToAction");
     }
     return;
   }
-  const titleSelector = document.querySelector('title');
+  const titleSelector = document.querySelector("title");
   const ctaName =
-    titleSelector && titleSelector.innerText ? titleSelector.innerText.toLowerCase() : 'na';
+    titleSelector && titleSelector.innerText
+      ? titleSelector.innerText.toLowerCase()
+      : "na";
   let dataObject;
-  if (mktCountryCode === 'sg') {
+  if (mktCountryCode === "sg") {
     dataObject = {
       ...digitalData,
       customLinkClick: {
-        customLinkText: typeof nitroEnabled !== 'undefined' ? context : customLinkText || ctaName,
+        customLinkText:
+          typeof nitroEnabled !== "undefined"
+            ? context
+            : customLinkText || ctaName,
         customLinkPosition: customLinkRegion,
-        customLinkType: ctaType
+        customLinkType: ctaType,
       },
-      event: 'ctaClick',
+      event: "ctaClick",
       href: window.location.href,
-      context: context
+      context: context,
     };
-  } else if (mktCountryCode === 'hk') {
+  } else if (mktCountryCode === "hk") {
     dataObject = {
       ...digitalData,
-      event: 'ctaClick',
+      event: "ctaClick",
       title: customLinkText,
       href: window.location.href,
-      context: context
+      context: context,
     };
-    dataObject.ctaName = typeof nitroEnabled !== 'undefined' ? context : customLinkText || ctaName;
+    dataObject.ctaName =
+      typeof nitroEnabled !== "undefined" ? context : customLinkText || ctaName;
     dataObject.ctaPosition = customLinkRegion;
     dataObject.ctaType = ctaType;
   } else {
     dataObject = {
       ...digitalData,
       customLinkClick: {
-        customLinkText: typeof nitroEnabled !== 'undefined' ? context : customLinkText,
+        customLinkText:
+          typeof nitroEnabled !== "undefined" ? context : customLinkText,
         customLinkRegion: customLinkRegion,
         customLinkType: ctaType,
-        customLinkName: linkName
+        customLinkName: linkName,
       },
-      event: 'ctaClick',
+      event: "ctaClick",
       title: customLinkText,
       href: window.location.href,
-      context: context
+      context: context,
     };
-    dataObject.ctaName = typeof nitroEnabled !== 'undefined' ? context : customLinkText || ctaName;
+    dataObject.ctaName =
+      typeof nitroEnabled !== "undefined" ? context : customLinkText || ctaName;
     dataObject.ctaPosition = updatedCtaPosition;
     dataObject.ctaType = ctaType;
   }
@@ -884,55 +926,55 @@ const calculateRanges = (fieldNameValue, currentValue) => {
     monthlyIncome: [
       {
         start: 0,
-        end: 10000
+        end: 10000,
       },
       {
         start: 10000,
-        end: 20000
+        end: 20000,
       },
       {
         start: 20000,
-        end: 30000
+        end: 30000,
       },
       {
         start: 30000,
-        end: 40000
+        end: 40000,
       },
       {
         start: 40000,
-        end: 50000
+        end: 50000,
       },
       {
         start: 50000,
-        end: 60000
+        end: 60000,
       },
       {
         start: 60000,
-        end: 70000
+        end: 70000,
       },
       {
         start: 70000,
-        end: 80000
+        end: 80000,
       },
       {
         start: 80000,
-        end: 90000
+        end: 90000,
       },
       {
         start: 90000,
-        end: 100000
+        end: 100000,
       },
       {
         start: 100000,
-        end: 110000
+        end: 110000,
       },
       {
         start: 110000,
-        end: 120000
+        end: 120000,
       },
       {
-        start: 120000
-      }
+        start: 120000,
+      },
     ],
     loanAmount: [
       { start: 0, end: 100000 },
@@ -945,7 +987,7 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 700000, end: 800000 },
       { start: 800000, end: 900000 },
       { start: 900000, end: 1000000 },
-      { start: 1000000 }
+      { start: 1000000 },
     ],
     repaymentAmount: [
       { start: 0, end: 20000 },
@@ -956,7 +998,7 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 200000, end: 250000 },
       { start: 250000, end: 300000 },
       { start: 300000, end: 350000 },
-      { start: 350000 }
+      { start: 350000 },
     ],
     dailyBalance: [
       { start: 0, end: 2000 },
@@ -974,7 +1016,7 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 3000000, end: 500000 },
       { start: 500000, end: 750000 },
       { start: 750000, end: 1000000 },
-      { start: 1000000 }
+      { start: 1000000 },
     ],
     apr: [
       { start: 0, end: 2 },
@@ -984,60 +1026,60 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 10, end: 15 },
       { start: 15, end: 20 },
       { start: 20, end: 25 },
-      { start: 25 }
+      { start: 25 },
     ],
     annualIncome: [
       {
         start: 0,
-        end: 120000
+        end: 120000,
       },
       {
         start: 120000,
-        end: 240000
+        end: 240000,
       },
       {
         start: 240000,
-        end: 360000
+        end: 360000,
       },
       {
         start: 360000,
-        end: 480000
+        end: 480000,
       },
       {
         start: 480000,
-        end: 600000
+        end: 600000,
       },
       {
         start: 600000,
-        end: 720000
+        end: 720000,
       },
       {
         start: 720000,
-        end: 840000
+        end: 840000,
       },
       {
         start: 840000,
-        end: 960000
+        end: 960000,
       },
       {
         start: 960000,
-        end: 1080000
+        end: 1080000,
       },
       {
         start: 1080000,
-        end: 1200000
+        end: 1200000,
       },
       {
         start: 1200000,
-        end: 1320000
+        end: 1320000,
       },
       {
         start: 1320000,
-        end: 1440000
+        end: 1440000,
       },
       {
-        start: 1440000
-      }
+        start: 1440000,
+      },
     ],
     age: [
       { start: 0, end: 18 },
@@ -1047,7 +1089,7 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 45, end: 55 },
       { start: 55, end: 65 },
       { start: 65, end: 75 },
-      { start: 75 }
+      { start: 75 },
     ],
     transactionAmount: [
       { start: 0, end: 100000 },
@@ -1063,7 +1105,7 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 1000000, end: 1500000 },
       { start: 1500000, end: 2000000 },
       { start: 2000000, end: 3000000 },
-      { start: 3000000 }
+      { start: 3000000 },
     ],
     totalSpend: [
       { start: 0, end: 1000 },
@@ -1076,100 +1118,102 @@ const calculateRanges = (fieldNameValue, currentValue) => {
       { start: 7000, end: 8000 },
       { start: 8000, end: 9000 },
       { start: 9000, end: 10000 },
-      { start: 10000 }
-    ]
+      { start: 10000 },
+    ],
   };
   let calculatedRange = currentValue;
   if (!calculatedRange) {
-    calculatedRange = 'na';
+    calculatedRange = "na";
   } else {
-    let val = parseInt(calculatedRange.toString().replace(/,/g, ''), 10);
+    let val = parseInt(calculatedRange.toString().replace(/,/g, ""), 10);
     for (let i = 0; i < newRanges[fieldNameValue].length; i++) {
       let startVal = newRanges[fieldNameValue][i].start;
       let endVal = newRanges[fieldNameValue][i].end;
       if (val >= startVal && (endVal ? val < endVal : true)) {
-        if (fieldNameValue === 'monthlyIncome') {
+        if (fieldNameValue === "monthlyIncome") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (Math.abs(startVal) / 1000).toFixed() +
-                'k-lt' +
+                "k-lt" +
                 (Math.abs(endVal) / 1000).toFixed() +
-                'k'
-            : 'ge120k';
+                "k"
+            : "ge120k";
           break;
-        } else if (fieldNameValue === 'loanAmount') {
+        } else if (fieldNameValue === "loanAmount") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (Math.abs(startVal) / 1000).toFixed() +
-                'k-lt' +
-                (endVal == 1000000 ? '1m' : (Math.abs(endVal) / 1000).toFixed() + 'k')
-            : 'ge1m';
+                "k-lt" +
+                (endVal == 1000000
+                  ? "1m"
+                  : (Math.abs(endVal) / 1000).toFixed() + "k")
+            : "ge1m";
           break;
-        } else if (fieldNameValue === 'transactionAmount') {
+        } else if (fieldNameValue === "transactionAmount") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (startVal >= 1000000
-                  ? Math.abs(startVal) / 1000000 + 'm-lt'
-                  : (Math.abs(startVal) / 1000).toFixed() + 'k-lt') +
+                  ? Math.abs(startVal) / 1000000 + "m-lt"
+                  : (Math.abs(startVal) / 1000).toFixed() + "k-lt") +
                 (endVal >= 1000000
-                  ? Math.abs(endVal) / 1000000 + 'm'
-                  : (Math.abs(endVal) / 1000).toFixed() + 'k')
-            : 'ge3m';
+                  ? Math.abs(endVal) / 1000000 + "m"
+                  : (Math.abs(endVal) / 1000).toFixed() + "k")
+            : "ge3m";
           break;
-        } else if (fieldNameValue === 'annualIncome') {
+        } else if (fieldNameValue === "annualIncome") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (startVal >= 1000000
-                  ? Math.abs(startVal) / 1000000 + 'm-lt'
-                  : (Math.abs(startVal) / 1000).toFixed() + 'k-lt') +
+                  ? Math.abs(startVal) / 1000000 + "m-lt"
+                  : (Math.abs(startVal) / 1000).toFixed() + "k-lt") +
                 (endVal >= 1000000
-                  ? Math.abs(endVal) / 1000000 + 'm'
-                  : (Math.abs(endVal) / 1000).toFixed() + 'k')
-            : 'ge1.44m';
+                  ? Math.abs(endVal) / 1000000 + "m"
+                  : (Math.abs(endVal) / 1000).toFixed() + "k")
+            : "ge1.44m";
           break;
-        } else if (fieldNameValue === 'repaymentAmount') {
+        } else if (fieldNameValue === "repaymentAmount") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (Math.abs(startVal) / 1000).toFixed() +
-                'k-lt' +
+                "k-lt" +
                 (Math.abs(endVal) / 1000).toFixed() +
-                'k'
-            : 'ge350k';
+                "k"
+            : "ge350k";
           break;
-        } else if (fieldNameValue === 'dailyBalance') {
+        } else if (fieldNameValue === "dailyBalance") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (Math.abs(startVal) / 1000).toFixed() +
-                'k-lt' +
+                "k-lt" +
                 (Math.abs(endVal) / 1000).toFixed() +
-                'k'
-            : 'ge1m';
+                "k"
+            : "ge1m";
           break;
-        } else if (fieldNameValue === 'apr') {
+        } else if (fieldNameValue === "apr") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + endVal
-              : startVal + '%-lt' + endVal + '%'
-            : 'ge25%';
+              ? startVal + "-lt" + endVal
+              : startVal + "%-lt" + endVal + "%"
+            : "ge25%";
           break;
-        } else if (fieldNameValue === 'age') {
-          calculatedRange = endVal ? startVal + '-lt' + endVal : 'ge75';
+        } else if (fieldNameValue === "age") {
+          calculatedRange = endVal ? startVal + "-lt" + endVal : "ge75";
           break;
-        } else if (fieldNameValue === 'totalSpend') {
+        } else if (fieldNameValue === "totalSpend") {
           calculatedRange = endVal
             ? startVal == 0
-              ? startVal + '-lt' + (Math.abs(endVal) / 1000).toFixed() + 'k'
+              ? startVal + "-lt" + (Math.abs(endVal) / 1000).toFixed() + "k"
               : (Math.abs(startVal) / 1000).toFixed() +
-                'k-lt' +
+                "k-lt" +
                 (Math.abs(endVal) / 1000).toFixed() +
-                'k'
-            : 'ge10k';
+                "k"
+            : "ge10k";
           break;
         }
       }
@@ -1182,7 +1226,10 @@ const calculateRanges = (fieldNameValue, currentValue) => {
  * Track customer interaction with calculators.
  */
 const handleCalculatorAnalytics = (calculatorName, fields) => {
-  if (typeof launchscript === 'undefined' && !document.querySelector('#adobelaunchscript')) {
+  if (
+    typeof launchscript === "undefined" &&
+    !document.querySelector("#adobelaunchscript")
+  ) {
     //Adobe Analytics not enable for this market
     return;
   }
@@ -1190,17 +1237,17 @@ const handleCalculatorAnalytics = (calculatorName, fields) => {
     ...digitalData,
     calculator: {
       name: calculatorName,
-      fields: fields
+      fields: fields,
     },
     user: {
       userInfo: {
-        userStatus: 'guest',
-        userType: 'NTB'
-      }
+        userStatus: "guest",
+        userType: "NTB",
+      },
     },
-    event: 'calculatorSubmit',
+    event: "calculatorSubmit",
     title: document.title,
-    href: window.location.href
+    href: window.location.href,
   };
   scAnalyticsDataArray.push(dataObject);
 };
@@ -1212,11 +1259,11 @@ const handleCalculatorAnalytics = (calculatorName, fields) => {
  */
 const debounceEvents = (f, delay) => {
   let timer = null;
-  return function() {
+  return function () {
     let context = this,
       args = arguments;
     clearTimeout(timer);
-    timer = window.setTimeout(function() {
+    timer = window.setTimeout(function () {
       f.apply(context, args);
     }, delay || 500);
   };
@@ -1229,12 +1276,15 @@ const debounceEvents = (f, delay) => {
  *
  * @return bool True if it's form URL, false otherwise.
  */
-const isForm = url => {
+const isForm = (url) => {
   if (
-    window.scCommonConstants.ALLOWABLE_QUERYSTRING['form-urls'] != '' &&
-    window.scCommonConstants.ALLOWABLE_QUERYSTRING['form-urls'] != undefined
+    window.scCommonConstants.ALLOWABLE_QUERYSTRING["form-urls"] != "" &&
+    window.scCommonConstants.ALLOWABLE_QUERYSTRING["form-urls"] != undefined
   ) {
-    var formRegex = new RegExp(window.scCommonConstants.ALLOWABLE_QUERYSTRING['form-urls'], 'gi');
+    var formRegex = new RegExp(
+      window.scCommonConstants.ALLOWABLE_QUERYSTRING["form-urls"],
+      "gi"
+    );
     return formRegex.test(url);
   }
   return false;
@@ -1247,27 +1297,27 @@ const isForm = url => {
  *
  * @return bool True if parameters should be carried forward. False otherwise.
  */
-const shouldCarryTrackingParams = url => {
+const shouldCarryTrackingParams = (url) => {
   if (isForm(url)) {
     return true;
   }
   var paramList = [
-    'https://www.royalsundaram.in',
-    'https://www.maxbupa.com',
-    'https://www.bharti-axagi.co.in',
-    'https://www.iciciprulife.com',
-    'https://www.einsure.allianz.com.sg',
-    'https://www.allianz-travel-insure.com.sg',
-    'https://www.lin.ee',
-    'https://www.piapp.com',
-    'https://go.fpg.sg',
-    'https://fairprice.com.sg',
-    'scmobile://communication-hub'
+    "https://www.royalsundaram.in",
+    "https://www.maxbupa.com",
+    "https://www.bharti-axagi.co.in",
+    "https://www.iciciprulife.com",
+    "https://www.einsure.allianz.com.sg",
+    "https://www.allianz-travel-insure.com.sg",
+    "https://www.lin.ee",
+    "https://www.piapp.com",
+    "https://go.fpg.sg",
+    "https://fairprice.com.sg",
+    "scmobile://communication-hub",
   ];
   var partnerRegex = [];
   if (paramList && paramList.length > 0) {
     for (var j = 0; j < paramList.length; j++) {
-      partnerRegex[j] = new RegExp(paramList[j], 'gi');
+      partnerRegex[j] = new RegExp(paramList[j], "gi");
     }
   }
 
@@ -1286,26 +1336,31 @@ const shouldCarryTrackingParams = url => {
  * @param targetUrlParamsToTakePrecedence Based on this value target url params will be updated.
  */
 
-const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrecedence = false) => {
-  var queryString = '';
+const applyCookieParams = (
+  $url,
+  $swapping_attrs = "",
+  targetUrlParamsToTakePrecedence = false
+) => {
+  var queryString = "";
   var queryParts = [];
-  var pageQueryString = '';
-  var urlQueryString = '';
+  var pageQueryString = "";
+  var urlQueryString = "";
   var pageUrl = getPageUrl();
   var allowableQueryString = window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb;
-  var allowableQueryStringOthers = window.scCommonConstants.ALLOWABLE_QUERYSTRING.others;
+  var allowableQueryStringOthers =
+    window.scCommonConstants.ALLOWABLE_QUERYSTRING.others;
   var swap_map = {};
-  if ($swapping_attrs !== '') {
-    let $swappingList = $swapping_attrs.split('|');
-    $swappingList.forEach(function(attr) {
-      attr = attr.split('=');
+  if ($swapping_attrs !== "") {
+    let $swappingList = $swapping_attrs.split("|");
+    $swappingList.forEach(function (attr) {
+      attr = attr.split("=");
       swap_map[attr[0]] = attr[1];
     });
   }
   if (pageUrl.queryString) {
     pageQueryString = pageUrl.queryString;
-    if (pageQueryString.indexOf('&') !== -1) {
-      queryParts = pageQueryString.split('&');
+    if (pageQueryString.indexOf("&") !== -1) {
+      queryParts = pageQueryString.split("&");
     } else {
       queryParts.push(pageQueryString);
     }
@@ -1316,8 +1371,8 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
   var urlBreakdownData = urlBreakdown($url);
   if (urlBreakdownData.queryString) {
     urlQueryString = urlBreakdownData.queryString;
-    if (urlQueryString.indexOf('&') !== -1) {
-      urlParts = urlQueryString.split('&');
+    if (urlQueryString.indexOf("&") !== -1) {
+      urlParts = urlQueryString.split("&");
     } else {
       urlParts.push(urlQueryString);
     }
@@ -1334,7 +1389,7 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
         let allowableQueryStringKey = swap_map[allowableQueryString[i]]
           ? swap_map[allowableQueryString[i]]
           : allowableQueryString[i];
-        cookieParts.push(allowableQueryStringKey + '=' + encodeURI(query));
+        cookieParts.push(allowableQueryStringKey + "=" + encodeURI(query));
       }
     }
   }
@@ -1342,8 +1397,8 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
   var qsArr = [];
   // User parameter from Page URL
   for (var j = 0; j < queryParts.length; j++) {
-    if (queryParts[j] !== '') {
-      var ur = queryParts[j].split('=');
+    if (queryParts[j] !== "") {
+      var ur = queryParts[j].split("=");
 
       // Allow only whitelisted params from pageUrl.
       if (!allowableQueryStringOthers.includes(ur[0])) {
@@ -1351,18 +1406,21 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
       }
 
       // If targetUrlParamsToTakePrecedence is true and urlQueryString has the same parameter, then skip from updating the value.
-      if (targetUrlParamsToTakePrecedence && urlQueryString.indexOf(ur[0] + '=') !== -1) {
+      if (
+        targetUrlParamsToTakePrecedence &&
+        urlQueryString.indexOf(ur[0] + "=") !== -1
+      ) {
         continue;
       }
 
       if (qsArr.indexOf(ur[0].toLowerCase()) === -1) {
-        if (queryString !== '') {
-          queryString += '&';
+        if (queryString !== "") {
+          queryString += "&";
         }
 
         var uu = getUrlParamName(ur[0]);
 
-        queryString += uu + '=' + ur[1];
+        queryString += uu + "=" + ur[1];
         qsArr.push(ur[0].toLowerCase());
       }
     }
@@ -1370,22 +1428,25 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
 
   // User parameter from Cookie only if that parameter does not exist in URL
   for (var l = 0; l < cookieParts.length; l++) {
-    if (cookieParts[l] !== '') {
-      var co = cookieParts[l].split('=');
+    if (cookieParts[l] !== "") {
+      var co = cookieParts[l].split("=");
 
       // If targetUrlParamsToTakePrecedence is true and urlQueryString has the same parameter, then skip from updating the value.
-      if (targetUrlParamsToTakePrecedence && urlQueryString.indexOf(co[0] + '=') !== -1) {
+      if (
+        targetUrlParamsToTakePrecedence &&
+        urlQueryString.indexOf(co[0] + "=") !== -1
+      ) {
         continue;
       }
 
       if (qsArr.indexOf(co[0].toLowerCase()) === -1) {
-        if (queryString !== '') {
-          queryString += '&';
+        if (queryString !== "") {
+          queryString += "&";
         }
 
         var cc = getUrlParamName(co[0]);
 
-        queryString += cc + '=' + co[1];
+        queryString += cc + "=" + co[1];
         qsArr.push(co[0].toLowerCase());
       }
     }
@@ -1393,35 +1454,35 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
 
   // Use parameter from target url only if it does not exist in page URL and cookie
   for (var k = 0; k < urlParts.length; k++) {
-    if (urlParts[k] !== '') {
-      var qs = urlParts[k].split('=');
+    if (urlParts[k] !== "") {
+      var qs = urlParts[k].split("=");
 
       if (qsArr.indexOf(qs[0].toLowerCase()) === -1) {
-        if (queryString !== '') {
-          queryString += '&';
+        if (queryString !== "") {
+          queryString += "&";
         }
 
         var qq = getUrlParamName(qs[0]);
-        queryString += qq + '=' + qs[1];
+        queryString += qq + "=" + qs[1];
       }
     }
   }
   var breakdown = parseUrl($url);
 
-  let queryStringArray = queryString.split('&');
-  if (queryString !== '' && queryStringArray.length > 0) {
-    queryStringArray.forEach(function(value) {
-      breakdown.rawpath = breakdown.rawpath.replace('&' + value, '');
+  let queryStringArray = queryString.split("&");
+  if (queryString !== "" && queryStringArray.length > 0) {
+    queryStringArray.forEach(function (value) {
+      breakdown.rawpath = breakdown.rawpath.replace("&" + value, "");
     });
   }
 
-  if (breakdown.protocal === 'mailto:') {
+  if (breakdown.protocal === "mailto:") {
     return `${breakdown.protocal}${breakdown.hostname}${breakdown.pathname}?${queryString}${breakdown.hash}`;
   } else {
-    if ($swapping_attrs !== '' && $swapping_attrs.indexOf(',') !== -1) {
+    if ($swapping_attrs !== "" && $swapping_attrs.indexOf(",") !== -1) {
       queryString = bundleParam(queryString, $swapping_attrs);
     }
-    if (breakdown.hash.indexOf('?') !== -1) {
+    if (breakdown.hash.indexOf("?") !== -1) {
       return `${breakdown.protocal}//${breakdown.hostname}${breakdown.rawpath}?${queryString}${breakdown.hash}`;
     }
 
@@ -1429,9 +1490,13 @@ const applyCookieParams = ($url, $swapping_attrs = '', targetUrlParamsToTakePrec
   }
 };
 
-const getUrlParamName = paramName => {
+const getUrlParamName = (paramName) => {
   var index = -1;
-  for (var i = 0; i < window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb.length; i++) {
+  for (
+    var i = 0;
+    i < window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb.length;
+    i++
+  ) {
     if (
       paramName.toLowerCase() ===
       window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb[i].toLowerCase()
@@ -1460,18 +1525,19 @@ const bundleParam = (queryString, $swapping_attrs) => {
   if (!urlQueryString) return queryString;
   urlQueryString = urlQueryString.substr(1);
   if (!urlQueryString) return queryString;
-  urlQueryString = urlQueryString.split('&');
+  urlQueryString = urlQueryString.split("&");
 
-  const allowableQueryString = window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb;
-  $swapping_attrs = $swapping_attrs.split('=');
-  swap_map = $swapping_attrs[0].split(',');
-  let swap_str = '';
+  const allowableQueryString =
+    window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb;
+  $swapping_attrs = $swapping_attrs.split("=");
+  swap_map = $swapping_attrs[0].split(",");
+  let swap_str = "";
   for (let i = 0; i < swap_map.length; i++) {
     if (allowableQueryString.includes(swap_map[i])) {
       for (let j = 0; j < urlQueryString.length; j++) {
-        let list = urlQueryString[j].split('=');
+        let list = urlQueryString[j].split("=");
         if (list[0] === swap_map[i]) {
-          swap_str += swap_str ? ',' : '';
+          swap_str += swap_str ? "," : "";
           swap_str += list[1];
         }
       }
@@ -1480,24 +1546,24 @@ const bundleParam = (queryString, $swapping_attrs) => {
   if (!swap_str) return queryString;
 
   if (queryString.indexOf($swapping_attrs[1]) === -1) {
-    queryString += '&' + $swapping_attrs[1] + `=${swap_str}`;
+    queryString += "&" + $swapping_attrs[1] + `=${swap_str}`;
   } else {
-    let strList = queryString.split('&');
-    queryString = '';
+    let strList = queryString.split("&");
+    queryString = "";
     for (let i = 0; i < strList.length; i++) {
-      let list = strList[i].split('=');
-      queryString += queryString ? '&' : '';
+      let list = strList[i].split("=");
+      queryString += queryString ? "&" : "";
       if (list[0] === $swapping_attrs[1]) {
         queryString += $swapping_attrs[1] + `=${swap_str}`;
       } else {
-        queryString += list[0] + '=' + list[1];
+        queryString += list[0] + "=" + list[1];
       }
     }
   }
   return queryString;
 };
 
-const isEmpty = obj => {
+const isEmpty = (obj) => {
   // null and undefined are "empty"
   if (obj == null) return true;
 
@@ -1509,7 +1575,7 @@ const isEmpty = obj => {
   // If it isn't an object at this point
   // it is empty, but it can't be anything *but* empty
   // Is it empty?  Depends on your application.
-  if (typeof obj !== 'object') return true;
+  if (typeof obj !== "object") return true;
 
   // Otherwise, does it have any properties of its own?
   // Note that this doesn't handle
@@ -1521,11 +1587,11 @@ const isEmpty = obj => {
   return true;
 };
 
-const convertQueryStringToJsonObject = queryString => {
-  var queries = queryString.split('&');
+const convertQueryStringToJsonObject = (queryString) => {
+  var queries = queryString.split("&");
   var json = {};
   for (var i = 0; i < queries.length; i++) {
-    var keyValue = queries[i].split('=');
+    var keyValue = queries[i].split("=");
     if (keyValue.length === 2) {
       json[keyValue[0].toLowerCase()] = keyValue[1];
     }
@@ -1547,7 +1613,7 @@ const setLocalStorageWithExpiry = (key, value, ttl) => {
   // as well as the time when it's supposed to expire
   const item = {
     value: value,
-    expiry: now.getTime() + ttl
+    expiry: now.getTime() + ttl,
   };
   localStorage.setItem(key, JSON.stringify(item));
 };
@@ -1574,72 +1640,66 @@ const isMobile = () => {
  *convertNumbers(10000)
  */
 const convertNumbers = (selector, numbers) => {
-  if (numbers === '' || !numbers) return 0;
+  if (numbers === "" || !numbers) return 0;
   let returnVal = numbers.toString();
   let tmp = [];
   let fraction = 0;
-  if (Number(selector.getAttribute('data-comma-format')) === 2) {
-    if (returnVal.indexOf('.') !== -1) {
-      let splitValue = returnVal.split('.');
-      tmp = splitValue[0].split('').reverse(); //4321
+  if (Number(selector.getAttribute("data-comma-format")) === 2) {
+    if (returnVal.indexOf(".") !== -1) {
+      let splitValue = returnVal.split(".");
+      tmp = splitValue[0].split("").reverse(); //4321
       fraction = parseInt(splitValue[1], 10);
     } else {
-      tmp = returnVal.split('').reverse(); //4321
+      tmp = returnVal.split("").reverse(); //4321
     }
 
-    let strNew = '';
+    let strNew = "";
     if (tmp.length > 3) {
       //true
       let lastThree = tmp.splice(0, 3);
       for (let i = 0; i < tmp.length; i++) {
         if (i > 0 && i % 2 == 0) {
-          strNew += ',';
+          strNew += ",";
         }
         strNew += tmp[i].toString();
       }
-      strNew = lastThree.join('') + ',' + strNew;
-      strNew = strNew
-        .split('')
-        .reverse()
-        .join('');
+      strNew = lastThree.join("") + "," + strNew;
+      strNew = strNew.split("").reverse().join("");
     }
     if (strNew) {
       if (fraction) {
-        strNew = '' + strNew + `.${fraction}`;
+        strNew = "" + strNew + `.${fraction}`;
       }
-      if (strNew.slice(0, 2) == '-,') {
-        strNew = strNew.replace(/-,/gi, '-');
+      if (strNew.slice(0, 2) == "-,") {
+        strNew = strNew.replace(/-,/gi, "-");
       }
       return strNew;
     } else {
       return returnVal;
     }
   } else {
-    if (returnVal.indexOf('.') !== -1) {
-      let splitValue = returnVal.split('.');
-      tmp = splitValue[0].split('').reverse(); //4321
+    if (returnVal.indexOf(".") !== -1) {
+      let splitValue = returnVal.split(".");
+      tmp = splitValue[0].split("").reverse(); //4321
       fraction = splitValue[1];
     } else {
-      tmp = returnVal.split('').reverse(); //4321
+      tmp = returnVal.split("").reverse(); //4321
     }
 
-    let strNew = '';
+    let strNew = "";
     if (tmp.length > 3) {
       //true if it's more than or equal thousands
       for (let i = 0; i < tmp.length; i++) {
         if (i > 0 && i % 3 == 0) {
-          strNew += ',';
+          strNew += ",";
         }
         strNew += tmp[i].toString();
       }
-      strNew = strNew
-        .split('')
-        .reverse()
-        .join('');
+      strNew = strNew.split("").reverse().join("");
     }
     if (strNew) {
       if (fraction) {
-        strNew = '' + strNew + `.${fraction}`;
+        strNew = "" + strNew + `.${fraction}`;
       }
       return strNew;
     } else {
@@ -1649,29 +1709,32 @@ const convertNumbers = (selector, numbers) => {
 };
 
 const handleProductCalculatorSubmit = (calculatorName, fields) => {
-  if (typeof digitalData === 'undefined') {
+  if (typeof digitalData === "undefined") {
     return; // Exit the function early if digitalData is not defined
   }
 
   digitalData.calculator = {
     name: calculatorName,
-    fields: fields
+    fields: fields,
   };
-  if (typeof _satellite !== 'undefined' && typeof _satellite.track === 'function') {
-    _satellite.track('calculatorSubmit');
+  if (
+    typeof _satellite !== "undefined" &&
+    typeof _satellite.track === "function"
+  ) {
+    _satellite.track("calculatorSubmit");
   }
 
   //update adobeDataLayer with calculator submit event
-  if (typeof window.adobeDataLayer !== 'undefined') {
+  if (typeof window.adobeDataLayer !== "undefined") {
     let dataObject = {
       ...digitalData,
-      event: 'calculatorSubmit'
+      event: "calculatorSubmit",
     };
 
     //change calculator payload key names for adobeDataLayer object
     let newFields = [];
     let obj = {};
-    fields.forEach(el => {
+    fields.forEach((el) => {
       obj = { ...el };
       obj.formFieldName = obj.fieldName;
       delete obj.fieldName;
@@ -1681,7 +1744,7 @@ const handleProductCalculatorSubmit = (calculatorName, fields) => {
     });
     let calculator = {
       name: calculatorName,
-      fields: newFields
+      fields: newFields,
     };
     delete dataObject.calculator;
     dataObject.calculator = calculator;
@@ -1695,43 +1758,50 @@ const handleProductCalculatorSubmit = (calculatorName, fields) => {
  */
 const initializeSlider = (mainSelector, parentSelector) => {
   const docElement = document.documentElement;
-  const direction = docElement.getAttribute('dir') ? docElement.getAttribute('dir') : null;
-  const allSlider = mainSelector.querySelectorAll('.sc-range-slider');
+  const direction = docElement.getAttribute("dir")
+    ? docElement.getAttribute("dir")
+    : null;
+  const allSlider = mainSelector.querySelectorAll(".sc-range-slider");
   if (allSlider.length) {
     //Initialize slider
-    allSlider.forEach(function(slider) {
+    allSlider.forEach(function (slider) {
       noUiSlider.create(slider, {
-        start: Number(slider.getAttribute('data-default')),
-        step: Number(slider.getAttribute('data-step')),
-        behaviour: 'snap',
-        connect: 'lower',
+        start: Number(slider.getAttribute("data-default")),
+        step: Number(slider.getAttribute("data-step")),
+        behaviour: "snap",
+        connect: "lower",
         range: {
-          min: Number(slider.getAttribute('data-min')),
+          min: Number(slider.getAttribute("data-min")),
           max:
-            Number(slider.getAttribute('data-max')) > 0
-              ? Number(slider.getAttribute('data-max'))
-              : 10000000
+            Number(slider.getAttribute("data-max")) > 0
+              ? Number(slider.getAttribute("data-max"))
+              : 10000000,
         },
-        direction: direction
+        direction: direction,
       });
 
-      const inputField = slider.closest(parentSelector).querySelector('input[class$="-value"]');
+      const inputField = slider
+        .closest(parentSelector)
+        .querySelector('input[class$="-value"]');
       if (inputField) {
         //Slider related with text field
-        inputField.value = convertNumbers(mainSelector, slider.getAttribute('data-default'));
+        inputField.value = convertNumbers(
+          mainSelector,
+          slider.getAttribute("data-default")
+        );
       } else {
         const dropdownField = slider
           .closest(parentSelector)
           .querySelector('select[class$="-value"]');
         if (dropdownField) {
           //Slider related with dropdown field
-          dropdownField.value = slider.getAttribute('data-default');
+          dropdownField.value = slider.getAttribute("data-default");
         }
       }
     });
 
-    allSlider.forEach(function(el) {
-      el.setAttribute('aria-label', 'Drage here to move slider');
+    allSlider.forEach(function (el) {
+      el.setAttribute("aria-label", "Drage here to move slider");
     });
   }
 };
@@ -1752,12 +1822,12 @@ const validateInput = (selector, sliderClass, errorSelector) => {
 
   if (inputField) {
     //slider input fields
-    minValue = Number(selectedClass.getAttribute('data-min'));
-    maxValue = Number(selectedClass.getAttribute('data-max'));
+    minValue = Number(selectedClass.getAttribute("data-min"));
+    maxValue = Number(selectedClass.getAttribute("data-max"));
   } else {
     //non slider input fields
-    minValue = Number(selectedClass.getAttribute('data-min'));
-    maxValue = Number(selectedClass.getAttribute('data-max'));
+    minValue = Number(selectedClass.getAttribute("data-min"));
+    maxValue = Number(selectedClass.getAttribute("data-max"));
     inputField = selectedClass;
     sliderExist = false;
   }
@@ -1765,9 +1835,9 @@ const validateInput = (selector, sliderClass, errorSelector) => {
   let initValue = inputField.value,
     value = 0;
 
-  errorSelector.classList.add('hide');
-  if (!selectedClass.getAttribute('data-decimal')) {
-    value = initValue.replace(/[^0-9]+/gi, '').replace(/^0/, ''); //remove all string except 0-9
+  errorSelector.classList.add("hide");
+  if (!selectedClass.getAttribute("data-decimal")) {
+    value = initValue.replace(/[^0-9]+/gi, "").replace(/^0/, ""); //remove all string except 0-9
     if (value != initValue) {
       inputField.value = value;
     }
@@ -1776,16 +1846,16 @@ const validateInput = (selector, sliderClass, errorSelector) => {
     }
   } else {
     //if text field supports fraction value
-    value = initValue.replace(/[^0-9.]/gi, '').replace(/^0/, '');
+    value = initValue.replace(/[^0-9.]/gi, "").replace(/^0/, "");
     if (value != initValue) {
       inputField.value = value;
     }
     if (!value) {
-      value = '';
+      value = "";
     } else {
-      let raVal = value.split('.');
-      if (value === '.') {
-        errorSelector.classList.remove('hide');
+      let raVal = value.split(".");
+      if (value === ".") {
+        errorSelector.classList.remove("hide");
         return;
       } else if (raVal.length > 2) {
         //more than two floating point
@@ -1797,7 +1867,7 @@ const validateInput = (selector, sliderClass, errorSelector) => {
         inputField.value = value;
         return;
       }
-      if (value.slice(-1) === '.') {
+      if (value.slice(-1) === ".") {
         return;
       } else if (raVal[1] && raVal[1].length === 1) {
         value = parseFloat(value).toFixed(1);
@@ -1811,16 +1881,16 @@ const validateInput = (selector, sliderClass, errorSelector) => {
     //checking text field maximum value
     value = maxValue;
     if (sliderExist) selectedClass.noUiSlider.set([value]); //Push value in NoUiSlider
-  } else if (value === '' && minValue > 0) {
+  } else if (value === "" && minValue > 0) {
     //leave text field as blank and fill it with 0
-    value = '';
-    errorSelector.classList.remove('hide');
+    value = "";
+    errorSelector.classList.remove("hide");
   } else if (value < minValue) {
-    errorSelector.classList.remove('hide');
+    errorSelector.classList.remove("hide");
   }
 
   if (sliderExist) {
-    if (value !== '' && value >= minValue) {
+    if (value !== "" && value >= minValue) {
       selectedClass.noUiSlider.set([value]); //Push value in NoUiSlider
     } else {
       selectedClass.noUiSlider.set([0]);
@@ -1839,7 +1909,12 @@ const validateInput = (selector, sliderClass, errorSelector) => {
  * Example:
  * calculatePMT(16, 12, 1500000, 0)
  **/
-const calculatePMT = (interestRate, tenor, loanAmount, advancedPayments = 0) => {
+const calculatePMT = (
+  interestRate,
+  tenor,
+  loanAmount,
+  advancedPayments = 0
+) => {
   let monthlyRate = interestRate / 1200;
   let t1 = 1 + monthlyRate;
   let t3 = Math.pow(t1, tenor - advancedPayments);
@@ -1854,11 +1929,11 @@ const sliderErrorStatus = (selector, fieldName) => {
   const allFields = selector.querySelectorAll(fieldName);
   if (allFields.length) {
     for (let i = 0; i < allFields.length; i++) {
-      const value = Number(allFields[i].value.replace(/[^0-9.]/gi, ''));
-      let className = allFields[i].className.split(' ');
+      const value = Number(allFields[i].value.replace(/[^0-9.]/gi, ""));
+      let className = allFields[i].className.split(" ");
       className = className[className.length - 1].slice(0, -6);
       const slider = selector.querySelector(`.${className}`),
-        minValue = Number(slider.getAttribute('data-min'));
+        minValue = Number(slider.getAttribute("data-min"));
       if (isNaN(value) || value < minValue) {
         errorStatus = errorStatus || true;
       }
@@ -1870,21 +1945,23 @@ const sliderErrorStatus = (selector, fieldName) => {
 /**
  * add to digit after floating point
  */
-const formatNumbersWithTwoDecimalPlaces = inputString => {
+const formatNumbersWithTwoDecimalPlaces = (inputString) => {
   // Use a regular expression to find numbers (both integer and decimal)
   const regex = /(\d+(\.\d*)?)/g;
 
   // Replace each matched number with the number formatted to two decimal places
-  let filteredResult = inputString.replace(regex, match => {
+  let filteredResult = inputString.replace(regex, (match) => {
     const number = parseFloat(match);
     if (!isNaN(number)) {
       return number.toFixed(2);
     }
     return match; // If not a valid number, return the original match
   });
-  const parts = filteredResult.split('.');
-  const result = parseFloat(parts[0] + '.' + parts.slice(1).join('')).toFixed(2);
-  return isNaN(result) ? '0.00' : result;
+  const parts = filteredResult.split(".");
+  const result = parseFloat(parts[0] + "." + parts.slice(1).join("")).toFixed(
+    2
+  );
+  return isNaN(result) ? "0.00" : result;
 };
 
 /**
@@ -1916,15 +1993,17 @@ const vLookup = (lookupValue, tableArray, colIndex) => {
  */
 const sliderFieldErrorStatus = (selector, parentClass, errorClass) => {
   const closest = selector.closest(parentClass),
-    minValue = Number(closest.querySelector('.sc-range-slider').getAttribute('data-min')),
+    minValue = Number(
+      closest.querySelector(".sc-range-slider").getAttribute("data-min")
+    ),
     errorSelector = closest.querySelector(errorClass),
-    value = Number(selector.value.replace(/[^0-9]+/gi, ''));
+    value = Number(selector.value.replace(/[^0-9]+/gi, ""));
 
   if (value >= minValue) {
-    errorSelector.classList.add('hide');
+    errorSelector.classList.add("hide");
     return true;
   }
-  errorSelector.classList.remove('hide');
+  errorSelector.classList.remove("hide");
   return false;
 };
 
@@ -1932,15 +2011,15 @@ const sliderFieldErrorStatus = (selector, parentClass, errorClass) => {
  * check step field error status
  */
 const stepFieldErrorStatus = (selector, parentClass, errorClass) => {
-  const minValue = Number(selector.getAttribute('data-min')),
+  const minValue = Number(selector.getAttribute("data-min")),
     errorSelector = selector.closest(parentClass).querySelector(errorClass),
-    value = Number(selector.value.replace(/[^0-9]+/gi, ''));
+    value = Number(selector.value.replace(/[^0-9]+/gi, ""));
 
   if (value >= minValue) {
-    errorSelector.classList.add('hide');
+    errorSelector.classList.add("hide");
     return true;
   }
-  errorSelector.classList.remove('hide');
+  errorSelector.classList.remove("hide");
   return false;
 };
 
@@ -1970,7 +2049,7 @@ const calculateFutureValue = (rate, nper, pmt, pv, type) => {
 /**
  * based on the input month, it's calculate number of year and month
  */
-const convertMonthsToYearsAndMonths = months => {
+const convertMonthsToYearsAndMonths = (months) => {
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
   return { years, months: remainingMonths };
@@ -2010,10 +2089,10 @@ const extendedPMT = (rate, nper, pv, fv, type) => {
  */
 const calculateNPER = (rate, payment, present, future, type) => {
   // Initialize type
-  type = typeof type === 'undefined' ? 0 : type;
+  type = typeof type === "undefined" ? 0 : type;
 
   // Initialize future value
-  future = typeof future === 'undefined' ? 0 : future;
+  future = typeof future === "undefined" ? 0 : future;
 
   // Return number of periods
   const num = payment * (1 + rate * type) - future * rate;
@@ -2027,7 +2106,7 @@ const calculateNPER = (rate, payment, present, future, type) => {
  * @param {number} numberOfMonths - The total number of months.
  * @returns {String} String with the calculated number of years and months.
  */
-const calculateYearMonth = numberOfMonths => {
+const calculateYearMonth = (numberOfMonths) => {
   let months = numberOfMonths % 12;
   let years = Math.floor(numberOfMonths / 12);
   if (years > 1) {
@@ -2035,7 +2114,7 @@ const calculateYearMonth = numberOfMonths => {
   } else if (years === 1) {
     years = `${years} Year`;
   } else {
-    years = '';
+    years = "";
   }
 
   if (months > 1) {
@@ -2043,7 +2122,7 @@ const calculateYearMonth = numberOfMonths => {
   } else if (months === 1) {
     months = ` ${months} Month`;
   } else {
-    months = '';
+    months = "";
   }
 
   return `${years}${months}`;
@@ -2082,7 +2161,10 @@ const calculateEIR = (periods, payment, present, future, type, guess) => {
     i = 0;
   var rate = guess;
   if (Math.abs(rate) < epsMax) {
-    y = present * (1 + periods * rate) + payment * (1 + rate * type) * periods + future;
+    y =
+      present * (1 + periods * rate) +
+      payment * (1 + rate * type) * periods +
+      future;
   } else {
     f = Math.exp(periods * Math.log(1 + rate));
     y = present * f + payment * (1 / rate + type) * (f - 1) + future;
@@ -2096,7 +2178,10 @@ const calculateEIR = (periods, payment, present, future, type, guess) => {
     x0 = x1;
     x1 = rate;
     if (Math.abs(rate) < epsMax) {
-      y = present * (1 + periods * rate) + payment * (1 + rate * type) * periods + future;
+      y =
+        present * (1 + periods * rate) +
+        payment * (1 + rate * type) * periods +
+        future;
     } else {
       f = Math.exp(periods * Math.log(1 + rate));
       y = present * f + payment * (1 / rate + type) * (f - 1) + future;
@@ -2177,11 +2262,15 @@ const pmt = (rate, nper, pv) => {
  * @param {Object} el - The elements which height need to be calculated
  * getOuterHeight(document.querySelector('#onetrust-banner-sdk'))
  **/
-const getOuterHeight = el => {
+const getOuterHeight = (el) => {
   if (!el) return 0;
   let elHeight = el.offsetHeight;
-  elHeight += parseInt(window.getComputedStyle(el).getPropertyValue('margin-top'));
-  elHeight += parseInt(window.getComputedStyle(el).getPropertyValue('margin-bottom'));
+  elHeight += parseInt(
+    window.getComputedStyle(el).getPropertyValue("margin-top")
+  );
+  elHeight += parseInt(
+    window.getComputedStyle(el).getPropertyValue("margin-bottom")
+  );
   return elHeight;
 };
 
@@ -2189,16 +2278,16 @@ const getOuterHeight = el => {
  * MatchHeight function to make divs the same height. Use this function only when CSS flexbox is not possible.
  * @param {String} selector - Container class, id, or element.
  */
-const matchHeight = selector => {
+const matchHeight = (selector) => {
   const elements = document.querySelectorAll(selector);
 
   if (!elements.length) return;
 
   // Get the tallest height by mapping all elements to their offsetHeight and finding the max value
-  const tallest = Math.max(...[...elements].map(el => el.offsetHeight));
+  const tallest = Math.max(...[...elements].map((el) => el.offsetHeight));
 
   // Set each element's height to the tallest value
-  elements.forEach(el => {
+  elements.forEach((el) => {
     el.style.height = `${tallest}px`;
   });
 };
@@ -2217,7 +2306,7 @@ const smoothScroll = (target, duration, width = 0) => {
   let startPosition = window.pageYOffset;
   let startTime = null;
 
-  const animation = currentTime => {
+  const animation = (currentTime) => {
     if (startTime === null) startTime = currentTime;
     let timeElapsed = currentTime - startTime;
     let run = ease(timeElapsed, startPosition, targetPosition, duration);
@@ -2241,17 +2330,19 @@ const smoothScroll = (target, duration, width = 0) => {
  * @example
  * activeInputVal(1, 1200)
  */
-const validateInputNoSlider = (selector, errorSelector, hideClass = '') => {
-  const minValue = Number(selector.getAttribute('data-min'));
-  const maxValue = Number(selector.getAttribute('data-max'));
-  let decimalPlaces = Number(selector.getAttribute('data-decimal'));
+const validateInputNoSlider = (selector, errorSelector, hideClass = "") => {
+  const minValue = Number(selector.getAttribute("data-min"));
+  const maxValue = Number(selector.getAttribute("data-max"));
+  let decimalPlaces = Number(selector.getAttribute("data-decimal"));
 
   let initValue = selector.value,
     value = 0;
 
-  hideClass ? errorSelector.classList.add('hide') : (errorSelector.style.display = 'none');
+  hideClass
+    ? errorSelector.classList.add("hide")
+    : (errorSelector.style.display = "none");
   if (!decimalPlaces) {
-    value = initValue.replace(/[^0-9]+/gi, '').replace(/^0/, ''); //remove all string except 0-9
+    value = initValue.replace(/[^0-9]+/gi, "").replace(/^0/, ""); //remove all string except 0-9
     if (value != initValue) {
       selector.value = value;
     }
@@ -2261,18 +2352,18 @@ const validateInputNoSlider = (selector, errorSelector, hideClass = '') => {
   } else {
     decimalPlaces = Number(decimalPlaces);
     //if text field supports fraction value
-    value = initValue.replace(/[^0-9.]/gi, '').replace(/^0/, '');
+    value = initValue.replace(/[^0-9.]/gi, "").replace(/^0/, "");
     if (value != initValue) {
       selector.value = value;
     }
     if (!value) {
-      value = '';
+      value = "";
     } else {
-      let raVal = value.split('.');
-      if (value === '.') {
+      let raVal = value.split(".");
+      if (value === ".") {
         hideClass
-          ? errorSelector.classList.remove('hide')
-          : (errorSelector.style.display = 'block');
+          ? errorSelector.classList.remove("hide")
+          : (errorSelector.style.display = "block");
         return;
       } else if (raVal.length > decimalPlaces) {
         //more than two floating point
@@ -2284,7 +2375,7 @@ const validateInputNoSlider = (selector, errorSelector, hideClass = '') => {
         selector.value = value;
         return;
       }
-      if (value.slice(-1) === '.') {
+      if (value.slice(-1) === ".") {
         return;
       } else if (raVal[1] && raVal[1].length === 1) {
         value = parseFloat(value).toFixed(1);
@@ -2297,109 +2388,113 @@ const validateInputNoSlider = (selector, errorSelector, hideClass = '') => {
   if (maxValue !== -1 && value > maxValue) {
     //checking text field maximum value
     value = maxValue;
-  } else if (value === '' && minValue > 0) {
+  } else if (value === "" && minValue > 0) {
     //leave text field as blank and fill it with 0
-    value = '';
-    hideClass ? errorSelector.classList.remove('hide') : (errorSelector.style.display = 'block');
+    value = "";
+    hideClass
+      ? errorSelector.classList.remove("hide")
+      : (errorSelector.style.display = "block");
   } else if (value < minValue) {
-    hideClass ? errorSelector.classList.remove('hide') : (errorSelector.style.display = 'block');
+    hideClass
+      ? errorSelector.classList.remove("hide")
+      : (errorSelector.style.display = "block");
   }
   selector.value = value;
 };
 
 const getAssetDomain = () => {
   /* eslint-disable no-undef*/
-  if (typeof baseURL === 'undefined' || baseURL === '') {
+  if (typeof baseURL === "undefined" || baseURL === "") {
     var env = getCurrentEnvironment();
     var domain = getPageUrl().domain;
     if (env === window.scCommonConstants.PRODUCTION) {
       return (
         urlObj[11] +
-        '://' +
+        "://" +
         urlObj[5] +
-        '.' +
+        "." +
         urlObj[3] +
-        '.' +
+        "." +
         urlObj[4] +
-        '/' +
+        "/" +
         urlObj[6] +
-        '/' +
+        "/" +
         urlObj[7] +
-        '/'
+        "/"
       );
     } else if (env === window.scCommonConstants.DEVELOPMENT) {
-      if (domain === urlObj[3] + '.' + urlObj[14]) {
-        return '/content/themes/scretail/assets/global/';
+      if (domain === urlObj[3] + "." + urlObj[14]) {
+        return "/content/themes/scretail/assets/global/";
       } else if (
-        domain === urlObj[1] + '.' + urlObj[2] + '.' + urlObj[4] ||
-        domain === urlObj[0] + '.' + urlObj[3] + '.' + urlObj[4]
+        domain === urlObj[1] + "." + urlObj[2] + "." + urlObj[4] ||
+        domain === urlObj[0] + "." + urlObj[3] + "." + urlObj[4]
       ) {
         return (
           urlObj[11] +
-          '://' +
+          "://" +
           urlObj[1] +
-          '.' +
+          "." +
           urlObj[2] +
-          '.' +
+          "." +
           urlObj[4] +
-          '/' +
+          "/" +
           urlObj[8] +
-          '/' +
+          "/" +
           urlObj[6] +
-          '/' +
+          "/" +
           urlObj[7] +
-          '/'
+          "/"
         );
       } else {
-        return '/assets/';
+        return "/assets/";
       }
     } else if (env === window.scCommonConstants.STAGING) {
       return (
         urlObj[11] +
-        '://' +
+        "://" +
         urlObj[1] +
-        '.' +
+        "." +
         urlObj[2] +
-        '.' +
+        "." +
         urlObj[4] +
-        '/' +
+        "/" +
         urlObj[9] +
-        '/' +
+        "/" +
         urlObj[6] +
-        '/' +
+        "/" +
         urlObj[7] +
-        '/'
+        "/"
       );
     } else {
       return (
         urlObj[11] +
-        '://' +
+        "://" +
         urlObj[1] +
-        '.' +
+        "." +
         urlObj[2] +
-        '.' +
+        "." +
         urlObj[4] +
-        '/' +
+        "/" +
         urlObj[6] +
-        '/' +
+        "/" +
         urlObj[7] +
-        '/'
+        "/"
       );
     }
-  } else if (baseURL === '/zoo') {
+  } else if (baseURL === "/zoo") {
     return (
       urlObj[11] +
-      '://' +
+      "://" +
       urlObj[10] +
-      '.' +
+      "." +
       urlObj[3] +
-      '.' +
+      "." +
       urlObj[4] +
-      '/' +
+      "/" +
       urlObj[15] +
-      '/' +
+      "/" +
       urlObj[6] +
-      '/'
+      "/"
     );
   } else {
     return baseURL;
@@ -2410,8 +2505,11 @@ const getAssetDomain = () => {
 /**
  * trigger adobe popupViewed event when showing popups
  */
-const triggerPopupViewedTagging = popupName => {
-  if (typeof launchscript === 'undefined' && !document.querySelector('#adobelaunchscript')) {
+const triggerPopupViewedTagging = (popupName) => {
+  if (
+    typeof launchscript === "undefined" &&
+    !document.querySelector("#adobelaunchscript")
+  ) {
     //Adobe Analytics not enable for this market
     return;
   }
@@ -2419,32 +2517,35 @@ const triggerPopupViewedTagging = popupName => {
     let dataObject = {
       ...digitalData,
       form: {
-        formName: '',
-        formStepName: '',
-        formType: '',
-        formPlatform: ''
-      }
+        formName: "",
+        formStepName: "",
+        formType: "",
+        formPlatform: "",
+      },
     };
     dataObject.form.popupName = popupName;
-    dataObject.event = 'popupViewed';
+    dataObject.event = "popupViewed";
     scAnalyticsDataArray.push(dataObject);
   }, 500);
 };
 
 const getCampaignInfoV1 = () => {
-  let pageName = window.digitalData.page.pageInfo.pageName.split(':');
+  let pageName = window.digitalData.page.pageInfo.pageName.split(":");
   let allowableQueryString = window.scCommonConstants.ALLOWABLE_QUERYSTRING.scb;
-  if ((pageName[0] === 'pk' && pageName[3] === 'udp-form') || pageName[0] === 'in') {
+  if (
+    (pageName[0] === "pk" && pageName[3] === "udp-form") ||
+    pageName[0] === "in"
+  ) {
     let campaignData = getIntExtCampaignInfo(pageName[0]);
     window.digitalData.campaign = {
       internal: {
-        campaignName: campaignData['intName'],
-        campaignValue: campaignData['intVal']
+        campaignName: campaignData["intName"],
+        campaignValue: campaignData["intVal"],
       },
       external: {
-        campaignName: campaignData['extName'],
-        campaignValue: campaignData['extVal']
-      }
+        campaignName: campaignData["extName"],
+        campaignValue: campaignData["extVal"],
+      },
     };
   } else {
     let campaignData = getCampaignInfo(allowableQueryString);
@@ -2452,8 +2553,8 @@ const getCampaignInfoV1 = () => {
     window.digitalData.campaign = {
       internal: {
         campaignName: campaignData[0],
-        campaignValue: campaignData[1]
-      }
+        campaignValue: campaignData[1],
+      },
     };
   }
 };
@@ -2461,21 +2562,23 @@ const getCampaignInfoV1 = () => {
 /**
  * Processes a campaign object and updates the `window.digitalData.campaign` object with the extracted query parameters and values.
  */
-const getCampaignInfoV2 = campaignObj => {
+const getCampaignInfoV2 = (campaignObj) => {
   Object.entries(campaignObj).forEach(([key, value]) => {
-    if (key === 'internal' || key === 'external') {
+    if (key === "internal" || key === "external") {
       const paramValue = extractQueryParams(value);
       window.digitalData.campaign[key] = {
         campaignName: value[0],
-        campaignValue: paramValue ? paramValue.split(':')[1] : 'na'
+        campaignValue: paramValue ? paramValue.split(":")[1] : "na",
       };
-    } else if (key === 'other') {
+    } else if (key === "other") {
       const paramValue = extractQueryParams(value, true);
-      window.digitalData.campaign.otherParams = paramValue ? paramValue : '';
+      window.digitalData.campaign.otherParams = paramValue ? paramValue : "";
     } else if (value.length) {
-      value.forEach(el => {
+      value.forEach((el) => {
         const paramValue = extractQueryParams([el]);
-        window.digitalData.campaign[el] = paramValue ? paramValue.split(':')[1] : '';
+        window.digitalData.campaign[el] = paramValue
+          ? paramValue.split(":")[1]
+          : "";
       });
     }
   });
@@ -2501,7 +2604,7 @@ const extractQueryParams = (queryParams = [], excludeParams = false) => {
     }
   }
 
-  return keyValuePairs.join('|');
+  return keyValuePairs.join("|");
 };
 
 /**
@@ -2511,25 +2614,25 @@ const extractQueryParams = (queryParams = [], excludeParams = false) => {
  * @example
  * getCampaignInfo(['subChanCode', 'camp_id', 'promoCode'])
  */
-const getCampaignInfo = allowableQueryString => {
-  if (!allowableQueryString.length) return '';
+const getCampaignInfo = (allowableQueryString) => {
+  if (!allowableQueryString.length) return "";
   let total = allowableQueryString.length;
-  let campaignName = '';
-  let campaignValue = '';
+  let campaignName = "";
+  let campaignValue = "";
   for (let i = 0; i < total; i++) {
     let cookieValue = getCookie(allowableQueryString[i]);
     let localStorageValue = getLocalStorageWithExpiry(allowableQueryString[i]);
     if (cookieValue || localStorageValue) {
       if (campaignName) {
-        campaignName += ':';
-        campaignValue += ':';
+        campaignName += ":";
+        campaignValue += ":";
       }
       campaignName += allowableQueryString[i];
       campaignValue += cookieValue || localStorageValue;
     }
   }
-  if (!campaignName) campaignName = 'na';
-  if (!campaignValue) campaignValue = 'na';
+  if (!campaignName) campaignName = "na";
+  if (!campaignValue) campaignValue = "na";
   return [campaignName, campaignValue];
 };
 
@@ -2561,12 +2664,12 @@ const getCtaContext = (closest) => {
  */
 const getQueryParam = (queryString, paramName) => {
   // Split the query string into an array of key-value pairs
-  const queryParamsList = queryString.split('&');
-  let paramValue = '';
+  const queryParamsList = queryString.split("&");
+  let paramValue = "";
 
   // eslint-disable-next-line no-unused-vars
   for (const param of queryParamsList) {
-    const [key, value] = param.split('=');
+    const [key, value] = param.split("=");
     if (key === paramName) {
       //it's case sensitive
       paramValue = value;
@@ -2582,47 +2685,55 @@ const getQueryParam = (queryString, paramName) => {
  * @param {HTMLElement} element - The element for which to find the closest accordion heading.
  * @returns {string} The heading text of the closest accordion, followed by a colon if found; otherwise, an empty string.
  */
-const getAccordionHeading = element => {
-  if (!element) return '';
+const getAccordionHeading = (element) => {
+  if (!element) return "";
 
-  const accordionElement = element.closest('.sc-accordion, .c-plus-minus-accordion___item');
-  if (!accordionElement) return '';
+  const accordionElement = element.closest(
+    ".sc-accordion, .c-plus-minus-accordion___item"
+  );
+  if (!accordionElement) return "";
 
   const headingElement =
-    accordionElement.querySelector('.sc-heading') ??
-    accordionElement.querySelector('.accordion-header label');
-  if (!headingElement) return '';
+    accordionElement.querySelector(".sc-heading") ??
+    accordionElement.querySelector(".accordion-header label");
+  if (!headingElement) return "";
 
   const headingText = trim(headingElement.innerText);
-  return headingText ? `${headingText}:` : '';
+  return headingText ? `${headingText}:` : "";
 };
 
 /**
  * Handles the scroll event and shows or hides the persistent bar based on the scroll position.
  */
 const handlePersistentBarScroll = () => {
-  const persistentBar = document.querySelector('.sc-persistent-bar');
+  const persistentBar = document.querySelector(".sc-persistent-bar");
   if (!persistentBar) return;
 
-  const bannerSdk = document.querySelector('#onetrust-banner-sdk');
-  if (bannerSdk && bannerSdk.style && bannerSdk.style.display !== 'none') {
+  const bannerSdk = document.querySelector("#onetrust-banner-sdk");
+  if (bannerSdk && bannerSdk.style && bannerSdk.style.display !== "none") {
     //Don't show persistent bar if oneTrust cookie banner exist
     return;
   }
 
   const scrollPosition =
-    window.scrollY ?? document.documentElement.scrollTop ?? document.body.scrollTop ?? 0;
+    window.scrollY ??
+    document.documentElement.scrollTop ??
+    document.body.scrollTop ??
+    0;
   const windowWidth =
-    window.innerWidth ?? document.documentElement.clientWidth ?? document.body.clientWidth;
+    window.innerWidth ??
+    document.documentElement.clientWidth ??
+    document.body.clientWidth;
 
   let scrollLimit = 600;
-  const pBarTarget = document.querySelector('[data-persistent-bar-target]');
+  const pBarTarget = document.querySelector("[data-persistent-bar-target]");
   if (pBarTarget) {
     const selectedElement = document.querySelector(
-      '.' + pBarTarget.getAttribute('data-persistent-bar-target')
+      "." + pBarTarget.getAttribute("data-persistent-bar-target")
     );
     if (selectedElement) {
-      scrollLimit = getOuterHeight(selectedElement) + getPosition(selectedElement);
+      scrollLimit =
+        getOuterHeight(selectedElement) + getPosition(selectedElement);
 
       if (windowWidth >= 768) {
         //Ignore menu height
@@ -2631,12 +2742,12 @@ const handlePersistentBarScroll = () => {
     }
   }
 
-  const pBarSkip = document.querySelector('[data-persistent-bar-skip]');
+  const pBarSkip = document.querySelector("[data-persistent-bar-skip]");
   let skipFromTop = 0;
   let skipHeight = 0;
   if (pBarSkip) {
     const selectedElement = document.querySelector(
-      '.' + pBarSkip.getAttribute('data-persistent-bar-skip')
+      "." + pBarSkip.getAttribute("data-persistent-bar-skip")
     );
     if (selectedElement) {
       skipFromTop = getPosition(selectedElement);
@@ -2648,11 +2759,16 @@ const handlePersistentBarScroll = () => {
     }
   }
 
-  const skipDevice = document.querySelector('[data-persistent-bar-skip-device]');
+  const skipDevice = document.querySelector(
+    "[data-persistent-bar-skip-device]"
+  );
   if (skipDevice) {
-    const skipAttr = skipDevice.getAttribute('data-persistent-bar-skip-device');
+    const skipAttr = skipDevice.getAttribute("data-persistent-bar-skip-device");
     const isMobile = windowWidth < 768;
-    if ((skipAttr === 'mobile' && isMobile) || (skipAttr !== 'mobile' && !isMobile)) {
+    if (
+      (skipAttr === "mobile" && isMobile) ||
+      (skipAttr !== "mobile" && !isMobile)
+    ) {
       skipFromTop = 0;
       skipHeight = 0;
     }
@@ -2667,14 +2783,14 @@ const handlePersistentBarScroll = () => {
     scrollPosition <= skipFromTop + skipHeight
   ) {
     //Skip persistent bar for a certain position
-    persistentBar.classList.remove('sc-persistent-bar--show');
+    persistentBar.classList.remove("sc-persistent-bar--show");
     document.body.style.marginBottom = 0;
   } else if (scrollPosition > scrollLimit) {
-    persistentBar.classList.add('sc-persistent-bar--show');
+    persistentBar.classList.add("sc-persistent-bar--show");
     const persistentBarHight = getOuterHeight(persistentBar);
     document.body.style.marginBottom = `${persistentBarHight}px`;
   } else {
-    persistentBar.classList.remove('sc-persistent-bar--show');
+    persistentBar.classList.remove("sc-persistent-bar--show");
     document.body.style.marginBottom = 0;
   }
 };
@@ -2684,39 +2800,39 @@ const handlePersistentBarScroll = () => {
  * @returns {{browserCodename: string, browserName: string, browserVersion: string, cookiesEnabled: boolean, browserLanguage: string, browserOnline: boolean, platform: string, userAgentHeader: string}}
  */
 const getDeviceDetails = () => {
-  var os = '';
+  var os = "";
   // eslint-disable-next-line compat/compat
   var nAgt = navigator.userAgent;
   var clientStrings = [
-    { s: 'W 10', r: /(Windows 10.0|Windows NT 10.0)/ },
-    { s: 'W 8.1', r: /(Windows 8.1|Windows NT 6.3)/ },
-    { s: 'W 8', r: /(Windows 8|Windows NT 6.2)/ },
-    { s: 'W 7', r: /(Windows 7|Windows NT 6.1)/ },
-    { s: 'W Vista', r: /Windows NT 6.0/ },
-    { s: 'W Server 2003', r: /Windows NT 5.2/ },
-    { s: 'W XP', r: /(Windows NT 5.1|Windows XP)/ },
-    { s: 'W 2000', r: /(Windows NT 5.0|Windows 2000)/ },
-    { s: 'W ME', r: /(Win 9x 4.90|Windows ME)/ },
-    { s: 'W 98', r: /(Windows 98|Win98)/ },
-    { s: 'W 95', r: /(Windows 95|Win95|Windows_95)/ },
-    { s: 'W NT 4.0', r: /(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/ },
-    { s: 'W CE', r: /Windows CE/ },
-    { s: 'W 3.11', r: /Win16/ },
-    { s: 'Android', r: /Android/ },
-    { s: 'Open BSD', r: /OpenBSD/ },
-    { s: 'Sun OS', r: /SunOS/ },
-    { s: 'L', r: /(Linux|X11)/ },
-    { s: 'iOS', r: /(iPhone|iPad|iPod)/ },
-    { s: 'Mac OS X', r: /Mac OS X/ },
-    { s: 'Mac OS', r: /(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/ },
-    { s: 'QNX', r: /QNX/ },
-    { s: 'U', r: /UNIX/ },
-    { s: 'BeOS', r: /BeOS/ },
-    { s: 'OS/2', r: /OS\/2/ },
+    { s: "W 10", r: /(Windows 10.0|Windows NT 10.0)/ },
+    { s: "W 8.1", r: /(Windows 8.1|Windows NT 6.3)/ },
+    { s: "W 8", r: /(Windows 8|Windows NT 6.2)/ },
+    { s: "W 7", r: /(Windows 7|Windows NT 6.1)/ },
+    { s: "W Vista", r: /Windows NT 6.0/ },
+    { s: "W Server 2003", r: /Windows NT 5.2/ },
+    { s: "W XP", r: /(Windows NT 5.1|Windows XP)/ },
+    { s: "W 2000", r: /(Windows NT 5.0|Windows 2000)/ },
+    { s: "W ME", r: /(Win 9x 4.90|Windows ME)/ },
+    { s: "W 98", r: /(Windows 98|Win98)/ },
+    { s: "W 95", r: /(Windows 95|Win95|Windows_95)/ },
+    { s: "W NT 4.0", r: /(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/ },
+    { s: "W CE", r: /Windows CE/ },
+    { s: "W 3.11", r: /Win16/ },
+    { s: "Android", r: /Android/ },
+    { s: "Open BSD", r: /OpenBSD/ },
+    { s: "Sun OS", r: /SunOS/ },
+    { s: "L", r: /(Linux|X11)/ },
+    { s: "iOS", r: /(iPhone|iPad|iPod)/ },
+    { s: "Mac OS X", r: /Mac OS X/ },
+    { s: "Mac OS", r: /(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/ },
+    { s: "QNX", r: /QNX/ },
+    { s: "U", r: /UNIX/ },
+    { s: "BeOS", r: /BeOS/ },
+    { s: "OS/2", r: /OS\/2/ },
     {
-      s: 'Search Bot',
-      r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/
-    }
+      s: "Search Bot",
+      r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/,
+    },
   ];
   for (var id in clientStrings) {
     var cs = clientStrings[id];
@@ -2726,44 +2842,46 @@ const getDeviceDetails = () => {
     }
   }
 
-  var osVersion = '';
+  var osVersion = "";
   if (/Windows/.test(os)) {
     osVersion = /Windows (.*)/.exec(os)[1];
-    os = 'Windows';
+    os = "Windows";
   }
 
   switch (os) {
-    case 'Mac OS X':
+    case "Mac OS X":
       // eslint-disable-next-line no-case-declarations
       const macMatch = /Mac OS X (10|11[._\d]+)/.exec(nAgt);
-      osVersion = macMatch ? macMatch[1] : 'Unknown';
+      osVersion = macMatch ? macMatch[1] : "Unknown";
       break;
 
-    case 'Android':
+    case "Android":
       // eslint-disable-next-line no-case-declarations
       const androidMatch = /Android ([._\d]+)/.exec(nAgt);
-      osVersion = androidMatch ? androidMatch[1] : 'Unknown';
+      osVersion = androidMatch ? androidMatch[1] : "Unknown";
       break;
 
-    case 'iOS':
+    case "iOS":
       // eslint-disable-next-line no-case-declarations
       const iOSMatch = /OS (\d+)_(\d+)_?(\d+)?/.exec(nAgt);
-      osVersion = iOSMatch ? iOSMatch[1] + '.' + iOSMatch[2] + '.' + (iOSMatch[3] || 0) : 'Unknown';
+      osVersion = iOSMatch
+        ? iOSMatch[1] + "." + iOSMatch[2] + "." + (iOSMatch[3] || 0)
+        : "Unknown";
       break;
   }
 
-  var deviceInfo = 'd';
+  var deviceInfo = "d";
   if (/Mobi/.test(navigator.userAgent)) {
-    deviceInfo = 'm';
+    deviceInfo = "m";
   }
 
-  var screenSize = '',
+  var screenSize = "",
     width = 0,
     height = 0;
   if (screen.width) {
-    width = screen.width ? screen.width : '';
-    height = screen.height ? screen.height : '';
-    screenSize += '' + width + ' x ' + height;
+    width = screen.width ? screen.width : "";
+    height = screen.height ? screen.height : "";
+    screenSize += "" + width + " x " + height;
   }
 
   /* eslint-disable compat/compat */
@@ -2780,33 +2898,41 @@ const getDeviceDetails = () => {
     deviceInfo: deviceInfo,
     screenSize: screenSize,
     os: os,
-    osVersion: osVersion
+    osVersion: osVersion,
   };
   /* eslint-enable compat/compat */
 };
 
 const browserDetect = () => {
   const browser = {
-    name: '',
-    version: '',
-    versionSearchString: '',
+    name: "",
+    version: "",
+    versionSearchString: "",
     dataBrowser: [
-      { string: navigator.userAgent, subString: 'Edge', identity: 'MS Edge' },
-      { string: navigator.userAgent, subString: 'Edg', identity: 'Edge' },
-      { string: navigator.userAgent, subString: 'MSIE', identity: 'Explorer' },
-      { string: navigator.userAgent, subString: 'Trident', identity: 'Explorer' },
-      { string: navigator.userAgent, subString: 'Firefox', identity: 'Firefox' },
-      { string: navigator.userAgent, subString: 'Opera', identity: 'Opera' },
-      { string: navigator.userAgent, subString: 'OPR', identity: 'Opera' },
-      { string: navigator.userAgent, subString: 'Chrome', identity: 'Chrome' },
-      { string: navigator.userAgent, subString: 'Safari', identity: 'Safari' }
+      { string: navigator.userAgent, subString: "Edge", identity: "MS Edge" },
+      { string: navigator.userAgent, subString: "Edg", identity: "Edge" },
+      { string: navigator.userAgent, subString: "MSIE", identity: "Explorer" },
+      {
+        string: navigator.userAgent,
+        subString: "Trident",
+        identity: "Explorer",
+      },
+      {
+        string: navigator.userAgent,
+        subString: "Firefox",
+        identity: "Firefox",
+      },
+      { string: navigator.userAgent, subString: "Opera", identity: "Opera" },
+      { string: navigator.userAgent, subString: "OPR", identity: "Opera" },
+      { string: navigator.userAgent, subString: "Chrome", identity: "Chrome" },
+      { string: navigator.userAgent, subString: "Safari", identity: "Safari" },
     ],
     init() {
-      this.name = this.searchString(this.dataBrowser) || 'Other';
+      this.name = this.searchString(this.dataBrowser) || "Other";
       this.version =
         this.searchVersion(navigator.userAgent) ||
         this.searchVersion(navigator.appVersion) ||
-        'Unknown';
+        "Unknown";
     },
     searchString(data) {
       for (let i = 0; i < data.length; i++) {
@@ -2828,13 +2954,15 @@ const browserDetect = () => {
         return null;
       }
 
-      const rvIndex = dataString.indexOf('rv:');
-      if (this.versionSearchString === 'Trident' && rvIndex !== -1) {
+      const rvIndex = dataString.indexOf("rv:");
+      if (this.versionSearchString === "Trident" && rvIndex !== -1) {
         return parseFloat(dataString.substring(rvIndex + 3));
       } else {
-        return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+        return parseFloat(
+          dataString.substring(index + this.versionSearchString.length + 1)
+        );
       }
-    }
+    },
   };
 
   browser.init();
@@ -2854,108 +2982,97 @@ const daysInThisMonth = () => {
  * Handles the transformation and assignment of product-related data
  * into the `window.digitalData.products` array.
  */
-const handleProductsObj = countryCode => {
-  let pageName = window.digitalData.page.pageInfo.pageName.split(':');
+const handleProductsObj = () => {
+  let pageName = window.digitalData.page.pageInfo.pageName.split(":");
   window.digitalData.products = window.digitalData.products || [];
-  const subProduct1 =
-    countryCode === 'hk' && window.digitalData.page.category.primaryCategory === 'na'
-      ? ''
-      : window.digitalData.page.category.primaryCategory;
-  const subProduct2 =
-    countryCode === 'hk' && window.digitalData.page.category.subCategory1 === 'na'
-      ? ''
-      : window.digitalData.page.category.subCategory1;
   window.digitalData.products = [
     {
       productID: window.digitalData.page.productInfo?.productId
         ? window.digitalData.page.productInfo.productId
             .toLowerCase()
             .trim()
-            .replace(/\s+/g, '-')
-        : '',
-      productName: pageName[6]
+            .replace(/\s+/g, "-")
+        : "",
+      productName: pageName[6].toLowerCase().trim().replace(/\s+/g, "-"),
+      subProduct1: window.digitalData.page.category.primaryCategory
         .toLowerCase()
         .trim()
-        .replace(/\s+/g, '-'),
-      subProduct1: subProduct1
+        .replace(/\s+/g, "-"),
+      subProduct2: window.digitalData.page.category.subCategory1
         .toLowerCase()
         .trim()
-        .replace(/\s+/g, '-'),
-      subProduct2: subProduct2
-        .toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-')
-    }
+        .replace(/\s+/g, "-"),
+    },
   ];
 };
 
-export {
-  urlBreakdown,
-  parseUrl,
-  getPageContext,
-  extend,
-  getCurrentCountry,
-  trim,
-  isInternalDomain,
-  getHorizontalPosition,
-  getCookie,
-  getLocalStorageWithExpiry,
-  calcElementLocation,
-  getCurrentEnvironment,
-  getPageUrl,
-  getIntExtCampaignInfo,
-  detectOS,
-  getPosition,
-  getCtaType,
-  handleAnalyticsCTA,
-  calculateRanges,
-  handleCalculatorAnalytics,
-  debounceEvents,
-  isForm,
-  shouldCarryTrackingParams,
-  applyCookieParams,
-  getUrlParamName,
-  bundleParam,
-  isEmpty,
-  convertQueryStringToJsonObject,
-  setLocalStorageWithExpiry,
-  isMobile,
-  handleProductCalculatorSubmit,
-  convertNumbers,
-  initializeSlider,
-  validateInput,
-  calculatePMT,
-  sliderErrorStatus,
-  formatNumbersWithTwoDecimalPlaces,
-  vLookup,
-  sliderFieldErrorStatus,
-  stepFieldErrorStatus,
-  calculateFutureValue,
-  convertMonthsToYearsAndMonths,
-  extendedPMT,
-  calculateNPER,
-  calculateYearMonth,
-  calculateEIR,
-  calculateIRR,
-  calculateDerivative,
-  calculatePresentValue,
-  pmt,
-  getOuterHeight,
-  matchHeight,
-  smoothScroll,
-  validateInputNoSlider,
-  getAssetDomain,
-  triggerPopupViewedTagging,
-  extractQueryParams,
-  getCampaignInfo,
-  getCampaignInfoV1,
-  getCampaignInfoV2,
-  getCtaContext,
-  getQueryParam,
-  getAccordionHeading,
-  handlePersistentBarScroll,
-  getDeviceDetails,
-  browserDetect,
-  daysInThisMonth,
-  handleProductsObj
-};
+// export {
+//   urlBreakdown,
+//   parseUrl,
+//   getPageContext,
+//   extend,
+//   getCurrentCountry,
+//   trim,
+//   isInternalDomain,
+//   getHorizontalPosition,
+//   getCookie,
+//   getLocalStorageWithExpiry,
+//   calcElementLocation,
+//   getCurrentEnvironment,
+//   getPageUrl,
+//   getIntExtCampaignInfo,
+//   detectOS,
+//   getPosition,
+//   getCtaType,
+//   handleAnalyticsCTA,
+//   calculateRanges,
+//   handleCalculatorAnalytics,
+//   debounceEvents,
+//   isForm,
+//   shouldCarryTrackingParams,
+//   applyCookieParams,
+//   getUrlParamName,
+//   bundleParam,
+//   isEmpty,
+//   convertQueryStringToJsonObject,
+//   setLocalStorageWithExpiry,
+//   isMobile,
+//   handleProductCalculatorSubmit,
+//   convertNumbers,
+//   initializeSlider,
+//   validateInput,
+//   calculatePMT,
+//   sliderErrorStatus,
+//   formatNumbersWithTwoDecimalPlaces,
+//   vLookup,
+//   sliderFieldErrorStatus,
+//   stepFieldErrorStatus,
+//   calculateFutureValue,
+//   convertMonthsToYearsAndMonths,
+//   extendedPMT,
+//   calculateNPER,
+//   calculateYearMonth,
+//   calculateEIR,
+//   calculateIRR,
+//   calculateDerivative,
+//   calculatePresentValue,
+//   pmt,
+//   getOuterHeight,
+//   matchHeight,
+//   smoothScroll,
+//   validateInputNoSlider,
+//   getAssetDomain,
+//   triggerPopupViewedTagging,
+//   extractQueryParams,
+//   getCampaignInfo,
+//   getCampaignInfoV1,
+//   getCampaignInfoV2,
+//   getCtaContext,
+//   getQueryParam,
+//   getAccordionHeading,
+//   handlePersistentBarScroll,
+//   getDeviceDetails,
+//   browserDetect,
+//   daysInThisMonth,
+//   handleProductsObj,
+// };
