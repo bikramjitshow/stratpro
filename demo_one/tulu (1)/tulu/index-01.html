@@ -118,7 +118,43 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <style>
+    .load-more-container {
+      text-align: center;
+      padding: 20px;
+    }
 
+    .load-more-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #666;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .refresh-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.5105 6.23242H14.5105V3.23242' stroke='%236B6E73' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.61096 4.11091C5.12168 3.60019 5.728 3.19506 6.39529 2.91866C7.06258 2.64226 7.77778 2.5 8.50005 2.5C9.22232 2.5 9.93752 2.64226 10.6048 2.91866C11.2721 3.19506 11.8784 3.60019 12.3891 4.11091L14.5105 6.23223' stroke='%236B6E73' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5.4895 9.76758H2.4895V12.7676' stroke='%236B6E73' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12.3891 11.8889C11.8784 12.3996 11.2721 12.8047 10.6048 13.0811C9.9375 13.3576 9.2223 13.4998 8.50003 13.4998C7.77776 13.4998 7.06256 13.3576 6.39527 13.0811C5.72798 12.8047 5.12167 12.3996 4.61094 11.8889L2.48962 9.76758' stroke='%236B6E73' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 
   <div class="sc-tulu-camp sc-li-campaign sc-common-calculator-class">
@@ -167,7 +203,9 @@
                           d="M30.351 27.162h2.639v18.474h-2.639V27.162zm0-10.556h2.639v5.278h-2.639v-5.278z"></path>
                       </svg>
                       <span class="sc-tooltip__text">
-                        Last 2 days’ progress may not be reflected
+                        Your miles earned, mission progress tracker and
+                        earning history updates in 2 days' time after
+                        registration and mission completion
                       </span>
                     </span>
                   </p>
@@ -386,11 +424,9 @@
                           Level Up
                         </p>
                         <p class="sc-tulu-camp-product-card__desc">
-                          Read investment fun facts
-                          and market views brought
-                          to you by Chief Investment
-                          Office (CIO), and complete
-                          quizzes.
+                          Read investment fun facts and market views brought
+                          to you by Chief Investment Office (CIO), and
+                          complete quizzes.
                         </p>
                         <div class="sc-tulu-camp-product-card__progress">
                           <p class="sc-tulu-camp-product-card__progress-value">
@@ -594,6 +630,176 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="sc-tulu-camp-earnings__inner">
+                    <div class="sc-tulu-camp-earnings__title">1 Mar 2022</div>
+                    <div class="sc-tulu-camp-earnings__cards">
+                      <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+                        <div class="sc-tulu-camp-earnings__left">
+                          <div class="sc-tulu-camp-earnings__icon">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                                fill="#4CA0F7"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-earnings__text">
+                            <div class="sc-tulu-camp-earnings__head">
+                              Account Opening
+                            </div>
+                            <p class="sc-tulu-camp-earnings__sub-head">FX</p>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__right">
+                          <p>
+                            <strong>1,000</strong>
+                            Miles
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+                        <div class="sc-tulu-camp-earnings__left">
+                          <div class="sc-tulu-camp-earnings__icon">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                                fill="#4CA0F7"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-earnings__text">
+                            <div class="sc-tulu-camp-earnings__head">
+                              Extra bonus
+                            </div>
+                            <p class="sc-tulu-camp-earnings__sub-head">
+                              Online Equities
+                            </p>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__right">
+                          <p>
+                            <strong>2,000</strong>
+                            Miles
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+                        <div class="sc-tulu-camp-earnings__left">
+                          <div class="sc-tulu-camp-earnings__icon">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                                fill="#4CA0F7"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                                fill="#4CA0F7"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-earnings__text">
+                            <div class="sc-tulu-camp-earnings__head">
+                              First Trading
+                            </div>
+                            <p class="sc-tulu-camp-earnings__sub-head">
+                              Online Equities
+                            </p>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__right">
+                          <p>
+                            <strong>1,000</strong>
+                            Miles
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--green">
+                        <div class="sc-tulu-camp-earnings__left">
+                          <div class="sc-tulu-camp-earnings__icon">
+                            <svg width="64" height="64" viewBox="0 0 21 21" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M10.4293 5.25C7.5655 5.25 5.25 7.56228 5.25 10.4072C5.25 10.9148 5.3234 11.4046 5.46017 11.8671C5.85473 11.4563 6.21923 11.0918 6.68593 10.6251L6.68675 10.6243C7.07118 10.2398 7.69445 10.2398 8.07887 10.6243C8.46329 11.0087 8.46329 11.6319 8.07887 12.0164C7.2615 12.8337 6.78226 13.313 5.90117 14.2801C5.69301 14.5086 5.38962 14.6261 5.08187 14.5973C4.77412 14.5685 4.49775 14.3969 4.33555 14.1338C3.66684 13.049 3.28125 11.7716 3.28125 10.4072C3.28125 6.46832 6.48485 3.28125 10.4293 3.28125C11.6239 3.28125 12.7529 3.5742 13.7452 4.09296C14.2269 4.34485 14.4133 4.93961 14.1614 5.42139C13.9095 5.90317 13.3148 6.08953 12.833 5.83764C12.1158 5.46267 11.299 5.25 10.4293 5.25Z"
+                                fill="#3BBD77"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M10.4067 15.5859C13.2704 15.5859 15.5859 13.2737 15.5859 10.4287C15.5859 9.92112 15.5125 9.43132 15.3758 8.96884C14.9812 9.37966 14.6167 9.74416 14.15 10.2109L14.1492 10.2117C13.7648 10.5961 13.1415 10.5961 12.7571 10.2117C12.3726 9.82726 12.3726 9.20399 12.7571 8.81957C13.5744 8.00219 14.0537 7.52292 14.9348 6.55581C15.1429 6.32732 15.4463 6.20988 15.7541 6.23865C16.0618 6.26742 16.3382 6.43907 16.5004 6.70218C17.1691 7.78694 17.5547 9.06437 17.5547 10.4287C17.5547 14.3676 14.3511 17.5547 10.4067 17.5547C9.21202 17.5547 8.08299 17.2617 7.09079 16.743C6.60901 16.4911 6.42264 15.8963 6.67454 15.4145C6.92643 14.9328 7.52118 14.7464 8.00296 14.9983C8.72016 15.3733 9.53698 15.5859 10.4067 15.5859Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-earnings__text">
+                            <div class="sc-tulu-camp-earnings__head">
+                              Trade 3
+                            </div>
+                            <p class="sc-tulu-camp-earnings__sub-head">
+                              Online Equities
+                            </p>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__right">
+                          <p>
+                            <strong>1,000</strong>
+                            Miles
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="load-more-container">
+                    <button class="load-more-btn">
+                      Load More
+                      <span class="refresh-icon"></span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1647,13 +1853,9 @@
                       Terms and Conditions for Trade Up Level Up
                     </h4>
                     <strong>
-                      From now till 31 December
-                      2025, clients who have
-                      clicked to register the
-                      Promotion and completed
-                      designated missions can
-                      enjoy up to 30,000 Asia
-                      Miles rewards.
+                      From now till 31 December 2025, clients who have clicked
+                      to register the Promotion and completed designated
+                      missions can enjoy up to 30,000 Asia Miles rewards.
                     </strong>
                     <ul>
                       <li>
@@ -2452,7 +2654,7 @@
       </div>
     </div>
     <!-- end questionnaire modal -->
-    <div class="sc-tulu-camp-modal sc-get-started sc-get-started-yes hide" id="sc-get-started-yes" role="dialog"
+    <div class="sc-tulu-camp-modal sc-get-started sc-get-started-yes" id="sc-get-started-yes" role="dialog"
       aria-labelledby="sc-get-started-yes" aria-hidden="true">
       <div class="sc-tulu-camp-modal__dialog">
         <div class="sc-tulu-camp-modal__content">
@@ -2560,7 +2762,7 @@
         </div>
       </div>
     </div>
-    <div class="sc-tulu-camp-modal sc-get-started sc-get-started-no hide" id="sc-get-started-no" role="dialog"
+    <div class="sc-tulu-camp-modal sc-get-started sc-get-started-no" id="sc-get-started-no" role="dialog"
       aria-labelledby="sc-get-started-no" aria-hidden="true">
       <div class="sc-tulu-camp-modal__dialog">
         <div class="sc-tulu-camp-modal__content">
@@ -2857,36 +3059,37 @@
                       <source src="video.webm" type="video/webm">
                       Your browser does not support the video tag.
                     </video> -->
-
                 </div>
                 <h4 class="sc-tulu-camp-doc__title">
                   2 ways to make sure you are set to earn miles
                 </h4>
                 <ul>
+                  <li>Apply for Standard Chartered Cathay Mastercard</li>
                   <li>
-                    Apply for Standard Chartered Cathay Mastercard
-                  </li>
-                  <li>
-                    Update your Cathay membership account via Standard Chartered Online Banking (website version):
+                    Update your Cathay membership account via Standard
+                    Chartered Online Banking (website version):
                   </li>
                 </ul>
                 <p>
-                  Step 1: Upon login, click “Update Cathay Membership Information” under Update
-                  Client Information to update and read the Client Declaration.
+                  Step 1: Upon login, click “Update Cathay Membership
+                  Information” under Update Client Information to update and
+                  read the Client Declaration.
                 </p>
                 <p>
                   Step 2: Review the filled information and click “Confirm”
                 </p>
                 <p>
-                  Step 3: Authenticate your update via SC mobile. Tap on “Approve” and enter your SC Mobile Key. Your
-                  Cathay Membership information will be successfully updated.
+                  Step 3: Authenticate your update via SC mobile. Tap on
+                  “Approve” and enter your SC Mobile Key. Your Cathay
+                  Membership information will be successfully updated.
                 </p>
                 <a href="#null" title="Click here for detailed step-by-step
                 instructions.">
                   <u>Click here</u> for detailed step-by-step instructions.
                 </a>
                 <p>
-                  Follow the steps here to add your Asia Miles Number to your profile.
+                  Follow the steps here to add your Asia Miles Number to your
+                  profile.
                 </p>
               </article>
               <div class="sc-tulu-camp-modal__footer">
