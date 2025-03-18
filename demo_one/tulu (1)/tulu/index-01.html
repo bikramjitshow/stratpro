@@ -119,8 +119,26 @@
 
   <style>
     .load-more-container {
+      position: relative;
       text-align: center;
       padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .load-more-container::after {
+      content: "";
+      width: 90%;
+      height: 1px;
+      background-color: #EEEEEE;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      border-radius: 1px;
     }
 
     .load-more-btn {
@@ -130,10 +148,11 @@
       padding: 10px 20px;
       font-size: 16px;
       color: #666;
-      background: transparent;
+      background: #f8f8f8;
       border: none;
       cursor: pointer;
       position: relative;
+      z-index: 1;
     }
 
     .refresh-icon {
