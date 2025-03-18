@@ -1,0 +1,65 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define heading-inner; weak */
+.sc-heading-inner {
+  margin-bottom: $spacer-4;
+  .sc-title {
+    margin-bottom: $spacer-0;
+    &--inner {
+      color: $color-dark-gray-1;
+      font-size: $font-size-mlg;
+    }
+    ~ .sc-description {
+      margin-top: $spacer-3;
+    }
+    &--bold {
+      font-weight: $font-weight-bold;
+    }
+  }
+  &__icon {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sc-description {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    max-width: 900px;
+  }
+  strong {
+    font-weight: $font-weight-semi-bold;
+  }
+}
+
+@include desktop {
+  .sc-heading-inner {
+    margin-bottom: $spacer-5;
+    .sc-title {
+      &--inner {
+        font-size: $font-size-30;
+      }
+    }
+    .sc-description {
+      font-size: $font-size-lg;
+    }
+  }
+}
+/** @end */
+/** @define title; weak */
+.sc-title {
+  &--center {
+    .sc-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+/** @end */

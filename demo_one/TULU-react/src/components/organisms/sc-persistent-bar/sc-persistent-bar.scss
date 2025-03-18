@@ -1,0 +1,131 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define persistent-bar; weak */
+.sc-persistent-bar {
+  background-color: $color-dark-gray-5;
+  padding: $spacer-3 $spacer-0 $spacer-2;
+  position: fixed;
+  bottom: -400px !important; // !important is added to overide the inline css adding from js
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  transition: bottom 0.3s ease-in-out;
+  box-shadow: 0 2px 14px 0 rgba(220, 220, 220, 0.5);
+  &--center-aligned {
+    .sc-persistent-bar {
+      &__content {
+        margin-right: 0;
+      }
+    }
+  }
+  .sc-content-wrapper {
+    display: block;
+    text-align: center;
+  }
+  &--show {
+    bottom: 0 !important; // !important is added to overide the inline css adding from js
+  }
+
+  &--blue {
+    background-color: $color-dark-blue-6;
+  }
+  &__content {
+    margin-right: auto;
+  }
+  &__main-content {
+    color: $color-white;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    padding-right: $spacer-2;
+  }
+  &__btn-content {
+    font-size: $font-size-sm;
+    color: $color-light-gray-7;
+  }
+  .sc-inline-buttons {
+    margin-top: $spacer-2;
+    justify-content: center;
+    &:only-child {
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors  */
+      .sc-inline-buttons__item:only-child {
+        .sc-btn {
+          width: 100%;
+        }
+      }
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+    }
+
+    &__item {
+      width: 100%;
+      display: block;
+    }
+  }
+  &--white {
+    background-color: $color-white;
+    box-shadow: 0 2px 14px 0 rgba(102, 102, 102, 0.5);
+    .sc-persistent-bar {
+      &__content {
+        /* stylelint-disable max-nesting-depth */
+        * {
+          color: $color-text;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+    .sc-btn {
+      color: $color-white;
+      &--secondary {
+        border-color: $color-text;
+        color: $color-text;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-persistent-bar {
+    padding: $spacer-2 $spacer-0;
+    &__main-content {
+      font-size: $font-size-lg;
+      padding-right: $spacer-5;
+    }
+    &__btn-content {
+      font-size: $font-size-md;
+    }
+    .sc-content-wrapper {
+      display: flex;
+      flex-direction: row;
+      text-align: left;
+      align-items: center;
+      justify-content: center;
+    }
+    .sc-inline-buttons {
+      margin-top: $spacer-0;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors  */
+
+      &__item {
+        margin-bottom: $spacer-0;
+      }
+      &:only-child {
+        .sc-inline-buttons__item:only-child {
+          .sc-btn {
+            width: 540px;
+          }
+        }
+      }
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+    }
+  }
+}
+
+/** @end */

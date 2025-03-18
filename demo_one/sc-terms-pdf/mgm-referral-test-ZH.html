@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+
+<body class="page-template-default page page-id-889040" data-catch="show-overlay"
+  data-allowed-params="https://av.sc.com/hk/data/whitelist-parameter/allowable/all.json" data-page-ga="1">
+  <style>
+    .sc-mgm-refer-tc .only-desktop,
+    .sc-mgm-refer-tc .only-mobile,
+    .sc-products-tile__scroll-step .only-desktop,
+    .sc-products-tile__scroll-step .only-mobile {
+      pointer-events: none;
+    }
+
+    .sc-products-tile-terms-modal {
+      --tile-padding: 16px;
+      background-color: #f8f8f8;
+      padding: var(--tile-padding);
+      margin: calc(var(--tile-padding) * -1);
+      width: calc(100% + var(--tile-padding) * 2);
+      min-height: auto;
+    }
+
+    .sc-products-tile-terms-modal strong {
+      font-weight: 600;
+    }
+
+    .sc-products-tile-terms-modal__title {
+      font-size: 18px;
+      text-align: center;
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .sc-products-tile-terms-modal__terms-title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .sc-products-tile-terms-modal__content {
+      margin-bottom: 16px;
+    }
+
+    .sc-products-tile-terms-modal__content~.sc-products-tile-terms-modal__content {
+      margin-top: 16px;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn,
+    .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+      position: sticky;
+      bottom: calc(var(--tile-padding) * -1);
+      width: calc(100% + var(--tile-padding) * 2);
+      margin: var(--tile-padding) calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1);
+      left: 0;
+      padding: 20px;
+      background-color: #ffffff;
+      z-index: 4;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .sc-btn,
+    .sc-products-tile-terms-modal .sc-products-tile__input-btn .sc-btn {
+      width: 100%;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      gap: 0;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
+      width: 100%;
+      margin-right: 8px;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li:last-child {
+      margin-right: 0;
+    }
+
+    .sc-products-tile-terms-modal .sc-products-tile__download-button {
+      color: #2772c7;
+      border: none;
+    }
+
+    .sc-products-tile-terms-modal .buttons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      row-gap: 0;
+      -webkit-column-gap: 40px;
+      -moz-column-gap: 40px;
+      column-gap: 40px;
+    }
+
+    .sc-products-tile-terms-modal .buttons li {
+      width: auto;
+    }
+
+    .sc-products-tile-terms-modal .buttons .sc-btn {
+      min-width: 100px;
+      margin: 0;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table {
+      margin: 16px 0;
+      border: none;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table tr:first-child td {
+      background-color: #ffffff;
+      color: inherit;
+      font-weight: 300;
+      font-size: 14px;
+      text-transform: none;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table tr td,
+    .sc-products-tile-terms-modal .sc-rte table tr th {
+      line-height: inherit;
+      text-transform: none;
+      padding: 8px;
+      word-break: normal;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte table tr td:last-of-type,
+    .sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
+      border-right: 1px solid #eee;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte p {
+      margin-bottom: 16px;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte ol {
+      padding-left: 8px;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte ol li {
+      list-style-type: decimal;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte ul {
+      padding-left: 8px;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte ul li {
+      list-style-type: upper-latin;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte ul li ol li {
+      list-style-type: decimal;
+    }
+
+    .sc-products-tile-terms-modal .sc-rte ul li ol li ol li {
+      list-style-type: lower-latin;
+    }
+
+    .sc-bottom-btn .sc-mgm-refer-tc.sc-btn {
+      margin: 0;
+    }
+
+    .c-modal .m-text-content .sc-products-tile-terms-modal {
+      margin-bottom: -16px;
+    }
+
+    .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__btn,
+    .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+      margin-bottom: -16px;
+    }
+
+    .c-modal .m-text-content .sc-products-tile-terms-modal .sc-tag {
+      margin-bottom: 8px;
+    }
+
+    .sc-info-tile {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      width: 100%;
+      border: 1px solid #38d200;
+      border-radius: 8px;
+      background-color: #e0ffdb;
+      padding: 12px 10px;
+      margin-bottom: 16px;
+    }
+
+    .sc-info-tile--green {
+      border: 1px solid #38d200;
+      background-color: #e0ffdb;
+    }
+
+    .sc-info-tile__icon-wrap {
+      margin-right: 4px;
+    }
+
+    .sc-info-tile__icon-wrap img,
+    .sc-info-tile__icon-wrap svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .sc-info-tile__title {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+
+    .sc-info-tile__desc {
+      font-size: 12px;
+      font-weight: 400;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+
+    .sc-info-tile__desc:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 681px) {
+      .sc-products-tile-terms-modal {
+        --tile-padding: 24px;
+        min-height: 250px;
+      }
+
+      .sc-products-tile-terms-modal .buttons {
+        gap: 20px;
+      }
+
+      .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        gap: 16px;
+      }
+
+      .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
+        margin-right: 0;
+      }
+
+      .c-modal>.wrapper[data-size="theme"] .m-text-content {
+        border-radius: 0;
+      }
+
+      .c-modal .m-text-content .sc-products-tile-terms-modal {
+        margin-bottom: -24px;
+      }
+
+      .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__btn,
+      .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+        margin-bottom: -24px;
+      }
+    }
+  </style>
+  <div class="sc-products-tile-terms-modal">
+    <h3 class="sc-products-tile-terms-modal__title">條款及細則</h3>
+    <!-- Terms update info tile hide default -->
+    <div class="sc-info-tile sc-info-tile--green hide">
+      <div class="sc-info-tile__icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256"
+          width="64px" height="64px" fill-rule="nonzero">
+          <g fill="#35C86A" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+            font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            <g transform="translate(256,256) rotate(180) scale(4,4)">
+              <path
+                d="M32,10c12.15,0 22,9.85 22,22c0,12.15 -9.85,22 -22,22c-12.15,0 -22,-9.85 -22,-22c0,-12.15 9.85,-22 22,-22zM34,42c0,-0.601 0,-9.399 0,-10c0,-1.104 -0.895,-2 -2,-2c-1.105,0 -2,0.896 -2,2c0,0.601 0,9.399 0,10c0,1.104 0.895,2 2,2c1.105,0 2,-0.896 2,-2zM32,27c1.657,0 3,-1.343 3,-3c0,-1.657 -1.343,-3 -3,-3c-1.657,0 -3,1.343 -3,3c0,1.657 1.343,3 3,3z">
+              </path>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="sc-info-tile__content">
+        <h3 class="sc-info-tile__title">條款及細則已更新。</h3>
+        <p class="sc-info-tile__desc">在繼續之前請再次同意。</p>
+      </div>
+    </div>
+    <!-- END Terms update info tile hide default  -->
+    <div class="sc-products-tile-terms-modal__content sc-rte">
+      <ul>
+        <li>
+          <strong>SC Referral Club 之一般條款及細則</strong>
+          <ol>
+            <li>
+              推廣期為
+              <strong><u>2024年10月1日至2025年1月1日</u></strong>, 包括首尾兩天(<strong>「推廣期」</strong>)。
+            </li>
+            <li>
+              <strong>SC Referral Club</strong> 包括以下:-
+              <ol>
+                <li>優先私人理財SC Referral Club、</li>
+                <li>「優先理財」SC Referral Club、</li>
+                <li>「Premium理財」SC Referral Club、</li>
+                <li>Easy Banking SC Referral Club、</li>
+                <li>「出糧戶口」SC Referral Club、</li>
+                <li>「高息馬拉松活期存款」戶口SC Referral Club、</li>
+                <li>渣打國泰萬事達卡 SC Referral Club、</li>
+                <li>Smart信用卡 SC Referral Club</li>
+                <li>股票戶口SC Referral Club</li>
+              </ol>
+              附加條款及細則適用於每個SC Referral Club
+              計劃，並須符合每個計劃下之附加條款及細則。每個SC Referral
+              Club的附加條款
+              及細則應與本一般條款及細則以及適用於渣打銀行（香港）有限公司（「本行」）銀行關係的任何現行條款一起閱讀。
+            </li>
+            <li>
+              如欲參與此SC Referral
+              Club，推薦客戶必須為本行之現有客戶(<strong>「推薦客戶」</strong>)
+              ，及至少持有一個有效的儲蓄戶口(只限主戶口持
+              有人)，或一張由本行發行及有效之信用卡（只限信用卡主卡持卡人)。中小企業理財客戶、私人銀行客戶，及本行職員均不能於
+              此SC Referral Club中成為推薦客戶。
+            </li>
+            <li>
+              推薦客戶如欲獲取
+              推薦優惠，推薦客戶必須於推廣期內成功推薦個人(<strong>「被推薦客戶」</strong>)開立新服務，並符合以下所有要求(<strong>「成功推薦」</strong>):
+              <ol>
+                <li>
+                  推薦客戶須在推廣期內透過SC Mobile
+                  App生成包含推薦碼（<strong>「推薦碼」</strong>）的推薦連結並轉發予被推薦客戶；
+                </li>
+                <li>
+                  b.
+                  被推薦客戶須在推廣期內以該推薦碼連結向本行提交至少任何一項新服務之申請；及
+                </li>
+                <li>
+                  c. 符合以下各部分所列的相關SC Referral
+                  Club之附加條款及細則。
+                </li>
+              </ol>
+            </li>
+            <li>
+              <strong>「推薦優惠」</strong>
+              指推薦客戶在附合相關條款和條件中的相關要求後，在各SC Referral
+              Club中可獲取的優惠，包括優先私人理財推薦
+              優惠、「優先理財」推薦優惠、「 Premium理財」推薦優惠、Easy
+              Banking推薦優惠、「出糧户口」推薦優惠、高息馬拉松活
+              期存款推薦優惠、國泰萬事達卡推薦優惠、Smart信用卡推薦優惠及股票戶口推薦優惠。
+            </li>
+            <li>
+              <strong>「被推薦客戶優惠」</strong>
+              指被推薦客戶在渣打國泰萬事達卡 SC Referral 和Smart 信用卡SC
+              Referral Club中附合本條款及細則相關
+              要求後有權獲得的優惠，包括渣打國泰萬事達卡推薦客戶優惠以及Smart
+              信用卡被推薦客戶優惠。
+            </li>
+            <li>
+              <strong>「新服務」</strong>
+              指於本行新開立之優先私人理財、「優先理財」、「Premium
+              理財」、Easy Banking、「出糧户口」、渣打國泰萬 事達卡
+              、渣打國泰萬事達卡– 優先理財、渣打國泰萬事達卡–
+              優先私人理財、Smart 信用卡、「高息馬拉松活期存款」戶口或股
+              票戶口。
+            </li>
+            <li>
+              推薦客戶於SC Referral
+              Club每次成功推薦，將根據推薦客戶於本行持有的產品，獲得現金回贈或「亞洲萬里通」里數作為推薦
+              優惠。推薦客戶可獲得的推薦優惠的詳細資訊（包括獎賞日期）在以下各節的附加條款和條件中詳細說明。
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong>推薦客戶持有的戶口或產品</strong>
+                    </th>
+                    <th scope="col">
+                      <strong>推薦優惠獎賞</strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>存款戶口 (個人獨立戶口或聯名戶口的主户口持有人)</td>
+                    <td>現金回贈至存款戶口</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      存款戶口(個人獨立戶口或聯名戶口的主户口持有人)和
+                      任何渣打信用卡#
+                    </td>
+                    <td>現金回贈至存款戶口</td>
+                  </tr>
+                  <tr>
+                    <td>渣打國泰萬事達卡 ^</td>
+                    <td>「亞洲萬里通」里數 / 現金回贈至360°全面賞賬戶*</td>
+                  </tr>
+                  <tr>
+                    <td>一張或以上渣打信用卡# ^</td>
+                    <td>現金回贈至360°全面賞賬 戶</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+              *出糧戶口推薦優惠和高息馬拉松活期存款推薦優惠的獎賞將會以現金回贈
+              (CashBack) 至360°全面賞賬戶。渣打國泰萬事達卡 及 Smart
+              信用卡推薦優惠「亞洲萬里通」里數回贈至「亞洲萬里通」賬戶。
+              <br />
+              <br />
+              ^ 若推薦客戶僅持有渣打信用卡作為附屬卡，則無法獲得任何推薦優惠。
+              <br />
+              <br />
+              #
+              若推薦客戶持有多於一張渣打信用卡，本行將擁有決定權選擇推薦客戶持有的其中一張渣打信用卡為主卡持卡人，並以最新開戶日
+              期之信用卡入賬 。
+            </li>
+            <li>
+              <strong>「渣打信用卡」</strong>
+              指由本行發行的渣打信用卡、渣打聯營 卡、MANHATTAN 信用卡及
+              MANHATTAN 聯營 卡，包括附屬卡、渣 打商務卡及渣打公司卡。
+            </li>
+            <li>
+              本行將現金回贈存入相關(推薦客戶推薦優惠)推薦客戶或(被推薦客戶推薦優惠)
+              被推薦客戶以個人名義於本行持有之港元存款戶
+              口(「高息馬拉松活期存款」戶口、Wealth
+              Saver戶口、MortgageOne®增值按揭戶口及「置慳息」往來存款戶口除外):
+              <ol>
+                <li>綜合存款戶口之附屬戶口；</li>
+                <li>支票戶口；</li>
+                <li>月結單儲蓄戶口；</li>
+                <li>存摺儲蓄戶口</li>
+              </ol>
+              若合資格推薦客戶並未以個人名義持有上述有效之港元存款戶口，本行將現金回贈根據上述次序存入合資格推薦客戶或被推薦客
+              戶戶口，或共同簽署的聯名戶口之基本戶口持有人持有之持有港元存款戶口存入現金回贈。若推薦客戶或被推薦客戶沒持有有效
+              港元聯名存款賬
+              戶，本行將按上述順序將現金回贈存入推薦客戶或受推薦客戶作為第二賬
+              戶持有人的港元聯名存款賬 戶。
+              <br /><br />
+              若合資格推薦客戶並無上述有效之港元存款戶口，本行將根據以上次序存入合資格推薦客戶之美元存款戶口。
+              若合資格推薦客戶擁有多於一個同一類別之戶口，將由本行全權酌情決定任何一個最近期開立之戶口存入現金回贈。兌換的匯率
+              由銀行決定。若推薦客戶或被推薦客戶在現金回贈存入當日沒有任何上述賬戶，則本行將全權決定沒收現金回贈，並且不會透過
+              其下方式支付給推薦客戶或被推薦客戶任何其他方式。
+            </li>
+            <li>
+              在履行現金回贈方面，現金回贈將顯示在360°全面賞獎勵兌換平台上，並且不會自動記入推薦客戶或被推薦客戶的信用卡賬
+              戶，
+              但可以自由兌換現金返還在平台的線上目錄下。現金回贈將以港幣為單位，每個賬戶兌換現金回贈的最低門檻為港幣
+              50元。詳 情請參閱積分兌換條款及細則中「現金回贈兌換」部分。
+            </li>
+            <li>
+              就履行「亞洲萬里通」里數回贈，推薦客戶(推薦客戶推薦優惠)或被推薦客戶(被推薦客戶推薦優惠)必須在銀行記錄中擁有有效
+              的國泰會員賬
+              戶。本行將提供推薦客戶及被推薦客戶之國泰會員姓氏、名字、會員號碼及所獲贈之「亞洲萬里通」里數至亞洲
+              萬里通有限公司，作存入推薦禮遇之里數之用。於收取本行提供之資料後，亞洲萬里通有限公司將於下文附加條款及細則所述的
+              相關履行日期或之前，將所賺取的里數存入推薦客戶或被推薦客戶的國泰會員賬戶
+              。
+            </li>
+            <li>
+              推薦客戶和被推薦客戶均確認，所獲的「亞洲萬里通」里數獎賞將根據亞洲萬里通有限公司的銀行記錄存入其渣打國泰萬事達卡
+              關聯的國泰會員賬
+              戶。本行將盡最大努力向亞洲萬里通有限公司提供所需資料，以達成此目的；然而，本行不保證所賺取的
+              「亞洲萬里通」里數將由亞洲萬里通有限公司準確存入國泰航空會員賬
+              戶，亦不會因任何原因而未能或延遲將「亞洲萬里通」
+              里數存入推薦客戶或被推薦客戶的國泰航空會員賬
+              戶。本行不承擔與「亞洲萬里通」里數有關的責任，包括但不限於有效期限、
+              使用及兌換。有關累積「亞洲萬里通」里數及相關條款及細則的查詢，請聯絡亞洲萬里通有限公司及/或參閱亞洲萬里通有限公
+              司網站cathaypacific.com
+            </li>
+            <li>
+              里數兌換及/或使用須受有關之條款及細則約束，詳情請參閱cathaypacific.com。本行毋須
+              通知閣下亞洲萬里通有限公司就有關里數作出的任何變動或最新消息。推薦客戶及被推薦客戶
+              明白及接納本行並非所提供國泰賬戶或里數之供應商。因此有關國泰賬戶或各項里數的各方面（
+              包括但不限於供應量、「亞洲
+              萬里通」賬戶及里數之陳述、任何虛假商品說明或具有誤導性、含糊、遺漏、不明確或供應商之僱員、負責人或代理人之不良營
+              商手法），本行毋須負上任何責任。國泰賬戶、里數及兌換禮品之使用須受有關供應商所訂定之條款及細則約束。
+            </li>
+            <li>
+              推薦客戶和被推薦客戶應確保提供給銀行的資訊（包括推薦代碼）的準確性和有效性。一旦提交，記錄將無法修改。
+            </li>
+            <li>
+              若推薦客戶未能(a)完成上述條款第4項所列之要求，(b)及/或推薦客戶之推薦號碼未能成功紀錄到本行系統內，
+              (c)所提供的資訊
+              無法在銀行系統中成功核對或不正確，(d)或因任何原因推薦號碼與本行紀錄不符，推薦客戶則不合資格並不可享有任何網上推
+              薦獎賞。
+            </li>
+            <li>
+              當推薦獎賞存入推薦客戶或被推薦客戶所述有關戶口時，(i)推薦客戶必須為本行現有客戶並維持有效之銀行及/或信用卡服務，
+              及(ii)被推薦客戶所選用之新服務及相關銀行產品於各網上客戶推薦計劃之附加條款及細則以及與本行的銀行服務必須有效；否
+              則，有關獎賞將被取消而不予通知，本行並不會從任何其他途徑把網上推薦獎賞回贈給予推薦客戶。
+            </li>
+            <li>
+              如果推廣期間內有多於一 (1)
+              位推薦客戶向銀行推薦同一被推薦客戶，則只有一 (1)
+              位推薦客戶有資格獲得推薦優惠。只有被推
+              薦客戶使用其推薦代碼來申請新服務的推薦客戶才有資格獲得推薦優惠。如有任何爭議，銀行擁有唯一及絕對酌情權決定哪位推
+              薦客戶有資格獲得該推薦優惠。
+            </li>
+            <li>
+              推薦客戶不能推薦自己成為被推薦客戶。推薦客戶與被推薦客戶不可互相推薦開立任何新服務（已滿足相關資格的出糧户口
+              SC Referral Club、MSA SC Referral Club和渣打國泰 萬事達卡 SC
+              Referral Club 除外）。已被推薦成功的被推薦客戶不能被同一
+              推薦客戶重複推薦相同產品。
+            </li>
+            <li>
+              本條款和條件中所列的每項新服務均受相應的資格、申請流程及產品的條款及細則和其他銀行相關協議約束。
+            </li>
+            <li>
+              本行擁有唯一且最終決定權來確定本條款和條件中規定的每項新服務的資格要求，並批准推薦客戶對任何新服務的任何申請。
+            </li>
+            <li>
+              若推薦客戶可享有本行的推薦優惠及其他優惠，本行保留最終決定權向推薦客戶授予其中一項或部分推薦優惠或其他優惠的權利。
+              若被推薦客戶有權享有被推薦客戶優惠以及銀行提供的其他優惠，銀行保留決定權向被推薦客戶授予其中一項或部分被推薦客戶
+              優惠或其他優惠的權利。
+            </li>
+            <li>
+              除非另有註明，所有網上推薦獎賞(包括推薦客戶及被推薦客戶獎賞)不可轉讓他人、退回、轉換或兌換為現金或積分。
+            </li>
+            <li>
+              本行保留隨時更改、更新或終止任何SC Referral
+              Club，以及修訂所述任何條款及細則之權利，而不予事先通知。推薦客戶及被
+              推薦客戶之SC Referral
+              Club獎賞資格，包括但不限於被推薦客戶於本行之總結存之計算，及SC
+              Referral Club獎賞之計算方法，
+              由本行全權決定，並以本行最近期紀錄為準。
+            </li>
+            <li>
+              推薦客戶及被推薦客戶可獲得推薦優惠的資格，包括但不限於成功推薦總數、被推薦客戶在銀行的總餘額以及推薦優惠的計算，
+              均由銀行根據銀行最新記錄確定。如有任何爭議，包括對本條款和條件的了解，銀行的決定和記錄應為最終決定並具有約束力。
+              如有任何爭議，包括條款及細則之傳譯，本行保留最終決定權。
+            </li>
+            <li>如有任何爭議，本行保留最終決定權及記錄，並具約束力。</li>
+            <li>中英文版之內容如有任何歧義，在任何情況下概以英文版為準。</li>
+          </ol>
+        </li>
+        <li>
+          <strong>優先私人理財 SC Referral Club 之附加條款及細則（「優先私人理財 SC
+            Referral Club」)</strong><br />
+          <strong>重要提示:</strong> T請同時細閱上述 A 部分之 SC Referral Club
+          之一般條款及細則，優先私人理財全新客戶新資金增長獎賞–現金回贈/里數
+          之條款及細則，及優先私人理財推廣之條款及細則。
+
+          <ol>
+            <li>
+              推薦客戶欲參與
+              <strong>優先私人理財 SC Referral Club</strong> 被推薦客戶：
+              <ol>
+                <li>
+                  必須於開立優先私人理財當日前 12
+                  個月內未曾持有本行或由本行負責分銷之任何銀行產品或服務。渣打信用卡持有人將不
+                  被視為本行所發行之產品或服務的持有人；及
+                </li>
+                <li>
+                  為所申請優先私人理財之個人戶口或聯名戶口之基本戶口持有人
+                </li>
+              </ol>
+            </li>
+            <li>
+              若推薦客戶合資格獲享現金回贈，本行將於 2025 年 6 月 30
+              日或以前將現金回贈存入推薦客戶之存款戶口或 360°全面賞帳戶。
+              若推薦客戶合資格獲贈「亞洲萬里通」里數，亞洲萬里通有限公司將於
+              2025 年 6 月 30 日後 4 至 6 星期內將「亞洲萬里通」里
+              數存入推薦客戶之相關國泰會員賬戶内。
+            </li>
+            <li>
+              符合以下所有要求之前提下，推薦會被視爲「成功推薦」。現金回贈或「亞洲萬里通」里數將根據下表所列給予推薦客戶
+              (<strong>「優先私人理財推薦獎賞」</strong>):
+              <ol>
+                <li>符合所有上述 A 部分之有關要求；及</li>
+                <li>
+                  被推薦客戶須於推廣期内透過指定申請連結以推薦碼成功完成被推薦客戶登記表格（「被推薦客戶登記表格」）
+                  ；及
+                </li>
+                <li>
+                  被推薦客戶須成功提交被推薦客戶登記表格後，於推廣期內到本行任何一間分行完成有關開戶及開立優先私人理財手續，
+                  並必須使用於被推薦客戶登記表格所登記之同一手提電話號碼開戶；及
+                </li>
+                <li>
+                  被推薦客戶須於開立優先私人理財時持有或開立港元儲蓄戶口及港元支票戶口(或任何外幣儲蓄戶口)；及
+                </li>
+                <li>
+                  被推薦客戶須符合優先私人理財全新客戶新資金增長獎賞–現金回贈/里數之條款及細則所列明之所有要求並獲享全新客戶
+                  新資金增長獎賞
+                </li>
+              </ol>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong>推廣季度內總成功推薦 客戶數</strong>
+                    </th>
+                    <th scope="col">
+                      <strong>每位成功推薦之現金回贈</strong>
+                    </th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong>每位成功推薦之「亞洲萬里通」里數</strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 位至 10 位</td>
+                    <td>HK$10,000</td>
+                    <td>或</td>
+                    <td>100,000「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              於推廣期內，每位推薦客戶最多只可獲贈優先私人理財推薦獎賞 10 次。
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong>
+            綜合理財服務 SC Referral Club — 「優先理財」、「Premium 理財」及
+            Easy Banking 之附加條款及細則
+          </strong>
+          <br /><br />
+          <strong> 重要提示: </strong> 請同時細閱上述 A
+          部份之一般條款及細則，<sup>sc.com/hk/pmbtnc</sup>
+          上之「優先理財」推廣之條款及細則，<sup>sc.com/hk/pmbtnc</sup> 上之
+          「Premium 理財」推廣之條款及細則及
+          <sup>sc.com/hk/pmbtnc</sup> 上之新客戶開立 Easy Banking
+          之開戶獎賞之條款及細則。
+          <ol>
+            <li>
+              推薦客戶如欲參與此
+              <strong>SC Referral Club — 「優先理財」、「Premium 理財」及 Easy
+                Banking，</strong>
+              被推薦客戶必須：
+              <ol>
+                <li>
+                  於開立「優先理財」、「Premium 理財」或 Easy Banking 當日前
+                  12 個月內未曾持有本行或由本行負責分銷之任何銀行產
+                  品或服務。渣打信用卡持有人將不被視為本行所發行之產品或服務的持有人；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  為所申請「優先理財」、「Premium 理財」或 Easy Banking
+                  之個人戶口或聯名戶口之基本戶口持有人。
+                </li>
+              </ol>
+            </li>
+            <li>
+              如推薦客戶獲享現金回贈，本行將於 2025 年 6 月 30
+              日或之前將現金回贈存入推薦客戶之存款戶口或
+              360°全面賞帳戶。如推薦
+              客戶獲享「亞洲萬里通」里數，亞洲萬里通有限公司將於 2025 年 6 月
+              30 日後 4 至 6 星期內將 「亞洲萬里通」里數存入推薦客
+              戶之相關國泰會員賬戶內。
+            </li>
+            <br />
+            <strong>
+              SC Referral Club — 「優先理財」（「優先理財」SC Referral Club）
+            </strong>
+            <br />
+            <li>
+              推薦客戶欲於「優先理財」SC Referral Club
+              中享有下表所列之現金回贈或「亞洲萬里通」里數（「優先理財」推薦優惠），
+              推薦客戶及被推薦客戶須符合以下要求以視為「成功推薦」：
+              <ol>
+                <li>符合以上 A 部分訂下之所有條件； <strong>及</strong></li>
+                <li>
+                  被推薦客戶須於推廣期內成功經指定申請連結以推薦碼完成被推薦客戶登記表格（「被推薦客戶登記表格」）；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於推廣期內成功提交被推薦客戶登記表格，並使用於被推薦客戶登記表格所登記之同一手提電話號碼經本行之
+                  分行或 SC Mobile 開立戶口及開立「優先理財」；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須開立「優先理財」時持有或開立港元儲蓄戶口及港元支票戶口(或任何外幣儲蓄戶口)
+                  ； <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須符合「優先理財」推廣之條款及細則所列明之所有要求並獲享全新客戶新資金增長獎賞。
+                </li>
+              </ol>
+              <table>
+
+                <head>
+                  <tr>
+                    <td>
+                      <strong> 推廣期內總成功推薦客戶數 </strong>
+                    </td>
+                    <td>
+                      <strong> 每位成功推薦之現金回贈 </strong>
+                    </td>
+                    <td></td>
+                    <td>
+                      <strong> 每位成功推薦之「亞洲萬里通」里數 </strong>
+                    </td>
+                  </tr>
+                </head>
+                <tbody>
+                  <tr>
+                    <td>1 位至 10 位</td>
+                    <td>HK$1,000</td>
+                    <td>或</td>
+                    <td>10,000 「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              如被推薦客戶符合此部分條款第 3
+              項要求，推薦客戶可獲享額外獎賞（<strong>「額外獎賞」</strong>）。額外獎賞將根據下表所列給予推薦客戶：
+              <br /><br />
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong> 推廣期內總成功推薦客戶數 </strong>
+                    </th>
+                    <th scope="col">
+                      <strong> 每位成功推薦之現金回贈 </strong>
+                    </th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong> 每位成功推薦之「亞洲萬里通」里數 </strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 位至 10 位</td>
+                    <td>HK$500</td>
+                    <td>或</td>
+                    <td>5,000 「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              被推薦客戶成功開立「優先理財」後，如於季度內之每日平均總結餘低於
+              HK$1,000,000，被推薦客戶須繳付 HK$900 作當季度
+              之服務費。有關詳情，請參閱服務收費冊子及銀行產品條款及細則。相關資料可於分行索取或於
+              下載。
+            </li>
+            <li>
+              推廣期內每位合資格推薦客戶於「優先理財」SC Referral Club
+              內最多只可獲贈「優先理財」推薦優惠及額外獎賞 10 次。
+            </li>
+            <br /><br />
+            <strong>
+              SC Referral Club — 「Premium 理財」（「Premium 理財」SC Referral
+              Club） </strong><br /><br />
+            <li>
+              推薦客戶欲於「Premium 理財」SC Referral Club
+              中享有下表所列之現金回贈或「亞洲萬里通」里數（「Premium
+              理財」推薦
+              優惠），推薦客戶及被推薦客戶須符合以下要求以視為「成功推薦」：
+              <ol>
+                <li>符合以上 A 部分訂下之所有條件； <strong>及</strong></li>
+                <li>
+                  被推薦客戶須於推廣期內成功經指定申請連結以推薦碼完成被推薦客戶登記表格（「被推薦客戶登記表格」）；<strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於推廣期內成功提交被推薦客戶登記表格，並使用於被推薦客戶登記表格所登記之同一手提電話號碼經本行之
+                  分行或 SC Mobile 開立戶口及開立「Premium 理財」；及<strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須開立「Premium
+                  理財」時持有或開立港元儲蓄戶口及港元支票戶口(或任何外幣儲蓄戶口)
+                  ； <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須符合「Premium
+                  理財」推廣之條款及細則所列明之所有要求並獲享全新客戶新資金增長獎賞。
+                </li>
+              </ol>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong>推廣期內總成功推薦客戶人數</strong>
+                    </th>
+                    <th scope="col">
+                      <strong>每位成功推薦之現金回贈 </strong>
+                    </th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong>每位成功推薦之「亞洲萬里通」里數 </strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 位至 10 位</td>
+                    <td>HK$400</td>
+                    <td>或</td>
+                    <td>4,000「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              推廣期內每位合資格推薦客戶於「Premium 理財」SC Referral Club
+              內最多只可獲贈「Premium 理財」推薦優惠 10 次。
+            </li>
+            <br /><br />
+            <strong>
+              SC Referral Club – Easy Banking (“Easy Banking SC Referral
+              Club”) </strong><br />
+            <li>
+              推薦客戶欲於 Easy Banking SC Referral Club
+              中享有現金回贈或「亞洲萬里通」里數（Easy Banking
+              推薦優惠），推薦客戶及
+              被推薦客戶須符合以下要求以視為「成功推薦」：
+              <ol>
+                <li>
+                  推薦客戶須符合以上 A 部分訂下之所有條件；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於推廣期內成功經指定申請連結以推薦碼完成被推薦客戶登記表格（「被推薦客戶登記表格」）；<strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於推廣期內成功提交被推薦客戶登記表格，並使用於被推薦客戶登記表格所登記之同一手提電話號碼經本行之
+                  分行或 SC Mobile 開立戶口及開立 Easy Banking；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須開立 Easy Banking
+                  時持有或開立港元儲蓄戶口及港元支票戶口(或任何外幣儲蓄戶口)
+                  ； <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於下列指定限期或之前存入新資金 HK$10,000
+                  或以上，並維持最少 HK$10,000 總結存至下列指定日期：
+                </li>
+              </ol>
+              <br />
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong>Easy Banking 開立日期(包括首尾兩天) </strong>
+                    </th>
+                    <th scope="col">
+                      <strong>存入新資金之限期</strong>
+                    </th>
+                    <th scope="col">
+                      <strong>指定日期(包括全日) </strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2024 年 10 月 1 日至 31 日</td>
+                    <td>2024 年 11 月 30 日</td>
+                    <td>2025 年 1 月 31 日</td>
+                  </tr>
+                  <tr>
+                    <td>2024 年 11 月 1 日至 30 日</td>
+                    <td>2024 年 12 月 31 日</td>
+                    <td>2025 年 2 月 28 日</td>
+                  </tr>
+                  <tr>
+                    <td>2024 年 12 月 1 日至 2025 年 1 月 1 日</td>
+                    <td>2025 年 1 月 31 日</td>
+                    <td>2025 年 3 月 31 日</td>
+                  </tr>
+                </tbody>
+              </table>
+              <strong>「新資金」</strong>
+              指以下由其他銀行存入被推薦客戶於本行戶口之資金：
+              <ol>
+                <li>
+                  透過現金、其他銀行支票/本票、本地電子付款(經由即時支付結算系統(RTGS)結算,
+                  又稱結算所自動轉賬系統(CHATs))、以
+                  快速支付系統「轉數快」之資金轉賬或電匯由其他銀行存入本行戶口之全新資金；或
+                </li>
+                <li>於本行兌換之任何貨幣；或</li>
+                <li>
+                  以下投資或保險產品贖回資金，包括股票掛鈎投資、債券投資(債券及結構性票據)、保險、股票及基金。
+                </li>
+              </ol>
+              <br />
+              新資金不得為本行續期之定期存款、本行戶口轉賬或於本行「高息貨幣掛鈎存款」、「結構性存款」及「貨幣循環存款」到期日轉
+              賬而得的資金。
+              <br /><br />
+              <strong>「總結存」</strong>
+              包括客戶以私人名義作為基本戶口持有人於本行持有的存款、投資及指定保險產品之累積保費。<br /><br />
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong>推廣期內總成功推薦客戶人數</strong>
+                    </th>
+                    <th scope="col">
+                      <strong>每位成功推薦之現金回贈 </strong>
+                    </th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong>每位成功推薦之「亞洲萬里通」里數</strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 位至 10 位</td>
+                    <td>HK$300</td>
+                    <td>或</td>
+                    <td>3,000「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              推廣期內每位合資格推薦客戶於 Easy Banking SC Referral Club
+              內最多只可獲贈 Easy Banking 推薦優惠 10 次。
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong> 「出糧戶口」SC Referral Club 之附加條款及細則 </strong><br /><br />
+          <strong>重要提示：</strong>請同時細閱上述 A
+          部分之網上客戶推薦計劃之一般條款及細則及
+          <sup>sc.com/hk/bpatnc</sup> 上之「渣打紅利出糧戶口」優惠之條款
+          及細則。
+          <br />
+          <ol>
+            <li>
+              被推薦客戶須於開立出糧戶口日期前 12
+              個月內未曾使用本行自動轉賬出糧服務（如下文所定義），推薦客戶方可合資格參
+              與「渣打紅利出糧戶口」網上客戶推薦計劃。
+            </li>
+            <li>
+              「成功推薦」須符合以下所有要求，推薦客戶每成功推薦可享 HK$400
+              現金回贈 <strong>(「渣打紅利出糧戶口」推薦獎賞)</strong>:
+              <ol>
+                <li>
+                  推薦客戶須符合以上 A 部分訂下之所有條件；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  於推廣期內，被推薦客戶透過 SC Mobile App
+                  以推薦客戶轉發的推薦碼成功開立「渣打紅利出糧戶口」(只限主戶
+                  口持有人)，即指定港元可持續發展儲蓄戶口或指定「綜合存款戶口」之港元儲蓄戶口
+                  <strong>(「出糧戶口」)</strong>; <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶登記出糧戶口月份起其後 2
+                  個月內開始以本行自動轉賬出糧服務存入每月薪金(下述條款第 3
+                  項) HK$20,000
+                  或以上至出糧戶口，並持續透過出糧戶口每月收取薪金至相應獎賞存入時。
+                </li>
+              </ol>
+              <strong>自動轉賬出糧服務</strong> 指每月透過 (a)
+              被推薦客戶之僱主經由本行指定之電子出糧轉賬方式或 (b)
+              發自其他非本行的本地銀行之
+              指定常行指示（交易說明必須包含「SALARY」、「SALARIES」、「WAGE」、「WAGES」或「PAYROLL」）將薪金自動
+              轉賬於「渣打紅利出糧戶口」（如下列條款所定義）內。自動轉賬出糧服務不包括海外電匯、本地電子付款、支票或現金。
+            </li>
+            <li>
+              <strong>每月薪金指被推薦客戶首次存入出糧款項起計之首 3
+                個月的平均出糧款項。被推薦客戶</strong>
+              之每月薪金金額將按本行之紀錄為準。
+              如有任何爭議，本行將保留具約束力之最終決定權。
+            </li>
+            <li>
+              現金回贈將於 2025 年 6 月 30
+              日或之前存入至推薦客戶之存款戶口內。
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong>
+            「高息馬拉松活期存款」戶口 SC Referral Club 之附加條款及細則 </strong><br /><br />
+          <strong>重要提示：</strong> 請同時細閱上述 A
+          部分之網上客戶推薦計劃之一般條款及細則及
+          <sup>sc.com/hk/msatnc</sup> 上之渣打「高息馬拉松活期存款」推
+          廣優惠之條款及細則。
+          <ol>
+            <li>
+              於推廣期內，「高息馬拉松活期存款」戶口 SC Referral Club 包括
+              2024 年 10 月份渣打「高息馬拉松活期存款」推廣 (<strong>「2024 年 10 月推廣」</strong>)，2024 年 11 月份渣打「高息馬拉松活期存款」推廣 (<strong>「2024
+                年 11 月推廣」</strong>) 及 2024 年 12 月份渣打「高息馬拉松活期存款」推廣 (<strong>「2024 年 12 月推廣」</strong>)。
+            </li>
+            <li>
+              被推薦客戶須於開立「高息馬拉松活期存款」戶口
+              <strong>「指定戶口」</strong>, 當日前 12
+              個月內未曾開立指定戶口，推薦客戶方可合
+              資格參與「高息馬拉松活期存款」戶口網上客戶推薦計劃。
+            </li>
+            <li>
+              「成功推薦」須符合以下所有要求，推薦客戶每成功推薦可享 HK$300
+              現金回贈(「高息馬拉松活期存款」戶口推薦獎賞)：
+              <ol>
+                <li>推薦客戶須符合以上 A 部分訂下之所有條件；及</li>
+                <li>
+                  於推廣期內，被推薦客戶透過 SC Mobile App
+                  以推薦客戶轉發的推薦碼開立指定戶口；及
+                </li>
+                <li>
+                  被推薦客戶存入最少
+                  HK$500,000(或等值)新資金至指定戶口並於指定戶口內維持至 2024
+                  年 10 月推廣，2024 年 11 月推廣及 2024 年 12
+                  月推廣之條款及細則上列明之優惠期的最後一日，視情況而定。
+                </li>
+              </ol>
+            </li>
+            <li>
+              <strong>「新資金」</strong>
+              是指在開立指定戶口當日及前4個工作天(不包括星期日及公眾假期)由其他銀行存入被推薦客戶於本行戶口之資
+              金：
+              <ol>
+                <li>
+                  透過現金、其他銀行支票/本票、本地電子付款(經由即時支付結算系統(RTGS)結算,
+                  又稱結算所自動轉賬系統
+                  (CHATs))、以快速支付系統「轉數快」之資金轉賬或電匯由其他銀行存入本行戶口之全新資金；或
+                </li>
+                <li>於本行兌換之任何貨幣；或</li>
+                <li>
+                  以下投資或保險產品贖回資金，包括股票掛鈎投資、債券投資(債券及結構性票據)、保險、股票及基金。
+                </li>
+              </ol>
+              新資金不得為本行續期之定期存款、本行戶口轉賬或於本行「高息貨幣掛鈎存款」、「結構性存款」及「貨幣循環存款」到
+              期日轉賬而得的資金並扣除在計算期內所有已開立的定期存款戶口及「高息馬拉松活期存款」戶口之存款本金總額。
+            </li>
+            <li>
+              如被推薦客戶於同一「高息馬拉松活期存款」推廣（即 2024 年 10
+              月推廣、 2024 年 11 月推廣或 2024 年 12 月推廣）下
+              開立多於一個指定戶口，不同貨幣之指定戶口存款結存將分別計算及本行將會合併計算相同推薦碼、相同貨幣及相同「高息
+              馬拉松活期存款」推廣之指定戶口之總存款結餘。美元指定戶口內之存款結餘將會以
+              7.8 兌換率兌換至港元以計算總存款結 餘。
+            </li>
+            <li>
+              推薦客戶於推廣期內，最多可透過同一被推薦客戶享「高息馬拉松活期存款」戶口推薦獎賞一次。
+            </li>
+            <li>
+              現金回贈將於 2025 年 6 月 30
+              日或之前存入至推薦客戶之存款戶口內。
+            </li>
+          </ol>
+        </li>
+        <br />
+        <li>
+          <strong>渣打國泰萬事達卡 SC Referral Club 之附加條款及細則
+            (“渣打國泰萬事達卡 SC Referral Club”)</strong><br />
+          <strong>重要提示：</strong> 請同時細閱上述 A
+          部分及渣打官網渣打國泰萬事達卡主頁上之一般條款及細則。
+
+          <ol>
+            <li>
+              . 渣打國泰萬事達卡包括渣打國泰萬事達卡或渣打國泰萬事達卡–
+              優先理財或渣打國泰萬事達卡– 優先私人理財 (<strong>「渣打國泰萬事達 卡」</strong>)。
+            </li>
+            <li>
+              被推薦客戶必須為現時並未持有及於現時所申請渣打國泰萬事達卡主卡批核日起計之過去
+              6 個月內沒有取消任何由本行發行之合
+              資格信用卡主卡，推薦人及被推薦客戶方符合資格參與此渣打國泰萬事達卡
+              SC Referral Club 推薦計劃。
+            </li>
+            <li>
+              若符合以下所有「成功推薦」要求,
+              每當推薦人成功推薦可獲得現金回贈或「亞洲萬里通」里數作為推薦優惠
+              (<strong>「渣打國泰萬事達 卡推薦優惠」</strong>)。詳情如下:
+              <ol>
+                <li>符合以上 A 部分之所有條件； <strong>及</strong></li>
+                <li>
+                  被推薦客戶須於推廣期內透過指定網頁利用推薦碼成功申請渣打國泰萬事達卡主卡；<strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於 2025 年 3 月 31
+                  日或以前成功申請並獲本行發渣打國泰萬事達卡主卡。
+                </li>
+              </ol>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <strong>推廣期內之總成功推薦 次數</strong>
+                    </th>
+                    <th scope="col">
+                      <strong>每位成功推薦之現金回贈 </strong>
+                    </th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong>每位成功推薦之「亞洲萬里 通」里數</strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 – 20</td>
+                    <td>HK$500</td>
+                    <td>或</td>
+                    <td>5,000 「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              在推廣期每位推薦人於渣打國泰萬事達卡 SC Referral Club
+              內最多只可獲贈渣打國泰萬事達卡推薦優惠額外獎賞 20 次。
+            </li>
+            <li>
+              若推薦人可獲贈現金回贈, 本行將於 2025 年 6 月 30
+              日或以前存入現金回贈獎賞。若推薦人可獲贈「亞洲萬里通」里數,
+              本行將於 2025 年 6 月 30
+              日或以前將里數存入推薦人相關之國泰會員賬戶。
+            </li>
+            <br />
+            <strong>
+              <u>渣打國泰萬事達卡被推薦客戶獎賞</u>
+            </strong>
+            <li>
+              除全新信用卡客戶可享渣打國泰萬事達卡之迎新禮遇外,
+              如被推薦客戶經成功推薦於 2025 年 3 月 31
+              日或以前獲發渣打國泰萬事 達卡主卡, 被推薦客戶可獲以下獎賞
+              (<strong>「渣打國泰萬事達卡被推薦客戶獎賞」</strong>):-
+
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong>渣打國泰萬事達卡被推薦客戶獎賞</strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>全新信用卡客戶</td>
+                    <td>10,000 「亞洲萬里通」里數</td>
+                  </tr>
+                  <tr>
+                    <td>現有信用卡客戶</td>
+                    <td>5,000 「亞洲萬里通」里數</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              <strong>“全新信用卡客戶”</strong>
+              為現時並未持有及於現時所申請渣打國泰萬事達卡主卡批核日起計之過去
+              6 個月內沒有取消任何由本行發行之 渣打信用卡或 MANHATTAN
+              信用卡主卡之申請人。
+            </li>
+            <li>
+              <strong>“現有信用卡客戶”</strong>
+              為現時持有或於現時所申請渣打國泰萬事達卡主卡批核日起計之過去 6
+              個月內曾經取消渣打國泰萬事達卡外任 何由本行發行之渣打信用卡或
+              MANHATTAN 信用卡主卡之申請人。
+            </li>
+            <li>
+              每位被推薦客戶於推廣期內只可獲贈渣打國泰萬事達卡被推薦客戶獎賞一次。
+            </li>
+            <li>
+              渣打國泰萬事達卡被推薦客戶獎賞會根據本行紀錄，存入與渣打國泰萬事達卡相連之國泰會員賬戶。
+            </li>
+            <li>
+              渣打國泰萬事達卡之現行迎新禮遇受相關現行之條款及細則約束，詳情請瀏覽
+              sc.com/hk/zh/credit-cards/cathay/
+            </li>
+            <li>
+              除全新信用卡客戶可享渣打國泰萬事達卡之迎新禮遇外，全新信用卡客戶並不能同時享有渣打國泰萬事達卡被推薦客戶獎賞與及
+              其他禮遇。
+            </li>
+            <li>
+              亞洲萬里通有限公司將於 2025 年 6 月 30
+              日或以前將里數存入被推薦客戶相關之國泰會員賬戶。
+            </li>
+            <li>
+              已獲贈渣打國泰萬事達卡被推薦客戶獎賞之被推薦客戶若在渣打國泰萬事達卡發出後一年內取消該渣打國泰萬事達卡，本行保留
+              權利向推薦客戶收取相等於
+              渣打國泰萬事達卡被推薦客戶獎賞價值之費用。
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong>
+            Smart 信用卡 SC Referral Club 之附加條款及細則 (“Smart 卡 SC
+            Referral Club”) </strong><br /><br />
+          <strong>重要提示：</strong> 請同時細閱上述 A 部分及渣打官網 Smart
+          信用卡主頁上之一般條款及細則。 <br />
+          <ol>
+            <li>
+              被推薦客戶必須為現時並未持有及於現時所申請渣打 Smart
+              信用卡（「Smart 卡」）主卡批核日起計之過去 6 個月內沒有
+              取消任何由本行發行之合資格信用卡主卡，推薦人及被推薦客戶
+              方符合資格參與此 Smart 信用卡 SC Referral Club 推薦計 劃。
+            </li>
+            <li>
+              若符合以下所有「成功推薦」要求,
+              每當推薦人成功推薦可獲得現金回贈或亞洲萬里通里數作為推薦優惠
+              (<strong>「Smart 信用卡 推薦優惠」</strong>) 。詳情如下:
+              <ol>
+                <li>符合以上 A 部分之所有條件； <strong>及</strong></li>
+                <li>
+                  被推薦客戶須於推廣期內透過指定網頁利用推薦碼成功申請 Smart
+                  卡主卡； <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於 2025 年 3 月 31 日或以前成功申請並獲本行發
+                  Smart 卡主卡。 <br />
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">
+                          <strong> 推廣期內之總成功推薦 次數 </strong>
+                        </th>
+                        <th scope="col">
+                          <strong> 每位成功推薦之現金回贈 </strong>
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col">
+                          <strong> 每位成功推薦之「亞洲萬里 通」里數 </strong>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1 – 20</td>
+                        <td>HK$500</td>
+                        <td>或</td>
+                        <td>5,000 「亞洲萬里通」里數</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br />
+                </li>
+              </ol>
+            </li>
+            <li>
+              在推廣期內每位推薦人於 Smart 卡 SC Referral Club 內最多只可獲贈
+              Smart 信用卡推薦優惠額外獎賞 20 次。
+            </li>
+            <li>
+              若推薦人可獲贈現金回贈, 本行將於 2025 年 6 月 30
+              日或以前存入現金回贈獎賞。若推薦人可獲贈「亞洲萬里通」里數, 本
+              行將於 2025 年 6 月 30 日或以前將里數存入推薦人相關之國泰賬戶。
+            </li>
+            <br />
+            <strong>Smart 卡被推薦客戶獎賞</strong><br />
+            <li>
+              除全新信用卡客戶可享 Smart 卡之迎新禮遇外,
+              如被推薦客戶經成功推薦於 2025 年 3 月 31 日或以前獲發 Smart
+              卡主卡, 被推薦客戶可獲以下獎賞(<strong>「Smart 卡被推薦客戶獎賞」</strong>):
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">
+                      <strong> Smart 卡被推薦客戶獎賞 </strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>全新信用卡客戶</td>
+                    <td>HK$900 現金回贈</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              <strong>“全新信用卡客戶”</strong>
+              為現時並未持有及於現時所申請渣打 Smart
+              信用卡主卡批核日起計之過去 6 個月內沒有取消任何由本
+              行發行之渣打信用卡或 MANHATTAN 信用卡主卡之申請人。
+            </li>
+            <li>
+              每位被推薦客戶於推廣期內只可獲贈 Smart 卡被推薦客戶獎賞一次。
+            </li>
+            <li>
+              Smart 卡之現行迎新禮遇受相關現行之條款及細則約束，詳情請瀏覽
+              sc.com/hk/credit-cards/smart/
+            </li>
+            <li>
+              除全新信用卡客戶可享 Smart
+              卡之迎新禮遇外，全新信用卡客戶並不能同時享有 Smart
+              卡被推薦客戶獎賞與及 其他禮遇。
+            </li>
+            <li>
+              Smart 卡被推薦客戶獎賞之現金回贈將於 2025 年 6 月 30
+              日或之前存入 360°全面賞獎勵兌換平台。
+            </li>
+            <li>
+              已獲贈 Smart 卡被推薦客戶獎賞之被推薦客戶若在 Smart
+              卡發出後一年內取消該 Smart 卡， 本行保留權利向推薦客戶收
+              取相等於 Smart 卡被推薦客戶獎賞價值之費用。
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong> 股票戶口 SC Referral Club 之附加條款及細則 </strong><br /><br />
+          <strong>重要提示：</strong>請同時細閱上述 A
+          部分之網上客戶推薦計劃之一般條款及細則;
+          渣打官網股票投資服務主頁上之一般條款及細則及
+          <a href="">出糧戶 口客戶永久股票買入免佣禮遇之條款及細則。</a>.
+          <br /><br />
+          <ol>
+            <li>
+              被推薦客戶須於新開立股票戶口當日前 12
+              個月內未曾持有股票戶口，推薦客戶方可合資格參與股票戶口網上客戶推薦計劃。
+            </li>
+            <li>
+              「成功推薦」須符合以下所有要求，推薦客戶每成功推薦可享 HK$200
+              現金回贈 (<strong>「股票戶口推薦獎賞」</strong>): <br />
+              <ol>
+                <li>
+                  推薦客戶須符合以上 A 部分訂下之所有條件；
+                  <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於推廣期內經指定申請連結以推薦碼成功遞交被推薦客戶登記表格
+                  (<strong>「被推薦客戶登記表格」</strong>)
+                  <strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於推廣期內使用於被推薦客戶登記表格所登記之同一身份證件號碼經本行成功開立股票戶口；<strong>及</strong>
+                </li>
+                <li>
+                  被推薦客戶須於申請股票戶口時需至少持有一個有效的存款戶口。
+                </li>
+              </ol>
+            </li>
+            <li>
+              推薦客戶於推廣期內，最多可透過同一被推薦客戶享股票戶口推薦獎賞一次。
+            </li>
+            <li>
+              現金回贈將於 2025 年 6 月 30
+              日或之前存入至推薦客戶之存款戶口內。
+            </li>
+          </ol>
+        </li>
+      </ul>
+    </div>
+    <div class="sc-products-tile__btn">
+      <ul class="buttons">
+        <li>
+          <a href="#null" data-pdf-url="https://av.sc.com/hk/content/docs/hk-cc-cxam-onebank-mgm-tnc.pdf" title="下載"
+            class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__download-button" download>
+            <span class="only-desktop">下載</span>
+            <span class="only-mobile">下載</span>
+          </a>
+        </li>
+        <li>
+          <a href="#null" title="向下拉動" data-last-title="同意並申請"
+            class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__scroll-step">
+            <span class="only-desktop">向下拉動</span>
+            <span class="only-mobile">向下拉動</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Main css are using from nitro/src/components/organisms/sc-tab-minimal/sc-tab-minimal.scss
+/** @define tab-minimal; weak */
+.sc-tab-minimal {
+  &--drop-down {
+    .sc-tab-minimal {
+      /* stylelint-disable max-nesting-depth */
+      &__head-wrapper {
+        padding-bottom: $spacer-4;
+        display: flex;
+        flex-wrap: wrap;
+        .sc-heading-inner,
+        .sc-title {
+          margin-bottom: 0;
+          padding: $spacer-0;
+        }
+      }
+      &__head {
+        padding: $spacer-0;
+        position: relative;
+        margin: 0;
+        width: auto;
+        .splide {
+          display: none;
+          position: absolute;
+          left: 0;
+          top: 50px;
+          width: 100%;
+          padding: $nt-spacer-4 $spacer-0;
+          max-width: 500px;
+          min-width: 300px;
+          z-index: 99;
+        }
+        .splide__slide {
+          background-color: $color-gray-10;
+          border-width: 0;
+          border-radius: 0;
+          &:first-of-type {
+            border-radius: 6px 6px 0 0;
+          }
+          &:last-of-type {
+            border-radius: 0 0 6px 6px;
+          }
+        }
+        &-button {
+          background-color: inherit;
+          border-radius: 0;
+          color: $color-white;
+          max-width: initial;
+          justify-content: flex-start;
+          text-align: left;
+          width: 100%;
+        }
+        &-button--active {
+          font-weight: $font-weight-bold;
+        }
+      }
+      &__head-text {
+        cursor: pointer;
+        font-size: $font-size-mlg;
+        font-weight: $font-weight-semi-bold;
+        color: $color-dark-gray-1;
+        text-decoration: underline;
+        text-underline-offset: 8px;
+        text-align: left;
+        &::after {
+          content: '';
+          width: 20px;
+          height: 20px;
+          background-image: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.80005 9.5L0.800049 1.5L1.80005 0.5L8.80005 7.25L15.8 0.5L16.8 1.5L8.80005 9.5Z" fill="%23000"/></svg>');
+          background-position: center center;
+          background-repeat: no-repeat;
+          display: inline-block;
+          background-size: 100%;
+          margin-left: $nt-spacer-4;
+          vertical-align: middle;
+        }
+      }
+      /* stylelint-enable max-nesting-depth */
+    }
+    &.sc-dark-bg {
+      /* stylelint-disable plugin/selector-bem-pattern, max-nesting-depth  */
+      .sc-tab-minimal {
+        &__head-text {
+          color: $color-white;
+          &::after {
+            background-image: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.80005 9.5L0.800049 1.5L1.80005 0.5L8.80005 7.25L15.8 0.5L16.8 1.5L8.80005 9.5Z" fill="%23fff"/></svg>');
+          }
+        }
+      }
+      /* stylelint-enable plugin/selector-bem-pattern, max-nesting-depth  */
+    }
+  }
+}
+
+@include desktop {
+  .sc-tab-minimal {
+    &--drop-down {
+      .sc-tab-minimal {
+        /* stylelint-disable max-nesting-depth */
+        &__head-text {
+          font-size: $font-size-xlg;
+          padding-left: $spacer-2;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+}
+
+/** @end */

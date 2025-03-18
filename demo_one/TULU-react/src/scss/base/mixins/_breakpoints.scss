@@ -1,0 +1,62 @@
+// Mixins
+//
+//
+
+// Breakpoints
+// CSS shoud be written by considering Mobile First approach.
+// Hence we don't need any breakpoint for mobile css.
+
+// @media(max-width: 680px)
+@mixin mobile {
+  @media (max-width: $bp-mobile - 0.02) {
+    @content;
+  }
+}
+
+// @media(min-width: 680px)
+@mixin tablet-desktop {
+  @media (min-width: $bp-mobile) {
+    @content;
+  }
+}
+
+// @media(min-width: 1024px)
+@mixin desktop {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+// @media(max-width: 1024px)
+@mixin mobile-tablet {
+  @media (max-width: $bp-tablet - 0.02) {
+    @content;
+  }
+}
+
+// @media(min-width: 600px) and (max-width: 1024px)
+@mixin tablet {
+  @media (min-width: $bp-mobile) and (max-width: $bp-tablet - 0.02) {
+    @content;
+  }
+}
+
+// @media(min-width: 1247px) ipad pro screens
+@mixin larger {
+  @media (min-width: $bp-ipadpro) {
+    @content;
+  }
+}
+
+// @media(max-width: 1246.9px) up to ipad pro screens
+@mixin mobile-larger {
+  @media (max-width: $bp-ipadpro - 0.02) {
+    @content;
+  }
+}
+// @media(min-width: 1024px) and (max-width: 1246.9px)
+@mixin ipad-pro {
+  @media (max-width: $bp-ipadpro - 0.02) and (min-width: $bp-tablet - 0.02) {
+    @content;
+  }
+}

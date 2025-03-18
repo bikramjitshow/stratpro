@@ -1,0 +1,23 @@
+@mixin sc-module-v-paddings {
+  padding: 0;
+
+  @include breakpoint($bp--h-xsmall) {
+    padding-top: $grid-v-padding-xsmall;
+    padding-bottom: $grid-v-padding-inf-xsmall;
+  }
+
+  @include breakpoint($bp--h-small) {
+    padding-top: $grid-v-padding-small;
+    padding-bottom: $grid-v-padding-inf-small;
+  }
+
+  @include breakpoint($bp--h-medium) {
+    padding-top: $grid-v-padding-medium;
+    padding-bottom: $grid-v-padding-inf-medium;
+  }
+
+  @include breakpoint($bp--h-large) {
+    padding-top: $grid-v-padding-large;
+    padding-bottom: $grid-v-padding-inf-large;
+  }
+}

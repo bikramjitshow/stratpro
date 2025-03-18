@@ -1,0 +1,65 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Atom
+@import '../../atoms/sc-tooltip/sc-tooltip';
+
+/** @define start-account-step; weak */
+
+.sc-start-account-step {
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  &__image {
+    width: 100%;
+    max-width: 200px;
+    height: 170px;
+    overflow: hidden;
+    margin: $spacer-0 auto;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &__content {
+    margin-top: $spacer-5;
+    position: relative;
+    &::before {
+      content: '';
+      background-image: url('data:image/svg+xml,<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.69462 8.39835L1.68304 4.64679C1.27967 4.26955 0.646856 4.29075 0.269623 4.69413C-0.10761 5.0975 -0.086415 5.73031 0.316963 6.10755L5.13076 10.6093C5.56113 11.0118 6.24443 10.9568 6.60488 10.4907L12.7911 2.49067C13.1289 2.05377 13.0486 1.42572 12.6117 1.08788C12.1748 0.750036 11.5468 0.830336 11.2089 1.26724L5.69462 8.39835Z" fill="%232772C7"/><mask id="mask0_9242_23515" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="13" height="11"><path d="M5.69462 8.39835L1.68304 4.64679C1.27967 4.26955 0.646856 4.29075 0.269623 4.69413C-0.10761 5.0975 -0.086415 5.73031 0.316963 6.10755L5.13076 10.6093C5.56113 11.0118 6.24443 10.9568 6.60488 10.4907L12.7911 2.49067C13.1289 2.05377 13.0486 1.42572 12.6117 1.08788C12.1748 0.750036 11.5468 0.830336 11.2089 1.26724L5.69462 8.39835Z" fill="white"/></mask><g mask="url(%23mask0_9242_23515)"><rect x="-2" y="-2.12109" width="16" height="16" fill="white"/></g></svg>');
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
+      color: $color-white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $color-dark-gray-1;
+    }
+  }
+  &__text {
+    font-size: $font-size-md;
+    color: $color-dark-gray-1;
+    font-weight: $font-weight-normal;
+    margin: $spacer-0 $spacer-0 $spacer-0 $spacer-5;
+    strong {
+      font-weight: $font-weight-bold;
+    }
+  }
+  .sc-tooltip {
+    margin: $spacer-0;
+    top: 4px;
+  }
+}
+
+/** @end */

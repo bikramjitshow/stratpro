@@ -1,0 +1,180 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define interest-monthly-calc; weak */
+.sc-interest-monthly-calc {
+  .sc-heading-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* stylelint-disable max-nesting-depth */
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      margin-right: $spacer-3;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .sc-title {
+      &--inner {
+        font-size: $font-size-base;
+      }
+    }
+    /* stylelint-enable max-nesting-depth */
+  }
+  .sc-description {
+    text-align: center;
+    margin-bottom: $spacer-3;
+  }
+  &__wrapper {
+    box-shadow: 1px 1px 20px 5px rgb(182 202 236 / 33%);
+    background-color: $color-white;
+    border-radius: 10px;
+    padding: $spacer-4;
+  }
+  &__input-box {
+    padding: $spacer-2 $spacer-3;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 8px;
+    background-color: rgb(249, 249, 249);
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    min-height: 48px;
+    max-width: 300px;
+  }
+  &__input {
+    width: 100%;
+    border: 0;
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-normal;
+    color: $color-brand-blue;
+    text-align: right;
+    background-color: rgb(249, 249, 249);
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: $spacer-4;
+  }
+  &__currency {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    color: $color-dark-gray-1;
+  }
+
+  .sc-cvp {
+    &__col {
+      padding: $spacer-2 $spacer-1;
+    }
+    &__top {
+      font-size: $font-size-sm;
+    }
+    /* stylelint-disable max-nesting-depth */
+    &__middle {
+      color: rgb(56, 210, 0);
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+      strong {
+        font-size: $font-size-md;
+      }
+    }
+    &__bottom {
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+    }
+    &__icon {
+      width: 32px;
+      height: 32px;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__bg {
+      height: 32px;
+      margin-bottom: $spacer-3;
+      &--first {
+        background: rgb(200, 226, 255);
+        border-radius: 50px 0 0 50px;
+      }
+      &--second {
+        background: rgb(203, 233, 241);
+        border-radius: 0;
+      }
+      &--third {
+        background: rgb(213, 254, 202);
+        border-radius: 0 50px 50px 0;
+      }
+    }
+    /* stylelint-enable max-nesting-depth */
+  }
+}
+@include tablet-desktop {
+  .sc-interest-monthly-calc {
+    /* stylelint-disable max-nesting-depth */
+    .sc-heading-inner {
+      .sc-title {
+        &--inner {
+          font-size: $font-size-lg;
+        }
+      }
+    }
+    &__content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__input-box {
+      margin-left: $spacer-3;
+    }
+    .sc-cvp {
+      &__top {
+        font-size: $font-size-md;
+      }
+      &__middle {
+        font-size: $font-size-lg;
+        strong {
+          font-size: $font-size-lg;
+        }
+      }
+      &__bottom {
+        font-size: $font-size-22;
+      }
+      &__bg {
+        height: 32px;
+      }
+    }
+    /* stylelint-enable max-nesting-depth */
+  }
+}
+@include desktop {
+  .sc-interest-monthly-calc {
+    .sc-heading-inner {
+      margin-bottom: $spacer-0;
+      &__icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    .sc-title {
+      margin-bottom: $spacer-3;
+      &--inner {
+        margin-bottom: $spacer-0;
+      }
+    }
+  }
+}
+
+/** @end */

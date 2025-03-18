@@ -1,0 +1,181 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../molecules/sc-list/sc-list';
+
+/** @define ib-mortgages-bnr; weak */
+.sc-ib-mortgages-bnr {
+  max-width: 1024px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  &__bg {
+    min-height: 280px;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    &::before {
+      content: '';
+      height: 30px;
+      width: 100%;
+      border-radius: 0 30px 0 0;
+      background-color: $color-white;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      display: block;
+      z-index: 9;
+      position: absolute;
+      bottom: 0;
+    }
+    &::after {
+      content: '';
+      height: 30px;
+      width: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 32H32C14.3271 32 0 17.6731 0 0V32Z' fill='white'/%3E%3C/svg%3E");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      display: block;
+      z-index: 9;
+      position: absolute;
+      bottom: 30px;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &__content {
+    padding: $spacer-6 $spacer-0 60px $spacer-4; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+    position: relative;
+    z-index: 3;
+    max-width: 70%;
+  }
+  &__title {
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+  }
+  &__desc {
+    color: $color-white;
+    font-size: $font-size-md;
+    margin-top: $spacer-3;
+  }
+  + .sc-ib-mortgages-content__wrapper {
+    .sc-ib-mortgages-content:first-of-type {
+      /* stylelint-disable selector-max-compound-selectors, max-nesting-depth  */
+      .sc-ib-mortgages-content {
+        &__bg {
+          display: none;
+        }
+      }
+      /* stylelint-enable selector-max-compound-selectors, max-nesting-depth  */
+    }
+  }
+}
+/** @end */
+
+/** @define ib-mortgages-content; weak */
+.sc-ib-mortgages-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  &__bg {
+    height: 180px;
+    position: relative;
+    margin-bottom: $spacer-4;
+    &::before {
+      content: '';
+      height: 30px;
+      width: 100%;
+      border-radius: 0 0 0 30px;
+      background-color: $color-white;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      display: block;
+      z-index: 9;
+      position: absolute;
+      top: 0;
+    }
+    &::after {
+      content: '';
+      height: 30px;
+      width: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M32 0H0C17.6729 0 32 14.3269 32 32V0Z' fill='white'/%3E%3C/svg%3E");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      display: block;
+      z-index: 9;
+      position: absolute;
+      top: 30px;
+      right: 0;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top right;
+    border-radius: 0 0 15px 15px;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semi-bold;
+    color: $color-dark-blue-4;
+    margin-bottom: $spacer-3;
+  }
+  &__box {
+    font-size: $font-size-sm;
+    padding: 0 $spacer-4;
+    background-color: $color-white;
+  }
+  .sc-inline-buttons {
+    &__item {
+      margin-bottom: 0;
+      margin-top: $spacer-3;
+    }
+  }
+  strong {
+    color: $color-brand-green;
+  }
+  table tr {
+    /* stylelint-disable selector-max-compound-selectors */
+    &:nth-child(even) td {
+      background-color: $color-light-gray-11;
+    }
+    td {
+      text-align: center;
+    }
+    /* stylelint-enable selector-max-compound-selectors */
+  }
+  .sc-btn--small {
+    min-width: 120px;
+  }
+}
+/** @end */
+
+/** @define ib-mortgages-disclaimer; weak */
+.sc-ib-mortgages-disclaimer {
+  max-width: 1024px;
+  margin: $spacer-4 auto 0;
+  background-color: $color-light-gray-2;
+  padding: $spacer-5 $spacer-4;
+  font-size: $font-size-sm;
+}
+/** @end */
+
+.smartbanner {
+  display: none !important;
+}
+.smartbanner-show {
+  margin-top: 0 !important;
+}

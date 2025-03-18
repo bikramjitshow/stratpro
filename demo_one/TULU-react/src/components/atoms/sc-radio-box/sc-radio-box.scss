@@ -1,0 +1,106 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define radio-box; weak */
+.sc-radio-box {
+  display: inline-flex;
+  position: relative;
+  &__input-label {
+    font-size: $font-size-md;
+    font-weight: 500;
+    padding: $spacer-2 $nt-spacer-4;
+    min-width: 120px;
+    border: $color-gray-6 solid 1px;
+    border-radius: 5px;
+    background: $color-white;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    color: $color-text;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    ~ .sc-radio-box {
+      &__input-label::before {
+        content: '';
+        height: 24px;
+        width: 24px;
+        cursor: pointer;
+        border-radius: 50%;
+        background: $color-white;
+        border: 2px solid $color-gray-1;
+        flex-shrink: 0;
+        display: inline-block;
+        margin-right: $spacer-2;
+      }
+    }
+
+    &:checked {
+      ~ .sc-radio-box {
+        &__input-label {
+          /* stylelint-disable max-nesting-depth */
+          &::after {
+            content: '';
+            background-color: $color-blue;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 24px;
+            border-width: 0;
+            position: absolute;
+          }
+
+          &::before {
+            background-color: $color-white;
+            border-color: $color-blue;
+          }
+        }
+      }
+    }
+    &[type='checkbox'] {
+      ~ .sc-radio-box {
+        &__input-label::before {
+          border-radius: 5px;
+        }
+      }
+
+      &:checked {
+        ~ .sc-radio-box {
+          &__input-label {
+            &::after {
+              content: '';
+              position: absolute;
+              left: 22px;
+              top: calc(50% - 7px);
+              width: 5px;
+              height: 11px;
+              border: solid $color-white;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+              border-radius: 0;
+            }
+
+            &::before {
+              background-color: $color-blue;
+            }
+          }
+        }
+      }
+      /* stylelint-enable max-nesting-depth */
+    }
+  }
+}
+
+/** @end */

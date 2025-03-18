@@ -1,0 +1,210 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define invest-card; weak */
+.sc-invest-card {
+  background-color: $color-light-gray-11;
+  border-radius: 24px;
+  max-width: 330px;
+  width: 100%;
+  overflow: hidden;
+  margin: $spacer-0 auto;
+  &--blue {
+    .sc-invest-card {
+      &__head {
+        border-bottom: 2px solid $color-blue-5;
+        /* stylelint-disable max-nesting-depth */
+        &::before {
+          background-color: $color-blue-5;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+      &__head-title {
+        color: $color-blue-3;
+      }
+    }
+  }
+  &--green {
+    .sc-invest-card {
+      &__head {
+        border-bottom: 2px solid $color-green-2;
+        /* stylelint-disable max-nesting-depth */
+        &::before {
+          background-color: $color-green-2;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+      &__head-title {
+        color: $color-green;
+      }
+    }
+  }
+  &--orange {
+    .sc-invest-card {
+      &__head {
+        border-bottom: 2px solid $color-orange-1;
+        /* stylelint-disable max-nesting-depth */
+        &::before {
+          background-color: $color-orange-1;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+      &__head-title {
+        color: $color-dark-yellow-1;
+      }
+    }
+  }
+  &__head {
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 40px;
+    &-title {
+      width: 100%;
+      font-size: $font-size-mlg;
+      font-weight: $font-weight-semi-bold;
+      margin-left: $spacer-5;
+      overflow: hidden;
+      text-overflow: clip;
+      display: -webkit-box; // stylelint-disable-line value-no-vendor-prefix
+      -webkit-line-clamp: 3; // stylelint-disable-line property-no-vendor-prefix
+      line-clamp: 3;
+      -webkit-box-orient: vertical; // stylelint-disable-line property-no-vendor-prefix
+    }
+    &-image {
+      width: 100%;
+      max-width: 120px;
+      height: 70px;
+      flex-shrink: 0;
+      text-align: right;
+      img {
+        max-width: 100%;
+        height: auto;
+        max-height: 70px;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 16px;
+      left: 20px;
+      border-radius: 20px;
+    }
+  }
+  &__col {
+    text-align: center;
+    margin-bottom: $spacer-3;
+    position: relative;
+    &-head {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semi-bold;
+      color: $color-blue-3;
+    }
+    &-main {
+      background: linear-gradient(106.76deg, $color-blue 38.03%, $color-brand-green 68.8%);
+      -webkit-background-clip: text; // stylelint-disable-line property-no-vendor-prefix
+      background-clip: text; // stylelint-disable-line csstree/validator
+      color: transparent;
+      font-weight: $font-weight-semi-bold;
+      font-size: $font-size-mlg;
+      margin: $spacer-2 $spacer-0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &::before {
+        content: '';
+        display: inline-flex;
+        background-image: url('data:image/svg+xml,<svg width="24" height="62" viewBox="0 0 24 62" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.9259 3.11126C13.1564 2.25528 14.3708 2.25528 14.6013 3.11126L14.6486 3.28685C15.4378 6.21813 17.7275 8.50783 20.6588 9.29707L20.8344 9.34435C21.6904 9.57482 21.6904 10.7893 20.8344 11.0198L20.6588 11.067C17.7275 11.8563 15.4378 14.146 14.6486 17.0772L14.6013 17.2528C14.3708 18.1088 13.1564 18.1088 12.9259 17.2528L12.8786 17.0772C12.0894 14.146 9.79968 11.8563 6.86839 11.067L6.69281 11.0198C5.83683 10.7893 5.83683 9.57482 6.69281 9.34435L6.86839 9.29707C9.79968 8.50783 12.0894 6.21813 12.8786 3.28685L12.9259 3.11126Z" fill="%23414EBF"/><path d="M12.4965 46.5315C13.1267 45.9311 14.1453 46.5509 13.9018 47.3865L13.5533 48.5823C13.2136 49.7481 13.52 51.0065 14.3576 51.8857L15.2167 52.7875C15.8171 53.4176 15.1973 54.4363 14.3617 54.1928L13.1659 53.8443C12.0001 53.5045 10.7417 53.8109 9.86251 54.6485L8.96071 55.5077C8.33057 56.108 7.31192 55.4883 7.55543 54.6527L7.90393 53.4569C8.24367 52.2911 7.93729 51.0326 7.0997 50.1535L6.24052 49.2517C5.64017 48.6215 6.25994 47.6029 7.09552 47.8464L8.29134 48.1949C9.45711 48.5346 10.7156 48.2282 11.5947 47.3906L12.4965 46.5315Z" fill="%23669BD7"/></svg>');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        flex-shrink: 0;
+        width: 24px;
+        height: 60px;
+        margin-right: $spacer-4;
+      }
+      strong {
+        font-size: $font-size-huge;
+        font-weight: $font-weight-semi-bold;
+      }
+    }
+    &-desc {
+      font-size: $font-size-md;
+      font-weight: $font-weight-semi-bold;
+      color: $color-dark-mode-1;
+    }
+  }
+  &__wrapper {
+    padding: $nt-spacer-4 $spacer-3;
+  }
+  &__list {
+    list-style-type: disc;
+    margin-bottom: $nt-spacer-4;
+    hr {
+      border: 1px solid rgb(207, 207, 207);
+      margin-top: $spacer-3;
+    }
+  }
+  &__item {
+    font-size: $nt-spacer-4;
+    color: $color-grey;
+    font-weight: $font-weight-normal;
+    margin-left: $spacer-3;
+    &::marker {
+      color: $color-grey;
+    }
+  }
+  &__allocation {
+    margin-bottom: $nt-spacer-4;
+    &-title {
+      font-size: $font-size-md;
+      font-weight: $font-weight-semi-bold;
+      color: $color-dark-gray-1;
+      margin-bottom: $nt-spacer-4;
+    }
+    &-image {
+      height: auto;
+      overflow: hidden;
+      margin-bottom: $nt-spacer-4;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        background-position: center;
+      }
+    }
+  }
+  &__payout {
+    margin-bottom: $nt-spacer-4;
+    &-text {
+      font-size: $font-size-md;
+      font-weight: $font-weight-normal;
+      color: $color-dark-gray-3;
+      margin-bottom: $nt-spacer-4;
+    }
+    &-image {
+      height: auto;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        background-position: center;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .sc-invest-card {
+    &__col::after {
+      left: -8px;
+    }
+  }
+}
+/** @end */

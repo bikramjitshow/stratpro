@@ -1,0 +1,152 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define table; weak */
+.sc-table {
+  background-color: $color-light-gray-11;
+  padding: $spacer-5 $spacer-0;
+  position: relative;
+
+  &__sub-title {
+    font-size: $font-size-lg;
+    color: $color-brand-blue;
+    margin-bottom: $spacer-2;
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .sc-content-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__description {
+    padding: $spacer-0 $spacer-0 $spacer-1;
+    font-size: $font-size-md;
+  }
+
+  &__table-wrapper {
+    width: 100%;
+    margin-top: $spacer-2;
+    overflow-x: auto;
+    overflow-y: hidden;
+    appearance: none;
+    margin-bottom: $spacer-3;
+    border-radius: 12px;
+
+    &:first-child {
+      margin-top: $spacer-0;
+    }
+    table {
+      margin: -1px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+    }
+  }
+
+  &__content {
+    margin-top: $spacer-4;
+  }
+
+  &__footer {
+    margin: $spacer-3 $nt-spacer-2 $spacer-1;
+    color: $color-black;
+    padding-right: $spacer-3;
+    display: flex;
+    align-items: center;
+    font-size: $font-size-md;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__info {
+    font-size: $font-size-md;
+    color: $color-grey;
+    padding-left: $spacer-1;
+    cursor: pointer;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__image {
+    margin: $spacer-3 0;
+    &--center {
+      text-align: center;
+    }
+  }
+  &__img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+  }
+  &__btn--center {
+    text-align: center;
+    .sc-inline-buttons {
+      justify-content: center;
+    }
+  }
+}
+
+@include mobile {
+  .sc-table {
+    &--no-scroll {
+      /* stylelint-disable max-nesting-depth*/
+      .sc-table {
+        &__table-wrapper {
+          overflow-x: visible;
+        }
+      }
+      /* stylelint-enable max-nesting-depth */
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-table {
+    padding: $spacer-6 $spacer-0;
+    &__table-wrapper {
+      overflow: hidden;
+    }
+  }
+}
+/** @end */
+
+.sc-blue-bg,
+.sc-dark-bg {
+  .sc-table {
+    &__sub-title {
+      color: $color-brand-green;
+    }
+    &__info {
+      color: $color-white;
+    }
+    &__description {
+      color: $color-white;
+      a {
+        color: $color-brand-green;
+      }
+    }
+  }
+}

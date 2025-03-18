@@ -1,0 +1,325 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../atoms/sc-range-slider/sc-range-slider';
+@import '../../molecules/sc-heading-gradient/sc-heading-gradient';
+@import '../../organisms/sc-product-info/sc-product-info';
+
+/** @define interest-pl-calculator; weak */
+.sc-interest-pl-calculator {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: $spacer-5 $spacer-0;
+  background-color: $color-light-gray-11;
+  &__box {
+    padding: $spacer-3;
+    background-color: $color-white;
+    border-radius: 6px 6px 0 0;
+  }
+  &__box-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacer-5;
+  }
+  &__box,
+  &__result {
+    width: 100%;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-bottom: $spacer-3;
+  }
+  &__error {
+    position: absolute;
+    bottom: -18px;
+    font-size: $font-size-sm;
+    color: $color-red;
+  }
+  &__desc {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    color: $color-text;
+    padding-right: $spacer-3;
+  }
+  &__input-box {
+    border-bottom: 1px dotted $color-blue;
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 220px;
+    width: 100%;
+    sup {
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+      color: $color-dark-blue-1;
+    }
+    &--mod {
+      padding-bottom: $spacer-1;
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-left: 2px solid $color-text;
+        border-bottom: 2px solid $color-text;
+        display: inline-block;
+        transform: rotate(312deg) translateY(-50%);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: $spacer-3;
+  }
+  &__input {
+    appearance: none;
+    border-width: 0;
+    color: $color-dark-blue-1;
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-semi-bold;
+    width: 100%;
+    background-color: transparent;
+  }
+  &__input-text {
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-normal;
+    color: $color-dark-blue-1;
+  }
+  &__result {
+    background-color: $color-light-blue-3;
+    border-radius: 0 0 6px 6px;
+    padding: $spacer-3;
+    display: flex;
+    flex-direction: column;
+    &-text {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-md;
+      font-weight: $font-weight-semi-bold;
+      color: $color-text;
+      padding-right: $spacer-3;
+    }
+    &-value {
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+      color: $color-dark-blue-1;
+      flex-shrink: 0;
+      span {
+        font-weight: $font-weight-normal;
+      }
+      sup {
+        font-size: $font-size-base;
+        font-weight: $font-weight-semi-bold;
+      }
+      &--green {
+        color: $color-green;
+      }
+    }
+    &-eir {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-11;
+      font-weight: $font-weight-normal;
+      color: $color-text;
+    }
+  }
+
+  .sc-range-slider--blue {
+    margin: $spacer-4 $spacer-0 $spacer-3;
+    /* stylelint-disable selector-max-compound-selectors, max-nesting-depth */
+    &.noUi-horizontal {
+      height: 4px;
+      .noUi-connects {
+        height: 4px;
+        .noUi-connect {
+          height: 4px;
+          background: rgb(15, 122, 237);
+        }
+      }
+      .noUi-handle {
+        border: 1px solid rgb(15, 122, 237);
+      }
+    }
+    /* stylelint-enable selector-max-compound-selectors, max-nesting-depth  */
+  }
+
+  .sc-inline-buttons {
+    margin: $spacer-4 auto;
+    text-align: center;
+  }
+
+  &__items {
+    text-align: center;
+    margin-top: $nt-spacer-4;
+  }
+  &__tenor-type {
+    appearance: none;
+    border-width: 0;
+    background: transparent;
+    color: $color-dark-blue-1;
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-semi-bold;
+    padding: $spacer-0 $spacer-1;
+  }
+  &__disclaimer {
+    font-size: $font-size-11;
+    font-weight: $font-weight-normal;
+    color: $color-text;
+    margin-top: $spacer-4;
+  }
+  /* stylelint-disable selector-max-compound-selectors */
+  .sc-tooltip svg path {
+    stroke: $color-blue;
+  }
+  /* stylelint-enable selector-max-compound-selectors */
+}
+
+@include desktop {
+  .sc-interest-pl-calculator {
+    padding: $spacer-6 $spacer-0;
+    .sc-content-wrapper {
+      display: flex;
+    }
+    &__box {
+      border-radius: 6px 0 0 6px;
+    }
+    &__box,
+    &__result {
+      padding: $spacer-4 $spacer-4 $spacer-3;
+    }
+    &__input,
+    &__input-text {
+      font-size: $font-size-mlg;
+    }
+    &__result {
+      border-radius: 0 6px 6px 0;
+      &-value {
+        font-size: $font-size-mlg;
+      }
+    }
+  }
+}
+/** @end */
+
+// Personal instalment calculator variation
+
+/** @define product-info; weak */
+.sc-product-info--calculator {
+  .sc-interest-pl-calculator {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $spacer-0;
+    &__row {
+      margin-bottom: $spacer-0;
+    }
+  }
+  .sc-product-info {
+    &__text-content {
+      order: 3;
+      width: 100%;
+      text-align: center;
+      font-weight: $font-weight-bold;
+      color: $color-text;
+      margin-bottom: $nt-spacer-4;
+    }
+    &__left {
+      order: 2;
+      width: 100%;
+      padding: $spacer-0;
+      margin-bottom: $nt-spacer-4;
+    }
+    &__right {
+      margin-bottom: $spacer-0;
+      width: 100%;
+      .sc-inline-buttons {
+        margin: auto;
+      }
+    }
+  }
+  .sc-tile-info {
+    padding: $spacer-3;
+    &__content-wrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: $spacer-3;
+    }
+    &__heading {
+      font-size: $font-size-base;
+      margin-bottom: $spacer-3;
+      font-weight: $font-weight-semi-bold;
+    }
+    .sc-only-mobile {
+      margin-top: $spacer-0;
+    }
+  }
+  .sc-cvp {
+    background-color: $color-light-gray-6;
+    border-radius: 60px 0;
+    min-height: 130px;
+    width: 100%;
+    margin: $spacer-0 $spacer-0 $spacer-2 $spacer-0;
+    text-align: center;
+    align-items: center;
+    &__top,
+    &__bottom {
+      font-size: $font-size-base;
+      font-weight: $font-weight-normal;
+      color: $color-grey;
+    }
+    &__middle {
+      font-weight: $font-weight-semi-bold;
+      font-size: $font-size-20;
+      color: $color-text;
+    }
+    &__col {
+      margin: auto;
+    }
+  }
+  .sc-only-mobile {
+    .sc-btn-link {
+      display: flex;
+      justify-content: center;
+      margin-top: $spacer-3;
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-product-info--calculator {
+    .sc-tile-info {
+      &__content-wrapper {
+        flex-direction: row;
+      }
+    }
+    .sc-cvp {
+      margin: $spacer-0 $spacer-2 $spacer-2 $spacer-0;
+      width: calc(50% - 8px);
+    }
+  }
+}
+
+@include desktop {
+  .sc-product-info--calculator {
+    .sc-product-info {
+      &__left {
+        order: 0;
+        margin-bottom: $spacer-0;
+      }
+      &__right,
+      &__left {
+        flex: 1 0 calc(50% - 16px);
+      }
+    }
+  }
+}
+/** @end */

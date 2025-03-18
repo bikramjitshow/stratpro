@@ -1,0 +1,147 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define related-links-three-col; weak */
+
+.sc-related-links-three-col {
+  background-color: $color-white;
+  .splide__slide {
+    width: 290px;
+
+    &:nth-child(even) {
+      .sc-card-tile__title {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+  .sc-card-tile {
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 100%;
+
+    &__title {
+      font-size: $font-size-20;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacer-2;
+    }
+
+    &__desc {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-normal;
+      line-height: $line-height-lg;
+    }
+
+    &__tile-image {
+      &--bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      &--bg img {
+        object-position: right bottom;
+      }
+    }
+
+    &__content {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      &--bg {
+        background-color: $color-light-gray-3;
+      }
+    }
+
+    &__link {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__outer {
+      margin-bottom: $spacer-4;
+    }
+
+    &--no-img {
+      background: linear-gradient(101.97deg, #2f47a2 4.38%, #1360c9 76.6%);
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors  */
+
+      .sc-card-tile {
+        &__outer {
+          margin-top: auto;
+        }
+
+        &__title {
+          color: $color-white;
+          font-size: $font-size-20;
+          font-weight: $font-weight-light;
+
+          * {
+            color: $color-white;
+          }
+        }
+      }
+    }
+
+    &--bg-img {
+      .sc-card-tile {
+        padding-top: $spacer-4;
+
+        &__title {
+          font-size: $font-size-mlg;
+        }
+
+        &__desc {
+          font-weight: $font-weight-normal;
+          font-size: $font-size-lg;
+        }
+        &__content {
+          .sc-inline-buttons {
+            margin-top: auto;
+          }
+        }
+      }
+    }
+  }
+  /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
+  .sc-btn {
+    display: inline-flex;
+    background-color: $color-black;
+    width: auto;
+    border-color: $color-black;
+
+    span {
+      color: $color-white;
+    }
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-black;
+
+      span {
+        color: $color-black;
+      }
+    }
+  }
+}
+
+// Tablet and Desktop screens  @media(min-width: 680px)
+@include tablet-desktop {
+  .sc-related-links-three-col {
+    .splide__slide {
+      width: calc(30% - 16px);
+
+      &:has(.sc-card-tile--bg-img) {
+        width: calc(40% - 16px);
+      }
+    }
+  }
+}
+
+/** @end */

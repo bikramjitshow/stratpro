@@ -1,0 +1,21 @@
+@mixin align-center-with-inline-block($target-child: '>*', $horizontal: false) {
+  &::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    font-size: 0;
+    vertical-align: middle;
+
+    @if $horizontal == true {
+      text-align: center;
+    }
+  }
+
+  #{$target-child} {
+    display: inline-block;
+    vertical-align: middle;
+
+    @content;
+  }
+}

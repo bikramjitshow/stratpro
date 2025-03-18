@@ -1,0 +1,17 @@
+// Vars
+@import "./vars/colors";
+@import "./vars/dimensions";
+@import "./vars/layout";
+@import "./vars/typography";
+@import "breakpoint/breakpoint";
+
+// Utils
+@import "utils/utils";
+
+// @import "./sc-smart-script.scss";
+@import "./sc-smart-script-modal-modify.scss";
+@import "./sc-product-choose.scss";
+
+html {
+  scroll-behavior: smooth;
+}

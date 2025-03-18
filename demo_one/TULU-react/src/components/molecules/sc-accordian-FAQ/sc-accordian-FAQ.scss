@@ -1,0 +1,126 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define faq-two-column; weak */
+.sc-faq-two-column {
+  &__row {
+    display: block;
+  }
+
+  &__content {
+    display: none;
+  }
+
+  &__wrapper {
+    width: 100%;
+    float: left;
+    cursor: pointer;
+    padding: $spacer-0 $spacer-0 $spacer-3 $spacer-0;
+    display: block;
+    position: relative;
+  }
+
+  &__label {
+    overflow: hidden;
+    display: block;
+    font-weight: $font-weight-bold;
+    color: $color-blue;
+    cursor: pointer;
+    background-color: $color-light-gray-5;
+    padding: $spacer-3 $spacer-3;
+    font-size: $font-size-md;
+    border-radius: 6px;
+  }
+  .sc-heading {
+    padding-left: $spacer-0;
+    padding-bottom: $spacer-3;
+    font-size: $font-size-base;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-spacing-sm;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+  }
+
+  &__input {
+    @include visuallyhidden;
+    visibility: hidden;
+    &:checked {
+      ~ .sc-faq-two-column__content {
+        display: block;
+        color: $color-grey;
+        padding: $spacer-0 $spacer-3 $spacer-3;
+        border: 1px solid $color-light-gray-8;
+        border-top: 0;
+        border-radius: 0 0 6px 6px;
+        &:hover {
+          cursor: default;
+        }
+      }
+      + .sc-faq-two-column__label {
+        border: 1px solid $color-light-gray-8;
+        border-bottom: 0;
+        background-color: transparent;
+        min-height: auto;
+        color: $color-text;
+        border-radius: 6px 6px 0 0;
+        &:hover {
+          cursor: default;
+        }
+      }
+      + .sc-faq-two-column--show {
+        display: none;
+      }
+      ~ .sc-faq-two-column__hidden {
+        display: block;
+      }
+    }
+  }
+
+  &__hidden {
+    display: none;
+  }
+
+  &__toggle {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__show {
+    font-size: $font-size-base;
+    color: $color-blue;
+    display: inline-block;
+    padding: $spacer-3 0;
+    cursor: pointer;
+    font-weight: $font-weight-bold;
+  }
+}
+
+@include desktop {
+  .sc-faq-two-column {
+    &__row {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    &__wrapper {
+      padding: $spacer-0 $spacer-2 $spacer-3 $spacer-2;
+      width: calc(50% - 2px);
+      margin-bottom: 0;
+    }
+
+    &__label {
+      font-size: $font-size-base;
+      min-height: 110px;
+    }
+    .sc-heading {
+      padding-left: $spacer-2;
+    }
+  }
+}
+
+/** @end */

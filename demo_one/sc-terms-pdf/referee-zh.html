@@ -1,0 +1,2188 @@
+<link rel="stylesheet" href="https://av.sc.com/assets/global/css/sc-error-modal.min.css" media="all" />
+
+<style>
+    .sc-filter{padding:8px 0;margin-bottom:16px}.sc-filter__btn{padding:8px 16px;background-color:transparent;border-radius:25px;border:0;color:#6b6e73;font-size:14px;min-width:75px;cursor:pointer;display:inline-flex;text-align:center;justify-content:center;align-items:center}.sc-filter__btn--active{background-color:rgba(39,114,199,.222);color:#2772c7;font-weight:500}.sc-filter__btn--sticky{position:sticky;top:0;left:0;z-index:99}.sc-filter__icon{width:20px;height:20px;margin-right:4px}.sc-filter__icon svg{width:100%;height:100%}.sc-filter--border .sc-filter__btn{border:1px solid #e1e1e1}.sc-filter--border .sc-filter__btn--active{border-color:transparent}.sc-radio-box{display:inline-flex;position:relative}.sc-radio-box__input-label{font-size:14px;font-weight:500;padding:8px 12px;min-width:120px;border:#e2e2e2 solid 1px;border-radius:5px;background:#fff;position:relative;cursor:pointer;width:100%;display:inline-flex;align-items:center;min-height:48px}.sc-radio-box__input{position:absolute;opacity:0;height:0;width:0}.sc-radio-box__input~.sc-radio-box__input-label::before{content:'';height:24px;width:24px;cursor:pointer;border-radius:50%;background:#fff;border:2px solid #555;flex-shrink:0;display:inline-block;margin-right:8px}.sc-radio-box__input:checked~.sc-radio-box__input-label::after{content:'';background-color:#2772c7;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);top:50%;left:24px;border-width:0;position:absolute}.sc-radio-box__input:checked~.sc-radio-box__input-label::before{background-color:#fff;border-color:#2772c7}.sc-radio-box__input[type=checkbox]~.sc-radio-box__input-label::before{border-radius:5px}.sc-radio-box__input[type=checkbox]:checked~.sc-radio-box__input-label::after{content:'';position:absolute;left:22px;top:calc(50% - 7px);width:5px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);border-radius:0}.sc-radio-box__input[type=checkbox]:checked~.sc-radio-box__input-label::before{background-color:#2772c7}.sc-accordion{width:100%}.sc-accordion__input{position:absolute;opacity:0;z-index:-1;visibility:hidden}.sc-accordion__input:checked+.sc-accordion__label::after{transform:rotate(180deg);top:calc(50% - 6px)}.sc-accordion__input:checked~.sc-accordion__content{max-height:100%;padding:16px;overflow:hidden;display:block}.sc-accordion__input:checked~.sc-heading .sc-accordion__label--plus{border-bottom:0;font-weight:700}.sc-accordion__input:checked~.sc-heading .sc-accordion__label--plus::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' fill='%230C77B9' fill-rule='evenodd' rx='.75'/%3E%3C/svg%3E%0A");transform:rotate(0) translateY(-50%);top:47%}.sc-accordion__label{padding:12px 16px;background-color:#f6f6f6;font-weight:400;cursor:pointer;color:#000;font-size:16px;position:relative;min-height:auto;display:inline-block;width:100%}.sc-accordion__label::after{content:'';width:13px;height:13px;background-image:url("data:image/svg+xml,%3Csvg width='168' height='100' viewBox='0 0 168 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M165.315 8.67848L159.812 3.13717C158.08 1.40662 155.776 0.453244 153.313 0.453244C150.852 0.453244 148.545 1.40662 146.813 3.13717L84.0376 65.915L21.19 3.06751C19.4608 1.33696 17.1539 0.384949 14.6926 0.384949C12.2313 0.384949 9.92301 1.33696 8.19246 3.06751L2.68802 8.57467C-0.896007 12.156 -0.896007 17.9896 2.68802 21.5709L77.5156 96.6675C79.2447 98.3967 81.549 99.615 84.0321 99.615H84.0608C86.5234 99.615 88.8277 98.3953 90.5568 96.6675L165.315 21.7744C167.047 20.0452 167.997 17.6713 168 15.21C168 12.7474 167.047 10.4063 165.315 8.67848Z' fill='%23626262'/%3E%3C/svg%3E%0A");background-position:center center;background-repeat:no-repeat;background-size:100%;position:absolute;top:50%;transform:translateY(-50%);right:15px}.sc-accordion__label--plus{background-color:#fff;padding:16px 16px 16px 40px;border-bottom:1px solid #555;font-size:18px;font-weight:300px;margin-bottom:2px}.sc-accordion__label--plus::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%230C77B9' fill-rule='evenodd'%3E%3Crect width='1.5' height='17' x='11.25' y='3.5' rx='.75'/%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' rx='.75'/%3E%3C/g%3E%3C/svg%3E%0A");background-size:24px 24px;width:24px;height:24px;right:auto;left:6px;filter:none;top:47%}.sc-accordion__label--plus-right{padding:16px 40px 16px 0}.sc-accordion__label--plus-right::after{right:6px;left:auto}.sc-accordion__content{max-height:0;padding:0 16px;color:#555;background:#fff;overflow:hidden;display:none;font-size:14px}.sc-tag{display:inline-flex;border-radius:30px;font-size:14px;background-color:transparent;border:1px solid #fff;font-size:12px;padding:6px 12px;transition:all .2s ease-in;text-transform:capitalize;color:#fff;font-weight:400;line-height:normal}.sc-tag *{color:inherit}.sc-tag--blue{background-color:#00bcd3}.sc-tag--green{background-color:#3eb812}.sc-tag--yellow{background-color:#ffba06}.sc-tag--sky-blue{background-color:#00a9f3}.sc-tag--gold{background-color:#f9e377}.sc-tag--orange{background-color:#ff6839}.sc-tag--gray{background-color:#e6e6e6;color:#000}.sc-tag--white{background-color:#fff;color:#000}.sc-list ol,.sc-list ul{padding-left:0}.sc-list ol li,.sc-list ul li{color:#000;position:relative;padding-left:24px;margin-bottom:8px;list-style:none;font-size:14px}.sc-list ol li::before,.sc-list ul li::before{content:'';position:absolute;left:0;top:5px;width:13px;height:13px;background-image:url("data:image/svg+xml;charset%3DUS-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2215.042%22%20height%3D%2211.631%22%20viewBox%3D%220.312%200.312%2015.042%2011.631%22%3E%3Cpath%20fill%3D%22%2338D54A%22%20d%3D%22M6.43%2011.449c-.201.198-.502.198-.803%200l-.1-.197-.201-.196-.803-.789L.912%206.522c-.201-.197-.201-.591%200-.788l1.103-1.183c.201-.197.502-.197.804%200l3.21%203.351L12.851.807c.2-.197.501-.197.802%200l1.104%201.183c.2.197.2.592%200%20.788L6.43%2011.449z%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-size:100%;display:inline-block}.sc-list ol li a,.sc-list ul li a{position:relative;z-index:2}.sc-badge{display:inline-flex;align-items:flex-start}.sc-badge svg{width:8px;height:11px}.sc-badge__text{display:inline;padding:2px 10px;color:#191919;background-color:#fae5e8;border-radius:0 0 8px 8px;font-size:12px}.sc-badge--green svg path{fill:#a6d0b5}.sc-badge--green .sc-badge__text{background-color:#e8f3ec}.sc-products-tile{--tile-padding:16px;max-width:700px;position:relative;display:flex;align-items:flex-start;flex-wrap:wrap;padding:var(--tile-padding);border:1px solid #e1e1e1;background-color:#fff;border-radius:10px;line-height:1.4;width:100%}.sc-products-tile__img{border-radius:4px;width:65px;height:41px;margin-right:15px;flex-shrink:0;object-fit:cover}.sc-products-tile__right{flex:1 0 calc(100% - 85px);display:flex;flex-direction:column;justify-content:space-between;height:100%;position:relative;z-index:2}.sc-products-tile__right-container{width:100%;margin-bottom:16px}.sc-products-tile__title{font-weight:500;font-size:16px;line-height:21px;color:#191919;margin-bottom:12px;display:block}.sc-products-tile__copy-code{position:relative;border-color:#2772c7;color:#2772c7}.sc-products-tile__copy-code:hover{border-color:#2772c7;color:#2772c7}.sc-products-tile__copy-code::before{content:'';background-image:url('data:image/svg+xml,<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.24985 3.5V1.25C3.24985 0.83579 3.58564 0.5 3.99985 0.5H12.9998C13.4141 0.5 13.7498 0.83579 13.7498 1.25V11.75C13.7498 12.1642 13.4141 12.5 12.9998 12.5H10.7498V14.7493C10.7498 15.1639 10.4124 15.5 9.99475 15.5H1.00499C0.587942 15.5 0.25 15.1665 0.25 14.7493L0.25195 4.25065C0.252025 3.83608 0.58948 3.5 1.00706 3.5H3.24985ZM1.75181 5L1.75014 14H9.24985V5H1.75181ZM4.74985 3.5H10.7498V11H12.2498V2H4.74985V3.5Z" fill="%232772C7"/></svg>');background-position:center;background-repeat:no-repeat;width:15px;height:15px;background-size:contain;display:inline-block;margin-right:8px}.sc-products-tile__tags{display:flex;flex-wrap:wrap;column-gap:4px}.sc-products-tile__tags .sc-tag{border-radius:7px;padding:4px 6px;-ms-flex-item-align:start;align-self:flex-start;margin-bottom:8px;font-weight:300;border-color:#a1a1a1;color:#555;line-height:normal;position:static}.sc-products-tile__tags [class*='--']{color:#fff;border-color:transparent}.sc-products-tile__desc{font-size:14px;color:#555;margin-bottom:16px}.sc-products-tile__info-icon{width:15px;height:15px;display:inline-block;margin-left:4px;cursor:pointer;position:relative;top:2px}.sc-products-tile__info-icon:target{display:block}.sc-products-tile__info-icon svg{width:100%;height:100%}.sc-products-tile__cvp-list{display:flex;flex-wrap:wrap;gap:16px}.sc-products-tile__cvp-list ol li,.sc-products-tile__cvp-list ul li{color:#555}.sc-products-tile__cvp{font-size:16px;font-weight:600;width:100%;flex:1 0 calc(50% - 8px)}.sc-products-tile__text{font-size:14px;color:#6b6e73;display:block;font-weight:300}.sc-products-tile__pdt-details{font-size:12px;color:#2772c7;padding:0;line-height:normal;border:0;min-width:auto;text-transform:capitalize;text-align:left;font-weight:300;letter-spacing:normal}.sc-products-tile__terms{color:#2772c7;font-size:14px;text-align:center;margin:0 auto;display:table;text-decoration-style:dashed;text-decoration-color:#2772c7;cursor:pointer;padding-top:4px}.sc-products-tile__terms-link{font-size:14px;font-weight:500;color:#000;padding:16px;border:1px solid #eee;border-radius:6px;background-color:#fff;width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;position:relative;gap:8px;line-height:1.4;text-transform:none;cursor:pointer;white-space:normal;text-align:left}.sc-products-tile__terms-link::after{content:'';background-image:url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="15" height="15" rx="1.5" stroke="%23AAAAAA"/><path d="M5.85099 4.96413C5.70002 4.96424 5.55752 5.02425 5.4548 5.13097C5.35208 5.23768 5.29756 5.38238 5.30321 5.53324C5.30602 5.60796 5.32354 5.68195 5.35477 5.75098C5.38599 5.82001 5.43031 5.88272 5.48519 5.93553C5.54007 5.98834 5.60443 6.03022 5.6746 6.05877C5.74478 6.08733 5.81938 6.10199 5.89416 6.10194L8.98795 6.10065L4.67802 10.5793C4.5753 10.686 4.52079 10.8307 4.52651 10.9816C4.53222 11.1325 4.59768 11.2772 4.70849 11.3838C4.8193 11.4904 4.96637 11.5503 5.11736 11.5502C5.26835 11.5502 5.41089 11.4902 5.51362 11.3834L9.8237 6.90467L9.94048 9.99696C9.94618 10.1479 10.0116 10.2925 10.1224 10.3992C10.2332 10.5059 10.3803 10.5658 10.5313 10.5657C10.6823 10.5657 10.8249 10.5057 10.9276 10.3989C11.0304 10.2922 11.0849 10.1475 11.0792 9.99656L10.9105 5.5309C10.9077 5.45618 10.8902 5.38221 10.8589 5.31319C10.8277 5.24418 10.7834 5.18148 10.7285 5.12868C10.6177 5.02206 10.4705 4.96218 10.3195 4.96219L5.85099 4.96413Z" fill="%23AAAAAA"/></svg>');width:20px;height:20px;background-size:100%;background-repeat:no-repeat;display:inline-block;flex-shrink:0}.sc-products-tile__terms-link:hover{color:#008738}.sc-products-tile__btn{margin-top:auto}.sc-products-tile__input-btn{margin-top:16px}.sc-products-tile__footer-text{font-size:12px;color:#555;margin-top:8px}.sc-products-tile__footer-text a{color:#2772c7}.sc-products-tile__feature{border-radius:6px;overflow:hidden;border:1px solid #008738;color:#555}.sc-products-tile__feature-box{border-radius:5px;padding:16px 0}.sc-products-tile__feature-col{width:100%;display:flex;align-items:center;margin-bottom:12px;padding:2px 0;position:relative;font-size:15px}.sc-products-tile__feature-col:last-child{margin-bottom:0}.sc-products-tile__feature-col::before{content:'';position:absolute;left:0;top:0;height:100%;width:3px;background:linear-gradient(180deg,#0f7aed 0,#38d200 100%);border-radius:10px}.sc-products-tile__feature-col--head{font-size:13px}.sc-products-tile__feature-col--head::before{content:none}.sc-products-tile__feature-left,.sc-products-tile__feature-right{width:100%;padding:2px 12px;position:relative}.sc-products-tile__feature-left::after{content:'';background-image:url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.1716 6.9999L6.8076 1.63589L8.2218 0.22168L16 7.9999L8.2218 15.778L6.8076 14.3638L12.1716 8.9999H0V6.9999H12.1716Z' fill='%23555555'/%3E%3C/svg%3E");display:inline-block;width:12px;height:12px;background-size:100%;background-repeat:no-repeat;position:absolute;right:-4px;top:50%;transform:translateY(-50%)}.sc-products-tile .sc-rte a{color:#008738}.sc-products-tile .sc-badge{top:-12px;position:absolute;left:12px}.sc-products-tile .sc-list ol li::before,.sc-products-tile .sc-list ul li::before{background-image:url('data:image/svg+xml,<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z" fill="black"/></svg>')}.sc-products-tile--bg-black{background:linear-gradient(90deg,#1f282e 0,#4f595d 130.78%)}.sc-products-tile--bg-black .sc-products-tile__cvp,.sc-products-tile--bg-black .sc-products-tile__desc,.sc-products-tile--bg-black .sc-products-tile__title{color:#fff}.sc-products-tile--bg-black .sc-products-tile__text{color:#d4d4d4}.sc-products-tile--bg-black .sc-products-tile__cvp-list ul li{color:#fff}.sc-products-tile--bg-black .sc-products-tile__cvp-list ul li::before{background-image:url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_2954_55)'%3E%3Cpath d='M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z' fill='white'/%3E%3Cg clip-path='url(%23clip1_2954_55)'%3E%3Cpath d='M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z' fill='white'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2954_55'%3E%3Crect width='15' height='11' fill='white'/%3E%3C/clipPath%3E%3CclipPath id='clip1_2954_55'%3E%3Crect width='15' height='11' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E")}.sc-products-tile--bg-black [class|=sc-tag]{border-color:#fff;color:#fff}.sc-products-tile--bg-black~.sc-products-tile__btn .sc-btn--blue{background-color:#193043;border-color:#193043}.sc-products-tile--with-logo{position:relative}.sc-products-tile--with-logo::after{content:'';background-image:url("data:image/svg+xml,%3Csvg width='186' height='360' viewBox='0 0 186 360' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_3644_3' style='mask-type:luminance' maskUnits='userSpaceOnUse' x='0' y='0' width='186' height='360'%3E%3Cpath d='M186 0H0V359.489H186V0Z' fill='white'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_3644_3)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M194.956 354.239L29.4898 247.296C29.4898 247.296 8.73589 235.454 3.98439 213.387C-2.6872 182.405 19.3128 155.846 19.3128 155.846L234.064 294.688C250.628 305.409 255.152 327.336 244.502 343.876C233.564 360.865 211.084 364.615 194.956 354.239Z' fill='%23F6F6F6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M38.2247 132.927C38.2247 132.927 12.8779 117.732 12.8779 82.5915C12.8779 47.5673 38.2146 32.5666 38.2146 32.5666L128.674 -26.2129C145.254 -36.9122 167.429 -32.242 178.207 -15.783C188.984 0.675725 184.28 22.6915 167.701 33.3907L91.4601 82.6784L221.365 166.667C221.365 166.667 244.747 179.97 249.355 202.419C255.785 233.742 234.068 259.546 234.068 259.546L38.2247 132.927Z' fill='%23F6F6F6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M208.495 47.6538C200 47.6556 193.956 50.3136 188.059 54.1242L143.896 82.6785L188.059 111.231C194.013 115.038 200.261 117.702 208.495 117.702C227.979 117.702 243.775 102.022 243.775 82.6781C243.775 63.3347 227.979 47.6499 208.495 47.6538Z' fill='%23F6F6F6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M37.7565 359.907C46.2514 359.905 52.296 357.247 58.1922 353.436L102.355 324.882L58.1922 296.329C52.2386 292.524 45.991 289.858 37.7565 289.858C18.2719 289.858 2.47656 305.54 2.47656 324.883C2.47656 344.226 18.2719 359.912 37.7565 359.907Z' fill='%23F6F6F6'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;width:100%;height:100%;max-height:300px;background-position:top right;position:absolute;right:0;top:0;display:inline-block;opacity:.03}.sc-products-tile--with-logo:not(.sc-products-tile--bg-black)::after{opacity:1}.sc-tag--blue{background-color:#4579ff}.sc-tag--black{background-color:#000}.sc-btn--full{width:100%}@media (min-width:681px){.sc-products-tile{--tile-padding:24px}.sc-products-tile__heading{margin-bottom:32px}}.sc-products-tile-modal{--tile-padding:16px;background-color:#f8f8f8;padding:var(--tile-padding);margin:calc(var(--tile-padding) * -1);width:calc(100% + var(--tile-padding) * 2);min-height:auto}.sc-products-tile-modal__pdt-dtls{display:flex;flex-wrap:wrap;align-items:flex-start;background-color:#fff;padding:var(--tile-padding) var(--tile-padding) var(--tile-padding);margin:calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1) 24px;width:calc(100% + var(--tile-padding) * 2)}.sc-products-tile-modal__terms-title{font-size:24px;margin-bottom:24px}.sc-products-tile-modal__content{margin-bottom:24px}.sc-products-tile-modal__content~.sc-products-tile-modal__content{margin-top:24px}.sc-products-tile-modal__apply{background-color:#2772c7;border-color:#2772c7}.sc-products-tile-modal__image{width:210px;height:auto;margin:0 auto 24px;display:block}.sc-products-tile-modal__pdt-top-title{font-size:15px;font-weight:400;color:#6b6e73;margin-bottom:8px!important}.sc-products-tile-modal__pdt-top-desc{font-size:17px;font-weight:500;color:#191919}.sc-products-tile-modal__pdt-top{background-color:#fff;margin:calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1) calc(var(--tile-padding));padding:24px}.sc-products-tile-modal .sc-products-tile__btn,.sc-products-tile-modal .sc-products-tile__input-btn{position:sticky;bottom:calc(var(--tile-padding) * -1);width:calc(100% + var(--tile-padding) * 2);margin:var(--tile-padding) calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1);left:0;padding:20px;background-color:#fff;z-index:4}.sc-products-tile-modal .sc-products-tile__btn .sc-btn,.sc-products-tile-modal .sc-products-tile__input-btn .sc-btn{width:100%}.sc-products-tile-modal .sc-products-tile__btn .buttons{flex-wrap:nowrap;gap:0}.sc-products-tile-modal .sc-products-tile__btn .buttons li{width:100%;margin-right:8px}.sc-products-tile-modal .sc-products-tile__btn .buttons li:last-child{margin-right:0}.sc-products-tile-modal .buttons{display:flex;flex-wrap:wrap;row-gap:0;column-gap:40px}.sc-products-tile-modal .buttons li{width:auto}.sc-products-tile-modal .buttons .sc-btn{min-width:100px}.sc-products-tile-modal .sc-list ol,.sc-products-tile-modal .sc-list ul{margin-bottom:24px}.sc-products-tile-modal .sc-list ol:last-child,.sc-products-tile-modal .sc-list ul:last-child{margin-bottom:0}.sc-products-tile-modal .sc-list ol li,.sc-products-tile-modal .sc-list ul li{color:#6b6e73;margin-bottom:16px;padding-left:32px}.sc-products-tile-modal .sc-list ol li strong,.sc-products-tile-modal .sc-list ul li strong{color:#000;font-weight:500}.sc-products-tile-modal .sc-list ol li::before,.sc-products-tile-modal .sc-list ul li::before{width:20px;height:20px;top:-1px;background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M0 12A12 12 0 1 0 12 0 12.013 12.013 0 0 0 0 12Zm22 0A10 10 0 1 1 12 2a10.011 10.011 0 0 1 10 10ZM11.757 7.757l1.414-1.414 4.243 4.243a2 2 0 0 1 0 2.828l-4.243 4.243-1.414-1.414L15 13H6v-2h9Z" fill="%231f8845" data-original="%23000000" class="" opacity="1"></path></g></svg>')}.sc-products-tile-modal .sc-rte p{margin-bottom:16px}.sc-products-tile-modal .sc-tag--blue{background-color:#4579ff}@media (min-width:681px){.sc-products-tile-modal{--tile-padding:24px;min-height:250px}.sc-products-tile-modal .buttons{gap:20px}.sc-products-tile-modal .sc-products-tile__btn .buttons{flex-wrap:nowrap;gap:16px}.sc-products-tile-modal .sc-products-tile__btn .buttons li{margin-right:0}}.sc-products-tile-modal-new-layout .sc-products-tile__terms{margin:0}.sc-products-tile-pdt-selection{margin-bottom:16px;margin-top:24px}.sc-products-tile-pdt-selection__title{font-size:16px;font-weight:600;color:#191919;margin-bottom:8px}.sc-products-tile-pdt-selection__tile{position:relative;display:flex;align-items:flex-start;padding:16px;border:1px solid #dfdfdf;border-radius:6px;overflow:hidden;background-color:#fff;margin-bottom:12px}.sc-products-tile-pdt-selection__img{max-width:65px;margin-right:16px;height:41px;object-fit:cover;object-position:center;flex-shrink:0}.sc-products-tile-pdt-selection__pdt-name{font-size:15px;font-weight:500;color:#191919;margin-bottom:16px;padding-right:24px}.sc-products-tile-pdt-selection__pdt-details *{font-size:13px!important}.sc-products-tile-pdt-selection__pdt-details.sc-list ol li,.sc-products-tile-pdt-selection__pdt-details.sc-list ul li{padding-left:24px;margin-bottom:8px}.sc-products-tile-pdt-selection__pdt-details.sc-list ol li::before,.sc-products-tile-pdt-selection__pdt-details.sc-list ul li::before{width:12px;height:12px;top:4px;background-image:url('data:image/svg+xml,<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7559 0.724611C14.4303 0.399088 13.9026 0.399088 13.5775 0.724611L5.83334 8.46874L1.42253 4.05793C1.09741 3.73241 0.569256 3.73241 0.244142 4.05793C-0.0813807 4.38346 -0.0813807 4.9108 0.244142 5.23632L5.24414 10.2363C5.4069 10.3991 5.62012 10.4805 5.83333 10.4805C6.04654 10.4805 6.25976 10.3991 6.42252 10.2363L14.7559 1.90299C15.0814 1.57787 15.0814 1.05013 14.7559 0.724611Z" fill="black"/></svg>')}.sc-products-tile-pdt-selection .sc-radio-box{position:absolute;inset:0;width:100%;height:100%;z-index:1;cursor:pointer}.sc-products-tile-pdt-selection .sc-radio-box__input-label{min-width:auto;min-height:auto;padding:0;border:0;background-color:transparent;position:absolute;right:16px;top:16px;width:24px}.sc-products-tile-pdt-selection .sc-radio-box__input:checked~.sc-radio-box__input-label::after{left:12px}.sc-product-tiles{line-height:1.4}.sc-product-tiles__head-wrapper{padding-top:32px;padding-bottom:32px}.sc-product-tiles .sc-mgm-referral-input,.sc-product-tiles__heading{width:100%}.sc-product-tiles__title{font-size:22px;color:#000;width:100%}.sc-product-tiles__title~.sc-product-tiles__desc{font-size:14px}.sc-product-tiles__desc{font-size:18px;color:#555}.sc-product-tiles__sub-title{font-size:16px;font-weight:600;color:#000;margin-bottom:16px}.sc-product-tiles__container{background-color:#f6f6f6;padding:32px 0}.sc-product-tiles__wrapper{display:flex;flex-wrap:wrap}.sc-product-tiles__row{width:100%;display:flex;gap:16px;flex-direction:column}.sc-product-tiles__copy-message{position:fixed;background-color:#191919;border-radius:8px;padding:8px 16px;font-size:14px;color:#fff;left:0;right:0;margin:0 auto;bottom:50px;opacity:0;z-index:-10;transition:all .3s ease-in-out;display:table}.sc-product-tiles__copy-message--show{opacity:1;z-index:99999}.sc-product-tiles .sc-products-tile{max-width:100%;margin-bottom:16px}.sc-product-tiles .sc-products-tile .sc-badge{top:-12px;left:auto;right:20px;z-index:10}.sc-product-tiles .sc-tag--blue{background-color:#4579ff}.sc-product-tiles .sc-tag--dark-blue{background-color:#2b6685}.sc-product-tiles .sc-filter{padding:16px 0}.sc-product-tiles .sc-filter__btn{padding:4px 16px;min-width:70px}.sc-products-tile-modal__input-title{font-size:24px;font-weight:400;color:#191919;margin-bottom:8px}.sc-products-tile-modal__input-desc{font-size:14px;font-weight:400;color:#191919}.sc-products-tile-modal__code-input{width:100%;height:42px;border:1px solid #e1e1e1;background-color:#fff;padding:0 12px;margin-top:16px;color:#191919;font-size:14px;border-radius:6px;text-transform:uppercase}.sc-products-tile-modal__code-input--error{border:1px solid #d0011b}.sc-products-tile-modal__input-error{color:#d0011b;font-size:12px;font-weight:400;display:flex;align-items:center;margin-top:6px}.sc-products-tile-modal__error-info-icon{display:inline-flex}.sc-products-tile-modal__error-info-icon svg{margin-right:8px;width:15px;height:15px}.sc-products-tile-modal__error-info-icon svg path{stroke:#d0011b}.sc-products-tile-modal__accordion{border:1px solid #e1e1e1;border-radius:6px;background-color:#fff;margin-bottom:16px}.sc-products-tile-modal__accordion:last-of-type{margin-bottom:0}.sc-products-tile-modal__accordion .sc-accordion__label{font-size:14px;font-weight:500;background-color:transparent;position:relative;display:flex;align-items:center;padding-right:40px}.sc-products-tile-modal__accordion .sc-accordion__label::before{content:'';position:absolute;left:0;top:0;height:50%;top:50%;transform:translateY(-50%);width:3px;background:linear-gradient(180deg,#0f7aed 0,#38d200 100%);border-radius:10px}.sc-products-tile-modal__accordion .sc-accordion__label::after{width:25px;height:25px;background-size:13px;background-color:#f8f8f8;border-radius:50%;border:1px solid #b7b7b7}.sc-products-tile-modal__accordion .sc-list ul li{margin-bottom:16px}.sc-products-tile-modal__accordion .sc-list ul li::before{width:20px;height:20px;top:-1px;background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M0 12A12 12 0 1 0 12 0 12.013 12.013 0 0 0 0 12Zm22 0A10 10 0 1 1 12 2a10.011 10.011 0 0 1 10 10ZM11.757 7.757l1.414-1.414 4.243 4.243a2 2 0 0 1 0 2.828l-4.243 4.243-1.414-1.414L15 13H6v-2h9Z" fill="%231f8845" data-original="%23000000" class="" opacity="1"></path></g></svg>')}.sc-products-tile-modal__accordion-left,.sc-products-tile-modal__accordion-right{width:100%;padding:2px 12px;position:relative}.sc-products-tile-modal__accordion-left::after{content:'';background-image:url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.1716 6.9999L6.8076 1.63589L8.2218 0.22168L16 7.9999L8.2218 15.778L6.8076 14.3638L12.1716 8.9999H0V6.9999H12.1716Z' fill='%23555555'/%3E%3C/svg%3E");display:inline-block;width:12px;height:12px;background-size:100%;background-repeat:no-repeat;position:absolute;right:-4px;top:50%;transform:translateY(-50%);flex-shrink:0}.sc-products-tile-modal .sc-tag--dark-blue{background-color:#2b6685}.sc-products-tile-modal .sc-products-tile__btn{padding:0}.sc-products-tile-modal .sc-products-tile__btn .buttons{padding:20px 16px}.sc-products-tile-modal .sc-products-tile__btn .sc-btn--small{padding:0 8px!important}.sc-products-tile-modal .sc-products-tile__applied-code{background:#e5e5e5;padding:8px;font-size:14px;color:#000;text-align:center}.sc-products-tile-modal .sc-products-tile__applied-code span{font-weight:500;text-transform:uppercase;display:inline-block}.sc-products-tile-modal .buttons li{width:100%}.sc-mgm-referral-input{min-height:auto;padding:0;margin:0;width:100%;background-color:transparent;margin-top:24px}.sc-mgm-referral-input .sc-products-tile-modal__input-desc{margin-bottom:8px}.sc-mgm-referral-input .sc-products-tile-modal__input-box{width:100%;height:42px;border:1px solid #e1e1e1;background-color:#fff;padding:0 12px;color:#191919;font-size:14px;border-radius:6px;text-transform:uppercase;display:flex;align-items:center}.sc-mgm-referral-input .sc-products-tile-modal__input-box--focus{border-color:#2772c7}.sc-mgm-referral-input .sc-products-tile-modal__input-box--error{border-color:#d0011b}.sc-mgm-referral-input .sc-products-tile-modal__input-box--success{border-color:#008738}.sc-mgm-referral-input .sc-products-tile-modal__input-box--success .sc-products-tile-modal__refer-input{width:110px}.sc-mgm-referral-input .sc-products-tile-modal__refer-input{margin:0;background-color:transparent;border:0;padding-left:0;width:100%;min-width:80px;text-transform:uppercase;font-size:14px;color:#000}.sc-mgm-referral-input .sc-products-tile-modal__refer-input::placeholder{color:#949494;text-transform:capitalize}.sc-mgm-referral-input .sc-products-tile-modal__refer-input:disabled{color:#000}.sc-mgm-referral-input .sc-products-tile-modal__error-close{padding:0;border:0;background-color:#6b6e73;padding:4px 4px 2px;border-radius:50%;width:20px;height:20px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.50005 5.83339L13.3333 0L15 1.66667L9.1667 7.50005L15 13.3333L13.3333 15L7.50005 9.1667L1.66667 15L0 13.3333L5.83339 7.50005L0 1.66667L1.66667 0L7.50005 5.83339Z' fill='white'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:9px}.sc-mgm-referral-input .sc-products-tile-modal__success-tick{display:inline-block}.sc-mgm-referral-input .sc-products-tile-modal__success-tick::after{content:'';background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' width='512' height='512' x='0' y='0' viewBox='0 0 24 24' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M7.77 20.589a3.012 3.012 0 0 1-2.137-.883L0 14.073l1.424-1.425 5.633 5.633a1.008 1.008 0 0 0 1.425 0L22.576 4.187 24 5.612 9.906 19.706a3.01 3.01 0 0 1-2.136.883Z' fill='%231f8845' opacity='1' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");width:20px;height:20px;background-position:center;background-repeat:no-repeat;background-size:contain;display:inline-block}.sc-mgm-referral-input .sc-products-tile-modal__edit,.sc-mgm-referral-input .sc-products-tile-modal__error-close{margin-left:auto}.sc-mgm-referral-input .sc-products-tile-modal__edit{color:#2772c7;font-size:14px;font-weight:400;border:0;background-color:transparent;position:relative;cursor:pointer;display:inline-flex;align-items:center}.sc-mgm-referral-input .sc-products-tile-modal__edit::after{content:'';background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' width='512' height='512' x='0' y='0' viewBox='0 0 386.615 386.615' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M36.573 309.292h2.09l100.833-21.943a9.924 9.924 0 0 0 5.224-2.612l170.84-170.841a65.833 65.833 0 0 0 19.331-47.02 67.916 67.916 0 0 0-19.331-47.543A65.825 65.825 0 0 0 268.54.003a64.262 64.262 0 0 0-47.02 19.853L51.201 190.696a9.404 9.404 0 0 0-3.135 4.702L26.124 296.231a11.493 11.493 0 0 0 3.135 9.927 10.45 10.45 0 0 0 7.314 3.134zM268.54 20.901c25.103-.002 45.454 20.347 45.456 45.45l-.003.525a43.886 43.886 0 0 1-13.061 31.869l-64.261-64.784a44.93 44.93 0 0 1 31.869-13.06zm-46.498 28.212 64.261 64.261-148.898 148.375-64.261-63.739L222.042 49.113zM64.785 218.909l51.722 51.722-66.351 14.629 14.629-66.351zM368.328 365.717H18.287c-5.771 0-10.449 4.678-10.449 10.449s4.678 10.449 10.449 10.449h350.041c5.771 0 10.449-4.678 10.449-10.449s-4.678-10.449-10.449-10.449z' fill='%232772c7' opacity='1' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");width:16px;height:16px;background-repeat:no-repeat;background-size:contain;display:inline-block;margin-left:8px}.sc-mgm-referral-input .sc-btn{min-width:auto;min-height:31px;text-transform:capitalize;cursor:pointer;margin-left:auto}.c-modal .m-text-content .sc-products-tile-modal{margin-bottom:-16px}.c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,.c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn{margin-bottom:-16px}.c-modal .m-text-content .sc-products-tile-modal .sc-tag{margin-bottom:8px}.sc-error-modal__alert-close:hover{background-color:#2772c7}.sc-error-modal__alert-icon svg path{fill:#d0011b;stroke:transparent}.sc-error-modal__alert-title{color:#d0011b}.sc-error-modal--apply .sc-error-modal__alert-icon svg path{fill:#2772c7}.sc-error-modal--apply .sc-error-modal__alert-title{color:#2772c7}.c-modal-code-input>.wrapper[data-size=theme] .modal-content{max-width:450px}.c-modal-code-input .sc-products-tile-modal__content{margin-bottom:40px}@media (min-width:681px){.sc-product-tiles__title{font-size:30px}.sc-product-tiles__title~.sc-product-tiles__desc{font-size:16px}.sc-product-tiles__desc{font-size:24px}.sc-product-tiles__sub-title{font-size:18px}.sc-product-tiles__head-wrapper{padding-top:40px;padding-bottom:40px;display:flex;align-items:flex-start;column-gap:30px}.sc-product-tiles__wrapper{gap:24px}.sc-product-tiles__row{gap:24px;align-items:flex-start;flex-direction:row}.sc-product-tiles .sc-products-tile{margin-bottom:0;max-width:calc(50% - 15px);width:100%}.sc-mgm-referral-input{margin-top:0;min-height:auto}.sc-products-tile-modal .sc-products-tile__btn .buttons{padding:20px;width:100%}.c-modal .m-text-content .sc-products-tile-modal{margin-bottom:-24px}.c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__btn,.c-modal .m-text-content .sc-products-tile-modal .sc-products-tile__input-btn{margin-bottom:-24px}}@media (min-width:1024px){.sc-product-tiles__wrapper{gap:24px}}@supports (-webkit-touch-callout:none){input:focus{font-size:16px!important}}
+  </style>
+<style>
+    .sc-product-tiles .sc-filter{position:sticky;top:0;height:60px;z-index:99}.sc-product-tiles .sc-filter--sticky .splide{position:fixed;top:0;left:0;padding:8px 20px;background-color:#fff;z-index:99;width:100%;border-bottom:1px solid #f6f6f6}@media (min-width:1024px){.sc-product-tiles .sc-filter--sticky .splide{top:56px}.sc-product-tiles .sc-filter--sticky .splide__track{max-width:1340px;margin:0 auto;width:100%}}.sc-product-tile-recommended{max-width:800px}.sc-product-tile-recommended__sub-title{font-size:18px;font-weight:500;color:#000;margin-bottom:8px}.sc-product-tile-recommended__desc{font-size:14px;margin-top:-8px;margin-bottom:16px;color:#555}.sc-product-tile-recommended__view-all .sc-products-tile__btn{bottom:0}.sc-product-tile-recommended__view-all-btn{color:#2772c7;font-size:14px;text-align:center;margin:0 auto;display:table;cursor:pointer;margin-top:24px;background-color:transparent;border:0;border-bottom:1px dashed #2772c7;padding:0 0 4px;font-weight:500}.sc-product-tile-recommended .sc-products-tile-modal{margin:0;background-color:#fff;border:1px solid #dfdfdf;border-radius:6px;contain:paint;width:100%}.sc-product-tile-recommended .sc-products-tile-modal__pdt-top{display:none}.sc-product-tile-is-recommended .sc-products-tile__right{justify-content:flex-start}.sc-product-tile-is-recommended .sc-products-tile__btn{margin-top:0}.sc-product-tile-is-recommended-back-btn{position:relative;display:inline-flex;align-items:center;margin-bottom:16px;border:0;background-color:transparent;padding:0;font-size:16px;font-weight:600;color:#000;cursor:pointer}.sc-product-tile-is-recommended-back-btn::before{content:'';background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(87 87 87 1)'%3E%3Cpath d='M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z'%3E%3C/path%3E%3C/svg%3E");width:24px;height:24px;background-position:center;background-repeat:no-repeat;background-size:100%;margin-right:8px}.sc-product-tile-is-recommended-back-btn:not(.hide)~.sc-product-tiles__sub-title{display:none}.sc-products-tile-steps{border:1px solid #008738;border-radius:6px;padding:16px}.sc-products-tile-steps__col{display:flex;align-items:flex-start;font-size:14px;color:#191919}.sc-products-tile-steps strong{font-weight:500}.sc-products-tile-steps__left{margin-right:8px;min-width:20px}@media (min-width:681px){.sc-product-tile-recommended__sub-title{text-align:center}.sc-product-tile-recommended__desc{font-size:16px;text-align:center}}.sc-product-tiles-recommended{margin-bottom:32px;padding:2px}.sc-product-tiles-recommended__title{font-size:16px;font-weight:500;color:#000;margin-bottom:16px}.sc-product-tiles-recommended .sc-products-tile{position:relative;border:0}.sc-product-tiles-recommended .sc-products-tile::before{content:'';position:absolute;top:0;left:0;bottom:0;right:0;border-radius:10px;padding:2px;border:0;background:linear-gradient(121deg,#2db944 0,#4478ff 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}.sc-product-tiles-recommended .sc-products-tile--with-logo::after{right:2px;top:2px;border-top-right-radius:8px}@media (min-width:681px){.sc-product-tiles-recommended__title{font-size:18px}}
+</style>
+
+<style>
+    @media (max-width: 680.98px) {
+    .sc-bnr-right-image .sc-bnr__right-img {
+        right: 10px;
+        max-width: 150px;
+      }
+      .sc-bnr-right-image .sc-bnr__content {
+        max-width: 180px;
+    }
+    }
+  </style>
+ <style>
+   .c-modal>.wrapper[data-size=theme] .m-text-content{
+    border-radius: 24px;
+  }
+  .c-modal>.wrapper[data-size="theme"] .modal-content {
+	  max-height: none !important;
+      
+}
+.c-modal>.wrapper[data-size="theme"] .m-text-content {
+    max-height: calc(100vh - 120px);
+}
+  </style>
+
+    <div class="sc-product-tiles" data-query-param-code="referid" data-query-param-code-length="8"
+        data-query-param-product="p" data-recommended-lite="true">
+        <!-- This inputbox added for MGM Referral Page -->
+        <div class="sc-content-wrapper sc-product-tiles__head-wrapper">
+            <div class="sc-product-tiles__heading">
+                <p class="sc-product-tiles__desc">
+                    開立以下產品以賺獎賞
+                </p>
+            </div>
+        </div>
+        <!-- inputbox end -->
+
+        <div class="sc-product-tiles__container">
+            <!-- Recommended for you section - START -->
+            <div class="sc-product-tile-recommended sc-content-wrapper">
+                <h3 class="sc-product-tile-recommended__sub-title">
+                    為您推薦
+                </h3>
+                <p class="sc-product-tile-recommended__desc">
+                    開立以下產品以賺獎賞
+                </p>
+
+                <!-- Product 1 -->
+                <div class="sc-products-tile-modal"></div>
+
+                <div class="sc-product-tile-recommended__view-all">
+                    <a href="javascript:void(0)" class="sc-product-tile-recommended__view-all-btn"
+                        title="查看所有推薦產品">
+                        查看所有推薦產品
+                    </a>
+                </div>
+            </div>
+            <!-- Recommended for you section - END -->
+
+            <div class="sc-content-wrapper sc-product-tile-is-recommended">
+                <a href="#null" title="所有推薦優惠" class="sc-product-tile-is-recommended-back-btn">
+                    所有推薦優惠
+                </a>
+
+                <!-- Recommended For you section -->
+                <div class="sc-product-tiles-recommended hide">
+                    <h3 class="sc-product-tiles-recommended__title">為您推薦</h3>
+                    <div class="sc-product-tiles-recommended__wrapper">
+                    <!-- Copy and paste sc-products-tile here through JS -->
+                    </div>
+                </div>
+                <!-- Recommended For you section  END -->
+
+                <h3 class="sc-product-tiles__sub-title">最新推薦產品</h3>
+                <!-- Filter -->
+                <div class="sc-filter">
+                    <div class="splide" data-splide='{
+              "trimSpace": "move",
+              "pagination": false,
+              "gap": "16px",
+              "arrows": false,
+              "slideFocus": false,
+              "autoWidth": true,
+              "breakpoints": {
+                "680": {
+                  "gap": "8px"
+                }
+              }
+            }'>
+                        <div class="splide__track">
+                            <div class="splide__list">
+                                <div class="splide__slide">
+                                    <a href="#null" class="sc-filter__btn sc-filter__btn--active" tabindex="0"
+                                        title="全部" data-categories="all">
+                                        全部
+                                    </a>
+                                </div>
+                                <div class="splide__slide">
+                                    <a href="#null" class="sc-filter__btn" tabindex="0" title="存款"
+                                        data-categories="deposits">存款</a>
+                                </div>
+                                <div class="splide__slide">
+                                    <a href="#null" class="sc-filter__btn" tabindex="0" title="信用卡"
+                                        data-categories="credit-cards">
+                                        信用卡
+                                    </a>
+                                </div>
+                                <div class="splide__slide">
+                                    <a href="#null" class="sc-filter__btn" tabindex="0" title="綜合理財服務"
+                                        data-categories="banking-plans">
+                                        綜合理財服務
+                                    </a>
+                                </div>
+                                <div class="splide__slide">
+                                    <a href="#null" class="sc-filter__btn" tabindex="0" title="財富"
+                                        data-categories="wealth">
+                                        財富
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sc-product-tiles__wrapper">
+                    <!-- data-product-id is used to make the products order random on each visit -->
+                    <div class="sc-products-tile" data-product-name="marathon" data-cards="deposits">
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <img width="1687" height="1064"
+                            src="https://av.sc.com/hk/content/images/msa-195x114-1.jpg"
+                            class="sc-products-tile__img" alt="Text, Credit Card, Art" loading="lazy" />
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料 -「高息馬拉松活期存款」戶口" data-send="show-overlay"
+                                    data-modal-source="sc-prod-col-detail-modal-cta-792376"> </a>
+                                    <div class="sc-products-tile__tags">
+                                        <span class="sc-tag sc-tag--green">存款</span>
+                                        <span class="sc-tag">現金回贈</span>
+                                    </div>
+                                    <h2 class="sc-products-tile__title">
+                                        「高息馬拉松活期存款」戶口
+                                    </h2>
+                                    <!-- <p class="sc-products-tile__desc">
+                                        3步極速開戶可享存款年利率高達4.5%
+                                </p> -->
+                                    <div class="sc-products-tile__cvp-list sc-list">
+                                        <ul>
+                                            <li>
+                                                存款年利率高達<strong>4.5%</strong>
+                                            </li>
+                                            <li>開戶要求低至<strong>HK$10,000</strong></li>
+                                            <li>存款時間愈長，所享年利率愈高</li>
+                                        </ul>
+                                    </div>
+                               
+                               
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-792376"
+                                    data-size="theme">
+                                    <div class="sc-products-tile-modal">
+                                        <div class="sc-products-tile-modal__pdt-dtls">
+                                            <img width="1687" height="1064"
+                                                src="https://av.sc.com/hk/content/images/msa-195x114-1.jpg"
+                                                class="sc-products-tile__img" alt="Text, Credit Card, Art"
+                                                loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag sc-tag--green">存款</span>
+                                                    <span class="sc-tag">現金回贈</span>
+                                                </div>
+                                                <h2 class="sc-products-tile__title">
+                                                    「高息馬拉松活期存款」戶口
+                                                </h2>
+                                                <p class="sc-products-tile__desc">
+                                                    3步極速開戶可享存款年利率高達4.5%
+                                            </p>
+                                                <ul class="buttons">
+                                                    <li>
+                                                        <a href="https://www.sc.com/hk/zh/deposits/marathon-savings-account/"
+                                                            target="_blank"
+                                                            title="詳情 -「高息馬拉松活期存款」戶口"
+                                                            class="c-button sc-products-tile__pdt-details">
+                                                            詳情 >>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            
+                                            <ul>
+                                              
+                                                <li>
+                                                    <strong>遞增存款年利率</strong> <br />
+                                                    存款時間愈長，所享年利率愈高
+                                                </li>
+                                                <li>
+                                                    <strong>開戶要求</strong> <br />
+                                                    低至HK$10,000
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#null"
+                                                    data-mobile-href="https://retail.sc.com/scmobile/hk/?ngroute=web.rtob-webview&productCode=DUM&source=MBK&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-deposits-acquisition-inapp_mgm-hk-zh"     
+                                                    title="立即申請 - 高息馬拉松活期存款」戶口"
+                                                        class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__mobile-link"
+                                                        target="_blank">
+                                                        <span>立即申請
+                                                            <span class="visuallyhidden">
+                                                                - 「高息馬拉松活期存款」戶口</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                                <li>
+                                    <a href="#null" target="_blank"
+                                    data-mobile-href="https://retail.sc.com/scmobile/hk/?ngroute=web.rtob-webview&productCode=DUM&source=MBK&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-deposits-acquisition-inapp_mgm-hk-zh"    
+                                    title="立即申請 -「高息馬拉松活期存款」戶口" 
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__mobile-link" >
+                                        <span>立即申請
+                                            <span class="visuallyhidden">
+                                                - 高息馬拉松活期存款」戶口</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                             <p class="sc-products-tile__footer-text">
+                                    只適用於持有任何存款戶口並透過<strong>SC Mobile App</strong>申請之現有客戶
+                                   
+                                </p>
+                        </div>
+                    </div>
+                    <div class="sc-products-tile" data-product-name="cathay" data-cards="credit-cards">
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <img width="1600" height="300"
+                            src="https://av.sc.com/hk/content/images/hk-cathay-cc-600_380.png"
+                            class="sc-products-tile__img" alt="Nature, Outdoors, Logo" loading="lazy" />
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料 - 渣打國泰Mastercard"
+                                    data-send="show-overlay" data-modal-source="sc-prod-col-detail-modal-cta-792396">
+                                    <div class="sc-products-tile__tags">
+                                        <span class="sc-tag sc-tag--blue">信用卡</span>
+                                        <span class="sc-tag">里數</span>
+                                    </div>
+                                    <h2 class="sc-products-tile__title">
+                                        渣打國泰Mastercard<sup>®</sup>
+                                    </h2>
+                                    <p class="sc-products-tile__desc">
+                                        全新信用卡客戶* 申請渣打國泰Mastercard, 可享額外高達6,000里數 及迎新禮遇。
+                                    </p>
+                                    <div class="sc-products-tile__cvp-list sc-list">
+                                        <ul>
+                                            <li>高達額外<strong>6,000</strong>里數</li>
+                                            <li>高達<strong>100,000</strong>里數迎新禮遇</li>
+                                        </ul>
+                                    </div>
+                                </a>
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-792396"
+                                    data-size="theme">
+                                    <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
+                                        <!-- <div class="sc-products-tile-modal__pdt-top">
+                                            <p class="sc-products-tile-modal__pdt-top-title">
+                                              Before you proceed to apply
+                                            </p>
+                                            <div class="sc-products-tile-modal__pdt-top-desc">
+                                              Please see more details about our Cathay Mastercard offer and select a card type
+                                            </div>
+                                        </div> -->
+                                        <div class="sc-products-tile-modal__pdt-dtls">
+                                            <img width="1600" height="300"
+                                                src="https://av.sc.com/hk/content/images/hk-cathay-cc-600_380.png"
+                                                class="sc-products-tile__img" alt="Nature, Outdoors, Logo"
+                                                loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag sc-tag--blue">信用卡</span>
+                                                    <span class="sc-tag">里數</span>
+                                                </div>
+                                                <h2 class="sc-products-tile__title">
+                                                    渣打國泰Mastercard<sup>®</sup>
+                                                </h2>
+                                                <p class="sc-products-tile__desc">
+                                                    全新信用卡客戶* 申請渣打國泰Mastercard, 可享額外高達6,000里數 及迎新禮遇。
+
+                                                </p>
+                                                <!-- <ul class="buttons">
+                                                    <li>
+                                                        <a href="http://www.sc.com/hk/zh/credit-cards/cathay"
+                                                            target="_blank"
+                                                            title="詳情-渣打國泰Mastercard"
+                                                            class="c-button sc-products-tile__pdt-details">
+                                                            詳情 »
+                                                        </a>
+                                                    </li>
+                                                </ul> -->
+                                            </div>
+                                        </div>
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            
+                                            <p>渣打國泰Mastercard推薦計劃 - 以有效推薦碼成功申請, 您和推薦人可享額外獎賞!</p>
+                                            <p>
+                                                <strong>
+                                                    被推薦之全新信用卡客戶可享高達額外6,000里數*
+                                                </strong>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <strong>全新信用卡客戶*可享額外6,000里數</strong>
+                                                </li>
+                                                <li>
+                                                    <strong>現有信用卡客戶^可享額外3,000里數</strong>
+                                                </li>
+                                            </ul>
+                                            <p><strong>賺取里數獎賞:</strong></p>
+                                            <ul>
+                                                <li><strong>高達HK$2 = 1 里數</strong>
+                                                <br>
+                                                適用於國泰及香港快運航空之合資格簽賬<sup>#</sup>
+                                                </li>
+                                                <li><strong>HK$4 = 1 里數</strong>
+                                                    <br>
+                                                    適用於食肆/外賣平台及酒店類別之合資格簽賬
+                                                    </li>
+                                            </ul>
+                                        </div>
+
+                                        <ul class="buttons">
+                                            <li>
+                                                <a href="https://av.sc.com/hk/content/docs/hk-cc-cxam-onebank-mgm-tnc.pdf" target="_blank"
+                                                    title="條款及細則 - 渣打國泰Mastercard"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    條款及細則
+                                                </a>
+                                              
+                                            </li>
+                                            <li>
+                                                <a href="https://av.sc.com/hk/content/docs/hk-credit-card-key-facts-statement.pdf" target="_blank" title="下載信用卡產品資料概要"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    下載信用卡產品資料概要
+                                                </a>
+                                              
+                                            </li>
+                                        </ul>
+
+                                        <div class="sc-products-tile-pdt-selection">
+                                            <p class="sc-products-tile-pdt-selection__title">
+                                                請選擇其中一款信用卡
+                                            </p>
+                                            <div class="sc-products-tile-pdt-selection__tile">
+                                                <label class="sc-radio-box" for="check-box-1" tabindex="0"
+                                                    data-card-link="https://origination.sc.com/onboarding/hk/apply.html?product=1313&campaign=HKSOZ00MCWB000&premium=CM20&cardType=3268&affiliation=2132&lang=zh&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-zh">
+                                                    <input type="radio" class="sc-radio-box__input" id="check-box-1"
+                                                        tabindex="-1" name="checkbox-radio" checked />
+                                                    <div class="sc-radio-box__input-label"></div>
+                                                </label>
+                      
+                                                <img class="sc-products-tile-pdt-selection__img"
+                                                    src="https://av.sc.com/hk/content/images/cardface_Cathy.png"
+                                                    alt="image" />
+                      
+                                                <div class="sc-products-tile-pdt-selection__content">
+                                                    <p class="sc-products-tile-pdt-selection__pdt-name">
+                                                        渣打國泰 Mastercard
+                                                    </p>
+                                                    <div
+                                                        class="sc-products-tile-pdt-selection__pdt-details sc-rte sc-list">
+                                                        <ul>
+                                                            <li>
+                                                                可享高達 60,000「亞洲萬里通」 里數迎新禮遇
+                                                            </li>
+                                                            <li>
+                                                                合資格食肆、酒店及海外簽賬可享HK$4 = 1「亞洲萬里通」里數
+                                                            </li>
+                                                            <li>
+                                                                首年年費豁免
+                                                            </li>
+                                                           
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sc-products-tile-pdt-selection__tile">
+                                                <label class="sc-radio-box" for="check-box-2" tabindex="0"
+                                                    data-card-link="https://origination.sc.com/onboarding/hk/apply.html?product=1313&campaign=HKSOZ01MCWB000&premium=CM21&cardType=3269&affiliation=2132&lang=zh&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-zh">
+                                                    <input type="radio" class="sc-radio-box__input" id="check-box-2"
+                                                        tabindex="-1" name="checkbox-radio" />
+                                                    <div class="sc-radio-box__input-label"></div>
+                                                </label>
+                      
+                                                <img class="sc-products-tile-pdt-selection__img"
+                                                    src="https://av.sc.com/hk/content/images/cardface_Priority-Cathy.png"
+                                                    alt="image" />
+                      
+                                                <div class="sc-products-tile-pdt-selection__content">
+                                                    <p class="sc-products-tile-pdt-selection__pdt-name">
+                                                        渣打國泰 Mastercard - 優先理財
+                                                    </p>
+                                                    <div
+                                                        class="sc-products-tile-pdt-selection__pdt-details sc-rte sc-list">
+                                                        <ul>
+                                                            <li>
+                                                                符合HK$1,000,000或以上之每日平均總結餘要求的「優先理財」客戶可獲HK$4,000年費豁免
+                                                            </li>
+                                                            <li>
+                                                                可享高達 80,000「亞洲萬里通」 里數迎新禮遇
+                                                            </li>
+                                                            <li>合資格海外簽賬可享 HK$3 = 1「亞洲萬里通」里數 </li>
+                                                            <li>
+                                                                合資格食肆及酒店簽賬可享 HK$4 = 1「亞洲萬里通」里數
+                                                            </li>
+                                                            <li>
+                                                                每個信用卡年度尊享4張可共享的國泰航空商務貴賓室使用券
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sc-products-tile-pdt-selection__tile">
+                                                <label class="sc-radio-box" for="check-box-3" tabindex="0"
+                                                    data-card-link="https://origination.sc.com/onboarding/hk/apply.html?product=1313&campaign=HKSOZ02MCWB000&premium=CM22&cardType=3270&affiliation=2132&lang=zh&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-zh">
+                                                    <input type="radio" class="sc-radio-box__input" id="check-box-3"
+                                                        tabindex="-1" name="checkbox-radio" />
+                                                    <div class="sc-radio-box__input-label"></div>
+                                                </label>
+                      
+                                                <img class="sc-products-tile-pdt-selection__img"
+                                                    src="https://av.sc.com/hk/content/images/cardface_Priority-Private-Cathy.png"
+                                                    alt="image" />
+                      
+                                                <div class="sc-products-tile-pdt-selection__content">
+                                                    <p class="sc-products-tile-pdt-selection__pdt-name">
+                                                        渣打國泰 Mastercard - 優先私人理財
+                                                    </p>
+                                                    <div
+                                                        class="sc-products-tile-pdt-selection__pdt-details sc-rte sc-list">
+                                                        <ul>
+                                                            <li>
+                                                                符合HK$8,000,000或以上之每日平均總結餘要求的優先私人理財客戶可獲HK$8,000年費豁免
+                                                            </li>
+                                                            <li>
+                                                                可享高達 100,000「亞洲萬里通」 里數迎新禮遇
+                                                            </li>
+                                                            <li>合資格海外簽賬可享HK$2 = 1「亞洲萬里通」里數</li>
+                                                            <li>
+                                                                合資格食肆及酒店簽賬可享HK$4 = 1「亞洲萬里通」里數
+                                                            </li>
+                                                            <li>
+                                                                每個信用卡年度尊享2張可共享的國泰航空頭等貴賓室及8張商務貴賓室使用券
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            
+
+                                            <p>
+                                                <em>*全新信用卡客戶為現時並未持有及於現時所申請渣打國泰Mastercard主卡批核日起計之過去6個月內沒有取消任何由本行發行之渣打信用卡或MANHATTAN信用卡主卡之申請人。</em>
+                                            </p>
+                                            <p>
+                                                <em>^現有信用卡客戶為現時持有或於現時所申請渣打國泰Mastercard主卡批核日起計之過去6個月內曾經取消除渣打國泰Mastercard外任何由本行發行之渣打信用卡或MANHATTAN信用卡主卡之申請人。</em>
+                                            </p>
+                                            <p>
+                                                <em>#合資格簽賬消費包括國泰機票、購物和國泰假期旅遊預訂；以及香港快運機票和免稅品。</em>
+                                            </p>
+                                            
+                                            <p>
+                                                <em>優惠受條款及細則約束</em>
+                                            </p>
+                                            <p>
+                                                <em>借定唔借?還得到先好借!</em>
+                                            </p>
+                                        </div>
+                                       
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://origination.sc.com/onboarding/hk/apply.html?product=1313&campaign=HKSOZ00MCWB000&premium=CM20&cardType=3268&affiliation=2132&lang=zh&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-cc-acquisition-inapp_mgm-hk-zh"
+                                                        title="立即申請 - 渣打國泰Mastercard"
+                                                        target="_blank"
+                                                        class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__is-pdt-selection"
+                                                         >
+                                                        <span>立即申請
+                                                            <span class="visuallyhidden">
+                                                                - 渣打國泰Mastercard®</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                                <li>
+                                    <a href="#null" title="查看更多 - 渣打國泰Mastercard"
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small" 
+                                        data-send="show-overlay" data-modal-source="sc-prod-col-detail-modal-cta-792396">
+                                        <span>查看更多
+                                            <span class="visuallyhidden">
+                                                - 渣打國泰Mastercard</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="sc-products-tile__footer-text">
+                                *全新信用卡客戶為現時並未持有及於現時所申請渣打國泰Mastercard主卡批核日起計之過去6個月內沒有取消任何由本行發行之渣打信用卡或MANHATTAN信用卡主卡之申請人。
+                
+                                <br> <br>
+                                優惠受條款及細則約束
+
+                              </p>
+                        </div>
+                    </div>
+                    <div class="sc-products-tile" data-product-name="smartcc" data-cards="credit-cards">
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <img width="90" height="55" src="https://av.sc.com/hk/content/images/hk-smart-cc-600_380.png"
+                            class="sc-products-tile__img" alt="Text, Blade, Razor" loading="lazy" />
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料 - Smart Card" data-send="show-overlay"
+                                    data-modal-source="sc-prod-col-detail-modal-cta-795772">
+                                    <div class="sc-products-tile__tags">
+                                        <span class="sc-tag sc-tag--blue">信用卡</span>
+                                        <span class="sc-tag">現金回贈</span>
+                                    </div>
+                                    <h2 class="sc-products-tile__title">Smart Card</h2>
+                                    <p class="sc-products-tile__desc">
+                                        全新信用卡客戶*申請Smart卡, 可享額外HK$800現金回贈 及迎新禮遇。
+
+                                    </p>
+                                    <div class="sc-products-tile__cvp-list sc-list">
+                                        <ul>
+                                            <li>額外<strong>HK$800</strong>現金回贈</li>
+                                            <li>
+                                                <strong>HK$800</strong>迎新現金回贈
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795772"
+                                    data-size="theme">
+                                    <div class="sc-products-tile-modal sc-products-tile-modal-new-layout">
+                                        <!-- <div class="sc-products-tile-modal__pdt-top">
+                                            <p class="sc-products-tile-modal__pdt-top-title">
+                                                Before you proceed to apply
+                                            </p>
+                                            <div class="sc-products-tile-modal__pdt-top-desc">
+                                              Please see more details about our Smart Card Offer
+                                            </div>
+                                        </div> -->
+                                        <div class="sc-products-tile-modal__pdt-dtls">
+                                            <img width="90" height="55"
+                                                src="https://av.sc.com/hk/content/images/hk-smart-cc-600_380.png"
+                                                class="sc-products-tile__img" alt="Text, Blade, Razor" loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag sc-tag--blue">信用卡</span>
+                                                    <span class="sc-tag">Cashback</span>
+                                                </div>
+                                                <h2 class="sc-products-tile__title">
+                                                    Smart Card
+                                                </h2>
+                                                <p class="sc-products-tile__desc">
+                                                    全新信用卡客戶*申請Smart卡， 可享額外HK$800現金回贈 及迎新禮遇。
+
+                                                </p>
+                                                <!-- <ul class="buttons">
+                                                    <li>
+                                                        <a href="https://www.sc.com/hk/zh/credit-cards/smart/"
+                                                            target="_blank"
+                                                            title="詳情-Smart 信用卡"
+                                                            class="c-button sc-products-tile__pdt-details">
+                                                            詳情 »
+                                                        </a>
+                                                    </li>
+                                                </ul> -->
+                                            </div>
+                                        </div>
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            <p>
+                                                Smart 信用卡推薦計劃 - 以有效推薦碼成功申請, 您和推薦人可享額外獎賞!
+                                            </p>
+                                            <p>
+                                                <strong>
+                                                    可享額外HK$800現金回贈 *
+                                                </strong>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <strong>無限次3個月0息分期#</strong>
+                                                    <br />
+                                                    信用卡０息分期付款，消費更輕鬆。
+                                                </li>
+                                                <li>
+                                                    <strong>5%豐厚現金回贈^</strong> <br />
+                                                    特約日常消費商戶，盡享豐厚現金回贈
+                                                </li>
+                                                <li>
+                                                    <strong>告別額外收費</strong> <br />
+                                                    永久豁免年費，不設外幣交易費、現金透支服務費
+                                                </li>
+                                            </ul>
+                                           
+                                        </div>
+                                        <ul class="buttons">
+                                            <li>
+                                                <a href="https://av.sc.com/hk/content/docs/hk-cc-smart-onebank-mgm-tnc.pdf" target="_blank" title="條款及細則-Smart 信用卡"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    條款及細則
+                                                </a>
+                                              
+                                            </li>
+                                            <li>
+                                                <a href="https://av.sc.com/hk/content/docs/hk-credit-card-key-facts-statement.pdf" target="_blank" title="下載信用卡產品資料概要"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    下載信用卡產品資料概要
+                                                </a>
+                                              
+                                            </li>
+                                        </ul>
+
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            
+                                            <p>
+                                                <em>*全新信用卡客戶為現時並未持有及於現時所申請渣打Smart信用卡主卡批核日起計之過去6個月內沒有取消任何由渣打銀行(香港)有限公司發行之渣打信用卡或MANHATTAN信用卡主卡之申請人。
+                                                </em>
+                                            </p>
+                                            <p>
+                                                <em>^優惠受條款及細則約束 </em>
+                                            </p>
+                                            <p>
+                                                <em>#適用於任何HK$2,000或以上信用卡零售簽賬</em>
+                                            </p>
+                                            <p>
+                                                <em>借定唔借?還得到先好借!</em>
+                                            </p>
+                                        </div>
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://origination.sc.com/onboarding/hk/apply.html?product=1282&campaign=HKSOG20VAWV000&premium=ST54&cardType=3267&affiliation=2131&lang=zh"
+                                                        title="立即申請 - Smart 信用卡"  target="_blank"
+                                                        class="c-button sc-btn sc-btn--blue sc-btn--small">
+                                                        <span>立即申請
+                                                            <span class="visuallyhidden">
+                                                                - Smart 信用卡</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                                <li>
+                                    <a href="#null"
+                                        title="查看更多 - Smart Card"  data-send="show-overlay"
+                                        data-modal-source="sc-prod-col-detail-modal-cta-795772"
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small">
+                                        <span>查看更多
+                                            <span class="visuallyhidden">
+                                                - Smart Card</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="sc-products-tile__footer-text">
+                                *全新信用卡客戶為現時並未持有及於現時所申請渣打Smart信用卡主卡批核日起計之過去6個月內沒有取消任何由渣打銀行(香港)有限公司發行之渣打信用卡或MANHATTAN信用卡主卡之申請人。
+                
+                                <br> <br>
+                                優惠受條款及細則約束
+
+                              </p>
+                        </div>
+                    </div>
+                    <div class="sc-products-tile" data-product-name="payroll" data-cards="deposits">
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <img width="440" height="280"
+                            src="https://av.sc.com/hk/content/images/payroll-195_114_v2.jpg"
+                            class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料-出糧戶口" data-send="show-overlay"
+                                    data-modal-source="sc-prod-col-detail-modal-cta-795800"> </a>
+                                    <div class="sc-products-tile__tags">
+                                        <span class="sc-tag sc-tag--green">存款</span>
+                                        <span class="sc-tag">現金回贈</span>
+                                    </div>
+                                    <h2 class="sc-products-tile__title">出糧戶口</h2>
+                                    <!-- <p class="sc-products-tile__desc">
+                                        網上申請即享高達<strong>HK$1,600</strong>現金回贈
+                                    </p> -->
+                                    <div class="sc-products-tile__cvp-list sc-list">
+                                        <ul>
+                                            <li>高達<strong>HK$1,500</strong>現金回贈 </li>
+                                            <li>6個月額外<strong>2%</strong>港元存款年利率(適用於以可持續發展儲蓄戶口使用出糧服務之客戶)</li>
+                                            <li>每月出糧賺高達<strong>1,000里數</strong></li>
+                                            <li>可選擇通知僱主更改出糧戶口或設立常行指示每月轉賬</li>
+                                        </ul>
+                                    </div>
+                               
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795800"
+                                    data-size="theme">
+                                    <div class="sc-products-tile-modal">
+                                        <div class="sc-products-tile-modal__pdt-dtls">
+                                            <img width="440" height="280"
+                                                src="https://av.sc.com/hk/content/images/payroll-195_114_v2.jpg"
+                                                class="sc-products-tile__img" alt="Text, Driving License, License"
+                                                loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag sc-tag--green">存款</span>
+                                                    <span class="sc-tag">現金回贈</span>
+                                                </div>
+                                                <h2 class="sc-products-tile__title">
+                                                    出糧戶口
+                                                </h2>
+                                                <p class="sc-products-tile__desc">
+                                                    網上申請即享高達<strong>HK$1,500</strong>現金回贈及6個月額外2%港元存款年利率
+                                                </p>
+                                                <ul class="buttons">
+                                                   
+                                                    <li>
+                                                        <a href="https://www.sc.com/hk/zh/deposits/payroll-services-salary-bonuspack/"
+                                                            target="_blank" title="詳情-出糧戶口"
+                                                            class="c-button sc-products-tile__pdt-details">
+                                                            詳情 >>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            <!-- <p>
+                                                由即日起至2024年6月30日, 網上開立出糧戶口即享以下迎新優惠:
+                                            </p> -->
+                                            <ul>
+                                                <li>
+                                                    每月出糧賺高達1,000里數
+                                                </li>
+                                                <li>3步網上開立出糧戶口</li>
+                                                <li>可選擇通知僱主更改出糧戶口或設立常行指示每月轉賬！</li>
+                                            </ul>
+                                        </div>
+                                        <ul class="buttons">
+                                            <li>
+                                                <!-- <a href="" target="_blank"
+                                                    title="條款及細則-出糧戶口"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    條款及細則
+                                                </a> -->
+                                              
+                                            </li>   
+                                        </ul>
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#null"
+                                                    data-mobile-href="https://retail.sc.com/scmobile/hk/?ngroute=web.rtob-webview&productCode=BPA&source=MBK&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-deposits-acquisition-inapp_mgm-hk-zh"
+                                                    title="立即申請 - 出糧戶口" 
+                                                        class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__mobile-link"
+                                                        target="_blank">
+                                                        <span>立即申請
+                                                            <span class="visuallyhidden">
+                                                                - 出糧戶口</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                               
+                                <li>
+                                    <a href="#null"
+                                    data-mobile-href="https://retail.sc.com/scmobile/hk/?ngroute=web.rtob-webview&productCode=BPA&source=MBK&intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-deposits-acquisition-inapp_mgm-hk-zh"
+                                    title="立即申請 - 出糧戶口" 
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small sc-products-tile__mobile-link">
+                                        <span>立即申請
+                                            <span class="visuallyhidden">
+                                                - 出糧戶口</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="sc-products-tile__footer-text">
+                                只適用於持有任何存款戶口並透過<strong>SC Mobile App</strong>申請之現有客戶
+                            </p>
+                        </div>
+                    </div>
+                  
+                        <div class="sc-products-tile sc-products-tile--bg-black sc-products-tile--with-logo"
+                        data-product-name="pp" data-cards="banking-plans" >
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <img width="440" height="280"
+                            src="https://av.sc.com/hk/content/images/hk-pp-centre-1800x1000-1.jpg"
+                            class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料 - 綜合理財服務" data-send="show-overlay"
+                                    data-modal-source="sc-prod-col-detail-modal-cta-795801"></a>
+                                    <div class="sc-products-tile__tags">
+                                        <span class="sc-tag">綜合理財服務</span>
+                                    </div>
+                                    <h2 class="sc-products-tile__title">優先私人理財</h2>
+                                    <p class="sc-products-tile__desc">
+                                        全新客戶以<strong>HK$800</strong>萬或以上新資金開立優先私人理財可賺取高達<strong>HK$73,888</strong>現金回贈及<strong>2張香港國際機場貴賓室換領券</strong>。
+                                    </p>
+                                    <div class="sc-products-tile__cvp-list sc-list">
+                                        <ul>
+                                            <li>
+                                                四所財富管理中心遍佈香港核心地區​
+                                            </li>
+                                            <li>
+                                                優惠存款利率及尊屬投資禮遇
+                                            </li>
+                                            <li>尊貴的旅遊及生活體驗，並獲邀參加優先私人理財獨家活動​</li>
+                                        </ul>
+                                    </div>
+                                
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-795801"
+                                    data-size="theme">
+                                    <div class="sc-products-tile-modal">
+                                        <div
+                                            class="sc-products-tile-modal__pdt-dtls sc-products-tile--bg-black sc-products-tile--with-logo">
+                                            <img width="440" height="280"
+                                                src="https://av.sc.com/hk/content/images/hk-pp-centre-1800x1000-1.jpg"
+                                                class="sc-products-tile__img" alt="Text, Driving License, License"
+                                                loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag">綜合理財服務</span>
+                                                </div>
+                                                <h2 class="sc-products-tile__title">
+                                                    優先私人理財
+                                                </h2>
+                                                <p class="sc-products-tile__desc">
+                                                    從洞見市場機遇 到成就環球財富藍圖
+                                                </p>
+                                                <ul class="buttons">
+                                                    <li>
+                                                        <a href="https://www.sc.com/hk/zh/priority-private/"
+                                                            target="_blank"
+                                                            title="詳情-優先私人理財"
+                                                            class="c-button sc-products-tile__pdt-details">
+                                                            詳情 »
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            <p>
+                                                全新客戶以<strong>HK$800</strong>萬或以上新資金開立優先私人理財可賺取高達<strong>HK$73,888</strong>現金回贈及<strong>2張香港國際機場貴賓室換領券</strong>。
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <strong>四所財富管理中心遍佈香港核心地區​</strong>
+                                                </li>
+                                                <li>
+                                                    <strong>優惠存款利率及尊屬投資禮遇</strong>
+                                                </li>
+                                                <li><strong>尊貴的旅遊及生活體驗，並獲邀參加優先私人理財獨家活動</strong>​</li>
+                                            </ul>
+                                        </div>
+                                        <ul class="buttons">
+                                            <li>
+                                                <!-- <a href="#null" target="_blank"
+                                                    title="條款及細則-優先私人理財"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    條款及細則
+                                                </a> -->
+                                                <!-- <a href="#null" target="_blank"
+                                                    title="Terms & Conditions-Priority Private"
+                                                    class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
+                                                    data-modal-source="sc-product-action-col-modal-cta-terms-79239701">
+                                                    Terms & Conditions
+                                                </a> -->
+                                                <div class="m-text-content"
+                                                    data-modal-id="sc-product-action-col-modal-cta-terms-79239701"
+                                                    data-size="theme">
+                                                    <div class="sc-products-tile-modal">
+                                                        <ul class="buttons">
+                                                            <li>
+                                                                <a href="https://www.sc.com/sg/promotions/refer-a-friend-tnc/"
+                                                                    target="_blank"
+                                                                    title="Standard Chartered Refer, Earn and Win Promotion Terms and Conditions - Terms & Conditions"
+                                                                    class="c-button sc-products-tile__terms-link">
+                                                                    Standard Chartered Refer, Earn and Win
+                                                                    Promotion Terms and Conditions
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="https://av.sc.com/sg/content/docs/jumpstart_product_terms.pdf"
+                                                                    target="_blank"
+                                                                    title="JumpStart Account Product-Terms & Conditions"
+                                                                    class="c-button sc-products-tile__terms-link">
+                                                                    JumpStart Account Product Terms
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="https://av.sc.com/sg/content/docs/sg-jumpstart-step-up-interest-tncs.pdf"
+                                                                    target="_blank"
+                                                                    class="c-button sc-products-tile__terms-link"
+                                                                    title="JumpStart Step Up Interest Terms and Condition-Terms & Conditions">
+                                                                    JumpStart Step Up Interest Terms and
+                                                                    Condition
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.sc.com/hk/zh/promotions/banking-mgm-referral/apply/?intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-segment-acquisition-inapp_mgm-hk-zh&p=pp"
+                                                        title="立即申請 - 優先私人理財" 
+                                                        class="c-button sc-btn sc-btn--blue sc-btn--small"
+                                                        target="_blank">
+                                                        <span>立即申請
+                                                            <span class="visuallyhidden">
+                                                                - 優先私人理財</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                                <li>
+                                    <a href="https://www.sc.com/hk/zh/promotions/banking-mgm-referral/apply/?intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-segment-acquisition-inapp_mgm-hk-zh&p=pp"
+                                        title="立即預約 - P優先私人理財" 
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small" target="_blank">
+                                        <span>立即預約
+                                            <span class="visuallyhidden">立即預約 - 優先私人理財</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sc-products-tile sc-products-tile--with-logo" data-product-name="bp"
+                        data-cards="banking-plans">
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料 - 綜合理財服務" data-send="show-overlay"
+                                    data-modal-source="sc-prod-col-detail-modal-cta-7958011"></a>
+                                <div>
+                                    <!-- <div class="sc-products-tile__tags">
+                                        <span class="sc-tag sc-tag--black">綜合理財服務</span>
+                                    </div> -->
+                                    <h2 class="sc-products-tile__title">綜合理財服務</h2>
+                                    <p class="sc-products-tile__desc">
+                                        全新客戶開立綜合理財服務並存入新資金可賺取:
+                                    </p>
+
+                                    <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                        <div class="sc-accordion sc-products-tile-modal__accordion">
+                                            <input class="sc-accordion__input" type="checkbox" tabindex="-1" id="one" />
+                                            <label tabindex="0" class="sc-accordion__label" for="one">
+                                                <span class="sc-products-tile-modal__accordion-left">「優先理財」</span>
+                                                <span class="sc-products-tile-modal__accordion-right">
+                                                    高達 <strong>HK$22,000</strong> 現金回贈或<strong>220,000</strong>「亞洲萬里通」里數
+                                                </span>
+                                            </label>
+                                            <div class="sc-accordion__content sc-rte sc-list">
+                                                <ul>
+                                                    <li>
+                                                        智能投資方案myWealth服務
+                                                    </li>
+                                                    <li>
+                                                        全面財富管理分析
+                                                    </li>
+                                                    <li>
+                                                        大灣區及國際理財方案
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="sc-accordion sc-products-tile-modal__accordion">
+                                            <input class="sc-accordion__input" type="checkbox" tabindex="-1"
+                                                id="two" /><label tabindex="0" class="sc-accordion__label" for="two">
+                                                <span class="sc-products-tile-modal__accordion-left">「Premium理財」</span>
+                                                <span class="sc-products-tile-modal__accordion-right">
+                                                    高達<strong>HK$900</strong>現金回贈或<strong>9,000</strong>「亞洲萬里通」里數
+                                                </span>
+                                            </label>
+                                            <div class="sc-accordion__content sc-list sc-rte">
+                                                <ul>
+                                                    <li>
+                                                        全面數碼銀行服務助您精明理財
+                                                    </li>
+                                                    <li>
+                                                        全方位銀行服務,尊享出糧戶口及强積金服務尊屬禮遇
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="sc-accordion sc-products-tile-modal__accordion">
+                                            <input class="sc-accordion__input" type="checkbox" tabindex="-1"
+                                                id="three" />
+                                            <label tabindex="0" class="sc-accordion__label" for="three">
+                                                <span class="sc-products-tile-modal__accordion-left">Easy Banking</span>
+                                                <span class="sc-products-tile-modal__accordion-right">
+                                                    <strong>HK$300</strong> 手機開戶獎賞
+                                                </span>
+                                            </label>
+                                            <div class="sc-accordion__content sc-list sc-rte">
+                                                <ul>
+                                                    <li>
+                                                        不設戶口最低結餘要求
+                                                    </li>
+                                                    <li>
+                                                        24/7電子理財讓您隨時隨地靈活管理您的日常電子理財
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="sc-products-tile__feature">
+                                        <div class="sc-products-tile__feature-box">
+                                            <div class="sc-products-tile__feature-col sc-products-tile__feature-col--head">
+                                            <div class="sc-products-tile__feature-left">Your friend sign up</div>
+                                            <div class="sc-products-tile__feature-right">You get (each refer)</div>
+                                        </div>
+                                            <div class="sc-products-tile__feature-col">
+                                                <div class="sc-products-tile__feature-left">
+                                                    Priority Banking
+                                                </div>
+                                                <div class="sc-products-tile__feature-right">
+                                                    Up to HKD 22,000 or 220,000 Asia Miles
+                                                </div>
+                                            </div>
+                                            <div class="sc-products-tile__feature-col">
+                                                <div class="sc-products-tile__feature-left">
+                                                    Premium Banking
+                                                </div>
+                                                <div class="sc-products-tile__feature-right">
+                                                    Up to HKD 900 or 9,000 Asia Miles
+                                                </div>
+                                            </div>
+                                            <div class="sc-products-tile__feature-col">
+                                                <div class="sc-products-tile__feature-left">
+                                                    Easy Banking
+                                                </div>
+                                                <div class="sc-products-tile__feature-right">
+                                                    HKD300 SC Mobile App account opening offer
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="sc-prod-col-detail-modal-cta-7958011"
+                                    data-size="theme">
+                                    <div class="sc-products-tile-modal">
+                                        <div class="sc-products-tile-modal__pdt-dtls">
+                                            <img width="440" height="280"
+                                                src="https://av.sc.com/sg/content/images/jumpstart-cro-768x350-1.jpg"
+                                                class="sc-products-tile__img" alt="Text, Driving License, License"
+                                                loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag sc-tag--black">綜合理財服務</span>
+                                                    <!-- <span class="sc-tag">Interest</span> -->
+                                                </div>
+                                                <h2 class="sc-products-tile__title">綜合理財服務</h2>
+                                                <p class="sc-products-tile__desc">
+                                                    全新客戶開立綜合理財服務並存入新資金可賺取:
+                                                </p>
+                                                <ul class="buttons">
+                                                    <li>
+                                                        <a href="https://www.sc.com/hk/save/mgm/apply/" target="_blank"
+                                                            title="詳情-綜合理財服務"
+                                                            class="c-button sc-products-tile__pdt-details">
+                                                            詳情 >>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                            <div class="sc-products-tile-modal__content sc-list sc-rte">
+                                                <div class="sc-accordion sc-products-tile-modal__accordion">
+                                                    <input class="sc-accordion__input" type="checkbox" tabindex="-1" id="one" />
+                                                    <label tabindex="0" class="sc-accordion__label" for="one">
+                                                        <span class="sc-products-tile-modal__accordion-left">「優先理財」</span>
+                                                        <span class="sc-products-tile-modal__accordion-right">
+                                                            高達 <strong>HK$22,000</strong> 或 <strong>220,000</strong>「亞洲萬里通」里數
+                                                        </span>
+                                                    </label>
+                                                    <div class="sc-accordion__content sc-rte sc-list">
+                                                        <ul>
+                                                            <li>
+                                                                智能投資方案myWealth服務
+                                                            </li>
+                                                            <li>
+                                                                全面財富管理分析
+                                                            </li>
+                                                            <li>
+                                                                大灣區及國際理財方案
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="sc-accordion sc-products-tile-modal__accordion">
+                                                    <input class="sc-accordion__input" type="checkbox" tabindex="-1"
+                                                        id="two" /><label tabindex="0" class="sc-accordion__label" for="two">
+                                                        <span class="sc-products-tile-modal__accordion-left">「Premium理財」</span>
+                                                        <span class="sc-products-tile-modal__accordion-right">
+                                                            高達<strong>HK$900</strong>或<strong>9,000</strong>「亞洲萬里通」里數
+                                                        </span>
+                                                    </label>
+                                                    <div class="sc-accordion__content sc-list sc-rte">
+                                                        <ul>
+                                                            <li>
+                                                                全面數碼銀行服務助您精明理財
+                                                            </li>
+                                                            <li>
+                                                                全方位銀行服務,尊享出糧戶口及强積金服務尊屬禮遇
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="sc-accordion sc-products-tile-modal__accordion">
+                                                    <input class="sc-accordion__input" type="checkbox" tabindex="-1"
+                                                        id="three" />
+                                                    <label tabindex="0" class="sc-accordion__label" for="three">
+                                                        <span class="sc-products-tile-modal__accordion-left">Easy Banking</span>
+                                                        <span class="sc-products-tile-modal__accordion-right">
+                                                            <strong>HK$300</strong> 手機開戶獎賞
+                                                        </span>
+                                                    </label>
+                                                    <div class="sc-accordion__content sc-list sc-rte">
+                                                        <ul>
+                                                            <li>
+                                                                不設戶口最低結餘要求
+                                                            </li>
+                                                            <li>
+                                                                24/7電子理財讓您隨時隨地靈活管理您的日常電子理財
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="buttons">
+                                            <li>
+                                                <a href="#null" target="_blank"
+                                                    title="條款及細則-綜合理財服務"
+                                                    class="sc-btn-link sc-products-tile__terms">
+                                                    條款及細則
+                                                </a>
+                                                <!-- <a href="#null" target="_blank"
+                                                    title="條款及細則-綜合理財服務"
+                                                    class="sc-btn-link sc-products-tile__terms" data-send="show-overlay"
+                                                    data-modal-source="sc-product-action-col-modal-cta-terms-792397014">
+                                                    條款及細則
+                                                </a> -->
+                                                <div class="m-text-content"
+                                                    data-modal-id="sc-product-action-col-modal-cta-terms-792397014"
+                                                    data-size="theme">
+                                                    <div class="sc-products-tile-modal">
+                                                        <ul class="buttons">
+                                                            <li>
+                                                                <a href="https://www.sc.com/sg/promotions/refer-a-friend-tnc/"
+                                                                    target="_blank"
+                                                                    title="Standard Chartered Refer, Earn and Win Promotion Terms and Conditions - Terms & Conditions"
+                                                                    class="c-button sc-products-tile__terms-link">
+                                                                    Standard Chartered Refer, Earn and Win
+                                                                    Promotion Terms and Conditions
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="https://av.sc.com/sg/content/docs/jumpstart_product_terms.pdf"
+                                                                    target="_blank"
+                                                                    title="Banking Packages-Terms & Conditions"
+                                                                    class="c-button sc-products-tile__terms-link">
+                                                                    JumpStart Account Product Terms
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="https://av.sc.com/sg/content/docs/sg-jumpstart-step-up-interest-tncs.pdf"
+                                                                    target="_blank"
+                                                                    class="c-button sc-products-tile__terms-link"
+                                                                    title="JumpStart Step Up Interest Terms and Condition-Terms & Conditions">
+                                                                    JumpStart Step Up Interest Terms and
+                                                                    Condition
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.sc.com/hk/zh/promotions/banking-mgm-referral/apply/?intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-segment-acquisition-inapp_mgm-hk-zh&p=bp"
+                                                        title="立即申請 - 綜合理財服務" 
+                                                        class="c-button sc-btn sc-btn--blue sc-btn--small"
+                                                        target="_blank">
+                                                        <span>立即申請
+                                                            <span class="visuallyhidden">
+                                                                - 綜合理財服務</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                                <li>
+                                    <a href="https://www.sc.com/hk/zh/promotions/banking-mgm-referral/apply/?intcid=rtim_inapp-mb-na-staticmedia_others-mul-onebankmgm-segment-acquisition-inapp_mgm-hk-zh&p=bp"
+                                        title="立即申請 - 綜合理財服務" 
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small" target="_blank">
+                                        <span>立即申請
+                                            <span class="visuallyhidden">立即申請 - 綜合理財服務</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sc-products-tile" data-product-name="sxa" data-cards="wealth">
+                        <div class="sc-badge hide">
+                            <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0V10H0L7 0Z" fill="#EC9BA5" />
+                            </svg>
+                            <span class="sc-badge__text">為您推薦</span>
+                        </div>
+                        <img width="440" height="280" src="https://av.sc.com/hk/content/images/Sept_PDP-MGM-Banner_securities_200X12.png"
+                            class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
+                        <div class="sc-products-tile__right">
+                            <div class="sc-products-tile__right-container">
+                                <a href="#null" title="資料 - 綜合理財服務" data-send="show-overlay"
+                                    data-modal-source="sc-prod-col-detail-modal-cta-7958019"></a>
+                                <div class="sc-products-tile__tags">
+                                    <span class="sc-tag sc-tag--blue">股票</span>
+                                    <span class="sc-tag">現金回贈</span>
+                                </div>
+                                <h2 class="sc-products-tile__title">股票戶口</h2>
+                                <p class="sc-products-tile__desc">
+                                    優先私人理財或「優先理財」出糧戶口開立新股票戶口尊享<strong>永久股票買入免佣禮遇</strong>
+                                </p>
+                    
+                    
+                                <!-- Modal Content -->
+                                <div class="m-text-content" data-modal-id="https://av.sc.com/hk/content/images/Sept_PDP-MGM-Banner_securities_200X12.png" data-size="theme">
+                                    <div class="sc-products-tile-modal">
+                                        <div class="sc-products-tile-modal__pdt-dtls">
+                                            <img width="440" height="280"
+                                                src="https://av.sc.com/hk/content/images/sxa-wealth-mgm-banner.jpg"
+                                                class="sc-products-tile__img" alt="Text, Driving License, License" loading="lazy" />
+                                            <div class="sc-products-tile__right">
+                                                <div class="sc-products-tile__tags">
+                                                    <span class="sc-tag sc-tag--blue">股票</span>
+                                                    <span class="sc-tag">現金回贈</span>
+                                                </div>
+                                                <h2 class="sc-products-tile__title">股票戶口</h2>
+                                                <p class="sc-products-tile__desc">
+                                                    優先私人理財或「優先理財」出糧戶口開立新股票戶口尊享<strong>永久股票買入免佣禮遇</strong>
+                                                </p>
+                                                <ul class="buttons">
+                                                    <li>
+                                                        <a href="https://www.sc.com/hk/zh/investment/securities-services/" target="_blank"
+                                                            title="詳情-優先私人理財" class="c-button sc-products-tile__pdt-details">
+                                                            詳情 »
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                    
+                    
+                                        <div class="sc-products-tile__btn">
+                                            <div class="sc-products-tile__applied-code hide">
+                                                已申請推薦碼: <span></span>
+                                            </div>
+                                            <ul class="buttons">
+                                                <li>
+                                                    <a href="#null" title="複製推薦碼"
+                                                        class="c-button sc-btn sc-btn--secondary-black sc-btn--small sc-products-tile__copy-code">
+                                                        <span class="only-desktop">複製推薦碼</span>
+                                                        <span class="only-mobile">複製</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.sc.com/hk/zh/promotions/sxa-mgm-referral/apply/"
+                                                        title="立即行動 - 股票戶口" class="c-button sc-btn sc-btn--blue sc-btn--small"
+                                                        target="_blank">
+                                                        <span>立即行動
+                    
+                                                            <span class="visuallyhidden">
+                                                                立即行動 - 股票戶口</span></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="sc-products-tile__btn">
+                                <li>
+                                    <a href="https://www.sc.com/hk/zh/promotions/sxa-mgm-referral/apply/" title="立即行動 - 股票戶口"
+                                        class="c-button sc-btn sc-btn--blue sc-btn--small" target="_blank">
+                                        <span>立即行動
+                                            <span class="visuallyhidden">立即行動 - 股票戶口</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="sc-products-tile__footer-text">
+                                *適用於由 2023 年 7 月 1 日至 2024 年 7 月 1 日期間未曾於本行持有任何股票戶口之客戶
+                                <br>
+                                <br>
+                                * 被推薦客戶須於申請股票戶口時至少持有一個有效的儲蓄戶口(只限主戶口持有人)。
+                                <br> 
+                                <br>
+                                受條款及細則約束
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="sc-product-tiles__copy-message">
+                推薦碼複製成功
+              </div>
+        </div>
+    </div>
+
+    <!-- Referral Error - Modal -->
+    <!-- This is modal is created for MGM Referral Page -->
+    <div class="sc-error-modal sc-error-modal--error">
+        <div class="sc-error-modal__inside">
+            <div class="sc-error-modal__alert-icon" data-grunticon-embed>
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M32 3.125C35.8995 3.125 39.6806 3.888 43.2385 5.39288C46.6765 6.847 49.7649 8.9295 52.4178 11.5824C55.0706 14.2352 57.153 17.3235 58.6073 20.7616C60.112 24.3194 60.875 28.1005 60.875 32C60.875 35.8995 60.112 39.6806 58.6071 43.2385C57.153 46.6765 55.0705 49.7649 52.4176 52.4178C49.7648 55.0706 46.6765 57.153 43.2384 58.6073C39.6806 60.112 35.8995 60.875 32 60.875C28.1005 60.875 24.3194 60.112 20.7615 58.6071C17.3235 57.153 14.2351 55.0705 11.5822 52.4176C8.92937 49.7648 6.847 46.6765 5.39275 43.2384C3.888 39.6806 3.125 35.8995 3.125 32C3.125 28.1005 3.888 24.3194 5.39288 20.7615C6.847 17.3235 8.9295 14.2351 11.5824 11.5822C14.2352 8.92937 17.3235 6.847 20.7616 5.39275C24.3194 3.888 28.1005 3.125 32 3.125ZM32 0C14.3269 0 0 14.3269 0 32C0 49.6731 14.3269 64 32 64C49.6731 64 64 49.6731 64 32C64 14.3269 49.6731 0 32 0Z"
+                        fill="black" />
+                    <path
+                        d="M44.7746 46.3374C44.5694 46.3377 44.3661 46.2974 44.1765 46.2188C43.9869 46.1403 43.8147 46.0251 43.6697 45.8798L18.1197 20.3298C17.5096 19.7197 17.5096 18.7303 18.1197 18.12C18.73 17.5098 19.7192 17.5098 20.3295 18.12L45.8795 43.67C46.4897 44.2803 46.4897 45.2695 45.8795 45.8798C45.7345 46.0251 45.5623 46.1403 45.3727 46.2188C45.1831 46.2974 44.9798 46.3377 44.7746 46.3374Z"
+                        fill="black" />
+                    <path
+                        d="M19.2246 46.3374C19.0194 46.3377 18.8161 46.2974 18.6265 46.2188C18.4369 46.1403 18.2647 46.0251 18.1197 45.8798C17.5096 45.2695 17.5096 44.2803 18.1197 43.67L43.6697 18.12C44.2798 17.5098 45.2693 17.5098 45.8795 18.12C46.4897 18.7302 46.4897 19.7195 45.8795 20.3298L20.3295 45.8798C20.1845 46.0251 20.0123 46.1403 19.8227 46.2188C19.6331 46.2974 19.4298 46.3377 19.2246 46.3374Z"
+                        fill="black" />
+                </svg>
+            </div>
+            <h2 class="sc-error-modal__alert-title">
+                抱歉，您收到了無效的推薦連結
+            </h2>
+            <div class="sc-error-modal__alert-desc">
+                請聯絡您的朋友以取得新的推薦連結並重試
+            </div>
+            <ul class="buttons align-center">
+                <li>
+                    <a href="/hk" title="OK"
+                        class="c-button c-button sc-error-modal__alert-close">
+                        <span class="only-desktop">確認</span>
+                        <span class="only-mobile">確認</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+      <!-- Aplly on browser pop up -->
+  <div class="sc-error-modal sc-error-modal--error sc-error-modal--apply">
+    <div class="sc-error-modal__inside">
+        <div class="sc-error-modal__alert-icon" data-grunticon-embed>
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 0C14.3136 0 0 14.312 0 32C0 49.6861 14.312 64 32 64C49.6864 64 64 49.688 64 32C64 14.3139 49.688 0 32 0ZM32 59.5349C16.8173 59.5349 4.46513 47.1829 4.46513 32C4.46513 16.8171 16.8173 4.46513 32 4.46513C47.1827 4.46513 59.5349 16.8171 59.5349 32C59.5349 47.1829 47.1827 59.5349 32 59.5349Z" fill="#2772C7"/>
+            <path d="M31.9592 36.8259C33.8547 36.8259 35.2026 36.0254 35.2026 34.846L35.2026 18.7977C35.2026 17.7867 33.8547 16.776 31.9592 16.776C30.148 16.776 28.6738 17.7867 28.6738 18.7977L28.6738 34.8462C28.6738 36.0255 30.148 36.8259 31.9592 36.8259ZM31.9592 46.7245C33.8968 46.7245 35.4131 45.3345 35.4131 43.7339C35.4131 42.1331 33.8967 40.701 31.9592 40.701C30.0637 40.701 28.5472 42.1331 28.5472 43.7339C28.5472 45.3345 30.0638 46.7245 31.9592 46.7245Z" fill="#2772C7"/>
+            </svg>            
+        </div>
+        <h2 class="sc-error-modal__alert-title">
+            使用SC Mobile App申請
+        </h2>
+        <div class="sc-error-modal__alert-desc">
+            請使用您的手機開啟此連結並繼續申請此該產品
+        </div>
+        <ul class="buttons align-center">
+            <li>
+                <a href="#null" title="確認"
+                    class="c-button c-button sc-error-modal__alert-close">
+                    <span class="only-desktop">確認</span>
+                    <span class="only-mobile">確認</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _scCommonMethods = _interopRequireDefault(require("./../../../../../src/assets/js/commons/sc-common-methods"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); } /* global Utils, digitalData, scAnalyticsDataArray */
+var ScMgmReferralEnhanced = /*#__PURE__*/function () {
+  function ScMgmReferralEnhanced() {
+    _classCallCheck(this, ScMgmReferralEnhanced);
+  }
+  _createClass(ScMgmReferralEnhanced, [{
+    key: "init",
+    value: function init() {
+      var that = this;
+      that.productTile = document.querySelector('.sc-product-tiles');
+      if (!that.productTile) return;
+      that.errorModal = document.querySelector('.sc-error-modal');
+      that.referHeader = that.productTile.querySelector('.sc-product-tiles__head-wrapper');
+      that.allPdt = that.productTile.querySelector('.sc-product-tile-is-recommended');
+      that.singlePdt = that.productTile.querySelector('.sc-product-tile-recommended');
+      that.backBtn = that.productTile.querySelector('.sc-product-tile-is-recommended-back-btn');
+      that.viewAll = that.productTile.querySelector('.sc-product-tile-recommended__view-all-btn');
+      that.termsConditions = document.querySelector('.sc-terms-links');
+      that.queryString = Utils.getPageContext().queryString;
+      that.queryParams = _scCommonMethods.default.getQueryParam(that.queryString, that.productTile.getAttribute('data-query-param-code'));
+      var recommendedLit = that.productTile.getAttribute('data-recommended-lite');
+      if (!that.queryParams || that.queryParams.replace(/[^0-9a-zA-Z]/gi, '').length !== Number(that.productTile.getAttribute('data-query-param-code-length'))) {
+        //Invalid referId in the URL
+        that.errorModal.classList.add('sc-error-modal--show');
+        document.body.classList.add('modal-open');
+        return;
+      } else if (recommendedLit) {
+        that.singlePdt.classList.add('hide');
+        that.handleRecommendedLite();
+      } else {
+        that.handleModalProduct();
+      }
+      that.handleFilter();
+
+      //Handle display all product
+      if (that.viewAll) {
+        that.viewAll.addEventListener('click', function () {
+          //Display all products
+          that.toggleProducts(false);
+          if (that.termsConditions) that.termsConditions.classList.remove('hide');
+          var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+          _scCommonMethods.default.smoothScroll(that.backBtn, 500, width > 767 ? 100 : 30);
+        });
+      }
+
+      //Handle back button
+      if (that.backBtn) {
+        that.backBtn.addEventListener('click', function () {
+          //Display all products
+          that.toggleProducts(true);
+          that.referHeader.classList.add('hide');
+          if (that.termsConditions) that.termsConditions.classList.add('hide');
+        });
+      }
+
+      //Update product URL
+      var pdtUrls = that.productTile.querySelectorAll('a');
+      pdtUrls.forEach(function (pdtUrl) {
+        var currentURL = pdtUrl.getAttribute('href');
+        if (currentURL !== '#null') {
+          pdtUrl.setAttribute('href', that.updateQueryString(currentURL));
+        }
+      });
+
+      //Handle popup open
+      var modalOpen = false;
+      setTimeout(function () {
+        var openModals = that.productTile.querySelectorAll("a[href='#null']");
+        if (openModals.length) {
+          openModals.forEach(function (el) {
+            el.addEventListener('click', function () {
+              modalOpen = true;
+            });
+          });
+        }
+      }, 100);
+
+      //Handle modal close event
+      document.body.addEventListener('click', function (event) {
+        if (modalOpen) {
+          var anchor = event.target.closest('a');
+          if (event.target.className.indexOf('closebutton') !== -1 || event.target.className.indexOf('wrapper') !== -1) {
+            modalOpen = false;
+            that.triggerCtaClickTagging(event);
+          } else if (anchor && anchor.getAttribute('href') === '#null' && event.target.closest('.m-text-content')) {
+            var ctaTitle = anchor.getAttribute('title') ? anchor.getAttribute('title') : anchor.innerText || anchor.textContent || anchor.getAttribute('data-context') || anchor.getAttribute('aria-label');
+            if (ctaTitle) {
+              that.triggerPopupViewedTagging(ctaTitle.trim());
+            }
+          }
+        }
+      });
+      that.handleSticky();
+      that.handleReferId();
+      that.updateLinkHref();
+    }
+  }, {
+    key: "handleSticky",
+    value: function handleSticky() {
+      var that = this;
+      var headingWrapper = that.productTile.querySelector('.sc-filter');
+      var headingPosition = _scCommonMethods.default.getPosition(headingWrapper);
+      if (headingWrapper) {
+        window.addEventListener('scroll', function () {
+          var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+          if (window.scrollY > headingPosition - (width > 768 ? 100 : 10)) {
+            headingWrapper.classList.add('sc-filter--sticky');
+          } else {
+            headingWrapper.classList.remove('sc-filter--sticky');
+          }
+        });
+      }
+    }
+
+    /**
+     * Handles the display of recommended products by cloning the selected product
+     * and placing it in specific tiles, then removing the original product element.
+     */
+  }, {
+    key: "handleRecommendedLite",
+    value: function handleRecommendedLite() {
+      var that = this;
+      var pdtId = _scCommonMethods.default.getQueryParam(that.queryString, that.productTile.getAttribute('data-query-param-product'));
+      if (pdtId) {
+        // Display products in recommended tiles
+        that.backBtn.classList.add('hide');
+        var recommendedTiles = that.productTile.querySelector('.sc-product-tiles-recommended');
+        recommendedTiles.classList.remove('hide');
+        var selectedPdt = that.productTile.querySelector("[data-product-name='".concat(pdtId, "']"));
+        if (selectedPdt) {
+          // Clone the selectedPdt element for the recommended wrapper
+          var clonedPdtForRecommended = selectedPdt.cloneNode(true);
+          var recommendedWrapper = that.productTile.querySelector('.sc-product-tiles-recommended__wrapper');
+          if (recommendedWrapper) {
+            recommendedWrapper.appendChild(clonedPdtForRecommended);
+          }
+
+          // Clone the selectedPdt element for the tiles wrapper
+          var clonedPdtForTiles = selectedPdt.cloneNode(true);
+          var tilesWrapper = that.productTile.querySelector('.sc-product-tiles__wrapper');
+          if (tilesWrapper) {
+            tilesWrapper.appendChild(clonedPdtForTiles);
+          }
+
+          // Now remove the original selectedPdt
+          selectedPdt.remove();
+          var badge = that.productTile.querySelector(".sc-product-tiles__wrapper [data-product-name='".concat(pdtId, "'] .sc-badge"));
+          badge === null || badge === void 0 ? void 0 : badge.classList.remove('hide');
+          var counter = 1;
+          var allIds = recommendedWrapper.querySelectorAll('.sc-products-tile-modal__accordion .sc-accordion__input');
+          if (allIds.length) {
+            //Generate dynamic Id if accordion is exist in the recommended section
+            allIds.forEach(function (el) {
+              var id = el.getAttribute('id');
+              if (id) {
+                id = "".concat(id, "_dynamic_").concat(counter);
+                var label = el.closest('.sc-products-tile-modal__accordion').querySelector('label');
+                el.setAttribute('id', id);
+                label.setAttribute('for', id);
+                counter++;
+              }
+            });
+          }
+        }
+      } else {
+        that.backBtn.classList.add('hide');
+      }
+      var appliedCodes = that.productTile.querySelectorAll('.sc-products-tile__applied-code');
+      if (appliedCodes.length) {
+        appliedCodes.forEach(function (appliedCode) {
+          appliedCode.classList.remove('hide');
+          appliedCode.querySelector('span').innerHTML = that.queryParams;
+        });
+      }
+    }
+
+    /**
+     * Handles the display of a single product in a modal or displays all products.
+     */
+  }, {
+    key: "handleModalProduct",
+    value: function handleModalProduct() {
+      var that = this;
+      var pdtId = _scCommonMethods.default.getQueryParam(that.queryString, that.productTile.getAttribute('data-query-param-product'));
+      if (pdtId) {
+        //Display single product
+        var selectedPdt = that.productTile.querySelector("[data-product-name='".concat(pdtId, "']"));
+        if (selectedPdt) {
+          //Product found
+          var modalSource = selectedPdt.querySelector('a[href="#null"]').getAttribute('data-modal-source');
+          if (modalSource) {
+            //Modal source found
+            var modalContent = document.querySelector("[data-modal-id='".concat(modalSource, "']"));
+            if (modalContent) {
+              //Popup modal content found
+              that.singlePdt.querySelector('.sc-products-tile-modal').remove();
+              that.viewAll.parentNode.insertBefore(modalContent.querySelector('.sc-products-tile-modal').cloneNode(true), that.viewAll);
+              that.handleRecommendedProduct(pdtId);
+              that.toggleProducts(true);
+              that.referHeader.classList.add('hide');
+              if (that.termsConditions) that.termsConditions.classList.add('hide');
+            } else {
+              //No product found
+              that.backBtn.classList.add('hide');
+              that.toggleProducts(false);
+            }
+          } else {
+            //No product found
+            that.backBtn.classList.add('hide');
+            that.toggleProducts(false);
+          }
+        } else {
+          //No product found
+          that.backBtn.classList.add('hide');
+          that.toggleProducts(false);
+        }
+      } else {
+        //Display all products
+        that.backBtn.classList.add('hide');
+        that.toggleProducts(false);
+      }
+      var appliedCodes = that.productTile.querySelectorAll('.sc-products-tile__applied-code');
+      if (appliedCodes.length) {
+        appliedCodes.forEach(function (appliedCode) {
+          appliedCode.classList.remove('hide');
+          appliedCode.querySelector('span').innerHTML = that.queryParams;
+        });
+      }
+    }
+
+    /**
+     * clone recommended product and display it in the top position
+     */
+  }, {
+    key: "handleRecommendedProduct",
+    value: function handleRecommendedProduct(pdtName) {
+      var that = this;
+      var tileWrapper = that.productTile.querySelector('.sc-product-tiles__wrapper');
+      var allPdtNames = that.productTile.querySelectorAll('[data-product-name]');
+      if (allPdtNames.length) {
+        allPdtNames.forEach(function (allPdtName) {
+          if (allPdtName.getAttribute('data-product-name') === pdtName) {
+            var badge = allPdtName.querySelector('.sc-badge');
+            if (badge) {
+              badge.classList.remove('hide');
+            }
+            var clonedDiv = allPdtName.cloneNode(true);
+            allPdtName.remove();
+            tileWrapper.insertBefore(clonedDiv, tileWrapper.firstChild);
+          }
+        });
+      }
+    }
+
+    /**
+     * show or hide products
+     */
+  }, {
+    key: "toggleProducts",
+    value: function toggleProducts(isSingle) {
+      var that = this;
+      if (isSingle) {
+        //Display single product
+        that.allPdt.classList.add('hide');
+        that.singlePdt.classList.remove('hide');
+      } else {
+        //Display all products
+        that.allPdt.classList.remove('hide');
+        that.singlePdt.classList.add('hide');
+      }
+    }
+
+    /**
+     * once clicked on categories, display related products
+     */
+  }, {
+    key: "handleFilter",
+    value: function handleFilter() {
+      var that = this;
+      var categoryBtn = that.productTile.querySelectorAll('[data-categories]');
+      if (categoryBtn.length) {
+        categoryBtn.forEach(function (el) {
+          el.addEventListener('click', function (event) {
+            var activeBtn = that.productTile.querySelector('.sc-filter__btn--active');
+            if (activeBtn) {
+              activeBtn.classList.remove('sc-filter__btn--active');
+            }
+            event.target.classList.add('sc-filter__btn--active');
+            var catName = event.target.getAttribute('data-categories');
+            var allCards = that.productTile.querySelectorAll('.sc-product-tiles__wrapper [data-cards]');
+            allCards.forEach(function (allCard) {
+              if (catName === 'all') {
+                //True if clicked on all category
+                allCard.classList.remove('hide');
+              } else {
+                var cardsName = allCard.getAttribute('data-cards');
+                catName === cardsName ? allCard.classList.remove('hide') : allCard.classList.add('hide');
+              }
+            });
+            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            _scCommonMethods.default.smoothScroll(document.querySelector('.sc-product-tiles__wrapper'), 300, width > 767 ? 150 : 70);
+          });
+        });
+      }
+    }
+
+    /**
+     * if referId exist inside query string, then update referId value or add referId as new query string
+     */
+  }, {
+    key: "updateQueryString",
+    value: function updateQueryString(url) {
+      var that = this;
+      var urlObj = url.split('?'); // Split the URL by '?', take the second part
+      var searchParams = "".concat(that.productTile.getAttribute('data-query-param-code'), "=").concat(that.queryParams);
+      if (urlObj[1]) {
+        searchParams = new URLSearchParams(urlObj[1]);
+        // Check if the URL already contains a referId parameter
+        if (searchParams.has(that.productTile.getAttribute('data-query-param-code'))) {
+          // If it does, update the value
+          searchParams.set("".concat(that.productTile.getAttribute('data-query-param-code')), that.queryParams);
+        } else {
+          // If not, add a new referId parameter
+          searchParams.append("".concat(that.productTile.getAttribute('data-query-param-code')), that.queryParams);
+        }
+      }
+      // Reconstruct the URL with the updated or added referId parameter
+      return (urlObj[0] + '?' + searchParams.toString()).toString();
+    }
+
+    /**
+     * trigger adobe popupViewed event when showing popups
+     */
+  }, {
+    key: "triggerPopupViewedTagging",
+    value: function triggerPopupViewedTagging(popupName) {
+      setTimeout(function () {
+        var dataObject = _objectSpread(_objectSpread({}, digitalData), {}, {
+          form: {
+            formName: '',
+            formStepName: '',
+            formType: '',
+            formPlatform: ''
+          }
+        });
+        dataObject.form.popupName = popupName;
+        dataObject.event = 'popupViewed';
+        scAnalyticsDataArray.push(dataObject);
+      }, 500);
+    }
+
+    /**
+     * trigger adobe ctaClick event during click action
+     */
+  }, {
+    key: "triggerCtaClickTagging",
+    value: function triggerCtaClickTagging(event) {
+      var that = this;
+      if (that.eventFired) {
+        var ctaType = event.target.type == 'button' ? event.target.type : 'link';
+        var customLinkText = event.target.getAttribute('title') ? event.target.getAttribute('title') : event.target instanceof SVGElement || event.target.getElementsByTagName('svg').length || event.target.classList.contains('closebutton') ? 'Close' : event.target.innerText ? event.target.innerText.trim().toLowerCase() : event.target.textContent.trim().toLowerCase();
+        var dataObject = _objectSpread(_objectSpread({}, digitalData), {}, {
+          customLinkClick: {
+            customLinkText: customLinkText,
+            customLinkRegion: that.getHorizontalPosition(event.clientX) + ' ' + Utils.calcElementLocation(event.target),
+            customLinkType: ctaType
+          },
+          event: 'ctaClick',
+          context: customLinkText
+        });
+        scAnalyticsDataArray.push(dataObject);
+      }
+    }
+
+    /**
+     * capture horizontal click position and return it's left or right
+     * @param {Number} xClick horizontal click position
+     * @return {String} return it's left or right
+     * @example
+     * getHorizontalPosition(1000)
+     */
+  }, {
+    key: "getHorizontalPosition",
+    value: function getHorizontalPosition(xClick) {
+      var width = Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth);
+      var median = width / 2;
+      return xClick < median ? 'left' : 'right';
+    }
+
+    /**
+     * fixed case sensitive issue of the referId
+     */
+  }, {
+    key: "handleReferId",
+    value: function handleReferId() {
+      var that = this;
+      var anchorList = document.querySelectorAll('.sc-product-tile-is-recommended a, .sc-products-tile-modal a');
+      anchorList.forEach(function (el) {
+        el.addEventListener('click', function (event) {
+          var closest = event.target.closest('a');
+          var href = closest.getAttribute('href');
+          if (!href.includes('#')) {
+            event.preventDefault();
+            event.stopPropagation();
+            setTimeout(function () {
+              href = closest.getAttribute('href');
+              if (href) {
+                href = href.split('referId').join('referid');
+                closest.setAttribute('href', href);
+                window.open(closest.getAttribute('href'), '_blank');
+              }
+            }, 50);
+          }
+        });
+      });
+      document.body.addEventListener('click', function (event) {
+        var closestModal = event.target.closest('.c-modal');
+        var closest = event.target.closest('a');
+        if (closestModal && closest) {
+          var href = closest.getAttribute('href');
+          if (!href.includes('#')) {
+            event.preventDefault();
+            event.stopPropagation();
+            setTimeout(function () {
+              href = closest.getAttribute('href');
+              if (href) {
+                href = href.split('referId').join('referid');
+                closest.setAttribute('href', href);
+                window.open(closest.getAttribute('href'), '_blank');
+              }
+            }, 50);
+          }
+        }
+        if (event.target.closest('.sc-products-tile__copy-code')) {
+          var codeSpan = event.target.closest('.sc-products-tile-modal').querySelector('.sc-products-tile__applied-code span');
+          var messageDiv = document.querySelector('.sc-product-tiles__copy-message');
+          // Copying content to clipboard
+          var codeToCopy = codeSpan.innerText;
+          navigator.clipboard.writeText(codeToCopy).then(function () {
+            // Adding class to show message
+            messageDiv.classList.add('sc-product-tiles__copy-message--show');
+            // Removing message-show class after 3 seconds
+            setTimeout(function () {
+              messageDiv.classList.remove('sc-product-tiles__copy-message--show');
+            }, 3000);
+          }).catch(function (err) {});
+        } else if (event.target.closest('a[data-modal-source]')) {
+          setTimeout(function () {
+            var radioBtn = document.querySelector('.modal-content input[name="checkbox-radio"]');
+            if (radioBtn) {
+              radioBtn.checked = true;
+            }
+          }, 1000);
+        }
+        if (event.target.closest('.sc-products-tile-pdt-selection')) {
+          that.updateLinkHref();
+        }
+      });
+
+      // Get all elements with the class '.sc-products-tile__mobile-link'
+      var mobileLinks = document.querySelectorAll('.sc-products-tile__mobile-link');
+      // Loop through each mobile link and attach event listeners
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          if (window.innerWidth > 1024) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.querySelector('.sc-error-modal--apply').classList.add('sc-error-modal--show');
+          }
+        });
+      });
+
+      // Adding event listener for closing the modal
+      document.querySelector('.sc-error-modal--apply .sc-error-modal__alert-close').addEventListener('click', function () {
+        document.querySelector('.sc-error-modal--apply').classList.remove('sc-error-modal--show');
+      });
+      if (window.location.href.indexOf('p=') > -1) {
+        // Scroll down to the section with the class 'sc-product-tiles'
+        var productTilesSection = document.querySelector('.sc-product-tiles');
+        if (productTilesSection) {
+          var offset = 0;
+          if (window.innerWidth > 1024) {
+            offset = 100; // Offset of 100 pixels for screens wider than 1024px
+          }
+          // Scroll to the top position of the section with the applied offset
+          window.scrollTo({
+            top: productTilesSection.offsetTop - offset,
+            behavior: 'smooth' // Optional: for smooth scrolling
+          });
+        }
+      }
+    }
+  }, {
+    key: "updateLinkHref",
+    value: function updateLinkHref() {
+      var applyNowLinks = document.querySelectorAll('.sc-products-tile__is-pdt-selection');
+      var checkedRadio = document.querySelector('.sc-products-tile-pdt-selection input:checked');
+      var newHref = checkedRadio === null || checkedRadio === void 0 ? void 0 : checkedRadio.closest('label').getAttribute('data-card-link');
+      applyNowLinks.forEach(function (link) {
+        link.setAttribute('href', newHref);
+      });
+    }
+  }]);
+  return ScMgmReferralEnhanced;
+}();
+var instance = new ScMgmReferralEnhanced();
+instance.init();
+var _default = instance;
+exports.default = _default;
+
+},{"./../../../../../src/assets/js/commons/sc-common-methods":2}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var ScCommonMethods = /*#__PURE__*/function () {
+  function ScCommonMethods() {
+    _classCallCheck(this, ScCommonMethods);
+  }
+  _createClass(ScCommonMethods, [{
+    key: "getQueryParam",
+    value:
+    /**
+     * getQueryParam method is created because "new URLSearchParams()"" not support in IOS
+     * search specific param from the queryString, if found it return value, else return empty
+     * @example
+     * getQueryParam('subChanCode=2023&referId=xyz&pid=123', 'referId')
+     */
+    function getQueryParam(queryString, paramName) {
+      // Split the query string into an array of key-value pairs
+      var queryParamsList = queryString.split('&');
+      var paramValue = '';
+
+      // eslint-disable-next-line no-unused-vars
+      var _iterator = _createForOfIteratorHelper(queryParamsList),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var param = _step.value;
+          var _param$split = param.split('='),
+            _param$split2 = _slicedToArray(_param$split, 2),
+            key = _param$split2[0],
+            value = _param$split2[1];
+          if (key === paramName) {
+            //it's case sensitive
+            paramValue = value;
+            break; // No need to continue once 'referId' is found
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      return paramValue;
+    }
+
+    /**
+     * change browser URL based on query string
+     */
+  }, {
+    key: "changeURL",
+    value: function changeURL() {
+      var queryParams = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      //Change Query String
+      var newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + (queryParams ? "?".concat(queryParams) : ''); //Set queryString in URL
+
+      //Change URL based on clicked tab
+      window.history.pushState({
+        path: newUrl
+      }, '', newUrl);
+    }
+
+    /**
+     * scroll target position with animation
+     * @param {selector} target scroll to the target class
+     * @param {Number} duration scroll time in ms
+     * @param {Number} margin negative value form top
+     * @param {selector} scrollStart parent class name which is responsible for scroll
+     * @example
+     * scroll(document.querySelector(`.sc-offers-nearby-stores__title`), 500, 90, document.querySelector(".sc-offers-details"))
+     */
+  }, {
+    key: "smoothScroll",
+    value: function smoothScroll(target, duration) {
+      var width = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var scrollStart = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : window;
+      if (!target) return;
+      var that = this;
+      var targetPosition = target.getBoundingClientRect().top - width;
+      var startPosition = scrollStart === window ? window.pageYOffset : 0;
+      var startTime = null;
+      var animation = function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        var timeElapsed = currentTime - startTime;
+        var run = that.ease(timeElapsed, startPosition, targetPosition, duration);
+        scrollStart.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+      requestAnimationFrame(animation);
+    }
+  }, {
+    key: "ease",
+    value: function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    /**
+     * return absolute position of selected div in px
+     * @param {String} element class elements name as an object
+     * @return {Number} return horizontal position in px
+     * @example
+     * getPosition('.selector')
+     */
+  }, {
+    key: "getPosition",
+    value: function getPosition(element) {
+      if (!element) return '';
+      var yPosition = 0;
+      while (element) {
+        yPosition += element.offsetTop - element.scrollTop + element.clientTop;
+        element = element.offsetParent;
+      }
+      return yPosition;
+    }
+  }]);
+  return ScCommonMethods;
+}();
+var instance = new ScCommonMethods();
+var _default = instance;
+exports.default = _default;
+
+},{}]},{},[1])
+</script>

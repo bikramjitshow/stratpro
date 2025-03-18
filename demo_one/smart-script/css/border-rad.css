@@ -1,0 +1,37 @@
+.ele-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ele {
+  position: relative;
+  border-radius: 100px 100px/0px 100px;
+  border: 0px solid #800000;
+  margin-bottom: 0;
+}
+.ele:first-child {
+  background-color: blue;
+}
+.ele:first-child::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(30, 230, 217);
+  border-radius: 100px 100px/100px 0px;
+  border: 0px solid #800000;
+  position: absolute;
+}
+.ele:last-child {
+  background-color: limegreen;
+}
+.ele::after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(68, 217, 243);
+  border-radius: 0 0 100px 100px/0 0 0px 100px;
+  border: 0px solid #800000;
+  position: absolute;
+}/*# sourceMappingURL=border-rad.css.map */

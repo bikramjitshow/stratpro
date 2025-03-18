@@ -1,0 +1,62 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define info-dot; weak */
+
+.sc-info-dot {
+  position: relative;
+  background: linear-gradient(to right, #293a8d, #0061c9);
+  height: 100vh;
+  padding: $spacer-3;
+  &__dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $color-white;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.37);
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      content: '';
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+      width: 18px;
+      height: 18px;
+      background-color: $color-white;
+    }
+    &--active {
+      cursor: auto;
+      &::after {
+        width: 28px;
+        height: 28px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $color-brand-green;
+        opacity: 1;
+      }
+    }
+  }
+  &__box {
+    max-width: 300px;
+    min-width: 180px;
+    border-radius: 10px;
+    padding: $spacer-3;
+    width: 100%;
+    position: absolute;
+    color: $color-dark-gray-5;
+    background-color: rgba(255, 255, 255, 0.49);
+    backdrop-filter: blur(10px);
+    left: 60px;
+    top: 20px;
+  }
+}
+
+/** @end */

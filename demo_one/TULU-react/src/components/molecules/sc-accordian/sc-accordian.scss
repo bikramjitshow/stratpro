@@ -1,0 +1,193 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define accordion; weak */
+.sc-accordion {
+  width: 100%;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+
+    &:checked {
+      + .sc-accordion__label {
+        /* stylelint-disable max-nesting-depth */
+        // Below code for rotate the accordian arrow icon
+        &::after {
+          transform: rotate(180deg);
+          top: calc(50% - 6px);
+        }
+
+        /* stylelint-enable max-nesting-depth */
+      }
+
+      ~ .sc-accordion__content {
+        max-height: 100%;
+        padding: $spacer-3 $spacer-0;
+        overflow: hidden;
+        display: block;
+      }
+
+      ~ .sc-heading .sc-accordion__label--plus {
+        border-bottom: 0;
+        font-weight: $font-weight-bold;
+
+        /* stylelint-disable max-nesting-depth */
+        // Below code for adding pus icon for accordion
+        &::after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' fill='%230C77B9' fill-rule='evenodd' rx='.75'/%3E%3C/svg%3E%0A");
+          transform: rotate(0deg) translateY(-50%);
+          top: 47%;
+        }
+
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+
+  &__label {
+    padding: $spacer-3 $spacer-5 $spacer-3 $spacer-3;
+    background-color: $color-light-gray-5;
+    font-weight: $font-weight-normal;
+    cursor: pointer;
+    color: $color-text;
+    font-size: $font-size-base;
+    position: relative;
+    min-height: auto;
+    display: inline-block;
+    width: 100%;
+
+    &::after {
+      content: '';
+      width: 13px;
+      height: 13px;
+      background-image: url("data:image/svg+xml,%3Csvg width='168' height='100' viewBox='0 0 168 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M165.315 8.67848L159.812 3.13717C158.08 1.40662 155.776 0.453244 153.313 0.453244C150.852 0.453244 148.545 1.40662 146.813 3.13717L84.0376 65.915L21.19 3.06751C19.4608 1.33696 17.1539 0.384949 14.6926 0.384949C12.2313 0.384949 9.92301 1.33696 8.19246 3.06751L2.68802 8.57467C-0.896007 12.156 -0.896007 17.9896 2.68802 21.5709L77.5156 96.6675C79.2447 98.3967 81.549 99.615 84.0321 99.615H84.0608C86.5234 99.615 88.8277 98.3953 90.5568 96.6675L165.315 21.7744C167.047 20.0452 167.997 17.6713 168 15.21C168 12.7474 167.047 10.4063 165.315 8.67848Z' fill='%23626262'/%3E%3C/svg%3E%0A");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 15px;
+    }
+
+    &--plus {
+      background-color: $color-white;
+      padding: $spacer-3 $spacer-3 $spacer-3 $spacer-6;
+      border-bottom: 1px solid $color-light-gray-8;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-normal;
+      margin-bottom: $nt-spacer-2;
+
+      /* stylelint-disable max-nesting-depth */
+      // Below code for adding plus icon for accordion
+      &::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%230C77B9' fill-rule='evenodd'%3E%3Crect width='1.5' height='17' x='11.25' y='3.5' rx='.75'/%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' rx='.75'/%3E%3C/g%3E%3C/svg%3E%0A");
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        right: auto;
+        left: 6px;
+        filter: none;
+        top: 47%;
+      }
+
+      /* stylelint-enable max-nesting-depth */
+    }
+
+    &--plus-right {
+      padding: $spacer-2 $spacer-6 $spacer-2 $spacer-0;
+
+      /* stylelint-disable max-nesting-depth */
+      &::after {
+        right: 6px;
+        left: auto;
+      }
+
+      /* stylelint-enable max-nesting-depth */
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    padding: $spacer-0;
+    color: $color-grey;
+    background: $color-white;
+    overflow: hidden;
+    display: none;
+    font-size: $font-size-md;
+    .sc-two-column {
+      /* stylelint-disable plugin/selector-bem-pattern */
+      ul {
+        list-style: none;
+        padding-left: $spacer-0;
+      }
+      /* stylelint-enable plugin/selector-bem-pattern */
+    }
+    .sc-content-wrapper {
+      padding: 0;
+    }
+  }
+
+  &--with-icon-desc {
+    .sc-accordion {
+      &__label {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      &__label-desc {
+        flex: 100%;
+        font-size: $font-size-md;
+        margin-top: $spacer-2;
+      }
+
+      &__label-icon {
+        flex: 40px;
+        /* stylelint-disable max-nesting-depth */
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+
+      &__label-title {
+        flex: calc(100% - 40px);
+        font-size: $font-size-20;
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-accordion {
+    &__label {
+      &--plus {
+        font-size: $font-size-lg;
+        padding: $spacer-3 $spacer-3 $spacer-3 $spacer-6;
+      }
+
+      &--plus-right {
+        padding: $spacer-2 $spacer-6 $spacer-2 $spacer-0;
+      }
+    }
+  }
+}
+/** @end */
+
+/** @define faqs; weak */
+.sc-faqs {
+  &__item {
+    .sc-inline-buttons {
+      margin-top: $spacer-3;
+    }
+  }
+}
+/** @end */

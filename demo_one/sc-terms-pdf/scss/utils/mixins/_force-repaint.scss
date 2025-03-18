@@ -1,0 +1,3 @@
+@mixin force-repaint {
+  transform: translateZ(0);
+}

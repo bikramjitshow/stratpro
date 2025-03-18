@@ -1,0 +1,527 @@
+/**
+ * Fixed Spacing Variables:
+ * Though we can use relative units for most cases, we still need some fixed variable to overcome some drawbacks of relative units.
+ * Example we don't want the left and right side padding of container to be increased relatively to the font-size.
+ * The vertical spacing between two modules to be same regardless of increasing the font-size.
+ * The spacing scale is a base-8 scale. We chose a base-8 scale because eight is a highly composable number (it can be divided and multiplied many times and result in whole numbers), yet allows spacing dense enough for UI. The scale's exception is that it begins at 4px to allow smaller padding and margin for denser parts of the site, from there on it steps up consistently in equal values of 8px. Refer https://primer.style/css/support/
+*/
+/* Em Based Spacing Variables:
+ * Useful for buttons and form elements.
+ * Refer https://primer.style/css/spacing/
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * WebKit font-smoothing
+ * ------------------------------------------------
+ *
+ * References:
+ *
+ * 1. http://maxvoltar.com/sandbox/fontsmoothing/
+ * 2. http://maxvoltar.com/archive/-webkit-font-smoothing
+ * 3. https://gist.github.com/adamstac/5048881
+ *
+ * Values: none, antialiased (default), subpixel-antialiased
+ */
+/**
+ *  Background images with retina support
+ */
+/**
+ * Animates properties for sticky nav elements when page is scrolled
+ * @param: $property . The property that should be animated
+ *
+ */
+/**
+ * Creates a text filled by gradient between two colors
+ *
+ * TODO: Find a crossbrowser solution, this doesn't works on Firefox
+ *
+ * @param  {[type]} $from-color: #6cc9fe       [description]
+ * @param  {[type]} $to-color:   #38d54a       [description]
+ * @param  {[type]} $direction:  120deg        [description]
+ *
+ * @return {[type]}              [description]
+ */
+/**
+ * Triangle decorator
+ */
+/**
+* Rule to set correct calc values;
+* Even if this can be written in a simplified formulae and without use of calc.
+* we aim to describe the expanded calc to expose params
+*
+* **notice this can be simplified at "sass compile time" with a mixin
+* to flatten calc value to a number.
+*
+* calc( (originalValuePx / viewportwidthPx) * 100vw);
+*
+* Scale the following value: font size value of 21px in a viewport of 360px
+* font-size: calc((21/360)*100vw);
+*
+*/
+/**
+ * Sets height ratio for standard SC Component.
+ *
+ * @params
+ * $avoid-small-resolutions: Avoids the mixin behaviour for resolutions smaller than medium.
+ *                           It's used in components such as the footer which doesn't have a height
+ *                           behaviour on small resolutions, instead it depends on it's own content's height.
+ *
+ */
+/**
+ *  Hides for all states, assign to the breakpoints passed as first param,
+ *  the display type passed as the second param.
+ *  @param $breakpoint-to-show the breakpoints you want to show
+ *  @param $display the display type to be assigned to breakpoints,defaults to
+ *  (display:block)
+ */
+/**
+ * Sets font-size and font-weight.
+ *
+ * Font-weights smaller than 300 are only allowed when font-size
+ * is higher than 36px.
+ *
+ * Font-sizes bigger than 20px should activate aliased smoothing,
+ * then increase font-weight to 300
+ *
+ * If we're on IE, and font-size
+ * is less or equal than 17px and font-weight is less than 400,
+ * then font-weight is increased to improve readibility.
+ *
+ * @params
+ * $font-size: font size
+ * $font-weight: font weight
+ * $antialiased: boolean to active aliased smoothing
+ * $supers: collection of parent classes to apply the mixin, they have to be separated by comas
+ *
+ *
+ * Example 1:
+ *
+ *.component---header---title {
+ *   @include safe-font-size(15px, 300, false, '.is-upload-step', '.bp-small', '.bp-medium');
+ * }
+ *
+ * The $supers refers to the parent classes, so in this case, the mixin apply when the parent class is .is-upload-step,
+ * bp-small or bp-medium
+ *
+ *
+ * Example 2:
+ *
+ * .component---info.type---header {
+ *    .component---info---title {
+ *      @include safe-font-size(52px, 300, false, '.layout-2cols');
+ *    }
+ * }
+ *
+ * The font size here is 52px, bigger than 20px, so the aliased smoothing should activate.
+ * The $supers is only one, so the mixin only apply to the '.layout-2cols .component---info.type---header .component---info---title'
+ *
+ */
+.sc-product-tiles .sc-filter {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  z-index: 99;
+}
+.sc-product-tiles .sc-filter--sticky .splide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 8px 20px;
+  background-color: #ffffff;
+  z-index: 99;
+  width: 100%;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+@media (min-width: 1024px) {
+  .sc-product-tiles .sc-filter--sticky .splide {
+    top: 56px;
+  }
+  .sc-product-tiles .sc-filter--sticky .splide__track {
+    max-width: 1340px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+.sc-product-tile-recommended {
+  max-width: 800px;
+}
+.sc-product-tile-recommended__sub-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 8px;
+}
+.sc-product-tile-recommended__desc {
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 16px;
+  color: #555;
+}
+.sc-product-tile-recommended__view-all .sc-products-tile__btn {
+  bottom: 0;
+}
+.sc-product-tile-recommended__view-all-btn {
+  color: #2772c7;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 auto;
+  display: table;
+  cursor: pointer;
+  margin-top: 24px;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px dashed #2772c7;
+  padding: 0 0 4px;
+  font-weight: 500;
+}
+.sc-product-tile-recommended .sc-products-tile-modal {
+  margin: 0;
+  background-color: #ffffff;
+  border: 1px solid #f7fbff;
+  border-radius: 6px;
+  contain: paint;
+  width: 100%;
+}
+.sc-product-tile-recommended .sc-products-tile-modal__pdt-top {
+  display: none;
+}
+
+.sc-product-tile-is-recommended .sc-products-tile__right {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.sc-product-tile-is-recommended .sc-products-tile__btn {
+  margin-top: 0;
+}
+
+.sc-product-tile-is-recommended-back-btn {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16px;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  cursor: pointer;
+}
+.sc-product-tile-is-recommended-back-btn::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(87 87 87 1)'%3E%3Cpath d='M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z'%3E%3C/path%3E%3C/svg%3E");
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-right: 8px;
+}
+.sc-product-tile-is-recommended-back-btn:not(.hide) ~ .sc-product-tiles__sub-title {
+  display: none;
+}
+
+.sc-products-tile-steps {
+  border: 1px solid #008738;
+  border-radius: 6px;
+  padding: 16px;
+}
+.sc-products-tile-steps__col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-size: 14px;
+  color: #191919;
+}
+.sc-products-tile-steps strong {
+  font-weight: 500;
+}
+.sc-products-tile-steps__left {
+  margin-right: 8px;
+  min-width: 20px;
+}
+
+@media (min-width: 681px) {
+  .sc-product-tile-recommended__sub-title {
+    text-align: center;
+  }
+  .sc-product-tile-recommended__desc {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+.sc-product-tiles-recommended {
+  margin-bottom: 32px;
+  padding: 2px;
+}
+.sc-product-tiles-recommended__title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 16px;
+}
+.sc-product-tiles-recommended .sc-products-tile {
+  position: relative;
+  border: 0;
+}
+.sc-product-tiles-recommended .sc-products-tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 10px;
+  padding: 2px;
+  border: 0;
+  background: linear-gradient(121deg, rgb(45, 185, 68) 0%, rgb(68, 120, 255) 100%);
+  -webkit-mask: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff)) content-box, -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.sc-product-tiles-recommended .sc-products-tile--with-logo::after {
+  right: 2px;
+  top: 2px;
+  border-top-right-radius: 8px;
+}
+
+@media (min-width: 681px) {
+  .sc-product-tiles-recommended__title {
+    font-size: 18px;
+  }
+}
+.sc-products-tile-terms-modal {
+  --tile-padding: 16px;
+  background-color: #f8f8f8;
+  padding: var(--tile-padding);
+  min-height: auto;
+}
+.sc-products-tile-terms-modal strong {
+  font-weight: 600;
+}
+.sc-products-tile-terms-modal__title {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.sc-products-tile-terms-modal__terms-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.sc-products-tile-terms-modal__content {
+  margin-bottom: 16px;
+}
+.sc-products-tile-terms-modal__content ~ .sc-products-tile-terms-modal__content {
+  margin-top: 16px;
+}
+.sc-products-tile-terms-modal .sc-products-tile__btn, .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+  position: sticky;
+  bottom: 0;
+  width: calc(100% + var(--tile-padding) * 2);
+  margin: var(--tile-padding) calc(var(--tile-padding) * -1) calc(var(--tile-padding) * -1);
+  left: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  z-index: 4;
+}
+.sc-products-tile-terms-modal .sc-products-tile__btn .sc-btn, .sc-products-tile-terms-modal .sc-products-tile__input-btn .sc-btn {
+  width: 100%;
+}
+.sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0;
+}
+.sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
+  width: 100%;
+  margin-right: 8px;
+}
+.sc-products-tile-terms-modal .sc-products-tile__btn .buttons li:last-child {
+  margin-right: 0;
+}
+.sc-products-tile-terms-modal .sc-products-tile__download-button {
+  color: #2772c7;
+  border: none;
+}
+.sc-products-tile-terms-modal .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  row-gap: 0;
+  -webkit-column-gap: 40px;
+     -moz-column-gap: 40px;
+          column-gap: 40px;
+}
+.sc-products-tile-terms-modal .buttons li {
+  width: auto;
+}
+.sc-products-tile-terms-modal .buttons .sc-btn {
+  min-width: 100px;
+  margin: 0;
+}
+.sc-products-tile-terms-modal .sc-rte table {
+  margin: 16px 0;
+  border: none;
+}
+.sc-products-tile-terms-modal .sc-rte table tr:first-child td {
+  background-color: #ffffff;
+  color: inherit;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: none;
+}
+.sc-products-tile-terms-modal .sc-rte table tr td,
+.sc-products-tile-terms-modal .sc-rte table tr th {
+  line-height: inherit;
+  text-transform: none;
+  padding: 8px;
+  word-break: normal;
+}
+.sc-products-tile-terms-modal .sc-rte table tr td:last-of-type,
+.sc-products-tile-terms-modal .sc-rte table tr th:last-of-type {
+  border-right: 1px solid #eee;
+}
+.sc-products-tile-terms-modal .sc-rte p {
+  margin-bottom: 16px;
+}
+.sc-products-tile-terms-modal .sc-rte ol {
+  padding-left: 8px;
+}
+.sc-products-tile-terms-modal .sc-rte ol li {
+  list-style-type: decimal;
+}
+.sc-products-tile-terms-modal .sc-rte ul {
+  padding-left: 8px;
+}
+.sc-products-tile-terms-modal .sc-rte ul li {
+  list-style-type: upper-latin;
+}
+.sc-products-tile-terms-modal .sc-rte ul li ol li {
+  list-style-type: decimal;
+}
+.sc-products-tile-terms-modal .sc-rte ul li ol li ol li {
+  list-style-type: lower-latin;
+}
+
+.sc-bottom-btn .sc-mgm-refer-tc.sc-btn {
+  margin: 0;
+}
+
+.c-modal .m-text-content .sc-products-tile-terms-modal {
+  margin-bottom: -16px;
+}
+.c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__btn, .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+  margin-bottom: -16px;
+}
+.c-modal .m-text-content .sc-products-tile-terms-modal .sc-tag {
+  margin-bottom: 8px;
+}
+
+.sc-info-tile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border: 1px solid #38d200;
+  border-radius: 8px;
+  background-color: #e0ffdb;
+  padding: 12px 10px;
+  margin-bottom: 16px;
+}
+.sc-info-tile--green {
+  border: 1px solid #38d200;
+  background-color: #e0ffdb;
+}
+.sc-info-tile__icon-wrap {
+  margin-right: 4px;
+}
+.sc-info-tile__icon-wrap img,
+.sc-info-tile__icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+.sc-info-tile__title {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 4px;
+}
+.sc-info-tile__desc {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 4px;
+}
+.sc-info-tile__desc:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 681px) {
+  .sc-products-tile-terms-modal {
+    --tile-padding: 24px;
+    min-height: 250px;
+  }
+  .sc-products-tile-terms-modal .buttons {
+    gap: 20px;
+  }
+  .sc-products-tile-terms-modal .sc-products-tile__btn .buttons {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    gap: 16px;
+  }
+  .sc-products-tile-terms-modal .sc-products-tile__btn .buttons li {
+    margin-right: 0;
+  }
+  .c-modal > .wrapper[data-size=theme] .m-text-content {
+    border-radius: 0;
+  }
+  .c-modal .m-text-content .sc-products-tile-terms-modal {
+    margin-bottom: -24px;
+  }
+  .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__btn, .c-modal .m-text-content .sc-products-tile-terms-modal .sc-products-tile__input-btn {
+    margin-bottom: -24px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}/*# sourceMappingURL=style.css.map */

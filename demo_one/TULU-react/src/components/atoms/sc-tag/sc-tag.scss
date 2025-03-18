@@ -1,0 +1,71 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define tag; weak */
+.sc-tag {
+  display: inline-flex;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: $font-size-sm;
+  padding: $spacer-1 $nt-spacer-4;
+  transition: all 0.2s ease-in;
+  color: $color-white;
+  font-weight: $font-weight-normal;
+  * {
+    color: inherit;
+  }
+  &--blue {
+    background-color: $color-blue-13;
+  }
+  &--green {
+    background-color: $color-brand-green;
+  }
+  &--yellow {
+    background-color: $color-orange-1;
+  }
+  &--sky-blue {
+    background-color: $color-blue-14;
+  }
+  &--gold {
+    background-color: $color-yellow-2;
+    color: $color-text;
+  }
+  &--orange {
+    background-color: $color-orange;
+  }
+  &--gray {
+    background-color: $color-gray-6;
+    color: $color-text;
+  }
+  &--white {
+    background-color: $color-white;
+    color: $color-text;
+  }
+  &--black {
+    background-color: $color-dark-gray-1;
+    color: $color-white;
+  }
+  &--grey-light {
+    background-color: $color-light-blue-2;
+    color: $color-text;
+  }
+  &--line-green {
+    border-color: $color-light-green-5;
+    background-color: $color-light-green-3;
+    color: $color-green;
+  }
+  &--line-blue {
+    border-color: $color-light-blue-7;
+    background-color: $color-light-blue-5;
+    color: $color-dark-blue-3;
+  }
+}
+/** @end */
+
+[class*='sc-tag--line'] {
+  border-width: 2px;
+}

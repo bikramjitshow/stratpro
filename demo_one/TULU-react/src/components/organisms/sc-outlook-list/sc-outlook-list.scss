@@ -1,0 +1,68 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define outlook-list; weak */
+.sc-outlook-list {
+  padding: $spacer-5 $spacer-0;
+  background-color: $color-light-gray-5;
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    flex: 1;
+    min-width: 300px;
+    padding-bottom: $spacer-3;
+  }
+
+  /* stylelint-disable max-nesting-depth */
+  .sc-cvp {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      margin-right: $spacer-3;
+    }
+
+    &__middle {
+      margin-bottom: $spacer-3;
+      font-size: $font-size-base;
+    }
+
+    &__bottom {
+      position: relative;
+    }
+  }
+
+  /* stylelint-enable max-nesting-depth */
+}
+
+@include desktop {
+  .sc-outlook-list {
+    background-color: rgba(238, 246, 255, 1);
+
+    &__content-wrapper {
+      flex-direction: row;
+    }
+
+    &__col {
+      flex: 1;
+      min-width: 300px;
+      padding-bottom: $spacer-3;
+    }
+
+    .sc-cvp {
+      &__middle {
+        font-size: $font-size-mlg;
+      }
+    }
+  }
+}
+
+/** @end */

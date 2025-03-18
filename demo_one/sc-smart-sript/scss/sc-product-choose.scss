@@ -1,0 +1,104 @@
+@import "./sc-radio-box.scss";
+
+.sc-product-choose {
+  padding: 32px 0;
+  &__title {
+    color: $color-dark;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  &__pdt-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 32px;
+    margin-bottom: 32px;
+  }
+  &__img {
+    max-width: 170px;
+    width: 100%;
+    height: auto;
+  }
+  &__content-wrapper {
+    background: linear-gradient(143.01deg, $color-green-2 -3.64%, $color-green-5 83.4%);
+    padding: 3px;
+    height: 100%;
+  }
+  &__content {
+    padding: 32px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: $color-white;
+  }
+  &__pdt-box {
+    padding: 16px;
+    background-color: $color-green-light-2;
+    margin-bottom: 32px;
+    position: relative;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-dark;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .sc-radio-box {
+    max-width: 220px;
+    position: absolute;
+    top: -10px;
+    left: -35px;
+    &__input-label {
+      border-radius: 6px 16px;
+      background: radial-gradient(
+        160.26% 1130.34% at -36.81% -60.26%,
+        $color-green-4 0%,
+        $color-blue-light-5 100%
+      );
+      border: none;
+    }
+  }
+  .sc-inline-buttons {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// media queries
+// min 681px
+@include breakpoint($bp--h-small-large) {
+  .sc-product-choose {
+    padding: 40px 0;
+    &__title {
+      margin-bottom: 32px;
+    }
+    &__pdt-wrapper {
+      padding: 16px 0 0 0;
+    }
+    &__pdt-box {
+      margin: 0 32px;
+      max-width: calc(33.33% - 64px);
+      width: 100%;
+    }
+    &__pdt-wrapper {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// min 1024px
+@include breakpoint($bp--h-desktop) {
+}
+
+// max 1023.9px
+@include breakpoint($bp--h-mobile) {
+}

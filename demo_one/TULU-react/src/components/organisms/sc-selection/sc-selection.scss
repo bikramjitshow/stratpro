@@ -1,0 +1,99 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define selection; weak */
+
+.sc-selection {
+  display: inline-block;
+  width: 100%;
+  position: sticky;
+  top: 69px;
+  z-index: 1000;
+  cursor: pointer;
+  background: $color-white;
+
+  &__selected {
+    display: block;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    padding: $nt-spacer-4 $spacer-3;
+    color: $color-black;
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: calc(50% - 4px);
+      right: 16px;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid $color-black;
+      border-bottom: 2px solid $color-black;
+      display: inline-block;
+      transform: rotate(315deg) translateY(-50%);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &--active {
+      &::after {
+        transform: rotate(134deg) translateY(0);
+        transition: all 0.3s ease-in-out;
+      }
+
+      ~ .sc-selection__options {
+        display: block;
+      }
+    }
+  }
+
+  &__options {
+    list-style: none;
+    margin: $spacer-0;
+    padding: $spacer-0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid $color-light-gray-10;
+    display: none;
+    z-index: 10;
+    background-color: $color-white;
+    height: 100vh;
+
+    li {
+      display: flex;
+
+      a {
+        padding: $spacer-3;
+        cursor: pointer;
+        font-weight: $font-weight-semi-bold;
+        color: $color-black;
+        width: 100%;
+        outline: none;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $color-light-gray-9;
+        }
+        /* stylelint-disable max-nesting-depth, selector-no-qualifying-type */
+        &.sc-selection {
+          &__options-active {
+            background-color: $color-blue;
+            color: $color-white;
+          }
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-selection {
+    display: none;
+  }
+}
+
+/** @end */

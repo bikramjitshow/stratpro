@@ -1,0 +1,95 @@
+//
+// Adds hover effect to links
+//
+// @params
+// $color: The color of the underline
+// $distance: Distance from baseline of the link. Is 0px by default
+//
+@mixin sc-link-hover(
+  $color,
+  $distance: 0,
+  $border-style: solid,
+  $padding-right: 0px,
+  $default-border-style: 0
+) {
+  @include sc-safe-link-hover(
+    (
+      color: $color,
+      distance: $distance,
+      border-style: $border-style,
+      padding-right: $padding-right,
+      default-border-style: $default-border-style
+    )
+  );
+}
+
+//
+// Adds hover effect to links
+//
+// @params
+// $options List of options
+// - color: The color of the underline
+// - distance: Distance from baseline of the link. Is 0px by default
+// - selector: This uses the in() library to specify which parent is receiving the hover
+//
+@mixin sc-safe-link-hover($options) {
+  $options: default-to(
+    $options,
+    (
+      distance: 0,
+      border-style: solid,
+      padding-right: 0px,
+      default-border-style: 0,
+      selector: ''
+    )
+  );
+
+  $selector: map-get($options, selector);
+  $color: map-get($options, color);
+  $distance: map-get($options, distance);
+  $border-style: map-get($options, border-style);
+  $padding-right: map-get($options, padding-right);
+  $default-border-style: map-get($options, default-border-style);
+
+  $effect-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition: color 0.3s;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: $distance * -1;
+    right: $padding-right;
+    width: calc(100% - #{$padding-right});
+    height: 1px;
+  }
+
+  &::before {
+    border-top: $default-border-style;
+  }
+
+  &::after {
+    border-top: 1px $border-style $color;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right 0;
+    transition: transform 0.7s $effect-function, opacity 0.001s 0.7s linear;
+  }
+
+  @include safe-hover($selector) {
+    color: $color;
+
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+      transform-origin: 0 0;
+      transition: transform 0.9s $effect-function;
+    }
+
+    @content;
+  }
+}

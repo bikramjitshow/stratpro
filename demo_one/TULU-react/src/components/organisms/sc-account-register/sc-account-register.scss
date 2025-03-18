@@ -1,0 +1,153 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define account-register; weak */
+.sc-account-register {
+  .sc-heading-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacer-3;
+
+    &__icon {
+      margin-right: $spacer-3;
+    }
+  }
+
+  .sc-title {
+    color: $color-white;
+  }
+
+  .sc-btn-link {
+    &--white {
+      text-decoration-color: rgb(12, 119, 185);
+      color: $color-white;
+    }
+  }
+
+  &__description {
+    color: $color-white;
+    text-align: center;
+    margin-bottom: $spacer-3;
+  }
+
+  &__wrapper {
+    background-color: rgb(25, 48, 67);
+    padding: $spacer-5 0;
+    border-radius: 10px;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0 $spacer-5;
+  }
+
+  &__sub-title {
+    font-size: $font-size-base;
+    padding-bottom: $spacer-3;
+    color: $color-white;
+    padding-top: $spacer-3;
+    text-align: center;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    max-width: 250px;
+    width: 100%;
+  }
+
+  &__input-box {
+    padding: $spacer-2 $spacer-3;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 8px;
+    background-color: rgb(249, 249, 249);
+    width: 100%;
+    min-height: 48px;
+    max-width: 250px;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    color: $color-text;
+  }
+
+  &__btn {
+    text-align: center;
+  }
+
+  &__status {
+    padding-bottom: $spacer-3;
+    font-weight: $font-weight-normal;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+
+    &--error {
+      color: rgb(239, 169, 180);
+      margin-top: $spacer-1;
+      font-size: $font-size-sm;
+      text-align: center;
+    }
+
+    &--success {
+      background: $color-light-green-2;
+      color: $color-dark-green-4;
+      display: inline-block;
+      padding: $spacer-2 $spacer-3;
+      margin-bottom: $spacer-2;
+      border-radius: 8px;
+      text-align: center;
+      font-size: $font-size-base;
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-account-register {
+    &__form {
+      flex-direction: row;
+      margin-bottom: $spacer-2;
+      align-items: flex-start;
+      padding-bottom: $spacer-4;
+    }
+
+    &__input-box {
+      max-width: 300px;
+    }
+
+    &__description {
+      margin-bottom: $spacer-4;
+    }
+
+    &__status {
+      &--error {
+        text-align: start;
+      }
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-account-register {
+    &__sub-title {
+      padding: $spacer-2 $spacer-3 $spacer-3 0;
+      margin-top: $spacer-1;
+    }
+  }
+}
+
+@include desktop {
+  .sc-account-register {
+    &__sub-title {
+      padding-bottom: $spacer-0;
+      font-size: $font-size-lg;
+      padding-right: $spacer-5;
+    }
+  }
+}
+/** @end */

@@ -1,0 +1,222 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Molecules
+@import '../../molecules/sc-cvp/sc-cvp';
+
+/** @define reward-tile; weak*/
+.sc-reward-tile {
+  width: 100%;
+  padding: $spacer-4;
+  overflow: hidden;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  border-radius: 8px;
+  max-width: 340px;
+
+  &__item {
+    text-align: center;
+    margin-bottom: $spacer-6;
+  }
+
+  &__half-circle {
+    position: relative;
+    width: 400px;
+    margin-top: -$spacer-5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      height: 100%;
+      border-radius: 0 0 50% 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-width: 26px;
+      border-style: solid;
+      box-sizing: content-box;
+      border-top: 0;
+      width: calc(100% + 52px);
+      background: $color-dark-green-2;
+      border-color: $color-light-green-3;
+    }
+
+    &--green {
+      &::after {
+        background: $color-green-9;
+        border-color: $color-light-green-3;
+      }
+    }
+
+    &--green-gradient {
+      &::after {
+        background: radial-gradient(78.33% 78.33% at 2.36% -6.53%, #13a092 0%, #13cb99 100%);
+        border-color: $color-light-green-3;
+      }
+    }
+
+    &--blue {
+      &::after {
+        background: $color-brand-blue;
+        border-color: $color-light-blue-5;
+      }
+    }
+
+    &--blue-gradient {
+      &::after {
+        background: linear-gradient(90deg, #1f2f87 0%, #0a498c 100%);
+        border-color: $color-light-blue-4;
+      }
+    }
+
+    &--bord-green {
+      background: $color-light-green-3;
+      border-color: $color-green-9;
+
+      &::after {
+        outline-color: $color-light-green-3;
+      }
+    }
+
+    &--bord-green-gradient {
+      background: $color-light-green-3;
+
+      &::after {
+        outline-color: $color-light-green-3;
+        background-image: linear-gradient(#e6fbf5, #e6fbf5),
+          linear-gradient(to right, #13a092, #13cb99);
+      }
+    }
+
+    &--bord-blue {
+      background: $color-light-blue-5;
+      border-color: $color-brand-blue;
+
+      &::after {
+        outline-color: $color-light-blue-5;
+      }
+    }
+
+    &--bord-blue-gradient {
+      background: $color-light-blue-4;
+
+      &::after {
+        outline-color: $color-light-blue-4;
+        background-image: linear-gradient(#d1d7e6, #d1d7e6),
+          linear-gradient(to right, #1f2f87, #0a498c);
+      }
+    }
+  }
+
+  &__half-circle-content {
+    max-width: 90%;
+    position: relative;
+    z-index: 3;
+    padding: $spacer-4;
+    color: $color-white;
+    font-weight: 500;
+    font-size: $font-size-48;
+
+    .sc-cvp {
+      &__col {
+        max-width: 290px;
+        margin: 0 auto;
+      }
+
+      &__middle {
+        margin-bottom: 0;
+        /* stylelint-disable max-nesting-depth */
+        strong {
+          display: block;
+          font-size: $font-size-48;
+          color: $color-white;
+        }
+
+        sub {
+          position: relative;
+          bottom: 10px;
+          font-size: $font-size-26;
+          font-weight: 500;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+      &__bottom {
+        font-size: $font-size-26;
+      }
+    }
+  }
+
+  &__bottom-content {
+    text-align: center;
+    padding: $spacer-2;
+    margin-bottom: $spacer-4;
+
+    &:last-child {
+      margin-bottom: $spacer-0;
+    }
+    * {
+      font-size: $font-size-base;
+      font-weight: 400;
+      margin-bottom: $spacer-1;
+      color: $color-black;
+
+      &:last-child {
+        margin-bottom: $spacer-0;
+      }
+    }
+    strong {
+      font-size: $font-size-mlg;
+      font-weight: 500;
+    }
+
+    &--larg-txt {
+      * {
+        font-size: $font-size-20;
+      }
+      strong {
+        font-size: $font-size-26;
+        font-weight: 600;
+      }
+    }
+
+    &--green * {
+      color: $color-green-9;
+    }
+
+    &--green-gradient * {
+      color: $color-green-11;
+    }
+
+    &--blue * {
+      color: $color-brand-blue;
+    }
+
+    &--blue-gradient * {
+      color: $color-dark-blue-3;
+    }
+  }
+}
+
+@include tablet-desktop {
+  .sc-reward-tile {
+    &__circle {
+      &-content {
+        strong {
+          font-size: $font-size-48;
+        }
+      }
+    }
+  }
+}
+
+/** @end */

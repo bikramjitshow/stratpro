@@ -1,1 +1,0 @@
-{"version":3,"sources":["../atoms/sc-badge/sc-badge.scss","sc-badge.css"],"names":[],"mappings":"AAAA;EACE,2BAAA;EAAA,2BAAA;EAAA,oBAAA;EACA,wBAAA;MAAA,qBAAA;UAAA,uBAAA;ACCF;ADAE;EACE,UAAA;EACA,YAAA;ACEJ;ADAE;EACE,eAAA;EACA,iBAAA;EACA,cAAA;EACA,oCAAA;EACA,0BAAA;EACA,eAAA;ACEJ;ADCI;EACE,aAAA;ACCN;ADEM;EACE,yBAAA;ACAR","file":"sc-badge.css"}

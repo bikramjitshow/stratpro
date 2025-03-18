@@ -1,0 +1,74 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define btn-toggle; weak */
+.sc-btn-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  &__input {
+    @include visuallyhidden;
+    &:checked + .sc-btn-toggle__switch {
+      background-color: $color-brand-blue;
+      &::before {
+        transform: translateX(26px);
+      }
+    }
+  }
+  &__switch {
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background-color: $color-brand-blue;
+    border-radius: 20px;
+    width: 60px;
+    height: 34px;
+    flex-shrink: 0;
+    &::before {
+      transition: all 0.3s ease;
+      position: absolute;
+      content: '';
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: $color-white;
+      border-radius: 50%;
+    }
+    ~ .sc-btn-toggle__text {
+      margin-left: $spacer-3;
+      margin-right: 0;
+    }
+  }
+  &--small {
+    .sc-btn-toggle {
+      &__switch {
+        width: 45px;
+        height: 25px;
+        /* stylelint-disable max-nesting-depth */
+        &::before {
+          width: 19px;
+          height: 19px;
+          bottom: 3px;
+        }
+      }
+      &__input:checked + .sc-btn-toggle {
+        &__switch::before {
+          transform: translateX(18px);
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+  &__text {
+    font-size: $font-size-md;
+    color: $color-black;
+    margin-right: $spacer-3;
+  }
+}
+
+/** @end */

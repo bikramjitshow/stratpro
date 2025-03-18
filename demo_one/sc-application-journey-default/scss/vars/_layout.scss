@@ -1,0 +1,59 @@
+// Spacing
+//
+
+$spacer: 1rem !default; // Assumes the browser default, typically `16px`
+
+$rem-space-1: 0.375rem; // 6px
+$rem-space-2: 0.75rem; // 12px
+$rem-space-3: 1.125rem; // 18px
+$rem-space-4: 1.5rem; // 24px
+$rem-space-5: 1.875rem; // 30px
+
+$rem-space-desktop-1: 0.5rem; // 8px
+$rem-space-desktop-2: 1rem; // 16px
+$rem-space-desktop-3: 1.5rem; // 24px
+$rem-space-desktop-4: 2rem; // 32px
+$rem-space-desktop-5: 2.5rem; // 40px
+
+/**
+ * Fixed Spacing Variables:
+ * Though we can use relative units for most cases, we still need some fixed variable to overcome some drawbacks of relative units.
+ * Example we don't want the left and right side padding of container to be increased relatively to the font-size.
+ * The vertical spacing between two modules to be same regardless of increasing the font-size.
+ * The spacing scale is a base-8 scale. We chose a base-8 scale because eight is a highly composable number (it can be divided and multiplied many times and result in whole numbers), yet allows spacing dense enough for UI. The scale's exception is that it begins at 4px to allow smaller padding and margin for denser parts of the site, from there on it steps up consistently in equal values of 8px. Refer https://primer.style/css/support/
+*/
+$spacer-0: 0;
+$spacer-1: 4px;
+$spacer-2: 8px;
+$spacer-3: 16px;
+$spacer-4: 24px;
+$spacer-5: 32px;
+$spacer-6: 40px;
+
+/* Em Based Spacing Variables:
+ * Useful for buttons and form elements.
+ * Refer https://primer.style/css/spacing/
+*/
+$em-spacer-1: 0.0625em; // 1px
+$em-spacer-2: 0.125em; // 2px
+$em-spacer-3: 0.25em; // 4px
+$em-spacer-4: 0.375em; // 6px
+$em-spacer-5: 0.5em; // 8px
+$em-spacer-6: 0.75em; // 12px
+$em-spacer-7: 0.875em; // 14px
+$em-spacer-8: 1em; // 16px
+$em-spacer-9: 1.25em; // 20px
+$em-spacer-10: 1.5em; // 24px
+
+// Grid breakpoints
+//
+
+// Breakpoints.
+$bp-mobile: 600px;
+$bp-tablet: 1024px;
+$bp-desktop: 1280px;
+
+// Container width
+//
+
+$container-max-width: 1404px;

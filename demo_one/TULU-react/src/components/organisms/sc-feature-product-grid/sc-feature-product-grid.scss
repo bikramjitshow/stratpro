@@ -1,0 +1,119 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Module
+@import '../../molecules/sc-feature-tile/sc-feature-tile';
+
+/** @define feature-product-grid; weak */
+.sc-feature-product-grid {
+  padding: $spacer-4 $spacer-0;
+  .sc-feature-tile {
+    max-width: 100%;
+    &__title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+    }
+    &__description {
+      font-size: $font-size-md;
+    }
+    &__content {
+      padding: $spacer-3;
+    }
+  }
+  &__main-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__grid-box {
+    display: flex;
+    flex-direction: column;
+    margin-right: -$spacer-3;
+    margin-left: -$spacer-3;
+    width: calc(100% + $spacer-5);
+  }
+  &__small-box {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% + $spacer-5);
+  }
+  &__half-box,
+  &__half-box--right-small,
+  &__half-box--left-small {
+    display: flex;
+    flex-direction: column;
+    margin-right: -$spacer-3;
+    margin-left: -$spacer-3;
+    width: calc(100% + $spacer-5);
+  }
+}
+
+@include tablet {
+  .sc-feature-product-grid {
+    .sc-feature-tile {
+      min-height: 250px;
+      max-width: 100%;
+      &__title {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+      }
+      &__description {
+        font-size: $font-size-md;
+      }
+    }
+    &__grid-box,
+    &__half-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-bottom: $spacer-5;
+    }
+    &__half-box--right-small {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      margin-bottom: $spacer-5;
+    }
+    &__half-box--left-small {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      margin-bottom: $spacer-5;
+    }
+  }
+}
+
+@include desktop {
+  .sc-feature-product-grid {
+    padding: $spacer-6 $spacer-0;
+    .sc-feature-tile {
+      min-height: 250px;
+      &__title {
+        font-size: $font-size-mlg;
+        font-weight: $font-weight-bold;
+      }
+      &__description {
+        font-size: $font-size-md;
+      }
+      &__content {
+        padding: $spacer-4;
+      }
+    }
+    &__grid-box,
+    &__half-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-bottom: $spacer-5;
+    }
+    &__half-box--right-small {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      margin-bottom: $spacer-5;
+    }
+    &__half-box--left-small {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      margin-bottom: $spacer-5;
+    }
+  }
+}
+/** @end */

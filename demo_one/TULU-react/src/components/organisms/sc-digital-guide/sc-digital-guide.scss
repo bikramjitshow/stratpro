@@ -1,0 +1,204 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define digital-guide; weak */
+.sc-digital-guide {
+  background: linear-gradient(90deg, rgb(31, 47, 135) 0%, rgb(10, 73, 140) 100%);
+  padding-top: $spacer-5;
+  position: relative;
+  &__tab-item {
+    color: $color-white;
+    bottom: -4px;
+    position: relative;
+    padding-bottom: $spacer-1;
+    font-size: $font-size-md;
+    &--active {
+      border-bottom: 2px solid $color-white;
+      font-weight: 500;
+    }
+  }
+  &__content-box {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    &--show {
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &__left-img {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    max-height: 200px;
+    top: auto;
+    max-width: max-content;
+    bottom: 0;
+    ~ .sc-content-wrapper {
+      max-width: 1300px;
+    }
+  }
+  &__slider {
+    ~ .sc-digital-guide__content-wrapper .sc-digital-app-banner {
+      &__left {
+        padding: $spacer-4 $spacer-4 $spacer-6 $spacer-0;
+      }
+    }
+  }
+  .splide__track {
+    padding-bottom: $spacer-1;
+    border-bottom: 1px solid $color-white;
+  }
+}
+@include desktop {
+  .sc-digital-guide {
+    padding-top: $spacer-6;
+    &__left-img {
+      bottom: auto;
+      top: 0;
+      max-height: none;
+      width: auto;
+      max-width: 150px;
+      ~ .sc-content-wrapper {
+        .sc-digital-app-banner {
+          /* stylelint-disable max-nesting-depth */
+          &__right-img {
+            max-width: 100%;
+            margin: 0 auto;
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+      }
+    }
+    &__slider {
+      ~ .sc-digital-guide__content-wrapper .sc-digital-app-banner {
+        &__left {
+          padding: $spacer-6 $spacer-4 $spacer-6 $spacer-0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 1024px) {
+  .sc-digital-guide {
+    &__left-img {
+      ~ .sc-content-wrapper {
+        max-width: 1000px;
+      }
+    }
+  }
+}
+/** @end */
+
+// Banner Styles
+/** @define digital-app-banner; weak */
+.sc-digital-app-banner {
+  &__left {
+    width: 100%;
+    padding: 0 0 $spacer-6 0;
+  }
+  &__right {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  &__qr {
+    width: 150px;
+    height: auto;
+    margin-bottom: $spacer-4;
+    border-radius: 6px;
+    display: none;
+  }
+  &__title {
+    font-size: $font-size-mlg;
+    font-weight: 400;
+    margin-bottom: $spacer-3;
+    color: $color-white;
+  }
+  &__desc {
+    font-size: $font-size-md;
+    margin-bottom: $spacer-4;
+    color: $color-white;
+  }
+  &__note {
+    color: $color-gray-5;
+    font-size: $font-size-sm;
+    display: none;
+  }
+  &__app-btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  &__app-btn {
+    border-radius: 8px;
+    border: 1px solid $color-white;
+    padding: $spacer-1 $spacer-2;
+    display: inline-flex;
+    align-items: center;
+    min-width: 142px;
+    min-height: 43px;
+    justify-content: center;
+    color: $color-white;
+    font-size: $font-size-md;
+  }
+  &__right-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .sc-btn {
+    margin-bottom: $spacer-3;
+  }
+  .sc-rte {
+    * {
+      color: $color-white;
+    }
+  }
+}
+
+@include desktop {
+  .sc-digital-app-banner {
+    display: flex;
+    &__left {
+      padding: 0 $spacer-4 $spacer-6 0;
+      max-width: 500px;
+    }
+    &__right {
+      margin: 0 auto;
+      margin-top: $spacer-6;
+    }
+    &__title {
+      font-size: $font-size-28;
+      margin-bottom: $spacer-4;
+    }
+    &__desc {
+      font-size: $font-size-md;
+    }
+    &__qr,
+    &__note {
+      display: block;
+    }
+    &__app-btns {
+      height: 0;
+      overflow: hidden;
+    }
+    .sc-rte {
+      * {
+        font-size: $font-size-md;
+      }
+    }
+  }
+}
+/** @end */

@@ -1,0 +1,21 @@
+@mixin sc-card-inner-paddings($bp: 'all') {
+  @if ($bp == 'all' or $bp == 'mobile') {
+    @include breakpoint($bp--h-xsmall) {
+      padding: $card-v-padding-medium $card-h-padding-xsmall;
+    }
+
+    @include breakpoint($bp--h-small) {
+      padding: $card-v-padding-medium $card-h-padding-xsmall;
+    }
+  }
+
+  @if ($bp == 'all' or $bp == 'desktop') {
+    @include breakpoint($bp--h-medium) {
+      padding: $card-v-padding-medium $card-h-padding-medium;
+    }
+
+    @include breakpoint($bp--h-large) {
+      padding: $card-v-padding-medium $card-h-padding-large;
+    }
+  }
+}

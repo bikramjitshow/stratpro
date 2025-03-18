@@ -1,0 +1,248 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+@import '../../atoms/sc-checkbox/sc-checkbox';
+@import '../../atoms/sc-tooltip/sc-tooltip';
+
+/** @define calculator-tile; weak */
+.sc-calculator-tile {
+  border: 1px solid $color-light-blue-1;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  &--opacity {
+    filter: grayscale(1);
+    .sc-calculator-tile {
+      &__content-desc,
+      &__note {
+        opacity: 0.5;
+      }
+      &__content-interest {
+        text-decoration: line-through;
+      }
+    }
+  }
+  &__top,
+  &__bottom {
+    padding: $nt-spacer-4;
+  }
+  &__top {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  &__bottom {
+    background-color: $color-light-blue-3;
+    padding: $nt-spacer-4;
+    display: none;
+    border-radius: 8px;
+  }
+  &__checkbox {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: $spacer-3;
+  }
+  &__text-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__text {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semi-bold;
+    color: $color-grey;
+    padding-right: $nt-spacer-4;
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-desc {
+      color: $color-blue;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semi-bold;
+      padding-right: $spacer-3;
+    }
+    &-interest {
+      color: $color-blue;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      text-align: right;
+    }
+  }
+
+  &__note {
+    color: $color-blue;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    margin-top: $spacer-1;
+  }
+  &__information {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    z-index: 9;
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      right: 0;
+      top: 0;
+      background-image: url('data:image/svg+xml,<svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7.5H8V11H8.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 6C8.41421 6 8.75 5.66421 8.75 5.25C8.75 4.83579 8.41421 4.5 8 4.5C7.58579 4.5 7.25 4.83579 7.25 5.25C7.25 5.66421 7.58579 6 8 6Z" fill="black"/></svg>');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+  &__selector {
+    display: inline;
+    font-size: $font-size-sm;
+    border-style: none;
+    border-radius: 0;
+    background-color: $color-white;
+    width: 100%;
+    color: $color-blue;
+    appearance: none;
+    padding: $spacer-0;
+    font-weight: $font-weight-semi-bold;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.9992 6.60359C5.91974 6.60367 5.84105 6.58805 5.76765 6.55763C5.69431 6.52724 5.62769 6.48267 5.57161 6.42647L5.9992 6.60359ZM5.9992 6.60359L5.99904 6.45359L5.9992 6.60359ZM1.02617 1.88103L5.57147 6.42633H6.42662L10.9719 1.88106C11.2082 1.64491 11.2079 1.26232 10.972 1.0262C10.7359 0.789945 10.3532 0.789994 10.1171 1.02617L5.99904 5.14419L1.88106 1.0262C1.88105 1.02619 1.88104 1.02618 1.88103 1.02617C1.64487 0.789902 1.26231 0.790174 1.0262 1.02613C0.789945 1.26224 0.789994 1.64485 1.02617 1.88103Z' fill='%232772C7' stroke='%232772C7' stroke-width='0.3'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 14px;
+    padding-right: $spacer-3;
+    &:focus {
+      padding-left: $spacer-2;
+    }
+  }
+  &__selector-box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    z-index: 9;
+  }
+  .sc-checkbox {
+    color: $color-blue;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    &__checkmark {
+      border-radius: 4px;
+      background-color: transparent;
+      border-color: $color-text;
+      &::after {
+        left: 6px;
+        top: 1px;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        width: 800px;
+        height: 90px;
+        left: -16px;
+        top: -16px;
+      }
+    }
+    &__input:checked ~ .sc-checkbox__checkmark {
+      background-color: $color-blue;
+      border-color: $color-blue;
+    }
+  }
+
+  &__label {
+    color: $color-blue;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacer-3;
+    position: relative;
+
+    .sc-tooltip {
+      position: absolute;
+      right: 0;
+      margin: 0;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  &__label-icon {
+    margin-right: $nt-spacer-4;
+    display: flex;
+    img,
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &__input-box {
+    border-bottom: 2px solid $color-brand-green;
+    display: flex;
+    align-items: center;
+    max-width: 250px;
+    margin: $spacer-3 $spacer-2;
+    position: relative;
+  }
+  &__currency {
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-semi-bold;
+    color: $color-dark-blue-1;
+    margin-right: $spacer-1;
+  }
+  &__amount-input {
+    appearance: none;
+    border-width: 0;
+    color: $color-dark-blue-1;
+    font-size: $font-size-mlg;
+    font-weight: $font-weight-semi-bold;
+    width: 100%;
+    background-color: transparent;
+  }
+  &__edit-input {
+    position: absolute;
+    right: 0;
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
+@include tablet-desktop {
+  .sc-calculator-tile {
+    &__bottom {
+      display: block;
+    }
+    &__text {
+      padding-right: $spacer-0;
+    }
+  }
+}
+
+@include desktop {
+  .sc-calculator-tile {
+    .sc-checkbox {
+      &__checkmark::before {
+        width: 250px;
+        height: 180px;
+      }
+    }
+  }
+}
+/** @end */

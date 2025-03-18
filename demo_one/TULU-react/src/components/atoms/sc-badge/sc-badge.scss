@@ -1,0 +1,76 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define badge; weak */
+.sc-badge {
+  display: inline-flex;
+  align-items: flex-start;
+  &::before {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='7' height='10' viewBox='0 0 7 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 0V10H0L7 0Z' fill='%23EC9BA5'/%3E%3C/svg%3E");
+    width: 7px;
+    height: 10px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+  }
+  svg {
+    width: 8px;
+    height: 11px;
+  }
+  &__text {
+    display: inline;
+    padding: $nt-spacer-2 $spacer-2;
+    color: $color-black;
+    background-color: rgb(250, 229, 232);
+    border-radius: 0 0 8px 8px;
+    font-size: $font-size-sm;
+  }
+  &--green {
+    &::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='7' height='10' viewBox='0 0 7 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 0V10H0L7 0Z' fill='%23A6D0B5'/%3E%3C/svg%3E");
+    }
+    .sc-badge {
+      &__text {
+        background-color: $color-light-green-1;
+      }
+    }
+  }
+  &--green-gradiant {
+    &::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='7' height='10' viewBox='0 0 7 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 0V10H0L7 0Z' fill='%2370CF99'/%3E%3C/svg%3E");
+    }
+    .sc-badge {
+      &__text {
+        background: linear-gradient(270deg, rgb(1, 166, 71) 0%, rgb(1, 149, 135) 100%);
+        color: $color-white;
+      }
+    }
+  }
+  &--quote {
+    position: relative;
+    &::before {
+      content: '';
+      width: 20px;
+      height: 26px;
+      position: absolute;
+      left: 0;
+      bottom: -26px;
+      z-index: 2;
+      background: url('data:image/svg+xml,<svg width="21" height="27" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 27V0H0L21 27Z" fill="%23AFD6B8"/></svg>');
+    }
+    .sc-badge {
+      &__text {
+        border-radius: 0 4px 4px 0;
+        color: $color-black;
+        padding: $spacer-2 $spacer-3;
+        background: radial-gradient(160.26% 1130.34% at -36.81% -60.26%, #d6ffc7 0%, #c8e2ff 100%);
+      }
+    }
+  }
+}
+
+/** @end */

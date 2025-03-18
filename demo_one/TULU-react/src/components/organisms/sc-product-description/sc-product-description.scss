@@ -1,0 +1,35 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define product-description; weak */
+
+.sc-product-description {
+  padding: $spacer-3 $spacer-0;
+  .sc-title {
+    margin-top: $spacer-4;
+  }
+  &__graph {
+    text-align: center;
+    img {
+      width: 100%;
+      max-width: 750px;
+      height: auto;
+    }
+  }
+  &__text {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: $spacer-3 auto $spacer-0;
+  }
+  &__buttons {
+    margin-top: $spacer-4;
+    .sc-inline-buttons {
+      justify-content: center;
+    }
+  }
+}
+/** @end */

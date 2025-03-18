@@ -1,0 +1,8 @@
+.day-finder {
+  &__main-title {
+    @include kodchasan(700);
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+  }
+}

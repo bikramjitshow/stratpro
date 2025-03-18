@@ -1,0 +1,1982 @@
+<style>
+  @charset "UTF-8";@font-face{font-family:"SC Prosper Sans";src:url("https://av.sc.com/sg/YEC21/SCProsperSans-Bold.woff2") format("woff2");font-weight:700;font-style:normal}@font-face{font-family:"SC Prosper Sans";src:url("https://av.sc.com/sg/YEC21/SCProsperSans-Medium.woff2") format("woff2");font-weight:500;font-style:normal}@font-face{font-family:"SC Prosper Sans";src:url("https://av.sc.com/sg/YEC21/SCProsperSans-Regular.woff2") format("woff2");font-weight:400;font-style:normal}@font-face{font-family:"SC Prosper Sans";src:url("https://av.sc.com/sg/YEC21/SCProsperSans-Light.woff2") format("woff2");font-weight:300;font-style:normal}body{margin:0;font-family:"SC Prosper Sans";line-height:normal;font-size:16px;background-color:#f6f6f6;font-weight:400}*{box-sizing:border-box;font-family:"SC Prosper Sans"}body,html{width:auto;overflow-x:hidden}h1,h2,h3,h4,h5,p{margin:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none;margin:0}.modal-open{overflow:hidden}.sr-only:not(:focus):not(:active){clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}.hidden{display:none!important}.visible{display:block}.only-desktop{display:none}.only-mobile{display:block}.sc-rte img{max-width:100%;height:auto}.sc-rte figure{margin:8px 0}.sc-rte figcaption{font-style:italic}.sc-rte table{width:100%;border-collapse:collapse;word-break:break-word}.sc-rte table,.sc-rte td,.sc-rte th{border:1px solid #e1e1e1;padding:8px;background-color:#fff;vertical-align:middle}.sc-rte th{color:#2772c7;text-transform:uppercase;font-weight:400}.sc-rte ol,.sc-rte ul{margin-bottom:16px}.sc-rte ol li,.sc-rte ul li{margin-bottom:8px}.sc-rte ol li ol,.sc-rte ol li ul,.sc-rte ul li ol,.sc-rte ul li ul{margin-bottom:16px}.sc-rte ol{list-style:decimal;padding-left:20px}.sc-rte ul{list-style:disc;padding-left:20px}.sc-rte p{color:#000;margin-bottom:8px}.sc-rte p:empty{display:none}.sc-content-wrapper{padding:0 16px;width:100%;margin-left:auto;margin-right:auto}@media (pointer:coarse) and (max-width:768px){body{touch-action:pan-x pan-y;-webkit-user-select:none;user-select:none}}@media (min-width:680px){.rte table{word-break:normal}.rte td,.rte th{padding:8px}.only-mobile{display:none}.only-desktop{display:block}}.sc-radio-box{display:inline-flex;position:relative}.sc-radio-box__input-label{font-size:.875rem;font-weight:500;padding:8px 12px;min-width:120px;border:#dfdfdf solid 1px;border-radius:5px;background:#fff;position:relative;cursor:pointer;width:100%;display:inline-flex;align-items:center;min-height:48px;color:#525355}.sc-radio-box__input{position:absolute;opacity:0;height:0;width:0}.sc-radio-box__input~.sc-radio-box__input-label::before{content:"";height:24px;width:24px;cursor:pointer;border-radius:50%;background:#fff;border:2px solid #555;flex-shrink:0;display:inline-block;margin-right:8px}.sc-radio-box__input:checked~.sc-radio-box__input-label::after{content:"";background-color:#2772c7;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);top:50%;left:24px;border-width:0;position:absolute}.sc-radio-box__input:checked~.sc-radio-box__input-label::before{background-color:#fff;border-color:#2772c7}.sc-radio-box__input[type=checkbox]~.sc-radio-box__input-label::before{border-radius:5px}.sc-radio-box__input[type=checkbox]:checked~.sc-radio-box__input-label::after{content:"";position:absolute;left:22px;top:calc(50% - 7px);width:5px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);border-radius:0}.sc-radio-box__input[type=checkbox]:checked~.sc-radio-box__input-label::before{background-color:#2772c7}.sc-tooltip{display:inline-flex;position:relative;align-items:center;margin:0 8px;z-index:3;cursor:pointer}.sc-tooltip::before{content:none;width:16px;height:9px;background-image:url("data:image/svg+xml,%3Csvg width='14' height='7' viewBox='0 0 14 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 7L0 0H14L7 7Z' fill='%23FFECBC'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:100%;position:absolute;transform:translate(1px,-16px)}.sc-tooltip svg{width:18px;height:18px}.sc-tooltip svg path{stroke:#212121}.sc-tooltip--green{color:#1f8845}.sc-tooltip--green svg path{stroke:#1f8845}.sc-tooltip--blue{color:#2772c7}.sc-tooltip--blue svg path{stroke:#2772c7}.sc-tooltip__text{width:250px;position:absolute;background-color:#ffecbc;text-align:center;padding:8px;border-radius:5px;color:#525355;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);visibility:hidden;opacity:0;transition:opacity 1s;font-size:.75rem;font-weight:400;cursor:default}.sc-tooltip__text a{cursor:pointer}.sc-tooltip__text--active{visibility:visible;opacity:1}.sc-tooltip__text::before{content:"";position:absolute;width:100%;height:20px;bottom:-20px;left:0;right:0;margin:0 auto}.sc-tooltip:hover .sc-tooltip__text{visibility:visible;opacity:1}.sc-tooltip:hover::before{content:""}@media (min-width:680px){.sc-tooltip__text{width:300px}}.sc-cvp{display:flex;margin-left:-8px;margin-right:-8px;width:calc(100% + 16px)}.sc-cvp__col{width:100%;padding:8px}.sc-cvp__top{font-size:.875rem;margin-bottom:4px}.sc-cvp__middle{font-size:.875rem;font-weight:400;margin-bottom:4px;font-feature-settings:"ss01"}.sc-cvp__middle strong{font-size:1.125rem;font-weight:600}.sc-cvp__bottom{font-size:.875rem}.sc-cvp__icon{width:60px;height:60px;flex-shrink:0;margin-bottom:8px}.sc-cvp__icon svg{width:100%;height:100%}.sc-cvp--white *{color:#fff}.sc-cvp--center{text-align:center}.sc-cvp--center .sc-cvp__icon{margin-left:auto;margin-right:auto}@media (min-width:680px){.sc-cvp{margin-left:-16px;margin-right:-16px;width:calc(100% + 32px)}.sc-cvp__col{padding:8px 16px}.sc-cvp__middle strong{font-size:1.25rem}}.sc-faq{padding:32px 0;background-color:#f8f8f8}.sc-faq .sc-content-wrapper{position:relative;z-index:4}.sc-faq__accordion{border-radius:6px 6px 0 0;overflow:hidden;border:1px solid #dfdfdf}.sc-faq__accordion-label{padding:16px;background-color:#fff;font-weight:500;cursor:pointer;color:#191919;font-size:.875rem;position:relative;min-height:auto;display:inline-block;width:100%}.sc-faq__accordion-label::after{content:"";width:16px;height:16px;background-image:url("data:image/svg+xml,%3Csvg width='168' height='100' viewBox='0 0 168 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M165.315 8.67848L159.812 3.13717C158.08 1.40662 155.776 0.453244 153.313 0.453244C150.852 0.453244 148.545 1.40662 146.813 3.13717L84.0376 65.915L21.19 3.06751C19.4608 1.33696 17.1539 0.384949 14.6926 0.384949C12.2313 0.384949 9.92301 1.33696 8.19246 3.06751L2.68802 8.57467C-0.896007 12.156 -0.896007 17.9896 2.68802 21.5709L77.5156 96.6675C79.2447 98.3967 81.549 99.615 84.0321 99.615H84.0608C86.5234 99.615 88.8277 98.3953 90.5568 96.6675L165.315 21.7744C167.047 20.0452 167.997 17.6713 168 15.21C168 12.7474 167.047 10.4063 165.315 8.67848Z' fill='%23626262'/%3E%3C/svg%3E%0A");background-position:center center;background-repeat:no-repeat;background-size:100%;position:absolute;top:50%;transform:translateY(-50%);right:20px}.sc-faq__accordion-label--plus{padding:16px 40px 16px 16px;color:#2772c7;background-color:#fff}.sc-faq__accordion-label--plus::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%230C77B9' fill-rule='evenodd'%3E%3Crect width='1.5' height='17' x='11.25' y='3.5' rx='.75'/%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' rx='.75'/%3E%3C/g%3E%3C/svg%3E%0A");background-size:22px 22px;width:18px;height:18px;right:18px;left:auto;filter:none;top:47%}.sc-faq__accordion-content{background-color:#fff;max-height:0;border-top:0;display:none;word-break:break-word}.sc-faq__accordion-input{position:absolute;opacity:0;z-index:-1;visibility:hidden}.sc-faq__accordion-input:checked+.sc-faq__accordion-label--plus{border-bottom:0}.sc-faq__accordion-input:checked+.sc-faq__accordion-label--plus::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='17' height='1.5' x='3.5' y='11.25' fill='%230C77B9' fill-rule='evenodd' rx='.75'/%3E%3C/svg%3E%0A");transform:rotate(0) translateY(-50%);top:47%}.sc-faq__accordion-input:checked+.sc-faq__accordion-label--plus+.sc-faq__accordion-content{padding:24px;border:0}.sc-faq__accordion-input:checked+.sc-faq__accordion-label::after{top:calc(50% - 6px);right:18px;transform:rotate(180deg);width:16px;height:14px}.sc-faq__accordion-input:checked+.sc-faq__accordion-label+.sc-faq__accordion-content{border-top:1px solid #dfdfdf;overflow:hidden;display:block;max-height:100%;font-size:.875rem}.sc-faq__accordion .sc-faq__accordion{border:0}.sc-faq__accordion .sc-faq__accordion .sc-faq__terms-link{background-color:#f7fbff;color:#2772c7;border:0;border-radius:0}.sc-faq__terms-link{font-size:.875rem;color:#191919;padding:16px;border-radius:0;background-color:#fff;width:100%;display:flex;justify-content:space-between;align-items:center;cursor:pointer;white-space:normal;text-align:left;font-weight:500;border:1px solid #dfdfdf;border-top:0}.sc-faq__terms-link::after{content:"";background-image:url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="15" height="15" rx="1.5" stroke="%23AAAAAA"/><path d="M5.85099 4.96413C5.70002 4.96424 5.55752 5.02425 5.4548 5.13097C5.35208 5.23768 5.29756 5.38238 5.30321 5.53324C5.30602 5.60796 5.32354 5.68195 5.35477 5.75098C5.38599 5.82001 5.43031 5.88272 5.48519 5.93553C5.54007 5.98834 5.60443 6.03022 5.6746 6.05877C5.74478 6.08733 5.81938 6.10199 5.89416 6.10194L8.98795 6.10065L4.67802 10.5793C4.5753 10.686 4.52079 10.8307 4.52651 10.9816C4.53222 11.1325 4.59768 11.2772 4.70849 11.3838C4.8193 11.4904 4.96637 11.5503 5.11736 11.5502C5.26835 11.5502 5.41089 11.4902 5.51362 11.3834L9.8237 6.90467L9.94048 9.99696C9.94618 10.1479 10.0116 10.2925 10.1224 10.3992C10.2332 10.5059 10.3803 10.5658 10.5313 10.5657C10.6823 10.5657 10.8249 10.5057 10.9276 10.3989C11.0304 10.2922 11.0849 10.1475 11.0792 9.99656L10.9105 5.5309C10.9077 5.45618 10.8902 5.38221 10.8589 5.31319C10.8277 5.24418 10.7834 5.18148 10.7285 5.12868C10.6177 5.02206 10.4705 4.96218 10.3195 4.96219L5.85099 4.96413Z" fill="%23AAAAAA"/></svg>');width:18px;height:18px;background-size:100%;background-repeat:no-repeat;display:inline-block}.sc-faq__terms-link:last-child{border-radius:0 0 6px 6px}/* stylelint-disable max-nesting-depth */ /* stylelint-enable max-nesting-depth */ .sc-faq--single .sc-faq__accordion{margin-bottom:12px;border-radius:6px}.sc-faq--single .sc-faq__accordion-input:checked+.sc-faq__accordion-label{background-color:#f7fbff}@media (min-width:1024px){.sc-faq{padding:40px 0}}.sc-tulu-camp{max-width:1024px;margin:0 auto;color:#000;position:relative;background:#f8f8f8}.sc-tulu-camp__wrapper{padding:0 16px}.sc-tulu-camp-page--green .sc-tulu-camp-header,.sc-tulu-camp-page--green .sc-tulu-camp-tab{background:#e8f3ec}.sc-tulu-camp-page--green .sc-tulu-camp-wrapper-full__column{box-shadow:0 4px 8px 0 #e8f3ec inset}.sc-tulu-camp-page--blue .sc-tulu-camp-header,.sc-tulu-camp-page--blue .sc-tulu-camp-tab{background:#eaf0f8}.sc-tulu-camp-page--blue .sc-tulu-camp-wrapper-full__column{box-shadow:0 4px 8px 0 #eaf0f8 inset}.sc-tulu-camp-page--purple .sc-tulu-camp-header,.sc-tulu-camp-page--purple .sc-tulu-camp-tab{background-color:rgba(145,125,227,.102)}.sc-tulu-camp-page--purple .sc-tulu-camp-wrapper-full__column{box-shadow:0 4px 8px 0 rgba(145,124,227,.102) inset}.sc-tulu-camp-main{display:none}.sc-tulu-camp-main.active{display:block}.sc-tulu-camp-header{background-color:#fff}.sc-tulu-camp-header__inner{display:flex;justify-content:space-between;align-items:center;padding:16px 0}.sc-tulu-camp-header__left{display:flex;align-items:center;justify-content:left;color:#000;font-size:1rem;font-weight:600}.sc-tulu-camp-header svg{width:24px;height:24px}.sc-tulu-camp-header__back{margin-right:8px}.sc-tulu-camp-wrapper-full{margin:0 -16px;padding:32px 16px;background-color:#fff;border-radius:40px 40px 0 0;margin-top:16px}.sc-tulu-camp-wrapper-full__inner{background-color:#fff;border:1px solid #dfdfdf;border-radius:8px}.sc-tulu-camp-wrapper-full__title{color:#000;font-size:1rem;font-weight:500}.sc-tulu-camp-wrapper-full .sc-heading-inner .sc-title{font-size:17px;font-weight:500}.sc-tulu-camp-wrapper-full .sc-heading-inner .sc-description{font-size:.75rem;font-weight:500;color:#6b6e73;margin-top:8px}.sc-tulu-camp-wrapper-full__column{display:flex;flex-direction:column;padding:24px 16px;box-shadow:0 4px 8px 0 #e8f3ec inset}.sc-tulu-camp-milescard{padding-bottom:24px;background-color:#fff;box-shadow:0 2px 19px 0 rgba(0,0,0,.051);border-radius:0 0 32px}.sc-tulu-camp-milescard::before{content:"";position:absolute;width:150px;height:150px;right:-16px;top:35px;background-image:url("data:image/svg+xml,%3Csvg width='173' height='125' viewBox='0 0 173 125' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M111.892 1.30395e-06C97.1768 0.003102 86.7069 4.74639 76.494 11.5462L0 62.5008L76.494 113.452C86.807 120.244 97.6292 125 111.892 125C145.64 125 173 97.0185 173 62.5C173 27.9823 145.64 -0.00697527 111.892 1.30395e-06Z' fill='url(%23paint0_linear_122_62)' fill-opacity='0.3'/%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M110.071 6C96.1213 6.00295 86.1962 10.5186 76.5146 16.992L4 65.5008L76.5146 114.007C86.291 120.473 96.5503 125 110.071 125C142.063 125 168 98.3616 168 65.5C168 32.6391 142.063 5.99336 110.071 6Z' fill='url(%23paint1_linear_122_62)' fill-opacity='0.3'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_122_62' x1='45.8785' y1='24.3338' x2='129.823' y2='130.389' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3EFFF'/%3E%3Cstop offset='1' stop-color='%2312B8E5'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear_122_62' x1='47.4917' y1='29.1658' x2='127.484' y2='129.8' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3EFFF'/%3E%3Cstop offset='1' stop-color='%2312B8E5'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");z-index:0;background-size:contain;background-repeat:no-repeat}.sc-tulu-camp-milescard__main{background:linear-gradient(82.13deg,#dfdfdf -1.46%,#fff 98.54%);padding:1px;border-radius:33px 7px 33px 11px;overflow:hidden;z-index:1;position:relative}.sc-tulu-camp-milescard__inner{background:linear-gradient(90deg,#fff 32%,rgba(255,255,255,.9) 52.5%,#74cfff 100%);padding:8px;border-radius:32px 6px 0 0}.sc-tulu-camp-milescard__desc{background:linear-gradient(90deg,#fff 49.5%,#a1d8eb 100%);padding:8px;border-radius:0 0 32px 10px;border-top:1px solid #dfdfdf;font-size:.875rem;font-weight:500}.sc-tulu-camp-milescard__desc strong{font-size:1rem}.sc-tulu-camp-milescard .sc-tooltip__text{background-color:#eaf0f8;color:#191919;top:50%;left:calc(100% + 10px);transform:translateY(-50%);bottom:auto;width:160px;text-align:left}.sc-tulu-camp-milescard .sc-tooltip::before{transform:rotate(90deg) translate(0,-15px);background-image:url("data:image/svg+xml,%3Csvg width='14' height='7' viewBox='0 0 14 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 7L0 0H14L7 7Z' fill='%23EAF0F8'/%3E%3C/svg%3E")}.sc-tulu-camp-milescard .sc-tooltip svg{width:14px;height:14px}.sc-tulu-camp-milescard .sc-cvp__top{display:flex;align-items:center}.sc-tulu-camp-tab{padding:16px 0}.sc-tulu-camp-tab__head-button{min-width:40px;font-weight:500;padding:8px 16px;border:0;background-color:transparent;max-width:250px;height:100%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:#6b6e73}.sc-tulu-camp-tab__head-button--active{background-color:#eaf0f8;border-radius:24px;color:#2772c7;box-shadow:none;font-weight:600}.sc-tulu-camp-tab__head-button--active.sc-tulu-camp-tab__head-button--blue{color:#4ca0f7}.sc-tulu-camp-tab__head-button--active.sc-tulu-camp-tab__head-button--green{color:#3bbd77}.sc-tulu-camp-tab__head-button--active.sc-tulu-camp-tab__head-button--purple{color:#917ce3}.sc-tulu-camp-tab .splide{margin-bottom:16px}/* stylelint-disable selector-max-compound-selectors */ /* stylelint-enable selector-max-compound-selectors */ .sc-tulu-camp-tab--with-icon .sc-tulu-camp-tab__head-button svg{width:18px;height:18px;margin-right:4px}.sc-tulu-camp-tab--with-icon .sc-tulu-camp-tab__head-button svg path{fill:#757575}.sc-tulu-camp-tab--with-icon .sc-tulu-camp-tab__head-button--active{background-color:#fff}.sc-tulu-camp-tab__content-item{display:none}.sc-tulu-camp-tab__content-item--active{display:block}.sc-tulu-camp-product-card{margin-top:16px}.sc-tulu-camp-product-card__main{padding:1px;border-radius:20px;overflow:hidden;box-shadow:0 2px 19px 0 rgba(0,0,0,.051);z-index:1;position:relative}.sc-tulu-camp-product-card__inner{background:#fff;border-radius:20px;display:flex;padding:16px}.sc-tulu-camp-product-card__icon{margin-right:8px}.sc-tulu-camp-product-card__icon img,.sc-tulu-camp-product-card__icon svg{width:40px;height:40px}.sc-tulu-camp-product-card__icon img{object-fit:cover}.sc-tulu-camp-product-card__title{font-size:1rem;font-weight:600}.sc-tulu-camp-product-card__desc{font-size:.813rem;font-weight:500;color:#6b6e73}.sc-tulu-camp-product-card__progress{margin-top:8px;display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center}.sc-tulu-camp-product-card__progress-bar{background:#eee;border:1px solid #dfdfdf;border-radius:6px;height:7px;width:100%;flex:100%;margin-top:8px}.sc-tulu-camp-product-card__progress-bar-inner{height:6px;border-radius:6px}.sc-tulu-camp-product-card__progress-value{font-size:.875rem;font-weight:600}.sc-tulu-camp-product-card__progress-total{font-size:.813rem}.sc-tulu-camp-product-card__progress-total strong{font-size:1.25rem;font-weight:600}.sc-tulu-camp-product-card__progress-desc{font-size:.813rem;color:#6b6e73;margin-top:8px}.sc-tulu-camp-product-card__bottom{background:#eee;padding:32px 16px 16px;border-radius:0 0 20px 20px;position:relative;margin-top:-16px;z-index:0;display:flex;justify-content:space-between;align-items:center}.sc-tulu-camp-product-card__task-desc{display:flex;align-items:center;font-size:.875rem;font-weight:500;margin-right:4px}.sc-tulu-camp-product-card__task-icon{margin-right:8px}.sc-tulu-camp-product-card__task-icon svg{width:30px;height:30px;background-color:#fff;padding:4px;border-radius:50%}.sc-tulu-camp-product-card__task-icon img{width:100%;height:100%;max-width:80px;border-radius:6px;object-fit:cover}.sc-tulu-camp-product-card__task{font-size:.875rem;color:#555;font-weight:500;margin-right:4px}.sc-tulu-camp-product-card__task-value{color:#dfdfdf;display:flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:500;background-color:#fff;padding:4px 8px;border:2px solid #dfdfdf;border-radius:50px}.sc-tulu-camp-product-card__task-value svg{width:12px;height:12px;margin-right:4px}.sc-tulu-camp-product-card__task-value svg path{fill:#000}.sc-tulu-camp-product-card__details{width:calc(100% - 48px)}.sc-tulu-camp-product-card--blue .sc-tulu-camp-product-card__main{background:linear-gradient(213.15deg,#19bcfc .58%,#e3e3e3 5.87%,#e3e3e3 79.24%,#4ca0f7 94.79%)}.sc-tulu-camp-product-card--blue .sc-tulu-camp-product-card__progress-bar-inner{background-color:#4ca0f7}.sc-tulu-camp-product-card--blue .sc-tulu-camp-product-card__progress-value{color:#4ca0f7}.sc-tulu-camp-product-card--blue .sc-tulu-camp-product-card__bottom{background:#eaf0f8}.sc-tulu-camp-product-card--blue .sc-tulu-camp-product-card__task-value{color:#4ca0f7;border:2px solid #4ca0f7}.sc-tulu-camp-product-card--blue .sc-tulu-camp-product-card__task-value svg path{fill:#4ca0f7}.sc-tulu-camp-product-card--green .sc-tulu-camp-product-card__main{background:linear-gradient(213.15deg,#19bcfc .58%,#e3e3e3 5.87%,#e3e3e3 79.24%,#3bbd77 94.79%)}.sc-tulu-camp-product-card--green .sc-tulu-camp-product-card__progress-bar-inner{background-color:#3bbd77}.sc-tulu-camp-product-card--green .sc-tulu-camp-product-card__progress-value{color:#3bbd77}.sc-tulu-camp-product-card--green .sc-tulu-camp-product-card__bottom{background:#e8f3ec}.sc-tulu-camp-product-card--green .sc-tulu-camp-product-card__task-value{color:#3bbd77;border:2px solid #3bbd77}.sc-tulu-camp-product-card--green .sc-tulu-camp-product-card__task-value svg path{fill:#3bbd77}.sc-tulu-camp-product-card--purple .sc-tulu-camp-product-card__main{background:linear-gradient(213.15deg,#19bcfc .58%,#e3e3e3 5.87%,#e3e3e3 79.24%,#917ce3 94.79%)}.sc-tulu-camp-product-card--purple .sc-tulu-camp-product-card__progress-bar-inner{background-color:#917ce3}.sc-tulu-camp-product-card--purple .sc-tulu-camp-product-card__progress-value{color:#917ce3}.sc-tulu-camp-product-card--purple .sc-tulu-camp-product-card__bottom{background:rgba(145,124,227,.102)}.sc-tulu-camp-product-card--purple .sc-tulu-camp-product-card__task-value{color:#917ce3;border:2px solid #917ce3}.sc-tulu-camp-product-card--purple .sc-tulu-camp-product-card__task-value svg path{fill:#917ce3}.sc-tulu-camp-earnings__inner{display:flex;flex-direction:column;margin:24px 0}.sc-tulu-camp-earnings__title{font-size:1rem;font-weight:500}.sc-tulu-camp-earnings__cards{display:flex;flex-direction:column}.sc-tulu-camp-earnings__card{margin:8px 0;padding:12px 8px;background-color:#fff;display:flex;justify-content:space-between;border:1px solid #dfdfdf;border-radius:10px}.sc-tulu-camp-earnings__left{display:flex;align-items:center}.sc-tulu-camp-earnings__icon{display:flex;align-items:center;justify-content:center;background-color:#fff;border:1px solid #eee;border-radius:16px;width:44px;height:44px}.sc-tulu-camp-earnings__icon svg{width:36px;height:36px;border-radius:12px;padding:4px}.sc-tulu-camp-earnings__text{white-space:nowrap;margin-left:8px}.sc-tulu-camp-earnings__head{font-size:1rem;font-weight:500}.sc-tulu-camp-earnings__sub-head{margin:4px 0 0;color:#6b6e73;font-size:.813rem;font-weight:500}.sc-tulu-camp-earnings__right{font-size:1.25rem}.sc-tulu-camp-earnings__right p{margin:0;font-size:.75rem;color:#858687}.sc-tulu-camp-earnings__right strong{font-size:1rem;color:#000;margin-right:4px;font-weight:500}.sc-tulu-camp-earnings--blue .sc-tulu-camp-earnings__icon svg{background-color:#eee}.sc-tulu-camp-earnings--green .sc-tulu-camp-earnings__icon svg{background-color:#e8f3ec}.sc-tulu-camp-earnings--purple .sc-tulu-camp-earnings__icon svg{background-color:#eeecf7}.sc-tulu-camp-progress__inner{display:flex;flex-wrap:wrap}.sc-tulu-camp-progress__circle{background:0 0;border:2px solid #cccbcb;border-radius:50%;width:35px;height:35px;display:flex;justify-content:center;align-items:center;margin-right:8px}.sc-tulu-camp-progress__circle svg{display:none}.sc-tulu-camp-progress__number{color:#939393}.sc-tulu-camp-progress__number span{font-size:.813rem}.sc-tulu-camp-progress__number svg{margin-right:4px}.sc-tulu-camp-progress__number svg path{fill:#939393}.sc-tulu-camp-progress__title{margin:8px 0;padding:0 2px;white-space:nowrap;font-size:.688rem;font-weight:500}.sc-tulu-camp-progress__line{width:100%;flex:1;position:relative;display:flex;justify-content:center}.sc-tulu-camp-progress__line::before{background-color:#939393;height:2px;content:"";width:60%;position:absolute}.sc-tulu-camp-progress__section{display:flex;align-items:center;position:relative;width:33.33%;margin-top:16px}/* stylelint-disable max-nesting-depth*/ /* stylelint-enable max-nesting-depth */ .sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress__circle{background:#92e773;border:2px solid #92e773}.sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress__circle svg{display:block}.sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress__number{color:#3bbd77}.sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress__number svg path{fill:#3bbd77}.sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress__line::before{background-color:#92e773}.sc-tulu-camp-progress__section--next-in-progress .sc-tulu-camp-progress__line::after,/* stylelint-disable max-nesting-depth */ /* stylelint-enable max-nesting-depth */ .sc-tulu-camp-progress__section--next-in-progress .sc-tulu-camp-progress__line::before{content:"";display:block;right:20%}.sc-tulu-camp-progress__section--next-in-progress .sc-tulu-camp-progress__line::before{border-color:#92e773;border-style:solid;border-width:0 0 2px 2px;height:6px;height:10px;margin-top:-4px;width:10px;background-color:transparent;transform:rotate(225deg)}.sc-tulu-camp-progress__section--next-in-progress .sc-tulu-camp-progress__line::after{background:#92e773;height:2px;width:60%}/* stylelint-enable max-nesting-depth */ .sc-tulu-camp-progress__section--in-progress .sc-tulu-camp-progress__circle{background:0 0;border:2px solid #92e773}.sc-tulu-camp-progress__section--in-progress .sc-tulu-camp-progress__circle svg{display:none}.sc-tulu-camp-progress__section--in-progress .sc-tulu-camp-progress__circle span{color:#0c3a66}.sc-tulu-camp-progress__section:last-child .sc-tulu-camp-progress__line::before{content:none}.sc-tulu-camp-progress--column-view .sc-tulu-camp-progress__section{flex-direction:column}.sc-tulu-camp-progress--column-view .sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress__circle{border-color:#92e773;background-color:#fff}.sc-tulu-camp-progress--column-view .sc-tulu-camp-progress__section--completed .sc-tulu-camp-progress::after{content:"";width:14px;height:14px;position:absolute;top:0;right:0;background:#92e773;border:2px solid #92e773;border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.8334 2L7.72224 13.6667L2.16675 7.83333' stroke='%230C3A66' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");background-position:center;background-size:8px;background-repeat:no-repeat}.sc-tulu-camp-progress--column-view .sc-tulu-camp-progress__circle{width:50px;height:50px;position:relative}.sc-tulu-camp-timeline{margin-top:16px}.sc-tulu-camp-timeline__box{padding:16px;border:1px solid #e5e5e5;border-radius:8px 8px 14px;position:relative;margin-bottom:16px;background:linear-gradient(180deg,rgba(255,255,255,.6) 89.44%,rgba(187,243,250,.6) 98.89%)}.sc-tulu-camp-timeline__box-wrapper{display:flex;justify-content:space-between;align-items:center}.sc-tulu-camp-timeline__box-icon{width:12px;height:12px;flex-shrink:0}.sc-tulu-camp-timeline__box-icon svg{width:100%;height:100%}.sc-tulu-camp-timeline__box-right{display:flex;margin-left:16px;min-width:100px;justify-content:end}.sc-tulu-camp-timeline__box-title{font-size:.75rem;font-weight:500;color:#6b6e73;position:relative;margin-left:32px}.sc-tulu-camp-timeline__box-title::before{position:absolute;content:"";top:50%;transform:translate(0,-50%);left:-32px;width:24px;height:24px;background-image:url("data:image/svg+xml,%0A%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.5 12C23.5 18.0751 18.5751 23 12.5 23C6.42487 23 1.5 18.0751 1.5 12C1.5 5.92487 6.42487 1 12.5 1C18.5751 1 23.5 5.92487 23.5 12Z' stroke='%23CCCBCB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A")}.sc-tulu-camp-timeline__box-text{color:#939393;font-size:.75rem;font-weight:600;padding-left:8px}.sc-tulu-camp-timeline__box--progress .sc-tulu-camp-timeline__box-title{color:#000}.sc-tulu-camp-timeline__box--progress .sc-tulu-camp-timeline__box-title::before{background-image:url('data:image/svg+xml,<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 12C23.5 18.0751 18.5751 23 12.5 23C6.42487 23 1.5 18.0751 1.5 12C1.5 5.92487 6.42487 1 12.5 1C18.5751 1 23.5 5.92487 23.5 12Z" stroke="%2392E773" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')}/* stylelint-disable selector-max-compound-selectors */ /* stylelint-enable selector-max-compound-selectors */ .sc-tulu-camp-timeline__box--active .sc-tulu-camp-timeline__box-title::before{background-image:url('data:image/svg+xml,<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 24C19.1274 24 24.5 18.6274 24.5 12C24.5 5.37258 19.1274 0 12.5 0C5.87258 0 0.5 5.37258 0.5 12C0.5 18.6274 5.87258 24 12.5 24Z" fill="%2392E773"/><path d="M17.5 9L10.8333 16L7.5 12.5" stroke="%230C3A66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')}.sc-tulu-camp-timeline__box--active .sc-tulu-camp-timeline__box-text{color:#0f7aed}.sc-tulu-camp-timeline__box--active .sc-tulu-camp-timeline__box-icon svg path{fill:#0f7aed}.sc-tulu-camp-timeline__box--disable{background:#e5e5e5}.sc-tulu-camp-timeline__box--disable .sc-tulu-camp-timeline__box-title{color:#6b6e73}.sc-tulu-camp-timeline__box--disable .sc-tulu-camp-timeline__box-title::before{background-image:url('data:image/svg+xml,<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.750 0.024 C 11.670 0.033,11.398 0.061,11.146 0.087 C 9.949 0.206,8.571 0.592,7.424 1.130 C 4.057 2.706,1.578 5.794,0.790 9.396 C 0.569 10.406,0.524 10.844,0.524 12.000 C 0.524 13.156,0.569 13.594,0.790 14.604 C 1.778 19.118,5.382 22.722,9.896 23.710 C 10.906 23.931,11.344 23.976,12.500 23.976 C 13.656 23.976,14.094 23.931,15.104 23.710 C 19.618 22.722,23.222 19.118,24.210 14.604 C 24.431 13.594,24.476 13.156,24.476 12.000 C 24.476 10.844,24.431 10.406,24.210 9.396 C 23.136 4.487,19.046 0.756,14.021 0.101 C 13.573 0.042,12.040 -0.009,11.750 0.024 M12.831 7.065 C 13.501 7.222,14.137 7.727,14.431 8.333 C 14.661 8.809,14.711 9.059,14.738 9.865 L 14.762 10.583 15.081 10.583 C 15.606 10.583,15.955 10.814,16.108 11.264 C 16.160 11.414,16.167 11.874,16.157 14.231 C 16.146 16.861,16.141 17.029,16.068 17.167 C 15.959 17.371,15.799 17.534,15.604 17.639 C 15.438 17.729,15.434 17.729,12.333 17.729 C 9.232 17.729,9.229 17.729,9.063 17.639 C 8.867 17.534,8.707 17.371,8.599 17.167 C 8.525 17.029,8.520 16.861,8.509 14.231 C 8.499 11.874,8.507 11.414,8.558 11.264 C 8.712 10.814,9.060 10.583,9.585 10.583 L 9.905 10.583 9.929 9.865 C 9.955 9.058,10.006 8.808,10.237 8.333 C 10.417 7.963,10.849 7.506,11.215 7.298 C 11.690 7.029,12.305 6.940,12.831 7.065 M11.764 8.163 C 11.452 8.311,11.208 8.552,11.053 8.868 C 10.942 9.095,10.937 9.133,10.924 9.844 L 10.910 10.583 12.333 10.583 L 13.757 10.583 13.743 9.844 C 13.730 9.133,13.725 9.095,13.613 8.868 C 13.260 8.148,12.449 7.839,11.764 8.163 M12.077 13.174 C 11.993 13.197,11.847 13.281,11.752 13.362 C 11.042 13.970,11.427 15.167,12.333 15.167 C 13.239 15.167,13.625 13.970,12.916 13.363 C 12.756 13.226,12.477 13.119,12.304 13.129 C 12.263 13.132,12.161 13.152,12.077 13.174 " fill="%236B6E73" stroke="none" fill-rule="evenodd"></path></svg>')}.sc-tulu-camp-timeline__box::after{position:absolute;content:"";width:20px;height:1px;border:1px solid #dfdfdf;transform:rotate(-90deg);bottom:-12px;left:20px}.sc-tulu-camp-timeline__box:last-child{margin-bottom:0}.sc-tulu-camp-timeline__box:last-child::after{content:none}.sc-tulu-camp-timeline__cvp{display:flex;padding-left:32px;margin-top:16px}.sc-tulu-camp-timeline__cvp-image{width:60px;height:40px;flex-shrink:0}.sc-tulu-camp-timeline__cvp-image img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:6px}.sc-tulu-camp-timeline__cvp-item{padding-left:16px}.sc-tulu-camp-timeline__cvp-title{font-size:.875rem;font-weight:500;color:#191919;margin-bottom:4px}.sc-tulu-camp-timeline__cvp-text{font-size:.75rem;color:#555}.sc-tulu-camp-modal{position:fixed;display:flex;justify-content:center;align-items:center;z-index:2;top:0;left:0;width:100%;height:100%;background:rgba(25,25,25,.8);visibility:hidden;opacity:0;pointer-events:none;transition:all .3s ease-out}.sc-tulu-camp-modal.visible{opacity:1;visibility:visible;pointer-events:auto}.sc-tulu-camp-modal.visible .sc-tulu-camp-modal__dialog,.sc-tulu-camp-modal.visible .sc-tulu-camp-popup__dialog{opacity:1;transform:scale(1)}.sc-tulu-camp-modal__dialog{background-color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);position:fixed;opacity:0;transform:scale(.8);transition:opacity .3s ease,transform .3s ease;max-width:600px;border-radius:20px 20px 0 0;margin:0;width:100%;height:calc(100% - 32px);bottom:0;border-bottom:1px solid #e1e1e1}.sc-tulu-camp-modal__body{text-align:left;padding:32px 16px;background:#fff;height:calc(100% - 105px);overflow-y:auto;width:100%}.sc-tulu-camp-modal__body:has(.sc-tulu-camp-doc){padding:24px 0}.sc-tulu-camp-modal__footer{border-top:1px solid #e5e5e5;box-shadow:0 2px 14px 0 rgba(220,220,220,.5);position:fixed;width:100%;bottom:0;background:#fff;padding:16px;right:0;display:flex;z-index:10}.sc-tulu-camp-modal__content{height:100%}.sc-tulu-camp-modal__header{display:flex;justify-content:space-between;padding:16px;font-weight:500;align-items:center;border-bottom:1px solid #e5e5e5}.sc-tulu-camp-modal__close,.sc-tulu-camp-modal__download{border:0;background:#fff;cursor:pointer;display:flex}.sc-tulu-camp-modal__close svg,.sc-tulu-camp-modal__download svg{width:18px;height:18px}.sc-tulu-camp-modal .sc-btn{width:100%}.sc-tulu-camp-modal__footer-btn{width:100%;position:relative}.sc-tulu-camp-modal__footer-btn--dark{background-color:#0b56a8;border-color:#0b56a8;font-weight:600}.sc-tulu-camp-modal__footer-btn::before{content:"ª";color:#fff;position:absolute;left:50px;font-size:2.5rem;top:calc(50% - 3px);transform:translate(50%,-50%)}.sc-tulu-camp-modal__footer-btn--disabled{border-color:#c3defa;color:#719ac1;background-color:#c3defa}.sc-tulu-camp-modal__footer-btn--disabled:hover{cursor:not-allowed;border-color:#c3defa;color:#719ac1;background-color:#c3defa}.sc-tulu-camp-modal__footer-btn--disabled::before{content:"ª";color:#719ac1}.sc-tulu-camp-modal--close-btn .sc-tulu-camp-modal__header{border-bottom:0}.sc-tulu-camp-modal--close-btn .sc-tulu-camp-modal__close{width:100%;justify-content:right}.sc-tulu-camp-modal--full-height .sc-tulu-camp-modal__body{height:100%;padding-bottom:40px}.sc-tulu-camp-modal--popup{background-color:#547593}.sc-tulu-camp-modal--popup .sc-tulu-camp-modal__body{max-height:500px;padding-bottom:80px;overflow-y:scroll}.sc-tulu-camp-modal--popup .sc-tulu-camp-modal__dialog{background:0 0;left:16px;right:16px;width:calc(100% - 32px);height:auto;margin:0 auto;bottom:20px;box-shadow:none;overflow-y:auto;border-radius:43px 24px 55px 34px}.sc-tulu-camp-modal--popup .sc-tulu-camp-modal .sc-tulu-camp-doc__title,/* stylelint-disable max-nesting-depth */ /* stylelint-enable max-nesting-depth */ .sc-tulu-camp-modal--popup .sc-tulu-camp-modal .sc-tulu-camp-doc__content{color:#0c3a66}.sc-tulu-camp-modal--popup .sc-tulu-camp-modal .sc-tulu-camp-doc__title{font-size:1.25rem;margin-bottom:8px}.sc-tulu-camp-doc__content{font-size:.875rem;color:#555;margin-bottom:16px}.sc-tulu-camp-doc__title{font-size:1.375rem;color:#191919;font-weight:500;margin-bottom:16px}.sc-tulu-camp-doc strong{color:#000;font-weight:500}.sc-tulu-camp-doc li{margin:4px 0;list-style:none;padding-left:24px;position:relative}.sc-tulu-camp-doc li::before{content:"";width:4px;height:4px;background-color:#555;position:absolute;left:8px;border-radius:20px;top:10px}.sc-tulu-camp-doc p{margin-top:8px}.sc-tulu-camp-doc__image img{max-width:400px;margin:0 auto;display:block;width:100%}.sc-tulu-camp-questionnaire{max-width:1024px;margin:0 auto 32px auto;position:relative;z-index:100;background-color:#fff;border-radius:0 0 55px 35px;box-shadow:0 7px 10px 0 rgba(215,215,215,.71)}.sc-tulu-camp-questionnaire::before{background-color:rgba(145,124,227,.4);content:"";height:90%;width:calc(100% + 32px);position:absolute;z-index:-1;left:-16px;top:50%;transform:translate(0,-50%);border-radius:40%;filter:blur(40px)}.sc-tulu-camp-questionnaire__test{border-top:3px solid #c3defa;background:linear-gradient(180deg,#fff 67.94%,#f3f8fe 94.41%,#d7eaff 105%);border-radius:20px 20px 0 0;padding:24px 16px}.sc-tulu-camp-questionnaire__test-text{font-size:1.125rem;font-weight:500;color:#6b6e73}.sc-tulu-camp-questionnaire__test-text span{font-size:.875rem}.sc-tulu-camp-questionnaire__question{padding:32px 16px;background-color:#fff}.sc-tulu-camp-questionnaire__question-text{color:#0c3a66;font-size:1rem;font-weight:500;margin-bottom:24px}.sc-tulu-camp-questionnaire__heading{font-size:1.5rem;font-weight:600;color:#191919;margin-bottom:24px}.sc-tulu-camp-questionnaire .sc-radio-box{display:flex;margin-top:16px}.sc-tulu-camp-questionnaire .sc-radio-box__input-label{font-size:1.25rem;font-weight:400;color:#212121;padding:8px 0;border:0}.sc-tulu-camp-questionnaire .sc-radio-box__input-label::before{width:24px;height:24px;margin-right:16px;border:0;background:none center no-repeat;background-image:url('data:image/svg+xml,<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.97724 1.5C10.7505 1.50039 12.0068 2.07806 13.3196 2.98531L22.7416 9.50009L13.3238 16.0116C13.3231 16.0121 13.3224 16.0125 13.3217 16.013C11.9942 16.9202 10.6883 17.5 8.97746 17.5C4.90338 17.5 1.5 13.9756 1.5 9.5C1.5 5.02434 4.90352 1.49913 8.97724 1.5Z" stroke="%23B2B2B2" stroke-width="2"/></svg>')}.sc-tulu-camp-questionnaire .sc-radio-box__input:checked~.sc-radio-box__input-label::after{width:24px;height:24px;margin-right:16px;border:0;top:12px;left:0;transform:none;background:none center no-repeat;background-image:url('data:image/svg+xml,<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.97746 0.5C11.0188 0.500446 12.4713 1.18348 13.8881 2.16265L24.5 9.50011L13.8881 16.8371C12.4574 17.8152 10.9561 18.5 8.97746 18.5C4.2956 18.5 0.500001 14.4707 0.5 9.5C0.499999 4.52945 4.29559 0.498996 8.97746 0.5Z" fill="%2338D200"/></svg>')}.sc-tulu-camp-questionnaire__btn{padding:0 16px 24px}.sc-tulu-camp-questionnaire__feedback{position:relative;font-size:.875rem;font-weight:400;padding-left:24px;display:none;margin-top:8px}.sc-tulu-camp-questionnaire__feedback::before{width:16px;height:16px;position:absolute;left:0;content:""}.sc-tulu-camp-questionnaire__feedback--show{display:block}.sc-tulu-camp-questionnaire__feedback--success{color:#1f8845}.sc-tulu-camp-questionnaire__feedback--success::before{background-image:url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 14C11.8137 14 14.5 11.3137 14.5 8C14.5 4.68629 11.8137 2 8.5 2C5.18629 2 2.5 4.68629 2.5 8C2.5 11.3137 5.18629 14 8.5 14Z' stroke='%231F8845' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11.25 6.5L7.58331 10L5.75 8.25' stroke='%231F8845' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A")}.sc-tulu-camp-questionnaire__feedback--fail{color:#d0021b}.sc-tulu-camp-questionnaire__feedback--fail::before{background-image:url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 14C11.8137 14 14.5 11.3137 14.5 8C14.5 4.68629 11.8137 2 8.5 2C5.18629 2 2.5 4.68629 2.5 8C2.5 11.3137 5.18629 14 8.5 14Z' stroke='%23D0021B' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8.5 5V8.5' stroke='%23D0021B' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8.5 11.5C8.91421 11.5 9.25 11.1642 9.25 10.75C9.25 10.3358 8.91421 10 8.5 10C8.08579 10 7.75 10.3358 7.75 10.75C7.75 11.1642 8.08579 11.5 8.5 11.5Z' fill='%23D0021B'/%3E%3C/svg%3E%0A")}.sc-tulu-camp-questionnaire__feedback-desc{margin-top:8px;color:#0c3a66;font-size:.875rem;font-weight:300}.sc-tulu-camp-how-it-works{margin:8px 0 16px}.sc-tulu-camp-how-it-works__card{counter-reset:section;list-style:none;width:auto;height:auto;padding:16px 24px;border:1.3px solid transparent;border-radius:9px 30px 9px 9px;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(213.15deg,#19bcfc .58%,#e3e3e3 5.87%,#e3e3e3 79.24%,#00e14d 94.79%) border-box}.sc-tulu-camp-how-it-works__card li::before{counter-increment:section;content:counter(section);position:absolute;width:20px;height:20px;border:2px solid #92e773;border-radius:50%;background:0 0;font-size:.875rem;text-align:center;font-weight:500;color:#0c3a66;top:0;left:-4px;line-height:1.2}.sc-tulu-camp-how-it-works__card-item{padding-bottom:16px}.sc-tulu-camp-how-it-works__card-item:last-child{padding-bottom:0}.sc-tulu-camp-how-it-works__card-row{display:flex;align-items:center}.sc-tulu-camp-how-it-works__item-title{font-size:.938rem;font-weight:500;padding-bottom:2px;color:#191919}.sc-tulu-camp-how-it-works__item-description{font-size:.875rem;color:#555;font-weight:400}.sc-tulu-camp-how-it-works__item-link{text-decoration:none;color:#0f7aed;font-size:.875rem;font-weight:500}.sc-faq{padding:8px 0 16px;background:#fff}.sc-faq .sc-content-wrapper{padding:0}.sc-faq__accordion{border-bottom:0}.sc-faq__accordion~.sc-faq__accordion{border-radius:0}.sc-faq__accordion:last-child{border-radius:0 0 6px 6px;border-bottom:1px solid #dfdfdf}.sc-faq__terms-link{border-radius:6px 6px 0 0;border-top:1px solid #dfdfdf}.sc-faq__terms-link~.sc-faq__terms-link{border-radius:0;border-top:0}.sc-faq__terms-link:last-child{border-radius:0 0 6px 6px}.sc-heading-inner{margin-bottom:8px}.sc-heading-inner .sc-title{font-size:.938rem;font-weight:500}
+  </style>
+
+
+
+<div class="sc-tulu-camp">
+  <div class="sc-tulu-camp-page">
+    <div class="sc-tulu-camp-header">
+      <div class="sc-tulu-camp__wrapper">
+        <div class="sc-tulu-camp-header__inner">
+          <div class="sc-tulu-camp-header__left">
+            <button class="sc-tulu-camp-header__back">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M52.571 31.218H14.593" stroke="black" stroke-width="3.2" stroke-linecap="round"></path>
+                <path d="M26.123 46.1861L11.429 31.6641L26.123 17.1431" stroke="black" stroke-width="3.2"
+                  stroke-linecap="round"></path>
+              </svg>
+            </button>
+            Trade up, Level up
+          </div>
+          <div class="sc-tulu-camp-header__right">
+            <button class="sc-tulu-camp-header__help">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M30.027 5.338c-5.219.367-10.283 2.324-14.548 5.624-1.362 1.053-3.785 3.528-4.829 4.931-2.785 3.743-4.515 7.932-5.176 12.534-.252 1.756-.252 5.39 0 7.146.852 5.934 3.431 11.103 7.64 15.313 4.206 4.205 9.384 6.789 15.313 7.64 1.756.252 5.39.252 7.146 0 3.565-.512 7.209-1.796 10.187-3.589 3.621-2.179 6.998-5.556 9.177-9.177 1.793-2.978 3.077-6.622 3.589-10.187.252-1.756.252-5.39 0-7.146-.842-5.861-3.437-11.099-7.535-15.208-1.538-1.543-2.331-2.208-3.951-3.318-4.929-3.375-10.947-4.989-17.013-4.563M34.4 9.387c5.242.576 9.961 2.839 13.659 6.55C52.4 20.292 54.72 25.886 54.72 32c0 7.796-3.851 14.83-10.509 19.197-2.605 1.709-6.266 3.004-9.648 3.414-1.163.14-3.963.14-5.126 0-3.382-.41-7.043-1.705-9.648-3.414-3.048-1.999-5.627-4.67-7.373-7.637a22.824 22.824 0 0 1 0-23.12c1.876-3.188 4.836-6.148 8.024-8.024 2.708-1.594 5.917-2.67 9-3.018 1.141-.129 3.833-.135 4.96-.011m-3.52 8.328c-.997.099-2.498.516-3.286.913-1.665.839-3.213 2.187-4.15 3.612-1.355 2.062-2.071 5.268-1.458 6.533.62 1.28 2.473 1.449 3.345.306.228-.299.317-.571.394-1.212.269-2.229.707-3.231 1.945-4.454 1.189-1.173 2.628-1.757 4.33-1.757 1.696 0 3.12.579 4.324 1.757 1.331 1.302 1.863 2.588 1.863 4.503 0 1.672-.543 3.065-1.646 4.221-1.145 1.202-2.523 1.852-4.168 1.966-1.241.086-1.87.462-2.235 1.335-.194.465-.23 2.67-.053 3.305.223.804 1.088 1.466 1.915 1.466 1.05 0 2.023-.998 2.026-2.078.001-.175.132-.249.71-.401 2.101-.551 4.183-1.992 5.541-3.835 1.197-1.624 1.824-3.438 1.927-5.575.077-1.59-.12-2.756-.719-4.254-.533-1.335-1.203-2.354-2.226-3.385-2.195-2.212-5.212-3.28-8.379-2.966m.601 25.715c-1.971.352-3.092 2.595-2.192 4.383.248.493.879 1.128 1.378 1.386.611.317 1.82.382 2.474.132 1.423-.544 2.272-2.146 1.903-3.589-.422-1.648-1.904-2.609-3.563-2.312"
+                  fill-rule="evenodd" fill="#000"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sc-tulu-camp-main active">
+      <div class="sc-tulu-camp-milescard">
+        <div class="sc-tulu-camp__wrapper">
+          <div class="sc-tulu-camp-milescard__main">
+            <div class="sc-tulu-camp-milescard__inner">
+              <div class="sc-cvp__col">
+                <p class="sc-cvp__top">
+                  Total Miles
+                  <span class="sc-tooltip sc-tooltip--blue" tabindex="0">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"
+                      role="img" aria-label="icon-info">
+                      <path fill="none" stroke="#919191" stroke-linejoin="miter" stroke-linecap="butt"
+                        stroke-miterlimit="10" stroke-width="3.563"
+                        d="M32 3.299c15.851 0 28.701 12.848 28.701 28.701 0 15.851-12.85 28.701-28.701 28.701-15.854 0-28.701-12.85-28.701-28.701S16.147 3.299 32 3.299z">
+                      </path>
+                      <path fill="#919191"
+                        d="M30.351 27.162h2.639v18.474h-2.639V27.162zm0-10.556h2.639v5.278h-2.639v-5.278z"></path>
+                    </svg>
+                    <span class="sc-tooltip__text">
+                      Last 2 days’ progress may not be reflected
+                    </span>
+                  </span>
+                </p>
+                <p class="sc-cvp__middle">
+                  <strong>5,350</strong>
+                  Miles
+                </p>
+                <p class="sc-cvp__bottom">
+                  As of 20 Feb 2025 (1 Jan - 31 Mar 2024 Cycle)
+                </p>
+              </div>
+            </div>
+            <p class="sc-tulu-camp-milescard__desc">
+              Total Miles Accumulated:
+              <strong>100,800</strong>
+              miles
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="sc-tulu-camp-tab">
+        <div class="sc-tulu-camp__wrapper">
+          <div class="splide"
+            data-splide='{ "arrows":false, "trimSpace":"move", "pagination":false, "autoWidth":true, "slideFocus":false, "perMove": "1" }'>
+            <div class="splide__track">
+              <div class="splide__list">
+                <div class="splide__slide">
+                  <button tabindex="0" class="sc-tulu-camp-tab__head-button sc-tulu-camp-tab__head-button--active"
+                    data-tab-btn-id="1">
+                    <span>Your Missions</span>
+                  </button>
+                </div>
+                <div class="splide__slide">
+                  <button tabindex="0" class="sc-tulu-camp-tab__head-button" data-tab-btn-id="2">
+                    <span>Earning History</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-tab__content">
+            <div class="sc-tulu-camp-tab__content-item sc-tulu-camp-tab__content-item--active" data-tab-content="1">
+              <div class="sc-tulu-camp-product-card sc-tulu-camp-product-card--blue">
+                <div class="sc-tulu-camp-product-card__main">
+                  <div class="sc-tulu-camp-product-card__inner">
+                    <div class="sc-tulu-camp-product-card__icon">
+                      <svg width="64" height="64" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M9.1875 3.28125V5.90625H11.8125V3.28125H9.1875ZM8.53125 1.96875C8.16881 1.96875 7.875 2.26256 7.875 2.625V6.5625C7.875 6.92494 8.16881 7.21875 8.53125 7.21875H12.4688C12.8312 7.21875 13.125 6.92494 13.125 6.5625V2.625C13.125 2.26256 12.8312 1.96875 12.4688 1.96875H8.53125Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M5.25 14.7656V17.3906H7.875V14.7656H5.25ZM4.59375 13.4531C4.23131 13.4531 3.9375 13.7469 3.9375 14.1094V18.0469C3.9375 18.4093 4.23131 18.7031 4.59375 18.7031H8.53125C8.89369 18.7031 9.1875 18.4093 9.1875 18.0469V14.1094C9.1875 13.7469 8.89369 13.4531 8.53125 13.4531H4.59375Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M13.125 14.7656V17.3906H15.75V14.7656H13.125ZM12.4688 13.4531C12.1063 13.4531 11.8125 13.7469 11.8125 14.1094V18.0469C11.8125 18.4093 12.1063 18.7031 12.4688 18.7031H16.4062C16.7687 18.7031 17.0625 18.4093 17.0625 18.0469V14.1094C17.0625 13.7469 16.7687 13.4531 16.4062 13.4531H12.4688Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M2.95312 10.5C2.95312 10.1376 3.24694 9.84375 3.60938 9.84375H17.2266C17.589 9.84375 17.8828 10.1376 17.8828 10.5C17.8828 10.8624 17.589 11.1562 17.2266 11.1562H3.60938C3.24694 11.1562 2.95312 10.8624 2.95312 10.5Z"
+                          fill="#4CA0F7"></path>
+                        <path d="M10.5 10.3359V8.53125" stroke="#4CA0F7" stroke-width="1.3125" stroke-linecap="round">
+                        </path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M6.5625 9.84375C6.92494 9.84375 7.21875 10.1376 7.21875 10.5V12.3047C7.21875 12.6671 6.92494 12.9609 6.5625 12.9609C6.20006 12.9609 5.90625 12.6671 5.90625 12.3047V10.5C5.90625 10.1376 6.20006 9.84375 6.5625 9.84375Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M14.4375 9.84375C14.7999 9.84375 15.0938 10.1376 15.0938 10.5V12.3047C15.0938 12.6671 14.7999 12.9609 14.4375 12.9609C14.0751 12.9609 13.7812 12.6671 13.7812 12.3047V10.5C13.7812 10.1376 14.0751 9.84375 14.4375 9.84375Z"
+                          fill="#4CA0F7"></path>
+                      </svg>
+                    </div>
+                    <div class="sc-tulu-camp-product-card__details">
+                      <p class="sc-tulu-camp-product-card__title">Diversify</p>
+                      <p class="sc-tulu-camp-product-card__desc">
+                        Expand your trades across different products
+                      </p>
+                      <div class="sc-tulu-camp-product-card__progress">
+                        <p class="sc-tulu-camp-product-card__progress-value">
+                          5000
+                        </p>
+                        <p class="sc-tulu-camp-product-card__progress-total">
+                          <strong>12000</strong>
+                          miles
+                        </p>
+                        <div class="sc-tulu-camp-product-card__progress-bar">
+                          <div class="sc-tulu-camp-product-card__progress-bar-inner" style="width: 60%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-tulu-camp-product-card__bottom">
+                  <p class="sc-tulu-camp-product-card__task">Next Task</p>
+                  <div class="sc-tulu-camp-product-card__task-desc">
+                    <div class="sc-tulu-camp-product-card__task-icon">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+                        <title>trading</title>
+                        <path fill="#38d200"
+                          d="M31.784 16c-8.728 0-15.784 7.047-15.784 15.717 0 1.547 0.224 3.040 0.64 4.449 1.203-1.252 2.313-2.363 3.736-3.785l0.003-0.002c1.172-1.172 3.071-1.172 4.243 0s1.172 3.071 0 4.243c-2.491 2.491-3.952 3.952-6.637 6.899-0.634 0.696-1.559 1.054-2.497 0.967s-1.78-0.611-2.274-1.413c-2.038-3.306-3.213-7.199-3.213-11.357 0-12.004 9.763-21.717 21.784-21.717 3.641 0 7.082 0.893 10.106 2.474 1.468 0.768 2.036 2.58 1.269 4.049s-2.58 2.036-4.049 1.269c-2.186-1.143-4.675-1.791-7.326-1.791z">
+                        </path>
+                        <path fill="#0f7aed"
+                          d="M31.716 47.5c8.728 0 15.784-7.047 15.784-15.717 0-1.547-0.224-3.040-0.641-4.449-1.203 1.252-2.313 2.363-3.736 3.785l-0.002 0.003c-1.172 1.172-3.071 1.172-4.243 0s-1.172-3.071 0-4.243c2.491-2.491 3.952-3.952 6.637-6.899 0.634-0.696 1.559-1.054 2.497-0.967s1.78 0.611 2.275 1.413c2.038 3.306 3.213 7.199 3.213 11.357 0 12.004-9.763 21.717-21.784 21.717-3.641 0-7.082-0.893-10.106-2.474-1.468-0.768-2.036-2.58-1.269-4.048s2.58-2.036 4.049-1.269c2.186 1.143 4.675 1.791 7.326 1.791z">
+                        </path>
+                      </svg>
+                    </div>
+                    Complete 1st trade with FX account
+                  </div>
+                  <div class="sc-tulu-camp-product-card__task-value">
+                    <svg width="64" height="64" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 0L7.39583 4.60417L12 6L7.39583 7.39583L6 12L4.60417 7.39583L0 6L4.60417 4.60417L6 0Z"
+                        fill="#3BBD77"></path>
+                    </svg>
+                    1000
+                  </div>
+                </div>
+              </div>
+              <div class="sc-tulu-camp-product-card sc-tulu-camp-product-card--green">
+                <div class="sc-tulu-camp-product-card__main">
+                  <div class="sc-tulu-camp-product-card__inner">
+                    <div class="sc-tulu-camp-product-card__icon">
+                      <svg width="64" height="64" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M9.1875 3.28125V5.90625H11.8125V3.28125H9.1875ZM8.53125 1.96875C8.16881 1.96875 7.875 2.26256 7.875 2.625V6.5625C7.875 6.92494 8.16881 7.21875 8.53125 7.21875H12.4688C12.8312 7.21875 13.125 6.92494 13.125 6.5625V2.625C13.125 2.26256 12.8312 1.96875 12.4688 1.96875H8.53125Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M5.25 14.7656V17.3906H7.875V14.7656H5.25ZM4.59375 13.4531C4.23131 13.4531 3.9375 13.7469 3.9375 14.1094V18.0469C3.9375 18.4093 4.23131 18.7031 4.59375 18.7031H8.53125C8.89369 18.7031 9.1875 18.4093 9.1875 18.0469V14.1094C9.1875 13.7469 8.89369 13.4531 8.53125 13.4531H4.59375Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M13.125 14.7656V17.3906H15.75V14.7656H13.125ZM12.4688 13.4531C12.1063 13.4531 11.8125 13.7469 11.8125 14.1094V18.0469C11.8125 18.4093 12.1063 18.7031 12.4688 18.7031H16.4062C16.7687 18.7031 17.0625 18.4093 17.0625 18.0469V14.1094C17.0625 13.7469 16.7687 13.4531 16.4062 13.4531H12.4688Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M2.95312 10.5C2.95312 10.1376 3.24694 9.84375 3.60938 9.84375H17.2266C17.589 9.84375 17.8828 10.1376 17.8828 10.5C17.8828 10.8624 17.589 11.1562 17.2266 11.1562H3.60938C3.24694 11.1562 2.95312 10.8624 2.95312 10.5Z"
+                          fill="#4CA0F7"></path>
+                        <path d="M10.5 10.3359V8.53125" stroke="#4CA0F7" stroke-width="1.3125" stroke-linecap="round">
+                        </path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M6.5625 9.84375C6.92494 9.84375 7.21875 10.1376 7.21875 10.5V12.3047C7.21875 12.6671 6.92494 12.9609 6.5625 12.9609C6.20006 12.9609 5.90625 12.6671 5.90625 12.3047V10.5C5.90625 10.1376 6.20006 9.84375 6.5625 9.84375Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M14.4375 9.84375C14.7999 9.84375 15.0938 10.1376 15.0938 10.5V12.3047C15.0938 12.6671 14.7999 12.9609 14.4375 12.9609C14.0751 12.9609 13.7812 12.6671 13.7812 12.3047V10.5C13.7812 10.1376 14.0751 9.84375 14.4375 9.84375Z"
+                          fill="#4CA0F7"></path>
+                      </svg>
+                    </div>
+                    <div class="sc-tulu-camp-product-card__details">
+                      <p class="sc-tulu-camp-product-card__title">Trade Up</p>
+                      <p class="sc-tulu-camp-product-card__desc">
+                        Invest 15 times within this quarter
+                      </p>
+                      <div class="sc-tulu-camp-product-card__progress">
+                        <p class="sc-tulu-camp-product-card__progress-value">
+                          300
+                        </p>
+                        <p class="sc-tulu-camp-product-card__progress-total">
+                          <strong>6,000</strong>
+                          miles
+                        </p>
+                        <div class="sc-tulu-camp-product-card__progress-bar">
+                          <div class="sc-tulu-camp-product-card__progress-bar-inner" style="width: 60%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-tulu-camp-product-card__bottom">
+                  <p class="sc-tulu-camp-product-card__task">Next Task</p>
+                  <div class="sc-tulu-camp-product-card__task-desc">
+                    <div class="sc-tulu-camp-product-card__task-icon">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+                        <title>trading</title>
+                        <path fill="#38d200"
+                          d="M31.784 16c-8.728 0-15.784 7.047-15.784 15.717 0 1.547 0.224 3.040 0.64 4.449 1.203-1.252 2.313-2.363 3.736-3.785l0.003-0.002c1.172-1.172 3.071-1.172 4.243 0s1.172 3.071 0 4.243c-2.491 2.491-3.952 3.952-6.637 6.899-0.634 0.696-1.559 1.054-2.497 0.967s-1.78-0.611-2.274-1.413c-2.038-3.306-3.213-7.199-3.213-11.357 0-12.004 9.763-21.717 21.784-21.717 3.641 0 7.082 0.893 10.106 2.474 1.468 0.768 2.036 2.58 1.269 4.049s-2.58 2.036-4.049 1.269c-2.186-1.143-4.675-1.791-7.326-1.791z">
+                        </path>
+                        <path fill="#0f7aed"
+                          d="M31.716 47.5c8.728 0 15.784-7.047 15.784-15.717 0-1.547-0.224-3.040-0.641-4.449-1.203 1.252-2.313 2.363-3.736 3.785l-0.002 0.003c-1.172 1.172-3.071 1.172-4.243 0s-1.172-3.071 0-4.243c2.491-2.491 3.952-3.952 6.637-6.899 0.634-0.696 1.559-1.054 2.497-0.967s1.78 0.611 2.275 1.413c2.038 3.306 3.213 7.199 3.213 11.357 0 12.004-9.763 21.717-21.784 21.717-3.641 0-7.082-0.893-10.106-2.474-1.468-0.768-2.036-2.58-1.269-4.048s2.58-2.036 4.049-1.269c2.186 1.143 4.675 1.791 7.326 1.791z">
+                        </path>
+                      </svg>
+                    </div>
+                    Complete your 4th trade
+                  </div>
+                  <div class="sc-tulu-camp-product-card__task-value">
+                    <svg width="64" height="64" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 0L7.39583 4.60417L12 6L7.39583 7.39583L6 12L4.60417 7.39583L0 6L4.60417 4.60417L6 0Z"
+                        fill="#3BBD77"></path>
+                    </svg>
+                    100
+                  </div>
+                </div>
+              </div>
+              <div class="sc-tulu-camp-product-card sc-tulu-camp-product-card--purple">
+                <div class="sc-tulu-camp-product-card__main">
+                  <div class="sc-tulu-camp-product-card__inner">
+                    <div class="sc-tulu-camp-product-card__icon">
+                      <svg width="64" height="64" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M9.1875 3.28125V5.90625H11.8125V3.28125H9.1875ZM8.53125 1.96875C8.16881 1.96875 7.875 2.26256 7.875 2.625V6.5625C7.875 6.92494 8.16881 7.21875 8.53125 7.21875H12.4688C12.8312 7.21875 13.125 6.92494 13.125 6.5625V2.625C13.125 2.26256 12.8312 1.96875 12.4688 1.96875H8.53125Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M5.25 14.7656V17.3906H7.875V14.7656H5.25ZM4.59375 13.4531C4.23131 13.4531 3.9375 13.7469 3.9375 14.1094V18.0469C3.9375 18.4093 4.23131 18.7031 4.59375 18.7031H8.53125C8.89369 18.7031 9.1875 18.4093 9.1875 18.0469V14.1094C9.1875 13.7469 8.89369 13.4531 8.53125 13.4531H4.59375Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M13.125 14.7656V17.3906H15.75V14.7656H13.125ZM12.4688 13.4531C12.1063 13.4531 11.8125 13.7469 11.8125 14.1094V18.0469C11.8125 18.4093 12.1063 18.7031 12.4688 18.7031H16.4062C16.7687 18.7031 17.0625 18.4093 17.0625 18.0469V14.1094C17.0625 13.7469 16.7687 13.4531 16.4062 13.4531H12.4688Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M2.95312 10.5C2.95312 10.1376 3.24694 9.84375 3.60938 9.84375H17.2266C17.589 9.84375 17.8828 10.1376 17.8828 10.5C17.8828 10.8624 17.589 11.1562 17.2266 11.1562H3.60938C3.24694 11.1562 2.95312 10.8624 2.95312 10.5Z"
+                          fill="#4CA0F7"></path>
+                        <path d="M10.5 10.3359V8.53125" stroke="#4CA0F7" stroke-width="1.3125" stroke-linecap="round">
+                        </path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M6.5625 9.84375C6.92494 9.84375 7.21875 10.1376 7.21875 10.5V12.3047C7.21875 12.6671 6.92494 12.9609 6.5625 12.9609C6.20006 12.9609 5.90625 12.6671 5.90625 12.3047V10.5C5.90625 10.1376 6.20006 9.84375 6.5625 9.84375Z"
+                          fill="#4CA0F7"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M14.4375 9.84375C14.7999 9.84375 15.0938 10.1376 15.0938 10.5V12.3047C15.0938 12.6671 14.7999 12.9609 14.4375 12.9609C14.0751 12.9609 13.7812 12.6671 13.7812 12.3047V10.5C13.7812 10.1376 14.0751 9.84375 14.4375 9.84375Z"
+                          fill="#4CA0F7"></path>
+                      </svg>
+                    </div>
+                    <div class="sc-tulu-camp-product-card__details">
+                      <p class="sc-tulu-camp-product-card__title">Level Up</p>
+                      <p class="sc-tulu-camp-product-card__desc">
+                        Read articles, explore insights and complete quizzes
+                      </p>
+                      <div class="sc-tulu-camp-product-card__progress">
+                        <p class="sc-tulu-camp-product-card__progress-value">
+                          50
+                        </p>
+                        <p class="sc-tulu-camp-product-card__progress-total">
+                          <strong>1,000</strong>
+                          miles
+                        </p>
+                        <div class="sc-tulu-camp-product-card__progress-bar">
+                          <div class="sc-tulu-camp-product-card__progress-bar-inner" style="width: 60%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-tulu-camp-product-card__bottom">
+                  <p class="sc-tulu-camp-product-card__task">Next Task</p>
+                  <div class="sc-tulu-camp-product-card__task-desc">
+                    <div class="sc-tulu-camp-product-card__task-icon">
+                      <img src="https://av.sc.com/sg/content/images/sg-crafting-a-balanced-portfolio-pintile.jpg"
+                        alt="Article Image" />
+                    </div>
+                    Test your knowledge on the article
+                  </div>
+                  <div class="sc-tulu-camp-product-card__task-value">
+                    <svg width="64" height="64" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 0L7.39583 4.60417L12 6L7.39583 7.39583L6 12L4.60417 7.39583L0 6L4.60417 4.60417L6 0Z"
+                        fill="#3BBD77"></path>
+                    </svg>
+                    50
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-tulu-camp-tab__content-item" data-tab-content="2">
+              <div class="sc-tulu-camp-earnings">
+                <div class="sc-tulu-camp-earnings__inner">
+                  <div class="sc-tulu-camp-earnings__title">1 Mar 2022</div>
+                  <div class="sc-tulu-camp-earnings__cards">
+                    <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+                      <div class="sc-tulu-camp-earnings__left">
+                        <div class="sc-tulu-camp-earnings__icon">
+                          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                              fill="#4CA0F7"></path>
+                          </svg>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__text">
+                          <div class="sc-tulu-camp-earnings__head">
+                            Account Opening
+                          </div>
+                          <p class="sc-tulu-camp-earnings__sub-head">FX</p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__right">
+                        <p>
+                          <strong>1,000</strong>
+                          Miles
+                        </p>
+                      </div>
+                    </div>
+                    <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+                      <div class="sc-tulu-camp-earnings__left">
+                        <div class="sc-tulu-camp-earnings__icon">
+                          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                              fill="#4CA0F7"></path>
+                          </svg>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__text">
+                          <div class="sc-tulu-camp-earnings__head">
+                            Extra bonus
+                          </div>
+                          <p class="sc-tulu-camp-earnings__sub-head">
+                            Online Equities
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__right">
+                        <p>
+                          <strong>2,000</strong>
+                          Miles
+                        </p>
+                      </div>
+                    </div>
+                    <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+                      <div class="sc-tulu-camp-earnings__left">
+                        <div class="sc-tulu-camp-earnings__icon">
+                          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                              fill="#4CA0F7"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                              fill="#4CA0F7"></path>
+                          </svg>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__text">
+                          <div class="sc-tulu-camp-earnings__head">
+                            First Trading
+                          </div>
+                          <p class="sc-tulu-camp-earnings__sub-head">
+                            Online Equities
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__right">
+                        <p>
+                          <strong>1,000</strong>
+                          Miles
+                        </p>
+                      </div>
+                    </div>
+                    <div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--green">
+                      <div class="sc-tulu-camp-earnings__left">
+                        <div class="sc-tulu-camp-earnings__icon">
+                          <svg width="64" height="64" viewBox="0 0 21 21" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M10.4293 5.25C7.5655 5.25 5.25 7.56228 5.25 10.4072C5.25 10.9148 5.3234 11.4046 5.46017 11.8671C5.85473 11.4563 6.21923 11.0918 6.68593 10.6251L6.68675 10.6243C7.07118 10.2398 7.69445 10.2398 8.07887 10.6243C8.46329 11.0087 8.46329 11.6319 8.07887 12.0164C7.2615 12.8337 6.78226 13.313 5.90117 14.2801C5.69301 14.5086 5.38962 14.6261 5.08187 14.5973C4.77412 14.5685 4.49775 14.3969 4.33555 14.1338C3.66684 13.049 3.28125 11.7716 3.28125 10.4072C3.28125 6.46832 6.48485 3.28125 10.4293 3.28125C11.6239 3.28125 12.7529 3.5742 13.7452 4.09296C14.2269 4.34485 14.4133 4.93961 14.1614 5.42139C13.9095 5.90317 13.3148 6.08953 12.833 5.83764C12.1158 5.46267 11.299 5.25 10.4293 5.25Z"
+                              fill="#3BBD77"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M10.4067 15.5859C13.2704 15.5859 15.5859 13.2737 15.5859 10.4287C15.5859 9.92112 15.5125 9.43132 15.3758 8.96884C14.9812 9.37966 14.6167 9.74416 14.15 10.2109L14.1492 10.2117C13.7648 10.5961 13.1415 10.5961 12.7571 10.2117C12.3726 9.82726 12.3726 9.20399 12.7571 8.81957C13.5744 8.00219 14.0537 7.52292 14.9348 6.55581C15.1429 6.32732 15.4463 6.20988 15.7541 6.23865C16.0618 6.26742 16.3382 6.43907 16.5004 6.70218C17.1691 7.78694 17.5547 9.06437 17.5547 10.4287C17.5547 14.3676 14.3511 17.5547 10.4067 17.5547C9.21202 17.5547 8.08299 17.2617 7.09079 16.743C6.60901 16.4911 6.42264 15.8963 6.67454 15.4145C6.92643 14.9328 7.52118 14.7464 8.00296 14.9983C8.72016 15.3733 9.53698 15.5859 10.4067 15.5859Z"
+                              fill="#3BBD77"></path>
+                          </svg>
+                        </div>
+                        <div class="sc-tulu-camp-earnings__text">
+                          <div class="sc-tulu-camp-earnings__head">Trade 3</div>
+                          <p class="sc-tulu-camp-earnings__sub-head">
+                            Online Equities
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-earnings__right">
+                        <p>
+                          <strong>1,000</strong>
+                          Miles
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sc-tulu-camp-main">
+      <div class="sc-tulu-camp-tab sc-tulu-camp-tab--with-icon">
+        <div class="sc-tulu-camp__wrapper">
+          <div class="splide"
+            data-splide='{ "arrows":false, "trimSpace":"move", "pagination":false, "autoWidth":true, "slideFocus":false, "perMove": "1" }'>
+            <div class="splide__track">
+              <div class="splide__list">
+                <div class="splide__slide">
+                  <button tabindex="0"
+                    class="sc-tulu-camp-tab__head-button sc-tulu-camp-tab__head-button--blue sc-tulu-camp-tab__head-button--active"
+                    data-tab-btn-id="3">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z"
+                        fill="#4CA0F7"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z"
+                        fill="#4CA0F7"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z"
+                        fill="#4CA0F7"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z"
+                        fill="#4CA0F7"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z"
+                        fill="#4CA0F7"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z"
+                        fill="#4CA0F7"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z"
+                        fill="#4CA0F7"></path>
+                    </svg>
+                    <span>Diversify</span>
+                  </button>
+                </div>
+                <div class="splide__slide">
+                  <button tabindex="0" class="sc-tulu-camp-tab__head-button sc-tulu-camp-tab__head-button--green"
+                    data-tab-btn-id="4">
+                    <svg width="64" height="64" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M10.4293 5.25C7.5655 5.25 5.25 7.56228 5.25 10.4072C5.25 10.9148 5.3234 11.4046 5.46017 11.8671C5.85473 11.4563 6.21923 11.0918 6.68593 10.6251L6.68675 10.6243C7.07118 10.2398 7.69445 10.2398 8.07887 10.6243C8.46329 11.0087 8.46329 11.6319 8.07887 12.0164C7.2615 12.8337 6.78226 13.313 5.90117 14.2801C5.69301 14.5086 5.38962 14.6261 5.08187 14.5973C4.77412 14.5685 4.49775 14.3969 4.33555 14.1338C3.66684 13.049 3.28125 11.7716 3.28125 10.4072C3.28125 6.46832 6.48485 3.28125 10.4293 3.28125C11.6239 3.28125 12.7529 3.5742 13.7452 4.09296C14.2269 4.34485 14.4133 4.93961 14.1614 5.42139C13.9095 5.90317 13.3148 6.08953 12.833 5.83764C12.1158 5.46267 11.299 5.25 10.4293 5.25Z"
+                        fill="#3BBD77"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M10.4067 15.5859C13.2704 15.5859 15.5859 13.2737 15.5859 10.4287C15.5859 9.92112 15.5125 9.43132 15.3758 8.96884C14.9812 9.37966 14.6167 9.74416 14.15 10.2109L14.1492 10.2117C13.7648 10.5961 13.1415 10.5961 12.7571 10.2117C12.3726 9.82726 12.3726 9.20399 12.7571 8.81957C13.5744 8.00219 14.0537 7.52292 14.9348 6.55581C15.1429 6.32732 15.4463 6.20988 15.7541 6.23865C16.0618 6.26742 16.3382 6.43907 16.5004 6.70218C17.1691 7.78694 17.5547 9.06437 17.5547 10.4287C17.5547 14.3676 14.3511 17.5547 10.4067 17.5547C9.21202 17.5547 8.08299 17.2617 7.09079 16.743C6.60901 16.4911 6.42264 15.8963 6.67454 15.4145C6.92643 14.9328 7.52118 14.7464 8.00296 14.9983C8.72016 15.3733 9.53698 15.5859 10.4067 15.5859Z"
+                        fill="#3BBD77"></path>
+                    </svg>
+                    <span>Trade Up</span>
+                  </button>
+                </div>
+                <div class="splide__slide">
+                  <div tabindex="0" class="sc-tulu-camp-tab__head-button sc-tulu-camp-tab__head-button--purple"
+                    data-tab-btn-id="5">
+                    <svg width="64" height="64" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2.625 12.1406C2.625 11.4158 3.21263 10.8281 3.9375 10.8281H10.1719V17.0625C10.1719 17.7874 9.58425 18.375 8.85938 18.375C8.1345 18.375 7.54688 17.7874 7.54688 17.0625V13.4531H3.9375C3.21263 13.4531 2.625 12.8655 2.625 12.1406Z"
+                        fill="#917CE3"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M6.5625 8.20312C6.5625 7.47825 7.15013 6.89062 7.875 6.89062H14.1094V13.125C14.1094 13.8499 13.5217 14.4375 12.7969 14.4375C12.072 14.4375 11.4844 13.8499 11.4844 13.125V9.51562H7.875C7.15013 9.51562 6.5625 8.928 6.5625 8.20312Z"
+                        fill="#917CE3"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M10.5 4.26562C10.5 3.54075 11.0876 2.95312 11.8125 2.95312H18.0469V9.1875C18.0469 9.91237 17.4592 10.5 16.7344 10.5C16.0095 10.5 15.4219 9.91237 15.4219 9.1875V5.57812H11.8125C11.0876 5.57812 10.5 4.9905 10.5 4.26562Z"
+                        fill="#917CE3"></path>
+                    </svg>
+                    <span>Level Up</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-tab__content">
+            <div class="sc-tulu-camp-tab__content-item sc-tulu-camp-tab__content-item--active" data-tab-content="3">
+              <div class="sc-tulu-camp-product-card sc-tulu-camp-product-card--blue">
+                <div class="sc-tulu-camp-product-card__main">
+                  <div class="sc-tulu-camp-product-card__inner">
+                    <div class="sc-tulu-camp-product-card__details">
+                      <p class="sc-tulu-camp-product-card__title">Diversify</p>
+                      <p class="sc-tulu-camp-product-card__desc">
+                        Expand your trades across different products
+                      </p>
+                      <div class="sc-tulu-camp-product-card__progress">
+                        <p class="sc-tulu-camp-product-card__progress-value">
+                          5000
+                        </p>
+                        <p class="sc-tulu-camp-product-card__progress-total">
+                          <strong>12000</strong>
+                          miles
+                        </p>
+                        <div class="sc-tulu-camp-product-card__progress-bar">
+                          <div class="sc-tulu-camp-product-card__progress-bar-inner" style="width: 60%"></div>
+                        </div>
+                        <p class="sc-tulu-camp-product-card__progress-desc">
+                          1 Jan 2025 - 31 Mar 2025
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sc-tulu-camp-wrapper-full">
+                <div class="sc-tulu-camp-wrapper-full__inner">
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-tulu-camp-wrapper-full__title">
+                      Online Equities
+                    </div>
+                    <div class="sc-tulu-camp-timeline">
+                      <div class="sc-tulu-camp-timeline__wrapper">
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--active">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Open an Account
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--active">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Make your first trade
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--active">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Completion bonus
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                2000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-tulu-camp-wrapper-full__title">FX</div>
+                    <div class="sc-tulu-camp-timeline">
+                      <div class="sc-tulu-camp-timeline__wrapper">
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--active">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Open an Account
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--progress">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Make your first trade
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--disable">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Finish all actions to earn bonus miles
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                3000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-tulu-camp-wrapper-full__title">
+                      Unit Trust
+                    </div>
+                    <div class="sc-tulu-camp-timeline">
+                      <div class="sc-tulu-camp-timeline__wrapper">
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--active">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Open an Account
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Make your first trade
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--disable">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Finish all actions to earn bonus miles
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                3000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-tulu-camp-tab__content-item" data-tab-content="4">
+              <div class="sc-tulu-camp-product-card sc-tulu-camp-product-card--green">
+                <div class="sc-tulu-camp-product-card__main">
+                  <div class="sc-tulu-camp-product-card__inner">
+                    <div class="sc-tulu-camp-product-card__details">
+                      <p class="sc-tulu-camp-product-card__title">Trade Up</p>
+                      <p class="sc-tulu-camp-product-card__desc">
+                        Invest 15 times within this quarter
+                      </p>
+                      <div class="sc-tulu-camp-product-card__progress">
+                        <p class="sc-tulu-camp-product-card__progress-value">
+                          300
+                        </p>
+                        <p class="sc-tulu-camp-product-card__progress-total">
+                          <strong>10,000</strong>
+                          miles
+                        </p>
+                        <div class="sc-tulu-camp-product-card__progress-bar">
+                          <div class="sc-tulu-camp-product-card__progress-bar-inner" style="width: 60%"></div>
+                        </div>
+                        <p class="sc-tulu-camp-product-card__progress-desc">
+                          As of 20 Feb 2025 (1 Jan - 31 Mar 2024 Cycle)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sc-tulu-camp-wrapper-full">
+                <div class="sc-tulu-camp-wrapper-full__inner">
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-heading-inner">
+                      <h2 class="sc-title sc-title--inner">First 6 streak</h2>
+                      <p class="sc-description">
+                        Earn 100 miles for each of your first 6 trades
+                      </p>
+                    </div>
+                    <div class="sc-tulu-camp-progress">
+                      <ul class="sc-tulu-camp-progress__inner">
+                        <li class="sc-tulu-camp-progress__section sc-tulu-camp-progress__section--completed">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section sc-tulu-camp-progress__section--completed">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li
+                          class="sc-tulu-camp-progress__section sc-tulu-camp-progress__section--completed sc-tulu-camp-progress__section--next-in-progress">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section sc-tulu-camp-progress__section--in-progress">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span>4</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-heading-inner">
+                      <h2 class="sc-title sc-title--inner">Double the miles</h2>
+                      <p class="sc-description">
+                        Earn 200 miles for each of your next 6 trades
+                      </p>
+                    </div>
+                    <div class="sc-tulu-camp-progress">
+                      <ul class="sc-tulu-camp-progress__inner">
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-heading-inner">
+                      <h2 class="sc-title sc-title--inner">
+                        Reach the finishing line
+                      </h2>
+                      <p class="sc-description">
+                        Earn 100 miles for each of your first 6 trades
+                      </p>
+                    </div>
+                    <div class="sc-tulu-camp-progress">
+                      <ul class="sc-tulu-camp-progress__inner">
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                        <li class="sc-tulu-camp-progress__section">
+                          <div class="sc-tulu-camp-progress__circle">
+                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <div class="sc-tulu-camp-progress__number">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                fill="#3BBD77"></path>
+                            </svg>
+                            <span>100</span>
+                          </div>
+                          <div class="sc-tulu-camp-progress__line"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-tulu-camp-timeline">
+                  <div class="sc-tulu-camp-timeline__wrapper">
+                    <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--disable">
+                      <div class="sc-tulu-camp-timeline__box-wrapper">
+                        <div class="sc-tulu-camp-timeline__box-title">
+                          Finish all tradings with below products to earn extra
+                          miles
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box-right">
+                          <div class="sc-tulu-camp-timeline__box-icon">
+                            <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                fill="#939393"></path>
+                            </svg>
+                          </div>
+                          <p class="sc-tulu-camp-timeline__box-text">
+                            up to 3,000
+                          </p>
+                        </div>
+                      </div>
+                      <div class="sc-tulu-camp-progress sc-tulu-camp-progress--column-view">
+                        <ul class="sc-tulu-camp-progress__inner">
+                          <li class="sc-tulu-camp-progress__section sc-tulu-camp-progress__section--completed">
+                            <div class="sc-tulu-camp-progress__circle">
+                              <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                            <div class="sc-tulu-camp-progress__title">FX</div>
+                            <div class="sc-tulu-camp-progress__number">
+                              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                  fill="#3BBD77"></path>
+                              </svg>
+                              <span>100</span>
+                            </div>
+                          </li>
+                          <li class="sc-tulu-camp-progress__section">
+                            <div class="sc-tulu-camp-progress__circle">
+                              <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                            <div class="sc-tulu-camp-progress__title">
+                              Online Equity
+                            </div>
+                            <div class="sc-tulu-camp-progress__number">
+                              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                  fill="#3BBD77"></path>
+                              </svg>
+                              <span>100</span>
+                            </div>
+                          </li>
+                          <li class="sc-tulu-camp-progress__section">
+                            <div class="sc-tulu-camp-progress__circle">
+                              <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.8334 2L7.72224 13.6667L2.16675 7.83333" stroke="#0C3A66" stroke-width="3"
+                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                            <div class="sc-tulu-camp-progress__title">
+                              Unit Trust
+                            </div>
+                            <div class="sc-tulu-camp-progress__number">
+                              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z"
+                                  fill="#3BBD77"></path>
+                              </svg>
+                              <span>100</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-tulu-camp-tab__content-item" data-tab-content="5">
+              <div class="sc-tulu-camp-product-card sc-tulu-camp-product-card--purple">
+                <div class="sc-tulu-camp-product-card__main">
+                  <div class="sc-tulu-camp-product-card__inner">
+                    <div class="sc-tulu-camp-product-card__details">
+                      <p class="sc-tulu-camp-product-card__title">Level Up</p>
+                      <p class="sc-tulu-camp-product-card__desc">
+                        Read articles, explore insights and complete quizzes
+                      </p>
+                      <div class="sc-tulu-camp-product-card__progress">
+                        <p class="sc-tulu-camp-product-card__progress-value">
+                          50
+                        </p>
+                        <p class="sc-tulu-camp-product-card__progress-total">
+                          <strong>10,000</strong>
+                          miles
+                        </p>
+                        <div class="sc-tulu-camp-product-card__progress-bar">
+                          <div class="sc-tulu-camp-product-card__progress-bar-inner" style="width: 60%"></div>
+                        </div>
+                        <p class="sc-tulu-camp-product-card__progress-desc">
+                          As of 20 Feb 2025 (1 Jan - 31 Mar 2024 Cycle)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sc-tulu-camp-wrapper-full">
+                <div class="sc-tulu-camp-wrapper-full__inner">
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-tulu-camp-timeline">
+                      <div class="sc-tulu-camp-timeline__wrapper">
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--active">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Read article
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">50</p>
+                            </div>
+                          </div>
+                          <div class="sc-tulu-camp-timeline__cvp">
+                            <div class="sc-tulu-camp-timeline__cvp-image">
+                              <img
+                                src="https://av.sc.com/sg/content/images/sg-crafting-a-balanced-portfolio-pintile.jpg"
+                                alt="Article Image" />
+                            </div>
+                            <div class="sc-tulu-camp-timeline__cvp-item sc-rte">
+                              <a href="https://retail.sc.com/scmobile/hk?ngroute=investment.wealth-needs.detail&article=${wealth-needs-1}" class="sc-tulu-camp-timeline__cvp-title" title="REITs 101">
+                                REITs 101
+                              </a>
+                              <p class="sc-tulu-camp-timeline__cvp-text">
+                                The Beginner’s Guide to REITs: What They Are and
+                                How to Invest
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--progress">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Test your knowledge on the article
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">50</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-tulu-camp-timeline">
+                      <div class="sc-tulu-camp-timeline__wrapper">
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--progress">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Read article
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">50</p>
+                            </div>
+                          </div>
+                          <div class="sc-tulu-camp-timeline__cvp">
+                            <div class="sc-tulu-camp-timeline__cvp-image">
+                              <img
+                                src="https://av.sc.com/sg/content/images/sg-crafting-a-balanced-portfolio-pintile.jpg"
+                                alt="Article Image" />
+                            </div>
+                            <div class="sc-tulu-camp-timeline__cvp-item sc-rte">
+                              <a href="https://retail.sc.com/scmobile/hk?ngroute=investment.wealth-needs.detail&article=${wealth-needs-2}" class="sc-tulu-camp-timeline__cvp-title" title="Weekly Market Views">
+                                Weekly Market Views
+                              </a>
+                              <p class="sc-tulu-camp-timeline__cvp-text">
+                                Return of the “Trump Trade”
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Test your knowledge on the article
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                Failed
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sc-tulu-camp-wrapper-full__column">
+                    <div class="sc-tulu-camp-timeline">
+                      <div class="sc-tulu-camp-timeline__wrapper">
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box--progress">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Read article
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1,000
+                              </p>
+                            </div>
+                          </div>
+                          <div class="sc-tulu-camp-timeline__cvp">
+                            <div class="sc-tulu-camp-timeline__cvp-image">
+                              <img
+                                src="https://av.sc.com/sg/content/images/sg-crafting-a-balanced-portfolio-pintile.jpg"
+                                alt="Article Image" />
+                            </div>
+                            <div class="sc-tulu-camp-timeline__cvp-item sc-rte">
+                              <a href="https://retail.sc.com/scmobile/hk?ngroute=investment.wealth-needs.detail&article=${wealth-needs-3}" class="sc-tulu-camp-timeline__cvp-title" title="Cut to the Chase!">
+                                Cut to the Chase!
+                              </a>
+                              <p class="sc-tulu-camp-timeline__cvp-text">
+                                The Beginner’s Guide to REITs: What They Are and
+                                How to Invest
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sc-tulu-camp-timeline__box sc-tulu-camp-timeline__box">
+                          <div class="sc-tulu-camp-timeline__box-wrapper">
+                            <div class="sc-tulu-camp-timeline__box-title">
+                              Test your knowledge on the article
+                            </div>
+                            <div class="sc-tulu-camp-timeline__box-right">
+                              <div class="sc-tulu-camp-timeline__box-icon">
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M6.5 0L7.89583 4.60417L12.5 6L7.89583 7.39583L6.5 12L5.10417 7.39583L0.5 6L5.10417 4.60417L6.5 0Z"
+                                    fill="#939393"></path>
+                                </svg>
+                              </div>
+                              <p class="sc-tulu-camp-timeline__box-text">
+                                1,000
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sc-tulu-camp-modal" id="sc-terms-and-condition" role="dialog" aria-labelledby="sc-terms-and-condition"
+    aria-hidden="true">
+    <div class="sc-tulu-camp-modal__dialog">
+      <div class="sc-tulu-camp-modal__content">
+        <div class="sc-tulu-camp-modal__header">
+          <button type="button" class="sc-tulu-camp-modal__close">
+            <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.80005 9.5L0.800049 1.5L1.80005 0.5L8.80005 7.25L15.8 0.5L16.8 1.5L8.80005 9.5Z"
+                fill="#000000"></path>
+            </svg>
+          </button>
+          <p class="sc-tulu-camp-modal__header-title">Terms & Conditions</p>
+          <button type="button" class="sc-tulu-camp-modal__download">
+            <svg width="16" height="16" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.0625 10.8125L12 14.75L15.9375 10.8125" stroke="#2772C7" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M12 4.24707V14.7471" stroke="#2772C7" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M21 13.25V20C21 20.1989 20.921 20.3897 20.7803 20.5303C20.6397 20.671 20.4489 20.75 20.25 20.75H3.75C3.55109 20.75 3.36032 20.671 3.21967 20.5303C3.07902 20.3897 3 20.1989 3 20V13.25"
+                stroke="#2772C7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="sc-tulu-camp-modal__body">
+          <div class="sc-tulu-camp__wrapper">
+            <div class="sc-tulu-camp-doc">
+              <div class="sc-tulu-camp-doc__tab-panel sc-sc-rte">
+                <article class="sc-tulu-camp-doc__content">
+                  <h4 class="sc-tulu-camp-doc__title">
+                    Account Opening Customer Declaration
+                  </h4>
+                  <strong>By submitting this application,</strong>
+                  <ul>
+                    <li>
+                      You (being the person named as the “applicant” in the
+                      application) represent and warrant that all information
+                      (including any documents) you have given to us (being each
+                      member of the Standard Chartered Group identified in the
+                      application or the approval as the person providing the
+                      facility, product or service to you, and its successors
+                      and assigns) in connection with this application is
+                      correct, complete and not misleading - important note: if
+                      this is not the case you may be personally liable;
+                    </li>
+                    <li>
+                      You acknowledge that we may decline your application in
+                      its entirety or in part (in respect of any one or more
+                      particular product(s), service(s) or account(s) /
+                      sub-account(s) you are applying for in this application)
+                      without giving you any reason for doing so; if this
+                      happens, no contractual relationship arises between you
+                      and us in respect of any product(s), service(s) or
+                      account(s) / sub-account(s) requested in this application
+                      which we have declined to provide to you;
+                    </li>
+                    <li>
+                      Renminbi (“RMB”) exchange rate, like any other currency,
+                      is affected by a wide range of factors and is subject to
+                      fluctuations. Such fluctuations may result in gains and
+                      losses in the event that the client subsequently converts
+                      RMB to another currency (including Hong Kong dollars); and
+                    </li>
+                    <li>
+                      RMB is currently not freely convertible and conversion of
+                      RMB through banks in Hong Kong is subject to restrictions
+                      specified by the Bank and regulatory requirements
+                      applicable from time to time. The actual conversion
+                      arrangement will depend on the restrictions prevailing at
+                      the relevant time.
+                    </li>
+                  </ul>
+                  <strong>Deposit Protection Scheme:</strong>
+                  <ul>
+                    <li>
+                      Deposit(s) in the Account(s) applied for hereunder is
+                      (are) deposit(s) qualified for protection under the
+                      Deposit Protection Scheme in Hong Kong. However, a time
+                      deposit with a tenor exceeding 5 years or a deposit
+                      subject to any foreign exchange forward contract under
+                      Currency Switching services will NOT be protected under
+                      the Scheme.
+                    </li>
+                    <li>
+                      If there is any inconsistency between the English version
+                      and the Chinese version of this application form, the
+                      English version prevails.
+                    </li>
+                    <li>
+                      Issued by Standard Chartered Bank (Hong Kong) Limited
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-modal__footer">
+            <button type="button"
+              class="sc-btn sc-btn--medium sc-btn--curved sc-tulu-camp-modal__footer-btn sc-tulu-camp-modal__footer-btn--disabled"
+              id="sc-scroll-tc-btn">
+              Scroll Down
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sc-tulu-camp-modal sc-tulu-camp-modal--close-btn sc-tulu-camp-modal--full-height" id="sc-questionnaire"
+    role="dialog" aria-labelledby="sc-questionnaire" aria-hidden="true">
+    <div class="sc-tulu-camp-modal__dialog">
+      <div class="sc-tulu-camp-modal__content">
+        <div class="sc-tulu-camp-modal__header">
+          <button type="button" class="sc-tulu-camp-modal__close">
+            <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16.0382 2.63609C16.4287 2.24557 16.4287 1.6124 16.0382 1.22188C15.6476 0.831353 15.0145 0.831353 14.6239 1.22188L0.481813 15.364C0.0912886 15.7545 0.0912882 16.3877 0.481813 16.7782C0.872337 17.1688 1.5055 17.1688 1.89603 16.7782L16.0382 2.63609Z"
+                fill="#000000"></path>
+              <path
+                d="M14.6243 16.7783C15.0148 17.1688 15.648 17.1688 16.0385 16.7783C16.429 16.3877 16.429 15.7546 16.0385 15.3641L1.89636 1.22192C1.50584 0.831401 0.872674 0.831401 0.48215 1.22192C0.0916255 1.61245 0.0916259 2.24561 0.48215 2.63614L14.6243 16.7783Z"
+                fill="#000000"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="sc-tulu-camp-modal__body">
+          <div class="sc-tulu-camp__wrapper">
+            <div class="sc-tulu-camp-questionnaire">
+              <div class="sc-tulu-camp-questionnaire__test sc-sc-rte">
+                <p class="sc-tulu-camp-questionnaire__test-text">
+                  Test your knowledge
+                </p>
+                <h2 class="sc-tulu-camp-questionnaire__heading">REITs 101</h2>
+                <p class="sc-tulu-camp-questionnaire__test-text">
+                  <span>1</span>
+                  of
+                  <span>2</span>
+                </p>
+              </div>
+              <div class="sc-tulu-camp-questionnaire__question">
+                <p class="sc-tulu-camp-questionnaire__question-text">
+                  What is the minimum percentage of taxable income tha tREITs
+                  must distribute to Unit holders as dividends each year?
+                </p>
+                <div class="sc-radio-box">
+                  <input type="radio" class="sc-radio-box__input" id="one" tabindex="-1" name="radio" />
+                  <label class="sc-radio-box__input-label" for="one" tabindex="0">
+                    50%
+                  </label>
+                </div>
+                <div class="sc-radio-box">
+                  <input type="radio" class="sc-radio-box__input" id="two" tabindex="-1" name="radio" />
+                  <label class="sc-radio-box__input-label" for="two" tabindex="0">
+                    70%
+                  </label>
+                </div>
+                <div class="sc-radio-box">
+                  <input type="radio" class="sc-radio-box__input" id="three" tabindex="-1" name="radio" />
+                  <label class="sc-radio-box__input-label" for="three" tabindex="0">
+                    90%
+                  </label>
+                </div>
+                <div class="sc-radio-box">
+                  <input type="radio" class="sc-radio-box__input" id="four" tabindex="-1" name="radio" />
+                  <label class="sc-radio-box__input-label" for="four" tabindex="0">
+                    100%
+                  </label>
+                </div>
+                <div
+                  class="sc-tulu-camp-questionnaire__feedback sc-tulu-camp-questionnaire__feedback--success sc-tulu-camp-questionnaire__feedback--show">
+                  <p>Success Feedback</p>
+                </div>
+                <div class="sc-tulu-camp-questionnaire__feedback-desc">
+                  Explanation goes here. Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit, sed do eiusmod tempor incididunt ut
+                </div>
+              </div>
+              <div class="sc-tulu-camp-questionnaire__btn">
+                <button type="button"
+                  class="sc-btn sc-btn--medium sc-btn--curved sc-tulu-camp-modal__footer-btn sc-tulu-camp-modal__footer-btn--dark"
+                  id="sc-scroll-agree">
+                  Continue
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sc-tulu-camp-modal visible" id="sc-get-started" role="dialog" aria-labelledby="sc-get-started"
+    aria-hidden="true">
+    <div class="sc-tulu-camp-modal__dialog">
+      <div class="sc-tulu-camp-modal__content">
+        <div class="sc-tulu-camp-modal__header">
+          <button type="button" class="sc-tulu-camp-modal__close">
+            <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.80005 9.5L0.800049 1.5L1.80005 0.5L8.80005 7.25L15.8 0.5L16.8 1.5L8.80005 9.5Z"
+                fill="#000000"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="sc-tulu-camp-modal__body">
+          <div class="sc-tulu-camp__wrapper">
+            <div class="sc-tulu-camp-doc">
+              <div class="sc-tulu-camp-doc__tab-panel sc-rte">
+                <article class="sc-tulu-camp-doc__content">
+                  <div class="sc-tulu-camp-doc__image">
+                    <img src="https://av.sc.com/sg/content/images/sg-trade-up-level-up-journey-vector.png"
+                      alt="Trade Up level up Image" />
+                  </div>
+                  <h4 class="sc-tulu-camp-doc__title">Trade up, Level Up!</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                    a suscipit diam.
+                  </p>
+                  <div class="sc-tulu-camp-how-it-works">
+                    <div class="sc-heading-inner">
+                      <h2 class="sc-title sc-title--inner">How it works</h2>
+                    </div>
+                    <ul class="sc-tulu-camp-how-it-works__card">
+                      <li class="sc-tulu-camp-how-it-works__card-item">
+                        <div class="sc-tulu-camp-how-it-works__item-title">
+                          Register
+                        </div>
+                        <div class="sc-tulu-camp-how-it-works__item-description">
+                          Click below "Get Started" button to join the
+                          promotion.
+                        </div>
+                      </li>
+                      <li class="sc-tulu-camp-how-it-works__card-item">
+                        <div class="sc-tulu-camp-how-it-works__item-title">
+                          Complete Mission
+                        </div>
+                        <div class="sc-tulu-camp-how-it-works__item-description">
+                          Trade and hit your targets to earn miles
+                        </div>
+                        <a href="#" class="sc-tulu-camp-how-it-works__item-link">
+                          See Missions >>
+                        </a>
+                      </li>
+                      <li class="sc-tulu-camp-how-it-works__card-item">
+                        <div class="sc-tulu-camp-how-it-works__item-title">
+                          Track Your Progress
+                        </div>
+                        <div class="sc-tulu-camp-how-it-works__item-description">
+                          Check your progress and see how close you are to
+                          leveling up.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <strong>Disclaimer</strong>
+                  <p>
+                    Your tracker updates within 2 days after successful
+                    registration. If it’s been longer and your tracker still
+                    isn’t updated, please contact support for assistance.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-modal__footer">
+            <button type="button" class="sc-btn sc-btn--medium" id="sc-get-started-btn">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sc-tulu-camp-modal sc-tulu-camp-modal--full-height" id="sc-help" role="dialog" aria-labelledby="sc-help"
+    aria-hidden="true">
+    <div class="sc-tulu-camp-modal__dialog">
+      <div class="sc-tulu-camp-modal__content">
+        <div class="sc-tulu-camp-modal__header">
+          <button type="button" class="sc-tulu-camp-modal__close">
+            <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.80005 9.5L0.800049 1.5L1.80005 0.5L8.80005 7.25L15.8 0.5L16.8 1.5L8.80005 9.5Z"
+                fill="#000000"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="sc-tulu-camp-modal__body">
+          <div class="sc-tulu-camp__wrapper">
+            <div class="sc-tulu-camp-doc">
+              <div class="sc-tulu-camp-doc__tab-panel sc-rte">
+                <article class="sc-tulu-camp-doc__content">
+                  <div class="sc-tulu-camp-how-it-works">
+                    <div class="sc-heading-inner">
+                      <h2 class="sc-title sc-title--inner">How it works</h2>
+                    </div>
+                    <ul class="sc-tulu-camp-how-it-works__card">
+                      <li class="sc-tulu-camp-how-it-works__card-item">
+                        <div class="sc-tulu-camp-how-it-works__item-title">
+                          Register
+                        </div>
+                        <div class="sc-tulu-camp-how-it-works__item-description">
+                          Click below "Get Started" button to join the
+                          promotion.
+                        </div>
+                      </li>
+                      <li class="sc-tulu-camp-how-it-works__card-item">
+                        <div class="sc-tulu-camp-how-it-works__item-title">
+                          Complete Mission
+                        </div>
+                        <div class="sc-tulu-camp-how-it-works__item-description">
+                          Trade and hit your targets to earn miles
+                        </div>
+                        <a href="#" class="sc-tulu-camp-how-it-works__item-link">
+                          See Missions >>
+                        </a>
+                      </li>
+                      <li class="sc-tulu-camp-how-it-works__card-item">
+                        <div class="sc-tulu-camp-how-it-works__item-title">
+                          Track Your Progress
+                        </div>
+                        <div class="sc-tulu-camp-how-it-works__item-description">
+                          Check your progress and see how close you are to
+                          leveling up.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="sc-faq">
+                    <div class="sc-content-wrapper">
+                      <div class="sc-heading-inner">
+                        <h2 class="sc-title sc-title--inner">Faq's</h2>
+                      </div>
+                      <div class="sc-faq__accordion">
+                        <input class="sc-faq__accordion-input" type="checkbox" tabindex="-1" id="one" />
+                        <label tabindex="0" class="sc-faq__accordion-label sc-faq__accordion-label--plus" for="one">
+                          How does the SC Referral Club work?
+                        </label>
+                        <div class="sc-faq__accordion-content sc-rte">
+                          The SC Referral Club is open to all existing primary
+                          account holder of deposit accounts and principal
+                          cardholders of credit cards to invite their friends to
+                          Standard Chartered and earn CashBack/cash rebates or
+                          Asia Miles on successful referrals.
+                        </div>
+                      </div>
+                      <div class="sc-faq__accordion">
+                        <input class="sc-faq__accordion-input" type="checkbox" tabindex="-1" id="two" />
+                        <label tabindex="0" class="sc-faq__accordion-label sc-faq__accordion-label--plus" for="two">
+                          What will I receive when I refer a friend?
+                        </label>
+                        <div class="sc-faq__accordion-content sc-rte">
+                          For details on Referrer offers, please refer to the
+                          Additional Terms and Conditions of the respective SC
+                          Referral Club Programs/Products.
+                        </div>
+                      </div>
+                      <div class="sc-faq__accordion">
+                        <input class="sc-faq__accordion-input" type="checkbox" tabindex="-1" id="three" />
+                        <label tabindex="0" class="sc-faq__accordion-label sc-faq__accordion-label--plus" for="three">
+                          What will my friend or family receive?
+                        </label>
+                        <div class="sc-faq__accordion-content sc-rte">
+                          Your friend and family will receive a sign-up reward
+                          if he/she has successfully signed up for an eligible
+                          product and fulfil the sign-up eligibility criteria.
+                          for details, please refer to each of the Terms and
+                          Conditions of these products that he/she is applying
+                          for.
+                        </div>
+                      </div>
+                      <div class="sc-faq__accordion">
+                        <input class="sc-faq__accordion-input" type="checkbox" tabindex="-1" id="four" />
+                        <label tabindex="0" class="sc-faq__accordion-label sc-faq__accordion-label--plus" for="four">
+                          Are there any restrictions and/or eligibility criteria
+                          for referrals?
+                        </label>
+                        <div class="sc-faq__accordion-content sc-rte">
+                          For details on Referee eligibility for each
+                          Products/Programs on New Services(s) , please refer to
+                          the Additional Terms and Conditions of the respective
+                          SC Referral Club Programs/products
+                        </div>
+                      </div>
+                      <div class="sc-faq__accordion">
+                        <input class="sc-faq__accordion-input" type="checkbox" tabindex="-1" id="five" />
+                        <label tabindex="0" class="sc-faq__accordion-label sc-faq__accordion-label--plus" for="five">
+                          When will I receive my reward?
+                        </label>
+                        <div class="sc-faq__accordion-content sc-rte">
+                          Your referral cashback will be credited to your
+                          account. For detail timing for each product/program,
+                          please refer to each of the Terms and Conditions of
+                          these products.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sc-faq">
+                    <div class="sc-content-wrapper">
+                      <div class="sc-heading-inner">
+                        <h2 class="sc-title sc-title--inner undefined">T&Cs</h2>
+                      </div>
+                      <a target="_blank" rel="noreferrer noopener"
+                        href="https://av.sc.com/hk/content/docs/hk-online-mgm-referrer-tnc.pdf"
+                        title="Terms & Conditions of SC Referral Club" class="sc-faq__terms-link">
+                        Terms & Conditions of SC Referral Club
+                      </a>
+                      <a target="_blank" rel="noreferrer noopener"
+                        href="https://av.sc.com/hk/content/docs/hk-online-mgm-referrer-tnc.pdf"
+                        title="Terms & Conditions of SC Referral Club" class="sc-faq__terms-link">
+                        Terms & Conditions of SC Referral Club
+                      </a>
+                      <a target="_blank" rel="noreferrer noopener"
+                        href="https://av.sc.com/hk/content/docs/hk-online-mgm-referrer-tnc.pdf"
+                        title="Terms & Conditions of SC Referral Club" class="sc-faq__terms-link">
+                        Terms & Conditions of SC Referral Club
+                      </a>
+                      <a target="_blank" rel="noreferrer noopener"
+                        href="https://av.sc.com/hk/content/docs/hk-online-mgm-referrer-tnc.pdf"
+                        title="Terms & Conditions of SC Referral Club" class="sc-faq__terms-link">
+                        Terms & Conditions of SC Referral Club
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sc-tulu-camp-modal sc-tulu-camp-modal--popup" id="sc-popup" role="dialog" aria-labelledby="sc-popup"
+    aria-hidden="true">
+    <div class="sc-tulu-camp-modal__dialog">
+      <div class="sc-tulu-camp-modal__content">
+        <div class="sc-tulu-camp-modal__body">
+          <div class="sc-tulu-camp__wrapper">
+            <article class="sc-tulu-camp-doc__content">
+              <div class="sc-tulu-camp-doc__image">
+                <img src="https://av.sc.com/sg/content/images/sg-trade-up-level-up-journey-vector.png"
+                  alt="Trade Up level up Image" />
+              </div>
+              <h4 class="sc-tulu-camp-doc__title">Trade up, Level Up!</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a
+                suscipit diam.
+              </p>
+            </article>
+            <div class="sc-tulu-camp-modal__footer">
+              <button type="button"
+                class="sc-btn sc-btn--medium sc-btn--curved sc-tulu-camp-modal__footer-btn sc-tulu-camp-modal__footer-btn--dark"
+                id="sc-complete">
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    class ScTulu {
+    init() {
+        // For each tab group
+        const tabGroups = document.querySelectorAll('.sc-tulu-camp-tab');
+      
+        tabGroups.forEach(group => {
+          // Get all the tabs in this tab group
+          const tabs = group.querySelectorAll('.sc-tulu-camp-tab__head-button');
+          // Get all the content items in this tab group
+          const contents = group.querySelectorAll('.sc-tulu-camp-tab__content-item');
+  
+          tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              const targetId = tab.getAttribute('data-tab-btn-id');
+              const targetContent = group.querySelector(`.sc-tulu-camp-tab__content-item[data-tab-content="${targetId}"]`);
+  
+              if (!targetContent) {
+                console.error(`Target content for tab ${targetId} not found`);
+                return;
+              }
+  
+              // Remove active class from all tabs and content items in this tab group
+              tabs.forEach(t => t.classList.remove('sc-tulu-camp-tab__head-button--active'));
+              contents.forEach(c => c.classList.remove('sc-tulu-camp-tab__content-item--active'));
+  
+              // Add active class to clicked tab and corresponding content
+              tab.classList.add('sc-tulu-camp-tab__head-button--active');
+              targetContent.classList.add('sc-tulu-camp-tab__content-item--active');
+            });
+          });
+        });
+                const startButton = document.getElementById('sc-get-started-btn');
+                const getStartedModal = document.getElementById('sc-get-started');
+                const tcModal = document.getElementById('sc-terms-and-condition');
+                const scrollButton = document.getElementById('sc-scroll-tc-btn');
+                const cardMain = document.querySelectorAll('.sc-tulu-camp-product-card__main');
+                const mainPage = document.querySelectorAll('.sc-tulu-camp-main');
+                const backBtn = document.querySelector('.sc-tulu-camp-header__back');
+
+    
+                if (startButton && getStartedModal && tcModal) {
+                    startButton.addEventListener('click', () => {
+                        getStartedModal.classList.remove('visible');
+                        tcModal.classList.add('visible');
+                    });
+                    scrollButton.addEventListener('click', () => {
+                        tcModal.classList.remove('visible');
+                    });
+                    cardMain.forEach(card => {
+                        card.addEventListener('click', () => {
+                            mainPage[0].classList.remove('active');
+                            mainPage[1].classList.add('active');
+    
+                        });
+
+                    });
+                    
+                    backBtn.addEventListener('click', () => {
+                        mainPage[1].classList.remove('active');
+                        mainPage[0].classList.add('active');
+
+                    });
+                }
+           
+
+        
+    }
+}
+
+const instance = new ScTulu();
+instance.init();
+</script>

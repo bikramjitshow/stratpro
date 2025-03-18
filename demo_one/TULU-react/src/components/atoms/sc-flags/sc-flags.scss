@@ -1,0 +1,735 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define flag; weak */
+
+.sc-flag {
+  width: 28px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+  text-align: left;
+  display: inline-block;
+  &--ad {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ad_3.png');
+  }
+  &--ae {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ae_3.png');
+  }
+  &--af {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/af_3.png');
+  }
+  &--ag {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ag_3.png');
+  }
+  &--ai {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ai_3.png');
+  }
+  &--al {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/al_3.png');
+  }
+  &--am {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/am_3.png');
+  }
+  &--an {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/an_3.png');
+  }
+  &--ao {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ao_3.png');
+  }
+  &--ar {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ar_3.png');
+  }
+  &--as {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/as_3.png');
+  }
+  &--at {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/at_3.png');
+  }
+  &--au {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/au_3.png');
+  }
+  &--aw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/aw_3.png');
+  }
+  &--ax {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ax_3.png');
+  }
+  &--az {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/az_3.png');
+  }
+  &--ba {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ba_3.png');
+  }
+  &--bb {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bb_3.png');
+  }
+  &--bd {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bd_3.png');
+  }
+  &--be {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/be_3.png');
+  }
+  &--bf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bf_3.png');
+  }
+  &--bg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bg_3.png');
+  }
+  &--bh {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bh_3.png');
+  }
+  &--bi {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bi_3.png');
+  }
+  &--bj {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bj_3.png');
+  }
+  &--bl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bl_3.png');
+  }
+  &--bm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bm_3.png');
+  }
+  &--bn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bn_3.png');
+  }
+  &--bo {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bo_3.png');
+  }
+  &--br {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/br_3.png');
+  }
+  &--bs {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bs_3.png');
+  }
+  &--bt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bt_3.png');
+  }
+  &--bw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bw_3.png');
+  }
+  &--by {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/by_3.png');
+  }
+  &--bz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/bz_3.png');
+  }
+  &--ca {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ca_3.png');
+  }
+  &--ce {
+    background-image: url('https://av.sc.com/international-banking/content/images/Flag-Republic-of-China.png');
+  }
+  &--cd {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cd_3.png');
+  }
+  &--cf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cf_3.png');
+  }
+  &--cg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cg_3.png');
+  }
+  &--ch {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ch_3.png');
+  }
+  &--ci {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ci_3.png');
+  }
+  &--ck {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ck_3.png');
+  }
+  &--cl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cl_3.png');
+  }
+  &--cm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cm_3.png');
+  }
+  &--cn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cn_3.png');
+  }
+  &--co {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/co_3.png');
+  }
+  &--cr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cr_3.png');
+  }
+  &--cu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cu_3.png');
+  }
+  &--cv {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cv_3.png');
+  }
+  &--cw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cw_3.png');
+  }
+  &--cy {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cy_3.png');
+  }
+  &--cz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/cz_3.png');
+  }
+  &--de {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/de_3.png');
+  }
+  &--dj {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/dj_3.png');
+  }
+  &--dk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/dk_3.png');
+  }
+  &--dm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/dm_3.png');
+  }
+  &--do {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/do_3.png');
+  }
+  &--dz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/dz_3.png');
+  }
+  &--ec {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ec_3.png');
+  }
+  &--ee {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ee_3.png');
+  }
+  &--eg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/eg_3.png');
+  }
+  &--eh {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/eh_3.png');
+  }
+  &--er {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/er_3.png');
+  }
+  &--es {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/es_3.png');
+  }
+  &--et {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/et_3.png');
+  }
+  &--eu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/eu_3.png');
+  }
+  &--fi {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/fi_3.png');
+  }
+  &--fj {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/fj_3.png');
+  }
+  &--fk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/fk_3.png');
+  }
+  &--fm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/fm_3.png');
+  }
+  &--fo {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/fo_3.png');
+  }
+  &--fr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/fr_3.png');
+  }
+  &--ga {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ga_3.png');
+  }
+  &--gb {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gb_3.png');
+  }
+  &--gd {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gd_3.png');
+  }
+  &--ge {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ge_3.png');
+  }
+  &--gg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gg_3.png');
+  }
+  &--gh {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gh_3.png');
+  }
+  &--gi {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gi_3.png');
+  }
+  &--gl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gl_3.png');
+  }
+  &--gm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gm_3.png');
+  }
+  &--gn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gn_3.png');
+  }
+  &--gq {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gq_3.png');
+  }
+  &--gr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gr_3.png');
+  }
+  &--gs {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gs_3.png');
+  }
+  &--gt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gt_3.png');
+  }
+  &--gu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gu_3.png');
+  }
+  &--gw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gw_3.png');
+  }
+  &--gy {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/gy_3.png');
+  }
+  &--hk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/hk_3.png');
+  }
+  &--hn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/hn_3.png');
+  }
+  &--hr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/hr_3.png');
+  }
+  &--ht {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ht_3.png');
+  }
+  &--hu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/hu_3.png');
+  }
+  &--ic {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ic_3.png');
+  }
+  &--id {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/id_3.png');
+  }
+  &--ie {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ie_3.png');
+  }
+  &--il {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/il_3.png');
+  }
+  &--im {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/im_3.png');
+  }
+  &--in {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/in_3.png');
+  }
+  &--iq {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/iq_3.png');
+  }
+  &--ir {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ir_3.png');
+  }
+  &--is {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/is_3.png');
+  }
+  &--it {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/it_3.png');
+  }
+  &--je {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/je_3.png');
+  }
+  &--jm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/jm_3.png');
+  }
+  &--jo {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/jo_3.png');
+  }
+  &--jp {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/jp_3.png');
+  }
+  &--ke {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ke_3.png');
+  }
+  &--kg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kg_3.png');
+  }
+  &--kh {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kh_3.png');
+  }
+  &--ki {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ki_3.png');
+  }
+  &--km {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/km_3.png');
+  }
+  &--kn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kn_3.png');
+  }
+  &--kp {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kp_3.png');
+  }
+  &--kr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kr_3.png');
+  }
+  &--kw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kw_3.png');
+  }
+  &--ky {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ky_3.png');
+  }
+  &--kz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/kz_3.png');
+  }
+  &--la {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/la_3.png');
+  }
+  &--lb {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lb_3.png');
+  }
+  &--lc {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lc_3.png');
+  }
+  &--li {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/li_3.png');
+  }
+  &--lk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lk_3.png');
+  }
+  &--lr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lr_3.png');
+  }
+  &--ls {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ls_3.png');
+  }
+  &--lt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lt_3.png');
+  }
+  &--lu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lu_3.png');
+  }
+  &--lv {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/lv_3.png');
+  }
+  &--ly {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ly_3.png');
+  }
+  &--ma {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ma_3.png');
+  }
+  &--mc {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mc_3.png');
+  }
+  &--md {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/md_3.png');
+  }
+  &--me {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/me_3.png');
+  }
+  &--mf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mf_3.png');
+  }
+  &--mg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mg_3.png');
+  }
+  &--mh {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mh_3.png');
+  }
+  &--mk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mk_3.png');
+  }
+  &--ml {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ml_3.png');
+  }
+  &--mm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mm_3.png');
+  }
+  &--mn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mn_3.png');
+  }
+  &--mo {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mo_3.png');
+  }
+  &--mp {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mp_3.png');
+  }
+  &--mq {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mq_3.png');
+  }
+  &--mr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mr_3.png');
+  }
+  &--ms {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ms_3.png');
+  }
+  &--mt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mt_3.png');
+  }
+  &--mu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mu_3.png');
+  }
+  &--mv {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mv_3.png');
+  }
+  &--mw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mw_3.png');
+  }
+  &--mx {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mx_3.png');
+  }
+  &--my {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/my_3.png');
+  }
+  &--mz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/mz_3.png');
+  }
+  &--na {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/na_3.png');
+  }
+  &--nc {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/nc_3.png');
+  }
+  &--ne {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ne_3.png');
+  }
+  &--nf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/nf_3.png');
+  }
+  &--ng {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ng_3.png');
+  }
+  &--ni {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ni_3.png');
+  }
+  &--nl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/nl_3.png');
+  }
+  &--no {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/no_3.png');
+  }
+  &--np {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/np_3.png');
+  }
+  &--nr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/nr_3.png');
+  }
+  &--nu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/nu_3.png');
+  }
+  &--nz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/nz_3.png');
+  }
+  &--om {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/om_3.png');
+  }
+  &--pa {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pa_3.png');
+  }
+  &--pe {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pe_3.png');
+  }
+  &--pf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pf_3.png');
+  }
+  &--pg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pg_3.png');
+  }
+  &--ph {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ph_3.png');
+  }
+  &--pk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pk_3.png');
+  }
+  &--pl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pl_3.png');
+  }
+  &--pn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pn_3.png');
+  }
+  &--pr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pr_3.png');
+  }
+  &--ps {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ps_3.png');
+  }
+  &--pt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pt_3.png');
+  }
+  &--pw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/pw_3.png');
+  }
+  &--py {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/py_3.png');
+  }
+  &--qa {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/qa_3.png');
+  }
+  &--ro {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ro_3.png');
+  }
+  &--rs {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/rs_3.png');
+  }
+  &--ru {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ru_3.png');
+  }
+  &--rw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/rw_3.png');
+  }
+  &--sa {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sa_3.png');
+  }
+  &--sb {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sb_3.png');
+  }
+  &--sc {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sc_3.png');
+  }
+  &--sd {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sd_3.png');
+  }
+  &--se {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/se_3.png');
+  }
+  &--sg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sg_3.png');
+  }
+  &--sh {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sh_3.png');
+  }
+  &--si {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/si_3.png');
+  }
+  &--sk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sk_3.png');
+  }
+  &--sl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sl_3.png');
+  }
+  &--sm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sm_3.png');
+  }
+  &--sn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sn_3.png');
+  }
+  &--so {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/so_3.png');
+  }
+  &--sr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sr_3.png');
+  }
+  &--ss {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ss_3.png');
+  }
+  &--st {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/st_3.png');
+  }
+  &--sv {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sv_3.png');
+  }
+  &--sy {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sy_3.png');
+  }
+  &--sz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/sz_3.png');
+  }
+  &--tc {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tc_3.png');
+  }
+  &--td {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/td_3.png');
+  }
+  &--tf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tf_3.png');
+  }
+  &--tg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tg_3.png');
+  }
+  &--th {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/th_3.png');
+  }
+  &--tj {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tj_3.png');
+  }
+  &--tk {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tk_3.png');
+  }
+  &--tl {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tl_3.png');
+  }
+  &--tm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tm_3.png');
+  }
+  &--tn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tn_3.png');
+  }
+  &--to {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/to_3.png');
+  }
+  &--tr {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tr_3.png');
+  }
+  &--tt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tt_3.png');
+  }
+  &--tv {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tv_3.png');
+  }
+  &--tw {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tw_3.png');
+  }
+  &--tz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/tz_3.png');
+  }
+  &--ua {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ua_3.png');
+  }
+  &--ug {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ug_3.png');
+  }
+  &--us {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/us_3.png');
+  }
+  &--uy {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/uy_3.png');
+  }
+  &--uz {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/uz_3.png');
+  }
+  &--va {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/va_3.png');
+  }
+  &--vc {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/vc_3.png');
+  }
+  &--ve {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ve_3.png');
+  }
+  &--vg {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/vg_3.png');
+  }
+  &--vi {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/vi_3.png');
+  }
+  &--vn {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/vn_3.png');
+  }
+  &--vu {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/vu_3.png');
+  }
+  &--wf {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/wf_3.png');
+  }
+  &--ws {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ws_3.png');
+  }
+  &--ye {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/ye_3.png');
+  }
+  &--yt {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/yt_3.png');
+  }
+  &--za {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/za_3.png');
+  }
+  &--zm {
+    background-image: url('https://av.sc.com/assets/global/images/modules/sc-remit/country-flags/zm_3.png');
+  }
+  &--zw {
+    background-image: url('https://av.sc.com/international-banking/content/images/Flag-Zimbabwe.png');
+  }
+}
+
+/** @end */

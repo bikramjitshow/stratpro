@@ -2,10 +2,12 @@
   font-family: SC Prosper Sans Variable;
   font-style: normal;
   font-display: swap;
-  src:
-    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.woff2) format("woff2"),
-    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.woff) format("woff"),
-    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.ttf) format("truetype");
+  src: url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.woff2)
+      format("woff2"),
+    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.woff)
+      format("woff"),
+    url(https://av.sc.com/assets/global/fonts/new/SCProsperSansVariable-VF.ttf)
+      format("truetype");
 }
 
 * {
@@ -21,13 +23,15 @@ p {
 }
 
 .sc-li-campaign {
+  strong {
+    font-weight: 600;
+  }
+
   &__content-wraper {
     max-width: 1024px;
     margin: 0 auto;
     line-height: 1.4;
-    background: #f8f8f8;
-
-    // padding-bottom: 70px;
+    background: $color-white-smoke-3;
   }
 
   // banner
@@ -41,7 +45,7 @@ p {
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 170%);
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, $color-black 170%);
     }
     &::after {
       content: "";
@@ -50,7 +54,11 @@ p {
       position: absolute;
       bottom: 0;
       left: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        $color-black 100%
+      );
     }
   }
   &__form-bg-wrapper {
@@ -129,16 +137,20 @@ p {
     font-size: 14px;
     font-weight: 500;
     background-color: $color-white;
-    border: 2px solid #dfdfdf;
+    border: 2px solid $color-grey-light-26;
     color: $color-dark;
     text-align: center;
     line-height: 1.2;
   }
   &__persona-btn-active {
     border: 2px solid transparent;
-    background:
-      linear-gradient(white, white) padding-box,
-      radial-gradient(78.33% 78.33% at 2.36% -6.53%, #2db944 0%, #4478ff 100%) border-box;
+    background: linear-gradient($color-white, $color-white) padding-box,
+      radial-gradient(
+          78.33% 78.33% at 2.36% -6.53%,
+          $color-green-light-4 0%,
+          $color-blue-17 100%
+        )
+        border-box;
 
     svg {
       path {
@@ -152,6 +164,20 @@ p {
     margin-bottom: 8px;
     overflow: hidden;
     flex-shrink: 0;
+    pointer-events: none;
+
+    img,
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__terms-link {
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 4px;
   }
 
   // __graph
@@ -161,13 +187,6 @@ p {
   &__graph {
     padding: 0 10px;
     margin-top: 10px;
-    .sc-btn {
-      font-size: 16px;
-      font-weight: 500;
-      max-width: 170px;
-      width: 100%;
-      height: 40px;
-    }
   }
   &__chart {
     min-width: 250px;
@@ -197,12 +216,25 @@ p {
     font-size: 12px;
     font-weight: 400;
     text-align: center;
-    color: #6b6e73;
+    color: $color-grey-medium-7;
   }
 
   // Welcome offer statement
   &__welcomeoffer {
     padding: 40px 10px 0 10px;
+    &--with-bg {
+      .sc-li-campaign {
+        &__wo-content {
+          p {
+            color: $color-white;
+          }
+        }
+        h3,
+        &__wo-title {
+          color: $color-white;
+        }
+      }
+    }
   }
   &__wo-wrap {
     display: flex;
@@ -213,10 +245,11 @@ p {
     padding: 14px;
     background-color: $color-white;
     border-radius: 8px;
-    border: 1px solid #dfdfdf;
+    border: 1px solid $color-grey-light-26;
     box-shadow: 0px 7px 25px -6px $color-grey-light-12;
     overflow: hidden;
     position: relative;
+    pointer-events: none;
     &::before {
       content: "";
       display: block;
@@ -225,11 +258,32 @@ p {
       position: absolute;
       left: 0;
       top: 0;
-      background: linear-gradient(180deg, #107bed 0%, #37cf0a 100%);
+      background: linear-gradient(
+        180deg,
+        $color-blue-18 0%,
+        $color-green-8 100%
+      );
+      z-index: 1;
     }
   }
   &__wo-content {
+    position: relative;
     padding-right: 20px;
+    z-index: 1;
+    max-width: 70%;
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      text-align: left;
+      color: $color-dark;
+      margin-bottom: 4px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      strong {
+        font-weight: 600;
+      }
+    }
   }
   &__wo-title {
     font-size: 14px;
@@ -237,6 +291,9 @@ p {
     text-align: left;
     color: $color-dark;
     margin-bottom: 4px;
+    &--white {
+      color: $color-white;
+    }
   }
   &__wo-desc {
     font-size: 14px;
@@ -244,7 +301,10 @@ p {
     text-align: left;
     color: $color-dark;
     &--bld {
-      font-weight: 700;
+      font-weight: 600;
+    }
+    &--white {
+      color: $color-white;
     }
   }
   &__wo-img-wrap {
@@ -262,6 +322,15 @@ p {
     height: auto;
     object-fit: cover;
     object-position: center;
+    &--bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      object-fit: cover;
+      object-position: right;
+      height: 100%;
+    }
   }
 
   // Bottom Banner
@@ -363,7 +432,7 @@ p {
     }
   }
   &__policy-type-card-content {
-    background-color: #fff;
+    background-color: $color-white;
     border-radius: 0px 0px 16px 16px;
     padding-bottom: 70px;
   }
@@ -442,7 +511,7 @@ p {
         margin: 0 1px;
         width: 4px;
         height: 4px;
-        background-color: #d9d9d9;
+        background-color: $color-grey-light-gainsboro;
         &.is-active {
           width: 12px;
           margin: 0 1px;
@@ -464,9 +533,6 @@ p {
       margin-right: auto !important;
     }
   }
-  // &__policy-type-card-splide-track {
-  //   padding-left: 15px !important;
-  // }
 
   // list__card-box
   &__policy-type-card-box {
@@ -503,7 +569,7 @@ p {
     top: 110px;
     left: 20px;
     padding: 3px 6px;
-    color: #fff;
+    color: $color-white;
     font-weight: 300;
     &--blue {
       background: $color-blue;
@@ -527,7 +593,6 @@ p {
   &__policy-type-card-details {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     align-self: stretch;
     padding: 16px;
   }
@@ -539,7 +604,7 @@ p {
     padding-bottom: 10px;
   }
   &__policy-type-description {
-    color: #6b6e73;
+    color: $color-grey-medium-7;
     text-align: left;
     line-height: 1.4;
     font-size: 13px;
@@ -557,10 +622,12 @@ p {
     align-self: stretch;
     margin-bottom: 5px;
     border-radius: 4px;
-    border: 1px solid #fff;
-    // background: radial-gradient(1141.65% 206.35% at -36.81% -60.26%, #d6ffc7 0, #c8e2ff 100%);
-    background: radial-gradient(160.26% 1130.34% at -36.81% -60.26%, #d6ffc7 0%, #c8e2ff 100%)
-      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    border: 1px solid $color-white;
+    background: radial-gradient(
+      160.26% 1130.34% at -36.81% -60.26%,
+      rgb(214, 255, 199) 0%,
+      rgb(200, 226, 255) 100%
+    );
     overflow: hidden;
 
     &::after {
@@ -607,12 +674,15 @@ p {
     padding-bottom: 16px;
   }
   &__policy-type-learn-more {
-    color: $color-blue;
+    color: $color-blue-16;
     text-align: center;
     font-size: 14px;
     font-weight: 400;
     text-decoration-line: underline;
-    text-decoration-color: #cee2ff;
+    text-decoration-color: $color-blue-light-5;
+    text-decoration-style: solid;
+    text-underline-position: from-font;
+    text-underline-offset: 2px;
   }
   &__policy-type-load-more-icon {
     width: 17px;
@@ -627,7 +697,7 @@ p {
   &__policy-type-load-more {
     display: flex;
     text-align: center;
-    color: #6b6e73;
+    color: $color-grey-medium-7;
     padding: 15px;
     font-size: 14px;
     font-weight: 500;
@@ -647,7 +717,7 @@ p {
       top: 50%;
       width: 40%;
       height: 1px;
-      background-color: #eee;
+      background-color: $color-grey-light-2;
     }
     &:before {
       left: 0;
@@ -675,35 +745,50 @@ p {
   // bottom section
   &__policy-type-bottom-content {
     margin-top: 15px;
-  }
-  &__policy-type-bottom-txt {
     font-size: 12px;
     font-weight: 400;
     text-align: left;
-    color: #6b6e73;
+    color: $color-grey-medium-7;
+    &.sc-rte {
+      a {
+        display: flex;
+        margin-bottom: 8px;
+      }
+      p {
+        a {
+          margin-bottom: 0;
+          display: inline-flex;
+        }
+      }
+    }
   }
 
   // _footnotes
   &__footnotes {
     padding: 40px 0 0 0;
-  }
-  &__footnotes-title {
-    font-size: 14px;
-    font-weight: 500;
-    text-align: left;
-    color: $color-dark;
-    margin-bottom: 6px;
-  }
-  &__footnotes-items {
-    list-style: decimal;
-    padding-left: 12px;
-  }
-  &__footnotes-item {
-    font-size: 14px;
-    font-weight: 500;
-    text-align: left;
-    color: $color-grey-medium-7;
-    margin-bottom: 4px;
+    font-size: 12px;
+
+    a {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+
+    strong {
+      font-size: 14px;
+      text-align: left;
+      color: $color-dark;
+    }
+
+    li,
+    p {
+      font-size: 12px;
+      font-weight: 500;
+      text-align: left;
+      color: $color-grey-medium-7;
+    }
   }
 }
 
@@ -718,7 +803,7 @@ p {
   background-color: $color-grey-light-26;
   margin-bottom: 10px;
   &__item {
-    border-bottom: 1px solid #eaf0f8;
+    border-bottom: 1px solid $color-grey-light-29;
     width: 100%;
     padding: 16px 0;
     &:first-child {
@@ -745,11 +830,10 @@ p {
 
 // sc-policy-content-with-icons
 .sc-policy-content-with-icons {
-  background-color: #fff;
-  // border-radius: 0px 0px 16px 16px;
+  background-color: $color-white;
   &__item {
     padding: 20px 10px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $color-grey-light-2;
     &:last-child {
       border-bottom: 0;
     }
@@ -762,6 +846,8 @@ p {
     height: 32px;
     overflow: hidden;
     margin-right: 5px;
+    background-size: cover;
+    background-position: center;
   }
   &__item-title {
     display: flex;
@@ -778,56 +864,71 @@ p {
     &:last-child {
       margin-bottom: 0;
     }
-  }
-  &__item-text {
-    font-size: 14px;
-    font-weight: 400;
-    color: $color-grey-dark-6;
-    b {
-      font-weight: 700;
+
+    ul {
+      li {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 14px;
+        font-weight: 400;
+        color: $color-grey-dark-6;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &::before {
+          content: "";
+          display: inline-flex;
+          flex-shrink: 0;
+          width: 16px;
+          height: 16px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 256 256' width='48px' height='48px'%3E%3Cg fill='%23000000' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(5.33333 5.33333)'%3E%3Cpath d='M42.96094 8.98047c-0.5196 0.01548 -1.01276 0.23264 -1.375 0.60547l-24.58594 24.58594l-10.58594 -10.58594c-0.50163 -0.52247 -1.24653 -0.73294 -1.94741 -0.55022c-0.70088 0.18271 -1.24822 0.73006 -1.43094 1.43094c-0.18271 0.70088 0.02775 1.44578 0.55022 1.94741l12 12c0.78106 0.78074 2.04706 0.78074 2.82812 0l26 -26c0.59152 -0.57498 0.76938 -1.45413 0.44787 -2.21383c-0.32151 -0.75969 -1.07643 -1.24408 -1.90099 -1.21977z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 100%;
+          margin-right: 4px;
+        }
+        strong {
+          font-weight: 600;
+        }
+      }
     }
-    &--bld-text {
-      font-size: 24px;
-      font-weight: 700;
-    }
-    &--with-check-icon {
-      display: flex;
-      &::before {
-        content: "";
-        display: inline-flex;
-        flex-shrink: 0;
-        width: 16px;
-        height: 16px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 256 256' width='48px' height='48px'%3E%3Cg fill='%23000000' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(5.33333 5.33333)'%3E%3Cpath d='M42.96094 8.98047c-0.5196 0.01548 -1.01276 0.23264 -1.375 0.60547l-24.58594 24.58594l-10.58594 -10.58594c-0.50163 -0.52247 -1.24653 -0.73294 -1.94741 -0.55022c-0.70088 0.18271 -1.24822 0.73006 -1.43094 1.43094c-0.18271 0.70088 0.02775 1.44578 0.55022 1.94741l12 12c0.78106 0.78074 2.04706 0.78074 2.82812 0l26 -26c0.59152 -0.57498 0.76938 -1.45413 0.44787 -2.21383c-0.32151 -0.75969 -1.07643 -1.24408 -1.90099 -1.21977z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        margin-right: 10px;
+    &.sc-rte {
+      ul {
+        padding-left: 0;
+        &:last-child {
+          margin: 0;
+        }
+      }
+      p {
+        margin-bottom: 20px;
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
+  &__item-text-top {
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-grey-dark-6;
+
+    strong {
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+  &__item-text-bottom {
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-grey-dark-6;
+    strong {
+      font-weight: 600;
+    }
+  }
+
   &__item-text-bld {
     font-size: 24px;
-    font-weight: 700;
-  }
-  &__list-with-icon {
-    display: flex;
-    margin-bottom: 16px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-    &::before {
-      content: "";
-      display: inline-flex;
-      flex-shrink: 0;
-      width: 16px;
-      height: 16px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 256 256' width='48px' height='48px'%3E%3Cg fill='%23000000' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(5.33333 5.33333)'%3E%3Cpath d='M42.96094 8.98047c-0.5196 0.01548 -1.01276 0.23264 -1.375 0.60547l-24.58594 24.58594l-10.58594 -10.58594c-0.50163 -0.52247 -1.24653 -0.73294 -1.94741 -0.55022c-0.70088 0.18271 -1.24822 0.73006 -1.43094 1.43094c-0.18271 0.70088 0.02775 1.44578 0.55022 1.94741l12 12c0.78106 0.78074 2.04706 0.78074 2.82812 0l26 -26c0.59152 -0.57498 0.76938 -1.45413 0.44787 -2.21383c-0.32151 -0.75969 -1.07643 -1.24408 -1.90099 -1.21977z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      margin-right: 10px;
-    }
+    font-weight: 600;
   }
 }
 
@@ -885,7 +986,7 @@ p {
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000000 170%);
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, $color-black 170%);
     }
     &::after {
       content: "";
@@ -894,7 +995,11 @@ p {
       position: absolute;
       bottom: 0;
       left: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        $color-black 100%
+      );
     }
   }
   &__bnr-image {
@@ -1050,8 +1155,8 @@ p {
       }
     }
     &--disabled {
-      border-color: #cccbcb;
-      background-color: #cccbcb;
+      border-color: $color-grey-light-16;
+      background-color: $color-grey-light-16;
       pointer-events: none;
     }
     &:last-child {
@@ -1140,7 +1245,7 @@ p {
     &__alert-title {
       font-size: 16px;
       font-weight: 500;
-      color: #1f8845;
+      color: $color-green-light-4;
       text-align: center;
       margin-bottom: 12px;
     }
@@ -1235,12 +1340,3 @@ p {
     }
   }
 }
-
-// max 420
-// @include breakpoint($bp--a-max-420) {
-//   .sc-li-campaign {
-//     &__policy-type-card-splide-track {
-//       padding-left: 10px !important;
-//     }
-//   }
-// }

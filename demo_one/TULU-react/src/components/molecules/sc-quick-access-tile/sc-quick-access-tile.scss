@@ -1,0 +1,71 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define quick-access-tile; weak */
+.sc-quick-access-tile {
+  border-bottom: 1px solid $color-light-gray-1;
+  display: block;
+  &:last-child {
+    border: 0;
+  }
+  &__item {
+    padding: $nt-spacer-4 $spacer-0;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding-right: $spacer-4;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.17146 7.0007L0.22168 2.05093L1.6359 0.636719L7.99986 7.0007L1.6359 13.3646L0.22168 11.9504L5.17146 7.0007Z' fill='%230473EA'/%3E%3C/svg%3E");
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      flex-shrink: 0;
+      margin-left: auto;
+      right: 4px;
+      transition: right 0.3s ease-in-out;
+    }
+    &:hover {
+      &::after {
+        right: 6px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    color: $color-black;
+    margin-bottom: $spacer-2;
+  }
+
+  &__desc {
+    color: rgb(134, 135, 136);
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+  }
+}
+@include tablet-desktop {
+  .sc-quick-access-tile {
+    &__item {
+      padding-right: $spacer-5;
+      &::after {
+        right: 12px;
+      }
+    }
+  }
+}
+
+/** @end */

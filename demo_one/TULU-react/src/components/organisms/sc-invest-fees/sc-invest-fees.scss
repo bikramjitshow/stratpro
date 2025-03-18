@@ -1,0 +1,292 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Molecules
+@import '../../molecules/sc-cvp/sc-cvp';
+
+/** @define invest-fees; weak */
+.sc-invest-fees {
+  padding: $spacer-6 $spacer-0;
+  position: relative;
+  &__content {
+    margin-bottom: $spacer-4;
+    text-align: center;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__image {
+    height: 220px;
+    max-width: 450px;
+    width: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &__line {
+    display: block;
+    margin: 0 auto $spacer-2 auto;
+    width: 16px;
+    height: 2px;
+    border-radius: 20px;
+    background-color: $color-gray-1;
+    &--green {
+      background-color: $color-green-2;
+    }
+    &--blue {
+      background-color: $color-blue-17;
+    }
+    &--yellow {
+      background-color: $color-yellow-1;
+    }
+  }
+  /* stylelint-disable plugin/selector-bem-pattern */
+  &--bg-dark,
+  &.sc-dark-bg,
+  &.sc-blue-bg {
+    background-color: rgb(16, 34, 51);
+    .sc-heading-inner {
+      /* stylelint-disable selector-max-type  */
+      *:not(a) {
+        color: $color-white;
+      }
+      /* stylelint-enable selector-max-type  */
+      .sc-description {
+        color: $color-light-gray-8;
+      }
+    }
+    .sc-cvp {
+      p,
+      sub {
+        color: $color-gray-4;
+      }
+
+      &__middle strong {
+        color: $color-white;
+      }
+    }
+    .sc-btn-link {
+      color: $color-white;
+      &::after {
+        background-image: url('data:image/svg+xml,<svg fill="%23ffffff" height="14px" width="14px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><path id="XMLID_222_" d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001 c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213 C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606 C255,161.018,253.42,157.202,250.606,154.389z"></path></svg>');
+      }
+    }
+    .sc-invest-fees {
+      &__link {
+        color: $color-white;
+      }
+    }
+  }
+  /* stylelint-enable plugin/selector-bem-pattern */
+  .sc-title {
+    &--center {
+      text-align: left;
+    }
+  }
+  .sc-cvp {
+    &__col {
+      width: initial;
+      text-align: center;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(0deg, #2772c7 3.42%, rgba(19, 56, 97, 0) 100.03%);
+      }
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+    &__top {
+      text-align: left;
+      /* stylelint-disable max-nesting-depth, selector-max-compound-selectors, selector-type-no-unknown   */
+      svg {
+        color: currentColor;
+        fill {
+          color: currentColor;
+        }
+      }
+      /* stylelint-enable max-nesting-depth, selector-max-compound-selectors, selector-type-no-unknown   */
+    }
+    &__middle {
+      strong {
+        font-size: $font-size-mlg;
+        font-weight: $font-weight-semi-bold;
+      }
+      sup {
+        vertical-align: top;
+        color: $color-blue-17;
+        margin-left: $spacer-1;
+      }
+      sub {
+        font-size: $font-size-md;
+        margin-left: -calc($spacer-3);
+      }
+    }
+    &__bottom {
+      font-weight: $font-weight-semi-bold;
+    }
+    &--fees-top {
+      justify-content: center;
+      align-items: end;
+      .sc-cvp {
+        /* stylelint-disable max-nesting-depth, selector-max-compound-selectors  */
+        &__col {
+          padding-top: $spacer-2;
+          padding-bottom: $spacer-2;
+          padding-left: calc($spacer-2);
+          padding-right: calc($spacer-2);
+        }
+        &__middle {
+          sup {
+            font-size: $font-size-md;
+          }
+        }
+        /* stylelint-enable max-nesting-depth, selector-max-compound-selectors  */
+      }
+    }
+  }
+  &__box {
+    display: flex;
+    max-width: 620px;
+    border-radius: 16px;
+    justify-content: center;
+    background-color: $color-dark-mode-8;
+    margin: $spacer-6 auto 0 auto;
+    position: relative;
+    &-head {
+      text-align: center;
+      color: $color-white;
+      margin-bottom: $spacer-2;
+    }
+    p {
+      text-align: center;
+      font-size: $font-size-sm;
+    }
+    .sc-cvp {
+      p,
+      sub {
+        color: $color-gray-4;
+      }
+      &__top {
+        text-align: center;
+      }
+      &__col {
+        width: 100%;
+      }
+    }
+    &-col {
+      width: 100%;
+      border-right: 1px solid $color-gray-1;
+      padding: $spacer-1;
+      border-bottom: 0;
+      &:last-child {
+        border-right: 0;
+      }
+      &-left {
+        max-width: 240px;
+      }
+    }
+    &::after {
+      content: '';
+      width: 84px;
+      height: 84px;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(58,79,95,1)"><path d="M12 8L18 14H6L12 8Z"></path></svg>');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      position: absolute;
+      top: -49px;
+      right: 60px;
+      opacity: 0.5;
+    }
+  }
+  &__img {
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 1020px;
+    margin: $spacer-5 auto 0 auto;
+  }
+  .sc-btn-link {
+    text-decoration: none;
+    margin-top: $spacer-4;
+  }
+}
+
+@include tablet-desktop {
+  .sc-invest-fees {
+    .sc-title {
+      &--center {
+        text-align: center;
+      }
+    }
+    .sc-cvp {
+      &--fees-top {
+        .sc-cvp {
+          /* stylelint-disable max-nesting-depth, selector-max-compound-selectors  */
+          &__col {
+            padding-top: $spacer-2;
+            padding-bottom: $spacer-2;
+            padding-left: calc($spacer-6 + 20px);
+            padding-right: calc($spacer-6 + 20px);
+          }
+          &__middle {
+            strong {
+              font-size: $font-size-48;
+            }
+            sup {
+              font-size: $font-size-mlg;
+            }
+          }
+          /* stylelint-enable max-nesting-depth, selector-max-compound-selectors  */
+        }
+      }
+    }
+    &__box {
+      &-col {
+        padding: $spacer-5;
+      }
+      &-head {
+        text-align: left;
+      }
+      &::after {
+        top: -49px;
+        right: 60px;
+      }
+      p {
+        text-align: left;
+        font-size: $font-size-md;
+      }
+      .sc-cvp {
+        &__top {
+          text-align: left;
+        }
+      }
+    }
+    &__line {
+      display: block;
+      margin: 0 0 $spacer-2 0;
+      width: 16px;
+      height: 2px;
+      border-radius: 20px;
+    }
+  }
+}
+/** @end */

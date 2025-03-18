@@ -1,0 +1,55 @@
+@mixin kodchasan($weight, $style: normal) {
+  font-family: "Kodchasan", sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+// Usage examples:
+
+.kodchasan-extralight {
+  @include kodchasan(200);
+}
+
+.kodchasan-light {
+  @include kodchasan(300);
+}
+
+.kodchasan-regular {
+  @include kodchasan(400);
+}
+
+.kodchasan-medium {
+  @include kodchasan(500);
+}
+
+.kodchasan-semibold {
+  @include kodchasan(600);
+}
+
+.kodchasan-bold {
+  @include kodchasan(700);
+}
+
+.kodchasan-extralight-italic {
+  @include kodchasan(200, italic);
+}
+
+.kodchasan-light-italic {
+  @include kodchasan(300, italic);
+}
+
+.kodchasan-regular-italic {
+  @include kodchasan(400, italic);
+}
+
+.kodchasan-medium-italic {
+  @include kodchasan(500, italic);
+}
+
+.kodchasan-semibold-italic {
+  @include kodchasan(600, italic);
+}
+
+.kodchasan-bold-italic {
+  @include kodchasan(700, italic);
+}

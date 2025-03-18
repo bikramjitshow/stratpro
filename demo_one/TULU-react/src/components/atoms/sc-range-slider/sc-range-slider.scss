@@ -1,0 +1,75 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+// Noui Slider CSS
+@import '../../../../node_modules/nouislider/dist/nouislider';
+
+/** @define range-slider; weak */
+.sc-range-slider {
+  margin-top: $spacer-3;
+  /* stylelint-disable plugin/selector-bem-pattern, max-nesting-depth, selector-max-compound-selectors, scale-unlimited/declaration-strict-value */
+  &.noUi-horizontal {
+    height: 6px;
+    box-shadow: none;
+    display: block;
+    border: 0;
+    background-color: $color-light-gray-2;
+    .noUi-handle {
+      box-shadow: 0 2px 2px rgba(222, 222, 222, 0.5);
+      outline: 0;
+      cursor: pointer;
+      border: 1px solid $color-blue;
+      background: $color-white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      top: -10px;
+      right: -12px;
+    }
+
+    .noUi-connects {
+      border-radius: 5px;
+      height: 6px;
+      margin: -1px 0 0 -1px;
+    }
+
+    .noUi-connect {
+      background-color: $color-brand-blue;
+      height: 6px;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  .noUi-handle::after,
+  .noUi-handle::before {
+    display: none;
+  }
+}
+
+@include tablet-desktop {
+  .sc-range-slider {
+    &.noUi-horizontal {
+      .noUi-handle {
+        top: -13px;
+        width: 30px;
+        height: 30px;
+        border-width: 2px;
+      }
+    }
+  }
+}
+
+.sc-tab-focus {
+  .noUi-handle:focus {
+    .noUi-touch-area {
+      outline: 2px solid $color-brand-blue;
+    }
+  }
+}
+/* stylelint-enable plugin/selector-bem-pattern, max-nesting-depth, selector-max-compound-selectors, scale-unlimited/declaration-strict-value */
+
+/** @end */

@@ -1,0 +1,339 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define banner-slider; weak */
+.sc-banner-slider {
+  position: relative;
+  background-color: $color-light-gray-5;
+  &__wrapper {
+    position: relative;
+  }
+  &__container {
+    position: relative;
+    .splide {
+      &__pagination {
+        bottom: 60px;
+      }
+      &__pagination__page {
+        width: 12px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in;
+        /* stylelint-disable max-nesting-depth */
+        &.is-active {
+          width: 33px;
+          opacity: 1;
+          transform: none;
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+  &__thumbnail {
+    display: none;
+  }
+  .sc-banner {
+    height: 100%;
+    .sc-content-wrapper {
+      padding-bottom: 90px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+    }
+  }
+  .splide {
+    &__pagination {
+      background-color: transparent;
+      li {
+        &:last-child,
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+    &__pagination__page {
+      margin-bottom: 0;
+    }
+  }
+  &--normal {
+    .sc-banner {
+      .sc-content-wrapper {
+        padding-bottom: $spacer-5;
+      }
+    }
+    .sc-banner-slider {
+      &__container {
+        /* stylelint-disable max-nesting-depth */
+        .splide {
+          &__pagination {
+            bottom: 30px;
+          }
+        }
+        /* stylelint-enable max-nesting-depth */
+      }
+    }
+  }
+}
+
+@include desktop {
+  .sc-banner-slider {
+    &__thumbnail {
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      right: -16px;
+      left: 0;
+      display: flex;
+      justify-content: flex-end;
+      pointer-events: none;
+      align-items: center;
+      .splide {
+        // !important added for overised splide slider css
+        &__slide {
+          overflow: hidden;
+          border: 0 !important;
+          margin-bottom: $spacer-2;
+          border-radius: 8px;
+          height: 65px;
+          width: 160px !important;
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+          /* stylelint-disable max-nesting-depth */
+          &.is-active {
+            .sc-banner-slider-thumb {
+              background: $color-non-gradient-blue;
+              background: linear-gradient(
+                90deg,
+                $color-gradient-blue-1 0%,
+                $color-gradient-blue-2 100%
+              );
+
+              &__desc {
+                font-weight: $font-weight-semi-bold;
+              }
+              &__desc,
+              &__text {
+                color: $color-white;
+              }
+            }
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+        &__list {
+          flex-direction: column;
+          padding: $spacer-2 !important;
+          pointer-events: all;
+        }
+        &__pagination {
+          flex-direction: column;
+          right: -30px;
+          left: auto;
+        }
+        &__pagination__page {
+          height: 12px;
+          border-radius: 3px;
+          transition: all 0.3s ease-in;
+          /* stylelint-disable max-nesting-depth */
+          &.is-active {
+            height: 33px;
+            transform: none;
+            opacity: 1;
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+      }
+    }
+    &__container {
+      .splide {
+        &__slide {
+          /* stylelint-disable max-nesting-depth */
+          &::before {
+            background: linear-gradient(
+              270deg,
+              rgba(255, 255, 255, 0) 0%,
+              rgba(6, 23, 56, 0.6) 100%
+            );
+            width: 60%;
+          }
+          /* stylelint-enable max-nesting-depth */
+        }
+      }
+    }
+    .sc-banner-slider-thumb {
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      background-color: rgba(51, 51, 51, 0.451);
+      flex-direction: column;
+      text-align: center;
+      height: 100%;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); /* stylelint-disable-line property-no-vendor-prefix   */
+      border-radius: 8px;
+      &__desc {
+        text-align: center;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        color: $color-white;
+        padding: $spacer-2 $spacer-2 $spacer-1;
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+      &__text {
+        color: $color-white;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-light;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0 $spacer-2 $spacer-1;
+      }
+    }
+    &--normal {
+      .sc-banner {
+        .sc-content-wrapper {
+          padding-bottom: 50px; /* stylelint-disable-line scale-unlimited/declaration-strict-value */
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translate3d(0, 20%, 0);
+  }
+  to {
+    transform: translateZ(0);
+  }
+}
+/** @end */
+
+// Personalization block css
+/** @define banner-przn-block; weak */
+.sc-banner-przn-block {
+  position: relative;
+  z-index: 6;
+  padding-bottom: $spacer-5;
+  &__col {
+    @include content-wrapper;
+    display: none;
+    margin-top: -$spacer-6;
+    &--show {
+      display: block;
+      animation: fadeInUp 0.6s both;
+    }
+  }
+  &__col-wrapper {
+    display: flex;
+    background-color: rgba(215, 215, 215, 0.5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); // stylelint-disable-line property-no-vendor-prefix
+    flex-direction: column;
+    padding: $nt-spacer-4;
+    border-radius: 6px;
+    .sc-content-wrapper {
+      padding: $spacer-0;
+    }
+    /* stylelint-disable selector-max-type  */
+    > div {
+      padding: $spacer-0;
+      background-color: transparent;
+    }
+    /* stylelint-enable selector-max-type  */
+    &--no-border {
+      padding: 0;
+    }
+    &--gradient-border,
+    &--blue-border {
+      backdrop-filter: none;
+      padding: 0 !important;
+      position: relative;
+      /* stylelint-disable selector-max-type  */
+      > div {
+        background-color: $color-white;
+      }
+      /* stylelint-enable selector-max-type  */
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 38px 20px;
+        padding: $nt-spacer-2;
+        /* stylelint-disable property-no-vendor-prefix    */
+        -webkit-mask: -webkit-gradient(linear, left top, left bottom, color-stop(0, $color-white))
+            content-box,
+          -webkit-gradient(linear, left top, left bottom, color-stop(0, $color-white));
+        -webkit-mask: linear-gradient($color-white 0 0) content-box,
+          linear-gradient($color-white 0 0);
+        -webkit-mask-composite: xor;
+        /* stylelint-enable property-no-vendor-prefix   */
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+    }
+    &--gradient-border {
+      &::before {
+        background: radial-gradient(
+          78.33% 78.33% at 2.36% -6.53%,
+          rgb(45, 185, 68) 0,
+          rgb(68, 120, 255) 100%
+        );
+      }
+    }
+    &--blue-border {
+      &::before {
+        background: $color-brand-blue;
+      }
+    }
+    &--border-rounded {
+      border-radius: 40px 22px;
+      /* stylelint-disable selector-max-type  */
+      > div {
+        border-radius: 38px 20px;
+      }
+      /* stylelint-enable selector-max-type  */
+    }
+
+    &--inside-padding {
+      /* stylelint-disable selector-max-type  */
+      > div {
+        padding: $spacer-5 $spacer-0;
+      }
+      /* stylelint-enable selector-max-type  */
+      .sc-content-wrapper {
+        padding-left: $spacer-3;
+        padding-right: $spacer-3;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .sc-banner-przn-block {
+    padding-bottom: $spacer-6;
+    &__col-wrapper {
+      padding: $spacer-3;
+      &--no-border {
+        padding: 0;
+      }
+      &--inside-padding {
+        /* stylelint-disable selector-max-type  */
+        > div {
+          padding: $spacer-6 $spacer-0;
+        }
+        /* stylelint-enable selector-max-type  */
+        .sc-content-wrapper {
+          padding-left: $spacer-5;
+          padding-right: $spacer-5;
+        }
+      }
+    }
+  }
+}
+/** @end */

@@ -1,0 +1,70 @@
+@import '../mixins/elastic-property-bounds';
+
+/**
+ * Sets height ratio for standard SC Component.
+ *
+ * @params
+ * $avoid-small-resolutions: Avoids the mixin behaviour for resolutions smaller than medium.
+ *                           It's used in components such as the footer which doesn't have a height
+ *                           behaviour on small resolutions, instead it depends on it's own content's height.
+ *
+ */
+
+// TODO What should we do with the breakpoint-h-large?
+
+@mixin sc-component-ratio($avoid-small-resolutions: false) {
+  $meganav-max-width: 1500px;
+
+  @include breakpoint($bp--h-small) {
+    @if ($avoid-small-resolutions == false) {
+      height: 325px;
+      min-height: 325px;
+      max-height: 56vh;
+    }
+  }
+
+  @include breakpoint($bp--h-xsmall) {
+    @if ($avoid-small-resolutions == false) {
+      min-height: 270px;
+      max-height: 56vh;
+    }
+  }
+
+  @include breakpoint($bp--h-desktop) {
+    height: 400px;
+    min-height: 400px;
+    max-height: 56vh;
+  }
+}
+
+@mixin sc-component-ratio-promo-multi($avoid-small-resolutions: false) {
+  $meganav-max-width: 1500px;
+
+  @include breakpoint($bp--h-mobile) {
+    @if ($avoid-small-resolutions == false) {
+      @include elastic-property-bounds(
+        height,
+        325px,
+        380px,
+        375px,
+        $breakpoint-h-small,
+        vw
+      );
+      min-height: 325px;
+      max-height: 56vh;
+    }
+  }
+
+  @include breakpoint($bp--h-desktop) {
+    @include elastic-property-bounds(
+      height,
+      400px,
+      470px,
+      $breakpoint-h-medium,
+      $meganav-max-width,
+      vw
+    );
+    min-height: 440px;
+    max-height: 56vh;
+  }
+}

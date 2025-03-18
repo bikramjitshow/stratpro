@@ -1,0 +1,117 @@
+// Vars
+@import '../../../scss/base/variables/index';
+
+// Mixins
+@import '../../../scss/base/mixins/index';
+
+/** @define btn; weak */
+.sc-btn {
+  @include transition(border, background, background-color 0.3s);
+  text-decoration: none;
+  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50px;
+  font-size: $font-size-base;
+  box-shadow: none;
+  border: 2px solid $color-brand-blue;
+  background-color: $color-brand-blue;
+  color: $color-white;
+  padding: $spacer-2 $spacer-4;
+  min-height: 50px;
+  min-width: 180px;
+  white-space: nowrap;
+  font-weight: $font-weight-semi-bold;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  &:hover {
+    cursor: pointer;
+    background-color: $color-blue-15;
+    border-color: $color-blue-15;
+  }
+  &--secondary {
+    border-color: $color-white;
+    color: $color-white;
+    background-color: transparent;
+    &:hover {
+      border-color: $color-white;
+      color: $color-text;
+      background-color: $color-white;
+    }
+  }
+  &--secondary-blue {
+    border-color: $color-brand-blue;
+    color: $color-brand-blue;
+    background-color: transparent;
+    &:hover {
+      border-color: $color-brand-blue;
+      color: $color-brand-blue;
+      background-color: $color-light-blue-5;
+    }
+  }
+  &--secondary-black {
+    border-color: $color-text;
+    color: $color-text;
+    background-color: transparent;
+    &:hover {
+      border-color: $color-brand-blue;
+      color: $color-brand-blue;
+      background-color: $color-light-blue-5;
+    }
+  }
+  &--secondary-white {
+    border-color: $color-white;
+    color: $color-brand-blue;
+    background-color: $color-white;
+    &:hover {
+      border-color: $color-white;
+      color: $color-white;
+      background-color: transparent;
+    }
+  }
+  &--disabled {
+    border-color: $color-text;
+    color: $color-white;
+    background-color: $color-text;
+    &:hover {
+      cursor: not-allowed;
+      border-color: $color-text;
+      color: $color-white;
+      background-color: $color-text;
+    }
+  }
+  &--medium {
+    min-height: 40px;
+    min-width: 150px;
+  }
+  &--small {
+    min-height: 32px;
+    min-width: 140px;
+  }
+  &--black {
+    background-color: $color-black;
+    border-color: $color-black;
+    &:hover {
+      border-color: $color-black;
+      color: $color-text;
+      background-color: transparent;
+    }
+  }
+  &--curved {
+    border-radius: 24px 0 43px 24px;
+  }
+}
+
+/** @end */
+
+/** @define tab-focus; weak */
+// Tab key accessibility fix
+.sc-tab-focus {
+  .sc-btn--blue:focus {
+    outline-color: $color-green;
+  }
+}
+/** @end */
