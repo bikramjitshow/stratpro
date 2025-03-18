@@ -4,6 +4,7 @@
 //   convertNumbers,
 //   handleAnalyticsCTA,
 //   trim,
+//getCurrentCountry
 // } from "../../../js/sc-common-methods";
 
 class ScTuluCampaign {
@@ -15,6 +16,7 @@ class ScTuluCampaign {
 
     this.textObj = {
       queryParameterName: "tab",
+      registrationPlacementId: "registration.json",
       commonPlacementId: "main_page.json",
       articlePlacementId: "article.json",
       diversifyText:
@@ -265,6 +267,7 @@ class ScTuluCampaign {
             document
               .querySelector("html")
               .classList.remove("sc-modal__no-scroll");
+            completed = false;
           } else if (hash === result) {
             //Correct Answer
             context = event.target.getAttribute("data-text-continue");
@@ -287,6 +290,7 @@ class ScTuluCampaign {
               ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
               article.removeAttribute("data-modal-selector");
             }
+            that.handleQuizImpression("Clicked");
           } else {
             context = event.target.getAttribute("data-text-continue");
             event.target.innerText = context;
@@ -311,6 +315,7 @@ class ScTuluCampaign {
               ).innerText = that.textObj.levelUp.feedbackFailedText;
               article.removeAttribute("data-modal-selector");
             }
+            that.handleQuizImpression("Dismissed");
           }
           closest.querySelector(
             ".sc-tulu-camp-questionnaire__test-text span"
@@ -373,6 +378,20 @@ class ScTuluCampaign {
     url = url.split("/");
 
     const data = {
+      "registration.json": {
+        Issue: "AcquisitionSales",
+        InteractionID: "-3569455782704439973",
+        Placement: "rewards_registration",
+        Name: " EGSRTULURegistration ",
+        GroupID: "Deposits",
+        Rank: 2,
+        Fields: [
+          {
+            Value: "Y",
+            Name: "RegistrationFlag",
+          },
+        ],
+      },
       "main_page.json": {
         Fields: [
           {
@@ -408,11 +427,11 @@ class ScTuluCampaign {
             Name: "ConsolidatedAmountUT",
           },
           {
-            Value: "",
+            Value: "Y",
             Name: "OpenAccountSXA",
           },
           {
-            Value: "",
+            Value: "N",
             Name: "FirstTradeSXA",
           },
           {
@@ -420,15 +439,15 @@ class ScTuluCampaign {
             Name: "CompletionBonusSXA",
           },
           {
-            Value: "",
+            Value: "Y",
             Name: "FirstTradeFX",
           },
           {
-            Value: "",
+            Value: "Y",
             Name: "OpenAccountUT",
           },
           {
-            Value: "",
+            Value: "N",
             Name: "FirstTradeUT",
           },
           {
@@ -456,6 +475,11 @@ class ScTuluCampaign {
       "article.json": [
         {
           Issue: "AcquisitionSales1",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 1,
           Fields: [
             {
               Name: "ArticleID",
@@ -481,6 +505,11 @@ class ScTuluCampaign {
         },
         {
           Issue: "AcquisitionSales2",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 2,
           Fields: [
             {
               Name: "ArticleID",
@@ -506,6 +535,11 @@ class ScTuluCampaign {
         },
         {
           Issue: "AcquisitionSales3",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 3,
           Fields: [
             {
               Name: "ArticleID",
@@ -530,7 +564,12 @@ class ScTuluCampaign {
           ],
         },
         {
-          Issue: "AcquisitionSales3",
+          Issue: "AcquisitionSales4",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 4,
           Fields: [
             {
               Name: "ArticleID",
@@ -555,7 +594,12 @@ class ScTuluCampaign {
           ],
         },
         {
-          Issue: "AcquisitionSales3",
+          Issue: "AcquisitionSales5",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 5,
           Fields: [
             {
               Name: "ArticleID",
@@ -580,7 +624,12 @@ class ScTuluCampaign {
           ],
         },
         {
-          Issue: "AcquisitionSales3",
+          Issue: "AcquisitionSales6",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 6,
           Fields: [
             {
               Name: "ArticleID",
@@ -605,7 +654,12 @@ class ScTuluCampaign {
           ],
         },
         {
-          Issue: "AcquisitionSales3",
+          Issue: "AcquisitionSales7",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 7,
           Fields: [
             {
               Name: "ArticleID",
@@ -630,7 +684,12 @@ class ScTuluCampaign {
           ],
         },
         {
-          Issue: "AcquisitionSales3",
+          Issue: "AcquisitionSales8",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 8,
           Fields: [
             {
               Name: "ArticleID",
@@ -788,20 +847,30 @@ class ScTuluCampaign {
   generateDiversify() {
     const that = this;
     const data = that.commonPlacementData;
-    const campaignStartDate = that.formatDate(
-      that.getObjectValue(data, "CampaignStartDate")
-    );
-    const CampaignEndDate = that.formatDate(
-      that.getObjectValue(data, "CampaignEndDate")
-    );
     const mainDiversify = that.ScTuluCamp.querySelector(
       ".sc-tulu-camp-product-card-diversify"
     );
     const contentDiversify = that.ScTuluCamp.querySelector(
       ".sc-tulu-camp-tab__content-item-diversify"
     );
+    const campaignStartDate = that.formatDate(
+      that.getObjectValue(data, "CampaignStartDate")
+    );
+    const campaignEndDate = that.formatDate(
+      that.getObjectValue(data, "CampaignEndDate")
+    );
+    const dateStr = that.generateDateString(campaignStartDate, campaignEndDate);
+    that.ScTuluCamp.querySelectorAll(".sc-cvp__bottom").forEach((el) => {
+      el.innerText = dateStr;
+    });
+    that.ScTuluCamp.querySelectorAll(
+      ".sc-tulu-camp-product-card__progress-desc"
+    ).forEach((el) => {
+      el.innerText = dateStr;
+    });
 
     let valueFound = false;
+    // eslint-disable-next-line no-unused-vars
     Object.entries(this.textObj.diversify).forEach(([category, items]) => {
       items.forEach((item) => {
         if (item.conditional) {
@@ -1058,9 +1127,7 @@ class ScTuluCampaign {
    */
   generateLevelUp() {
     const that = this;
-    let htmlCode = "";
     const data = that.articlePlacementData;
-    console.log("data", data);
     const articles = that.ScTuluCamp.querySelectorAll(
       ".sc-tulu-camp-tab__content-item-level-up [data-article-id]"
     );
@@ -1074,30 +1141,19 @@ class ScTuluCampaign {
         )
       );
 
-      console.log("articleObj", articleObj.Fields);
-
       if (articleObj) {
         const classMap = {
           Y: "sc-tulu-camp-timeline__box--active",
           N: "sc-tulu-camp-timeline__box--progress",
         };
 
-        const ArticleID = that.getObjectValue(articleObj.Fields, "ArticleID");
         const ArticleRead = that.getObjectValue(
           articleObj.Fields,
           "ArticleRead"
         );
-        const ArticleTotalAmount = that.getObjectValue(
-          articleObj.Fields,
-          "ArticleTotalAmount"
-        );
         const QuizCompleted = that.getObjectValue(
           articleObj.Fields,
           "QuizCompleted"
-        );
-        const QuizTotalAmount = that.getObjectValue(
-          articleObj.Fields,
-          "QuizTotalAmount"
         );
 
         const timeLineBoxes = article.querySelectorAll(
@@ -1118,10 +1174,10 @@ class ScTuluCampaign {
           if (QuizCompleted === "N") {
             timeLineBoxes[1].querySelector(
               ".sc-tulu-camp-timeline__box-title"
-            ).innerText = that.textObj.feedbackFailedDesc;
+            ).innerText = that.textObj.levelUp.feedbackFailedDesc;
             timeLineBoxes[1].querySelector(
               ".sc-tulu-camp-timeline__box-text"
-            ).innerText = that.textObj.feedbackFailedText;
+            ).innerText = that.textObj.levelUp.feedbackFailedText;
           } else {
             timeLineBoxes[1].querySelector(
               ".sc-tulu-camp-timeline__box-title"
@@ -1428,6 +1484,7 @@ class ScTuluCampaign {
   async sha256(message) {
     const msgBuffer = new TextEncoder().encode(message);
     const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    // eslint-disable-next-line no-undef
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
   }
@@ -1520,19 +1577,31 @@ class ScTuluCampaign {
    *
    * @returns {void}
    */
-  getStartedModal() {
+  async getStartedModal() {
     const that = this;
-    const queryString = getQueryParam(getPageContext().queryString, "param");
-    if (queryString === "yes") {
-      that.ScTuluCamp.querySelector(".sc-get-started-yes").classList.add(
-        "visible"
+    try {
+      const data = await this.fetchApiData(
+        that.textObj.registrationPlacementId
       );
-    } else {
-      that.ScTuluCamp.querySelector(".sc-get-started-no").classList.add(
-        "visible"
+      that.regPlacementData = data;
+      const registrationFlag = that.getObjectValue(
+        that.regPlacementData.Fields,
+        "RegistrationFlag"
       );
+
+      if (registrationFlag === "Y") {
+        that.ScTuluCamp.querySelector(".sc-get-started-yes").classList.add(
+          "visible"
+        );
+      } else {
+        that.ScTuluCamp.querySelector(".sc-get-started-no").classList.add(
+          "visible"
+        );
+      }
+      document.querySelector("html").classList.add("sc-modal__no-scroll");
+    } catch (error) {
+      console.error("Error fetching consolidate data:", error);
     }
-    document.querySelector("html").classList.add("sc-modal__no-scroll");
 
     const buttons = that.ScTuluCamp.querySelectorAll(
       ".sc-get-started .sc-tulu-camp-modal__footer .sc-btn--medium"
@@ -1555,6 +1624,8 @@ class ScTuluCampaign {
               ctaPosition: "middle",
               xLinkRegion: "bottom",
             });
+
+            that.handleRegistrationImpression("Clicked");
           }
         });
       });
@@ -1680,6 +1751,7 @@ class ScTuluCampaign {
           const tabContent = that.ScTuluCamp.querySelector(
             `[data-tab-content='${value}']`
           );
+
           if (tabContent) {
             const campMains =
               that.ScTuluCamp.querySelectorAll(".sc-tulu-camp-main");
@@ -1694,16 +1766,28 @@ class ScTuluCampaign {
               const headButtons = closestMain.querySelectorAll(
                 ".sc-tulu-camp-tab__head-button"
               );
+
               headButtons.forEach((headButton) => {
                 headButton.classList.remove(
                   "sc-tulu-camp-tab__head-button--active"
                 );
               });
-
               closestMain
                 .querySelector(`[data-tab-btn-id='${value}']`)
                 .classList.add("sc-tulu-camp-tab__head-button--active");
             }
+
+            const tabContents =
+              that.ScTuluCamp.querySelectorAll("[data-tab-content]");
+            tabContents.forEach((tabContent) => {
+              tabContent.classList.remove(
+                "sc-tulu-camp-tab__content-item--active"
+              );
+            });
+
+            that.ScTuluCamp.querySelector(
+              `[data-tab-content='${value}']`
+            ).classList.add("sc-tulu-camp-tab__content-item--active");
           }
         }
       }
@@ -1712,6 +1796,158 @@ class ScTuluCampaign {
     if (!that.paramExist) {
       that.getStartedModal();
     }
+  }
+
+  /**
+   * Generates a formatted date string for a campaign cycle.
+   *
+   * @param {string} campaignStartDate - The start date of the campaign in "MM/DD/YYYY" format.
+   * @param {string} campaignEndDate - The end date of the campaign in "MM/DD/YYYY" format.
+   * @returns {string} - A formatted string in the format:
+   *                     "As of DD MMM YYYY (DD MMM YYYY - DD MMM YYYY Cycle)"
+   *                     Example: "As of 17 Mar 2025 (01 Jan - 31 Mar 2025 Cycle)"
+   */
+  generateDateString(campaignStartDate, campaignEndDate) {
+    campaignStartDate = new Date(campaignStartDate);
+    campaignEndDate = new Date(campaignEndDate);
+    const currentDate = new Date(); // Today's date
+
+    // Function to format date as "DD MMM YYYY"
+    const formatDate = (date) =>
+      !isNaN(date.getTime()) // Check if date is valid
+        ? date.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          })
+        : "Invalid Date"; // Handle invalid dates
+
+    // Generate and return the formatted string
+    return `As of ${formatDate(currentDate)} (${formatDate(
+      campaignStartDate
+    )} - ${formatDate(campaignEndDate)} Cycle)`;
+  }
+
+  /**
+   * Sends a quiz impression update request via Cordova.
+   *
+   * This function checks for the specific article based on the current article ID,
+   * and sends an impression update including details like article name, group, rank, and the outcome.
+   *
+   * @param {string} outcome - The outcome of the quiz impression, e.g., "Clicked" or "Dismissed".
+   * @returns {void} - Does not return anything.
+   */
+  handleQuizImpression(outcome) {
+    if (!window.cordova) return;
+
+    const that = this;
+
+    // Find the correct article object
+    const articleObj = that.articlePlacementData.find((obj) =>
+      obj.Fields.some(
+        (field) =>
+          field.Name === "ArticleID" && field.Value === that.currentArticleId
+      )
+    );
+
+    if (!articleObj) {
+      console.error(
+        `Error: No matching article found for ArticleID: ${that.currentArticleId}`
+      );
+      return;
+    }
+
+    // Build the Impression Header based on the country
+    const ImpressionHeader = {
+      "X-APOLLO-OPERATION-NAME": "updateImpression",
+    };
+
+    if (getCurrentCountry() === "hk") {
+      const icm_id = sessionStorage.getItem("icmpid") || ""; // Ensure no null value
+      ImpressionHeader["icm-id"] = icm_id;
+    }
+
+    // Construct the request payload
+    const requestPayload = {
+      operationName: "updateImpression",
+      variables: {
+        input: {
+          name: articleObj.Name,
+          group: articleObj.GroupID,
+          interactionId: articleObj.InteractionID,
+          issue: articleObj.Issue,
+          placement: articleObj.Placement,
+          rank: articleObj.Rank,
+          outcome: outcome, // Clicked/Dismissed
+        },
+      },
+      query: `mutation updateImpression($input: CustomerOfferFeedbackInput!) { 
+            updateImpression(feedback: $input) { 
+                __typename 
+                status 
+                message 
+            } 
+        }`,
+    };
+
+    // Execute the Cordova function
+    window.cordova.exec(
+      (response) => console.log("Success:", response), // No need for JSON.stringify
+      (error) => console.error("Error:", error),
+      "gqlplugin", // Plugin name
+      "request", // Function name
+      [JSON.stringify(requestPayload), JSON.stringify(ImpressionHeader), "POST"]
+    );
+  }
+
+  /**
+   * Sends a registration impression update request via Cordova.
+   *
+   * @param {string} outcome - The outcome of the impression (e.g., "Clicked" or "Dismissed").
+   * @returns {void} - Does not return anything.
+   */
+  handleRegistrationImpression(outcome) {
+    if (!window.cordova) return;
+
+    const that = this;
+    let ImpressionHeader = {
+      "X-APOLLO-OPERATION-NAME": "updateImpression",
+    };
+
+    if (getCurrentCountry() === "hk") {
+      const icm_id = sessionStorage.getItem("icmpid") || ""; // Default to empty string if null
+      ImpressionHeader["icm-id"] = icm_id;
+    }
+
+    const requestPayload = {
+      operationName: "updateImpression",
+      variables: {
+        input: {
+          name: that.regPlacementData.Name,
+          group: that.regPlacementData.GroupID,
+          interactionId: that.regPlacementData.InteractionID,
+          issue: that.regPlacementData.Issue,
+          placement: that.regPlacementData.Placement,
+          rank: that.regPlacementData.Rank,
+          outcome: outcome, // Clicked/Dismissed
+        },
+      },
+      query: `mutation updateImpression($input: CustomerOfferFeedbackInput!) { 
+            updateImpression(feedback: $input) { 
+                __typename 
+                status 
+                message 
+            } 
+        }`,
+    };
+
+    window.cordova.exec(
+      (response) => console.log("Success:", response), // Response is already JSON
+      (error) => console.error("Error:", error),
+      "gqlplugin", // Plugin name
+      "request", // Function name
+      [JSON.stringify(requestPayload), JSON.stringify(ImpressionHeader), "POST"]
+    );
   }
 }
 
