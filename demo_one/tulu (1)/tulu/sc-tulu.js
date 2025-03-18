@@ -17,57 +17,57 @@ class ScTuluCampaign {
       queryParameterName: "tab",
       commonPlacementId: "main_page.json",
       articlePlacementId: "article.json",
-      OpenAccount: "Open An Account",
-      FirstTrade: "Make your first trade",
       diversifyText:
         "You're all set. Check out the other missions to get rewarded.",
-      feedbackSuccess: "Feedback Success",
-      feedbackError: "Feedback Error",
-      feedbackFailedText: "Failed",
-      feedbackFailedDesc: "Sorry! You failed the test.",
-      feedbackSuccessDesc: "Congratulations! You passed the test.",
-      levelUp: [
-        {
-          articleId: "wealth-needs-1",
-          quizValue:
-            "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
-        },
-        {
-          articleId: "wealth-needs-2",
-          quizValue:
-            "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
-        },
-        {
-          articleId: "wealth-needs-3",
-          quizValue:
-            "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
-        },
-        {
-          articleId: "wealth-needs-4",
-          quizValue:
-            "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", //C
-        },
-        {
-          articleId: "wealth-needs-5",
-          quizValue:
-            "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
-        },
-        {
-          articleId: "wealth-needs-6",
-          quizValue:
-            "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
-        },
-        {
-          articleId: "wealth-needs-7",
-          quizValue:
-            "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
-        },
-        {
-          articleId: "wealth-needs-8",
-          quizValue:
-            "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
-        },
-      ],
+      levelUp: {
+        feedbackSuccess: "Feedback Success",
+        feedbackError: "Feedback Error",
+        feedbackFailedText: "Failed",
+        feedbackFailedDesc: "Sorry! You failed the test.",
+        feedbackSuccessDesc: "Congratulations! You passed the test.",
+        articles: [
+          {
+            articleId: "wealth-needs-1",
+            quizValue:
+              "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+          },
+          {
+            articleId: "wealth-needs-2",
+            quizValue:
+              "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+          },
+          {
+            articleId: "wealth-needs-3",
+            quizValue:
+              "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+          },
+          {
+            articleId: "wealth-needs-4",
+            quizValue:
+              "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", //C
+          },
+          {
+            articleId: "wealth-needs-5",
+            quizValue:
+              "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+          },
+          {
+            articleId: "wealth-needs-6",
+            quizValue:
+              "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+          },
+          {
+            articleId: "wealth-needs-7",
+            quizValue:
+              "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+          },
+          {
+            articleId: "wealth-needs-8",
+            quizValue:
+              "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+          },
+        ],
+      },
       tradeUp: {
         progressNumber: [100, 200, 300],
         perRow: 6,
@@ -249,7 +249,7 @@ class ScTuluCampaign {
         if (checkedRadio) {
           const hash = await that.sha256(checkedRadio.value);
           const result =
-            that.textObj.levelUp.find(
+            that.textObj.levelUp.articles.find(
               (item) => item.articleId === that.currentArticleId
             )?.quizValue || null;
           let context;
@@ -273,7 +273,7 @@ class ScTuluCampaign {
             feedback.classList.add(
               "sc-tulu-camp-questionnaire__feedback--success"
             );
-            feedback.innerHTML = that.textObj.feedbackSuccess;
+            feedback.innerHTML = that.textObj.levelUp.feedbackSuccess;
             context = "submit - correct";
             completed = true;
 
@@ -284,7 +284,7 @@ class ScTuluCampaign {
               article.classList.add("sc-tulu-camp-timeline__box--active");
               article.querySelector(
                 ".sc-tulu-camp-timeline__box-title"
-              ).innerText = that.textObj.feedbackSuccessDesc;
+              ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
               article.removeAttribute("data-modal-selector");
             }
           } else {
@@ -294,7 +294,7 @@ class ScTuluCampaign {
             feedback.classList.add(
               "sc-tulu-camp-questionnaire__feedback--error"
             );
-            feedback.innerHTML = that.textObj.feedbackError;
+            feedback.innerHTML = that.textObj.levelUp.feedbackError;
             context = "submit - error";
             completed = true;
 
@@ -305,10 +305,10 @@ class ScTuluCampaign {
               article.classList.add("sc-tulu-camp-timeline__box--disable");
               article.querySelector(
                 ".sc-tulu-camp-timeline__box-title"
-              ).innerText = that.textObj.feedbackFailedDesc;
+              ).innerText = that.textObj.levelUp.feedbackFailedDesc;
               article.querySelector(
                 ".sc-tulu-camp-timeline__box-text"
-              ).innerText = that.textObj.feedbackFailedText;
+              ).innerText = that.textObj.levelUp.feedbackFailedText;
               article.removeAttribute("data-modal-selector");
             }
           }
@@ -408,11 +408,11 @@ class ScTuluCampaign {
             Name: "ConsolidatedAmountUT",
           },
           {
-            Value: "Y",
+            Value: "",
             Name: "OpenAccountSXA",
           },
           {
-            Value: "Y",
+            Value: "",
             Name: "FirstTradeSXA",
           },
           {
@@ -420,15 +420,15 @@ class ScTuluCampaign {
             Name: "CompletionBonusSXA",
           },
           {
-            Value: "Y",
+            Value: "",
             Name: "FirstTradeFX",
           },
           {
-            Value: "N",
+            Value: "",
             Name: "OpenAccountUT",
           },
           {
-            Value: "Y",
+            Value: "",
             Name: "FirstTradeUT",
           },
           {
@@ -455,6 +455,7 @@ class ScTuluCampaign {
       },
       "article.json": [
         {
+          Issue: "AcquisitionSales1",
           Fields: [
             {
               Name: "ArticleID",
@@ -479,6 +480,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales2",
           Fields: [
             {
               Name: "ArticleID",
@@ -503,6 +505,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales3",
           Fields: [
             {
               Name: "ArticleID",
@@ -527,6 +530,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales3",
           Fields: [
             {
               Name: "ArticleID",
@@ -551,6 +555,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales3",
           Fields: [
             {
               Name: "ArticleID",
@@ -575,6 +580,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales3",
           Fields: [
             {
               Name: "ArticleID",
@@ -599,6 +605,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales3",
           Fields: [
             {
               Name: "ArticleID",
@@ -623,6 +630,7 @@ class ScTuluCampaign {
           ],
         },
         {
+          Issue: "AcquisitionSales3",
           Fields: [
             {
               Name: "ArticleID",
@@ -796,9 +804,11 @@ class ScTuluCampaign {
     let valueFound = false;
     Object.entries(this.textObj.diversify).forEach(([category, items]) => {
       items.forEach((item) => {
-        const value = that.getObjectValue(data, item.key);
-        if (value) {
-          valueFound = true;
+        if (item.conditional) {
+          const value = that.getObjectValue(data, item.key);
+          if (value) {
+            valueFound = true;
+          }
         }
       });
     });
@@ -1050,6 +1060,7 @@ class ScTuluCampaign {
     const that = this;
     let htmlCode = "";
     const data = that.articlePlacementData;
+    console.log("data", data);
     const articles = that.ScTuluCamp.querySelectorAll(
       ".sc-tulu-camp-tab__content-item-level-up [data-article-id]"
     );
@@ -1062,6 +1073,9 @@ class ScTuluCampaign {
             field.Value === article.getAttribute("data-article-id")
         )
       );
+
+      console.log("articleObj", articleObj.Fields);
+
       if (articleObj) {
         const classMap = {
           Y: "sc-tulu-camp-timeline__box--active",
@@ -1111,7 +1125,7 @@ class ScTuluCampaign {
           } else {
             timeLineBoxes[1].querySelector(
               ".sc-tulu-camp-timeline__box-title"
-            ).innerText = that.textObj.feedbackSuccessDesc;
+            ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
           }
           article
             .querySelector("[data-modal-selector]")
@@ -1654,7 +1668,7 @@ class ScTuluCampaign {
     const that = this;
     const queryString = getPageContext().queryString;
     const tuluParam = that.textObj.queryParameterName;
-    let paramExist = false;
+    that.paramExist = false;
     if (tuluParam) {
       const value = getQueryParam(queryString, tuluParam);
       if (value) {
@@ -1662,7 +1676,7 @@ class ScTuluCampaign {
           `[data-tab-content='${value}']`
         );
         if (targetTab) {
-          paramExist = true;
+          that.paramExist = true;
           const tabContent = that.ScTuluCamp.querySelector(
             `[data-tab-content='${value}']`
           );
@@ -1695,7 +1709,7 @@ class ScTuluCampaign {
       }
     }
 
-    if (!paramExist) {
+    if (!that.paramExist) {
       that.getStartedModal();
     }
   }
