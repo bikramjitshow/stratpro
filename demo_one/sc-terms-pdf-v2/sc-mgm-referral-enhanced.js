@@ -234,6 +234,7 @@ class ScMgmReferralEnhanced {
             .querySelector(".sc-products-tile-modal")
             .cloneNode(true);
           console.log(clonedPdtForSingleView);
+
           const singleviewedWrapper = that.productTile.querySelector(
             ".sc-products-tile-singleview-wrap"
           );
@@ -244,6 +245,26 @@ class ScMgmReferralEnhanced {
             console.log("singleviewedWrapper---1", checkedRadio);
             that.selectedRadioBox = checkedRadio;
             singleviewedWrapper.appendChild(clonedPdtForSingleView);
+
+            // Update IDs for all radio buttons and their labels
+          // const radioButtons = singleviewedWrapper.querySelectorAll(
+          //   "input[type='radio']"
+          // );
+          // console.log("radioooo- ",radioButtons )
+          // radioButtons.forEach((radioBtn, index) => {
+          //   const uniqueId = `radio_${Date.now()}_${index}`; // Unique ID for each radio
+          //   radioBtn.setAttribute("id", uniqueId);
+          //   console.log(radioBtn)
+
+          //   const label = radioBtn.querySelector(
+          //     `label[for='${radioBtn.id}']`
+          //   );
+          //   console.log(label)
+
+          //   if (label) {
+          //     label.setAttribute("for", uniqueId);
+          //   }
+          // });
             // that.handleRadioBtns();
           }
         } else {
@@ -822,57 +843,26 @@ class ScMgmReferralEnhanced {
   }
 
   handleRadioBtns() {
+    // return;
+    console.log("handleRadioBtns called !!");
     const that = this;
-    // that.radioBtns = document.querySelectorAll(
-    //   ".sc-products-tile-pdt-selection .sc-radio-box__input"
-    // );
-    // if (that.radioBtns.length) {
-    //   that.radioBtns.forEach((btn) => {
-    //     btn.addEventListener("click", (event) => {
-    //       handleAnalyticsCTA(
-    //         event,
-    //         event.target
-    //           .closest(".sc-radio-box")
-    //           .querySelector(".sc-radio-box__input-label"),
-    //         {
-    //           ctaType: "radio-button",
-    //         }
-    //       );
-    //     });
-    //   });
-    // }
-    // Step 1: Find all radio inputs, even inside cloned modals
+    // Find all radio inputs, even inside cloned modals
     const radioInputs = document.querySelectorAll("input[type='radio']");
     console.log(radioInputs);
 
-    // Step 2: Listen for a change event to capture the selected radio
+    // Listen for a change event to capture the selected radio
     if (radioInputs.length) {
       radioInputs.forEach((radio) => {
-        radio.addEventListener("change", function (event) {
+        radio.addEventListener("click", function (event) {
           const selectedRadio = document.querySelector(
             "input[type='radio']:checked"
           );
-
           if (selectedRadio) {
-            // Step 3: Target the selected radio label or input and console log it
-            const selectedLabel =
-              selectedRadio.closest("label") || selectedRadio;
-            console.log("Selected Radio Input:", selectedRadio);
-            console.log("Selected Radio Label:", selectedLabel);
-            console.log(
-              event,
-              event.target
-                .closest(".sc-products-tile-pdt-selection__tile")
-                .querySelector(".sc-products-tile-pdt-selection__pdt-name").innerText,
-              {
-                ctaType: "radio-button",
-              }
-            )
             handleAnalyticsCTA(
               event,
               event.target
                 .closest(".sc-products-tile-pdt-selection__tile")
-                .querySelector(".sc-products-tile-pdt-selection__pdt-name").innerText,
+                .querySelector(".sc-products-tile-pdt-selection__pdt-name"),
               {
                 ctaType: "radio-button",
               }
