@@ -1,0 +1,332 @@
+ const data = {
+      rewards_registration: {
+        Issue: "AcquisitionSales5",
+        Name: "EGSRTULULevelupArticlenQuiz",
+        GroupID: "Deposits",
+        InteractionID: "-3569455782704439973",
+        Placement: "levelup_page",
+        Rank: 5,
+      },
+      "main_page.json": {
+        Fields: [
+          {
+            Value: "5000",
+            Name: "ConsolidatedDiversify",
+          },
+          {
+            Value: "300",
+            Name: "ConsolidatedTradeup",
+          },
+          {
+            Value: "50",
+            Name: "ConsolidatedLevelup",
+          },
+          {
+            Value: "03/31/2025",
+            Name: "CampaignEndDate",
+          },
+          {
+            Value: "01/01/2025",
+            Name: "CampaignStartDate",
+          },
+          {
+            Value: "1000",
+            Name: "ConsolidatedAmount",
+          },
+          {
+            Value: "1000",
+            Name: "ConsolidatedAmountFX",
+          },
+          {
+            Value: "1000",
+            Name: "ConsolidatedAmountUT",
+          },
+          {
+            Value: "",
+            Name: "OpenAccountSXA",
+          },
+          {
+            Value: "",
+            Name: "FirstTradeSXA",
+          },
+          {
+            Value: "N",
+            Name: "CompletionBonusSXA",
+          },
+          {
+            Value: "",
+            Name: "FirstTradeFX",
+          },
+          {
+            Value: "",
+            Name: "OpenAccountUT",
+          },
+          {
+            Value: "",
+            Name: "FirstTradeUT",
+          },
+          {
+            Value: "N",
+            Name: "CompletionBonusUT",
+          },
+          {
+            Value: "100",
+            Name: "RewardValue100",
+          },
+          {
+            Value: "2",
+            Name: "RewardCountSXA",
+          },
+          {
+            Value: "15",
+            Name: "RewardCountUT",
+          },
+          {
+            Value: "1",
+            Name: "RewardCountFX",
+          },
+        ],
+      },
+      "article.json": [
+        {
+          Issue: "AcquisitionSales1",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 1,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-1",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "Y",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 400,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 100,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales2",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 2,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-2",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "Y",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 400,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "Y",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 100,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales3",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 3,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-3",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "Y",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 600,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "N",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 200,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales4",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 4,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-4",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "N",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 600,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "N",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 200,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales5",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 5,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-5",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "Y",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 600,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "N",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 200,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales6",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 6,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-6",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 600,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 200,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales7",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 7,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-7",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 600,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 200,
+            },
+          ],
+        },
+        {
+          Issue: "AcquisitionSales8",
+          Name: "EGSRTULULevelupArticlenQuiz",
+          GroupID: "Deposits",
+          InteractionID: "-3569455782704439973",
+          Placement: "levelup_page",
+          Rank: 8,
+          Fields: [
+            {
+              Name: "ArticleID",
+              Value: "wealth-needs-8",
+            },
+            {
+              Name: "ArticleRead",
+              Value: "",
+            },
+            {
+              Name: "ArticleTotalAmount",
+              Value: 600,
+            },
+            {
+              Name: "QuizCompleted",
+              Value: "",
+            },
+            {
+              Name: "QuizTotalAmount",
+              Value: 200,
+            },
+          ],
+        },
+      ],
+    };
