@@ -33,6 +33,10 @@ class ScTuluCampaign {
             articleId: "wealth-needs-1",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+            title: "",
+            description: "",
+            articlePoints: 1000,
+            quizPoints: 100,
           },
           {
             articleId: "wealth-needs-2",
@@ -184,222 +188,49 @@ class ScTuluCampaign {
     that.loadArticleDataApi();
   }
 
-  handleTabsContent() {
+  generateEarningHistory() {
     const that = this;
-    // Get all the tabs in this tab group
-    that.tabs = that.ScTuluCamp.querySelectorAll("[data-tab-btn-id]");
-    // Get all the content items in this tab group
-    that.contents = that.ScTuluCamp.querySelectorAll(
-      ".sc-tulu-camp-tab__content-item"
-    );
-
-    that.tabs.forEach((tab) => {
-      tab.addEventListener("click", (event) => {
-        const targetId = tab.getAttribute("data-tab-btn-id");
-        that.handleTabs(targetId);
-
-        const wrapperInner = event.target.closest(
-          ".sc-tulu-camp__wrapper-inner"
-        );
-        const closestBtn = event.target.closest("button");
-        const closestPdt = event.target.closest(
-          ".sc-tulu-camp-product-card__main"
-        );
-        if (wrapperInner) {
-          console.log("Tab 1");
-          handleAnalyticsCTA(event, wrapperInner, {
-            ctaType: "button",
-            xLinkRegion: "middle",
-            ctaPosition: "top",
-            context: event.target.innerText,
-          });
-        } else if (closestBtn) {
-          console.log("Tab 2");
-          handleAnalyticsCTA(event, closestBtn, {
-            ctaType: "button",
-            xLinkRegion: "middle",
-            ctaPosition: "top",
-          });
-        } else if (closestPdt) {
-          console.log("Tab 3");
-          handleAnalyticsCTA(event, "", {
-            context: trim(
-              closestPdt.querySelector(".sc-tulu-camp-product-card__title")
-                .innerText
-            ),
-            ctaType: "button",
-            xLinkRegion: "middle",
-            ctaPosition: "middle",
-          });
-        }
-      });
-    });
-  }
-
-  /**
-   * Handles interactions with the questionnaire form, including radio button changes, label clicks,
-   * and the continue button functionality. It also manages the feedback display and tracking analytics events.
-   *
-   * @function handleQuestionnaire
-   */
-  handleQuestionnaire() {
-    const that = this;
-    //questionnaire radio
-    const questionnaireRadios = that.ScTuluCamp.querySelectorAll(
-      '.sc-questionnaire input[type="radio"]'
-    );
-    if (questionnaireRadios.length) {
-      questionnaireRadios.forEach((questionnaireRadio) => {
-        questionnaireRadio.addEventListener("change", (event) => {
-          event.target
-            .closest(".sc-tulu-camp-questionnaire")
-            .querySelector(".sc-tulu-camp-modal__footer-btn")
-            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
-        });
-      });
-    }
-
-    const questionnaireLabels = that.ScTuluCamp.querySelectorAll(
-      ".sc-questionnaire .sc-radio-box__input-label"
-    );
-    if (questionnaireLabels.length) {
-      questionnaireLabels.forEach((questionnaireLabel) => {
-        questionnaireLabel.addEventListener("click", (event) => {
-          event.target
-            .closest(".sc-tulu-camp-questionnaire")
-            .querySelector(".sc-tulu-camp-modal__footer-btn")
-            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
-        });
-      });
-    }
-
-    const continueButtons = that.ScTuluCamp.querySelectorAll(
-      ".sc-tulu-camp-questionnaire__btn .sc-tulu-camp-modal__footer-btn"
-    );
-
-    let completed = false;
-    continueButtons.forEach((continueButton) => {
-      continueButton.addEventListener("click", async (event) => {
-        const closest = event.target.closest(".sc-questionnaire");
-        const checkedRadio = closest.querySelector(`[type='radio']:checked`);
-
-        if (checkedRadio) {
-          const hash = await that.sha256(checkedRadio.value);
-          const result =
-            that.textObj.levelUp.articles.find(
-              (item) => item.articleId === that.currentArticleId
-            )?.quizValue || null;
-          let context;
-          const feedback = closest.querySelector(
-            ".sc-tulu-camp-questionnaire__feedback"
-          );
-
-          if (completed) {
-            context = "continue";
-            event.target
-              .closest(".sc-tulu-camp-modal")
-              .classList.remove("visible");
-            document
-              .querySelector("html")
-              .classList.remove("sc-modal__no-scroll");
-            completed = false;
-          } else if (hash === result) {
-            //Correct Answer
-            context = event.target.getAttribute("data-text-continue");
-            event.target.innerText = context;
-
-            feedback.classList.add(
-              "sc-tulu-camp-questionnaire__feedback--success"
-            );
-            feedback.innerHTML = that.textObj.levelUp.feedbackSuccess;
-            context = "submit - correct";
-            completed = true;
-
-            const article = that.ScTuluCamp.querySelector(
-              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
-            );
-            if (article) {
-              article.classList.add("sc-tulu-camp-timeline__box--active");
-              // article.querySelector(
-              //   ".sc-tulu-camp-timeline__box-title"
-              // ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
-              article.removeAttribute("data-modal-selector");
-            }
-            that.handleQuizImpression("Clicked");
-          } else {
-            context = event.target.getAttribute("data-text-continue");
-            event.target.innerText = context;
-
-            feedback.classList.add(
-              "sc-tulu-camp-questionnaire__feedback--error"
-            );
-            feedback.innerHTML = that.textObj.levelUp.feedbackError;
-            context = "submit - incorrect";
-            completed = true;
-
-            const article = that.ScTuluCamp.querySelector(
-              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
-            );
-            if (article) {
-              article.classList.add("sc-tulu-camp-timeline__box--disable");
-              // article.querySelector(
-              //   ".sc-tulu-camp-timeline__box-title"
-              // ).innerText = that.textObj.levelUp.feedbackFailedDesc;
-              article.querySelector(
-                ".sc-tulu-camp-timeline__box-text"
-              ).innerText = that.textObj.levelUp.feedbackFailedText;
-              article.removeAttribute("data-modal-selector");
-            }
-            that.handleQuizImpression("Dismissed");
+    const data = that.commonPlacementData;
+    let htmlCode = "";
+    Object.entries(this.textObj.diversify).forEach(([category, items]) => {
+      items.forEach((item) => {
+        if (item.conditional) {
+          const value = that.getObjectValue(data, item.key);
+          if (value === "Y") {
+            htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+            <div class="sc-tulu-camp-earnings__left">
+              <div class="sc-tulu-camp-earnings__icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z" fill="#4CA0F7"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z" fill="#4CA0F7"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z" fill="#4CA0F7"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z" fill="#4CA0F7"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z" fill="#4CA0F7"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z" fill="#4CA0F7"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z" fill="#4CA0F7"></path>
+                </svg>
+              </div>
+              <div class="sc-tulu-camp-earnings__text">
+                <div class="sc-tulu-camp-earnings__head">
+                  Account Opening
+                </div>
+                <p class="sc-tulu-camp-earnings__sub-head">FX</p>
+              </div>
+            </div>
+            <div class="sc-tulu-camp-earnings__right">
+              <p>
+                <strong>1,000</strong>
+                Miles
+              </p>
+            </div>
+          </div>`;
           }
-          closest.querySelector(
-            ".sc-tulu-camp-questionnaire__test-text span"
-          ).innerText = 2;
-
-          closest.querySelectorAll(".sc-radio-box__input").forEach((radio) => {
-            radio.disabled = true;
-          });
-
-          handleAnalyticsCTA(event, closest, {
-            ctaType: "button",
-            context: context,
-            xLinkRegion: "middle",
-            ctaPosition: "bottom",
-          });
+          console.log(`SSS ${item.key}: `, value, item.value);
         }
       });
     });
   }
 
-  /**
-   * Fetches and caches the topology data for world continents.
-   * Ensures that the topology data is loaded only once.
-   */
-
-  async fetchApiData2(url) {
-    if (!url) {
-      throw new Error("URL is required to fetch data.");
-    }
-
-    try {
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      if (!response.ok) {
-        throw new Error(
-          `Failed to fetch data: ${response.status} ${response.statusText}`
-        );
-      }
-      return await response.json();
-    } catch (error) {
-      console.error("Fetch API Error:", error);
-      throw error;
-    }
-  }
   async fetchApiData(url) {
     if (!url) {
       throw new Error("URL is required to fetch data.");
@@ -420,7 +251,7 @@ class ScTuluCampaign {
         Rank: 2,
         Fields: [
           {
-            Value: "Y",
+            Value: "",
             Name: "RegistrationFlag",
           },
         ],
@@ -867,7 +698,7 @@ class ScTuluCampaign {
         );
       }
 
-      console.log("valueFound", valueFound);
+      that.generateEarningHistory();
     } catch (error) {
       console.error("Error fetching consolidate data:", error);
     }
@@ -884,9 +715,28 @@ class ScTuluCampaign {
     for (const item of that.textObj.nextTask.diversify) {
       const value = that.getObjectValue(that.commonPlacementData, item.key);
       if (value === "N") {
-        that.ScTuluCamp.querySelector(
+        const content = that.ScTuluCamp.querySelector(
           ".sc-tulu-camp-product-card-diversify .sc-tulu-camp-product-card__bottom .sc-tulu-camp-product-card__task-desc-content"
-        ).innerText = item.text;
+        );
+        if (content) {
+          content.innerText = item.text;
+          let url;
+          for (const [category, diversify] of Object.entries(
+            this.textObj.diversify
+          )) {
+            const found = diversify.find((dive) => dive.key === item.key);
+            if (found) {
+              url = found.url;
+              break; // Exit the loop once found
+            }
+          }
+
+          if (url) {
+            content
+              .closest(".sc-tulu-camp-product-card__bottom")
+              .setAttribute("data-tab-url", url);
+          }
+        }
         break;
       }
     }
@@ -1626,7 +1476,6 @@ class ScTuluCampaign {
     console.log("labels", labels.length);
     labels.forEach((label) => {
       label.addEventListener("click", (event) => {
-        console.log("ddddddddd");
         const closest = event.target.closest("a");
         handleAnalyticsCTA(event, closest, {
           ctaType: "button",
@@ -1772,20 +1621,37 @@ class ScTuluCampaign {
     const mainPage = document.querySelectorAll(".sc-tulu-camp-main");
     const backBtn = document.querySelector(".sc-tulu-camp-header__back");
     const taskDesk = that.ScTuluCamp.querySelectorAll(
-      ".sc-tulu-camp-product-card__task-desc[data-tab-btn-id]"
+      ".sc-tulu-camp-product-card__bottom"
     );
 
     if (startButton && tcModal) {
       cardMain.forEach((card) => {
         card.addEventListener("click", () => {
+          console.log(111111111);
           mainPage[0].classList.remove("active");
           mainPage[1].classList.add("active");
         });
       });
       taskDesk.forEach((el) => {
-        el.addEventListener("click", () => {
-          mainPage[0].classList.remove("active");
-          mainPage[1].classList.add("active");
+        el.addEventListener("click", (event) => {
+          const closest = event.target.closest("[data-tab-url]");
+          if (closest) {
+            window.open(closest.getAttribute("data-tab-url"), "blank");
+          } else {
+            mainPage[0].classList.remove("active");
+            mainPage[1].classList.add("active");
+          }
+          handleAnalyticsCTA(event, el, {
+            ctaType: "button",
+            ctaPosition: "middle",
+            xLinkRegion: "middle",
+            context: trim(
+              event.target
+                .closest(".sc-tulu-camp-product-card__bottom")
+                .querySelector(".sc-tulu-camp-product-card__task-desc-content")
+                .innerText
+            ),
+          });
         });
       });
 
@@ -1933,6 +1799,193 @@ class ScTuluCampaign {
     return `As of ${formatDate(currentDate)} (${formatDate(
       campaignStartDate
     )} - ${formatDate(campaignEndDate)} Cycle)`;
+  }
+
+  handleTabsContent() {
+    const that = this;
+    // Get all the tabs in this tab group
+    that.tabs = that.ScTuluCamp.querySelectorAll("[data-tab-btn-id]");
+    // Get all the content items in this tab group
+    that.contents = that.ScTuluCamp.querySelectorAll(
+      ".sc-tulu-camp-tab__content-item"
+    );
+
+    that.tabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        const targetId = tab.getAttribute("data-tab-btn-id");
+        that.handleTabs(targetId);
+
+        const wrapperInner = event.target.closest(
+          ".sc-tulu-camp__wrapper-inner"
+        );
+        const closestBtn = event.target.closest("button");
+        const closestPdt = event.target.closest(
+          ".sc-tulu-camp-product-card__main"
+        );
+        if (wrapperInner) {
+          console.log("Tab 1");
+          handleAnalyticsCTA(event, wrapperInner, {
+            ctaType: "button",
+            xLinkRegion: "middle",
+            ctaPosition: "top",
+            context: event.target.innerText,
+          });
+        } else if (closestBtn) {
+          console.log("Tab 2");
+          handleAnalyticsCTA(event, closestBtn, {
+            ctaType: "button",
+            xLinkRegion: "middle",
+            ctaPosition: "top",
+          });
+        } else if (closestPdt) {
+          console.log("Tab 3");
+          handleAnalyticsCTA(event, "", {
+            context: trim(
+              closestPdt.querySelector(".sc-tulu-camp-product-card__title")
+                .innerText
+            ),
+            ctaType: "button",
+            xLinkRegion: "middle",
+            ctaPosition: "middle",
+          });
+        }
+      });
+    });
+  }
+
+  /**
+   * Handles interactions with the questionnaire form, including radio button changes, label clicks,
+   * and the continue button functionality. It also manages the feedback display and tracking analytics events.
+   *
+   * @function handleQuestionnaire
+   */
+  handleQuestionnaire() {
+    const that = this;
+    //questionnaire radio
+    const questionnaireRadios = that.ScTuluCamp.querySelectorAll(
+      '.sc-questionnaire input[type="radio"]'
+    );
+    if (questionnaireRadios.length) {
+      questionnaireRadios.forEach((questionnaireRadio) => {
+        questionnaireRadio.addEventListener("change", (event) => {
+          event.target
+            .closest(".sc-tulu-camp-questionnaire")
+            .querySelector(".sc-tulu-camp-modal__footer-btn")
+            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
+        });
+      });
+    }
+
+    const questionnaireLabels = that.ScTuluCamp.querySelectorAll(
+      ".sc-questionnaire .sc-radio-box__input-label"
+    );
+    if (questionnaireLabels.length) {
+      questionnaireLabels.forEach((questionnaireLabel) => {
+        questionnaireLabel.addEventListener("click", (event) => {
+          event.target
+            .closest(".sc-tulu-camp-questionnaire")
+            .querySelector(".sc-tulu-camp-modal__footer-btn")
+            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
+        });
+      });
+    }
+
+    const continueButtons = that.ScTuluCamp.querySelectorAll(
+      ".sc-tulu-camp-questionnaire__btn .sc-tulu-camp-modal__footer-btn"
+    );
+
+    let completed = false;
+    continueButtons.forEach((continueButton) => {
+      continueButton.addEventListener("click", async (event) => {
+        const closest = event.target.closest(".sc-questionnaire");
+        const checkedRadio = closest.querySelector(`[type='radio']:checked`);
+
+        if (checkedRadio) {
+          const hash = await that.sha256(checkedRadio.value);
+          const result =
+            that.textObj.levelUp.articles.find(
+              (item) => item.articleId === that.currentArticleId
+            )?.quizValue || null;
+          let context;
+          const feedback = closest.querySelector(
+            ".sc-tulu-camp-questionnaire__feedback"
+          );
+
+          if (completed) {
+            context = "continue";
+            event.target
+              .closest(".sc-tulu-camp-modal")
+              .classList.remove("visible");
+            document
+              .querySelector("html")
+              .classList.remove("sc-modal__no-scroll");
+            completed = false;
+          } else if (hash === result) {
+            //Correct Answer
+            context = event.target.getAttribute("data-text-continue");
+            event.target.innerText = context;
+
+            feedback.classList.add(
+              "sc-tulu-camp-questionnaire__feedback--success"
+            );
+            feedback.innerHTML = that.textObj.levelUp.feedbackSuccess;
+            context = "submit - correct";
+            completed = true;
+
+            const article = that.ScTuluCamp.querySelector(
+              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
+            );
+            if (article) {
+              article.classList.add("sc-tulu-camp-timeline__box--active");
+              // article.querySelector(
+              //   ".sc-tulu-camp-timeline__box-title"
+              // ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
+              article.removeAttribute("data-modal-selector");
+            }
+            that.handleQuizImpression("Clicked");
+          } else {
+            context = event.target.getAttribute("data-text-continue");
+            event.target.innerText = context;
+
+            feedback.classList.add(
+              "sc-tulu-camp-questionnaire__feedback--error"
+            );
+            feedback.innerHTML = that.textObj.levelUp.feedbackError;
+            context = "submit - incorrect";
+            completed = true;
+
+            const article = that.ScTuluCamp.querySelector(
+              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
+            );
+            if (article) {
+              article.classList.add("sc-tulu-camp-timeline__box--disable");
+              // article.querySelector(
+              //   ".sc-tulu-camp-timeline__box-title"
+              // ).innerText = that.textObj.levelUp.feedbackFailedDesc;
+              article.querySelector(
+                ".sc-tulu-camp-timeline__box-text"
+              ).innerText = that.textObj.levelUp.feedbackFailedText;
+              article.removeAttribute("data-modal-selector");
+            }
+            that.handleQuizImpression("Dismissed");
+          }
+          closest.querySelector(
+            ".sc-tulu-camp-questionnaire__test-text span"
+          ).innerText = 2;
+
+          closest.querySelectorAll(".sc-radio-box__input").forEach((radio) => {
+            radio.disabled = true;
+          });
+
+          handleAnalyticsCTA(event, closest, {
+            ctaType: "button",
+            context: context,
+            xLinkRegion: "middle",
+            ctaPosition: "bottom",
+          });
+        }
+      });
+    });
   }
 
   /**
