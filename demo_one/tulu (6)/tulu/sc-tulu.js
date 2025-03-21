@@ -44,6 +44,9 @@ class ScTuluCampaign {
               "How can you achieve financial freedom and live the life you envision sooner?",
             articlePoints: 400,
             quizPoints: 100,
+            popupTitle: "Tips to earn HKD50,000 passive income",
+            popupDescription:
+              "How can you achieve financial freedom and live the life you envision sooner?",
           },
           {
             articleId: "wealth-needs-2",
@@ -53,6 +56,8 @@ class ScTuluCampaign {
             description: "It’s time to rethink cash as the Fed cuts rates",
             articlePoints: 400,
             quizPoints: 100,
+            popupTitle: "💰Cash is no longer king?",
+            popupDescription: "It’s time to rethink cash as the Fed cuts rates",
           },
           {
             articleId: "wealth-needs-3",
@@ -63,6 +68,8 @@ class ScTuluCampaign {
             description: `Be aware of "cash thief"`,
             articlePoints: 600,
             quizPoints: 200,
+            popupTitle: "💰Cash is no longer king?",
+            popupDescription: "It’s time to rethink cash as the Fed cuts rates",
           },
           {
             articleId: "wealth-needs-4",
@@ -72,6 +79,8 @@ class ScTuluCampaign {
             description: "💡1-minute 2025 Investment Essentials",
             articlePoints: 600,
             quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foundation Portfolio",
+            popupDescription: "💡1-minute 2025 Investment Essentials",
           },
           {
             articleId: "wealth-needs-5",
@@ -81,6 +90,8 @@ class ScTuluCampaign {
             description: "1-minute 2025 Income Strategies",
             articlePoints: 600,
             quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Passive Income",
+            popupDescription: "1-minute 2025 Income Strategies",
           },
           {
             articleId: "wealth-needs-6",
@@ -90,6 +101,8 @@ class ScTuluCampaign {
             description: "1-minute 2025 FX Strategies",
             articlePoints: 600,
             quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            popupDescription: "1-minute 2025 FX Strategies",
           },
           {
             articleId: "wealth-needs-7",
@@ -100,6 +113,8 @@ class ScTuluCampaign {
               "Explore how investors earn interest spread by carry trade",
             articlePoints: 600,
             quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            popupDescription: "1-minute 2025 FX Strategies",
           },
           {
             articleId: "wealth-needs-8",
@@ -110,6 +125,8 @@ class ScTuluCampaign {
               "What drives the inflow into the safe haven currencies during market turbulence?",
             articlePoints: 600,
             quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            popupDescription: "1-minute 2025 FX Strategies",
           },
         ],
       },
@@ -143,55 +160,82 @@ class ScTuluCampaign {
           {
             key: "OpenAccountSXA",
             text: "Open An Account",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
             value: "77",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "FirstTradeSXA",
             text: "Make your first trade",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "CompletionBonusSXA",
             text: "Completion Bonus",
-            url: "#",
             value: "1000",
             conditional: false,
+            popupCta: "#",
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta: "#",
           },
         ],
         fx: [
           {
             key: "FirstTradeFX",
             text: "Make your first trade",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/livefx-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
         ],
         ut: [
           {
             key: "OpenAccountUT",
             text: "Open An Account",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/omf-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "FirstTradeUT",
             text: "Make your first trade",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/omf-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "CompletionBonusUT",
             text: "Finish all actions to earn bonus miles",
-            url: "#",
             value: "1000",
             conditional: false,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta: "#",
           },
         ],
       },
@@ -403,11 +447,11 @@ class ScTuluCampaign {
             Name: "ConsolidatedAmountUT",
           },
           {
-            Value: "Y",
+            Value: "N",
             Name: "OpenAccountSXA",
           },
           {
-            Value: "Y",
+            Value: "N",
             Name: "FirstTradeSXA",
           },
           {
@@ -839,15 +883,17 @@ class ScTuluCampaign {
           )) {
             const found = diversify.find((dive) => dive.key === item.key);
             if (found) {
-              url = found.url;
+              url = found.popupCta;
               break; // Exit the loop once found
             }
           }
 
           if (url) {
-            content
-              .closest(".sc-tulu-camp-product-card__bottom")
-              .setAttribute("data-tab-url", url);
+            const closestElement = content.closest(
+              ".sc-tulu-camp-product-card__bottom"
+            );
+            closestElement.setAttribute("data-link-url", url);
+            closestElement.setAttribute("data-modal-selector", item.key);
           }
         }
         break;
@@ -933,7 +979,7 @@ class ScTuluCampaign {
 
               if (value) {
                 //Display only if value is Y or N
-                htmlCode += generateHTML(item, activeClass);
+                htmlCode += generateHTML(item, activeClass, item.key);
               }
             } else {
               itemObj = item;
@@ -947,11 +993,7 @@ class ScTuluCampaign {
               .classList.add("hide");
           } else {
             if (itemObj) {
-              htmlCode += generateHTML(
-                itemObj,
-                className,
-                "sc-account-opening-confirmation"
-              );
+              htmlCode += generateHTML(itemObj, className, "");
             }
             categoryWrapper.innerHTML = htmlCode;
           }
@@ -972,13 +1014,20 @@ class ScTuluCampaign {
         .classList.add("hide");
     }
 
-    function generateHTML(item, activeClass, modalAttr = "") {
-      const urlAttr =
-        item.conditional &&
-        activeClass === "sc-tulu-camp-timeline__box--progress"
-          ? `data-link-url="${item.url}"`
-          : "";
-      return `<div class="sc-tulu-camp-timeline__box ${activeClass}" ${urlAttr} data-modal-selector='${modalAttr}'>
+    function generateHTML(item, activeClass, modalKey) {
+      let urlAttr = "";
+      if (modalKey) {
+        urlAttr =
+          item.conditional &&
+          activeClass === "sc-tulu-camp-timeline__box--progress"
+            ? `data-link-url="${item.popupCta}"`
+            : "";
+        if (urlAttr) {
+          urlAttr += ` data-modal-selector='${modalKey}'`;
+        }
+      }
+
+      return `<div class="sc-tulu-camp-timeline__box ${activeClass}" ${urlAttr}>
                         <div class="sc-tulu-camp-timeline__box-wrapper">
                           <div class="sc-tulu-camp-timeline__box-title">
                             ${item.text}
@@ -1296,6 +1345,9 @@ class ScTuluCampaign {
     const that = this;
     //Open Modal
     that.ScTuluCamp.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        event.preventDefault();
+      }
       const modal = event.target.closest("[data-modal-selector]");
       const articleAnchor = event.target.closest(
         "a.sc-tulu-camp-timeline__cvp-title"
@@ -1410,22 +1462,23 @@ class ScTuluCampaign {
           });
         }
 
-        //Timeline boxes
-        let anchorExist = false;
-        const timeLineElement = event.target.closest(
-          ".sc-tulu-camp-wrapper-full__column"
-        );
-        if (timeLineElement) {
-          const diversifyTitle = timeLineElement.querySelector(
-            ".sc-tulu-camp-wrapper-full__title"
+        //Handle DeepLink
+        const deepLink = event.target.closest("[data-link-url]");
+        if (deepLink) {
+          let title = "";
+
+          const diversifyNextTask = deepLink.querySelector(
+            ".sc-tulu-camp-product-card__task-desc-content"
           );
-          if (diversifyTitle && diversifyTitle.getAttribute("data-context")) {
+          const dataContext = deepLink
+            .closest(".sc-tulu-camp-wrapper-full__column")
+            ?.querySelector("[data-context]");
+          if (dataContext) {
             //diversify section
-            const title = trim(diversifyTitle.getAttribute("data-context"));
+            title = dataContext.getAttribute("data-context");
             const content = trim(
-              event.target
-                .closest(".sc-tulu-camp-timeline__box")
-                .querySelector(".sc-tulu-camp-timeline__box-title").innerText
+              deepLink.querySelector(".sc-tulu-camp-timeline__box-title")
+                ?.innerText || ""
             );
 
             Object.assign(ctaObj, {
@@ -1433,41 +1486,43 @@ class ScTuluCampaign {
               ctaPosition: "middle",
               xLinkRegion: "middle",
             });
-
-            const linkUrl = event.target.closest("[data-link-url]");
-            if (linkUrl) {
-              window.open(linkUrl.getAttribute("data-link-url"), "_blank");
-              anchorExist = true;
-            }
-          } else if (
-            timeLineElement.querySelector(".sc-tulu-camp-timeline__box")
-          ) {
-            //article section
+          } else if (diversifyNextTask) {
             Object.assign(ctaObj, {
-              context:
-                `article test - ` +
-                trim(
-                  timeLineElement.querySelector(
-                    ".sc-tulu-camp-timeline__box-title"
-                  ).innerText
-                ),
+              context: trim(diversifyNextTask.innerText),
               ctaPosition: "middle",
               xLinkRegion: "middle",
             });
           }
+
+          const selectedModal =
+            that.ScTuluCamp.querySelector(".sc-deeplink-modal");
+          selectedModal.classList.add("visible");
+          document.querySelector("html").classList.add("sc-modal__no-scroll");
+          that.deepLinkUrl = deepLink.getAttribute("data-link-url");
+          that.handleDeepLinkModal("diversify", selector);
         }
 
-        if (anchorElement ?? buttonElement ?? nextTaskElement ?? anchorExist) {
+        if (anchorElement ?? buttonElement ?? nextTaskElement ?? deepLink) {
           handleAnalyticsCTA(
             event,
-            anchorElement ??
-              buttonElement ??
-              nextTaskElement ??
-              timeLineElement,
+            anchorElement ?? buttonElement ?? nextTaskElement ?? deepLink,
             ctaObj
           );
         }
       } else if (articleAnchor) {
+        const selectedModal =
+          that.ScTuluCamp.querySelector(".sc-deeplink-modal");
+        selectedModal.classList.add("visible");
+        document.querySelector("html").classList.add("sc-modal__no-scroll");
+
+        that.handleDeepLinkModal(
+          "article",
+          articleAnchor
+            .closest("[data-article-id]")
+            .getAttribute("data-article-id")
+        );
+        that.deepLinkUrl = articleAnchor.getAttribute("href");
+
         handleAnalyticsCTA(event, "", {
           ctaType: "button",
           context: "article link - " + trim(articleAnchor.innerText),
@@ -1500,10 +1555,19 @@ class ScTuluCampaign {
             }
           }
 
+          const deepLink = event.target.closest(".sc-deeplink-modal");
           const closeBtn = event.target.closest(
             ".sc-tulu-camp-modal--close-btn"
           );
-          if (event.target.closest(".sc-tulu-camp-modal__footer-btn")) {
+          if (deepLink) {
+            window.open(that.deepLinkUrl, "_blank");
+            handleAnalyticsCTA(event, event.target.closest("button"), {
+              ctaType: "button",
+              xLinkRegion: "bottom",
+              ctaPosition: "bottom",
+            });
+            that.deepLinkUrl = "";
+          } else if (event.target.closest(".sc-tulu-camp-modal__footer-btn")) {
             handleAnalyticsCTA(event, event.target.closest("button"), {
               ctaType: "button",
               xLinkRegion: "bottom",
@@ -1540,6 +1604,39 @@ class ScTuluCampaign {
         });
       });
     });
+  }
+
+  /**
+   * Handles displaying the deep link modal with the appropriate content.
+   *
+   * @param {string} type - The type of deep link (e.g., "diversify" or "article").
+   * @param {string} key - The key or ID used to find the corresponding content.
+   */
+  handleDeepLinkModal(type, key) {
+    const that = this;
+    let data;
+    const modalContent = that.ScTuluCamp.querySelector(
+      ".sc-deeplink-modal .sc-tulu-camp-doc__content"
+    );
+    if (type === "diversify") {
+      Object.entries(this.textObj.diversify).forEach(([category, items]) => {
+        items.forEach((item) => {
+          if (item.key === key) {
+            modalContent.querySelector(".sc-tulu-camp-doc__title").innerText =
+              item.popupTitle;
+            modalContent.querySelector("p").innerText = item.popupDescription;
+          }
+        });
+      });
+    } else if (type === "article") {
+      that.textObj.levelUp.articles.forEach((item) => {
+        if (item.articleId === key) {
+          modalContent.querySelector(".sc-tulu-camp-doc__title").innerText =
+            item.popupTitle;
+          modalContent.querySelector("p").innerText = item.popupDescription;
+        }
+      });
+    }
   }
 
   /**
@@ -1747,10 +1844,8 @@ class ScTuluCampaign {
       });
       taskDesk.forEach((el) => {
         el.addEventListener("click", (event) => {
-          const closest = event.target.closest("[data-tab-url]");
-          if (closest) {
-            window.open(closest.getAttribute("data-tab-url"), "blank");
-          } else {
+          const closest = event.target.closest("[data-link-url]");
+          if (!closest) {
             mainPage[0].classList.remove("active");
             mainPage[1].classList.add("active");
           }
