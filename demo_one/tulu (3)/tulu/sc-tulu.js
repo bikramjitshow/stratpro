@@ -4,7 +4,8 @@
 //   convertNumbers,
 //   handleAnalyticsCTA,
 //   trim,
-//getCurrentCountry
+//   getCurrentCountry,
+//   getFormattedNumber,
 // } from "../../../js/sc-common-methods";
 
 class ScTuluCampaign {
@@ -13,6 +14,10 @@ class ScTuluCampaign {
     that.parentModalId = "";
     that.ScTuluCamp = document.querySelector(".sc-tulu-camp");
     that.currentArticleId = "";
+    that.earningHistory = that.ScTuluCamp.querySelector(
+      ".sc-tulu-camp-tab__content-item--earning-history"
+    );
+    that.earningHistory.innerHTML = "";
 
     this.textObj = {
       queryParameterName: "tab",
@@ -21,6 +26,8 @@ class ScTuluCampaign {
       articlePlacementId: "article.json",
       diversifyText:
         "You're all set. Check out the other missions to get rewarded.",
+      tradeUpLabel: "Trade",
+      mileText: "Miles",
       levelUp: {
         feedbackSuccess: "Feedback Success",
         feedbackError: "Feedback Error",
@@ -32,41 +39,94 @@ class ScTuluCampaign {
             articleId: "wealth-needs-1",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+            title: "Tips to earn HKD50,000 passive income",
+            description:
+              "How can you achieve financial freedom and live the life you envision sooner?",
+            articlePoints: 400,
+            quizPoints: 100,
+            popupTitle: "Tips to earn HKD50,000 passive income",
+            popupDescription:
+              "How can you achieve financial freedom and live the life you envision sooner?",
           },
           {
             articleId: "wealth-needs-2",
             quizValue:
               "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+            title: "💰Cash is no longer king?",
+            description: "It’s time to rethink cash as the Fed cuts rates",
+            articlePoints: 400,
+            quizPoints: 100,
+            popupTitle: "💰Cash is no longer king?",
+            popupDescription: "It’s time to rethink cash as the Fed cuts rates",
           },
           {
             articleId: "wealth-needs-3",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+            title:
+              "⚡The silent cash thief: how inflation steals 30% of savings",
+            description: `Be aware of "cash thief"`,
+            articlePoints: 600,
+            quizPoints: 200,
+            popupTitle: "💰Cash is no longer king?",
+            popupDescription: "It’s time to rethink cash as the Fed cuts rates",
           },
           {
             articleId: "wealth-needs-4",
             quizValue:
               "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", //C
+            title: "💡▶️2025 Global Market Outlook: Foundation Portfolio",
+            description: "💡1-minute 2025 Investment Essentials",
+            articlePoints: 600,
+            quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foundation Portfolio",
+            popupDescription: "💡1-minute 2025 Investment Essentials",
           },
           {
             articleId: "wealth-needs-5",
             quizValue:
               "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+            title: "💡▶️2025 Global Market Outlook: Passive Income",
+            description: "1-minute 2025 Income Strategies",
+            articlePoints: 600,
+            quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Passive Income",
+            popupDescription: "1-minute 2025 Income Strategies",
           },
           {
             articleId: "wealth-needs-6",
             quizValue:
               "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+            title: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            description: "1-minute 2025 FX Strategies",
+            articlePoints: 600,
+            quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            popupDescription: "1-minute 2025 FX Strategies",
           },
           {
             articleId: "wealth-needs-7",
             quizValue:
               "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+            title: "💱Unveiling the Mystique of Carry Trade",
+            description:
+              "Explore how investors earn interest spread by carry trade",
+            articlePoints: 600,
+            quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            popupDescription: "1-minute 2025 FX Strategies",
           },
           {
             articleId: "wealth-needs-8",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+            title: "💲Debunk safe haven currencies",
+            description:
+              "What drives the inflow into the safe haven currencies during market turbulence?",
+            articlePoints: 600,
+            quizPoints: 200,
+            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            popupDescription: "1-minute 2025 FX Strategies",
           },
         ],
       },
@@ -100,57 +160,102 @@ class ScTuluCampaign {
           {
             key: "OpenAccountSXA",
             text: "Open An Account",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
             value: "77",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "FirstTradeSXA",
             text: "Make your first trade",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "CompletionBonusSXA",
             text: "Completion Bonus",
-            url: "#",
             value: "1000",
             conditional: false,
+            popupCta: "#",
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta: "#",
           },
         ],
         fx: [
           {
             key: "FirstTradeFX",
             text: "Make your first trade",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/livefx-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
         ],
         ut: [
           {
             key: "OpenAccountUT",
             text: "Open An Account",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/omf-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "FirstTradeUT",
             text: "Make your first trade",
-            url: "https://retail.sc.com/scmobile/hk?ngroute=web/omf-webview",
             value: "1000",
             conditional: true,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta:
+              "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
           },
           {
             key: "CompletionBonusUT",
             text: "Finish all actions to earn bonus miles",
-            url: "#",
             value: "1000",
             conditional: false,
+            popupTitle: "You’ll be brought to [wealth platform]",
+            popupDescription:
+              "You’ll not be able to get straight back to the the Missions directly.",
+            popupCta: "#",
           },
         ],
+      },
+      nextTask: {
+        diversify: [
+          {
+            key: "FirstTradeFX",
+            text: "FX first Trade",
+          },
+          {
+            key: "OpenAccountSXA",
+            text: "SXA Open Account",
+          },
+          { key: "FirstTradeSXA", text: "SXA First Trade" },
+          { key: "OpenAccountUT", text: "UT Open Account" },
+          { key: "FirstTradeUT", text: "UT first Tarde" },
+        ],
+        tradeUp: {
+          labelText: "Complete your data-number trade",
+        },
       },
     };
 
@@ -165,222 +270,123 @@ class ScTuluCampaign {
     that.loadArticleDataApi();
   }
 
-  handleTabsContent() {
+  levelUpEarningHistory() {
     const that = this;
-    // Get all the tabs in this tab group
-    that.tabs = that.ScTuluCamp.querySelectorAll("[data-tab-btn-id]");
-    // Get all the content items in this tab group
-    that.contents = that.ScTuluCamp.querySelectorAll(
-      ".sc-tulu-camp-tab__content-item"
-    );
+    const data = that.articlePlacementData;
+    let htmlCode = "";
+    this.textObj.levelUp.articles.forEach((article) => {
+      const articleID = "wealth-needs-8";
+      const articleObj = data.find((obj) =>
+        obj.Fields.some(
+          (field) =>
+            field.Name === "ArticleID" && field.Value === article.articleId
+        )
+      );
 
-    that.tabs.forEach((tab) => {
-      tab.addEventListener("click", (event) => {
-        const targetId = tab.getAttribute("data-tab-btn-id");
-        that.handleTabs(targetId);
+      const articleRead = articleObj
+        ? articleObj.Fields.find((field) => field.Name === "ArticleRead").Value
+        : null;
+      const quizCompleted = articleObj
+        ? articleObj.Fields.find((field) => field.Name === "QuizCompleted")
+            .Value
+        : null;
 
-        const wrapperInner = event.target.closest(
-          ".sc-tulu-camp__wrapper-inner"
-        );
-        const closestBtn = event.target.closest("button");
-        const closestPdt = event.target.closest(
-          ".sc-tulu-camp-product-card__main"
-        );
-        if (wrapperInner) {
-          console.log("Tab 1");
-          handleAnalyticsCTA(event, wrapperInner, {
-            ctaType: "button",
-            xLinkRegion: "middle",
-            ctaPosition: "top",
-            context: event.target.innerText,
-          });
-        } else if (closestBtn) {
-          console.log("Tab 2");
-          handleAnalyticsCTA(event, closestBtn, {
-            ctaType: "button",
-            xLinkRegion: "middle",
-            ctaPosition: "top",
-          });
-        } else if (closestPdt) {
-          console.log("Tab 3");
-          handleAnalyticsCTA(event, "", {
-            context: trim(
-              closestPdt.querySelector(".sc-tulu-camp-product-card__title")
-                .innerText
-            ),
-            ctaType: "button",
-            xLinkRegion: "middle",
-            ctaPosition: "middle",
-          });
-        }
-      });
-    });
-  }
-
-  /**
-   * Handles interactions with the questionnaire form, including radio button changes, label clicks,
-   * and the continue button functionality. It also manages the feedback display and tracking analytics events.
-   *
-   * @function handleQuestionnaire
-   */
-  handleQuestionnaire() {
-    const that = this;
-    //questionnaire radio
-    const questionnaireRadios = that.ScTuluCamp.querySelectorAll(
-      '.sc-questionnaire input[type="radio"]'
-    );
-    if (questionnaireRadios.length) {
-      questionnaireRadios.forEach((questionnaireRadio) => {
-        questionnaireRadio.addEventListener("change", (event) => {
-          event.target
-            .closest(".sc-tulu-camp-questionnaire")
-            .querySelector(".sc-tulu-camp-modal__footer-btn")
-            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
-        });
-      });
-    }
-
-    const questionnaireLabels = that.ScTuluCamp.querySelectorAll(
-      ".sc-questionnaire .sc-radio-box__input-label"
-    );
-    if (questionnaireLabels.length) {
-      questionnaireLabels.forEach((questionnaireLabel) => {
-        questionnaireLabel.addEventListener("click", (event) => {
-          event.target
-            .closest(".sc-tulu-camp-questionnaire")
-            .querySelector(".sc-tulu-camp-modal__footer-btn")
-            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
-        });
-      });
-    }
-
-    const continueButtons = that.ScTuluCamp.querySelectorAll(
-      ".sc-tulu-camp-questionnaire__btn .sc-tulu-camp-modal__footer-btn"
-    );
-
-    let completed = false;
-    continueButtons.forEach((continueButton) => {
-      continueButton.addEventListener("click", async (event) => {
-        const closest = event.target.closest(".sc-questionnaire");
-        const checkedRadio = closest.querySelector(`[type='radio']:checked`);
-
-        if (checkedRadio) {
-          const hash = await that.sha256(checkedRadio.value);
-          const result =
-            that.textObj.levelUp.articles.find(
-              (item) => item.articleId === that.currentArticleId
-            )?.quizValue || null;
-          let context;
-          const feedback = closest.querySelector(
-            ".sc-tulu-camp-questionnaire__feedback"
-          );
-
-          if (completed) {
-            context = "continue";
-            event.target
-              .closest(".sc-tulu-camp-modal")
-              .classList.remove("visible");
-            document
-              .querySelector("html")
-              .classList.remove("sc-modal__no-scroll");
-            completed = false;
-          } else if (hash === result) {
-            //Correct Answer
-            context = event.target.getAttribute("data-text-continue");
-            event.target.innerText = context;
-
-            feedback.classList.add(
-              "sc-tulu-camp-questionnaire__feedback--success"
-            );
-            feedback.innerHTML = that.textObj.levelUp.feedbackSuccess;
-            context = "submit - correct";
-            completed = true;
-
-            const article = that.ScTuluCamp.querySelector(
-              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
-            );
-            if (article) {
-              article.classList.add("sc-tulu-camp-timeline__box--active");
-              // article.querySelector(
-              //   ".sc-tulu-camp-timeline__box-title"
-              // ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
-              article.removeAttribute("data-modal-selector");
-            }
-            that.handleQuizImpression("Clicked");
-          } else {
-            context = event.target.getAttribute("data-text-continue");
-            event.target.innerText = context;
-
-            feedback.classList.add(
-              "sc-tulu-camp-questionnaire__feedback--error"
-            );
-            feedback.innerHTML = that.textObj.levelUp.feedbackError;
-            context = "submit - incorrect";
-            completed = true;
-
-            const article = that.ScTuluCamp.querySelector(
-              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
-            );
-            if (article) {
-              article.classList.add("sc-tulu-camp-timeline__box--disable");
-              // article.querySelector(
-              //   ".sc-tulu-camp-timeline__box-title"
-              // ).innerText = that.textObj.levelUp.feedbackFailedDesc;
-              article.querySelector(
-                ".sc-tulu-camp-timeline__box-text"
-              ).innerText = that.textObj.levelUp.feedbackFailedText;
-              article.removeAttribute("data-modal-selector");
-            }
-            that.handleQuizImpression("Dismissed");
-          }
-          closest.querySelector(
-            ".sc-tulu-camp-questionnaire__test-text span"
-          ).innerText = 2;
-
-          closest.querySelectorAll(".sc-radio-box__input").forEach((radio) => {
-            radio.disabled = true;
-          });
-
-          handleAnalyticsCTA(event, closest, {
-            ctaType: "button",
-            context: context,
-            xLinkRegion: "middle",
-            ctaPosition: "bottom",
-          });
-        }
-      });
-    });
-  }
-
-  /**
-   * Fetches and caches the topology data for world continents.
-   * Ensures that the topology data is loaded only once.
-   */
-
-  async fetchApiData2(url) {
-    if (!url) {
-      throw new Error("URL is required to fetch data.");
-    }
-
-    try {
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      if (!response.ok) {
-        throw new Error(
-          `Failed to fetch data: ${response.status} ${response.statusText}`
-        );
+      if (articleRead === "Y" || quizCompleted === "Y") {
+        const total = article.articlePoints + article.quizPoints;
+        htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--purple">
+          <div class="sc-tulu-camp-earnings__left">
+            <div class="sc-tulu-camp-earnings__icon"></div>
+            <div class="sc-tulu-camp-earnings__text">
+              <div class="sc-tulu-camp-earnings__head">
+                ${article.title}
+              </div>
+              <p class="sc-tulu-camp-earnings__sub-head">
+              ${article.description}
+              </p>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-earnings__right">
+            <p>
+              <strong>${convertNumbers(that.ScTuluCamp, total)}</strong>
+              ${that.textObj.mileText}
+            </p>
+          </div>
+        </div>`;
       }
-      return await response.json();
-    } catch (error) {
-      console.error("Fetch API Error:", error);
-      throw error;
-    }
+    });
+    that.earningHistory.innerHTML += htmlCode;
   }
+
+  tradeUpEarningHistory() {
+    const that = this;
+    const data = that.commonPlacementData;
+    let htmlCode = "";
+    that.textObj.tradeUp.fields.forEach((item) => {
+      const value = Number(that.getObjectValue(data, item.key));
+      if (value) {
+        htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--green">
+          <div class="sc-tulu-camp-earnings__left">
+            <div class="sc-tulu-camp-earnings__icon"></div>
+            <div class="sc-tulu-camp-earnings__text">
+              <div class="sc-tulu-camp-earnings__head">
+                ${that.textObj.tradeUpLabel} ${value} 
+              </div>
+              <p class="sc-tulu-camp-earnings__sub-head">
+                ${item.text}
+              </p>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-earnings__right">
+            <p>
+              <strong>${convertNumbers(that.ScTuluCamp, item.points)}</strong>
+              ${that.textObj.mileText}
+            </p>
+          </div>
+        </div>`;
+      }
+    });
+    that.earningHistory.innerHTML += htmlCode;
+  }
+
+  diversifyEarningHistory() {
+    const that = this;
+    const data = that.commonPlacementData;
+    let htmlCode = "";
+    Object.entries(this.textObj.diversify).forEach(([category, items]) => {
+      items.forEach((item) => {
+        if (item.conditional) {
+          const value = that.getObjectValue(data, item.key);
+          if (value === "Y") {
+            const keyName = `RewardCount${category.toUpperCase()}`;
+            const subHeading =
+              that.textObj.tradeUp.fields.find((item) => item.key === keyName)
+                ?.text || null;
+
+            htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
+            <div class="sc-tulu-camp-earnings__left">
+              <div class="sc-tulu-camp-earnings__icon"></div>
+              <div class="sc-tulu-camp-earnings__text">
+                <div class="sc-tulu-camp-earnings__head">
+                  ${item.text}
+                </div>
+                <p class="sc-tulu-camp-earnings__sub-head">${subHeading}</p>
+              </div>
+            </div>
+            <div class="sc-tulu-camp-earnings__right">
+              <p>
+                <strong>${convertNumbers(that.ScTuluCamp, item.value)}</strong>
+                ${that.textObj.mileText}
+              </p>
+            </div>
+          </div>`;
+          }
+        }
+      });
+    });
+
+    that.earningHistory.innerHTML += htmlCode;
+  }
+
   async fetchApiData(url) {
     if (!url) {
       throw new Error("URL is required to fetch data.");
@@ -401,7 +407,7 @@ class ScTuluCampaign {
         Rank: 2,
         Fields: [
           {
-            Value: "Y",
+            Value: "",
             Name: "RegistrationFlag",
           },
         ],
@@ -441,7 +447,7 @@ class ScTuluCampaign {
             Name: "ConsolidatedAmountUT",
           },
           {
-            Value: "Y",
+            Value: "N",
             Name: "OpenAccountSXA",
           },
           {
@@ -477,11 +483,11 @@ class ScTuluCampaign {
             Name: "RewardCountSXA",
           },
           {
-            Value: "15",
+            Value: "8",
             Name: "RewardCountUT",
           },
           {
-            Value: "1",
+            Value: "",
             Name: "RewardCountFX",
           },
         ],
@@ -809,6 +815,7 @@ class ScTuluCampaign {
       });
 
       const valueFound = that.generateDiversify();
+      that.diversifyNextTask();
       that.generateTradeUp();
 
       const numberList = that.ScTuluCamp.querySelectorAll(
@@ -847,9 +854,50 @@ class ScTuluCampaign {
         );
       }
 
-      console.log("valueFound", valueFound);
+      that.diversifyEarningHistory();
+      that.tradeUpEarningHistory();
     } catch (error) {
       console.error("Error fetching consolidate data:", error);
+    }
+  }
+
+  /**
+   * Updates the task description in the product card if a matching value is found.
+   * Iterates through `diversify` tasks and updates the `.sc-tulu-camp-product-card__task-desc`
+   * element with the corresponding text if the value associated with `item.key` is "N".
+   */
+  diversifyNextTask() {
+    const that = this;
+    // eslint-disable-next-line no-unused-vars
+    for (const item of that.textObj.nextTask.diversify) {
+      const value = that.getObjectValue(that.commonPlacementData, item.key);
+      if (value === "N") {
+        const content = that.ScTuluCamp.querySelector(
+          ".sc-tulu-camp-product-card-diversify .sc-tulu-camp-product-card__bottom .sc-tulu-camp-product-card__task-desc-content"
+        );
+        if (content) {
+          content.innerText = item.text;
+          let url;
+          for (const [category, diversify] of Object.entries(
+            this.textObj.diversify
+          )) {
+            const found = diversify.find((dive) => dive.key === item.key);
+            if (found) {
+              url = found.popupCta;
+              break; // Exit the loop once found
+            }
+          }
+
+          if (url) {
+            const closestElement = content.closest(
+              ".sc-tulu-camp-product-card__bottom"
+            );
+            closestElement.setAttribute("data-link-url", url);
+            closestElement.setAttribute("data-modal-selector", item.key);
+          }
+        }
+        break;
+      }
     }
   }
 
@@ -931,7 +979,7 @@ class ScTuluCampaign {
 
               if (value) {
                 //Display only if value is Y or N
-                htmlCode += generateHTML(item, activeClass);
+                htmlCode += generateHTML(item, activeClass, item.key);
               }
             } else {
               itemObj = item;
@@ -945,11 +993,7 @@ class ScTuluCampaign {
               .classList.add("hide");
           } else {
             if (itemObj) {
-              htmlCode += generateHTML(
-                itemObj,
-                className,
-                "sc-account-opening-confirmation"
-              );
+              htmlCode += generateHTML(itemObj, className, "");
             }
             categoryWrapper.innerHTML = htmlCode;
           }
@@ -970,9 +1014,20 @@ class ScTuluCampaign {
         .classList.add("hide");
     }
 
-    function generateHTML(item, activeClass, modalAttr = "") {
-      const urlAttr = item.conditional ? `data-link-url="${item.url}"` : "";
-      return `<div class="sc-tulu-camp-timeline__box ${activeClass}" ${urlAttr} data-modal-selector='${modalAttr}'>
+    function generateHTML(item, activeClass, modalKey) {
+      let urlAttr = "";
+      if (modalKey) {
+        urlAttr =
+          item.conditional &&
+          activeClass === "sc-tulu-camp-timeline__box--progress"
+            ? `data-link-url="${item.popupCta}"`
+            : "";
+        if (urlAttr) {
+          urlAttr += ` data-modal-selector='${modalKey}'`;
+        }
+      }
+
+      return `<div class="sc-tulu-camp-timeline__box ${activeClass}" ${urlAttr}>
                         <div class="sc-tulu-camp-timeline__box-wrapper">
                           <div class="sc-tulu-camp-timeline__box-title">
                             ${item.text}
@@ -1028,6 +1083,18 @@ class ScTuluCampaign {
     that.textObj.tradeUp.fields.forEach((item) => {
       rewardCount += Number(that.getObjectValue(data, item.key));
     });
+
+    if (rewardCount < 18) {
+      that.ScTuluCamp.querySelector(
+        ".sc-tulu-camp-product-card-trade-up .sc-tulu-camp-product-card__bottom .sc-tulu-camp-product-card__task-desc-content"
+      ).innerText = that.textObj.nextTask.tradeUp.labelText
+        .split("data-number")
+        .join(getFormattedNumber(rewardCount++));
+    } else {
+      that.ScTuluCamp.querySelector(
+        ".sc-tulu-camp-product-card-trade-up .sc-tulu-camp-product-card__bottom"
+      ).classList.add("hide");
+    }
 
     for (let i = 1; i <= that.textObj.tradeUp.maxCount; i++) {
       let activeClass = "";
@@ -1145,13 +1212,15 @@ class ScTuluCampaign {
     const articles = that.ScTuluCamp.querySelectorAll(
       ".sc-tulu-camp-tab__content-item-level-up [data-article-id]"
     );
+    let articleImg = "";
+    let articleModal = "";
+    let articleId;
 
     articles.forEach((article) => {
+      const id = article.getAttribute("data-article-id");
       const articleObj = data.find((item) =>
         item.Fields.some(
-          (field) =>
-            field.Name === "ArticleID" &&
-            field.Value === article.getAttribute("data-article-id")
+          (field) => field.Name === "ArticleID" && field.Value === id
         )
       );
 
@@ -1186,16 +1255,9 @@ class ScTuluCampaign {
         if (quizClass) {
           timeLineBoxes[1].classList.add(quizClass);
           if (QuizCompleted === "N") {
-            // timeLineBoxes[1].querySelector(
-            //   ".sc-tulu-camp-timeline__box-title"
-            // ).innerText = that.textObj.levelUp.feedbackFailedDesc;
             timeLineBoxes[1].querySelector(
               ".sc-tulu-camp-timeline__box-text"
             ).innerText = that.textObj.levelUp.feedbackFailedText;
-          } else {
-            // timeLineBoxes[1].querySelector(
-            //   ".sc-tulu-camp-timeline__box-title"
-            // ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
           }
           article
             .querySelector("[data-modal-selector]")
@@ -1204,9 +1266,39 @@ class ScTuluCampaign {
           timeLineBoxes[1].classList.add(
             "sc-tulu-camp-timeline__box--progress"
           );
+          if (!articleImg) {
+            articleImg = article
+              .querySelector(".sc-tulu-camp-timeline__cvp-image img")
+              .getAttribute("src");
+
+            articleModal = article
+              .querySelector("[data-modal-selector]")
+              .getAttribute("data-modal-selector");
+
+            articleId = id;
+          }
         }
       }
     });
+
+    if (articleId && articleImg && articleModal) {
+      const levelUpNextTask = that.ScTuluCamp.querySelector(
+        ".sc-tulu-camp-product-card-level-up .sc-tulu-camp-product-card__bottom"
+      );
+      if (levelUpNextTask) {
+        levelUpNextTask
+          .querySelector(".sc-tulu-camp-product-card__task-desc img")
+          .setAttribute("src", articleImg);
+
+        const taskValue = that.ScTuluCamp.querySelector(
+          ".sc-tulu-camp-product-card-level-up .sc-tulu-camp-product-card__task-value"
+        );
+        if (taskValue) {
+          taskValue.setAttribute("data-modal-selector", articleModal);
+          taskValue.setAttribute("data-article-id", articleId);
+        }
+      }
+    }
   }
 
   /**
@@ -1216,11 +1308,13 @@ class ScTuluCampaign {
    * @param {string} targetId - The ID of the tab to activate.
    */
   handleTabs(targetId) {
+    console.log("targetId", targetId);
     const that = this;
-    const targetContent = that.ScTuluCamp.querySelector(
+    const targetContent = that.ScTuluCamp.querySelectorAll(
       `.sc-tulu-camp-tab__content-item[data-tab-content="${targetId}"]`
     );
-    if (!targetContent) return;
+    if (!targetContent.length) return;
+    console.log("YYYYYYYYY");
 
     // Remove active class from all tabs and content items in this tab group
     that.tabs.forEach((t) =>
@@ -1239,7 +1333,7 @@ class ScTuluCampaign {
         activeTab.classList.add("sc-tulu-camp-tab__head-button--active");
       }
     });
-    targetContent.classList.add("sc-tulu-camp-tab__content-item--active");
+    targetContent[0].classList.add("sc-tulu-camp-tab__content-item--active");
   }
 
   /**
@@ -1251,6 +1345,9 @@ class ScTuluCampaign {
     const that = this;
     //Open Modal
     that.ScTuluCamp.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        event.preventDefault();
+      }
       const modal = event.target.closest("[data-modal-selector]");
       const articleAnchor = event.target.closest(
         "a.sc-tulu-camp-timeline__cvp-title"
@@ -1365,21 +1462,23 @@ class ScTuluCampaign {
           });
         }
 
-        //Timeline boxes
-        const timeLineElement = event.target.closest(
-          ".sc-tulu-camp-wrapper-full__column"
-        );
-        if (timeLineElement) {
-          const diversifyTitle = timeLineElement.querySelector(
-            ".sc-tulu-camp-wrapper-full__title"
+        //Handle DeepLink
+        const deepLink = event.target.closest("[data-link-url]");
+        if (deepLink) {
+          let title = "";
+
+          const diversifyNextTask = deepLink.querySelector(
+            ".sc-tulu-camp-product-card__task-desc-content"
           );
-          if (diversifyTitle && diversifyTitle.getAttribute("data-context")) {
+          const dataContext = deepLink
+            .closest(".sc-tulu-camp-wrapper-full__column")
+            ?.querySelector("[data-context]");
+          if (dataContext) {
             //diversify section
-            const title = trim(diversifyTitle.getAttribute("data-context"));
+            title = dataContext.getAttribute("data-context");
             const content = trim(
-              event.target
-                .closest(".sc-tulu-camp-timeline__box")
-                .querySelector(".sc-tulu-camp-timeline__box-title").innerText
+              deepLink.querySelector(".sc-tulu-camp-timeline__box-title")
+                ?.innerText || ""
             );
 
             Object.assign(ctaObj, {
@@ -1387,45 +1486,43 @@ class ScTuluCampaign {
               ctaPosition: "middle",
               xLinkRegion: "middle",
             });
-
-            const linkUrl = event.target.closest("[data-link-url]");
-            if (linkUrl) {
-              window.open(linkUrl.getAttribute("data-link-url"), "_blank");
-            }
-          } else if (
-            timeLineElement.querySelector(".sc-tulu-camp-timeline__box")
-          ) {
-            //article section
+          } else if (diversifyNextTask) {
             Object.assign(ctaObj, {
-              context:
-                `article test - ` +
-                trim(
-                  timeLineElement.querySelector(
-                    ".sc-tulu-camp-timeline__box-title"
-                  ).innerText
-                ),
+              context: trim(diversifyNextTask.innerText),
               ctaPosition: "middle",
               xLinkRegion: "middle",
             });
           }
+
+          const selectedModal =
+            that.ScTuluCamp.querySelector(".sc-deeplink-modal");
+          selectedModal.classList.add("visible");
+          document.querySelector("html").classList.add("sc-modal__no-scroll");
+          that.deepLinkUrl = deepLink.getAttribute("data-link-url");
+          that.handleDeepLinkModal("diversify", selector);
         }
 
-        if (
-          anchorElement ??
-          buttonElement ??
-          nextTaskElement ??
-          timeLineElement
-        ) {
+        if (anchorElement ?? buttonElement ?? nextTaskElement ?? deepLink) {
           handleAnalyticsCTA(
             event,
-            anchorElement ??
-              buttonElement ??
-              nextTaskElement ??
-              timeLineElement,
+            anchorElement ?? buttonElement ?? nextTaskElement ?? deepLink,
             ctaObj
           );
         }
       } else if (articleAnchor) {
+        const selectedModal =
+          that.ScTuluCamp.querySelector(".sc-deeplink-modal");
+        selectedModal.classList.add("visible");
+        document.querySelector("html").classList.add("sc-modal__no-scroll");
+
+        that.handleDeepLinkModal(
+          "article",
+          articleAnchor
+            .closest("[data-article-id]")
+            .getAttribute("data-article-id")
+        );
+        that.deepLinkUrl = articleAnchor.getAttribute("href");
+
         handleAnalyticsCTA(event, "", {
           ctaType: "button",
           context: "article link - " + trim(articleAnchor.innerText),
@@ -1458,10 +1555,19 @@ class ScTuluCampaign {
             }
           }
 
+          const deepLink = event.target.closest(".sc-deeplink-modal");
           const closeBtn = event.target.closest(
             ".sc-tulu-camp-modal--close-btn"
           );
-          if (event.target.closest(".sc-tulu-camp-modal__footer-btn")) {
+          if (deepLink) {
+            window.open(that.deepLinkUrl, "_blank");
+            handleAnalyticsCTA(event, event.target.closest("button"), {
+              ctaType: "button",
+              xLinkRegion: "bottom",
+              ctaPosition: "bottom",
+            });
+            that.deepLinkUrl = "";
+          } else if (event.target.closest(".sc-tulu-camp-modal__footer-btn")) {
             handleAnalyticsCTA(event, event.target.closest("button"), {
               ctaType: "button",
               xLinkRegion: "bottom",
@@ -1498,6 +1604,39 @@ class ScTuluCampaign {
         });
       });
     });
+  }
+
+  /**
+   * Handles displaying the deep link modal with the appropriate content.
+   *
+   * @param {string} type - The type of deep link (e.g., "diversify" or "article").
+   * @param {string} key - The key or ID used to find the corresponding content.
+   */
+  handleDeepLinkModal(type, key) {
+    const that = this;
+    let data;
+    const modalContent = that.ScTuluCamp.querySelector(
+      ".sc-deeplink-modal .sc-tulu-camp-doc__content"
+    );
+    if (type === "diversify") {
+      Object.entries(this.textObj.diversify).forEach(([category, items]) => {
+        items.forEach((item) => {
+          if (item.key === key) {
+            modalContent.querySelector(".sc-tulu-camp-doc__title").innerText =
+              item.popupTitle;
+            modalContent.querySelector("p").innerText = item.popupDescription;
+          }
+        });
+      });
+    } else if (type === "article") {
+      that.textObj.levelUp.articles.forEach((item) => {
+        if (item.articleId === key) {
+          modalContent.querySelector(".sc-tulu-camp-doc__title").innerText =
+            item.popupTitle;
+          modalContent.querySelector("p").innerText = item.popupDescription;
+        }
+      });
+    }
   }
 
   /**
@@ -1547,7 +1686,6 @@ class ScTuluCampaign {
     console.log("labels", labels.length);
     labels.forEach((label) => {
       label.addEventListener("click", (event) => {
-        console.log("ddddddddd");
         const closest = event.target.closest("a");
         handleAnalyticsCTA(event, closest, {
           ctaType: "button",
@@ -1684,6 +1822,7 @@ class ScTuluCampaign {
    * @returns {void}
    */
   asiaMilesYesModal() {
+    const that = this;
     const startButton = document.getElementById("sc-get-started-btn");
     const tcModal = document.getElementById("sc-terms-and-condition");
     const cardMain = document.querySelectorAll(
@@ -1691,51 +1830,63 @@ class ScTuluCampaign {
     );
     const mainPage = document.querySelectorAll(".sc-tulu-camp-main");
     const backBtn = document.querySelector(".sc-tulu-camp-header__back");
+    const taskDesk = that.ScTuluCamp.querySelectorAll(
+      ".sc-tulu-camp-product-card__bottom"
+    );
 
     if (startButton && tcModal) {
-      // scrollButton.addEventListener("click", (event) => {
-      //   const closest = event.target.closest("button");
-      //   if (
-      //     closest &&
-      //     !closest.classList.contains(
-      //       "sc-tulu-camp-modal__footer-btn--disabled"
-      //     )
-      //   ) {
-      //     event.preventDefault();
-      //     tcModal.classList.remove("visible");
-      //     document
-      //       .querySelector(".sc-modal__no-scroll")
-      //       ?.classList.remove("sc-modal__no-scroll");
-      //   }
-      // });
-
       cardMain.forEach((card) => {
         card.addEventListener("click", () => {
+          console.log(111111111);
           mainPage[0].classList.remove("active");
           mainPage[1].classList.add("active");
         });
       });
+      taskDesk.forEach((el) => {
+        el.addEventListener("click", (event) => {
+          const closest = event.target.closest("[data-link-url]");
+          if (!closest) {
+            mainPage[0].classList.remove("active");
+            mainPage[1].classList.add("active");
+          }
+          handleAnalyticsCTA(event, el, {
+            ctaType: "button",
+            ctaPosition: "middle",
+            xLinkRegion: "middle",
+            context: trim(
+              event.target
+                .closest(".sc-tulu-camp-product-card__bottom")
+                .querySelector(".sc-tulu-camp-product-card__task-desc-content")
+                .innerText
+            ),
+          });
+        });
+      });
 
       backBtn.addEventListener("click", (event) => {
-        mainPage[1].classList.remove("active");
-        mainPage[0].classList.add("active");
-        document
-          .querySelector(`[data-tab-btn-id='1']`)
-          .classList.add("sc-tulu-camp-tab__head-button--active");
-        document
-          .querySelector(`[data-tab-content='1']`)
-          .classList.add("sc-tulu-camp-tab__content-item--active");
+        if (mainPage[0].className.includes("active")) {
+          window.location = "https://www.sc.com/exit";
+          console.log("Webview Exit");
+        } else {
+          mainPage[1].classList.remove("active");
+          mainPage[0].classList.add("active");
+          document
+            .querySelector(`[data-tab-btn-id='1']`)
+            .classList.add("sc-tulu-camp-tab__head-button--active");
+          document
+            .querySelector(`[data-tab-content='1']`)
+            .classList.add("sc-tulu-camp-tab__content-item--active");
 
-        const closestBtn = event.target.closest("button");
-        if (closestBtn) {
-          handleAnalyticsCTA(event, closestBtn, {
-            ctaType: "button",
-            ctaPosition: "top",
-            xLinkRegion: "middle",
-          });
+          const closestBtn = event.target.closest("button");
+          if (closestBtn) {
+            handleAnalyticsCTA(event, closestBtn, {
+              ctaType: "button",
+              ctaPosition: "top",
+              xLinkRegion: "middle",
+            });
+          }
+          console.log("Only Back");
         }
-
-        console.log("PPPPPPP");
       });
     }
   }
@@ -1756,6 +1907,7 @@ class ScTuluCampaign {
       const data = await that.fetchApiData(that.textObj.articlePlacementId);
       that.articlePlacementData = data.Fields ?? data;
       that.generateLevelUp();
+      that.levelUpEarningHistory();
 
       // Do something with the fetched data, if needed
     } catch (error) {
@@ -1856,6 +2008,193 @@ class ScTuluCampaign {
     return `As of ${formatDate(currentDate)} (${formatDate(
       campaignStartDate
     )} - ${formatDate(campaignEndDate)} Cycle)`;
+  }
+
+  handleTabsContent() {
+    const that = this;
+    // Get all the tabs in this tab group
+    that.tabs = that.ScTuluCamp.querySelectorAll("[data-tab-btn-id]");
+    // Get all the content items in this tab group
+    that.contents = that.ScTuluCamp.querySelectorAll(
+      ".sc-tulu-camp-tab__content-item"
+    );
+
+    that.tabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        const targetId = tab.getAttribute("data-tab-btn-id");
+        that.handleTabs(targetId);
+
+        const wrapperInner = event.target.closest(
+          ".sc-tulu-camp__wrapper-inner"
+        );
+        const closestBtn = event.target.closest("button");
+        const closestPdt = event.target.closest(
+          ".sc-tulu-camp-product-card__main"
+        );
+        if (wrapperInner) {
+          console.log("Tab 1");
+          handleAnalyticsCTA(event, wrapperInner, {
+            ctaType: "button",
+            xLinkRegion: "middle",
+            ctaPosition: "top",
+            context: event.target.innerText,
+          });
+        } else if (closestBtn) {
+          console.log("Tab 2");
+          handleAnalyticsCTA(event, closestBtn, {
+            ctaType: "button",
+            xLinkRegion: "middle",
+            ctaPosition: "top",
+          });
+        } else if (closestPdt) {
+          console.log("Tab 3");
+          handleAnalyticsCTA(event, "", {
+            context: trim(
+              closestPdt.querySelector(".sc-tulu-camp-product-card__title")
+                .innerText
+            ),
+            ctaType: "button",
+            xLinkRegion: "middle",
+            ctaPosition: "middle",
+          });
+        }
+      });
+    });
+  }
+
+  /**
+   * Handles interactions with the questionnaire form, including radio button changes, label clicks,
+   * and the continue button functionality. It also manages the feedback display and tracking analytics events.
+   *
+   * @function handleQuestionnaire
+   */
+  handleQuestionnaire() {
+    const that = this;
+    //questionnaire radio
+    const questionnaireRadios = that.ScTuluCamp.querySelectorAll(
+      '.sc-questionnaire input[type="radio"]'
+    );
+    if (questionnaireRadios.length) {
+      questionnaireRadios.forEach((questionnaireRadio) => {
+        questionnaireRadio.addEventListener("change", (event) => {
+          event.target
+            .closest(".sc-tulu-camp-questionnaire")
+            .querySelector(".sc-tulu-camp-modal__footer-btn")
+            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
+        });
+      });
+    }
+
+    const questionnaireLabels = that.ScTuluCamp.querySelectorAll(
+      ".sc-questionnaire .sc-radio-box__input-label"
+    );
+    if (questionnaireLabels.length) {
+      questionnaireLabels.forEach((questionnaireLabel) => {
+        questionnaireLabel.addEventListener("click", (event) => {
+          event.target
+            .closest(".sc-tulu-camp-questionnaire")
+            .querySelector(".sc-tulu-camp-modal__footer-btn")
+            .classList.remove("sc-tulu-camp-modal__footer-btn--disabled");
+        });
+      });
+    }
+
+    const continueButtons = that.ScTuluCamp.querySelectorAll(
+      ".sc-tulu-camp-questionnaire__btn .sc-tulu-camp-modal__footer-btn"
+    );
+
+    let completed = false;
+    continueButtons.forEach((continueButton) => {
+      continueButton.addEventListener("click", async (event) => {
+        const closest = event.target.closest(".sc-questionnaire");
+        const checkedRadio = closest.querySelector(`[type='radio']:checked`);
+
+        if (checkedRadio) {
+          const hash = await that.sha256(checkedRadio.value);
+          const result =
+            that.textObj.levelUp.articles.find(
+              (item) => item.articleId === that.currentArticleId
+            )?.quizValue || null;
+          let context;
+          const feedback = closest.querySelector(
+            ".sc-tulu-camp-questionnaire__feedback"
+          );
+
+          if (completed) {
+            context = "continue";
+            event.target
+              .closest(".sc-tulu-camp-modal")
+              .classList.remove("visible");
+            document
+              .querySelector("html")
+              .classList.remove("sc-modal__no-scroll");
+            completed = false;
+          } else if (hash === result) {
+            //Correct Answer
+            context = event.target.getAttribute("data-text-continue");
+            event.target.innerText = context;
+
+            feedback.classList.add(
+              "sc-tulu-camp-questionnaire__feedback--success"
+            );
+            feedback.innerHTML = that.textObj.levelUp.feedbackSuccess;
+            context = "submit - correct";
+            completed = true;
+
+            const article = that.ScTuluCamp.querySelector(
+              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
+            );
+            if (article) {
+              article.classList.add("sc-tulu-camp-timeline__box--active");
+              // article.querySelector(
+              //   ".sc-tulu-camp-timeline__box-title"
+              // ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
+              article.removeAttribute("data-modal-selector");
+            }
+            that.handleQuizImpression("Clicked");
+          } else {
+            context = event.target.getAttribute("data-text-continue");
+            event.target.innerText = context;
+
+            feedback.classList.add(
+              "sc-tulu-camp-questionnaire__feedback--error"
+            );
+            feedback.innerHTML = that.textObj.levelUp.feedbackError;
+            context = "submit - incorrect";
+            completed = true;
+
+            const article = that.ScTuluCamp.querySelector(
+              `[data-article-id='${that.currentArticleId}'] [data-modal-selector]`
+            );
+            if (article) {
+              article.classList.add("sc-tulu-camp-timeline__box--disable");
+              // article.querySelector(
+              //   ".sc-tulu-camp-timeline__box-title"
+              // ).innerText = that.textObj.levelUp.feedbackFailedDesc;
+              article.querySelector(
+                ".sc-tulu-camp-timeline__box-text"
+              ).innerText = that.textObj.levelUp.feedbackFailedText;
+              article.removeAttribute("data-modal-selector");
+            }
+            that.handleQuizImpression("Dismissed");
+          }
+          closest.querySelector(
+            ".sc-tulu-camp-questionnaire__test-text span"
+          ).innerText = 2;
+
+          closest.querySelectorAll(".sc-radio-box__input").forEach((radio) => {
+            radio.disabled = true;
+          });
+
+          handleAnalyticsCTA(event, closest, {
+            ctaType: "button",
+            context: context,
+            xLinkRegion: "middle",
+            ctaPosition: "bottom",
+          });
+        }
+      });
+    });
   }
 
   /**

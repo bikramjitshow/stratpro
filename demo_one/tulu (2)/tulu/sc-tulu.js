@@ -4,7 +4,8 @@
 //   convertNumbers,
 //   handleAnalyticsCTA,
 //   trim,
-//getCurrentCountry
+//   getCurrentCountry,
+//   getFormattedNumber,
 // } from "../../../js/sc-common-methods";
 
 class ScTuluCampaign {
@@ -151,6 +152,24 @@ class ScTuluCampaign {
             conditional: false,
           },
         ],
+      },
+      nextTask: {
+        diversify: [
+          {
+            key: "FirstTradeFX",
+            text: "FX first Trade",
+          },
+          {
+            key: "OpenAccountSXA",
+            text: "SXA Open Account",
+          },
+          { key: "FirstTradeSXA", text: "SXA First Trade" },
+          { key: "OpenAccountUT", text: "UT Open Account" },
+          { key: "FirstTradeUT", text: "UT first Tarde" },
+        ],
+        tradeUp: {
+          labelText: "Complete your data-number trade",
+        },
       },
     };
 
@@ -477,11 +496,11 @@ class ScTuluCampaign {
             Name: "RewardCountSXA",
           },
           {
-            Value: "15",
+            Value: "8",
             Name: "RewardCountUT",
           },
           {
-            Value: "1",
+            Value: "",
             Name: "RewardCountFX",
           },
         ],
@@ -809,6 +828,7 @@ class ScTuluCampaign {
       });
 
       const valueFound = that.generateDiversify();
+      that.diversifyNextTask();
       that.generateTradeUp();
 
       const numberList = that.ScTuluCamp.querySelectorAll(
@@ -850,6 +870,25 @@ class ScTuluCampaign {
       console.log("valueFound", valueFound);
     } catch (error) {
       console.error("Error fetching consolidate data:", error);
+    }
+  }
+
+  /**
+   * Updates the task description in the product card if a matching value is found.
+   * Iterates through `diversify` tasks and updates the `.sc-tulu-camp-product-card__task-desc`
+   * element with the corresponding text if the value associated with `item.key` is "N".
+   */
+  diversifyNextTask() {
+    const that = this;
+    // eslint-disable-next-line no-unused-vars
+    for (const item of that.textObj.nextTask.diversify) {
+      const value = that.getObjectValue(that.commonPlacementData, item.key);
+      if (value === "N") {
+        that.ScTuluCamp.querySelector(
+          ".sc-tulu-camp-product-card-diversify .sc-tulu-camp-product-card__bottom .sc-tulu-camp-product-card__task-desc span"
+        ).innerText = item.text;
+        break;
+      }
     }
   }
 
@@ -971,7 +1010,11 @@ class ScTuluCampaign {
     }
 
     function generateHTML(item, activeClass, modalAttr = "") {
-      const urlAttr = item.conditional ? `data-link-url="${item.url}"` : "";
+      const urlAttr =
+        item.conditional &&
+        activeClass === "sc-tulu-camp-timeline__box--progress"
+          ? `data-link-url="${item.url}"`
+          : "";
       return `<div class="sc-tulu-camp-timeline__box ${activeClass}" ${urlAttr} data-modal-selector='${modalAttr}'>
                         <div class="sc-tulu-camp-timeline__box-wrapper">
                           <div class="sc-tulu-camp-timeline__box-title">
@@ -1028,6 +1071,18 @@ class ScTuluCampaign {
     that.textObj.tradeUp.fields.forEach((item) => {
       rewardCount += Number(that.getObjectValue(data, item.key));
     });
+
+    if (rewardCount < 18) {
+      that.ScTuluCamp.querySelector(
+        ".sc-tulu-camp-product-card-trade-up .sc-tulu-camp-product-card__bottom .sc-tulu-camp-product-card__task-desc span"
+      ).innerText = that.textObj.nextTask.tradeUp.labelText
+        .split("data-number")
+        .join(getFormattedNumber(rewardCount++));
+    } else {
+      that.ScTuluCamp.querySelector(
+        ".sc-tulu-camp-product-card-trade-up .sc-tulu-camp-product-card__bottom"
+      ).classList.add("hide");
+    }
 
     for (let i = 1; i <= that.textObj.tradeUp.maxCount; i++) {
       let activeClass = "";
@@ -1145,13 +1200,14 @@ class ScTuluCampaign {
     const articles = that.ScTuluCamp.querySelectorAll(
       ".sc-tulu-camp-tab__content-item-level-up [data-article-id]"
     );
+    let articleImg = "";
+    let articleModal = "";
 
     articles.forEach((article) => {
+      const id = article.getAttribute("data-article-id");
       const articleObj = data.find((item) =>
         item.Fields.some(
-          (field) =>
-            field.Name === "ArticleID" &&
-            field.Value === article.getAttribute("data-article-id")
+          (field) => field.Name === "ArticleID" && field.Value === id
         )
       );
 
@@ -1186,16 +1242,9 @@ class ScTuluCampaign {
         if (quizClass) {
           timeLineBoxes[1].classList.add(quizClass);
           if (QuizCompleted === "N") {
-            // timeLineBoxes[1].querySelector(
-            //   ".sc-tulu-camp-timeline__box-title"
-            // ).innerText = that.textObj.levelUp.feedbackFailedDesc;
             timeLineBoxes[1].querySelector(
               ".sc-tulu-camp-timeline__box-text"
             ).innerText = that.textObj.levelUp.feedbackFailedText;
-          } else {
-            // timeLineBoxes[1].querySelector(
-            //   ".sc-tulu-camp-timeline__box-title"
-            // ).innerText = that.textObj.levelUp.feedbackSuccessDesc;
           }
           article
             .querySelector("[data-modal-selector]")
@@ -1204,9 +1253,29 @@ class ScTuluCampaign {
           timeLineBoxes[1].classList.add(
             "sc-tulu-camp-timeline__box--progress"
           );
+          if (!articleImg) {
+            articleImg = article
+              .querySelector(".sc-tulu-camp-timeline__cvp-image img")
+              .getAttribute("src");
+
+            articleModal = article
+              .querySelector("[data-modal-selector]")
+              .getAttribute("data-modal-selector");
+          }
         }
       }
     });
+
+    if (articleImg && articleModal) {
+      const levelUpNextTask = that.ScTuluCamp.querySelector(
+        ".sc-tulu-camp-product-card-level-up .sc-tulu-camp-product-card__bottom"
+      );
+      if (levelUpNextTask) {
+        levelUpNextTask
+          .querySelector(".sc-tulu-camp-product-card__task-desc img")
+          .setAttribute("src", articleImg);
+      }
+    }
   }
 
   /**
@@ -1216,11 +1285,13 @@ class ScTuluCampaign {
    * @param {string} targetId - The ID of the tab to activate.
    */
   handleTabs(targetId) {
+    console.log("targetId", targetId);
     const that = this;
-    const targetContent = that.ScTuluCamp.querySelector(
+    const targetContent = that.ScTuluCamp.querySelectorAll(
       `.sc-tulu-camp-tab__content-item[data-tab-content="${targetId}"]`
     );
-    if (!targetContent) return;
+    if (!targetContent.length) return;
+    console.log("YYYYYYYYY");
 
     // Remove active class from all tabs and content items in this tab group
     that.tabs.forEach((t) =>
@@ -1239,7 +1310,7 @@ class ScTuluCampaign {
         activeTab.classList.add("sc-tulu-camp-tab__head-button--active");
       }
     });
-    targetContent.classList.add("sc-tulu-camp-tab__content-item--active");
+    targetContent[0].classList.add("sc-tulu-camp-tab__content-item--active");
   }
 
   /**
@@ -1366,6 +1437,7 @@ class ScTuluCampaign {
         }
 
         //Timeline boxes
+        let anchorExist = false;
         const timeLineElement = event.target.closest(
           ".sc-tulu-camp-wrapper-full__column"
         );
@@ -1391,6 +1463,7 @@ class ScTuluCampaign {
             const linkUrl = event.target.closest("[data-link-url]");
             if (linkUrl) {
               window.open(linkUrl.getAttribute("data-link-url"), "_blank");
+              anchorExist = true;
             }
           } else if (
             timeLineElement.querySelector(".sc-tulu-camp-timeline__box")
@@ -1410,12 +1483,7 @@ class ScTuluCampaign {
           }
         }
 
-        if (
-          anchorElement ??
-          buttonElement ??
-          nextTaskElement ??
-          timeLineElement
-        ) {
+        if (anchorElement ?? buttonElement ?? nextTaskElement ?? anchorExist) {
           handleAnalyticsCTA(
             event,
             anchorElement ??
@@ -1686,9 +1754,7 @@ class ScTuluCampaign {
   asiaMilesYesModal() {
     const startButton = document.getElementById("sc-get-started-btn");
     const tcModal = document.getElementById("sc-terms-and-condition");
-    const cardMain = document.querySelectorAll(
-      ".sc-tulu-camp-product-card__main"
-    );
+    const cardMain = document.querySelectorAll(".sc-tulu-camp-product-card");
     const mainPage = document.querySelectorAll(".sc-tulu-camp-main");
     const backBtn = document.querySelector(".sc-tulu-camp-header__back");
 
@@ -1711,31 +1777,36 @@ class ScTuluCampaign {
 
       cardMain.forEach((card) => {
         card.addEventListener("click", () => {
+          console.log(1111111);
           mainPage[0].classList.remove("active");
           mainPage[1].classList.add("active");
         });
       });
 
       backBtn.addEventListener("click", (event) => {
-        mainPage[1].classList.remove("active");
-        mainPage[0].classList.add("active");
-        document
-          .querySelector(`[data-tab-btn-id='1']`)
-          .classList.add("sc-tulu-camp-tab__head-button--active");
-        document
-          .querySelector(`[data-tab-content='1']`)
-          .classList.add("sc-tulu-camp-tab__content-item--active");
+        if (mainPage[0].className.includes("active")) {
+          window.location = "https://www.sc.com/exit";
+          console.log("Webview Exit");
+        } else {
+          mainPage[1].classList.remove("active");
+          mainPage[0].classList.add("active");
+          document
+            .querySelector(`[data-tab-btn-id='1']`)
+            .classList.add("sc-tulu-camp-tab__head-button--active");
+          document
+            .querySelector(`[data-tab-content='1']`)
+            .classList.add("sc-tulu-camp-tab__content-item--active");
 
-        const closestBtn = event.target.closest("button");
-        if (closestBtn) {
-          handleAnalyticsCTA(event, closestBtn, {
-            ctaType: "button",
-            ctaPosition: "top",
-            xLinkRegion: "middle",
-          });
+          const closestBtn = event.target.closest("button");
+          if (closestBtn) {
+            handleAnalyticsCTA(event, closestBtn, {
+              ctaType: "button",
+              ctaPosition: "top",
+              xLinkRegion: "middle",
+            });
+          }
+          console.log("Only Back");
         }
-
-        console.log("PPPPPPP");
       });
     }
   }
