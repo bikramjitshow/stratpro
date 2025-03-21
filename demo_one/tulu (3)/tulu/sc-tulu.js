@@ -14,6 +14,10 @@ class ScTuluCampaign {
     that.parentModalId = "";
     that.ScTuluCamp = document.querySelector(".sc-tulu-camp");
     that.currentArticleId = "";
+    that.earningHistory = that.ScTuluCamp.querySelector(
+      ".sc-tulu-camp-tab__content-item--earning-history"
+    );
+    that.earningHistory.innerHTML = "";
 
     this.textObj = {
       queryParameterName: "tab",
@@ -22,6 +26,8 @@ class ScTuluCampaign {
       articlePlacementId: "article.json",
       diversifyText:
         "You're all set. Check out the other missions to get rewarded.",
+      tradeUpLabel: "Trade",
+      mileText: "Miles",
       levelUp: {
         feedbackSuccess: "Feedback Success",
         feedbackError: "Feedback Error",
@@ -33,45 +39,77 @@ class ScTuluCampaign {
             articleId: "wealth-needs-1",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
-            title: "",
-            description: "",
-            articlePoints: 1000,
+            title: "Tips to earn HKD50,000 passive income",
+            description:
+              "How can you achieve financial freedom and live the life you envision sooner?",
+            articlePoints: 400,
             quizPoints: 100,
           },
           {
             articleId: "wealth-needs-2",
             quizValue:
               "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+            title: "💰Cash is no longer king?",
+            description: "It’s time to rethink cash as the Fed cuts rates",
+            articlePoints: 400,
+            quizPoints: 100,
           },
           {
             articleId: "wealth-needs-3",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+            title:
+              "⚡The silent cash thief: how inflation steals 30% of savings",
+            description: `Be aware of "cash thief"`,
+            articlePoints: 600,
+            quizPoints: 200,
           },
           {
             articleId: "wealth-needs-4",
             quizValue:
               "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", //C
+            title: "💡▶️2025 Global Market Outlook: Foundation Portfolio",
+            description: "💡1-minute 2025 Investment Essentials",
+            articlePoints: 600,
+            quizPoints: 200,
           },
           {
             articleId: "wealth-needs-5",
             quizValue:
               "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+            title: "💡▶️2025 Global Market Outlook: Passive Income",
+            description: "1-minute 2025 Income Strategies",
+            articlePoints: 600,
+            quizPoints: 200,
           },
           {
             articleId: "wealth-needs-6",
             quizValue:
               "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+            title: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+            description: "1-minute 2025 FX Strategies",
+            articlePoints: 600,
+            quizPoints: 200,
           },
           {
             articleId: "wealth-needs-7",
             quizValue:
               "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+            title: "💱Unveiling the Mystique of Carry Trade",
+            description:
+              "Explore how investors earn interest spread by carry trade",
+            articlePoints: 600,
+            quizPoints: 200,
           },
           {
             articleId: "wealth-needs-8",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+            title: "💲Debunk safe haven currencies",
+            description:
+              "What drives the inflow into the safe haven currencies during market turbulence?",
+            articlePoints: 600,
+            quizPoints: 200,
           },
         ],
       },
@@ -188,7 +226,85 @@ class ScTuluCampaign {
     that.loadArticleDataApi();
   }
 
-  generateEarningHistory() {
+  levelUpEarningHistory() {
+    const that = this;
+    const data = that.articlePlacementData;
+    let htmlCode = "";
+    this.textObj.levelUp.articles.forEach((article) => {
+      const articleID = "wealth-needs-8";
+      const articleObj = data.find((obj) =>
+        obj.Fields.some(
+          (field) =>
+            field.Name === "ArticleID" && field.Value === article.articleId
+        )
+      );
+
+      const articleRead = articleObj
+        ? articleObj.Fields.find((field) => field.Name === "ArticleRead").Value
+        : null;
+      const quizCompleted = articleObj
+        ? articleObj.Fields.find((field) => field.Name === "QuizCompleted")
+            .Value
+        : null;
+
+      if (articleRead === "Y" || quizCompleted === "Y") {
+        const total = article.articlePoints + article.quizPoints;
+        htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--purple">
+          <div class="sc-tulu-camp-earnings__left">
+            <div class="sc-tulu-camp-earnings__icon"></div>
+            <div class="sc-tulu-camp-earnings__text">
+              <div class="sc-tulu-camp-earnings__head">
+                ${article.title}
+              </div>
+              <p class="sc-tulu-camp-earnings__sub-head">
+              ${article.description}
+              </p>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-earnings__right">
+            <p>
+              <strong>${convertNumbers(that.ScTuluCamp, total)}</strong>
+              ${that.textObj.mileText}
+            </p>
+          </div>
+        </div>`;
+      }
+    });
+    that.earningHistory.innerHTML += htmlCode;
+  }
+
+  tradeUpEarningHistory() {
+    const that = this;
+    const data = that.commonPlacementData;
+    let htmlCode = "";
+    that.textObj.tradeUp.fields.forEach((item) => {
+      const value = Number(that.getObjectValue(data, item.key));
+      if (value) {
+        htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--green">
+          <div class="sc-tulu-camp-earnings__left">
+            <div class="sc-tulu-camp-earnings__icon"></div>
+            <div class="sc-tulu-camp-earnings__text">
+              <div class="sc-tulu-camp-earnings__head">
+                ${that.textObj.tradeUpLabel} ${value} 
+              </div>
+              <p class="sc-tulu-camp-earnings__sub-head">
+                ${item.text}
+              </p>
+            </div>
+          </div>
+          <div class="sc-tulu-camp-earnings__right">
+            <p>
+              <strong>${convertNumbers(that.ScTuluCamp, item.points)}</strong>
+              ${that.textObj.mileText}
+            </p>
+          </div>
+        </div>`;
+      }
+    });
+    that.earningHistory.innerHTML += htmlCode;
+  }
+
+  diversifyEarningHistory() {
     const that = this;
     const data = that.commonPlacementData;
     let htmlCode = "";
@@ -197,38 +313,34 @@ class ScTuluCampaign {
         if (item.conditional) {
           const value = that.getObjectValue(data, item.key);
           if (value === "Y") {
+            const keyName = `RewardCount${category.toUpperCase()}`;
+            const subHeading =
+              that.textObj.tradeUp.fields.find((item) => item.key === keyName)
+                ?.text || null;
+
             htmlCode += `<div class="sc-tulu-camp-earnings__card sc-tulu-camp-earnings--blue">
             <div class="sc-tulu-camp-earnings__left">
-              <div class="sc-tulu-camp-earnings__icon">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M28 10V18H36V10H28ZM26 6C24.8954 6 24 6.89542 24 8V20C24 21.1046 24.8954 22 26 22H38.0002C39.1046 22 40 21.1046 40 20V8C40 6.89542 39.1046 6 38.0002 6H26Z" fill="#4CA0F7"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 44.9999V52.9999H24V44.9999H16ZM14 40.9999C12.8954 40.9999 12 41.8953 12 43.0001V55.0001C12 56.1045 12.8954 56.9999 14 56.9999H26C27.1046 56.9999 28 56.1045 28 55.0001V43.0001C28 41.8953 27.1046 40.9999 26 40.9999H14Z" fill="#4CA0F7"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M40 44.9999V52.9999H48V44.9999H40ZM38.0002 40.9999C36.8954 40.9999 36 41.8953 36 43.0001V55.0001C36 56.1045 36.8954 56.9999 38.0002 56.9999H49.9998C51.1046 56.9999 52 56.1045 52 55.0001V43.0001C52 41.8953 51.1046 40.9999 49.9998 40.9999H38.0002Z" fill="#4CA0F7"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 32C9 30.8955 9.89545 30 11 30H52.5001C53.6046 30 54.5 30.8955 54.5 32C54.5 33.1045 53.6046 33.9998 52.5001 33.9998H11C9.89545 33.9998 9 33.1045 9 32Z" fill="#4CA0F7"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20 30C21.1046 30 22 30.8955 22 32V37.5C22 38.6045 21.1046 39.4999 20 39.4999C18.8954 39.4999 18 38.6045 18 37.5V32C18 30.8955 18.8954 30 20 30Z" fill="#4CA0F7"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M44 30C45.1045 30 46.0002 30.8955 46.0002 32V37.5C46.0002 38.6045 45.1045 39.4999 44 39.4999C42.8956 39.4999 41.9999 38.6045 41.9999 37.5V32C41.9999 30.8955 42.8956 30 44 30Z" fill="#4CA0F7"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M32 24C33.1045 24 34.0002 24.8955 34.0002 26V31.5C34.0002 32.6045 33.1045 33.4999 32 33.4999C30.8956 33.4999 29.9999 32.6045 29.9999 31.5V26C29.9999 24.8955 30.8956 24 32 24Z" fill="#4CA0F7"></path>
-                </svg>
-              </div>
+              <div class="sc-tulu-camp-earnings__icon"></div>
               <div class="sc-tulu-camp-earnings__text">
                 <div class="sc-tulu-camp-earnings__head">
-                  Account Opening
+                  ${item.text}
                 </div>
-                <p class="sc-tulu-camp-earnings__sub-head">FX</p>
+                <p class="sc-tulu-camp-earnings__sub-head">${subHeading}</p>
               </div>
             </div>
             <div class="sc-tulu-camp-earnings__right">
               <p>
-                <strong>1,000</strong>
-                Miles
+                <strong>${convertNumbers(that.ScTuluCamp, item.value)}</strong>
+                ${that.textObj.mileText}
               </p>
             </div>
           </div>`;
           }
-          console.log(`SSS ${item.key}: `, value, item.value);
         }
       });
     });
+
+    that.earningHistory.innerHTML += htmlCode;
   }
 
   async fetchApiData(url) {
@@ -295,7 +407,7 @@ class ScTuluCampaign {
             Name: "OpenAccountSXA",
           },
           {
-            Value: "N",
+            Value: "Y",
             Name: "FirstTradeSXA",
           },
           {
@@ -698,7 +810,8 @@ class ScTuluCampaign {
         );
       }
 
-      that.generateEarningHistory();
+      that.diversifyEarningHistory();
+      that.tradeUpEarningHistory();
     } catch (error) {
       console.error("Error fetching consolidate data:", error);
     }
@@ -1699,6 +1812,7 @@ class ScTuluCampaign {
       const data = await that.fetchApiData(that.textObj.articlePlacementId);
       that.articlePlacementData = data.Fields ?? data;
       that.generateLevelUp();
+      that.levelUpEarningHistory();
 
       // Do something with the fetched data, if needed
     } catch (error) {
