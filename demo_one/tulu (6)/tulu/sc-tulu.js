@@ -36,7 +36,7 @@ class ScTuluCampaign {
         feedbackSuccessDesc: "Congratulations! You passed the test.",
         articles: [
           {
-            articleId: "wealth-needs-1",
+            articleId: "wealth-needs-3",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
             title: "Tips to earn HKD50,000 passive income",
@@ -49,7 +49,7 @@ class ScTuluCampaign {
               "How can you achieve financial freedom and live the life you envision sooner?",
           },
           {
-            articleId: "wealth-needs-2",
+            articleId: "wealth-needs-5",
             quizValue:
               "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
             title: "💰Cash is no longer king?",
@@ -60,7 +60,7 @@ class ScTuluCampaign {
             popupDescription: "It’s time to rethink cash as the Fed cuts rates",
           },
           {
-            articleId: "wealth-needs-3",
+            articleId: "wealth-needs-2",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
             title:
@@ -72,7 +72,7 @@ class ScTuluCampaign {
             popupDescription: "It’s time to rethink cash as the Fed cuts rates",
           },
           {
-            articleId: "wealth-needs-4",
+            articleId: "wealth-needs-9",
             quizValue:
               "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", //C
             title: "💡▶️2025 Global Market Outlook: Foundation Portfolio",
@@ -83,7 +83,7 @@ class ScTuluCampaign {
             popupDescription: "💡1-minute 2025 Investment Essentials",
           },
           {
-            articleId: "wealth-needs-5",
+            articleId: "wealth-needs-33",
             quizValue:
               "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
             title: "💡▶️2025 Global Market Outlook: Passive Income",
@@ -94,7 +94,7 @@ class ScTuluCampaign {
             popupDescription: "1-minute 2025 Income Strategies",
           },
           {
-            articleId: "wealth-needs-6",
+            articleId: "wealth-needs-36",
             quizValue:
               "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
             title: "💡▶️2025 Global Market Outlook: Foreign Exchange",
@@ -105,7 +105,7 @@ class ScTuluCampaign {
             popupDescription: "1-minute 2025 FX Strategies",
           },
           {
-            articleId: "wealth-needs-7",
+            articleId: "wealth-needs-51",
             quizValue:
               "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
             title: "💱Unveiling the Mystique of Carry Trade",
@@ -113,11 +113,12 @@ class ScTuluCampaign {
               "Explore how investors earn interest spread by carry trade",
             articlePoints: 600,
             quizPoints: 200,
-            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
-            popupDescription: "1-minute 2025 FX Strategies",
+            popupTitle: "💱Unveiling the Mystique of Carry Trade",
+            popupDescription:
+              "Explore how investors earn interest spread by carry trade",
           },
           {
-            articleId: "wealth-needs-8",
+            articleId: "wealth-needs-39",
             quizValue:
               "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
             title: "💲Debunk safe haven currencies",
@@ -125,8 +126,9 @@ class ScTuluCampaign {
               "What drives the inflow into the safe haven currencies during market turbulence?",
             articlePoints: 600,
             quizPoints: 200,
-            popupTitle: "💡▶️2025 Global Market Outlook: Foreign Exchange",
-            popupDescription: "1-minute 2025 FX Strategies",
+            popupTitle: "💲Debunk safe haven currencies",
+            popupDescription:
+              "What drives the inflow into the safe haven currencies during market turbulence?",
           },
         ],
       },
@@ -184,7 +186,6 @@ class ScTuluCampaign {
             text: "Completion Bonus",
             value: "1000",
             conditional: false,
-            popupCta: "#",
             popupTitle: "You’ll be brought to [wealth platform]",
             popupDescription:
               "You’ll not be able to get straight back to the the Missions directly.",
@@ -275,7 +276,6 @@ class ScTuluCampaign {
     const data = that.articlePlacementData;
     let htmlCode = "";
     this.textObj.levelUp.articles.forEach((article) => {
-      const articleID = "wealth-needs-8";
       const articleObj = data.find((obj) =>
         obj.Fields.some(
           (field) =>
@@ -407,7 +407,7 @@ class ScTuluCampaign {
         Rank: 2,
         Fields: [
           {
-            Value: "",
+            Value: "Y",
             Name: "RegistrationFlag",
           },
         ],
@@ -503,7 +503,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-1",
+              Value: "wealth-needs-3",
             },
             {
               Name: "ArticleRead",
@@ -533,7 +533,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-2",
+              Value: "wealth-needs-5",
             },
             {
               Name: "ArticleRead",
@@ -563,7 +563,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-3",
+              Value: "wealth-needs-2",
             },
             {
               Name: "ArticleRead",
@@ -593,7 +593,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-4",
+              Value: "wealth-needs-9",
             },
             {
               Name: "ArticleRead",
@@ -623,7 +623,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-5",
+              Value: "wealth-needs-33",
             },
             {
               Name: "ArticleRead",
@@ -653,7 +653,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-6",
+              Value: "wealth-needs-36",
             },
             {
               Name: "ArticleRead",
@@ -683,7 +683,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-7",
+              Value: "wealth-needs-51",
             },
             {
               Name: "ArticleRead",
@@ -713,7 +713,7 @@ class ScTuluCampaign {
           Fields: [
             {
               Name: "ArticleID",
-              Value: "wealth-needs-8",
+              Value: "wealth-needs-39",
             },
             {
               Name: "ArticleRead",
@@ -878,6 +878,7 @@ class ScTuluCampaign {
         if (content) {
           content.innerText = item.text;
           let url;
+          // eslint-disable-next-line no-unused-vars
           for (const [category, diversify] of Object.entries(
             this.textObj.diversify
           )) {
@@ -1042,7 +1043,7 @@ class ScTuluCampaign {
                               </svg>
                             </div>
                             <p class="sc-tulu-camp-timeline__box-text">
-                            ${item.value}
+                            ${convertNumbers(that.ScTuluCamp, item.value)}
                             </p>
                           </div>
                         </div>
@@ -1124,7 +1125,10 @@ class ScTuluCampaign {
                           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z" fill="#3BBD77"></path>
                           </svg>
-                          <span>${numberText}</span>
+                          <span>${convertNumbers(
+                            that.ScTuluCamp,
+                            numberText
+                          )}</span>
                         </div>
                       </div>
                       <div class="sc-tulu-camp-progress__line"></div>
@@ -1194,7 +1198,7 @@ class ScTuluCampaign {
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.5 0.5L7.89583 5.10417L12.5 6.5L7.89583 7.89583L6.5 12.5L5.10417 7.89583L0.5 6.5L5.10417 5.10417L6.5 0.5Z" fill="#3BBD77"></path>
               </svg>
-              <span>${item.points}</span>
+              <span>${convertNumbers(that.ScTuluCamp, item.points)}</span>
             </div>
           </div>
         </li>`;
@@ -1614,11 +1618,11 @@ class ScTuluCampaign {
    */
   handleDeepLinkModal(type, key) {
     const that = this;
-    let data;
     const modalContent = that.ScTuluCamp.querySelector(
       ".sc-deeplink-modal .sc-tulu-camp-doc__content"
     );
     if (type === "diversify") {
+      // eslint-disable-next-line no-unused-vars
       Object.entries(this.textObj.diversify).forEach(([category, items]) => {
         items.forEach((item) => {
           if (item.key === key) {
@@ -1991,6 +1995,7 @@ class ScTuluCampaign {
    */
   generateDateString(campaignStartDate, campaignEndDate) {
     campaignStartDate = new Date(campaignStartDate);
+    // eslint-disable-next-line no-unused-vars
     campaignEndDate = new Date(campaignEndDate);
     const currentDate = new Date(); // Today's date
 
@@ -2005,9 +2010,11 @@ class ScTuluCampaign {
         : "Invalid Date"; // Handle invalid dates
 
     // Generate and return the formatted string
-    return `As of ${formatDate(currentDate)} (${formatDate(
-      campaignStartDate
-    )} - ${formatDate(campaignEndDate)} Cycle)`;
+    // return `As of ${formatDate(currentDate)} (${formatDate(
+    //   campaignStartDate
+    // )} - ${formatDate(campaignEndDate)} Cycle)`;
+
+    return `As of ${formatDate(currentDate)}`;
   }
 
   handleTabsContent() {
