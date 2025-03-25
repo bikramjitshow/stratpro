@@ -1,0 +1,498 @@
+{
+  "data": {
+    "offers": {
+      "__typename": "CustomerOffers",
+      "placeholder": "levelup_page",
+      "offers": [
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 1,
+            "placement": "levelup_page"
+          },
+          "index": 0,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-3"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_3",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_3",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 2,
+            "placement": "levelup_page"
+          },
+          "index": 1,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-9"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_5",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_5",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 3,
+            "placement": "levelup_page"
+          },
+          "index": 2,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-16"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_6",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_6",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 4,
+            "placement": "levelup_page"
+          },
+          "index": 3,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-21"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_1",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_1",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 5,
+            "placement": "levelup_page"
+          },
+          "index": 4,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-5"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_7",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_7",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 6,
+            "placement": "levelup_page"
+          },
+          "index": 5,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-19"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_4",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_4",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 7,
+            "placement": "levelup_page"
+          },
+          "index": 6,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-13"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULULevelupArticlenQuiz_2",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULULevelupArticlenQuiz_2",
+            "group": "Service",
+            "interactionId": "-5226594893528274340",
+            "issue": "Engagements",
+            "rank": 8,
+            "placement": "levelup_page"
+          },
+          "index": 7,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleID",
+              "value": "wealth-needs-2"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleRead",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ArticleTotalAmount",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizCompleted",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "QuizTotalAmount",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

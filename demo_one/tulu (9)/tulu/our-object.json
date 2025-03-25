@@ -1,0 +1,195 @@
+ {
+  queryParameterName: "tab",
+  registrationPlacementId: "registration.json",
+  commonPlacementId: "main_page.json",
+  articlePlacementId: "article.json",
+  diversifyText:
+    "You're all set. Check out the other missions to get rewarded.",
+  tradeUpLabel: "Trade",
+  mileText: "Miles",
+  levelUp: {
+    feedbackSuccess: "Feedback Success",
+    feedbackError: "Feedback Error",
+    feedbackFailedText: "Failed",
+    feedbackFailedDesc: "Sorry! You failed the test.",
+    feedbackSuccessDesc: "Congratulations! You passed the test.",
+    articles: [
+      {
+        articleId: "wealth-needs-3",
+        quizValue:
+          "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+        title: "Tips to earn HKD50,000 passive income",
+        description:
+          "How can you achieve financial freedom and live the life you envision sooner?",
+        articlePoints: 400,
+        quizPoints: 100,
+      },
+      {
+        articleId: "wealth-needs-5",
+        quizValue:
+          "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+        title: "💰Cash is no longer king?",
+        description: "It’s time to rethink cash as the Fed cuts rates",
+        articlePoints: 400,
+        quizPoints: 100,
+      },
+      {
+        articleId: "wealth-needs-2",
+        quizValue:
+          "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+        title:
+          "⚡The silent cash thief: how inflation steals 30% of savings",
+        description: `Be aware of "cash thief"`,
+        articlePoints: 600,
+        quizPoints: 200,
+      },
+      {
+        articleId: "wealth-needs-9",
+        quizValue:
+          "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", //C
+        title: "💡▶️2025 Global Market Outlook: Foundation Portfolio",
+        description: "💡1-minute 2025 Investment Essentials",
+        articlePoints: 600,
+        quizPoints: 200,
+      },
+      {
+        articleId: "wealth-needs-33",
+        quizValue:
+          "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", //B
+        title: "💡▶️2025 Global Market Outlook: Passive Income",
+        description: "1-minute 2025 Income Strategies",
+        articlePoints: 600,
+        quizPoints: 200,
+      },
+      {
+        articleId: "wealth-needs-36",
+        quizValue:
+          "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+        title: "💡▶️2025 Global Market Outlook: Foreign Exchange",
+        description: "1-minute 2025 FX Strategies",
+        articlePoints: 600,
+        quizPoints: 200,
+      },
+      {
+        articleId: "wealth-needs-51",
+        quizValue:
+          "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", //d
+        title: "💱Unveiling the Mystique of Carry Trade",
+        description:
+          "Explore how investors earn interest spread by carry trade",
+        articlePoints: 600,
+        quizPoints: 200,
+      },
+      {
+        articleId: "wealth-needs-39",
+        quizValue:
+          "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", //A
+        title: "💲Debunk safe haven currencies",
+        description:
+          "What drives the inflow into the safe haven currencies during market turbulence?",
+        articlePoints: 600,
+        quizPoints: 200,
+      },
+    ],
+  },
+  tradeUp: {
+    progressNumber: [100, 200, 300],
+    perRow: 6,
+    maxCount: 18,
+    fields: [
+      {
+        key: "RewardCountFX",
+        text: "Online Equity",
+        points: 1000,
+        className: "sc-tulu-camp-progress__content-sxa",
+      },
+      {
+        key: "RewardCountSXA",
+        text: "FX",
+        points: 1000,
+        className: "sc-tulu-camp-progress__content-fx",
+      },
+      {
+        key: "RewardCountUT",
+        text: "Unit Trust",
+        points: 1000,
+        className: "sc-tulu-camp-progress__content-ut",
+      },
+    ],
+  },
+  diversify: {
+    sxa: [
+      {
+        key: "OpenAccountSXA",
+        text: "Open An Account",
+        url: "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
+        value: "77",
+        conditional: true,
+      },
+      {
+        key: "FirstTradeSXA",
+        text: "Make your first trade",
+        url: "https://retail.sc.com/scmobile/hk?ngroute=web/oe-webview",
+        value: "1000",
+        conditional: true,
+      },
+      {
+        key: "CompletionBonusSXA",
+        text: "Completion Bonus",
+        url: "#",
+        value: "1000",
+        conditional: false,
+      },
+    ],
+    fx: [
+      {
+        key: "FirstTradeFX",
+        text: "Make your first trade",
+        url: "https://retail.sc.com/scmobile/hk?ngroute=web/livefx-webview",
+        value: "1000",
+        conditional: true,
+      },
+    ],
+    ut: [
+      {
+        key: "OpenAccountUT",
+        text: "Open An Account",
+        url: "https://retail.sc.com/scmobile/hk?ngroute=web/omf-webview",
+        value: "1000",
+        conditional: true,
+      },
+      {
+        key: "FirstTradeUT",
+        text: "Make your first trade",
+        url: "https://retail.sc.com/scmobile/hk?ngroute=web/omf-webview",
+        value: "1000",
+        conditional: true,
+      },
+      {
+        key: "CompletionBonusUT",
+        text: "Finish all actions to earn bonus miles",
+        url: "#",
+        value: "1000",
+        conditional: false,
+      },
+    ],
+  },
+  nextTask: {
+    diversify: [
+      {
+        key: "FirstTradeFX",
+        text: "FX first Trade",
+      },
+      {
+        key: "OpenAccountSXA",
+        text: "SXA Open Account",
+      },
+      { key: "FirstTradeSXA", text: "SXA First Trade" },
+      { key: "OpenAccountUT", text: "UT Open Account" },
+      { key: "FirstTradeUT", text: "UT first Tarde" },
+    ],
+    tradeUp: {
+      labelText: "Complete your data-number trade",
+    },
+  },
+};

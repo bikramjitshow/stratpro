@@ -1,0 +1,56 @@
+{
+  "data": {
+    "offers": {
+      "__typename": "CustomerOffers",
+      "placeholder": "rewards_registration",
+      "offers": [
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULURegistration",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULURegistration",
+            "group": "Service",
+            "interactionId": "-2164347124121584466",
+            "issue": "Engagements",
+            "rank": 1,
+            "placement": "rewards_registration"
+          },
+          "index": 0,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "CXCardHolder",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "TuluRegistered",
+              "value": "N"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

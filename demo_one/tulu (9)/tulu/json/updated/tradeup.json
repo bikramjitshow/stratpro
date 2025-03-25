@@ -1,0 +1,146 @@
+{
+  "data": {
+    "offers": {
+      "__typename": "CustomerOffers",
+      "placeholder": "tradeup_page",
+      "offers": [
+        {
+          "__typename": "CustomerOffer",
+          "id": "EGSRTULUTradeup",
+          "title": "",
+          "message": "",
+          "images": {
+            "__typename": "ImageSet",
+            "small": "",
+            "medium": "",
+            "large": ""
+          },
+          "primarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "secondarycta": {
+            "__typename": "CtaLink",
+            "label": "",
+            "link": "",
+            "deeplink": ""
+          },
+          "feedback": {
+            "__typename": "CustomerOfferFeedback",
+            "name": "EGSRTULUTradeup",
+            "group": "Service",
+            "interactionId": "-5226594893528274404",
+            "issue": "Engagements",
+            "rank": 1,
+            "placement": "tradeup_page"
+          },
+          "index": 0,
+          "fields": [
+            {
+              "__typename": "NameValuePair",
+              "name": "CampaignStartDate",
+              "value": "20241231"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "CampaignEndDate",
+              "value": "20250330"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ConsolidatedAmountSXA",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ConsolidatedAmountFX",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "ConsolidatedAmountUT",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "consolidatedDiversify",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "OpenAccountSXA",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "FirstTradeSXA",
+              "value": "N"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "CompletionBonusSXA",
+              "value": "N"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "FirstTradeFX",
+              "value": "N"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "OpenAccountUT",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "FirstTradeUT",
+              "value": "N"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "CompletionBonusUT",
+              "value": "Y"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "RewardValue100",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "RewardValue200",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "RewardValue300",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "RewardCountSXA",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "RewardCountUT",
+              "value": ""
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "consolidatedTradeup",
+              "value": "0"
+            },
+            {
+              "__typename": "NameValuePair",
+              "name": "consolidatedLevelUp",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

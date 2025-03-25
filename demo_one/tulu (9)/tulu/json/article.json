@@ -1,0 +1,242 @@
+[
+    {
+      "Issue": "AcquisitionSales1",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 1,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-3"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": "Y"
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 400
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": ""
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 100
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales2",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 2,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-5"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": "Y"
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 400
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": "Y"
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 100
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales3",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 3,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-2"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": "Y"
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 600
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": "N"
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 200
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales4",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 4,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-9"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": "N"
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 600
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": "N"
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 200
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales5",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 5,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-33"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": "Y"
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 600
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": "N"
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 200
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales6",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 6,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-36"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": ""
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 600
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": ""
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 200
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales7",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 7,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-51"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": ""
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 600
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": ""
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 200
+        }
+      ]
+    },
+    {
+      "Issue": "AcquisitionSales8",
+      "Name": "EGSRTULULevelupArticlenQuiz",
+      "GroupID": "Deposits",
+      "InteractionID": "-3569455782704439973",
+      "Placement": "levelup_page",
+      "Rank": 8,
+      "Fields": [
+        {
+          "Name": "ArticleID",
+          "Value": "wealth-needs-39"
+        },
+        {
+          "Name": "ArticleRead",
+          "Value": ""
+        },
+        {
+          "Name": "ArticleTotalAmount",
+          "Value": 600
+        },
+        {
+          "Name": "QuizCompleted",
+          "Value": ""
+        },
+        {
+          "Name": "QuizTotalAmount",
+          "Value": 200
+        }
+      ]
+    }
+]
